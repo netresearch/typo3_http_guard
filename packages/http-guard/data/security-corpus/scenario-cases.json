@@ -1,0 +1,998 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-08-original-v1",
+  "purpose": "Declarative original security scenarios; not executable tests and not run results. Public-looking addresses are fixtures only and must be routed hermetically if used in Wire tests.",
+  "cases": [
+    {
+      "id": "DNS-MIXED-PUBLIC-A-PRIVATE-AAAA",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://mixed.example.test",
+        "method": "GET",
+        "dns": {
+          "addresses": [
+            "8.8.8.8",
+            "fd12::1"
+          ],
+          "source": "test-resolver",
+          "ttl": 5
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T022"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-MIXED-PUBLIC-AAAA-PRIVATE-A",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://mixed.example.test",
+        "method": "GET",
+        "dns": {
+          "addresses": [
+            "2001:4860:4860::8888",
+            "10.0.0.1"
+          ],
+          "source": "test-resolver",
+          "ttl": 5
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T023"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-FAIL-NXDOMAIN",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://missing.example.test",
+        "dns": {
+          "addresses": [],
+          "error": "NXDOMAIN"
+        },
+        "bound_endpoint": "erp-orders"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "resolution_unverified",
+        "transport_calls": 0,
+        "system_resolver_fallback": false
+      },
+      "test_ids": [
+        "T024",
+        "T025",
+        "T026"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-FAIL-SERVFAIL",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://missing.example.test",
+        "dns": {
+          "addresses": [],
+          "error": "SERVFAIL"
+        },
+        "bound_endpoint": "erp-orders"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "resolution_unverified",
+        "transport_calls": 0,
+        "system_resolver_fallback": false
+      },
+      "test_ids": [
+        "T024",
+        "T025",
+        "T026"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-FAIL-EMPTY",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://missing.example.test",
+        "dns": {
+          "addresses": [],
+          "error": "empty"
+        },
+        "bound_endpoint": "erp-orders"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "resolution_unverified",
+        "transport_calls": 0,
+        "system_resolver_fallback": false
+      },
+      "test_ids": [
+        "T024",
+        "T025",
+        "T026"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-FAIL-INVALID-ADDRESS-RECORD",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://missing.example.test",
+        "dns": {
+          "addresses": [],
+          "error": "invalid-address-record"
+        },
+        "bound_endpoint": "erp-orders"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "resolution_unverified",
+        "transport_calls": 0,
+        "system_resolver_fallback": false
+      },
+      "test_ids": [
+        "T024",
+        "T025",
+        "T026"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-CNAME-CYCLE",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://a.example.test",
+        "dns": {
+          "aliases": [
+            [
+              "a.example.test",
+              "b.example.test"
+            ],
+            [
+              "b.example.test",
+              "a.example.test"
+            ]
+          ],
+          "addresses": [
+            "8.8.8.8"
+          ]
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "resolution_limit",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T028"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-CNAME-TOO-MANY",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://a.example.test",
+        "dns": {
+          "aliases": [
+            [
+              "c0.example.test",
+              "c1.example.test"
+            ],
+            [
+              "c1.example.test",
+              "c2.example.test"
+            ],
+            [
+              "c2.example.test",
+              "c3.example.test"
+            ],
+            [
+              "c3.example.test",
+              "c4.example.test"
+            ],
+            [
+              "c4.example.test",
+              "c5.example.test"
+            ],
+            [
+              "c5.example.test",
+              "c6.example.test"
+            ],
+            [
+              "c6.example.test",
+              "c7.example.test"
+            ],
+            [
+              "c7.example.test",
+              "c8.example.test"
+            ],
+            [
+              "c8.example.test",
+              "c9.example.test"
+            ]
+          ],
+          "addresses": [
+            "8.8.8.8"
+          ]
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "resolution_limit",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T028"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-TOO-MANY-ADDRESSES",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://many.example.test",
+        "dns": {
+          "addresses": [
+            "8.8.8.0",
+            "8.8.8.1",
+            "8.8.8.2",
+            "8.8.8.3",
+            "8.8.8.4",
+            "8.8.8.5",
+            "8.8.8.6",
+            "8.8.8.7",
+            "8.8.8.8",
+            "8.8.8.9",
+            "8.8.8.10",
+            "8.8.8.11",
+            "8.8.8.12",
+            "8.8.8.13",
+            "8.8.8.14",
+            "8.8.8.15",
+            "8.8.8.16",
+            "8.8.8.17",
+            "8.8.8.18",
+            "8.8.8.19",
+            "8.8.8.20",
+            "8.8.8.21",
+            "8.8.8.22",
+            "8.8.8.23",
+            "8.8.8.24",
+            "8.8.8.25",
+            "8.8.8.26",
+            "8.8.8.27",
+            "8.8.8.28",
+            "8.8.8.29",
+            "8.8.8.30",
+            "8.8.8.31",
+            "8.8.8.32",
+            "8.8.8.33",
+            "8.8.8.34",
+            "8.8.8.35",
+            "8.8.8.36",
+            "8.8.8.37",
+            "8.8.8.38",
+            "8.8.8.39",
+            "8.8.8.40",
+            "8.8.8.41",
+            "8.8.8.42",
+            "8.8.8.43",
+            "8.8.8.44",
+            "8.8.8.45",
+            "8.8.8.46",
+            "8.8.8.47",
+            "8.8.8.48",
+            "8.8.8.49",
+            "8.8.8.50",
+            "8.8.8.51",
+            "8.8.8.52",
+            "8.8.8.53",
+            "8.8.8.54",
+            "8.8.8.55",
+            "8.8.8.56",
+            "8.8.8.57",
+            "8.8.8.58",
+            "8.8.8.59",
+            "8.8.8.60",
+            "8.8.8.61",
+            "8.8.8.62",
+            "8.8.8.63",
+            "8.8.8.64"
+          ]
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "resolution_limit",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T028"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-MULTI-ADDRESS-PIN",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://dual.example.test:8443",
+        "dns": {
+          "addresses": [
+            "8.8.8.8",
+            "2001:4860:4860::8888",
+            "8.8.8.8"
+          ]
+        }
+      },
+      "expected": {
+        "decision": "allow_policy_only",
+        "resolve_entries": [
+          "dual.example.test:8443:8.8.8.8,[2001:4860:4860::8888]"
+        ],
+        "unchanged_tls_sni": "dual.example.test",
+        "unchecked_dns_fallback": false
+      },
+      "test_ids": [
+        "T016",
+        "T031",
+        "T033"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DNS-REBIND-AFTER-PLAN",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://flip.example.test",
+        "dns_answers": [
+          [
+            "8.8.8.8"
+          ],
+          [
+            "127.0.0.1"
+          ]
+        ]
+      },
+      "expected": {
+        "actual_connection_addresses": [
+          "8.8.8.8"
+        ],
+        "independent_transport_dns_queries": 0,
+        "forbidden_target_tcp": 0,
+        "forbidden_target_http": 0
+      },
+      "test_ids": [
+        "T029"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "AUTHORITY-HOST-MISMATCH",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://api.example.test",
+        "headers": {
+          "Host": "other.example.test"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "authority_mismatch",
+        "dns_queries": 0,
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T013"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "AUTHORITY-PORT-MISMATCH",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://api.example.test:8443",
+        "headers": {
+          "Host": "api.example.test:443"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "authority_mismatch",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T013"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "AUTHORITY-CANONICAL-EQUAL",
+      "type": "guard_scenario",
+      "input": {
+        "target": "HTTPS://API.EXAMPLE.TEST.:443",
+        "headers": {
+          "Host": "api.example.test"
+        }
+      },
+      "expected": {
+        "normalization": "allow_syntax_only",
+        "authority": "api.example.test:443",
+        "authorization": "must_still_evaluate_policy_and_dns"
+      },
+      "test_ids": [
+        "T008",
+        "T013"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "MIDDLEWARE-ORIGIN-CHANGE",
+      "type": "guard_scenario",
+      "input": {
+        "boundary_origin": "https://api.example.test:443",
+        "terminal_origin": "https://other.example.test:443"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "authority_mismatch",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T004"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "RAW-CURLOPT_RESOLVE",
+      "type": "guard_scenario",
+      "input": {
+        "raw_curl_options": {
+          "CURLOPT_RESOLVE": "synthetic-caller-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T084"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "RAW-CURLOPT_CONNECT_TO",
+      "type": "guard_scenario",
+      "input": {
+        "raw_curl_options": {
+          "CURLOPT_CONNECT_TO": "synthetic-caller-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T084"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "RAW-CURLOPT_URL",
+      "type": "guard_scenario",
+      "input": {
+        "raw_curl_options": {
+          "CURLOPT_URL": "synthetic-caller-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T084"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "RAW-CURLOPT_SHARE",
+      "type": "guard_scenario",
+      "input": {
+        "raw_curl_options": {
+          "CURLOPT_SHARE": "synthetic-caller-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T084"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "RAW-CURLOPT_UNIX_SOCKET_PATH",
+      "type": "guard_scenario",
+      "input": {
+        "raw_curl_options": {
+          "CURLOPT_UNIX_SOCKET_PATH": "synthetic-caller-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T084"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "RAW-CURLOPT_FOLLOWLOCATION",
+      "type": "guard_scenario",
+      "input": {
+        "raw_curl_options": {
+          "CURLOPT_FOLLOWLOCATION": "synthetic-caller-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T084"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "RAW-CURLOPT_ALTSVC",
+      "type": "guard_scenario",
+      "input": {
+        "raw_curl_options": {
+          "CURLOPT_ALTSVC": "synthetic-caller-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T084"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "RAW-CURLOPT_HSTS",
+      "type": "guard_scenario",
+      "input": {
+        "raw_curl_options": {
+          "CURLOPT_HSTS": "synthetic-caller-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T084"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "OPTION-HANDLER",
+      "type": "guard_scenario",
+      "input": {
+        "request_options": {
+          "handler": "synthetic-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T077"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "OPTION-STREAM",
+      "type": "guard_scenario",
+      "input": {
+        "request_options": {
+          "stream": true
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T058"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "OPTION-DELAY",
+      "type": "guard_scenario",
+      "input": {
+        "request_options": {
+          "delay": "synthetic-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T041"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "OPTION-PROXY",
+      "type": "guard_scenario",
+      "input": {
+        "request_options": {
+          "proxy": "synthetic-value"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "proxy_unsupported",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T043"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "OPTION-DEBUG",
+      "type": "guard_scenario",
+      "input": {
+        "request_options": {
+          "debug": true
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "option_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T040",
+        "T063"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "PROXY-ENV-NO-PROXY",
+      "type": "guard_scenario",
+      "input": {
+        "process_environment": {
+          "HTTPS_PROXY": "http://proxy.example.test:8080",
+          "NO_PROXY": "api.example.test"
+        },
+        "target": "https://api.example.test"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "proxy_unsupported",
+        "proxy_connections": 0,
+        "target_connections": 0,
+        "direct_bypass": false
+      },
+      "test_ids": [
+        "T044"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "GRANT-HEADER-FORGERY",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://erp.example.test",
+        "headers": {
+          "X-Endpoint-Profile": "erp-orders"
+        },
+        "dns": {
+          "addresses": [
+            "10.23.4.12"
+          ]
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T035",
+        "T036"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "GRANT-STRING-FORGERY",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://erp.example.test",
+        "request_options": {
+          "nr_http_guard_grant": "erp-orders"
+        }
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "grant_invalid",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T035"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "GRANT-FOREIGN-REGISTRY",
+      "type": "guard_scenario",
+      "input": {
+        "endpoint": "erp-orders",
+        "grant_registry": "old-policy-registry",
+        "current_registry": "new-policy-registry"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "grant_invalid",
+        "transport_calls": 0
+      },
+      "test_ids": [
+        "T035",
+        "T038"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "GRANT-EXPIRED-LAZY-LEASE",
+      "type": "guard_scenario",
+      "input": {
+        "issued_at": "2026-10-08T21:00:00Z",
+        "expires_at": "2026-10-08T21:00:05Z",
+        "first_actual_tick": "2026-10-08T21:00:06Z"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "grant_invalid",
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T038"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "GRANT-TOKEN-RESOURCE-SEPARATE",
+      "type": "guard_scenario",
+      "input": {
+        "resource_grant": {
+          "origin": "https://api.example.test:443",
+          "ips": [
+            "8.8.8.8"
+          ]
+        },
+        "token_request": {
+          "origin": "https://token.example.test:443",
+          "ips": [
+            "10.23.4.30"
+          ]
+        },
+        "token_grant": null
+      },
+      "expected": {
+        "token_decision": "deny",
+        "resource_grant_transfer": false,
+        "token_tcp": 0,
+        "token_http": 0
+      },
+      "test_ids": [
+        "T071"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "REDIRECT-CROSS-ORIGIN",
+      "type": "guard_scenario",
+      "input": {
+        "first": "https://api.example.test/a",
+        "status": 307,
+        "location": "https://other.example.test/b",
+        "headers": {
+          "X-Custom-Auth": "synthetic-secret"
+        },
+        "body": "synthetic-body-secret",
+        "follow_enabled": true
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "redirect_forbidden",
+        "first_hop_permitted": true,
+        "second_hop_tcp": 0,
+        "second_hop_http": 0
+      },
+      "test_ids": [
+        "T046",
+        "T047"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "REDIRECT-SAME-ORIGIN-PRIVATE-REBIND",
+      "type": "guard_scenario",
+      "input": {
+        "first": "https://flip.example.test/a",
+        "status": 302,
+        "location": "/b",
+        "dns_answers": [
+          [
+            "8.8.8.8"
+          ],
+          [
+            "10.0.0.1"
+          ]
+        ],
+        "follow_enabled": true
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "first_hop_permitted": true,
+        "second_hop_tcp": 0,
+        "second_hop_http": 0
+      },
+      "test_ids": [
+        "T045",
+        "T046"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "REDIRECT-PSR18-NO-FOLLOW",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://api.example.test",
+        "status": 302,
+        "location": "https://other.example.test",
+        "send_api": "PSR18"
+      },
+      "expected": {
+        "response_status": 302,
+        "second_hop_tcp": 0,
+        "second_hop_http": 0
+      },
+      "test_ids": [
+        "T051"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "REDIRECT-POST-TO-GET-METHOD-GRANT",
+      "type": "guard_scenario",
+      "input": {
+        "target": "https://erp.example.test",
+        "method": "POST",
+        "allowed_methods": [
+          "POST"
+        ],
+        "status": 303,
+        "location": "/next",
+        "follow_enabled": true
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "endpoint_mismatch",
+        "first_hop_permitted": true,
+        "second_hop_tcp": 0,
+        "second_hop_http": 0
+      },
+      "test_ids": [
+        "T081"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "CACHE-POLICY-CHANGE",
+      "type": "guard_scenario",
+      "input": {
+        "cached_addresses": [
+          "10.23.4.12"
+        ],
+        "old_profile": "bound-erp",
+        "next_profile": "public",
+        "same_host_port": true
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "cached_authorization": false,
+        "privileged_connection_reuse": false
+      },
+      "test_ids": [
+        "T053",
+        "T054",
+        "T056"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "LEASE-CANCEL-BEFORE-START",
+      "type": "guard_scenario",
+      "input": {
+        "cancelled_before_first_tick": true
+      },
+      "expected": {
+        "tcp_connections": 0,
+        "http_requests": 0,
+        "leased_handles_remaining": 0
+      },
+      "test_ids": [
+        "T060"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "LEASE-CANCEL-MID-TRANSFER",
+      "type": "guard_scenario",
+      "input": {
+        "synthetic_server": "local-controlled",
+        "cancel_after_first_bytes": true
+      },
+      "expected": {
+        "server_observes_socket_close": true,
+        "leased_handles_remaining": 0,
+        "background_transfer": false
+      },
+      "test_ids": [
+        "T060",
+        "T061"
+      ],
+      "execution_status": "not_run"
+    }
+  ]
+}

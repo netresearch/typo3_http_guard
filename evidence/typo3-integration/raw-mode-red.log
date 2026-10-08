@@ -1,0 +1,18 @@
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/phpunit.xml
+
+..................[41;37mF[0m                                               19 / 19 (100%)
+
+Time: 00:00.235, Memory: 32.00 MB
+
+There was 1 failure:
+
+1) Netresearch\NrHttpGuard\Tests\Unit\RawRequestFactoryModeTest::testRawFailureIsEnforcedDiagnosedOrTransparentAccordingToMode
+Failed asserting that actual size 0 matches expected size 1.
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/RawRequestFactoryModeTest.php:112
+
+[37;41mFAILURES![0m
+[37;41mTests: 19[0m[37;41m, Assertions: 65[0m[37;41m, Failures: 1[0m[37;41m.[0m

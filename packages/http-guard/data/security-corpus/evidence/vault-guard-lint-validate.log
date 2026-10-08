@@ -1,0 +1,19 @@
+The repository at "/project" does not have the correct ownership and git refuses to use it:
+
+fatal: detected dubious ownership in repository at '/project'
+To add an exception for this directory, call:
+
+git config --global --add safe.directory /project
+
+Composer could not detect the root package (netresearch/nr-vault) version, defaulting to '1.0.0'. See https://getcomposer.org/root-version
+The repository at "." does not have the correct ownership and git refuses to use it:
+
+fatal: detected dubious ownership in repository at '/project'
+To add an exception for this directory, call:
+
+git config --global --add safe.directory /project
+
+Composer could not detect the root package (netresearch/nr-vault) version, defaulting to '1.0.0'. See https://getcomposer.org/root-version
+./composer.json is valid
+sh: rg: not found
+sh: rg: not found

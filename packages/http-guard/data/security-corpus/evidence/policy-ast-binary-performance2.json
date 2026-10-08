@@ -1,0 +1,54 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/Cidr.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "c28c840e99e224711a1d48040355aab62920d2f84c16aab9537e6faeb288b50f",
+            "afterSha256": "c30ecb2709796249eaed80599cd62cb4fb495960f74eada35e661575a1ffa6a2",
+            "changedLines": 3,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/AddressClassifier.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 2,
+            "beforeSha256": "fceb163f627c1d9e7491f579f3673acfcddfef172b96ace61a9f7849e4694346",
+            "afterSha256": "b6aa53a100ea23a142018abd5a629d778c26af57375009d18c99a99c78108450",
+            "changedLines": 17,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

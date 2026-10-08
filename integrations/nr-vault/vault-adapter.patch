@@ -1,0 +1,3141 @@
+diff --git a/Build/FunctionalTestsBootstrap.php b/Build/FunctionalTestsBootstrap.php
+index d40232c..5c8ecee 100644
+--- a/Build/FunctionalTestsBootstrap.php
++++ b/Build/FunctionalTestsBootstrap.php
+@@ -30,6 +30,7 @@ if (!file_exists($autoloadFile)) {
+ }
+ 
+ require_once $autoloadFile;
++require_once dirname(__DIR__) . '/Tests/Fixtures/HttpGuardBootstrap.php';
+ 
+ // Initialize the testing framework
+ $testbase = new Testbase();
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index c3b40cd..28292b4 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
+ 
+ ## [Unreleased]
+ 
++### Added
++
++- **Explicit HTTP Guard integration for named Vault clients.** An optional adapter on `SecureHttpClientFactory` binds resources and OAuth token endpoints separately. Enforce mode checks before credential reads, uses one guarded client/driver binding for cancellation and streaming, and propagates capability failures. Observe and disabled retain the existing secure factory's controls; the default factory remains unchanged. The frozen API snapshot adds the internal adapter interface and its referenced factory/transport types, with no changed or removed existing signatures. See `Documentation/Developer/HttpGuard.rst` and ADR-041.
++
+ ### Changed
+ 
+ - **Project-authored source files state their licence and copyright holder.** The documentation, templates, XLIFF, JavaScript, CSS, configuration and scripts written for this extension now carry `SPDX-License-Identifier: GPL-2.0-or-later` and `SPDX-FileCopyrightText: Netresearch DTT GmbH`, as the PHP files already did; the files synced from the organisation template carry its MIT notice. Copied files (`CODE_OF_CONDUCT.md`, `Build/Scripts/runTests.sh`, `Build/Scripts/verify-harness.sh`), generated files (`Build/phpstan-baseline.neon`, `Tests/Unit/Api/api-surface.txt`), the issue and pull-request templates, `.github/template.yaml`, the workflows `ci.yml` and `release.yml`, `LICENSE`, the JSON files, the CSV fixtures, the images and the empty `.gitkeep` carry none. `CONTRIBUTING.md` links the organisation's governance, roadmap, access roster, secret management and findings policies and lists the checks its workflows run on pull requests; `SECURITY.md` points to the findings policy.
+diff --git a/Classes/Http/OAuth/OAuthTokenManager.php b/Classes/Http/OAuth/OAuthTokenManager.php
+index 3eec733..b4d9263 100644
+--- a/Classes/Http/OAuth/OAuthTokenManager.php
++++ b/Classes/Http/OAuth/OAuthTokenManager.php
+@@ -243,6 +243,17 @@ final class OAuthTokenManager
+             throw new RequestCancelledException(self::TOKEN_CANCELLED_BEFORE_SEND_MESSAGE, 1786579301);
+         }
+ 
++        if ($this->secureHttpClientFactory->isGuardEnabled() && $this->secureHttpClientFactory->guardMode() !== 'disabled' && $this->secureHttpClientFactory->guardValidateRawUri(
++            $config->tokenEndpoint,
++        )) {
++            $this->secureHttpClientFactory->assertRequestAllowed(
++                $this->requestFactory->createRequest(
++                    'POST',
++                    $config->tokenEndpoint,
++                ),
++            );
++        }
++
+         // Fetch new token, with fallback to client_credentials on refresh failure.
+         $token = $this->fetchTokenWithFallback($config, $cancellationSignal);
+         $this->tokenCache[$cacheKey] = $token;
+diff --git a/Classes/Http/SecureHttpClientFactory.php b/Classes/Http/SecureHttpClientFactory.php
+index d0dbae8..0638a79 100644
+--- a/Classes/Http/SecureHttpClientFactory.php
++++ b/Classes/Http/SecureHttpClientFactory.php
+@@ -20,6 +20,8 @@ use GuzzleHttp\Handler\CurlMultiHandler;
+ use GuzzleHttp\Handler\Proxy;
+ use GuzzleHttp\Handler\StreamHandler;
+ use GuzzleHttp\HandlerStack;
++use LogicException;
++use Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface;
+ use Psr\Http\Client\ClientInterface;
+ use Psr\Http\Message\RequestInterface;
+ use Psr\Log\LoggerInterface;
+@@ -44,6 +46,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
+  * - allowed_hosts: Host restrictions (checked manually if needed)
+  *
+  * @see https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/Configuration/Typo3ConfVars/HTTP.html
++ *
++ * @phpstan-type GuardHandler callable(RequestInterface, array<string, mixed>): \GuzzleHttp\Promise\PromiseInterface
++ * @phpstan-type GuardMiddleware callable(GuardHandler): GuardHandler
+  */
+ final class SecureHttpClientFactory
+ {
+@@ -132,6 +137,7 @@ final class SecureHttpClientFactory
+ 
+     public function __construct(
+         private readonly DnsResolverInterface $dnsResolver = new DefaultDnsResolver(),
++        private readonly ?VaultGuardAdapterInterface $guardAdapter = null,
+     ) {}
+ 
+     /**
+@@ -149,6 +155,9 @@ final class SecureHttpClientFactory
+      */
+     public function create(?int $timeoutSeconds = null): ClientInterface
+     {
++        if ($this->guardAdapter !== null) {
++            return $this->guardAdapter->create($this->buildOptions($timeoutSeconds));
++        }
+         $options = $this->buildOptions($timeoutSeconds);
+ 
+         // Create handler stack without any logging middleware
+@@ -201,6 +210,17 @@ final class SecureHttpClientFactory
+      */
+     public function createCancellable(?int $timeoutSeconds = null): ?CancellableTransport
+     {
++        if ($this->guardAdapter !== null) {
++            $options = $this->buildOptions($timeoutSeconds);
++            $timeout = $options['timeout'];
++            $connectTimeout = $options['connect_timeout'];
++
++            return $this->guardAdapter->createCancellable(
++                $options,
++                $timeout + $connectTimeout + self::CANCELLABLE_WALL_CLOCK_MARGIN_SECONDS,
++                $timeout > 0 ? null : self::STREAMING_IDLE_BUDGET_SECONDS,
++            );
++        }
+         if (!\function_exists('curl_multi_exec')) {
+             return null;
+         }
+@@ -260,6 +280,9 @@ final class SecureHttpClientFactory
+      */
+     public function isHostAllowed(string $host): bool
+     {
++        if ($this->guardAdapter !== null) {
++            return $this->guardAdapter->isHostAllowed($host);
++        }
+         $host = $this->normaliseHost($host);
+         if ($host === '') {
+             return false;
+@@ -318,6 +341,82 @@ final class SecureHttpClientFactory
+         return false;
+     }
+ 
++    /**
++     * @internal Explicit protected-path selection, not a coverage claim for caller clients.
++     */
++    public function isGuardEnabled(): bool
++    {
++        return $this->guardAdapter !== null;
++    }
++
++    /**
++     * @internal Non-capability full-request preflight; terminal authorization remains mandatory.
++     */
++    public function assertRequestAllowed(RequestInterface $request): void
++    {
++        $this->guardAdapter?->assertRequestAllowed($request);
++    }
++
++    /**
++     * @internal OAuth must use this separately configured factory, never the resource binding.
++     */
++    public function guardTokenFactory(): ?self
++    {
++        return $this->guardAdapter?->tokenFactory();
++    }
++
++    /**
++     * Preserve a fresh legacy client's exact leaf and middleware.
++     *
++     * @internal
++     *
++     * @param array<string, mixed> $platformOptions
++     * @param GuardMiddleware|null $diagnosticMiddleware
++     */
++    public function withDiagnosticOptions(
++        \GuzzleHttp\ClientInterface $client,
++        array $platformOptions,
++        ?callable $diagnosticMiddleware = null,
++    ): \GuzzleHttp\ClientInterface&ClientInterface {
++        if (!$client instanceof Client) {
++            throw new LogicException('Legacy Vault client is not a factory client');
++        }
++        // With no key, both supported concrete Client implementations return the full configuration.
++        /** @var array<string, mixed> $legacyOptions */
++        // @phpstan-ignore method.deprecated (The inherited G7 interface annotation predicts removal, but G0 verifies the concrete method in both supported majors.)
++        $legacyOptions = $client->getConfig();
++        $stack = $legacyOptions['handler'] ?? null;
++        if (!$stack instanceof HandlerStack) {
++            throw new LogicException('Legacy Vault client has no handler stack');
++        }
++        $stack = clone $stack;
++        if ($diagnosticMiddleware !== null) {
++            $stack->push($diagnosticMiddleware, 'http-guard-observe');
++        }
++        $options = array_replace($legacyOptions, $platformOptions);
++        $options['handler'] = $stack;
++
++        // Guzzle's native configuration is copied without changing its option shape.
++        // @phpstan-ignore argument.type (Native options originate from buildOptions and the same factory's legacy Client.)
++        return new Client($options);
++    }
++
++    /**
++     * @internal The selected adapter mode; null keeps the original default path.
++     */
++    public function guardMode(): ?string
++    {
++        return $this->guardAdapter?->mode();
++    }
++
++    /**
++     * @internal Validate a raw URL before PSR-7 can erase or encode forbidden syntax.
++     */
++    public function guardValidateRawUri(string $uri): bool
++    {
++        return $this->guardAdapter?->validateRawUri($uri) ?? true;
++    }
++
+     /**
+      * Build the hardened Guzzle option set shared by every client this factory
+      * produces.
+diff --git a/Classes/Http/VaultHttpClient.php b/Classes/Http/VaultHttpClient.php
+index 061d4a1..f7f0a47 100644
+--- a/Classes/Http/VaultHttpClient.php
++++ b/Classes/Http/VaultHttpClient.php
+@@ -22,6 +22,7 @@ use Netresearch\NrVault\Audit\HttpCallContext;
+ use Netresearch\NrVault\Exception\RequestCancelledException;
+ use Netresearch\NrVault\Exception\SecretNotFoundException;
+ use Netresearch\NrVault\Exception\VaultException;
++use Netresearch\NrVault\Http\Guard\GuardOAuthManagerState;
+ use Netresearch\NrVault\Http\OAuth\OAuthConfig;
+ use Netresearch\NrVault\Http\OAuth\OAuthTokenManager;
+ use Netresearch\NrVault\Service\VaultServiceInterface;
+@@ -241,10 +242,12 @@ final readonly class VaultHttpClient implements VaultHttpClientInterface, Cancel
+      */
+     private bool $innerClientIsFactoryBuilt;
+ 
+-    private OAuthTokenManager $oauthManager;
++    private ?OAuthTokenManager $oauthManager;
+ 
+     private SecureHttpClientFactory $secureHttpClientFactory;
+ 
++    private GuardOAuthManagerState $guardOAuthState;
++
+     /**
+      * @param VaultServiceInterface $vaultService Vault for secret retrieval
+      * @param AuditLogServiceInterface $auditLogService Audit logging
+@@ -340,6 +343,31 @@ final readonly class VaultHttpClient implements VaultHttpClientInterface, Cancel
+         // bootstrap path here (same pattern as before this PR).
+         $this->secureHttpClientFactory = $secureHttpClientFactory
+             ?? GeneralUtility::makeInstance(SecureHttpClientFactory::class);
++        if ($this->secureHttpClientFactory->guardMode() === 'enforce') {
++            $trustedClone = $clonedFrom instanceof self && $clonedFrom->secureHttpClientFactory === $this->secureHttpClientFactory && $clonedFrom->innerClientIsFactoryBuilt && (!$innerClient instanceof ClientInterface || $clonedFrom->innerClient === $innerClient);
++            if ($innerClient instanceof ClientInterface && !$trustedClone) {
++                throw new VaultException(
++                    'Protected Vault client cannot accept an unverified inner client',
++                    1786810001,
++                );
++            }
++
++            if ($oauthManager instanceof OAuthTokenManager && (!$trustedClone || $clonedFrom->oauthManager !== $oauthManager)) {
++                throw new VaultException(
++                    'Protected Vault client cannot inherit an unverified OAuth manager',
++                    1786810002,
++                );
++            }
++
++            if ($cancellableTransport instanceof CancellableTransport && (!$trustedClone || $clonedFrom->cancellableTransport !== $cancellableTransport)) {
++                throw new VaultException(
++                    'Protected Vault client cannot inherit an unverified cancellable transport',
++                    1786810003,
++                );
++            }
++        }
++
++        $this->guardOAuthState = $clonedFrom instanceof self && $clonedFrom->secureHttpClientFactory === $this->secureHttpClientFactory && $clonedFrom->innerClientIsFactoryBuilt && (!$innerClient instanceof ClientInterface || $clonedFrom->innerClient === $innerClient) ? $clonedFrom->guardOAuthState : new GuardOAuthManagerState();
+ 
+         // No client passed → this constructor builds it below, so it is
+         // factory-built by definition. A client that WAS passed only counts as
+@@ -357,20 +385,16 @@ final readonly class VaultHttpClient implements VaultHttpClientInterface, Cancel
+         // paths would disagree on the deadline.
+         $this->innerClient = $innerClient ?? $this->secureHttpClientFactory->create($timeoutSeconds);
+ 
+-        // Share the hardened innerClient with the OAuth manager so token
+-        // requests inherit the SSRF / DNS-rebinding / no-redirect defences.
+-        // The shared factory also lets the manager call `isHostAllowed()` on
+-        // the token endpoint — closes the allowed_hosts allowlist gap that
+-        // the request-time middleware doesn't cover. The audit service is
+-        // passed too (issue #303): the token round trip carries the
+-        // `client_secret`, and a manager built without the service writes no
+-        // `oauth_token_request` row for it.
+-        $this->oauthManager = $oauthManager ?? new OAuthTokenManager(
++        // Keep the original eager manager and client sharing when no adapter is selected.
++        // An opted-in manager is lazy and binds only the separate token factory.
++        // The shared factory lets the manager call isHostAllowed() on the token
++        // endpoint; the audit service records that credential-bearing token round trip.
++        $this->oauthManager = $oauthManager ?? ($this->secureHttpClientFactory->isGuardEnabled() ? null : new OAuthTokenManager(
+             $this->vaultService,
+             $this->innerClient,
+             $this->secureHttpClientFactory,
+             auditLogService: $this->auditLogService,
+-        );
++        ));
+     }
+ 
+     public function withAuthentication(
+@@ -483,6 +507,7 @@ final readonly class VaultHttpClient implements VaultHttpClientInterface, Cancel
+             secureHttpClientFactory: $this->secureHttpClientFactory,
+             authPrefix: $this->authPrefix,
+             timeoutSeconds: $seconds > 0 ? $seconds : null,
++            clonedFrom: $this,
+         );
+     }
+ 
+@@ -731,6 +756,19 @@ final readonly class VaultHttpClient implements VaultHttpClientInterface, Cancel
+      */
+     private function assertHostIsAllowed(RequestInterface $request): void
+     {
++        if ($this->secureHttpClientFactory->isGuardEnabled()) {
++            try {
++                $this->secureHttpClientFactory->assertRequestAllowed($request);
++            } catch (Throwable $failure) {
++                $this->logRefusal(
++                    $request,
++                    'HTTP Guard refused the request before credential retrieval',
++                );
++
++                throw $failure;
++            }
++        }
++
+         $host = strtolower($request->getUri()->getHost());
+         if ($this->secureHttpClientFactory->isHostAllowed($host)) {
+             return;
+@@ -1586,7 +1624,7 @@ final readonly class VaultHttpClient implements VaultHttpClientInterface, Cancel
+         ?CancellationSignalInterface $signal = null,
+     ): RequestInterface {
+         \assert($this->oauthConfig instanceof OAuthConfig);
+-        $accessToken = $this->oauthManager->getAccessToken($this->oauthConfig, $signal);
++        $accessToken = $this->getOAuthManager()->getAccessToken($this->oauthConfig, $signal);
+ 
+         try {
+             return $request->withHeader('Authorization', 'Bearer ' . $accessToken);
+@@ -1663,4 +1701,33 @@ final readonly class VaultHttpClient implements VaultHttpClientInterface, Cancel
+             HttpCallContext::fromRequest($method, $url, $statusCode),
+         );
+     }
++
++    /**
++     * Lazily bind OAuth to its independently configured protected token factory.
++     */
++    private function getOAuthManager(): OAuthTokenManager
++    {
++        if ($this->oauthManager instanceof OAuthTokenManager) {
++            return $this->oauthManager;
++        }
++
++        if ($this->guardOAuthState->manager instanceof OAuthTokenManager) {
++            return $this->guardOAuthState->manager;
++        }
++
++        $tokenFactory = $this->secureHttpClientFactory->guardTokenFactory();
++        if (!$tokenFactory instanceof SecureHttpClientFactory || $this->secureHttpClientFactory->guardMode() === 'enforce' && $tokenFactory->guardMode() !== 'enforce') {
++            throw new VaultException(
++                'OAuth requires a separate protected token factory',
++                1786810004,
++            );
++        }
++
++        return $this->guardOAuthState->manager = new OAuthTokenManager(
++            $this->vaultService,
++            $tokenFactory->create(),
++            $tokenFactory,
++            auditLogService: $this->auditLogService,
++        );
++    }
+ }
+diff --git a/Configuration/Services.yaml b/Configuration/Services.yaml
+index 0447fae..5e67aee 100644
+--- a/Configuration/Services.yaml
++++ b/Configuration/Services.yaml
+@@ -26,6 +26,9 @@ services:
+       - '../Classes/Domain/Model/*'
+       - '../Classes/Exception/*'
+       - '../Classes/Http/OAuth/OAuthConfig.php'
++      # HTTP Guard is an explicit opt-in dependency. These internal adapters
++      # are wired by the consuming project, never auto-aliased here.
++      - '../Classes/Http/Guard/*'
+       - '../Classes/Security/TechnicalActor.php'
+       - '../Classes/Security/BreakGlassSession.php'
+       # Widgets depend on typo3/cms-dashboard classes (a "suggest", not a
+@@ -174,6 +177,10 @@ services:
+     arguments:
+       $clonedFrom: null
+ 
++  Netresearch\NrVault\Http\SecureHttpClientFactory:
++    arguments:
++      $guardAdapter: null
++
+   Netresearch\NrVault\Service\Analytics\VaultAnalyticsServiceInterface:
+     alias: Netresearch\NrVault\Service\Analytics\VaultAnalyticsService
+ 
+diff --git a/Documentation/Developer/Adr/Index.rst b/Documentation/Developer/Adr/Index.rst
+index 2d6f6b6..c2b36b2 100644
+--- a/Documentation/Developer/Adr/Index.rst
++++ b/Documentation/Developer/Adr/Index.rst
+@@ -68,6 +68,7 @@ ADR      Title                                                    Status
+ 038      :ref:`adr-038-unresolvable-host-is-refused`              Accepted
+ 039      :ref:`adr-039-streaming-send-keeps-the-dns-pin`          Accepted
+ 040      :ref:`adr-040-cancellable-send-bounds-silence`           Accepted
++041      :ref:`adr-041-opt-in-http-guard-adapter`                 Accepted
+ =======  =======================================================  ========
+ 
+ .. toctree::
+@@ -114,3 +115,4 @@ ADR      Title                                                    Status
+    ADR-038-UnresolvableHostIsRefused
+    ADR-039-StreamingSendKeepsTheDnsPin
+    ADR-040-CancellableSendBoundsSilence
++   ADR-041-OptInHttpGuardAdapter
+diff --git a/Documentation/Developer/Index.rst b/Documentation/Developer/Index.rst
+index e30b98a..3699c6b 100644
+--- a/Documentation/Developer/Index.rst
++++ b/Documentation/Developer/Index.rst
+@@ -16,6 +16,7 @@ Developer
+    Commands
+    TcaIntegration
+    SecureOutbound
++   HttpGuard
+    TechnicalActorContext
+    Adr/Index
+ 
+diff --git a/Tests/Unit/Api/api-surface.txt b/Tests/Unit/Api/api-surface.txt
+index 96a590a..265ba1d 100644
+--- a/Tests/Unit/Api/api-surface.txt
++++ b/Tests/Unit/Api/api-surface.txt
+@@ -726,12 +726,28 @@ Netresearch\NrVault\Http\CancellableHttpClientInterface (interface)
+   method sendCancellable(Psr\Http\Message\RequestInterface $request, Netresearch\NrVault\Http\CancellationSignalInterface $signal): Psr\Http\Message\ResponseInterface
+   method supportsCancellation(): bool
+ 
++Netresearch\NrVault\Http\CancellableTransport (class)
++  constructor(GuzzleHttp\ClientInterface $client, Netresearch\NrVault\Http\TransportTickerInterface $ticker, float $wallClockBudgetSeconds, ?float $idleBudgetSeconds = …)
++  method client(): GuzzleHttp\ClientInterface
++  method idleBudgetSeconds(): ?float
++  method ticker(): Netresearch\NrVault\Http\TransportTickerInterface
++  method wallClockBudgetSeconds(): float
++
+ Netresearch\NrVault\Http\CancellationSignalInterface (interface, extension point)
+   method isCancelled(): bool
+ 
+ Netresearch\NrVault\Http\DnsResolverInterface (interface)
+   method resolve(string $host): array
+ 
++Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface (interface)
++  method assertRequestAllowed(Psr\Http\Message\RequestInterface $request): void
++  method create(array $platformOptions): Psr\Http\Client\ClientInterface
++  method createCancellable(array $platformOptions, float $wallClockBudgetSeconds, ?float $idleBudgetSeconds): ?Netresearch\NrVault\Http\CancellableTransport
++  method isHostAllowed(string $host): bool
++  method mode(): string
++  method tokenFactory(): ?Netresearch\NrVault\Http\SecureHttpClientFactory
++  method validateRawUri(string $uri): bool
++
+ Netresearch\NrVault\Http\OAuth\OAuthConfig (class)
+   constructor(string $tokenEndpoint, string $clientIdSecret, string $clientSecretSecret, string $grantType = …, ?string $refreshTokenSecret = …, array $scopes = …, int $tokenExpiryBuffer = …, array $additionalParams = …)
+   method getScopesString(): string
+@@ -763,6 +779,19 @@ Netresearch\NrVault\Http\SecretPlacement (enum)
+   property readonly name: string
+   property readonly value: string
+ 
++Netresearch\NrVault\Http\SecureHttpClientFactory (class)
++  const STREAMING_IDLE_BUDGET_SECONDS = 60
++  constructor(Netresearch\NrVault\Http\DnsResolverInterface $dnsResolver = …, ?Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface $guardAdapter = …)
++  method assertRequestAllowed(Psr\Http\Message\RequestInterface $request): void
++  method create(?int $timeoutSeconds = …): Psr\Http\Client\ClientInterface
++  method createCancellable(?int $timeoutSeconds = …): ?Netresearch\NrVault\Http\CancellableTransport
++  method guardMode(): ?string
++  method guardTokenFactory(): ?self
++  method guardValidateRawUri(string $uri): bool
++  method isGuardEnabled(): bool
++  method isHostAllowed(string $host): bool
++  method withDiagnosticOptions(GuzzleHttp\ClientInterface $client, array $platformOptions, ?callable $diagnosticMiddleware = …): GuzzleHttp\ClientInterface&Psr\Http\Client\ClientInterface
++
+ Netresearch\NrVault\Http\StreamingHttpClientInterface (interface)
+   method sendStreaming(Psr\Http\Message\RequestInterface $request, ?Netresearch\NrVault\Http\CancellationSignalInterface $signal = …): Psr\Http\Message\ResponseInterface
+   method supportsStreaming(): bool
+diff --git a/Tests/bootstrap.php b/Tests/bootstrap.php
+index bdd934e..07e362a 100644
+--- a/Tests/bootstrap.php
++++ b/Tests/bootstrap.php
+@@ -28,5 +28,6 @@ if (!file_exists($autoloadFile)) {
+ }
+ 
+ require_once $autoloadFile;
++require_once __DIR__ . '/Fixtures/HttpGuardBootstrap.php';
+ 
+ // TYPO3 v13+ defines the TYPO3 constant automatically via testing-framework bootstrap
+diff --git a/composer.json b/composer.json
+index 54a4115..c761f08 100644
+--- a/composer.json
++++ b/composer.json
+@@ -52,6 +52,7 @@
+     },
+     "suggest": {
+         "ext-curl": "Enables the CURLOPT_RESOLVE DNS pin and the cancellable outbound send (VaultHttpClient::sendCancellable()); without it both degrade, they do not fail",
++        "netresearch/http-guard": "Enables the explicit resource and separate OAuth token HTTP Guard adapters; install and wire deliberately, no automatic opt-in",
+         "typo3/cms-dashboard": "Adds vault secret count and audit activity widgets to the TYPO3 dashboard",
+         "typo3/cms-install": "Offers the audit-log HMAC migration wizard on TYPO3 13, whose upgrade API lives in EXT:install; TYPO3 14 needs nothing, its upgrade API is in EXT:core"
+     },
+diff --git a/phpstan.neon b/phpstan.neon
+index ef32d0c..39bea94 100644
+--- a/phpstan.neon
++++ b/phpstan.neon
+@@ -58,6 +58,7 @@ parameters:
+     # instead of being excluded (see the file for details).
+     bootstrapFiles:
+         - Build/phpstan/typo3-upgrade-api.php
++        - Tests/Fixtures/HttpGuardBootstrap.php
+ 
+     ignoreErrors:
+         # The TYPO3 13 wizard shell implements the EXT:install upgrade API on
+diff --git a/rector.php b/rector.php
+index 1c98ad0..72e9727 100644
+--- a/rector.php
++++ b/rector.php
+@@ -63,5 +63,7 @@ return static function (RectorConfig $rectorConfig) use ($configure): void {
+             __DIR__ . '/Classes/Task',
+             __DIR__ . '/Tests',
+         ],
++        // HTTP Guard's shared PolicyException accepts only a reason code.
++        \Ssch\TYPO3Rector\CodeQuality\General\AddErrorCodeToExceptionRector::class => [__DIR__ . '/Classes/Http/Guard/VaultGuardAdapter.php'],
+     ]);
+ };
+diff --git a/Build/Scripts/runGuardAdapterTests.sh b/Build/Scripts/runGuardAdapterTests.sh
+new file mode 100755
+index 0000000..6ecaaab
+--- /dev/null
++++ b/Build/Scripts/runGuardAdapterTests.sh
+@@ -0,0 +1,63 @@
++#!/usr/bin/env bash
++# SPDX-License-Identifier: GPL-2.0-or-later
++# SPDX-FileCopyrightText: Netresearch DTT GmbH
++set -euo pipefail
++
++# Wrap the required Core-style runner; the tested PHP remains inside its job.
++# The two owned NICs are synthetic, isolated Docker addresses, not internet hosts.
++vault_guard_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
++vault_guard_public_network="${VAULT_GUARD_PUBLIC_NETWORK:-http-guard-production-public}"
++vault_guard_private_network="${VAULT_GUARD_PRIVATE_NETWORK:-http-guard-production-private}"
++vault_guard_php="${VAULT_GUARD_PHP:-8.5}"
++cd "$vault_guard_root"
++test -d .Build/http-guard-library/src
++# Install shared zero-contact counters without resetting an existing target.
++bash .Build/http-guard-library/tests/Integration/prepare-wire.sh
++for vault_guard_pair in "$vault_guard_public_network:203.0.115.0/24" "$vault_guard_private_network:10.23.4.0/24"; do
++    vault_guard_network="${vault_guard_pair%%:*}"
++    vault_guard_subnet="${vault_guard_pair#*:}"
++    if ! docker network inspect "$vault_guard_network" >/dev/null 2>&1; then
++        docker network create --internal --subnet "$vault_guard_subnet" "$vault_guard_network" >/dev/null
++    fi
++done
++printf '%s\n' '{"publicIp":"203.0.115.150","privateIp":"10.23.4.150"}' > .Build/http-guard-network.json
++vault_guard_existing="$(docker ps -aq --filter 'name=^functional-')"
++Build/Scripts/runTests.sh -s functional -p "$vault_guard_php" -d sqlite "$@" &
++vault_guard_runner=$!
++vault_guard_stop_runner() {
++    if kill -0 "$vault_guard_runner" 2>/dev/null; then
++        kill "$vault_guard_runner" 2>/dev/null || true
++        wait "$vault_guard_runner" 2>/dev/null || true
++    fi
++}
++trap vault_guard_stop_runner EXIT
++vault_guard_attached=false
++while kill -0 "$vault_guard_runner" 2>/dev/null; do
++    while IFS= read -r vault_guard_container; do
++        test -n "$vault_guard_container" || continue
++        if printf '%s\n' "$vault_guard_existing" | rg -q "^${vault_guard_container}$"; then
++            continue
++        fi
++        vault_guard_mounts="$(docker inspect --format '{{range .Mounts}}{{.Source}}{{println}}{{end}}' "$vault_guard_container" 2>/dev/null || true)"
++        if ! printf '%s\n' "$vault_guard_mounts" | rg -Fqx "$vault_guard_root"; then
++            continue
++        fi
++        docker network connect --ip 203.0.115.150 "$vault_guard_public_network" "$vault_guard_container"
++        docker network connect --ip 10.23.4.150 "$vault_guard_private_network" "$vault_guard_container"
++        vault_guard_attached=true
++        break
++    done < <(docker ps -q --filter 'name=^functional-')
++    if "$vault_guard_attached"; then
++        break
++    fi
++    sleep 0.1
++done
++set +e
++wait "$vault_guard_runner"
++vault_guard_result=$?
++set -e
++if ! "$vault_guard_attached"; then
++    printf '%s\n' 'No matching owned functional job was attached to both fixture networks.' >&2
++    exit 1
++fi
++exit "$vault_guard_result"
+diff --git a/Classes/Http/Guard/GuardOAuthManagerState.php b/Classes/Http/Guard/GuardOAuthManagerState.php
+new file mode 100644
+index 0000000..6b5eaad
+--- /dev/null
++++ b/Classes/Http/Guard/GuardOAuthManagerState.php
+@@ -0,0 +1,21 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++
++namespace Netresearch\NrVault\Http\Guard;
++
++use Netresearch\NrVault\Http\OAuth\OAuthTokenManager;
++
++/**
++ * Shared lazy token-manager cache held by immutable Vault client clones.
++ *
++ * @internal
++ */
++final class GuardOAuthManagerState
++{
++    public ?OAuthTokenManager $manager = null;
++}
+diff --git a/Classes/Http/Guard/GuardTransferTicker.php b/Classes/Http/Guard/GuardTransferTicker.php
+new file mode 100644
+index 0000000..271a829
+--- /dev/null
++++ b/Classes/Http/Guard/GuardTransferTicker.php
+@@ -0,0 +1,25 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++
++namespace Netresearch\NrVault\Http\Guard;
++
++use Netresearch\HttpGuard\Transport\TransferDriverInterface;
++use Netresearch\NrVault\Http\TransportTickerInterface;
++
++/**
++ * @internal Drives only the library client paired with this driver.
++ */
++final readonly class GuardTransferTicker implements TransportTickerInterface
++{
++    public function __construct(private TransferDriverInterface $driver) {}
++
++    public function tick(): void
++    {
++        $this->driver->tick();
++    }
++}
+diff --git a/Classes/Http/Guard/VaultGuardAdapter.php b/Classes/Http/Guard/VaultGuardAdapter.php
+new file mode 100644
+index 0000000..5deb17d
+--- /dev/null
++++ b/Classes/Http/Guard/VaultGuardAdapter.php
+@@ -0,0 +1,182 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++
++namespace Netresearch\NrVault\Http\Guard;
++
++use GuzzleHttp\ClientInterface as GuzzleClientInterface;
++use GuzzleHttp\Promise\PromiseInterface;
++use Netresearch\HttpGuard\Client\GuardedClientFactory;
++use Netresearch\HttpGuard\PolicyEngine;
++use Netresearch\HttpGuard\PolicyException;
++use Netresearch\HttpGuard\RequestPolicyContext;
++use Netresearch\HttpGuard\TargetNormalizer;
++use Netresearch\NrVault\Http\CancellableTransport;
++use Netresearch\NrVault\Http\SecureHttpClientFactory;
++use Psr\Http\Client\ClientInterface;
++use Psr\Http\Message\RequestInterface;
++
++/**
++ * Explicit resource binding. Only enforce replaces the legacy transport.
++ *
++ * @internal
++ *
++ * @phpstan-import-type GuardMiddleware from SecureHttpClientFactory
++ * @phpstan-import-type GuardHandler from SecureHttpClientFactory
++ */
++final readonly class VaultGuardAdapter implements VaultGuardAdapterInterface
++{
++    private RequestPolicyContext $diagnosticContext;
++
++    private SecureHttpClientFactory $legacyFactory;
++
++    public function __construct(
++        private GuardedClientFactory $clientFactory,
++        private PolicyEngine $engine,
++        private ?string $resourceEndpointId = null,
++        private ?SecureHttpClientFactory $oauthTokenFactory = null,
++        ?SecureHttpClientFactory $legacyFactory = null,
++    ) {
++        $this->diagnosticContext = $clientFactory->middlewarePair($resourceEndpointId)->context;
++        $this->legacyFactory = $legacyFactory ?? new SecureHttpClientFactory();
++        if ($this->legacyFactory->isGuardEnabled()) {
++            throw new PolicyException('configuration_invalid');
++        }
++    }
++
++    public function mode(): string
++    {
++        return $this->diagnosticContext->mode;
++    }
++
++    public function create(array $platformOptions): ClientInterface
++    {
++        if ($this->diagnosticContext->mode === 'enforce') {
++            return $this->clientFactory->createTransport(
++                $platformOptions,
++                $this->resourceEndpointId,
++            )->client;
++        }
++
++        $legacyClient = $this->legacyFactory->create();
++        if (!$legacyClient instanceof GuzzleClientInterface) {
++            throw new PolicyException('configuration_invalid');
++        }
++
++        return $this->legacyFactory->withDiagnosticOptions(
++            $legacyClient,
++            $platformOptions,
++            $this->observationMiddleware(),
++        );
++    }
++
++    public function createCancellable(
++        array $platformOptions,
++        float $wallClockBudgetSeconds,
++        ?float $idleBudgetSeconds,
++    ): ?CancellableTransport {
++        if ($this->diagnosticContext->mode === 'enforce') {
++            $binding = $this->clientFactory->createTransport(
++                $platformOptions,
++                $this->resourceEndpointId,
++            );
++
++            return new CancellableTransport(
++                $binding->client,
++                new GuardTransferTicker($binding->driver),
++                $wallClockBudgetSeconds,
++                $idleBudgetSeconds,
++            );
++        }
++
++        $legacy = $this->legacyFactory->createCancellable();
++        if (!$legacy instanceof CancellableTransport) {
++            return null;
++        }
++
++        return new CancellableTransport(
++            $this->legacyFactory->withDiagnosticOptions(
++                $legacy->client(),
++                $platformOptions,
++                $this->observationMiddleware(),
++            ),
++            $legacy->ticker(),
++            $wallClockBudgetSeconds,
++            $idleBudgetSeconds,
++        );
++    }
++
++    public function isHostAllowed(string $host): bool
++    {
++        return $this->diagnosticContext->mode === 'enforce' ? $this->engine->hostAllowed($host, $this->diagnosticContext) : $this->legacyFactory->isHostAllowed($host);
++    }
++
++    public function assertRequestAllowed(RequestInterface $request): void
++    {
++        if ($this->diagnosticContext->mode === 'disabled') {
++            return;
++        }
++
++        $decision = $this->engine->evaluate($request, $this->diagnosticContext);
++        if ($this->diagnosticContext->mode === 'enforce' && $decision->decision !== 'allow') {
++            throw new PolicyException(
++                $decision->reasonCode ?? 'configuration_invalid',
++            );
++        }
++    }
++
++    public function tokenFactory(): ?SecureHttpClientFactory
++    {
++        return $this->oauthTokenFactory ?? ($this->diagnosticContext->mode === 'enforce' ? null : $this->legacyFactory);
++    }
++
++    public function validateRawUri(string $uri): bool
++    {
++        if ($this->diagnosticContext->mode === 'disabled') {
++            return true;
++        }
++
++        try {
++            (new TargetNormalizer())->assertRawUri($uri);
++
++            return true;
++        } catch (PolicyException $error) {
++            $this->engine->reportDiagnostic(
++                $this->diagnosticContext,
++                $this->diagnosticContext->mode === 'observe' ? 'would_deny' : 'deny',
++                $error->reasonCode(),
++            );
++            if ($this->diagnosticContext->mode === 'enforce') {
++                throw $error;
++            }
++
++            return false;
++        }
++    }
++
++    /**
++     * @return GuardMiddleware|null
++     */
++    private function observationMiddleware(): ?callable
++    {
++        if ($this->diagnosticContext->mode !== 'observe') {
++            return null;
++        }
++
++        return function (callable $next): callable {
++            /** @var GuardHandler $next */
++            return function (
++                RequestInterface $request,
++                array $options,
++            ) use ($next): PromiseInterface {
++                $this->engine->evaluate($request, $this->diagnosticContext);
++
++                return $next($request, $options);
++            };
++        };
++    }
++}
+diff --git a/Classes/Http/Guard/VaultGuardAdapterInterface.php b/Classes/Http/Guard/VaultGuardAdapterInterface.php
+new file mode 100644
+index 0000000..3ab3616
+--- /dev/null
++++ b/Classes/Http/Guard/VaultGuardAdapterInterface.php
+@@ -0,0 +1,49 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++
++namespace Netresearch\NrVault\Http\Guard;
++
++use Netresearch\NrVault\Http\CancellableTransport;
++use Netresearch\NrVault\Http\SecureHttpClientFactory;
++use Psr\Http\Client\ClientInterface;
++use Psr\Http\Message\RequestInterface;
++
++/**
++ * Explicit internal integration seam; never selected by request URLs.
++ *
++ * @internal
++ */
++interface VaultGuardAdapterInterface
++{
++    /**
++     * @param array<string, mixed> $platformOptions
++     */
++    public function create(array $platformOptions): ClientInterface;
++
++    /**
++     * @param array<string, mixed> $platformOptions
++     */
++    public function createCancellable(
++        array $platformOptions,
++        float $wallClockBudgetSeconds,
++        ?float $idleBudgetSeconds,
++    ): ?CancellableTransport;
++
++    public function isHostAllowed(string $host): bool;
++
++    public function assertRequestAllowed(RequestInterface $request): void;
++
++    public function tokenFactory(): ?SecureHttpClientFactory;
++
++    public function mode(): string;
++
++    /**
++     * Returns false for an observe-mode raw refusal; enforce throws, disabled delegates.
++     */
++    public function validateRawUri(string $uri): bool;
++}
+diff --git a/Documentation/Developer/Adr/ADR-041-OptInHttpGuardAdapter.rst b/Documentation/Developer/Adr/ADR-041-OptInHttpGuardAdapter.rst
+new file mode 100644
+index 0000000..04e9f11
+--- /dev/null
++++ b/Documentation/Developer/Adr/ADR-041-OptInHttpGuardAdapter.rst
+@@ -0,0 +1,67 @@
++.. SPDX-License-Identifier: GPL-2.0-or-later
++.. SPDX-FileCopyrightText: Netresearch DTT GmbH
++
++.. include:: /Includes.rst.txt
++
++.. _adr-041-opt-in-http-guard-adapter:
++
++==================================
++ADR-041: Opt-in HTTP Guard adapter
++==================================
++
++.. _adr-041-status:
++
++Status
++======
++
++Accepted (implementation; production release acceptance remains external).
++
++.. _adr-041-context:
++
++Context
++=======
++
++Vault already owns authentication, OAuth token caching, auditing, cancellation
++and streaming. Its default secure factory owns an allowlist, SSRF middleware and
++DNS pinning. The shared HTTP Guard library adds policy-bound terminal transports
++with explicit internal endpoint profiles. Opting a resource client into that
++transport must not grant its OAuth token leg the resource's authority or silently
++replace defaults for unrelated Vault consumers.
++
++.. _adr-041-decision:
++
++Decision
++========
++
++Add a trailing optional adapter to :php:`SecureHttpClientFactory`. Its default
++is null and service discovery excludes the optional concrete adapter classes.
++The adapter is an internal integration seam and the shared library remains a
++Composer suggestion. Applications select named resource and token factories.
++
++Enforce mode constructs both the client and its ticker from one guarded binding.
++Policy and capability failures propagate. Resource and token preflights precede
++secret reads, while the terminal handler independently checks the final request.
++An enforced OAuth resource client rejects a token factory that is absent or
++not enforced. Arbitrary supplied clients, token managers and transports cannot
++bypass this binding. Trusted immutable clones share a mutable internal token
++cache holder and retain existing caller-facing APIs.
++
++Observe and disabled modes retain the complete legacy transport and ticker.
++Observe adds diagnostics only; disabled delegates unchanged. An absent token
++factory in those modes selects a fresh legacy factory and is explicitly outside
++HTTP Guard coverage. Endpoint profiles never widen legacy controls.
++
++.. _adr-041-consequences:
++
++Consequences
++============
++
++The default Vault client and its public calling interfaces keep their behavior.
++The API snapshot adds the internal adapter seam and the types referenced by it;
++existing frozen signatures are unchanged. Integrators must bind each protected
++resource and token endpoint deliberately and inventory audit webhook factories
++separately. Tests use the real shared transport and owned synthetic wire servers,
++with source digests and dependency versions recorded. Operator pilot evidence
++and independent human acceptance remain required for production release.
++
++Configuration and mode details: :ref:`developer-http-guard`.
+diff --git a/Documentation/Developer/HttpGuard.rst b/Documentation/Developer/HttpGuard.rst
+new file mode 100644
+index 0000000..5d28641
+--- /dev/null
++++ b/Documentation/Developer/HttpGuard.rst
+@@ -0,0 +1,171 @@
++.. SPDX-License-Identifier: GPL-2.0-or-later
++.. SPDX-FileCopyrightText: Netresearch DTT GmbH
++
++.. include:: /Includes.rst.txt
++
++.. _developer-http-guard:
++
++========================
++Opt-in HTTP Guard adapter
++========================
++
++The optional ``netresearch/http-guard`` library supplies policy-bound
++transports for explicitly configured Vault clients. Installing the library or
++the TYPO3 HTTP Guard extension does not select this adapter. The default
++:php:`SecureHttpClientFactory` continues to use Vault's existing host allowlist,
++SSRF middleware and DNS pinning.
++
++.. _developer-http-guard-bindings:
++
++Resource and token bindings
++===========================
++
++Create a named resource factory and a separate OAuth token factory. Each adapter
++binds one configured endpoint profile; a null endpoint ID selects the public
++profile. A resource grant never authorizes its token endpoint. In enforce mode,
++an OAuth resource client requires a separately enforced token factory, and
++rejects an absent or unprotected token factory before reading credentials.
++
++The following example uses the fixed-context factory provided by
++``netresearch/nr-http-guard``. Define ``erp-resource`` and ``oauth-token`` in its
++HTTP Guard configuration with their exact origins, methods, CIDRs, owner,
++purpose and, where required, expiry. The fixed Core context and its AllowedHosts
++rules apply as well.
++
++.. code-block:: yaml
++   :caption: EXT:my_extension/Configuration/Services.yaml
++
++   services:
++     _defaults:
++       autowire: true
++       autoconfigure: true
++       public: false
++
++     app.vault.token_adapter:
++       class: Netresearch\NrVault\Http\Guard\VaultGuardAdapter
++       arguments:
++         $clientFactory: '@nr_http_guard.context_factory'
++         $engine: '@Netresearch\HttpGuard\PolicyEngine'
++         $resourceEndpointId: 'oauth-token'
++
++     app.vault.token_factory:
++       class: Netresearch\NrVault\Http\SecureHttpClientFactory
++       arguments:
++         $guardAdapter: '@app.vault.token_adapter'
++
++     app.vault.resource_adapter:
++       class: Netresearch\NrVault\Http\Guard\VaultGuardAdapter
++       arguments:
++         $clientFactory: '@nr_http_guard.context_factory'
++         $engine: '@Netresearch\HttpGuard\PolicyEngine'
++         $resourceEndpointId: 'erp-resource'
++         $oauthTokenFactory: '@app.vault.token_factory'
++
++     app.vault.resource_factory:
++       class: Netresearch\NrVault\Http\SecureHttpClientFactory
++       arguments:
++         $guardAdapter: '@app.vault.resource_adapter'
++
++     app.vault.client_factory:
++       class: Netresearch\NrVault\Http\VaultHttpClientFactory
++       arguments:
++         $secureHttpClientFactory: '@app.vault.resource_factory'
++
++Inject ``app.vault.client_factory`` into the consuming service and call
++``create($vaultService)``. The returned client supports the existing
++``withAuthentication()``, ``withOAuth()``, ``withTimeout()`` and ``withReason()``
++methods. Trusted clones retain the token cache. The adapter does not accept an
++arbitrary inner client, OAuth manager or transport in enforce mode.
++
++Keep bindings local to each integration. Replacing Vault's global default
++factory could also change transports used by audit webhooks and other consumers;
++inventory and bind those independently.
++
++.. _developer-http-guard-modes:
++
++Modes and failures
++==================
++
++In ``enforce``, a full request preflight precedes secret retrieval and the
++terminal transport checks the final request again immediately before contact.
++Raw OAuth endpoint strings are checked before PSR parsing, so a discarded
++fragment or encoded backslash cannot bypass the preflight. The guarded client's
++driver supplies cancellation and streaming. Unsupported
++transport capabilities or a refused policy throw; there is no legacy fallback.
++Vault's timeouts, cancellation signals, authentication placements and audit
++semantics continue to apply.
++
++In ``observe``, the adapter retains the actual legacy handler stack, host
++allowlist, SSRF middleware, DNS pin, ticker and budgets. HTTP Guard evaluates a
++diagnostic request without rewriting or authorizing the legacy request. In
++``disabled``, no HTTP Guard policy evaluation occurs and the same legacy controls
++remain in place. A grant cannot widen the legacy allowlist in either mode.
++
++If no explicit OAuth token factory is supplied in observe or disabled mode, the
++adapter uses a fresh legacy factory for the token leg. That leg retains Vault's
++old checks but has no HTTP Guard policy coverage. Configure the separate token
++adapter explicitly when token diagnostics or enforcement are required.
++
++For a custom legacy DNS resolver or handler, explicitly pass the same configured
++original ``SecureHttpClientFactory`` as the adapter's ``$legacyFactory``. The
++resolver supplied to the outer opted-in factory is not propagated through the
++adapter. The default adapter creates a fresh original factory with Vault's
++normal default resolver. For example, extend the bindings above with:
++
++.. code-block:: yaml
++
++   app.vault.original_factory:
++     class: Netresearch\NrVault\Http\SecureHttpClientFactory
++     arguments:
++       $dnsResolver: '@app.integration_dns_resolver'
++
++   app.vault.resource_adapter:
++     class: Netresearch\NrVault\Http\Guard\VaultGuardAdapter
++     arguments:
++       $clientFactory: '@nr_http_guard.context_factory'
++       $engine: '@Netresearch\HttpGuard\PolicyEngine'
++       $resourceEndpointId: 'erp-resource'
++       $oauthTokenFactory: '@app.vault.token_factory'
++       $legacyFactory: '@app.vault.original_factory'
++
++The original factory must have no adapter. Use equivalent explicit composition
++for the token adapter when it needs custom legacy behavior. The observe and
++disabled wire regressions exercise this composition with an injected resolver.
++
++Policy failures expose a reason code; audit rows and fixture counters do not
++contain credential values. Vault secrets are not passed into endpoint profiles
++or HTTP Guard telemetry.
++
++.. _developer-http-guard-testing:
++
++Validation and compatibility
++============================
++
++The adapter regression suite is
++:file:`Tests/Functional/Http/GuardAdapterTest.php`, run through the repository's
++container test wrapper. It tests real wire contacts, separate token and resource
++bindings, pre-secret refusals, authentication placements, audit redaction, expiry,
++token caching, all three modes, streaming and cancellation.
++
++For source-based integration validation, copy the exact shared library source
++and data and :file:`tests/Integration/` to :file:`.Build/http-guard-library/` and retain a file digest manifest.
++The test bootstrap loads that optional source only when present. A normal Vault
++checkout without the optional library may skip these adapter tests; a run used
++as HTTP Guard acceptance evidence must have the library and network fixture
++installed and must contain no skipped adapter cases. Run the existing unit,
++fuzz, functional, architecture and static suites as well.
++
++:file:`Build/Scripts/runGuardAdapterTests.sh` wraps the required functional
++runner and attaches only its owned job to two isolated synthetic fixture
++networks. It idempotently prepares the shared target counters and tests the public-resource/private-token pair and its inverse at
++``203.0.115.150`` and ``10.23.4.150``. These are Docker NICs within the fixture,
++not external services. The script requires the optional library source and integration-fixture copy,
++Docker, Bash, OpenSSL and ripgrep. It also consumes the shared
++``EP-PRIVATE-UNBOUND`` corpus case by ID and SHA-256 and verifies that a legacy
++allowlist entry cannot authorize an unbound private endpoint, before secrets,
++native handles, TCP contact or HTTP contact.
++
++Supported PHP, Guzzle and cURL versions are those accepted by the shared
++library's runtime checks and the recorded execution matrix. Local synthetic
++tests do not replace an operator's production pilot or independent release
++acceptance. See :ref:`adr-041-opt-in-http-guard-adapter`.
+diff --git a/Tests/Fixtures/HttpGuardBootstrap.php b/Tests/Fixtures/HttpGuardBootstrap.php
+new file mode 100644
+index 0000000..8de4b33
+--- /dev/null
++++ b/Tests/Fixtures/HttpGuardBootstrap.php
+@@ -0,0 +1,23 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++$guardLibrarySource = dirname(__DIR__, 2) . '/.Build/http-guard-library/src';
++if (is_dir($guardLibrarySource)) {
++    spl_autoload_register(
++        static function (string $class) use ($guardLibrarySource): void {
++            $prefix = 'Netresearch\HttpGuard\\';
++            if (!str_starts_with($class, $prefix)) {
++                return;
++            }
++
++            $path = $guardLibrarySource . '/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
++            if (is_file($path)) {
++                require_once $path;
++            }
++        },
++    );
++}
+diff --git a/Tests/Functional/Http/Fixtures/guard-router.php b/Tests/Functional/Http/Fixtures/guard-router.php
+new file mode 100644
+index 0000000..0f5f132
+--- /dev/null
++++ b/Tests/Functional/Http/Fixtures/guard-router.php
+@@ -0,0 +1,104 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++while (ob_get_level() > 0) {
++    ob_end_flush();
++}
++
++ob_implicit_flush(true);
++$directory = getenv('VAULT_GUARD_HITS');
++if (!is_string($directory) || !is_dir($directory)) {
++    http_response_code(500);
++
++    return;
++}
++
++$path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
++$case = $_GET['case'] ?? 'unknown';
++if (!is_string($case) || preg_match('/^[a-z0-9-]+$/D', $case) !== 1) {
++    http_response_code(400);
++
++    return;
++}
++
++$body = json_decode((string) file_get_contents('php://input'), true);
++$entry = [
++    'method' => $_SERVER['REQUEST_METHOD'] ?? '',
++    'host' => explode(':', $_SERVER['HTTP_HOST'] ?? '')[0],
++    'path' => $path,
++    'authorization' => isset($_SERVER['HTTP_AUTHORIZATION']),
++    'chunks' => 0,
++    'api_key_header' => isset($_SERVER['HTTP_X_API_KEY']),
++    'custom_header' => isset($_SERVER['HTTP_X_FIXTURE_KEY']),
++    'query_secret' => isset($_GET['api_key']),
++    'body_secret' => is_array($body) && isset($body['api_key']),
++];
++$file = $directory . '/' . $case . '-' . bin2hex(random_bytes(8)) . '.json';
++file_put_contents($file, json_encode($entry, JSON_THROW_ON_ERROR));
++if ($path === '/token') {
++    header('Content-Type: application/json');
++    echo json_encode(
++        [
++            'access_token' => 'fixture-access-token',
++            'token_type' => 'Bearer',
++            'expires_in' => 3600,
++        ],
++        JSON_THROW_ON_ERROR,
++    );
++
++    return;
++}
++
++if ($path === '/token-chunks') {
++    header('Content-Type: application/json');
++    echo '{"access_token":"';
++    for ($i = 1; $i <= 30; ++$i) {
++        echo 'x';
++        flush();
++        $entry['chunks'] = $i;
++        file_put_contents($file, json_encode($entry, JSON_THROW_ON_ERROR));
++        if (connection_aborted() !== 0) {
++            break;
++        }
++
++        usleep(100000);
++    }
++
++    echo '"}';
++
++    return;
++}
++
++if ($path === '/short') {
++    header('Content-Type: text/plain');
++    header('Content-Length: 100');
++    echo 'short';
++    flush();
++
++    return;
++}
++
++if ($path === '/chunks') {
++    header('Content-Type: text/plain');
++    header('X-Accel-Buffering: no');
++    for ($i = 1; $i <= 30; ++$i) {
++        echo 'chunk ' . $i . "\n";
++        flush();
++        $entry['chunks'] = $i;
++        file_put_contents($file, json_encode($entry, JSON_THROW_ON_ERROR));
++        if (connection_aborted() !== 0) {
++            break;
++        }
++
++        usleep(100000);
++    }
++
++    return;
++}
++
++header('Content-Type: application/json');
++echo '{"ok":true}';
+diff --git a/Tests/Functional/Http/GuardAdapterTest.php b/Tests/Functional/Http/GuardAdapterTest.php
+new file mode 100644
+index 0000000..fa11ac0
+--- /dev/null
++++ b/Tests/Functional/Http/GuardAdapterTest.php
+@@ -0,0 +1,1434 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++
++namespace Netresearch\NrVault\Tests\Functional\Http;
++
++use Closure;
++use DateTimeImmutable;
++use GuzzleHttp\Client;
++use GuzzleHttp\HandlerStack;
++use GuzzleHttp\Psr7\Request;
++use Netresearch\HttpGuard\AddressClassifier;
++use Netresearch\HttpGuard\Client\GuardedClientFactory;
++use Netresearch\HttpGuard\ClockInterface;
++use Netresearch\HttpGuard\DecisionEvent;
++use Netresearch\HttpGuard\DecisionReporterInterface;
++use Netresearch\HttpGuard\GuardConfig;
++use Netresearch\HttpGuard\PolicyEngine;
++use Netresearch\HttpGuard\PolicyException;
++use Netresearch\HttpGuard\PolicyRegistry;
++use Netresearch\HttpGuard\StaticThenDnsResolver;
++use Netresearch\HttpGuard\SystemClock;
++use Netresearch\HttpGuard\TargetNormalizer;
++use Netresearch\HttpGuard\Transport\GuardedTransferFactory;
++use Netresearch\HttpGuard\Transport\TerminalGuardMiddleware;
++use Netresearch\HttpGuard\Transport\TransferDriver;
++use Netresearch\HttpGuard\WireDnsQuery;
++use Netresearch\NrVault\Audit\AuditLogServiceInterface;
++use Netresearch\NrVault\Exception\RequestCancelledException;
++use Netresearch\NrVault\Exception\VaultException;
++use Netresearch\NrVault\Http\CancellationSignalInterface;
++use Netresearch\NrVault\Http\Guard\VaultGuardAdapter;
++use Netresearch\NrVault\Http\OAuth\OAuthConfig;
++use Netresearch\NrVault\Http\SecretPlacement;
++use Netresearch\NrVault\Http\SecureHttpClientFactory;
++use Netresearch\NrVault\Http\VaultHttpClient;
++use Netresearch\NrVault\Service\VaultServiceInterface;
++use Netresearch\NrVault\Tests\Functional\Http\Fixtures\PinnedDnsResolver;
++use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
++use PHPUnit\Framework\Attributes\CoversClass;
++use PHPUnit\Framework\Attributes\Test;
++use Psr\Http\Message\StreamInterface;
++use ReflectionProperty;
++use RuntimeException;
++use Throwable;
++use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
++
++#[CoversClass(VaultGuardAdapter::class)]
++#[CoversClass(VaultHttpClient::class)]
++#[AllowMockObjectsWithoutExpectations]
++final class GuardAdapterTest extends FunctionalTestCase
++{
++    protected array $testExtensionsToLoad = ['netresearch/nr-vault'];
++
++    /** @var resource|null */
++    private static $server;
++
++    private static int $port;
++
++    private static string $directory;
++
++    /** @var list<DecisionEvent> */
++    private array $events = [];
++
++    /** @var list<array<mixed>> */
++    private array $audit = [];
++
++    public static function setUpBeforeClass(): void
++    {
++        parent::setUpBeforeClass();
++        if (!class_exists(GuardedClientFactory::class)) {
++            self::markTestSkipped(
++                'Optional HTTP Guard library is not installed',
++            );
++        }
++
++        $socket = stream_socket_server('tcp://127.0.0.1:0', $error, $message);
++        if ($socket === false) {
++            throw new RuntimeException('Cannot reserve fixture port', 8636426681);
++        }
++
++        $address = stream_socket_get_name($socket, false);
++        if (!\is_string($address) || ($separator = strrpos($address, ':')) === false) {
++            throw new RuntimeException('Cannot inspect fixture port', 8923269715);
++        }
++
++        self::$port = (int) substr($address, $separator + 1);
++        fclose($socket);
++        self::$directory = sys_get_temp_dir() . '/vault-guard-wire-' . bin2hex(random_bytes(8));
++        mkdir(self::$directory, 0o700);
++        $server = proc_open(
++            [
++                PHP_BINARY,
++                '-S',
++                '0.0.0.0:' . self::$port,
++                __DIR__ . '/Fixtures/guard-router.php',
++            ],
++            [
++                ['pipe', 'r'],
++                ['file', self::$directory . '/server.log', 'a'],
++                ['file', self::$directory . '/server.log', 'a'],
++            ],
++            $pipes,
++            null,
++            ['VAULT_GUARD_HITS' => self::$directory],
++        );
++        if (!\is_resource($server)) {
++            throw new RuntimeException('Cannot start fixture server', 6200227403);
++        }
++
++        self::$server = $server;
++        fclose($pipes[0]);
++        $ready = false;
++        // A refused connection is expected only while this owned fixture starts.
++        set_error_handler(static fn (): bool => true);
++
++        try {
++            for ($attempt = 0; $attempt < 100; ++$attempt) {
++                $probe = stream_socket_client(
++                    'tcp://127.0.0.1:' . self::$port,
++                    $error,
++                    $message,
++                    0.1,
++                );
++                if (\is_resource($probe)) {
++                    fclose($probe);
++                    $ready = true;
++                    break;
++                }
++
++                usleep(20000);
++            }
++        } finally {
++            restore_error_handler();
++        }
++
++        if (!$ready) {
++            throw new RuntimeException('Fixture server did not become reachable', 6929036655);
++        }
++    }
++
++    public static function tearDownAfterClass(): void
++    {
++        if (\is_resource(self::$server)) {
++            proc_terminate(self::$server);
++            proc_close(self::$server);
++        }
++
++        if (isset(self::$directory)) {
++            foreach (self::fixtureFiles(self::$directory . '/*') as $file) {
++                unlink($file);
++            }
++
++            rmdir(self::$directory);
++        }
++
++        parent::tearDownAfterClass();
++    }
++
++    protected function setUp(): void
++    {
++        parent::setUp();
++        $this->events = [];
++        $this->audit = [];
++        $this->setHttpConfiguration(
++            [
++                'timeout' => 20,
++                'connect_timeout' => 2,
++                'allow_redirects' => false,
++            ],
++        );
++    }
++
++    #[Test]
++    public function enforcedResourceUsesItsPinnedProfileAndAuditsOneWireContact(): void
++    {
++        $factory = $this->factory('enforce', 'resource');
++        $client = $this->client(
++            $factory,
++            ['fixture-resource-secret' => 'fixture-bearer-token'],
++        );
++        $response = $client
++            ->withAuthentication('fixture-resource-secret', SecretPlacement::Bearer)
++            ->sendRequest(
++                new Request(
++                    'GET',
++                    $this->url('resource-guard.test', '/resource', 'resource'),
++                ),
++            );
++        self::assertSame(200, $response->getStatusCode());
++        self::assertCount(1, $this->hits('resource'));
++        self::assertTrue($this->hits('resource')[0]['authorization']);
++        self::assertCount(1, $this->audit);
++    }
++
++    #[Test]
++    public function methodRefusalAndPublicProfileCannotReadASecretOrContactWire(): void
++    {
++        foreach (['method' => 'resource', 'public' => null] as $case => $profile) {
++            $client = $this->client($this->factory('enforce', $profile), []);
++
++            try {
++                $client
++                    ->withAuthentication('fixture-never-read', SecretPlacement::Bearer)
++                    ->sendRequest(
++                        new Request(
++                            'POST',
++                            $this->url(
++                                'resource-guard.test',
++                                '/resource',
++                                $case,
++                            ),
++                        ),
++                    );
++                self::fail('Policy refusal must precede secret retrieval');
++            } catch (PolicyException) {
++                self::assertSame([], $this->hits($case));
++            }
++        }
++    }
++
++    #[Test]
++    public function oauthUsesSeparateTokenOriginAndKeepsCacheAcrossTimeoutClone(): void
++    {
++        $tokenFactory = $this->factory('enforce', 'token');
++        $resourceFactory = $this->factory('enforce', 'resource', $tokenFactory);
++        $client = $this
++            ->client(
++                $resourceFactory,
++                [
++                    'fixture-id' => 'fixture-client',
++                    'fixture-secret' => 'fixture-client-secret',
++                ],
++            )
++            ->withOAuth($this->oauth('oauth'));
++        self::assertSame(
++            200,
++            $client
++                ->sendRequest(
++                    new Request(
++                        'GET',
++                        $this->url('resource-guard.test', '/resource', 'oauth'),
++                    ),
++                )
++                ->getStatusCode(),
++        );
++        self::assertSame(
++            200,
++            $client
++                ->withTimeout(9)
++                ->withReason('fixture follow-up')
++                ->sendRequest(
++                    new Request(
++                        'GET',
++                        $this->url('resource-guard.test', '/resource', 'oauth'),
++                    ),
++                )
++                ->getStatusCode(),
++        );
++        $hits = $this->hits('oauth');
++        self::assertCount(3, $hits);
++        self::assertCount(
++            1,
++            array_filter(
++                $hits,
++                static fn (
++                    array $hit,
++                ): bool => $hit['host'] === 'token-guard.test' && $hit['method'] === 'POST',
++            ),
++        );
++        self::assertCount(
++            2,
++            array_filter(
++                $hits,
++                static fn (
++                    array $hit,
++                ): bool => $hit['host'] === 'resource-guard.test' && $hit['authorization'],
++            ),
++        );
++        self::assertCount(3, $this->audit);
++    }
++
++    #[Test]
++    public function resourceGrantAndObserveTokenFactoryCannotAuthorizeTokenCredentials(): void
++    {
++        foreach ([
++            'wrong-profile' => $this->factory('enforce', 'resource'),
++            'observe-token' => $this->factory('observe', 'token'),
++        ] as $case => $tokenFactory) {
++            $client = $this
++                ->client($this->factory('enforce', 'resource', $tokenFactory), [])
++                ->withOAuth($this->oauth($case));
++
++            try {
++                $client->sendRequest(
++                    new Request(
++                        'GET',
++                        $this->url('resource-guard.test', '/resource', $case),
++                    ),
++                );
++                self::fail('Separate enforced token profile is required');
++            } catch (Throwable $error) {
++                self::assertTrue(
++                    $error instanceof PolicyException || $error instanceof VaultException,
++                );
++                self::assertSame([], $this->hits($case));
++            }
++        }
++    }
++
++    #[Test]
++    public function observeKeepsLegacyAllowlistAndSsrfPinWhileReportingWouldDeny(): void
++    {
++        $this->setHttpConfiguration(
++            ['allowed_hosts' => ['resource-guard.test']],
++        );
++        $client = $this->client(
++            $this->factory('observe', 'resource'),
++            ['fixture-resource-secret' => 'fixture-bearer-token'],
++        );
++        self::assertSame(
++            200,
++            $client
++                ->withAuthentication('fixture-resource-secret', SecretPlacement::Bearer)
++                ->sendRequest(
++                    new Request(
++                        'POST',
++                        $this->url(
++                            'resource-guard.test',
++                            '/resource',
++                            'observe',
++                        ),
++                    ),
++                )
++                ->getStatusCode(),
++        );
++        self::assertCount(1, $this->hits('observe'));
++        self::assertGreaterThan(
++            0,
++            \count(
++                array_filter(
++                    $this->events,
++                    static fn (
++                        DecisionEvent $event,
++                    ): bool => $event->decision === 'would_deny',
++                ),
++            ),
++        );
++    }
++
++    #[Test]
++    public function disabledStillRefusesLegacyPrivateHostAndAddsNoDiagnostics(): void
++    {
++        $factory = $this->factory('disabled', 'resource');
++        $client = $this->client($factory, []);
++
++        try {
++            $client
++                ->withAuthentication('fixture-never-read', SecretPlacement::Bearer)
++                ->sendRequest(
++                    new Request(
++                        'GET',
++                        $this->url(
++                            'resource-guard.test',
++                            '/resource',
++                            'disabled-blocked',
++                        ),
++                    ),
++                );
++            self::fail('Original Vault private-address gate must remain active');
++        } catch (Throwable $error) {
++            self::assertInstanceOf(VaultException::class, $error);
++            self::assertSame([], $this->hits('disabled-blocked'));
++        }
++
++        $this->setHttpConfiguration(
++            ['allowed_hosts' => ['resource-guard.test']],
++        );
++        self::assertSame(
++            200,
++            $this
++                ->client($factory, [])
++                ->sendRequest(
++                    new Request(
++                        'GET',
++                        $this->url(
++                            'resource-guard.test',
++                            '/resource',
++                            'disabled-allowed',
++                        ),
++                    ),
++                )
++                ->getStatusCode(),
++        );
++        self::assertCount(1, $this->hits('disabled-allowed'));
++        self::assertSame([], $this->events);
++    }
++
++    #[Test]
++    public function observeOauthWithoutATokenBindingKeepsOriginalTokenChecks(): void
++    {
++        $this->setHttpConfiguration(
++            ['allowed_hosts' => ['resource-guard.test', 'token-guard.test']],
++        );
++        $factory = $this->factory('observe', 'resource');
++        self::assertNull($factory->guardTokenFactory()?->guardMode());
++        $client = $this
++            ->client(
++                $factory,
++                [
++                    'fixture-id' => 'fixture-client',
++                    'fixture-secret' => 'fixture-client-secret',
++                ],
++            )
++            ->withOAuth($this->oauth('observe-oauth'));
++        self::assertSame(
++            200,
++            $client
++                ->sendRequest(
++                    new Request(
++                        'GET',
++                        $this->url(
++                            'resource-guard.test',
++                            '/resource',
++                            'observe-oauth',
++                        ),
++                    ),
++                )
++                ->getStatusCode(),
++        );
++        self::assertCount(2, $this->hits('observe-oauth'));
++    }
++
++    #[Test]
++    public function enforcedActiveCancellationClosesTheMatchingWireTransfer(): void
++    {
++        $client = $this
++            ->client(
++                $this->factory('enforce', 'resource'),
++                ['fixture-resource-secret' => 'fixture-bearer-token'],
++            )
++            ->withAuthentication('fixture-resource-secret', SecretPlacement::Bearer);
++        self::assertTrue($client->supportsCancellation());
++        $signal = new class (self::$directory) implements CancellationSignalInterface {
++            public function __construct(private readonly string $directory) {}
++
++            public function isCancelled(): bool
++            {
++                return \is_array($files = glob($this->directory . '/cancel-*.json')) && $files !== [];
++            }
++        };
++
++        try {
++            $client->sendCancellable(
++                new Request(
++                    'GET',
++                    $this->url('resource-guard.test', '/chunks', 'cancel'),
++                ),
++                $signal,
++            );
++            self::fail('Cancellation must abort the active transfer');
++        } catch (RequestCancelledException) {
++            usleep(400000);
++            $hits = $this->hits('cancel');
++            self::assertCount(1, $hits);
++            self::assertLessThan(30, $hits[0]['chunks']);
++            self::assertCount(1, $this->audit);
++        }
++    }
++
++    #[Test]
++    public function enforcedStreamingCloseStopsTheMatchingTransfer(): void
++    {
++        $client = $this->client($this->factory('enforce', 'resource'), [])->withTimeout(8);
++        self::assertTrue($client->supportsStreaming());
++        $response = $client->sendStreaming(
++            new Request(
++                'GET',
++                $this->url('resource-guard.test', '/chunks', 'stream'),
++            ),
++        );
++        self::assertSame(200, $response->getStatusCode());
++        self::assertStringContainsString(
++            'chunk',
++            $response->getBody()->read(16),
++        );
++        $response->getBody()->close();
++        usleep(400000);
++        self::assertCount(1, $this->hits('stream'));
++        self::assertLessThan(30, $this->hits('stream')[0]['chunks']);
++    }
++
++    #[Test]
++    public function allAuthenticationPlacementsRetainWireSemanticsAndRedactedAudit(): void
++    {
++        $factory = $this->factory('enforce', 'resource');
++        foreach ([
++            'bearer' => [SecretPlacement::Bearer, 'fixture-value', [], 'authorization'],
++            'basic' => [
++                SecretPlacement::BasicAuth,
++                'fixture-user:fixture-password',
++                [],
++                'authorization',
++            ],
++            'header' => [
++                SecretPlacement::Header,
++                'fixture-value',
++                ['headerName' => 'X-Fixture-Key'],
++                'custom_header',
++            ],
++            'apikey' => [SecretPlacement::ApiKey, 'fixture-value', [], 'api_key_header'],
++            'query' => [SecretPlacement::QueryParam, 'fixture-value', [], 'query_secret'],
++            'body' => [SecretPlacement::BodyField, 'fixture-value', [], 'body_secret'],
++        ] as $case => [$placement, $secret, $options, $field]) {
++            $client = $this
++                ->client($factory, ['fixture-secret-ref' => $secret])
++                ->withAuthentication('fixture-secret-ref', $placement, $options);
++            $request = new Request(
++                'GET',
++                $this->url('resource-guard.test', '/resource', 'auth-' . $case),
++                ['Content-Type' => 'application/json'],
++                '{}',
++            );
++            self::assertSame(
++                200,
++                $client->sendRequest($request)->getStatusCode(),
++            );
++            $hits = $this->hits('auth-' . $case);
++            self::assertCount(1, $hits);
++            self::assertTrue($hits[0][$field]);
++        }
++
++        $auditText = json_encode($this->audit, JSON_THROW_ON_ERROR);
++        foreach ([
++            'fixture-value',
++            'fixture-user:fixture-password',
++            base64_encode('fixture-user:fixture-password'),
++        ] as $value) {
++            self::assertStringNotContainsString($value, $auditText);
++        }
++
++        self::assertCount(6, $this->audit);
++    }
++
++    #[Test]
++    public function expiryAfterPreflightIsRecheckedBeforeWireContact(): void
++    {
++        $clock = new class () implements ClockInterface {
++            public DateTimeImmutable $instant;
++
++            public function __construct()
++            {
++                $this->instant = new DateTimeImmutable('2026-10-09T00:00:00Z');
++            }
++
++            public function now(): DateTimeImmutable
++            {
++                return $this->instant;
++            }
++
++            public function monotonic(): float
++            {
++                return hrtime(true) / 1000000000;
++            }
++        };
++        $factory = $this->factory('enforce', 'resource', clock: $clock);
++        $vault = $this->createMock(VaultServiceInterface::class);
++        $vault
++            ->expects(self::once())
++            ->method('retrieve')
++            ->willReturnCallback(
++                static function () use ($clock): string {
++                    $clock->instant = new DateTimeImmutable('2100-01-01T00:00:00Z');
++
++                    return 'fixture-expiring-token';
++                },
++            );
++        $audit = $this->createMock(AuditLogServiceInterface::class);
++        $audit->expects(self::once())->method('log');
++        $client = (new VaultHttpClient($vault, $audit, secureHttpClientFactory: $factory))->withAuthentication(
++            'fixture-expiring-ref',
++            SecretPlacement::Bearer,
++        );
++
++        try {
++            $client->sendRequest(
++                new Request(
++                    'GET',
++                    $this->url('resource-guard.test', '/resource', 'expired'),
++                ),
++            );
++            self::fail('Terminal start must recheck expiry');
++        } catch (PolicyException $error) {
++            self::assertSame('grant_invalid', $error->reasonCode());
++            self::assertSame([], $this->hits('expired'));
++        }
++    }
++
++    #[Test]
++    public function nonEnforceModesPreserveTheirLegacyStreamingTickerAndCancellation(): void
++    {
++        $this->setHttpConfiguration(
++            ['allowed_hosts' => ['resource-guard.test']],
++        );
++        foreach (['observe', 'disabled'] as $mode) {
++            $client = $this->client($this->factory($mode, 'resource'), []);
++            $response = $client->sendStreaming(
++                new Request(
++                    'GET',
++                    $this->url(
++                        'resource-guard.test',
++                        '/chunks',
++                        $mode . '-stream',
++                    ),
++                ),
++            );
++            self::assertSame(200, $response->getStatusCode());
++            self::assertStringContainsString(
++                'chunk',
++                $response->getBody()->read(16),
++            );
++            $response->getBody()->close();
++            usleep(400000);
++            self::assertCount(1, $this->hits($mode . '-stream'));
++            self::assertLessThan(
++                30,
++                $this->hits($mode . '-stream')[0]['chunks'],
++            );
++            $signal = new class (
++                self::$directory,
++                $mode . '-cancel',
++            ) implements CancellationSignalInterface {
++                public function __construct(
++                    private readonly string $directory,
++                    private readonly string $case,
++                ) {}
++
++                public function isCancelled(): bool
++                {
++                    $files = glob($this->directory . '/' . $this->case . '-*.json');
++
++                    return $files !== false && $files !== [];
++                }
++            };
++
++            try {
++                $client->sendCancellable(
++                    new Request(
++                        'GET',
++                        $this->url(
++                            'resource-guard.test',
++                            '/chunks',
++                            $mode . '-cancel',
++                        ),
++                    ),
++                    $signal,
++                );
++                self::fail(
++                    'Legacy ticker must drive the same cancellable client',
++                );
++            } catch (RequestCancelledException) {
++                usleep(400000);
++                self::assertCount(1, $this->hits($mode . '-cancel'));
++                self::assertLessThan(
++                    30,
++                    $this->hits($mode . '-cancel')[0]['chunks'],
++                );
++            }
++        }
++    }
++
++    #[Test]
++    public function publicResourcePrivateTokenAndInverseStaySeparatelyBound(): void
++    {
++        $fixtureFile = __DIR__ . '/../../../.Build/http-guard-network.json';
++        if (!is_file($fixtureFile)) {
++            self::markTestSkipped(
++                'Owned public/private HTTP Guard network fixture is not installed',
++            );
++        }
++
++        $fixture = json_decode(
++            (string) file_get_contents($fixtureFile),
++            true,
++            flags: JSON_THROW_ON_ERROR,
++        );
++        self::assertIsArray($fixture);
++        $publicIp = $fixture['publicIp'] ?? null;
++        $privateIp = $fixture['privateIp'] ?? null;
++        self::assertIsString($publicIp);
++        self::assertIsString($privateIp);
++        self::assertSame('203.0.115.150', $publicIp);
++        self::assertSame('10.23.4.150', $privateIp);
++        foreach ([$publicIp, $privateIp] as $ip) {
++            $ready = false;
++            set_error_handler(static fn (): bool => true);
++
++            try {
++                for ($attempt = 0; $attempt < 100; ++$attempt) {
++                    $probe = stream_socket_client(
++                        'tcp://' . $ip . ':' . self::$port,
++                        $error,
++                        $message,
++                        0.1,
++                    );
++                    if (\is_resource($probe)) {
++                        fclose($probe);
++                        $ready = true;
++                        break;
++                    }
++
++                    usleep(20000);
++                }
++            } finally {
++                restore_error_handler();
++            }
++
++            self::assertTrue(
++                $ready,
++                'Owned network fixture interface must be reachable',
++            );
++        }
++
++        foreach ([
++            'public-resource' => [$publicIp, $privateIp, null, 'token'],
++            'private-resource' => [$privateIp, $publicIp, 'resource', null],
++        ] as $case => [$resourceIp, $tokenIp, $resourceProfile, $tokenProfile]) {
++            $tokenFactory = $this->factory(
++                'enforce',
++                $tokenProfile,
++                resourceIp: $resourceIp,
++                tokenIp: $tokenIp,
++            );
++            $resourceFactory = $this->factory(
++                'enforce',
++                $resourceProfile,
++                $tokenFactory,
++                resourceIp: $resourceIp,
++                tokenIp: $tokenIp,
++            );
++            $client = $this
++                ->client(
++                    $resourceFactory,
++                    [
++                        'fixture-id' => 'fixture-client',
++                        'fixture-secret' => 'fixture-client-secret',
++                    ],
++                )
++                ->withOAuth($this->oauth($case));
++            foreach ([$client, $client->withTimeout(9)->withReason('fixture follow-up')] as $boundClient) {
++                self::assertSame(
++                    200,
++                    $boundClient
++                        ->sendRequest(
++                            new Request(
++                                'GET',
++                                $this->url(
++                                    'resource-guard.test',
++                                    '/resource',
++                                    $case,
++                                ),
++                            ),
++                        )
++                        ->getStatusCode(),
++                );
++            }
++
++            $hits = $this->hits($case);
++            self::assertCount(3, $hits);
++            self::assertCount(
++                1,
++                array_filter(
++                    $hits,
++                    static fn (
++                        array $hit,
++                    ): bool => $hit['host'] === 'token-guard.test' && $hit['method'] === 'POST',
++                ),
++            );
++            self::assertCount(
++                2,
++                array_filter(
++                    $hits,
++                    static fn (
++                        array $hit,
++                    ): bool => $hit['host'] === 'resource-guard.test' && $hit['authorization'],
++                ),
++            );
++            $wrongClient = $this
++                ->client($resourceFactory, [])
++                ->withAuthentication('fixture-never-read', SecretPlacement::Bearer);
++
++            try {
++                $wrongClient->sendRequest(
++                    new Request(
++                        'POST',
++                        $this->url(
++                            'token-guard.test',
++                            '/token',
++                            $case . '-wrong-origin',
++                        ),
++                    ),
++                );
++                self::fail(
++                    'Resource binding cannot transfer its grant to the token origin',
++                );
++            } catch (PolicyException) {
++                self::assertSame([], $this->hits($case . '-wrong-origin'));
++            }
++        }
++    }
++
++    #[Test]
++    public function preCancelledProtectedSendReadsNoSecretAndMakesNoContact(): void
++    {
++        $client = $this
++            ->client($this->factory('enforce', 'resource'), [])
++            ->withAuthentication('fixture-never-read', SecretPlacement::Bearer);
++        $signal = new class () implements CancellationSignalInterface {
++            public function isCancelled(): bool
++            {
++                return true;
++            }
++        };
++
++        try {
++            $client->sendCancellable(
++                new Request(
++                    'GET',
++                    $this->url('resource-guard.test', '/resource', 'pre-cancel'),
++                ),
++                $signal,
++            );
++            self::fail('Pre-cancelled call must not reach the wire');
++        } catch (RequestCancelledException) {
++            self::assertSame([], $this->hits('pre-cancel'));
++            self::assertCount(1, $this->audit);
++        }
++    }
++
++    #[Test]
++    public function truncatedProtectedStreamThrowsAndLeavesNoBackgroundTransfer(): void
++    {
++        $client = $this->client($this->factory('enforce', 'resource'), []);
++        $body = null;
++        $failure = null;
++
++        try {
++            $response = $client->sendStreaming(
++                new Request(
++                    'GET',
++                    $this->url('resource-guard.test', '/short', 'truncated'),
++                ),
++            );
++            $body = $response->getBody();
++            $body->getContents();
++        } catch (Throwable $error) {
++            $failure = $error;
++        } finally {
++            if ($body instanceof StreamInterface) {
++                $body->close();
++            }
++        }
++
++        self::assertNotNull(
++            $failure,
++            'A truncated body must never be returned as a complete response',
++        );
++        self::assertCount(1, $this->hits('truncated'));
++        self::assertCount(1, $this->audit);
++        $after = $this->hits('truncated');
++        usleep(200000);
++        self::assertSame($after, $this->hits('truncated'));
++    }
++
++    #[Test]
++    public function protectedOAuthTokenBindingWorksWithCancellationAndStreamingSends(): void
++    {
++        foreach (['cancellable', 'streaming'] as $case) {
++            $tokenFactory = $this->factory('enforce', 'token');
++            $client = $this
++                ->client(
++                    $this->factory('enforce', 'resource', $tokenFactory),
++                    [
++                        'fixture-id' => 'fixture-client',
++                        'fixture-secret' => 'fixture-client-secret',
++                    ],
++                )
++                ->withOAuth($this->oauth($case));
++            $signal = new class () implements CancellationSignalInterface {
++                public function isCancelled(): bool
++                {
++                    return false;
++                }
++            };
++            $request = new Request(
++                'GET',
++                $this->url('resource-guard.test', '/resource', $case),
++            );
++            $response = $case === 'cancellable' ? $client->sendCancellable($request, $signal) : $client->sendStreaming($request, $signal);
++            self::assertSame(200, $response->getStatusCode());
++            $response->getBody()->getContents();
++            $response->getBody()->close();
++            $hits = $this->hits($case);
++            self::assertCount(2, $hits);
++            self::assertCount(
++                1,
++                array_filter(
++                    $hits,
++                    static fn (
++                        array $hit,
++                    ): bool => $hit['host'] === 'token-guard.test' && $hit['method'] === 'POST',
++                ),
++            );
++            self::assertCount(
++                1,
++                array_filter(
++                    $hits,
++                    static fn (
++                        array $hit,
++                    ): bool => $hit['host'] === 'resource-guard.test' && $hit['authorization'],
++                ),
++            );
++        }
++    }
++
++    #[Test]
++    public function cancellationDuringProtectedTokenTransferClosesTokenSocketBeforeResourceContact(): void
++    {
++        $tokenFactory = $this->factory('enforce', 'token');
++        $client = $this
++            ->client(
++                $this->factory('enforce', 'resource', $tokenFactory),
++                [
++                    'fixture-id' => 'fixture-client',
++                    'fixture-secret' => 'fixture-client-secret',
++                ],
++            )
++            ->withOAuth(
++                new OAuthConfig(
++                    tokenEndpoint: $this->url(
++                        'token-guard.test',
++                        '/token-chunks',
++                        'token-cancel',
++                    ),
++                    clientIdSecret: 'fixture-id',
++                    clientSecretSecret: 'fixture-secret',
++                ),
++            );
++        $signal = new class (self::$directory) implements CancellationSignalInterface {
++            public function __construct(private readonly string $directory) {}
++
++            public function isCancelled(): bool
++            {
++                $files = glob($this->directory . '/token-cancel-*.json');
++
++                return $files !== false && $files !== [];
++            }
++        };
++        $failure = null;
++
++        try {
++            $client->sendCancellable(
++                new Request(
++                    'GET',
++                    $this->url(
++                        'resource-guard.test',
++                        '/resource',
++                        'resource-after-token-cancel',
++                    ),
++                ),
++                $signal,
++            );
++        } catch (RequestCancelledException $error) {
++            $failure = $error;
++        }
++
++        self::assertNotNull($failure);
++        usleep(400000);
++        $hits = $this->hits('token-cancel');
++        self::assertCount(1, $hits);
++        self::assertSame('token-guard.test', $hits[0]['host']);
++        self::assertSame('POST', $hits[0]['method']);
++        self::assertLessThan(30, $hits[0]['chunks']);
++        self::assertSame([], $this->hits('resource-after-token-cancel'));
++        self::assertCount(2, $this->audit);
++    }
++
++    #[Test]
++    public function rawOAuthUriRefusalPrecedesPsrParsingAndSecretsAcrossModes(): void
++    {
++        foreach (['enforce', 'observe', 'disabled'] as $mode) {
++            $this->setHttpConfiguration(
++                ['allowed_hosts' => ['resource-guard.test', 'token-guard.test']],
++            );
++            foreach (['fragment' => '#', 'backslash' => '&noise=\\'] as $vector => $suffix) {
++                $case = $mode . '-raw-' . $vector;
++                $this->events = [];
++                $tokenFactory = $this->factory($mode, 'token');
++                $client = $this
++                    ->client(
++                        $this->factory($mode, 'resource', $tokenFactory),
++                        $mode === 'enforce' ? [] : [
++                            'fixture-id' => 'fixture-client',
++                            'fixture-secret' => 'fixture-client-secret',
++                        ],
++                    )
++                    ->withOAuth(
++                        new OAuthConfig(
++                            tokenEndpoint: $this->url('token-guard.test', '/token', $case) . $suffix,
++                            clientIdSecret: 'fixture-id',
++                            clientSecretSecret: 'fixture-secret',
++                        ),
++                    );
++                $failure = null;
++
++                try {
++                    $response = $client->sendRequest(
++                        new Request(
++                            'GET',
++                            $this->url(
++                                'resource-guard.test',
++                                '/resource',
++                                $case,
++                            ),
++                        ),
++                    );
++                    self::assertSame(200, $response->getStatusCode());
++                } catch (PolicyException $error) {
++                    $failure = $error;
++                }
++
++                $rawDenials = array_filter(
++                    $this->events,
++                    static fn (
++                        DecisionEvent $event,
++                    ): bool => $event->reasonCode === 'invalid_target',
++                );
++                if ($mode === 'enforce') {
++                    self::assertInstanceOf(PolicyException::class, $failure);
++                    self::assertSame('invalid_target', $failure->reasonCode());
++                    self::assertSame([], $this->hits($case));
++                } else {
++                    self::assertNull($failure);
++                    self::assertCount(2, $this->hits($case));
++                    if ($mode === 'observe') {
++                        self::assertNotSame([], $rawDenials);
++                        foreach ($rawDenials as $event) {
++                            self::assertSame('would_deny', $event->decision);
++                            self::assertNull($event->host);
++                        }
++                    } else {
++                        self::assertSame([], $this->events);
++                    }
++                }
++            }
++        }
++    }
++
++    #[Test]
++    public function sharedPrivateUnboundCorpusCannotBecomeAGrantThroughLegacyAllowedHosts(): void
++    {
++        $corpusPath = __DIR__ . '/../../../.Build/http-guard-library/data/security-corpus/endpoint-cases.json';
++        $corpusHash = '4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825';
++        self::assertSame($corpusHash, hash_file('sha256', $corpusPath));
++        $raw = file_get_contents($corpusPath);
++        self::assertIsString($raw);
++        /** @var array{cases:list<array{id:string,input:array{address:string,origin:string,method:string,allowed_cidrs:list<string>,allow_loopback:bool,registry_issued_client_binding:bool,operator_denied_cidrs:list<string>},expected:array{decision:string,reason:string|null,no_network_assertion:bool}}>} $corpus */
++        $corpus = json_decode($raw, true, flags: JSON_THROW_ON_ERROR);
++        $cases = array_values(
++            array_filter(
++                $corpus['cases'],
++                static fn (
++                    array $case,
++                ): bool => $case['id'] === 'EP-PRIVATE-UNBOUND',
++            ),
++        );
++        self::assertCount(1, $cases);
++        $case = $cases[0];
++        self::assertFalse($case['input']['registry_issued_client_binding']);
++        self::assertTrue($case['expected']['no_network_assertion']);
++        $host = parse_url($case['input']['origin'], PHP_URL_HOST);
++        self::assertIsString($host);
++        $this->setHttpConfiguration(['allowed_hosts' => [$host]]);
++        $config = GuardConfig::fromArray(
++            [
++                'mode' => 'enforce',
++                'endpoints' => [
++                    'configured-but-unbound' => [
++                        'origin' => $case['input']['origin'],
++                        'allowedCidrs' => $case['input']['allowed_cidrs'],
++                        'allowLoopback' => $case['input']['allow_loopback'],
++                        'methods' => [$case['input']['method']],
++                        'purpose' => 'Shared endpoint corpus',
++                        'owner' => 'Vault regression',
++                    ],
++                ],
++                'resolver' => ['staticHosts' => [$host => [$case['input']['address']]]],
++                'deniedCidrs' => $case['input']['operator_denied_cidrs'],
++            ],
++        );
++        $client = $this
++            ->client($this->factory('enforce', null, config: $config), [])
++            ->withAuthentication('unread-corpus-secret', SecretPlacement::Bearer);
++        $driver = $this->actualGuardDriver($client);
++        $before = $this->privateTargetCounters();
++        $failure = null;
++
++        try {
++            $client->sendRequest(
++                new Request(
++                    $case['input']['method'],
++                    $case['input']['origin'] . '/vault-unbound',
++                ),
++            );
++        } catch (PolicyException $error) {
++            $failure = $error;
++        }
++
++        self::assertInstanceOf(PolicyException::class, $failure);
++        self::assertSame($case['expected']['reason'], $failure->reasonCode());
++        $after = $this->privateTargetCounters();
++        self::assertSame(
++            $before,
++            $after,
++            'Denied Vault request must make no target TCP or HTTP contact',
++        );
++        self::assertSame(
++            [
++                'created' => 0,
++                'released' => 0,
++                'active' => 0,
++                'peak' => 0,
++                'nativeConstructed' => 0,
++            ],
++            $driver->counters(),
++        );
++        self::assertCount(1, $this->audit);
++        $evidence = [
++            'case_id' => $case['id'],
++            'corpus_sha256' => $corpusHash,
++            'legacy_allowed_hosts' => [$host],
++            'bound_endpoint' => null,
++            'reason' => $failure->reasonCode(),
++            'driver' => $driver->counters(),
++            'wire_before' => $before,
++            'wire_after' => $after,
++            'wire_delta' => [
++                'tcp' => $after['tcp'] - $before['tcp'],
++                'requests' => $after['requests'] - $before['requests'],
++            ],
++            'secret_retrieval_expectation' => 'never',
++        ];
++        self::assertNotFalse(
++            file_put_contents(
++                __DIR__ . '/../../../.Build/vault-guard-unbound-evidence.json',
++                json_encode($evidence, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR) . "\n",
++            ),
++        );
++    }
++
++    private function factory(
++        string $mode,
++        ?string $profile,
++        ?SecureHttpClientFactory $tokenFactory = null,
++        ?ClockInterface $clock = null,
++        string $resourceIp = '127.0.0.1',
++        string $tokenIp = '127.0.0.1',
++        ?GuardConfig $config = null,
++    ): SecureHttpClientFactory {
++        $config ??= GuardConfig::fromArray(
++            [
++                'mode' => $mode,
++                'endpoints' => [
++                    'resource' => [
++                        'origin' => 'http://resource-guard.test:' . self::$port,
++                        'allowedCidrs' => [$resourceIp . '/32'],
++                        'allowLoopback' => $resourceIp === '127.0.0.1',
++                        'methods' => ['GET'],
++                        'purpose' => 'Hermetic resource fixture',
++                        'owner' => 'Vault regression',
++                        'expiresAt' => '2099-01-01T00:00:00Z',
++                    ],
++                    'token' => [
++                        'origin' => 'http://token-guard.test:' . self::$port,
++                        'allowedCidrs' => [$tokenIp . '/32'],
++                        'allowLoopback' => $tokenIp === '127.0.0.1',
++                        'methods' => ['POST'],
++                        'purpose' => 'Hermetic token fixture',
++                        'owner' => 'Vault regression',
++                    ],
++                ],
++                'resolver' => [
++                    'staticHosts' => [
++                        'resource-guard.test' => [$resourceIp],
++                        'token-guard.test' => [$tokenIp],
++                    ],
++                ],
++            ],
++        );
++        $clock ??= new SystemClock();
++        $registry = new PolicyRegistry($config, $clock);
++        $reporter = new class (
++            function (DecisionEvent $event): void {
++                $this->events[] = $event;
++            },
++        ) implements DecisionReporterInterface
++        {
++            /**
++             * @param Closure(DecisionEvent): void $receiver
++             */
++            public function __construct(private readonly Closure $receiver) {}
++
++            public function report(DecisionEvent $event): void
++            {
++                ($this->receiver)($event);
++            }
++        };
++        $engine = new PolicyEngine(
++            new TargetNormalizer(),
++            new AddressClassifier(),
++            new StaticThenDnsResolver($config, new WireDnsQuery(), $clock),
++            $registry,
++            $clock,
++            $reporter,
++        );
++        $guardFactory = new GuardedClientFactory($engine, $config, $registry);
++        $legacyFactory = new SecureHttpClientFactory(new PinnedDnsResolver('127.0.0.1'));
++
++        return new SecureHttpClientFactory(
++            new PinnedDnsResolver('127.0.0.1'),
++            new VaultGuardAdapter(
++                $guardFactory,
++                $engine,
++                $profile,
++                $tokenFactory,
++                $legacyFactory,
++            ),
++        );
++    }
++
++    /**
++     * @param array<string, string> $secrets
++     */
++    private function client(
++        SecureHttpClientFactory $factory,
++        array $secrets,
++    ): VaultHttpClient {
++        $vault = $this->createMock(VaultServiceInterface::class);
++        if ($secrets === []) {
++            $vault->expects(self::never())->method('retrieve');
++        } else {
++            $vault
++                ->method('retrieve')
++                ->willReturnCallback(
++                    static function (
++                        string $identifier,
++                    ) use ($secrets): string {
++                        if (!isset($secrets[$identifier])) {
++                            throw new RuntimeException('Unexpected secret', 9231295702);
++                        }
++
++                        return $secrets[$identifier];
++                    },
++                );
++        }
++
++        $audit = $this->createMock(AuditLogServiceInterface::class);
++        $audit
++            ->method('log')
++            ->willReturnCallback(
++                function (...$arguments): int {
++                    $this->audit[] = $arguments;
++
++                    return 1;
++                },
++            );
++
++        return new VaultHttpClient($vault, $audit, secureHttpClientFactory: $factory);
++    }
++
++    private function oauth(string $case): OAuthConfig
++    {
++        return new OAuthConfig(
++            tokenEndpoint: $this->url('token-guard.test', '/token', $case),
++            clientIdSecret: 'fixture-id',
++            clientSecretSecret: 'fixture-secret',
++        );
++    }
++
++    private function url(string $host, string $path, string $case): string
++    {
++        return 'http://' . $host . ':' . self::$port . $path . '?case=' . $case;
++    }
++
++    /**
++     * @return list<array{method:string,host:string,path:string,authorization:bool,chunks:int,api_key_header:bool,custom_header:bool,query_secret:bool,body_secret:bool}>
++     */
++    private function hits(string $case): array
++    {
++        return array_map(
++            static function (string $file): array {
++                /** @var array{method:string,host:string,path:string,authorization:bool,chunks:int,api_key_header:bool,custom_header:bool,query_secret:bool,body_secret:bool} $record */
++                $record = json_decode(
++                    (string) file_get_contents($file),
++                    true,
++                    flags: JSON_THROW_ON_ERROR,
++                );
++                if (!\is_array($record)) {
++                    throw new RuntimeException(
++                        'Malformed fixture counter',
++                        1786810101,
++                    );
++                }
++
++                return $record;
++            },
++            self::fixtureFiles(self::$directory . '/' . $case . '-*.json'),
++        );
++    }
++
++    /**
++     * @param array<string,mixed> $values
++     */
++    private function setHttpConfiguration(array $values): void
++    {
++        $confVars = $GLOBALS['TYPO3_CONF_VARS'];
++        self::assertIsArray($confVars);
++        $httpConfig = $confVars['HTTP'] ?? [];
++        self::assertIsArray($httpConfig);
++        $confVars['HTTP'] = array_replace($httpConfig, $values);
++        $GLOBALS['TYPO3_CONF_VARS'] = $confVars;
++    }
++
++    /**
++     * @return list<string>
++     */
++    private static function fixtureFiles(string $pattern): array
++    {
++        $files = glob($pattern);
++        if ($files === false) {
++            throw new RuntimeException('Cannot inspect fixture counters', 6857416975);
++        }
++
++        return $files;
++    }
++
++    /**
++     * @return array{tcp:int,requests:int}
++     */
++    private function privateTargetCounters(): array
++    {
++        $handle = curl_init('http://10.23.4.12:8091/stats');
++        self::assertNotFalse($handle);
++        self::assertTrue(
++            curl_setopt_array(
++                $handle,
++                [
++                    CURLOPT_RETURNTRANSFER => true,
++                    CURLOPT_TIMEOUT => 3,
++                    CURLOPT_PROXY => '',
++                ],
++            ),
++        );
++
++        try {
++            $raw = curl_exec($handle);
++            self::assertIsString(
++                $raw,
++                'Shared private fixture admin must be installed',
++            );
++            $values = json_decode($raw, true, flags: JSON_THROW_ON_ERROR);
++            self::assertIsArray($values);
++            self::assertArrayHasKey('tcp', $values);
++            self::assertArrayHasKey('requests', $values);
++            self::assertIsInt($values['tcp']);
++            self::assertIsInt($values['requests']);
++
++            return ['tcp' => $values['tcp'], 'requests' => $values['requests']];
++        } finally {
++            unset($handle);
++        }
++    }
++
++    /**
++     * Inspect the actual Vault inner client's terminal driver, without adding a production injection seam.
++     */
++    private function actualGuardDriver(
++        VaultHttpClient $client,
++    ): TransferDriver {
++        $inner = (new ReflectionProperty(VaultHttpClient::class, 'innerClient'))->getValue(
++            $client,
++        );
++        self::assertInstanceOf(Client::class, $inner);
++        // @phpstan-ignore method.deprecated (G0 proves this concrete public API in both pinned Guzzle majors; G7 inherits an outdated interface removal annotation.)
++        $stack = $inner->getConfig('handler');
++        self::assertInstanceOf(HandlerStack::class, $stack);
++        $entries = (new ReflectionProperty(HandlerStack::class, 'stack'))->getValue(
++            $stack,
++        );
++        self::assertIsArray($entries);
++        foreach ($entries as $entry) {
++            self::assertIsArray($entry);
++            if (($entry[0] ?? null) instanceof TerminalGuardMiddleware) {
++                $transfers = (new ReflectionProperty(
++                    TerminalGuardMiddleware::class,
++                    'transfers',
++                ))->getValue($entry[0]);
++                self::assertInstanceOf(
++                    GuardedTransferFactory::class,
++                    $transfers,
++                );
++                $driver = (new ReflectionProperty(
++                    GuardedTransferFactory::class,
++                    'driver',
++                ))->getValue($transfers);
++                self::assertInstanceOf(
++                    TransferDriver::class,
++                    $driver,
++                );
++
++                return $driver;
++            }
++        }
++
++        throw new RuntimeException(
++            'Actual protected Vault driver is missing',
++            8691641021,
++        );
++    }
++}
+diff --git a/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php b/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php
+new file mode 100644
+index 0000000..3aad906
+--- /dev/null
++++ b/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php
+@@ -0,0 +1,140 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++
++namespace Netresearch\NrVault\Tests\Unit\Http\Guard;
++
++use GuzzleHttp\ClientInterface as GuzzleClientInterface;
++use GuzzleHttp\Psr7\Request;
++use Netresearch\NrVault\Http\CancellableTransport;
++use Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface;
++use Netresearch\NrVault\Http\SecureHttpClientFactory;
++use Netresearch\NrVault\Http\TransportTickerInterface;
++use Netresearch\NrVault\Tests\Unit\Fixtures\AlwaysPublicDnsResolver;
++use Netresearch\NrVault\Tests\Unit\TestCase;
++use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
++use PHPUnit\Framework\Attributes\CoversClass;
++use PHPUnit\Framework\Attributes\Test;
++use Psr\Http\Client\ClientInterface;
++use RuntimeException;
++
++#[CoversClass(SecureHttpClientFactory::class)]
++#[AllowMockObjectsWithoutExpectations]
++final class SecureHttpClientFactoryGuardTest extends TestCase
++{
++    protected function setUp(): void
++    {
++        parent::setUp();
++        $GLOBALS['TYPO3_CONF_VARS']['HTTP'] = ['timeout' => 40, 'connect_timeout' => 7, 'allow_redirects' => false];
++    }
++
++    #[Test]
++    public function explicitAdapterReceivesTheSameHardenedPlatformDefaults(): void
++    {
++        $client = $this->createMock(ClientInterface::class);
++        $adapter = $this->createMock(VaultGuardAdapterInterface::class);
++        $adapter
++            ->expects(self::once())
++            ->method('create')
++            ->willReturnCallback(
++                static function (
++                    array $options,
++                ) use ($client): ClientInterface {
++                    self::assertSame(12, $options['timeout']);
++                    self::assertSame(7, $options['connect_timeout']);
++                    self::assertFalse($options['debug']);
++                    self::assertFalse($options['http_errors']);
++                    self::assertFalse($options['allow_redirects']);
++
++                    return $client;
++                },
++            );
++
++        $factory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver(), $adapter);
++
++        self::assertSame($client, $factory->create(12));
++    }
++
++    #[Test]
++    public function cancellableBindingKeepsItsClientTickerAndPlatformBudgetsTogether(): void
++    {
++        $transport = new CancellableTransport(
++            $this->createMock(GuzzleClientInterface::class),
++            $this->createMock(TransportTickerInterface::class),
++            24.0,
++        );
++        $adapter = $this->createMock(VaultGuardAdapterInterface::class);
++        $adapter
++            ->expects(self::once())
++            ->method('createCancellable')
++            ->with(
++                self::callback(
++                    static fn (
++                        array $options,
++                    ): bool => $options['timeout'] === 12,
++                ),
++                24.0,
++                null,
++            )
++            ->willReturn($transport);
++
++        $factory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver(), $adapter);
++
++        self::assertSame($transport, $factory->createCancellable(12));
++    }
++
++    #[Test]
++    public function protectedCapabilityFailureCannotReturnTheLegacyFallback(): void
++    {
++        $failure = new RuntimeException('Synthetic controlled transport unavailable');
++        $adapter = $this->createMock(VaultGuardAdapterInterface::class);
++        $adapter
++            ->expects(self::once())
++            ->method('createCancellable')
++            ->willThrowException($failure);
++        $factory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver(), $adapter);
++
++        try {
++            $factory->createCancellable();
++            self::fail(
++                'The protected branch must propagate its capability failure',
++            );
++        } catch (RuntimeException $actual) {
++            self::assertSame($failure, $actual);
++        }
++    }
++
++    #[Test]
++    public function hostOnlyAndFullRequestPreflightsDelegateWithoutInventingAMethod(): void
++    {
++        $request = new Request('POST', 'https://erp.internal.example:8443/orders');
++        $adapter = $this->createMock(VaultGuardAdapterInterface::class);
++        $adapter
++            ->expects(self::once())
++            ->method('isHostAllowed')
++            ->with('erp.internal.example')
++            ->willReturn(true);
++        $adapter
++            ->expects(self::once())
++            ->method('assertRequestAllowed')
++            ->with($request);
++        $adapter
++            ->expects(self::once())
++            ->method('validateRawUri')
++            ->with('https://erp.internal.example:8443/orders#')
++            ->willReturn(false);
++        $factory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver(), $adapter);
++
++        self::assertTrue($factory->isHostAllowed('erp.internal.example'));
++        $factory->assertRequestAllowed($request);
++        self::assertFalse(
++            $factory->guardValidateRawUri(
++                'https://erp.internal.example:8443/orders#',
++            ),
++        );
++    }
++}
+diff --git a/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php b/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php
+new file mode 100644
+index 0000000..f1a41a9
+--- /dev/null
++++ b/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php
+@@ -0,0 +1,279 @@
++<?php
++
++/*
++ * This file is part of the nr-vault TYPO3 extension.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++declare(strict_types=1);
++
++namespace Netresearch\NrVault\Tests\Unit\Http\Guard;
++
++use GuzzleHttp\Psr7\Request;
++use GuzzleHttp\Psr7\Response;
++use Netresearch\NrVault\Audit\AuditLogServiceInterface;
++use Netresearch\NrVault\Exception\VaultException;
++use Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface;
++use Netresearch\NrVault\Http\OAuth\OAuthConfig;
++use Netresearch\NrVault\Http\OAuth\OAuthTokenManager;
++use Netresearch\NrVault\Http\SecretPlacement;
++use Netresearch\NrVault\Http\SecureHttpClientFactory;
++use Netresearch\NrVault\Http\VaultHttpClient;
++use Netresearch\NrVault\Service\VaultServiceInterface;
++use Netresearch\NrVault\Tests\Unit\Fixtures\AlwaysPublicDnsResolver;
++use Netresearch\NrVault\Tests\Unit\TestCase;
++use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
++use PHPUnit\Framework\Attributes\CoversClass;
++use PHPUnit\Framework\Attributes\Test;
++use PHPUnit\Framework\MockObject\MockObject;
++use Psr\Http\Client\ClientInterface;
++use Psr\Http\Message\RequestInterface;
++use RuntimeException;
++
++#[CoversClass(VaultHttpClient::class)]
++#[CoversClass(OAuthTokenManager::class)]
++#[AllowMockObjectsWithoutExpectations]
++final class VaultHttpClientGuardTest extends TestCase
++{
++    protected function setUp(): void
++    {
++        parent::setUp();
++        $GLOBALS['TYPO3_CONF_VARS']['HTTP'] = ['timeout' => 40, 'connect_timeout' => 7];
++    }
++
++    #[Test]
++    public function fullRequestRefusalHappensBeforeResourceSecretRetrieval(): void
++    {
++        $vault = $this->createMock(VaultServiceInterface::class);
++        $vault->expects(self::never())->method('retrieve');
++        $inner = $this->createMock(ClientInterface::class);
++        $inner->expects(self::never())->method('sendRequest');
++        $adapter = $this->enforcedAdapter();
++        $adapter->method('create')->willReturn($inner);
++        $adapter->method('isHostAllowed')->willReturn(true);
++        $adapter
++            ->expects(self::once())
++            ->method('assertRequestAllowed')
++            ->willThrowException(new RuntimeException('Synthetic endpoint method denied'));
++        $audit = $this->createMock(AuditLogServiceInterface::class);
++        $audit->expects(self::once())->method('log');
++        $factory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver(), $adapter);
++        $client = (new VaultHttpClient($vault, $audit, secureHttpClientFactory: $factory))->withAuthentication(
++            'synthetic-resource-secret',
++            SecretPlacement::Bearer,
++        );
++
++        $this->expectException(RuntimeException::class);
++        $this->expectExceptionMessageToContain(
++            'Synthetic endpoint method denied',
++        );
++        $client->sendRequest(
++            new Request('POST', 'https://resource.internal.example/orders'),
++        );
++    }
++
++    #[Test]
++    public function oauthUsesSeparateFactoryAndRetainsTokenCacheAcrossTimeoutClone(): void
++    {
++        $vault = $this->createMock(VaultServiceInterface::class);
++        $vault
++            ->expects(self::exactly(2))
++            ->method('retrieve')
++            ->willReturnMap(
++                [
++                    ['synthetic-client-id', 'fixture-client'],
++                    ['synthetic-client-secret', 'fixture-client-secret'],
++                ],
++            );
++        $audit = $this->createMock(AuditLogServiceInterface::class);
++        $audit->expects(self::exactly(3))->method('log');
++        $resourceClient = $this->createMock(ClientInterface::class);
++        $resourceClient
++            ->expects(self::exactly(2))
++            ->method('sendRequest')
++            ->willReturnCallback(
++                static function (RequestInterface $request): Response {
++                    self::assertSame(
++                        'resource.internal.example',
++                        $request->getUri()->getHost(),
++                    );
++                    self::assertSame(
++                        'Bearer fixture-access-token',
++                        $request->getHeaderLine('Authorization'),
++                    );
++
++                    return new Response(200);
++                },
++            );
++        $tokenClient = $this->createMock(ClientInterface::class);
++        $tokenClient
++            ->expects(self::once())
++            ->method('sendRequest')
++            ->willReturnCallback(
++                static function (RequestInterface $request): Response {
++                    self::assertSame(
++                        'token.internal.example',
++                        $request->getUri()->getHost(),
++                    );
++                    self::assertSame('POST', $request->getMethod());
++                    self::assertFalse($request->hasHeader('Authorization'));
++                    self::assertStringContainsString(
++                        'client_secret=fixture-client-secret',
++                        (string) $request->getBody(),
++                    );
++
++                    return new Response(
++                        200,
++                        [],
++                        '{"access_token":"fixture-access-token","token_type":"Bearer","expires_in":3600}',
++                    );
++                },
++            );
++        $tokenAdapter = $this->enforcedAdapter();
++        $tokenAdapter
++            ->expects(self::once())
++            ->method('create')
++            ->willReturnCallback(
++                static function (
++                    array $options,
++                ) use ($tokenClient): ClientInterface {
++                    self::assertSame(40, $options['timeout']);
++
++                    return $tokenClient;
++                },
++            );
++        $tokenAdapter->method('isHostAllowed')->willReturn(true);
++        $tokenAdapter
++            ->expects(self::once())
++            ->method('assertRequestAllowed')
++            ->with(
++                self::callback(
++                    static fn (
++                        RequestInterface $request,
++                    ): bool => $request->getUri()->getHost() === 'token.internal.example' && $request->getMethod() === 'POST',
++                ),
++            );
++        $tokenFactory = new SecureHttpClientFactory(
++            new AlwaysPublicDnsResolver(),
++            $tokenAdapter,
++        );
++        $resourceAdapter = $this->enforcedAdapter();
++        $resourceAdapter->method('create')->willReturn($resourceClient);
++        $resourceAdapter->method('isHostAllowed')->willReturn(true);
++        $resourceAdapter->method('tokenFactory')->willReturn($tokenFactory);
++        $resourceFactory = new SecureHttpClientFactory(
++            new AlwaysPublicDnsResolver(),
++            $resourceAdapter,
++        );
++        $base = new VaultHttpClient(
++            $vault,
++            $audit,
++            secureHttpClientFactory: $resourceFactory,
++        );
++        $client = $base->withOAuth(
++            OAuthConfig::clientCredentials(
++                'https://token.internal.example/token',
++                'synthetic-client-id',
++                'synthetic-client-secret',
++            ),
++        );
++
++        self::assertSame(
++            200,
++            $client
++                ->sendRequest(new Request('POST', 'https://resource.internal.example/orders'))
++                ->getStatusCode(),
++        );
++        self::assertSame(
++            200,
++            $client
++                ->withReason('Synthetic cache check')
++                ->withTimeout(9)
++                ->sendRequest(new Request('POST', 'https://resource.internal.example/orders'))
++                ->getStatusCode(),
++        );
++    }
++
++    #[Test]
++    public function absentSeparateTokenFactoryFailsBeforeClientCredentialsAreRead(): void
++    {
++        $vault = $this->createMock(VaultServiceInterface::class);
++        $vault->expects(self::never())->method('retrieve');
++        $adapter = $this->enforcedAdapter();
++        $adapter
++            ->method('create')
++            ->willReturn($this->createMock(ClientInterface::class));
++        $adapter->method('isHostAllowed')->willReturn(true);
++        $adapter->method('tokenFactory')->willReturn(null);
++        $factory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver(), $adapter);
++        $client = (new VaultHttpClient(
++            $vault,
++            $this->createMock(AuditLogServiceInterface::class),
++            secureHttpClientFactory: $factory,
++        ))->withOAuth(
++            OAuthConfig::clientCredentials(
++                'https://token.internal.example/token',
++                'synthetic-client-id',
++                'synthetic-client-secret',
++            ),
++        );
++
++        $this->expectException(VaultException::class);
++        $this->expectExceptionMessageToContain(
++            'separate protected token factory',
++        );
++        $client->sendRequest(
++            new Request('POST', 'https://resource.internal.example/orders'),
++        );
++    }
++
++    #[Test]
++    public function protectedClientCannotAcceptAnArbitraryInjectedInnerClient(): void
++    {
++        $adapter = $this->enforcedAdapter();
++        $factory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver(), $adapter);
++
++        $this->expectException(VaultException::class);
++        $this->expectExceptionMessageToContain('unverified inner client');
++        new VaultHttpClient(
++            $this->createMock(VaultServiceInterface::class),
++            $this->createMock(AuditLogServiceInterface::class),
++            $this->createMock(ClientInterface::class),
++            secureHttpClientFactory: $factory,
++        );
++    }
++
++    #[Test]
++    public function protectedClientCannotInheritAnUnverifiedOauthManager(): void
++    {
++        $vault = $this->createMock(VaultServiceInterface::class);
++        $legacyFactory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver());
++        $legacyManager = new OAuthTokenManager(
++            $vault,
++            $this->createMock(ClientInterface::class),
++            $legacyFactory,
++        );
++        $adapter = $this->enforcedAdapter();
++        $adapter
++            ->method('create')
++            ->willReturn($this->createMock(ClientInterface::class));
++        $factory = new SecureHttpClientFactory(new AlwaysPublicDnsResolver(), $adapter);
++
++        $this->expectException(VaultException::class);
++        $this->expectExceptionMessageToContain('unverified OAuth manager');
++        new VaultHttpClient(
++            $vault,
++            $this->createMock(AuditLogServiceInterface::class),
++            oauthManager: $legacyManager,
++            secureHttpClientFactory: $factory,
++        );
++    }
++
++    private function enforcedAdapter(): VaultGuardAdapterInterface&MockObject
++    {
++        $adapter = $this->createMock(VaultGuardAdapterInterface::class);
++        $adapter->method('mode')->willReturn('enforce');
++        $adapter->method('validateRawUri')->willReturn(true);
++
++        return $adapter;
++    }
++}

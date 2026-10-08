@@ -1,0 +1,31 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/WireDnsQueryTest.php",
+            "mode": "edit",
+            "beforeSha256": "e44cccd03655397c5d3e1f9219044fef70b97c1e5f1f81e7acd37afff0d561fd",
+            "afterSha256": "64e17bafcab686325743aff4fd9480b3798daaaab82f24a3bee17a5e1079e57f",
+            "changed": true,
+            "changedLines": 16,
+            "printer": "format-preserving",
+            "editsApplied": 1,
+            "dryRun": false,
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "warning": "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional.",
+            "diff": "+    public function testDefaultNameserverConfigurationIsOnlyNeededAtActualDnsQuery(): void\n+    {\n+        $query = new \\Netresearch\\HttpGuard\\WireDnsQuery(\n+            resolvConfPath: '/definitely-nonexistent-http-guard-resolv.conf'\n+        );\n+        self::assertInstanceOf(\n+            \\Netresearch\\HttpGuard\\DnsQueryInterface::class,\n+            $query\n+        );\n+        try {\n+            $query->query('safe.example.', 1);\n+            self::fail('Missing resolver configuration accepted');\n+        } catch (\\Netresearch\\HttpGuard\\PolicyException $e) {\n+            self::assertSame('configuration_invalid', $e->reasonCode());\n+        }\n+    }",
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

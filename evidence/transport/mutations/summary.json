@@ -1,0 +1,590 @@
+[
+  {
+    "guzzle": 7,
+    "mutation": "address_check_removed",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "address_check_removed",
+      "outcome": "response",
+      "reason": null,
+      "response_label": "public-a",
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 124,
+          "http": 124
+        },
+        "public-b": {
+          "tcp": 12,
+          "http": 12
+        },
+        "private": {
+          "tcp": 12,
+          "http": 12
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 12,
+          "http": 12
+        },
+        "private": {
+          "tcp": 12,
+          "http": 12
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 7,
+    "mutation": "pin_removed",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "pin_removed",
+      "outcome": "policy_denied",
+      "reason": "transport_unsupported",
+      "response_label": null,
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 12,
+          "http": 12
+        },
+        "private": {
+          "tcp": 12,
+          "http": 12
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 12,
+          "http": 12
+        },
+        "private": {
+          "tcp": 13,
+          "http": 13
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 7,
+    "mutation": "fallback_enabled",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "fallback_enabled",
+      "outcome": "response",
+      "reason": null,
+      "response_label": "private",
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 12,
+          "http": 12
+        },
+        "private": {
+          "tcp": 13,
+          "http": 13
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 12,
+          "http": 12
+        },
+        "private": {
+          "tcp": 14,
+          "http": 14
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 7,
+    "mutation": "proxy_passthrough",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "proxy_passthrough",
+      "outcome": "policy_denied",
+      "reason": "transport_unsupported",
+      "response_label": null,
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 12,
+          "http": 12
+        },
+        "private": {
+          "tcp": 14,
+          "http": 14
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 14,
+          "http": 14
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 7,
+    "mutation": "stream_passthrough",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "stream_passthrough",
+      "outcome": "response",
+      "reason": null,
+      "response_label": "private",
+      "resolver_calls": 0,
+      "transport": {
+        "created": 0,
+        "released": 0,
+        "active": 0,
+        "peak": 0,
+        "nativeConstructed": 0
+      },
+      "leaf_calls": 1,
+      "before": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 14,
+          "http": 14
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 15,
+          "http": 15
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 7,
+    "mutation": "grant_binding_removed",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "grant_binding_removed",
+      "outcome": "response",
+      "reason": null,
+      "response_label": "private",
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 15,
+          "http": 15
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 16,
+          "http": 16
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 8,
+    "mutation": "address_check_removed",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "address_check_removed",
+      "outcome": "response",
+      "reason": null,
+      "response_label": "public-a",
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 125,
+          "http": 125
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 16,
+          "http": 16
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 16,
+          "http": 16
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 8,
+    "mutation": "pin_removed",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "pin_removed",
+      "outcome": "policy_denied",
+      "reason": "transport_unsupported",
+      "response_label": null,
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 16,
+          "http": 16
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 17,
+          "http": 17
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 8,
+    "mutation": "fallback_enabled",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "fallback_enabled",
+      "outcome": "response",
+      "reason": null,
+      "response_label": "private",
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 17,
+          "http": 17
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 18,
+          "http": 18
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 8,
+    "mutation": "proxy_passthrough",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "proxy_passthrough",
+      "outcome": "policy_denied",
+      "reason": "transport_unsupported",
+      "response_label": null,
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 13,
+          "http": 13
+        },
+        "private": {
+          "tcp": 18,
+          "http": 18
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 14,
+          "http": 14
+        },
+        "private": {
+          "tcp": 18,
+          "http": 18
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 8,
+    "mutation": "stream_passthrough",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "stream_passthrough",
+      "outcome": "response",
+      "reason": null,
+      "response_label": "private",
+      "resolver_calls": 0,
+      "transport": {
+        "created": 0,
+        "released": 0,
+        "active": 0,
+        "peak": 0,
+        "nativeConstructed": 0
+      },
+      "leaf_calls": 1,
+      "before": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 14,
+          "http": 14
+        },
+        "private": {
+          "tcp": 18,
+          "http": 18
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 14,
+          "http": 14
+        },
+        "private": {
+          "tcp": 19,
+          "http": 19
+        }
+      }
+    }
+  },
+  {
+    "guzzle": 8,
+    "mutation": "grant_binding_removed",
+    "exit_code": 1,
+    "killed": true,
+    "witness": {
+      "case": "grant_binding_removed",
+      "outcome": "response",
+      "reason": null,
+      "response_label": "private",
+      "resolver_calls": 1,
+      "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+      },
+      "leaf_calls": 0,
+      "before": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 14,
+          "http": 14
+        },
+        "private": {
+          "tcp": 19,
+          "http": 19
+        }
+      },
+      "after": {
+        "public-a": {
+          "tcp": 126,
+          "http": 126
+        },
+        "public-b": {
+          "tcp": 14,
+          "http": 14
+        },
+        "private": {
+          "tcp": 20,
+          "http": 20
+        }
+      }
+    }
+  }
+]

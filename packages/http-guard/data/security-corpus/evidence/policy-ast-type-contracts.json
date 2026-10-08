@@ -1,0 +1,262 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/ClientScope.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "4f052295990be6e589a7707eac7abb549e3648915b560f8c0a369bb2e04e70f4",
+            "afterSha256": "12d04b64f20912841b112ea8a59c6faa463a3e4a65a673243fefa1e93694e4f9",
+            "changedLines": 3,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/EndpointGrant.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "92a549198f6c1e0751f1ff7fe4d949e56204903eacce3462a7c779ddee009436",
+            "afterSha256": "14d03a6ce232129040fadb5dba1bae10797f3988f5b2b2c31fe9887b4d3b1edf",
+            "changedLines": 3,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/ConnectionPlan.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "8c0de0142bcd73678da803b035eb06869ee09f5c8b9eb1278e7238b666cfd768",
+            "afterSha256": "aa33433897e90da18835068e69834b8b0324d001afef773206aa44835f4ddf98",
+            "changedLines": 3,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/DnsAnswer.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "7b1533bd380b0f6d99c2cf660ad4ed6ab90bb62601ed76d911acbd6490e4b63e",
+            "afterSha256": "91e3161c5ded0473fe76dba128f96605d9286d025c48a70f85180f520850c130",
+            "changedLines": 3,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/EndpointProfile.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "9265ddc84c2f63a7bc471d48ca5d51e5af4227db52cda663536acd492f7f7214",
+            "afterSha256": "5b72ba9b094c9eee4da0ae96212ab6e3e42ebc736fe3ceb9bf55ee366eb913e5",
+            "changedLines": 4,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/Resolution.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "89de1c8b8be656ce4254fb0f14e0bff90490b586faf7b66dffd8147dfce7c070",
+            "afterSha256": "40f29b492983b2dfb0e12df32ccaea75d6205a1218db1bbc217ef55911ec3211",
+            "changedLines": 4,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/GuardConfig.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 4,
+            "beforeSha256": "7cad546b14791d44487ae156f1040ceadadac304d006a302f88929e48b4b216d",
+            "afterSha256": "7e4fde1798f4a6fb67ed95387a3ad699cc06b24c4d00e77a98e41704dadb3b24",
+            "changedLines": 13,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/DecisionReporter.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 2,
+            "beforeSha256": "64e361ad7773608ee8dc64b8ab949869f95abbc1c1af61429762c04adde1eeed",
+            "afterSha256": "21a334649912f54f7300fabd3830e705d254778dbf038dfa02330a9b6a36d915",
+            "changedLines": 6,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/DnsPacketCodec.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "c76c11d174cdff0ccba02ffdcb798dc96e02083f9094e080feb751812cdbf1c5",
+            "afterSha256": "4a8be90c507e13c626becddd454b648ba7446bebeedbe37c9c21ba8fdfc414d6",
+            "changedLines": 3,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/PolicyRegistry.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 4,
+            "beforeSha256": "c0e974db93abc6d328e33fe60d0d74ddad4cf6afcd892379eafc7b6a0436e4e4",
+            "afterSha256": "66edb3d7085bade7310d2aafe49d3e1d2c7d9f5d23c5d15ce64d6ad2501c49f1",
+            "changedLines": 18,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/PolicyEngine.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 4,
+            "beforeSha256": "beceda1ef153e2a87fbc97b34524eb32d7d8d0ea43a0254f180ac6c82a9b3ac0",
+            "afterSha256": "0cc6e4b8a599d8dc8d1a910f07644c2ead53e085076fdf626c8981b0636b3e9e",
+            "changedLines": 17,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/StaticThenDnsResolver.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 3,
+            "beforeSha256": "50da9b1d2d85b4b561e3d8f8fbdc6ecb965ac0cf71678c1e7722268b2aff4d93",
+            "afterSha256": "cbb0d130b1d1162c06131889a23605a4f343c8c0d8b70bb29dba15258d5ceb3a",
+            "changedLines": 7,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "effects": {
+                "1": {
+                    "replaced": 1,
+                    "operation": "replace_expression"
+                },
+                "2": {
+                    "replaced": 1,
+                    "operation": "replace_expression"
+                }
+            },
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/WireDnsQuery.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 5,
+            "beforeSha256": "0bf2ea0e9daccbd2c83a7df8065d3d0944ace7368cc6f843afb0cc308d910caa",
+            "afterSha256": "a57b993b0d2a5d93a3a38f625bcfb0f6a8fe9dcaf0ce1681241533c9036eb645",
+            "changedLines": 15,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

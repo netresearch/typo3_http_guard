@@ -1,0 +1,23 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/phpunit.xml
+
+EE                                                                  2 / 2 (100%)
+
+Time: 00:00.400, Memory: 10.00 MB
+
+There were 2 errors:
+
+1) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyTelemetryTest::testHashRequiresConfiguredKeyAndNoSensitiveFieldsAreAccepted
+Error: Class "Netresearch\HttpGuard\DecisionReporter" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php:47
+
+2) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyTelemetryTest::testDenyLoggingLimitNeverLosesCountersAndLogFailureDoesNotEscape
+Error: Class "Netresearch\HttpGuard\DecisionReporter" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php:72
+
+ERRORS!
+Tests: 2, Assertions: 0, Errors: 2.

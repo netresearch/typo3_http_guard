@@ -1,0 +1,51 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/Cidr.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "c30ecb2709796249eaed80599cd62cb4fb495960f74eada35e661575a1ffa6a2",
+            "afterSha256": "90f88eeb3aeb093c73f0d222e15b2bbe79059866251681ed7bf14a18eecddb80",
+            "changedLines": 5,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/AddressClassifier.php",
+            "mode": "create",
+            "changed": true,
+            "editsApplied": 0,
+            "beforeSha256": "b6aa53a100ea23a142018abd5a629d778c26af57375009d18c99a99c78108450",
+            "afterSha256": "c1490866d2f28c6aaf073ddba1c4927409fd26158eb8ddecb205ca51bbc7f41e",
+            "changedLines": 38,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

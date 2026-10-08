@@ -1,0 +1,21 @@
+8.5-cli: Pulling from library/php
+6292076bea60: Pulling fs layer
+bcae3c73686d: Pulling fs layer
+83e7b827f33e: Pulling fs layer
+34a24443742c: Pulling fs layer
+521352cddb69: Pulling fs layer
+15127798f85c: Download complete
+bcae3c73686d: Download complete
+7db48e96b266: Download complete
+6292076bea60: Download complete
+34a24443742c: Download complete
+521352cddb69: Download complete
+bcae3c73686d: Pull complete
+34a24443742c: Pull complete
+83e7b827f33e: Download complete
+83e7b827f33e: Pull complete
+6292076bea60: Pull complete
+521352cddb69: Pull complete
+Digest: sha256:01a109229f4465bc9ef042d9198f09a4d9da7775a825dbd8572dcdbd8756c4d3
+Status: Downloaded newer image for php:8.5-cli
+docker.io/library/php:8.5-cli

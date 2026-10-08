@@ -1,0 +1,2 @@
+subjectAltName=DNS:guard.test,DNS:other.test,DNS:erp.test
+extendedKeyUsage=serverAuth

@@ -1,0 +1,30 @@
+{
+  "name": "netresearch/nr-http-guard",
+  "description": "Explicit outbound HTTP policy integration for the verified TYPO3 Core client",
+  "type": "typo3-cms-extension",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": "^8.2",
+    "netresearch/http-guard": "dev-main",
+    "typo3/cms-core": "13.4.35 || 14.3.7",
+    "symfony/console": "^7.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5 || ^12.5 || ^13.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Netresearch\\NrHttpGuard\\": "Classes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Netresearch\\NrHttpGuard\\Tests\\": "Tests/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "nr_http_guard"
+    }
+  }
+}

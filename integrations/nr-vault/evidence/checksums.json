@@ -1,0 +1,29 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "vault-docs-final-render.log": "c6a2164c73d7b4b6c8a89fb8209bad286300966628484e5c88f6cb71b7719094",
+    "vault-docs-final-validate.log": "1a003436678f47fb2c216a4b2cfaf738f6e1f30e9515a9d20bb8f9729bb6121b",
+    "vault-earlier-fuzz-baseline.log": "bf067419cbae64d3717bcfbf0d3c68b01a30627ec3e5782b318769d71af39276",
+    "vault-final-cgl-check.log": "f4f3cb631786de7be5db80829c21a572c7b4859b80b2b1ad3a1fb5446967fccc",
+    "vault-final-rector-check.log": "5f58b5763fd0d3780acb31004983278224b3b7aee7489024791bea48e56781f6",
+    "vault-final-repo-checks.log": "472ce8d9cc09a9882fc5ac996d6d4540b0a99fdcebd39f32edb244adf9b022f5",
+    "vault-guzzle7-composer-audit.err": "bcdc6d3b5745e92d0138cfafb75635dd175a338e01ff30e5339de5bc4e25983f",
+    "vault-guzzle7-composer-audit.json": "b216d5fffa5e7ee99e11d96ed53efcdaccb6facd77f04654a5b97a3ef9765030",
+    "vault-guzzle7-final-adapter-cases.log": "6d9251470f6940a55bf3fc77827e2d291482718398dc5c5cb99fc07dfe057321",
+    "vault-guzzle7-final-frozen-library-manifest.json": "190c24b5ba56fc8b6e8a054a1573ba85f6155e8ca4119e4db3b1c89941122273",
+    "vault-guzzle7-final-functional-frozen.log": "7e0c4c612aba590aacd83dff609616ed519063be6c43ad34e4bdf8c75554ce19",
+    "vault-guzzle7-final-phpstan-frozen-clean.log": "c4154819e4e0ebb2dfac3480cd4191eda4de0085385e9c8e8981a6834dd57531",
+    "vault-guzzle7-final-runtime.json": "b67e0a1cbf295010b5faaceab6d45829753e1075881898151c12e7e56f3bb954",
+    "vault-guzzle7-final-tested-source-manifest.json": "7a2f5d907f89daf6ca574c5b3a6e95fafeb15a3b53513d1dfd502c52a6483cb1",
+    "vault-guzzle7-final-unit-frozen.log": "92ac108161f85ae2e9388c8ad324bc9ba8a63477043212c141619fa9bc1ccc0b",
+    "vault-guzzle7-shared-unbound.json": "a9d16d15d4f3683985d54aef8c80b17b03550a70a4b8bb189ec64203833fb298",
+    "vault-guzzle8-final-adapter-cases.log": "d3db3eac1267885d7ce7f84cf0b60ac681b3ddf81a30eaf81a2b133b1cc56212",
+    "vault-guzzle8-final-frozen-library-manifest.json": "b71d8f8d25f6a1c279499131bcdb7f11d2df052952ce136476aa5abf8a341dcf",
+    "vault-guzzle8-final-functional-frozen.log": "f4c7bf8278b24744519d2ad73463509474fb72c3c9d086ed25e12a3f1c0e291d",
+    "vault-guzzle8-final-phpstan-frozen-clean.log": "200472c188f59d5dcc5d06087fe851522f77a8f1e9002e8788304128420da58b",
+    "vault-guzzle8-final-runtime.json": "5310e9239c1758f79a924c5d3076148cda1fea2a3e919e31c310a07f52d074fc",
+    "vault-guzzle8-final-tested-source-manifest.json": "f79b60c6a57589afdd93e75ef05333341a8a0caeaf0bcd4f2ea14c217216dec4",
+    "vault-guzzle8-final-unit-frozen.log": "d92a180964df2a79e7a423a8fcb8b433d0473e3828352142e15c874cdf2e1fc9",
+    "vault-guzzle8-shared-unbound.json": "a9d16d15d4f3683985d54aef8c80b17b03550a70a4b8bb189ec64203833fb298"
+  }
+}

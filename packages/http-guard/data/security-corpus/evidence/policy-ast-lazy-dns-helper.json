@@ -1,0 +1,41 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/src/WireDnsQuery.php",
+            "mode": "edit",
+            "beforeSha256": "b05853796faf22b6f42e141080204783d8a979a81dd74baf965282a3a3ff6ba6",
+            "afterSha256": "9d46c40432f6b2a66693c50221d35635419f1844fbf5aabbcc2e03a443388dcf",
+            "changed": true,
+            "changedLines": 10,
+            "printer": "format-preserving",
+            "editsApplied": 3,
+            "dryRun": false,
+            "effects": [
+                {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                },
+                {
+                    "replaced": 1,
+                    "operation": "replace_expression"
+                }
+            ],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "warning": "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional.",
+            "diff": "-        $id = $this->queryId();\n+        $id = random_int(0, 65535);\n-        foreach ($this->nameservers as $server) {\n+        foreach ($this->nameservers() as $server) {\n-    private function queryId(): int\n+    /** @return list<string> */\n+    private function nameservers(): array\n-        $this->nameservers ??= self::validateNameservers(\n+        return $this->nameservers ??= self::validateNameservers(\n-        return random_int(0, 65535);",
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

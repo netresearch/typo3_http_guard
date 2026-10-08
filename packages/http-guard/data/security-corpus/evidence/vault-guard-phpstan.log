@@ -1,0 +1,139 @@
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+   0/580 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0%[1G[2K  20/580 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   3%[1G[2K  60/580 [▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░]  10%[1G[2K 120/580 [▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░]  20%[1G[2K 180/580 [▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░]  31%[1G[2K 240/580 [▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░]  41%[1G[2K 280/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░]  48%[1G[2K 300/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░]  51%[1G[2K 360/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░]  62%[1G[2K 480/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░]  82%[1G[2K 540/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░]  93%[1G[2K 580/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Classes/Http/Guard/VaultGuardAdapter.php                               
+ ------ ----------------------------------------------------------------------- 
+  53     Method Netresearch\NrVault\Http\Guard\VaultGuardAdapter::create()      
+         should return Psr\Http\Client\ClientInterface but returns              
+         GuzzleHttp\ClientInterface.                                            
+         🪪  return.type                                                        
+  64     Method Netresearch\NrVault\Http\Guard\VaultGuardAdapter::create()      
+         should return Psr\Http\Client\ClientInterface but returns              
+         GuzzleHttp\ClientInterface.                                            
+         🪪  return.type                                                        
+  132    Method                                                                 
+         Netresearch\NrVault\Http\Guard\VaultGuardAdapter::observationMiddlewa  
+         re() return type has no signature specified for callable.              
+         🪪  missingType.callable                                               
+  143    Anonymous function should return GuzzleHttp\Promise\PromiseInterface   
+         but returns mixed.                                                     
+         🪪  return.type                                                        
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Classes/Http/SecureHttpClientFactory.php                               
+ ------ ----------------------------------------------------------------------- 
+  1405   Method                                                                 
+         Netresearch\NrVault\Http\SecureHttpClientFactory::withDiagnosticOptio  
+         ns() has parameter $diagnosticMiddleware with no signature specified   
+         for callable.                                                          
+         🪪  missingType.callable                                               
+  1411   Call to an undefined method GuzzleHttp\ClientInterface::getConfig().   
+         🪪  method.notFound                                                    
+  1419   Call to an undefined method GuzzleHttp\ClientInterface::getConfig().   
+         🪪  method.notFound                                                    
+  1419   Parameter #1 $array of function array_replace expects array, mixed     
+         given.                                                                 
+         🪪  argument.type                                                      
+  1422   Parameter #1 $config of class GuzzleHttp\Client constructor expects    
+         array{handler?: callable(Psr\Http\Message\RequestInterface, array<mix  
+         ed>): GuzzleHttp\Promise\PromiseInterface<Psr\Http\Message\ResponseIn  
+         terface, mixed>, base_uri?: Psr\Http\Message\UriInterface|string, tra  
+         nsport_sharing?: string|null, max_host_connections?: int|null,         
+         max_total_connections?: int|null, allow_redirects?: array{max?: int,   
+         strict?: bool, referer?: bool, protocols?: non-empty-array<string>, o  
+         n_redirect?: callable(Psr\Http\Message\RequestInterface,               
+         Psr\Http\Message\ResponseInterface, Psr\Http\Message\UriInterface):    
+         mixed, track_redirects?: bool}|bool, auth?: array{0: string, 1:        
+         string, 2?: string|null}|string|false|null, body?:                     
+         callable-object|Iterator|resource|string|Stringable|null, ..., ...},   
+         non-empty-array<mixed, mixed> given.                                   
+         🪪  argument.type                                                      
+         💡  Offset 'protocols' (non-empty-array<int|string, string>) does not   
+         accept type mixed: mixed is empty.                                     
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------------------ 
+  Line   Tests/Functional/Http/Fixtures/guard-router.php                   
+ ------ ------------------------------------------------------------------ 
+  19     Only booleans are allowed in a negated boolean, int|false given.  
+         🪪  booleanNot.exprNotBoolean                                     
+  57     Only booleans are allowed in an if condition, int given.          
+         🪪  if.condNotBoolean                                             
+ ------ ------------------------------------------------------------------ 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   Tests/Functional/Http/GuardAdapterTest.php                             
+ ------ ----------------------------------------------------------------------- 
+  72     Only numeric types are allowed in +, int|false given on the left       
+         side.                                                                  
+         🪪  plus.leftNonNumeric                                                
+  76     Static property                                                        
+         Netresearch\NrVault\Tests\Functional\Http\GuardAdapterTest::$server    
+         (resource|null) does not accept resource|false.                        
+         🪪  assign.propertyType                                                
+  98     Error suppression via "@" should not be used.                          
+         🪪  ergebnis.noErrorSuppression                                        
+  123    Short ternary operator is not allowed. Use null coalesce operator if   
+         applicable or consider using long ternary.                             
+         🪪  ternary.shortNotAllowed                                            
+  136    Cannot access offset 'HTTP' on mixed.                                  
+         🪪  offsetAccess.nonOffsetAccessible                                   
+  278    Cannot access offset 'HTTP' on mixed.                                  
+         🪪  offsetAccess.nonOffsetAccessible                                   
+  278    Cannot access offset 'allowed_hosts' on mixed.                         
+         🪪  offsetAccess.nonOffsetAccessible                                   
+  300    assertNotEmpty() is not allowed. Use more strict assertion.            
+         🪪  phpunit.assertEmpty                                                
+  336    Cannot access offset 'HTTP' on mixed.                                  
+         🪪  offsetAccess.nonOffsetAccessible                                   
+  336    Cannot access offset 'allowed_hosts' on mixed.                         
+         🪪  offsetAccess.nonOffsetAccessible                                   
+  360    Cannot access offset 'HTTP' on mixed.                                  
+         🪪  offsetAccess.nonOffsetAccessible                                   
+  360    Cannot access offset 'allowed_hosts' on mixed.                         
+         🪪  offsetAccess.nonOffsetAccessible                                   
+  407    Short ternary operator is not allowed. Use null coalesce operator if   
+         applicable or consider using long ternary.                             
+         🪪  ternary.shortNotAllowed                                            
+  490    Property                                                               
+         Netresearch\HttpGuard\DecisionReporterInterface@anonymous/Tests/Funct  
+         ional/Http/GuardAdapterTest.php:487::$events is never read, only       
+         written.                                                               
+         🪪  property.onlyWritten                                               
+         💡  See:                                                               
+         https://phpstan.org/developing-extensions/always-read-written-propert  
+         ies                                                                    
+  572    Method                                                                 
+         Netresearch\NrVault\Tests\Functional\Http\GuardAdapterTest::hits()     
+         should return list<array{method: string, host: string, path: string,   
+         authorization: bool, chunks: int}> but returns list<array>.            
+         🪪  return.type                                                        
+         💡  Sealed array shape can only accept a constant array. Extra keys    
+         are not allowed.                                                       
+  573    Anonymous function should return array but returns mixed.              
+         🪪  return.type                                                        
+  578    Short ternary operator is not allowed. Use null coalesce operator if   
+         applicable or consider using long ternary.                             
+         🪪  ternary.shortNotAllowed                                            
+  618    Offset                                                                 
+         'api_key_header'|'authorization'|'body_secret'|'custom_header'|'query  
+         _secret' might not exist on array{method: string, host: string, path:  
+         string, authorization: bool, chunks: int}.                             
+         🪪  offsetAccess.notFound                                              
+ ------ ----------------------------------------------------------------------- 
+
+ [ERROR] Found 29 errors                                                        
+
+
+###########################################################################
+Result of phpstan
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+FAILURE
+###########################################################################
+

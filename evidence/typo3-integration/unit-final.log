@@ -1,0 +1,10 @@
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/phpunit.xml
+
+...................                                               19 / 19 (100%)
+
+Time: 00:00.229, Memory: 32.00 MB
+
+[30;42mOK (19 tests, 73 assertions)[0m

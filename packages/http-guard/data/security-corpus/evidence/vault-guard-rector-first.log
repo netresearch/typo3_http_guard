@@ -1,0 +1,472 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+
+7 files with changes
+====================
+
+1) Classes/Http/Guard/VaultGuardAdapter.php:43
+
+    ---------- begin diff ----------
+@@ Line 43 @@
+         $this->diagnosticContext = $clientFactory->middlewarePair($resourceEndpointId)->context;
+         $this->legacyFactory = $legacyFactory ?? new SecureHttpClientFactory();
+         if ($this->legacyFactory->isGuardEnabled()) {
+-            throw new PolicyException('configuration_invalid');
++            throw new PolicyException('configuration_invalid', 8638112343);
+         }
+     }
+
+@@ Line 54 @@
+
+     public function create(array $platformOptions): ClientInterface
+     {
+-        if ($this->mode() === 'enforce') {
++        if ($this->diagnosticContext->mode === 'enforce') {
+             return $this->clientFactory->createTransport(
+                 $platformOptions,
+                 $this->resourceEndpointId,
+@@ Line 63 @@
+
+         $legacyClient = $this->legacyFactory->create();
+         if (!$legacyClient instanceof GuzzleClientInterface) {
+-            throw new PolicyException('configuration_invalid');
++            throw new PolicyException('configuration_invalid', 2139936949);
+         }
+
+         return $this->legacyFactory->withDiagnosticOptions(
+@@ Line 78 @@
+         float $wallClockBudgetSeconds,
+         ?float $idleBudgetSeconds,
+     ): ?CancellableTransport {
+-        if ($this->mode() === 'enforce') {
++        if ($this->diagnosticContext->mode === 'enforce') {
+             $binding = $this->clientFactory->createTransport(
+                 $platformOptions,
+                 $this->resourceEndpointId,
+@@ Line 93 @@
+         }
+
+         $legacy = $this->legacyFactory->createCancellable();
+-        if ($legacy === null) {
++        if (!$legacy instanceof CancellableTransport) {
+             return null;
+         }
+
+@@ Line 111 @@
+
+     public function isHostAllowed(string $host): bool
+     {
+-        return $this->mode() === 'enforce' ? $this->engine->hostAllowed($host, $this->diagnosticContext) : $this->legacyFactory->isHostAllowed($host);
++        return $this->diagnosticContext->mode === 'enforce' ? $this->engine->hostAllowed($host, $this->diagnosticContext) : $this->legacyFactory->isHostAllowed($host);
+     }
+
+     public function assertRequestAllowed(RequestInterface $request): void
+     {
+-        if ($this->mode() === 'disabled') {
++        if ($this->diagnosticContext->mode === 'disabled') {
+             return;
+         }
+
+         $decision = $this->engine->evaluate($request, $this->diagnosticContext);
+-        if ($this->mode() === 'enforce' && $decision->decision !== 'allow') {
++        if ($this->diagnosticContext->mode === 'enforce' && $decision->decision !== 'allow') {
+             throw new PolicyException(
+-                $decision->reasonCode ?? 'configuration_invalid',
++                $decision->reasonCode ?? 'configuration_invalid', 8089068608,
+             );
+         }
+     }
+@@ Line 130 @@
+
+     public function tokenFactory(): ?SecureHttpClientFactory
+     {
+-        return $this->oauthTokenFactory ?? ($this->mode() === 'enforce' ? null : $this->legacyFactory);
++        return $this->oauthTokenFactory ?? ($this->diagnosticContext->mode === 'enforce' ? null : $this->legacyFactory);
+     }
+
+     /**
+@@ Line 138 @@
+      */
+     private function observationMiddleware(): ?callable
+     {
+-        if ($this->mode() !== 'observe') {
++        if ($this->diagnosticContext->mode !== 'observe') {
+             return null;
+         }
+    ----------- end diff -----------
+
+Applied rules:
+ * FlipTypeControlToUseExclusiveTypeRector
+ * PrivatizeLocalGetterToPropertyRector
+ * AddErrorCodeToExceptionRector
+
+
+2) Classes/Http/OAuth/OAuthTokenManager.php:242
+
+    ---------- begin diff ----------
+@@ Line 242 @@
+         if ($cancellationSignal instanceof CancellationSignalInterface && $cancellationSignal->isCancelled()) {
+             throw new RequestCancelledException(self::TOKEN_CANCELLED_BEFORE_SEND_MESSAGE, 1786579301);
+         }
++
+         if ($this->secureHttpClientFactory->isGuardEnabled()) {
+             $this->secureHttpClientFactory->assertRequestAllowed(
+                 $this->requestFactory->createRequest(
+    ----------- end diff -----------
+
+Applied rules:
+ * NewlineAfterStatementRector
+
+
+3) Classes/Http/VaultHttpClient.php:344
+
+    ---------- begin diff ----------
+@@ Line 344 @@
+         $this->secureHttpClientFactory = $secureHttpClientFactory
+             ?? GeneralUtility::makeInstance(SecureHttpClientFactory::class);
+         if ($this->secureHttpClientFactory->guardMode() === 'enforce') {
+-            $trustedClone = $clonedFrom instanceof self && $clonedFrom->secureHttpClientFactory === $this->secureHttpClientFactory && $clonedFrom->innerClientIsFactoryBuilt && ($innerClient === null || $clonedFrom->innerClient === $innerClient);
+-            if ($innerClient !== null && !$trustedClone) {
++            $trustedClone = $clonedFrom instanceof self && $clonedFrom->secureHttpClientFactory === $this->secureHttpClientFactory && $clonedFrom->innerClientIsFactoryBuilt && (!$innerClient instanceof \Psr\Http\Client\ClientInterface || $clonedFrom->innerClient === $innerClient);
++            if ($innerClient instanceof \Psr\Http\Client\ClientInterface && !$trustedClone) {
+                 throw new VaultException(
+                     'Protected Vault client cannot accept an unverified inner client',
+                     1786810001,
+                 );
+             }
+-            if ($oauthManager !== null && (!$trustedClone || $clonedFrom->oauthManager !== $oauthManager)) {
++
++            if ($oauthManager instanceof OAuthTokenManager && (!$trustedClone || $clonedFrom->oauthManager !== $oauthManager)) {
+                 throw new VaultException(
+                     'Protected Vault client cannot inherit an unverified OAuth manager',
+                     1786810002,
+                 );
+             }
+-            if ($cancellableTransport !== null && (!$trustedClone || $clonedFrom->cancellableTransport !== $cancellableTransport)) {
++
++            if ($cancellableTransport instanceof CancellableTransport && (!$trustedClone || $clonedFrom->cancellableTransport !== $cancellableTransport)) {
+                 throw new VaultException(
+                     'Protected Vault client cannot inherit an unverified cancellable transport',
+                     1786810003,
+@@ Line 364 @@
+                 );
+             }
+         }
+-        $this->guardOAuthState = $clonedFrom instanceof self && $clonedFrom->secureHttpClientFactory === $this->secureHttpClientFactory && $clonedFrom->innerClientIsFactoryBuilt && ($innerClient === null || $clonedFrom->innerClient === $innerClient) ? $clonedFrom->guardOAuthState : new GuardOAuthManagerState();
++
++        $this->guardOAuthState = $clonedFrom instanceof self && $clonedFrom->secureHttpClientFactory === $this->secureHttpClientFactory && $clonedFrom->innerClientIsFactoryBuilt && (!$innerClient instanceof \Psr\Http\Client\ClientInterface || $clonedFrom->innerClient === $innerClient) ? $clonedFrom->guardOAuthState : new GuardOAuthManagerState();
+
+         // No client passed → this constructor builds it below, so it is
+         // factory-built by definition. A client that WAS passed only counts as
+@@ Line 765 @@
+                 throw $failure;
+             }
+         }
++
+         $host = strtolower($request->getUri()->getHost());
+         if ($this->secureHttpClientFactory->isHostAllowed($host)) {
+             return;
+@@ Line 1706 @@
+         if ($this->oauthManager instanceof OAuthTokenManager) {
+             return $this->oauthManager;
+         }
++
+         if ($this->guardOAuthState->manager instanceof OAuthTokenManager) {
+             return $this->guardOAuthState->manager;
+         }
++
+         $tokenFactory = $this->secureHttpClientFactory->guardTokenFactory();
+         if (!$tokenFactory instanceof SecureHttpClientFactory || $this->secureHttpClientFactory->guardMode() === 'enforce' && $tokenFactory->guardMode() !== 'enforce') {
+             throw new VaultException(
+    ----------- end diff -----------
+
+Applied rules:
+ * FlipTypeControlToUseExclusiveTypeRector
+ * NewlineAfterStatementRector
+
+
+4) Tests/Fixtures/HttpGuardBootstrap.php:13
+
+    ---------- begin diff ----------
+@@ Line 13 @@
+             if (!str_starts_with($class, $prefix)) {
+                 return;
+             }
++
+             $path = $guardLibrarySource . '/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
+             if (is_file($path)) {
+                 require_once $path;
+    ----------- end diff -----------
+
+Applied rules:
+ * NewlineAfterStatementRector
+
+
+5) Tests/Functional/Http/Fixtures/guard-router.php:8
+
+    ---------- begin diff ----------
+@@ Line 8 @@
+ while (ob_get_level() > 0) {
+     ob_end_flush();
+ }
++
+ ob_implicit_flush(true);
+ $directory = getenv('VAULT_GUARD_HITS');
+ if (!is_string($directory) || !is_dir($directory)) {
+@@ Line 15 @@
+
+     return;
+ }
++
+ $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+ $case = $_GET['case'] ?? 'unknown';
+ if (!is_string($case) || preg_match('/^[a-z0-9-]+$/D', $case) !== 1) {
+@@ Line 22 @@
+
+     return;
+ }
++
+ $body = json_decode((string) file_get_contents('php://input'), true);
+ $entry = [
+     'method' => $_SERVER['REQUEST_METHOD'] ?? '',
+@@ Line 49 @@
+
+     return;
+ }
++
+ if ($path === '/chunks') {
+     header('Content-Type: text/plain');
+     header('X-Accel-Buffering: no');
+@@ Line 60 @@
+         if (connection_aborted() !== 0) {
+             break;
+         }
++
+         usleep(100000);
+     }
+
+     return;
+ }
++
+ header('Content-Type: application/json');
+ echo '{"ok":true}';
+    ----------- end diff -----------
+
+Applied rules:
+ * NewlineAfterStatementRector
+
+
+6) Tests/Functional/Http/GuardAdapterTest.php:70
+
+    ---------- begin diff ----------
+@@ Line 70 @@
+                 'Optional HTTP Guard library is not installed',
+             );
+         }
++
+         $socket = stream_socket_server('tcp://127.0.0.1:0', $error, $message);
+         if ($socket === false) {
+-            throw new RuntimeException('Cannot reserve fixture port');
++            throw new RuntimeException('Cannot reserve fixture port', 4691035915);
+         }
++
+         $address = stream_socket_get_name($socket, false);
+         if (!\is_string($address) || ($separator = strrpos($address, ':')) === false) {
+-            throw new RuntimeException('Cannot inspect fixture port');
++            throw new RuntimeException('Cannot inspect fixture port', 5760145662);
+         }
++
+         self::$port = (int) substr($address, $separator + 1);
+         fclose($socket);
+         self::$directory = sys_get_temp_dir() . '/vault-guard-wire-' . bin2hex(random_bytes(8));
+@@ Line 99 @@
+             ['VAULT_GUARD_HITS' => self::$directory],
+         );
+         if (!\is_resource($server)) {
+-            throw new RuntimeException('Cannot start fixture server');
++            throw new RuntimeException('Cannot start fixture server', 9720338969);
+         }
++
+         self::$server = $server;
+         fclose($pipes[0]);
+         $ready = false;
+@@ Line 120 @@
+                     $ready = true;
+                     break;
+                 }
++
+                 usleep(20000);
+             }
+         } finally {
+             restore_error_handler();
+         }
++
+         if (!$ready) {
+-            throw new RuntimeException('Fixture server did not become reachable');
++            throw new RuntimeException('Fixture server did not become reachable', 5492315064);
+         }
+     }
+
+@@ Line 136 @@
+             proc_terminate(self::$server);
+             proc_close(self::$server);
+         }
++
+         if (isset(self::$directory)) {
+             foreach (self::fixtureFiles(self::$directory . '/*') as $file) {
+                 unlink($file);
+             }
++
+             rmdir(self::$directory);
+         }
++
+         parent::tearDownAfterClass();
+     }
+
+@@ Line 360 @@
+             self::assertInstanceOf(VaultException::class, $error);
+             self::assertSame([], $this->hits('disabled-blocked'));
+         }
++
+         $this->setHttpConfiguration(
+             ['allowed_hosts' => ['resource-guard.test']],
+         );
+@@ Line 429 @@
+             ->withAuthentication('fixture-resource-secret', SecretPlacement::Bearer);
+         self::assertTrue($client->supportsCancellation());
+         $signal = new class (self::$directory) implements CancellationSignalInterface {
+-            public function __construct(private string $directory) {}
++            public function __construct(private readonly string $directory) {}
+
+             public function isCancelled(): bool
+             {
+@@ Line 516 @@
+             self::assertCount(1, $hits);
+             self::assertTrue($hits[0][$field]);
+         }
++
+         $auditText = json_encode($this->audit, JSON_THROW_ON_ERROR);
+         foreach ([
+             'fixture-value',
+@@ Line 524 @@
+         ] as $value) {
+             self::assertStringNotContainsString($value, $auditText);
+         }
++
+         self::assertCount(6, $this->audit);
+     }
+
+@@ Line 616 @@
+                 $mode . '-cancel',
+             ) implements CancellationSignalInterface {
+                 public function __construct(
+-                    private string $directory,
+-                    private string $case,
++                    private readonly string $directory,
++                    private readonly string $case,
+                 ) {}
+
+                 public function isCancelled(): bool
+@@ Line 701 @@
+             /**
+              * @param Closure(DecisionEvent): void $receiver
+              */
+-            public function __construct(private Closure $receiver) {}
++            public function __construct(private readonly Closure $receiver) {}
+
+             public function report(DecisionEvent $event): void
+             {
+@@ Line 749 @@
+                         string $identifier,
+                     ) use ($secrets): string {
+                         if (!isset($secrets[$identifier])) {
+-                            throw new RuntimeException('Unexpected secret');
++                            throw new RuntimeException('Unexpected secret', 9317324877);
+                         }
+
+                         return $secrets[$identifier];
+@@ Line 756 @@
+                     },
+                 );
+         }
++
+         $audit = $this->createMock(AuditLogServiceInterface::class);
+         $audit
+             ->method('log')
+@@ Line 790 @@
+     private function hits(string $case): array
+     {
+         return array_map(
+-            static function (string $file): array {
+-                /** @var array{method:string,host:string,path:string,authorization:bool,chunks:int,api_key_header:bool,custom_header:bool,query_secret:bool,body_secret:bool} $record */
+-                return json_decode(
+-                    (string) file_get_contents($file),
+-                    true,
+-                    flags: JSON_THROW_ON_ERROR,
+-                );
+-            },
++            static fn(string $file): array => json_decode(
++                (string) file_get_contents($file),
++                true,
++                flags: JSON_THROW_ON_ERROR,
++            ),
+             self::fixtureFiles(self::$directory . '/' . $case . '-*.json'),
+         );
+     }
+@@ Line 822 @@
+     {
+         $files = glob($pattern);
+         if ($files === false) {
+-            throw new RuntimeException('Cannot inspect fixture counters');
++            throw new RuntimeException('Cannot inspect fixture counters', 3697503262);
+         }
+
+         return $files;
+    ----------- end diff -----------
+
+Applied rules:
+ * NewlineAfterStatementRector
+ * RemoveNonExistingVarAnnotationRector
+ * ClosureToArrowFunctionRector
+ * ReadOnlyPropertyRector
+ * AddErrorCodeToExceptionRector
+
+
+7) Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php:8
+
+    ---------- begin diff ----------
+@@ Line 8 @@
+
+ namespace Netresearch\NrVault\Tests\Unit\Http\Guard;
+
++use PHPUnit\Framework\MockObject\MockObject;
+ use GuzzleHttp\Psr7\Request;
+ use GuzzleHttp\Psr7\Response;
+ use Netresearch\NrVault\Audit\AuditLogServiceInterface;
+@@ Line 268 @@
+     }
+
+     /**
+-     * @return VaultGuardAdapterInterface&\PHPUnit\Framework\MockObject\MockObject
++     * @return VaultGuardAdapterInterface&MockObject
+      */
+     private function enforcedAdapter(): VaultGuardAdapterInterface
+     {
+    ----------- end diff -----------
+
+Applied rules:
+
+
+ [OK] 7 files would have been changed (dry-run) by Rector                       
+
+
+###########################################################################
+Result of rector
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+FAILURE
+###########################################################################
+

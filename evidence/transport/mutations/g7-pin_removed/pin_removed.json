@@ -1,0 +1,43 @@
+{
+    "case": "pin_removed",
+    "outcome": "policy_denied",
+    "reason": "transport_unsupported",
+    "response_label": null,
+    "resolver_calls": 1,
+    "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+    },
+    "leaf_calls": 0,
+    "before": {
+        "public-a": {
+            "tcp": 125,
+            "http": 125
+        },
+        "public-b": {
+            "tcp": 12,
+            "http": 12
+        },
+        "private": {
+            "tcp": 12,
+            "http": 12
+        }
+    },
+    "after": {
+        "public-a": {
+            "tcp": 125,
+            "http": 125
+        },
+        "public-b": {
+            "tcp": 12,
+            "http": 12
+        },
+        "private": {
+            "tcp": 13,
+            "http": 13
+        }
+    }
+}

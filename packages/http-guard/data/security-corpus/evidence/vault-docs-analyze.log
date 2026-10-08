@@ -1,0 +1,19 @@
+[0;32m=== Documentation Coverage Analysis ===[0m
+
+Project: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/nr-vault
+Documentation: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/nr-vault/Documentation
+Extraction Data: /tmp/typo3-docs-extraction-1001/d162c50eb62ed88b0a9b44d4152b9b9622b41dd839db35864e0b730cc5774577/data
+
+[0;34mAnalyzing PHP APIs...[0m
+  Classes: 1/76 documented
+[0;34mAnalyzing Configuration Options...[0m
+  Options: 36/27 documented
+[0;34mAnalyzing Extension Metadata...[0m
+  Extension: Secrets Vault v1.1.0
+
+[0;32m=== Analysis Complete ===[0m
+
+Report generated: /tmp/typo3-docs-extraction-1001/d162c50eb62ed88b0a9b44d4152b9b9622b41dd839db35864e0b730cc5774577/ANALYSIS.md
+
+[1;33mReview the analysis report for documentation gaps and recommendations.[0m
+

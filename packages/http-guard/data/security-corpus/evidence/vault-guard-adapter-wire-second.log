@@ -1,0 +1,59 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/vault/Build/FunctionalTests.xml
+
+..[31;1mE[0m[31;1mE[0m[41;37mF[0m.[31;1mE[0m.[41;37mF[0m                                                           9 / 9 (100%)
+
+Time: 00:07.598, Memory: 70.00 MB
+
+There were 3 errors:
+
+1) Netresearch\NrVault\Tests\Functional\Http\GuardAdapterTest::oauthUsesSeparateTokenOriginAndKeepsCacheAcrossTimeoutClone
+Error: Unknown named parameter $clientIdSecretIdentifier
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Functional/Http/GuardAdapterTest.php:559
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Functional/Http/GuardAdapterTest.php:198
+
+2) Netresearch\NrVault\Tests\Functional\Http\GuardAdapterTest::resourceGrantAndObserveTokenFactoryCannotAuthorizeTokenCredentials
+Error: Unknown named parameter $clientIdSecretIdentifier
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Functional/Http/GuardAdapterTest.php:559
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Functional/Http/GuardAdapterTest.php:255
+
+3) Netresearch\NrVault\Tests\Functional\Http\GuardAdapterTest::observeOauthWithoutATokenBindingKeepsOriginalTokenChecks
+Error: Unknown named parameter $clientIdSecretIdentifier
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Functional/Http/GuardAdapterTest.php:559
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Functional/Http/GuardAdapterTest.php:371
+
+--
+
+There were 2 failures:
+
+1) Netresearch\NrVault\Tests\Functional\Http\GuardAdapterTest::observeKeepsLegacyAllowlistAndSsrfPinWhileReportingWouldDeny
+Failed asserting that actual size 3 matches expected size 1.
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Functional/Http/GuardAdapterTest.php:299
+
+2) Netresearch\NrVault\Tests\Functional\Http\GuardAdapterTest::enforcedStreamingCloseStopsTheMatchingTransfer
+Failed asserting that 30 is less than 30.
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Functional/Http/GuardAdapterTest.php:447
+
+[37;41mERRORS![0m
+[37;41mTests: 9[0m[37;41m, Assertions: 28[0m[37;41m, Errors: 3[0m[37;41m, Failures: 2[0m[37;41m.[0m
+
+###########################################################################
+Result of functional
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+DBMS: sqlite
+FAILURE
+###########################################################################
+

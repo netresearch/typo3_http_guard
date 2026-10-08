@@ -1,0 +1,28 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEE                                                                 3 / 3 (100%)
+
+Time: 00:00.408, Memory: 10.00 MB
+
+There were 3 errors:
+
+1) Netresearch\HttpGuard\Tests\Unit\Policy\BinaryCidrTest::testMappedPrivateAddressMatchesIpv4Network
+Error: Class "Netresearch\HttpGuard\Cidr" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php:13
+
+2) Netresearch\HttpGuard\Tests\Unit\Policy\BinaryCidrTest::testNetworkEdgesAreBinaryAndFamilySpecific
+Error: Class "Netresearch\HttpGuard\Cidr" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php:21
+
+3) Netresearch\HttpGuard\Tests\Unit\Policy\BinaryCidrTest::testNonNetworkCanonicalCidrIsRejected
+PHPUnit\Framework\Exception: Class "Netresearch\HttpGuard\PolicyException" does not exist
+
+Caused by
+ReflectionException: Class "Netresearch\HttpGuard\PolicyException" does not exist
+
+ERRORS!
+Tests: 3, Assertions: 0, Errors: 3.

@@ -1,0 +1,25 @@
+{
+  "checked_at_utc": "2026-10-08T22:46:25.617914+00:00",
+  "sources": [
+    {
+      "file": "curl-8.22.0.html",
+      "url": "https://curl.se/docs/vuln-8.22.0.html",
+      "sha256": "6bc99963ec65c5e2c4d3fed4e63913b8b02c78001bd27c04cf892c62e707e827"
+    },
+    {
+      "file": "curl-8.22.0.json",
+      "url": "https://curl.se/docs/vuln-8.22.0.json",
+      "sha256": "3fbbd4c6d76130399b0c79cdf41758669224a91e05b7b216953f0c9728750865"
+    },
+    {
+      "file": "curl-vulnerabilities.json",
+      "url": "https://curl.se/docs/vuln.json",
+      "sha256": "62edc02f049271227a928f6416d339f85dac5c250a93eefc05b635f0f5932037"
+    },
+    {
+      "file": "ubuntu-USN-8820-1.html",
+      "url": "https://ubuntu.com/security/notices/USN-8820-1",
+      "sha256": "3dea0447272da637cee71a55d6601cef81dd1c9a33cd58c137909675317ec60f"
+    }
+  ]
+}

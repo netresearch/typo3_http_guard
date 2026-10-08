@@ -1,0 +1,8 @@
+Installing dependencies from lock file (including require-dev)
+Verifying lock file contents can be installed on current platform.
+Package operations: 2 installs, 0 updates, 0 removals
+  - Downloading rector/rector (2.7.0)
+  - Installing typo3/cms-core (v14.3.7): Extracting archive
+  - Installing rector/rector (2.7.0): Extracting archive
+    Install of typo3/cms-core failed
+    Install of rector/rector failed

@@ -1,0 +1,33 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/WireDnsQueryTest.php",
+            "mode": "create",
+            "changed": true,
+            "editsApplied": 0,
+            "beforeSha256": null,
+            "afterSha256": "e44cccd03655397c5d3e1f9219044fef70b97c1e5f1f81e7acd37afff0d561fd",
+            "changedLines": 125,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

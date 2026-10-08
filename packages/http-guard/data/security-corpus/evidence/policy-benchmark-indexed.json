@@ -1,0 +1,10 @@
+{
+    "scope": "64 IPv6 addresses \/128 configured profiles \/bound endpoint; no DNS,network,logging",
+    "runtime": "8.5.11",
+    "samples": 200,
+    "p50_ms": 1.290969,
+    "p95_ms": 1.409749,
+    "max_ms": 2.035048,
+    "target_ms": 2,
+    "target_met": true
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-08-iana-2025-10-v1",
+  "retrieved_date": "2026-10-08",
+  "retrieval_timezone": "UTC",
+  "policy_source": "http-guard-specs/specs/02-security-model.md section 5; specs/04-configuration-and-api.md section 1",
+  "data_update_policy": "Refresh deliberately at development/release time; never fetch registry data during a request; update requires review and corpus regeneration.",
+  "sources": [
+    {
+      "id": "iana-ipv4-special",
+      "url": "https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xml",
+      "page_url": "https://www.iana.org/assignments/iana-ipv4-special-registry/",
+      "file": "sources/iana-ipv4-special-registry.xml",
+      "created_date": "2009-08-19",
+      "registry_updated_date": "2025-10-09",
+      "sha256": "cf24e11f41b7d42c68debe2d18b97cac815084ec413ebb3b244f704028a16f20",
+      "evidence_kind": "downloaded primary IANA XML registry"
+    },
+    {
+      "id": "iana-ipv6-special",
+      "url": "https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xml",
+      "page_url": "https://www.iana.org/assignments/iana-ipv6-special-registry/",
+      "file": "sources/iana-ipv6-special-registry.xml",
+      "created_date": "2006-01-10",
+      "registry_updated_date": "2025-10-09",
+      "sha256": "c17f4380ba84fb2160dae82ebfd8bd155a5853cfab624ed3a9fd251638a8be02",
+      "evidence_kind": "downloaded primary IANA XML registry"
+    },
+    {
+      "id": "iana-ipv6-unicast",
+      "url": "https://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xml",
+      "page_url": "https://www.iana.org/assignments/ipv6-unicast-address-assignments/",
+      "file": "sources/iana-ipv6-unicast-address-assignments.xml",
+      "registry_updated_date": "2025-10-10",
+      "sha256": "22f9a545e020ea6b9adea9ea0276f3157e32c838682459a45bfe7760de0aefc3",
+      "evidence_kind": "downloaded primary IANA XML registry"
+    },
+    {
+      "id": "aws-imds",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html",
+      "file": "sources/aws-imds.html",
+      "article_updated_date": null,
+      "sha256": "545d26dd98e3fd43e2adc285227bc7af4d09852982460f2ac542f945c7877b2b",
+      "claims": [
+        "169.254.169.254 IPv4 metadata target",
+        "fd00:ec2::254 IPv6 metadata target"
+      ],
+      "evidence_kind": "downloaded primary provider HTML"
+    },
+    {
+      "id": "alibaba-imds",
+      "url": "https://www.alibabacloud.com/help/en/ecs/user-guide/view-instance-metadata",
+      "file": "sources/alibaba-imds.html",
+      "article_updated_date": "2026-07-17",
+      "sha256": "23079e8cff48ad597f5ce75125d21d13c0bbc63f125fc59025d0b36b89b1614c",
+      "claims": [
+        "100.100.100.200 ECS metadata target"
+      ],
+      "evidence_kind": "downloaded primary provider HTML"
+    },
+    {
+      "id": "azure-platform",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16",
+      "file": "sources/azure-platform.html",
+      "article_updated_date": "2025-07-25",
+      "resource_updated_at": "2026-03-12T22:17:00Z",
+      "sha256": "953d013137c693d5cd9dfccdc62e363b4ca6f622688990ce57c8c5dd509eb70b",
+      "claims": [
+        "168.63.129.16 Azure platform WireServer target"
+      ],
+      "scope_note": "Guard HTTP target hard deny only; does not prescribe a machine firewall rule or change Azure VM platform networking.",
+      "evidence_kind": "downloaded primary provider HTML"
+    },
+    {
+      "id": "rfc4291",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.txt",
+      "file": "sources/rfc4291.txt",
+      "publication_date": "2006-02",
+      "sha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "sections": [
+        "2.5.5.1 deprecated IPv4-compatible IPv6",
+        "2.7 multicast ff00::/8"
+      ],
+      "evidence_kind": "downloaded primary RFC text"
+    },
+    {
+      "id": "rfc1112",
+      "url": "https://www.rfc-editor.org/rfc/rfc1112.txt",
+      "file": "sources/rfc1112.txt",
+      "publication_date": "1989-08",
+      "sha256": "677f3163f4f495f2cacc95aaf718d465e897b38a6aaf8774bf4f618e04b940f8",
+      "sections": [
+        "4 IPv4 host groups multicast 224.0.0.0/4"
+      ],
+      "evidence_kind": "downloaded primary RFC text"
+    }
+  ],
+  "derived_files": [
+    {
+      "sha256": "902487802ef2f9edc3c0b1ecbcd343bb4cadf216ffddb6ebb64d2d7e9f5c585c",
+      "file": "address-rules.json"
+    },
+    {
+      "sha256": "0cc1f00d95aae1bfbfa68f4261b81e9c966af0aae8072220b8905e2b1978a452",
+      "file": "address-cases.json"
+    },
+    {
+      "sha256": "ad2f381db880524e45449272e48dd364c15abad9bb2c9ee3db69e354f8773cab",
+      "file": "uri-cases.json"
+    },
+    {
+      "sha256": "4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825",
+      "file": "endpoint-cases.json"
+    },
+    {
+      "sha256": "505451cd873a2b025c63416cf3ab4110eeb2f023553adb2bf2cf440482da9e66",
+      "file": "scenario-cases.json"
+    },
+    {
+      "sha256": "246fc8caa23fed311aa35e4c38990dc127aeea041bbbcf2f352e7d1fa1222124",
+      "file": "requirements-tests.json"
+    }
+  ]
+}

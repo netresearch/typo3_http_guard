@@ -1,0 +1,21 @@
+{
+  "all_versions": [
+    {
+      "name": "guzzlehttp/guzzle",
+      "version": "8.2.0"
+    },
+    {
+      "name": "typo3/cms-core",
+      "version": "v14.3.7"
+    },
+    {
+      "name": "netresearch/typo3-ci-workflows",
+      "version": "v1.12.0"
+    },
+    {
+      "name": "phpunit/phpunit",
+      "version": "13.4.1"
+    }
+  ],
+  "lock_content_hash": "48d5490b387307d9785f8d822191aea1"
+}

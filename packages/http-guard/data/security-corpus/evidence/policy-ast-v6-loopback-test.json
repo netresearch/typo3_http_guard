@@ -1,0 +1,31 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
+            "mode": "edit",
+            "beforeSha256": "c111fe5873ca2a0871d68dc2f2df054d68c63657f65292feb9776b2b113235f7",
+            "afterSha256": "1a79654a42247db8e37d7a97728f30071c29cfd5b4b63e5e5f67a9a6cb714b81",
+            "changed": true,
+            "changedLines": 22,
+            "printer": "format-preserving",
+            "editsApplied": 1,
+            "dryRun": false,
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "warning": "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional.",
+            "diff": "+    public function testIpv6NetworkContainingLoopbackRequiresExactHostPrefix(): void\n+    {\n+        $endpoint = [\n+            'origin' => 'https://erp.internal',\n+            'allowedCidrs' => ['::/64'],\n+            'methods' => ['POST'],\n+            'purpose' => 'loopback regression',\n+            'owner' => 'test maintainers',\n+            'allowLoopback' => true,\n+        ];\n+        try {\n+            GuardConfig::fromArray(['endpoints' => ['fixture' => $endpoint]]);\n+            self::fail('Broad IPv6 network containing loopback was accepted');\n+        } catch (PolicyException $e) {\n+            self::assertSame('configuration_invalid', $e->reasonCode());\n+        }\n+        $endpoint['allowedCidrs'] = ['::1/128'];\n+        self::assertSame(\n+            ['::1/128'],\n+            GuardConfig::fromArray(['endpoints' => ['fixture' => $endpoint]])->data['endpoints']['fixture']['allowedCidrs']\n+        );\n+    }",
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

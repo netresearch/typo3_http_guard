@@ -1,0 +1,33 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/GuardConfig.php",
+            "mode": "create",
+            "changed": true,
+            "editsApplied": 0,
+            "beforeSha256": null,
+            "afterSha256": "7cad546b14791d44487ae156f1040ceadadac304d006a302f88929e48b4b216d",
+            "changedLines": 316,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/vault/Build/FunctionalTests.xml
+
+...............                                                   15 / 15 (100%)
+
+Time: 00:03.961, Memory: 72.00 MB
+
+[30;42mOK (15 tests, 149 assertions)[0m
+
+###########################################################################
+Result of functional
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+DBMS: sqlite
+SUCCESS
+###########################################################################
+

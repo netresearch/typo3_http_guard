@@ -1,0 +1,15 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+Unable to determine path to entry script. Please check your path or set an environment variable 'TYPO3_PATH_ROOT' to your root path.
+
+###########################################################################
+Result of functional
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+DBMS: sqlite
+FAILURE
+###########################################################################
+

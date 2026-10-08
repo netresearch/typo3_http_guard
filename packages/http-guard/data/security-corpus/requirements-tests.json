@@ -1,0 +1,2295 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-08-original-v1",
+  "scope": "Exact 45 HG requirements and 84 proposed tests from the original specification; this ledger is not a test execution",
+  "source_files": [
+    {
+      "path": "http-guard-specs/specs/01-product-requirements.md",
+      "sha256": "f46a2618ae05acad4aa645f656026a08528bcbf3c120051bd84eeae13fc775b5"
+    },
+    {
+      "path": "http-guard-specs/specs/02-security-model.md",
+      "sha256": "1315c7fdf9c24c1fc9bf854429c194550eb99101458fc70d06aa54de921c4b7f"
+    },
+    {
+      "path": "http-guard-specs/specs/04-configuration-and-api.md",
+      "sha256": "0870e9dca60aa30e88dc5e3bb6b139cd7c38fe6615f6c16ff3d45e2ea92f4516"
+    },
+    {
+      "path": "http-guard-specs/specs/06-verification.md",
+      "sha256": "7360a3ac68dd2bdd9c044959557d3dc6a2b561b79fc5b34c57d77f3e492df937"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "HG-001",
+      "requirement": "Die Extension MUSS den dokumentierten ausgehenden Guzzle-Middleware-Erweiterungspunkt verwenden; keine eingehende PSR-15-Middleware.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 40
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T001"
+      ],
+      "all_matrix_test_ids": [
+        "T001"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-002",
+      "requirement": "Im geschützten Standardstack MUSS jeder tatsächliche Sendeversuch den Guard unmittelbar vor dem kontrollierten Transport passieren.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 41
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T002",
+        "T003",
+        "T004",
+        "T083"
+      ],
+      "all_matrix_test_ids": [
+        "T002",
+        "T003",
+        "T004",
+        "T083"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-003",
+      "requirement": "Der Standardmodus MUSS `enforce` sein; fehlende oder ungültige Konfiguration DARF NICHT zu offenem Versand führen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 42
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T005",
+        "T006"
+      ],
+      "all_matrix_test_ids": [
+        "T005",
+        "T006"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-004",
+      "requirement": "Neue Installationen MÜSSEN ohne interne Freigaben starten. Bestehende Projektkonfiguration DARF NICHT automatisch in Freigaben umgedeutet werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 43
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T005"
+      ],
+      "all_matrix_test_ids": [
+        "T005"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-005",
+      "requirement": "Version 1 MUSS TYPO3 13.4 und 14.3 als getrennte Testziele behandeln; konkrete Mindestpatchstände werden durch Composer und CI belegt.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 44
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T001",
+        "T041",
+        "T082"
+      ],
+      "all_matrix_test_ids": [
+        "T001",
+        "T041",
+        "T082"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-006",
+      "requirement": "Die gemeinsame Bibliothek DARF keine TYPO3- oder nr-vault-Abhängigkeit benötigen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 45
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T007"
+      ],
+      "all_matrix_test_ids": [
+        "T007"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-007",
+      "requirement": "URLs MÜSSEN vor Policy- und DNS-Auswertung einheitlich und strikt normalisiert werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 46
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T008",
+        "T010"
+      ],
+      "all_matrix_test_ids": [
+        "T008",
+        "T010"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-008",
+      "requirement": "Nur absolute HTTP-/HTTPS-Ziele mit gültigem Host und Port sind erlaubt. Userinfo, Fragmente, Zone-IDs und uneindeutige numerische IP-Formen MÜSSEN abgelehnt werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 47
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T009",
+        "T010",
+        "T011",
+        "T012"
+      ],
+      "all_matrix_test_ids": [
+        "T009",
+        "T010",
+        "T011",
+        "T012"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-009",
+      "requirement": "URI-Authority und effektiver HTTP-Host MÜSSEN übereinstimmen; beliebige Host-Header-Umleitungen sind nicht Teil des Standardprodukts.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 48
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T004",
+        "T013"
+      ],
+      "all_matrix_test_ids": [
+        "T004",
+        "T013"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-010",
+      "requirement": "IPv4, IPv6 und IPv4-mapped IPv6 MÜSSEN binär und mit derselben Policy klassifiziert werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 49
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T014",
+        "T015",
+        "T016",
+        "T020"
+      ],
+      "all_matrix_test_ids": [
+        "T014",
+        "T015",
+        "T016",
+        "T020"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-011",
+      "requirement": "Private, lokale, Link-Local-, Multicast-, Dokumentations-, Benchmark- und weitere ausgeschlossene Spezialbereiche MÜSSEN vom Public-Profil gesperrt werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 50
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T014",
+        "T015",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "all_matrix_test_ids": [
+        "T014",
+        "T015",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-012",
+      "requirement": "Zusätzliche Betreiber-Deny-CIDRs MÜSSEN möglich sein und Vorrang vor Freigaben haben.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 51
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T021"
+      ],
+      "all_matrix_test_ids": [
+        "T021"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-013",
+      "requirement": "Jeder verwendbare A-/AAAA-Kandidat MUSS geprüft werden. Ein verbotener Kandidat in einer Antwort MUSS den gesamten Versuch ablehnen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 52
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T022",
+        "T023",
+        "T028"
+      ],
+      "all_matrix_test_ids": [
+        "T022",
+        "T023",
+        "T028"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-014",
+      "requirement": "Leere, fehlerhafte oder nicht verwertbare Auflösung MUSS geschlossen scheitern; eine Endpoint-Freigabe DARF dies nicht umgehen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 53
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T024",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "all_matrix_test_ids": [
+        "T024",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-015",
+      "requirement": "Der Transport MUSS ausschließlich den validierten ConnectionPlan verwenden; eine unabhängige Zielauflösung ist verboten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 54
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T026",
+        "T027",
+        "T029",
+        "T030",
+        "T033",
+        "T084"
+      ],
+      "all_matrix_test_ids": [
+        "T026",
+        "T027",
+        "T029",
+        "T030",
+        "T033",
+        "T084"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-016",
+      "requirement": "Mehrere zulässige IPs MÜSSEN in einem gültigen Pin pro Host-Port-Paar erhalten bleiben; Dual-Stack-Fallback bleibt auf diese Menge beschränkt.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 55
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T030",
+        "T031",
+        "T032"
+      ],
+      "all_matrix_test_ids": [
+        "T030",
+        "T031",
+        "T032"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-017",
+      "requirement": "Interne Ausnahmen MÜSSEN Origin, Port, Methoden, erlaubte IP-Mengen und einen explizit gebundenen Client umfassen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 56
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T025",
+        "T027",
+        "T034",
+        "T035",
+        "T036",
+        "T037",
+        "T038",
+        "T081"
+      ],
+      "all_matrix_test_ids": [
+        "T025",
+        "T027",
+        "T034",
+        "T035",
+        "T036",
+        "T037",
+        "T038",
+        "T081"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-018",
+      "requirement": "Eine einfache URL, ein frei kopierter Request-Header oder ein vom Benutzer gesetzter Kontextstring DARF keine interne Freigabe aktivieren.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 57
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T034",
+        "T035",
+        "T036"
+      ],
+      "all_matrix_test_ids": [
+        "T034",
+        "T035",
+        "T036"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-019",
+      "requirement": "Core-Allowlist, globale Verbote und Endpoint-Policy MÜSSEN kumulativ gelten. Keine engere Policy darf durch eine breitere ersetzt werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 58
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T002",
+        "T004",
+        "T021",
+        "T039",
+        "T083"
+      ],
+      "all_matrix_test_ids": [
+        "T002",
+        "T004",
+        "T021",
+        "T039",
+        "T083"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-020",
+      "requirement": "Sicherheitsrelevante rohe Transportoptionen von Aufrufern MÜSSEN abgelehnt werden; der Guard erzeugt seine Optionen selbst.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 59
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T040",
+        "T041"
+      ],
+      "all_matrix_test_ids": [
+        "T040",
+        "T041"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-021",
+      "requirement": "Der geschützte Transport MUSS cURL/curl-multi verwenden. Fehlende Unterstützung oder unbekannte Handler MÜSSEN im Enforce-Modus vor Versand fehlschlagen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 60
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T042"
+      ],
+      "all_matrix_test_ids": [
+        "T042"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-022",
+      "requirement": "Explizite und über die Umgebung geerbte Proxykonfiguration MUSS erkannt werden. Version 1 darf nicht über einen Proxy senden und darf ihn nicht still umgehen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 61
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T043",
+        "T044"
+      ],
+      "all_matrix_test_ids": [
+        "T043",
+        "T044"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-023",
+      "requirement": "Jeder Redirect MUSS erneut vollständig geprüft werden; cURL-eigene, am Stack vorbeilaufende Redirects sind verboten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 62
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T045",
+        "T046",
+        "T048",
+        "T049",
+        "T051",
+        "T081"
+      ],
+      "all_matrix_test_ids": [
+        "T045",
+        "T046",
+        "T048",
+        "T049",
+        "T051",
+        "T081"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-024",
+      "requirement": "Redirects mit Credentials MÜSSEN derselben Origin treu bleiben; bei generischem Standardclient gilt konservativ Same-Origin.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 63
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T046",
+        "T047",
+        "T048",
+        "T050"
+      ],
+      "all_matrix_test_ids": [
+        "T046",
+        "T047",
+        "T048",
+        "T050"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-025",
+      "requirement": "Jeder Retry MUSS erneut durch die Policy laufen. Policyablehnungen sind nicht retryfähig; Retry-Budgets darf der Guard nicht selbst unbemerkt erhöhen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 64
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T052"
+      ],
+      "all_matrix_test_ids": [
+        "T052"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-026",
+      "requirement": "Connection- und DNS-Caches MÜSSEN zwischen unabhängigen Transfers isoliert sein. Gemeinsame cURL-Share-Handles sind in Version 1 verboten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 65
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T053",
+        "T054",
+        "T055",
+        "T084"
+      ],
+      "all_matrix_test_ids": [
+        "T053",
+        "T054",
+        "T055",
+        "T084"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-027",
+      "requirement": "DNS-Memoisierung DARF nur geprüfte Adressen wiederverwenden, MUSS begrenzt sein und MUSS pro Verwendung erneut gegen die aktuelle Policy prüfen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 66
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T056",
+        "T057"
+      ],
+      "all_matrix_test_ids": [
+        "T056",
+        "T057"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-028",
+      "requirement": "`stream => true` DARF NICHT auf PHP-Streams ausweichen. In Version 1 des globalen Adapters wird die Option ausdrücklich abgelehnt.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 67
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T058"
+      ],
+      "all_matrix_test_ids": [
+        "T058"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-029",
+      "requirement": "Ein bewusst integrierter curl-multi-Streamingadapter MUSS denselben Guard und dieselbe Pinning-Invariante verwenden und Cancellation erhalten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 68
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T059",
+        "T060"
+      ],
+      "all_matrix_test_ids": [
+        "T059",
+        "T060"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-030",
+      "requirement": "Bei Cancellation oder Fehlern MÜSSEN Handler, Sockets und Response-Buffer freigegeben werden; keine hängenden Hintergrundtransfers.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 69
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T060",
+        "T061"
+      ],
+      "all_matrix_test_ids": [
+        "T060",
+        "T061"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-031",
+      "requirement": "Die Guard-API MUSS typisierte, stabile Ablehnungsgründe und eine Promise-/PSR-18-konforme Fehleroberfläche anbieten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 70
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T062"
+      ],
+      "all_matrix_test_ids": [
+        "T062"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-032",
+      "requirement": "Logs DÜRFEN keine Bodies, Credentials, vollständigen URLs, Querystrings oder rohe Requests enthalten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 71
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T063",
+        "T064"
+      ],
+      "all_matrix_test_ids": [
+        "T063",
+        "T064"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-033",
+      "requirement": "Prüfmodus MUSS sichtbar als nicht schützend gekennzeichnet sein. `enforce`, `observe` und `disabled` dürfen nicht verwechselt werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 72
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T065",
+        "T066"
+      ],
+      "all_matrix_test_ids": [
+        "T065",
+        "T066"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-034",
+      "requirement": "Ein Diagnosekommando MUSS Konfiguration, Reihenfolge, Laufzeitfähigkeiten, Proxyzustand und Abdeckungsgrenzen ohne Probezugriffe anzeigen.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 73
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T067"
+      ],
+      "all_matrix_test_ids": [
+        "T067"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-035",
+      "requirement": "Eine URL-Prüfung ohne Versand MUSS möglich sein; sie ist keine später wiederverwendbare Autorisierung.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 74
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T068"
+      ],
+      "all_matrix_test_ids": [
+        "T068"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-036",
+      "requirement": "nr-vault MUSS über einen eigenen Adapter migriert werden; seine separate Factory DARF NICHT als automatisch global geschützt ausgegeben werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 75
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T069",
+        "T070"
+      ],
+      "all_matrix_test_ids": [
+        "T069",
+        "T070"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-037",
+      "requirement": "Vault-Integration MUSS Credential-Injection, Secret-Zugriffskontrolle, Auditing, OAuth-Tokenabruf, Timeout-, Streaming- und Cancellation-Verhalten erhalten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 76
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T059",
+        "T060",
+        "T070",
+        "T071",
+        "T072"
+      ],
+      "all_matrix_test_ids": [
+        "T059",
+        "T060",
+        "T070",
+        "T071",
+        "T072"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-038",
+      "requirement": "Bestehende flache Vault-Allowlist-Einträge DÜRFEN nicht automatisch globale oder uneingeschränkte interne Freigaben werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 77
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T039",
+        "T073"
+      ],
+      "all_matrix_test_ids": [
+        "T039",
+        "T073"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-039",
+      "requirement": "Sicherheitskritische Ablehnungen MÜSSEN mit einem nachweislich nicht kontaktierten Ziel getestet werden; eine Exception allein ist kein Nachweis.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 78
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T074"
+      ],
+      "all_matrix_test_ids": [
+        "T074"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-040",
+      "requirement": "Gleichzeitige Requests und langlebige CLI-Prozesse MÜSSEN auf Cross-Request-, Cache- und Policy-Lecks getestet werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 79
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T053",
+        "T054",
+        "T075"
+      ],
+      "all_matrix_test_ids": [
+        "T053",
+        "T054",
+        "T075"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-041",
+      "requirement": "Bibliotheks-, TYPO3- und Vault-Tests MÜSSEN denselben normativen Sicherheitskorpus verwenden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 80
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T074",
+        "T076"
+      ],
+      "all_matrix_test_ids": [
+        "T074",
+        "T076"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-042",
+      "requirement": "Unsupported-Konfigurationen MÜSSEN sichtbar fehlschlagen. Die Dokumentation DARF keine weitergehende Abdeckung als die getestete behaupten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 81
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T003",
+        "T006",
+        "T077"
+      ],
+      "all_matrix_test_ids": [
+        "T003",
+        "T006",
+        "T077"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-043",
+      "requirement": "Neue Defaults oder eine Entfernung des Vault-Legacyverhaltens MÜSSEN als Verhaltensänderung migriert und versioniert werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 82
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T038",
+        "T066",
+        "T073",
+        "T080"
+      ],
+      "all_matrix_test_ids": [
+        "T038",
+        "T066",
+        "T073",
+        "T080"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-044",
+      "requirement": "Ressourcenverbrauch und Zeitverhalten MÜSSEN dokumentierte Grenzen besitzen; synchrone DNS-Auflösung DARF nicht fälschlich als hart deadlinefähig dargestellt werden.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 83
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T028",
+        "T057",
+        "T078",
+        "T079",
+        "T082"
+      ],
+      "all_matrix_test_ids": [
+        "T028",
+        "T057",
+        "T078",
+        "T079",
+        "T082"
+      ],
+      "mapping_discrepancy": []
+    },
+    {
+      "id": "HG-045",
+      "requirement": "Jeder Security-Fix MUSS eine reproduzierbare Regression und eine Auswirkungsprüfung auf beide Integrationen erhalten.",
+      "source": {
+        "path": "http-guard-specs/specs/01-product-requirements.md",
+        "line": 84
+      },
+      "status": "not_verified",
+      "minimum_test_ids": [
+        "T076",
+        "T080"
+      ],
+      "all_matrix_test_ids": [
+        "T076",
+        "T080"
+      ],
+      "mapping_discrepancy": []
+    }
+  ],
+  "tests": [
+    {
+      "id": "T001",
+      "priority": "P0",
+      "requirements": [
+        "HG-001",
+        "HG-005"
+      ],
+      "scenario": "Registrierung in echten TYPO3-13.4-/14.3-Instanzen",
+      "expected_evidence": "Standard-RequestFactory ruft Boundary und Terminal genau einmal pro Versuch auf.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 23
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T002",
+      "priority": "P0",
+      "requirements": [
+        "HG-002",
+        "HG-019"
+      ],
+      "scenario": "Eigene Middleware vor/nach Core-Allowlist",
+      "expected_evidence": "Boundary ist erster, Terminal letzter eigener Eintrag; Core-Allowlist bleibt wirksam.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 24
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T003",
+      "priority": "P0",
+      "requirements": [
+        "HG-002",
+        "HG-042"
+      ],
+      "scenario": "Middleware nach Terminal / doppelte Registrierung / HandlerStack-Objekt",
+      "expected_evidence": "Konfigurationsfehler vor Zielkontakt; nichts still übersprungen.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 25
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T004",
+      "priority": "P0",
+      "requirements": [
+        "HG-002",
+        "HG-009",
+        "HG-019"
+      ],
+      "scenario": "Middleware schreibt Origin nach Core-Prüfung um",
+      "expected_evidence": "Authority-/Originfehler vor Versand; Core-Regel kann nicht umgangen werden.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 26
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T005",
+      "priority": "P0",
+      "requirements": [
+        "HG-003",
+        "HG-004"
+      ],
+      "scenario": "Leere neue Konfiguration",
+      "expected_evidence": "Enforce aktiv, keine internen Ausnahmen.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 27
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T006",
+      "priority": "P0",
+      "requirements": [
+        "HG-003",
+        "HG-042"
+      ],
+      "scenario": "Falscher Modus / unbekannte Konfigurationsfelder",
+      "expected_evidence": "Fehler, niemals implizites disabled oder allow.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 28
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T007",
+      "priority": "P1",
+      "requirements": [
+        "HG-006"
+      ],
+      "scenario": "Bibliothek ohne TYPO3 und nr-vault installieren",
+      "expected_evidence": "Komponenten und Tests funktionieren ohne Framework-Globals.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 29
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T008",
+      "priority": "P0",
+      "requirements": [
+        "HG-007"
+      ],
+      "scenario": "Kanonischer öffentlicher Host / Großschreibung / ein Endpunkt",
+      "expected_evidence": "Einheitliche Authority und identischer Pin; zulässiger hermetischer Versand.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 30
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T009",
+      "priority": "P0",
+      "requirements": [
+        "HG-008"
+      ],
+      "scenario": "file, gopher, ftp, dict, relative URL, Userinfo, Fragment",
+      "expected_evidence": "Ablehnung ohne Zielverbindung.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 31
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T010",
+      "priority": "P0",
+      "requirements": [
+        "HG-007",
+        "HG-008"
+      ],
+      "scenario": "Steuerzeichen, Backslash, Prozentkodierung im Host, leere Labels",
+      "expected_evidence": "Ablehnung vor DNS/Transport.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 32
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T011",
+      "priority": "P0",
+      "requirements": [
+        "HG-008"
+      ],
+      "scenario": "Integer-, Hex-, Oktal- und Kurz-IPv4",
+      "expected_evidence": "Nichtkanonische Form wird abgelehnt; auch keine Allowlistumgehung.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 33
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T012",
+      "priority": "P0",
+      "requirements": [
+        "HG-008"
+      ],
+      "scenario": "IPv6-Zone-ID und ungültige URI-Klammern",
+      "expected_evidence": "Ablehnung ohne Transport.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 34
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T013",
+      "priority": "P0",
+      "requirements": [
+        "HG-009"
+      ],
+      "scenario": "Abweichender Host-Header oder Port",
+      "expected_evidence": "Kein Zielkontakt; identische normalisierte Authority darf passieren.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 35
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T014",
+      "priority": "P0",
+      "requirements": [
+        "HG-010",
+        "HG-011"
+      ],
+      "scenario": "IPv4 RFC1918 und Loopback direkt",
+      "expected_evidence": "Alle Grenzwerte gesperrt; Transportspy und Zielcounter bleiben null.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 36
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T015",
+      "priority": "P0",
+      "requirements": [
+        "HG-010",
+        "HG-011"
+      ],
+      "scenario": "IPv6 ULA, Loopback, Link-Local",
+      "expected_evidence": "Gesperrt einschließlich komprimierter Schreibweisen.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 37
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T016",
+      "priority": "P0",
+      "requirements": [
+        "HG-010"
+      ],
+      "scenario": "IPv4-mapped IPv6 mit interner und öffentlicher eingebetteter IPv4",
+      "expected_evidence": "Gleiche Policy wie für die eingebettete Adresse, kein Familienbypass.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 38
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T017",
+      "priority": "P0",
+      "requirements": [
+        "HG-011"
+      ],
+      "scenario": "Cloud-Metadaten IPv4/IPv6, Unspecified, Multicast",
+      "expected_evidence": "Keine generische Endpointausnahme möglich.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 39
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T018",
+      "priority": "P0",
+      "requirements": [
+        "HG-011"
+      ],
+      "scenario": "CGNAT, Dokumentation, Benchmark, Reserved",
+      "expected_evidence": "Konservative Sperrklassen vollständig getestet.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 40
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T019",
+      "priority": "P0",
+      "requirements": [
+        "HG-011"
+      ],
+      "scenario": "NAT64, 6to4, Teredo, deprecated compatible",
+      "expected_evidence": "v1 blockiert statt Tunnelpfad falsch als public zu klassifizieren.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 41
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T020",
+      "priority": "P0",
+      "requirements": [
+        "HG-010",
+        "HG-011"
+      ],
+      "scenario": "CIDR-Grenzen aller mitgelieferten Bereiche",
+      "expected_evidence": "Erste/letzte Adresse sowie angrenzende Kandidaten gemäß Korpus.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 42
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T021",
+      "priority": "P0",
+      "requirements": [
+        "HG-012",
+        "HG-019"
+      ],
+      "scenario": "Betreiber-Deny überlappt Endpoint-Freigabe",
+      "expected_evidence": "Deny gewinnt, auch bei gültigem Grant.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 43
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T022",
+      "priority": "P0",
+      "requirements": [
+        "HG-013"
+      ],
+      "scenario": "DNS liefert public A und private AAAA",
+      "expected_evidence": "Gesamter Versuch blockiert, kein safe-only Wegfiltern.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 44
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T023",
+      "priority": "P0",
+      "requirements": [
+        "HG-013"
+      ],
+      "scenario": "DNS liefert public AAAA und private A",
+      "expected_evidence": "Gleicher Ausgang, unabhängig von Familienpräferenz.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 45
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T024",
+      "priority": "P0",
+      "requirements": [
+        "HG-014"
+      ],
+      "scenario": "NXDOMAIN, SERVFAIL, leere Antwort, ungültige Recorddaten",
+      "expected_evidence": "Kein Transportaufruf; kein ungeprüfter Systemresolverfallback.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 46
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T025",
+      "priority": "P0",
+      "requirements": [
+        "HG-014",
+        "HG-017"
+      ],
+      "scenario": "Freigegebener privater Host ohne verwertbare Auflösung",
+      "expected_evidence": "Trotz Grant ablehnen.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 47
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T026",
+      "priority": "P0",
+      "requirements": [
+        "HG-014",
+        "HG-015"
+      ],
+      "scenario": "Nur hosts/NSS bekannter Name, keine statische Zuordnung",
+      "expected_evidence": "Kein unkontrollierter Durchgriff auf den Transportresolver.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 48
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T027",
+      "priority": "P0",
+      "requirements": [
+        "HG-014",
+        "HG-015",
+        "HG-017"
+      ],
+      "scenario": "Statischer Host mit enger interner Freigabe",
+      "expected_evidence": "Exakt gepinnter interner Testendpoint erreichbar; URL-Importer bleibt gesperrt.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 49
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T028",
+      "priority": "P0",
+      "requirements": [
+        "HG-013",
+        "HG-044"
+      ],
+      "scenario": "CNAME zu privat, Schleife, mehr als acht Hops, mehr als 64 Adressen",
+      "expected_evidence": "Ablehnung; keine still abgeschnittene oder unvollständig geprüfte Antwort.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 50
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T029",
+      "priority": "P0",
+      "requirements": [
+        "HG-015"
+      ],
+      "scenario": "Resolver liefert zuerst public, anschließend private",
+      "expected_evidence": "Wire-Test zeigt ausschließlich gepinnte public Testadresse; kein zweiter Zielresolver.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 51
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T030",
+      "priority": "P0",
+      "requirements": [
+        "HG-015",
+        "HG-016"
+      ],
+      "scenario": "Pin auf nicht erreichbare Adresse",
+      "expected_evidence": "Verbindungsfehler ohne Fallback auf ungeprüftes DNS.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 52
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T031",
+      "priority": "P0",
+      "requirements": [
+        "HG-016"
+      ],
+      "scenario": "Mehrere A/AAAA, erste Adresse unerreichbar",
+      "expected_evidence": "Fallback nur innerhalb geprüfter Menge; ein Multi-Address-Pin bleibt vollständig.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 53
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T032",
+      "priority": "P0",
+      "requirements": [
+        "HG-016"
+      ],
+      "scenario": "Fehlerhafte Pinzeichenfolge / Optionsetzer schlägt fehl",
+      "expected_evidence": "Vor Zielkontakt fehlschlagen, keine Option ignorieren.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 54
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T033",
+      "priority": "P0",
+      "requirements": [
+        "HG-015"
+      ],
+      "scenario": "TLS-SNI, Zertifikatsname und Host bei Pinning",
+      "expected_evidence": "Originhost bleibt erhalten; interne IP wird nicht zum virtuellen Host.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 55
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T034",
+      "priority": "P0",
+      "requirements": [
+        "HG-017",
+        "HG-018"
+      ],
+      "scenario": "ERP-Grant gegen andere Origin, Port, Methode oder CIDR",
+      "expected_evidence": "Jede Abweichung blockiert.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 56
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T035",
+      "priority": "P0",
+      "requirements": [
+        "HG-017",
+        "HG-018"
+      ],
+      "scenario": "Benutzer setzt Profilstring, Header oder gefälschtes Grantobjekt",
+      "expected_evidence": "Keine interne Freigabe.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 57
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T036",
+      "priority": "P0",
+      "requirements": [
+        "HG-017",
+        "HG-018"
+      ],
+      "scenario": "Public-Importer ruft konfigurierten ERP-Host auf",
+      "expected_evidence": "Blockiert; Konfiguration allein erweitert Public-Profil nicht.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 58
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T037",
+      "priority": "P0",
+      "requirements": [
+        "HG-017"
+      ],
+      "scenario": "Loopback mit /32 bzw. /128 und explizitem Flag",
+      "expected_evidence": "Nur korrekt gebundener Client erlaubt; Flag oder Präfix allein reichen nicht.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 59
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T038",
+      "priority": "P0",
+      "requirements": [
+        "HG-017",
+        "HG-043"
+      ],
+      "scenario": "Ablauf eines Grants, geänderte Policyrevision, verzögert eingeplanter Versuch",
+      "expected_evidence": "Alter Grant/Plan ungültig; neue Requests nutzen neue Regeln.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 60
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T039",
+      "priority": "P0",
+      "requirements": [
+        "HG-019",
+        "HG-038"
+      ],
+      "scenario": "Core-Kontextallowlist plus neue Guardpolicy",
+      "expected_evidence": "Beide müssen erlauben; flache Vault-Liste wird nicht übernommen.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 61
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T040",
+      "priority": "P0",
+      "requirements": [
+        "HG-020"
+      ],
+      "scenario": "Caller liefert RESOLVE, CONNECT_TO, URL, SHARE, Unix-Socket, FOLLOWLOCATION",
+      "expected_evidence": "Alle verbotenen Eingriffe abweisen, bevor der Transfer beginnt.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 62
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T041",
+      "priority": "P0",
+      "requirements": [
+        "HG-020",
+        "HG-005"
+      ],
+      "scenario": "Guzzle-7/8-Optionen, verbotener delay und Promise-/PSR-7-Majors",
+      "expected_evidence": "Belegte kompatible Kombinationen verhalten sich gleich; unknown options scheitern sichtbar.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 63
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T042",
+      "priority": "P0",
+      "requirements": [
+        "HG-021"
+      ],
+      "scenario": "Kein ext-curl, kein curl-multi, inkompatible Version",
+      "expected_evidence": "Enforce verweigert statt Streams zu verwenden.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 64
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T043",
+      "priority": "P0",
+      "requirements": [
+        "HG-022"
+      ],
+      "scenario": "HTTP-/HTTPS-/SOCKS-Proxy explizit",
+      "expected_evidence": "Kein Kontakt zu Proxy oder Ziel; kein stiller Direct-Bypass.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 65
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T044",
+      "priority": "P0",
+      "requirements": [
+        "HG-022"
+      ],
+      "scenario": "Proxy über echte Umgebung inklusive Case-/NO_PROXY-Varianten; eingehender Proxy-Header separat",
+      "expected_evidence": "Echte/mehrdeutige Proxykonfiguration ablehnen; CGI-Header nicht als vertrauenswürdige Prozessumgebung behandeln.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 66
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T045",
+      "priority": "P0",
+      "requirements": [
+        "HG-023"
+      ],
+      "scenario": "Redirect auf private IP und auf private DNS-Adresse",
+      "expected_evidence": "Erster erlaubter Hop möglich, verbotener Folgehop ohne Zielkontakt.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 67
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T046",
+      "priority": "P0",
+      "requirements": [
+        "HG-023",
+        "HG-024"
+      ],
+      "scenario": "Same-Origin-Redirect und Cross-Origin-Redirect",
+      "expected_evidence": "Same-Origin erneut prüfen; Cross-Origin im Standardclient verweigern.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 68
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T047",
+      "priority": "P0",
+      "requirements": [
+        "HG-024"
+      ],
+      "scenario": "307/308 mit Body-Secret oder Custom-Auth-Header zu anderer Origin",
+      "expected_evidence": "Kein Versand an zweite Origin; keine Secret-Erkennung als Voraussetzung.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 69
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T048",
+      "priority": "P0",
+      "requirements": [
+        "HG-023",
+        "HG-024"
+      ],
+      "scenario": "Response-Middleware verändert Location nach Terminal",
+      "expected_evidence": "Boundary prüft finalen Response und verhindert verbotenen Folgehop.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 70
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T049",
+      "priority": "P0",
+      "requirements": [
+        "HG-023"
+      ],
+      "scenario": "Relative/Schema-relative Location, Downgrade, Schleife, Requestlimit oberhalb/unterhalb Betreibergrenze",
+      "expected_evidence": "Korrekte URI-Auflösung; zu großes Followlimit vor erstem Versand ablehnen, kleineres erhalten; kein unwirksames inneres Clamp.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 71
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T050",
+      "priority": "P0",
+      "requirements": [
+        "HG-024"
+      ],
+      "scenario": "Public-Fetch über mehrere öffentliche Origins",
+      "expected_evidence": "Nur GET/HEAD ohne Body/Cookie/Secrets; kleiner fester Headersatz.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 72
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T051",
+      "priority": "P0",
+      "requirements": [
+        "HG-023"
+      ],
+      "scenario": "allow_redirects=false / PSR-18-Send",
+      "expected_evidence": "30x als Response zurückgeben; kein versehentlicher Follow.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 73
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T052",
+      "priority": "P0",
+      "requirements": [
+        "HG-025"
+      ],
+      "scenario": "Retrymiddleware wiederholt Request nach Netzwerkfehler",
+      "expected_evidence": "Jeder Versuch neuer Plan; keine automatische Wiederholung von Policyablehnungen.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 74
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T053",
+      "priority": "P0",
+      "requirements": [
+        "HG-026",
+        "HG-040"
+      ],
+      "scenario": "Parallel gleicher Host/Port mit unterschiedlicher Policy und IP",
+      "expected_evidence": "Keine DNS-/Connection-/Grant-Kontamination; Zielcounter getrennt.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 75
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T054",
+      "priority": "P0",
+      "requirements": [
+        "HG-026",
+        "HG-040"
+      ],
+      "scenario": "Langlebiger Worker, erst interne Freigabe dann public Request",
+      "expected_evidence": "Keine wiederverwendete privilegierte Verbindung oder Allow-Entscheidung.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 76
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T055",
+      "priority": "P0",
+      "requirements": [
+        "HG-026"
+      ],
+      "scenario": "Externes/persistentes Transport-Sharing",
+      "expected_evidence": "Ablehnung; interne Handler bleiben isoliert.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 77
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T056",
+      "priority": "P0",
+      "requirements": [
+        "HG-027"
+      ],
+      "scenario": "Memo-Hit bei geänderter Policy",
+      "expected_evidence": "Adressen erneut bewerten; Cache ist keine Freigabe.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 78
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T057",
+      "priority": "P1",
+      "requirements": [
+        "HG-027",
+        "HG-044"
+      ],
+      "scenario": "TTL 0, Ablauf, Kapazität, negative Antwort",
+      "expected_evidence": "Kein unbeschränkter Speicher; negative/TTL0-Antwort nicht positiv cachen.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 79
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T058",
+      "priority": "P0",
+      "requirements": [
+        "HG-028"
+      ],
+      "scenario": "stream=true trotz installiertem cURL",
+      "expected_evidence": "Explizite Ablehnung im globalen Enforcepfad, kein StreamHandler.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 80
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T059",
+      "priority": "P0",
+      "requirements": [
+        "HG-029",
+        "HG-037"
+      ],
+      "scenario": "Vault-sendStreaming mit gültigem Pin",
+      "expected_evidence": "Erste Bytes vor Transferende, keine stream-Option, identischer Credentialpfad.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 81
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T060",
+      "priority": "P0",
+      "requirements": [
+        "HG-029",
+        "HG-030",
+        "HG-037"
+      ],
+      "scenario": "Cancellation vor Send und während Transfer",
+      "expected_evidence": "Keine neue Verbindung bzw. aktiver Socket geschlossen; Audit konsistent.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 82
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T061",
+      "priority": "P0",
+      "requirements": [
+        "HG-030"
+      ],
+      "scenario": "Body-close, teilweiser Read, Transferfehler, Exception im Callback",
+      "expected_evidence": "Keine Hintergrundverbindung/Lease-Leaks; unvollständige Antwort nicht als Erfolg.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 83
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T062",
+      "priority": "P0",
+      "requirements": [
+        "HG-031"
+      ],
+      "scenario": "Synchrone und asynchrone Policyfehler, PSR-18",
+      "expected_evidence": "Stabile Reason-Codes, passende Exceptioninterfaces, abgelehnte Promise.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 84
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T063",
+      "priority": "P0",
+      "requirements": [
+        "HG-032"
+      ],
+      "scenario": "Secrets in Query, Body, Headers, Zertifikatspfaden und Exception",
+      "expected_evidence": "Kein Secret in Guardlogs oder Metriklabels.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 85
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T064",
+      "priority": "P1",
+      "requirements": [
+        "HG-032"
+      ],
+      "scenario": "Loggerausfall und Denial-Flood",
+      "expected_evidence": "Ablehnung bleibt Ablehnung; Rate-Limit und Zähler funktionieren.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 86
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T065",
+      "priority": "P0",
+      "requirements": [
+        "HG-033"
+      ],
+      "scenario": "Observe mit verbotenem Ziel / unsupported Transport",
+      "expected_evidence": "would_deny bzw. unverifiable, Status nicht protected; Verhalten bleibt explizit ungeschützt.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 87
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T066",
+      "priority": "P1",
+      "requirements": [
+        "HG-033",
+        "HG-043"
+      ],
+      "scenario": "Disabled und bewusster Rollback",
+      "expected_evidence": "Status sichtbar reduziert; kein automatischer Moduswechsel.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 88
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T067",
+      "priority": "P1",
+      "requirements": [
+        "HG-034"
+      ],
+      "scenario": "Doctor bei normalem/fehlerhaftem Stack",
+      "expected_evidence": "Korrekte Capabilities, Modus und Grenzen; kein Probe-HTTP.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 89
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T068",
+      "priority": "P1",
+      "requirements": [
+        "HG-035"
+      ],
+      "scenario": "Policy-check mit und ohne Endpoint",
+      "expected_evidence": "DNS optional, kein HTTP; Ergebnis kein wiederverwendbares Senderecht.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 90
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T069",
+      "priority": "P0",
+      "requirements": [
+        "HG-036"
+      ],
+      "scenario": "Nur globale Extension installiert, Vault unverändert",
+      "expected_evidence": "Diagnose behauptet keine Vault-Abdeckung.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 91
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T070",
+      "priority": "P0",
+      "requirements": [
+        "HG-036",
+        "HG-037"
+      ],
+      "scenario": "Vault mit bewusst integriertem Adapter",
+      "expected_evidence": "Normal, Token, Cancellation und Streaming nutzen gemeinsame Policy.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 92
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T071",
+      "priority": "P0",
+      "requirements": [
+        "HG-037"
+      ],
+      "scenario": "OAuth-Tokenendpoint intern, Resourceendpoint extern und umgekehrt",
+      "expected_evidence": "Beide Requests getrennt autorisiert/gepinnt; kein Grantübertrag.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 93
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T072",
+      "priority": "P0",
+      "requirements": [
+        "HG-037"
+      ],
+      "scenario": "Vault-Authentifizierungsarten und redigiertes Audit",
+      "expected_evidence": "Identische Fachfunktion ohne Credentialexport oder Logging.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 94
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T073",
+      "priority": "P0",
+      "requirements": [
+        "HG-038",
+        "HG-043"
+      ],
+      "scenario": "Legacyreport zu flachen/verschachtelten allowed_hosts",
+      "expected_evidence": "Keine aktiven Regeln automatisch erzeugt; fehlende Angaben sichtbar.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 95
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T074",
+      "priority": "P0",
+      "requirements": [
+        "HG-039",
+        "HG-041"
+      ],
+      "scenario": "Mutation: Prüfung deaktiviert oder Pin entfernt",
+      "expected_evidence": "Kritischer Test wird rot; Spy plus Wire-Nachweis statt nur Exceptions.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 96
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T075",
+      "priority": "P0",
+      "requirements": [
+        "HG-040"
+      ],
+      "scenario": "Parallelität mit wechselnden DNS-Antworten und Grants",
+      "expected_evidence": "Verbindung jedes Transfers bleibt in dessen eigener geprüfter Menge.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 97
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T076",
+      "priority": "P1",
+      "requirements": [
+        "HG-041",
+        "HG-045"
+      ],
+      "scenario": "Gemeinsamer Regressionstest in Library, TYPO3 und Vault",
+      "expected_evidence": "Gleicher Sicherheitsfall in allen integrierten Pfaden nachweisbar.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 98
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T077",
+      "priority": "P0",
+      "requirements": [
+        "HG-042"
+      ],
+      "scenario": "Fremder SDK, direkter cURL, requesteigener Handler",
+      "expected_evidence": "Als außerhalb Scope dokumentiert; keine falsche globale Garantie.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 99
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T078",
+      "priority": "P1",
+      "requirements": [
+        "HG-044"
+      ],
+      "scenario": "DNS-Blackhole / langer Resolvercall",
+      "expected_evidence": "Gemessene Grenze dokumentiert; kein behaupteter unterbrechbarer Timeout ohne Implementierung.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 100
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T079",
+      "priority": "P1",
+      "requirements": [
+        "HG-044"
+      ],
+      "scenario": "Klassifikation mit 64 Adressen/128 Profilen, große Responses",
+      "expected_evidence": "p95-Ziel auf Referenzsystem; Body nicht durch Guard dupliziert.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 101
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T080",
+      "priority": "P0",
+      "requirements": [
+        "HG-043",
+        "HG-045"
+      ],
+      "scenario": "Abhängigkeitsupdate ändert Handler/Raw-Optionen",
+      "expected_evidence": "Gesamter P0-Korpus läuft; keine Freigabe durch Composer-Auflösung allein.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 102
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T081",
+      "priority": "P0",
+      "requirements": [
+        "HG-023",
+        "HG-017"
+      ],
+      "scenario": "POST->GET Redirect bei eingeschränktem Methodenprofil",
+      "expected_evidence": "Neue Methode erneut prüfen; keine still erweiterte Methodenfreigabe.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 103
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T082",
+      "priority": "P1",
+      "requirements": [
+        "HG-005",
+        "HG-044"
+      ],
+      "scenario": "TLS mit eigener CA, mTLS, verify=false nach Policy",
+      "expected_evidence": "Konfiguration erhalten bzw. explizit verweigert, niemals still verändert.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 104
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T083",
+      "priority": "P0",
+      "requirements": [
+        "HG-002",
+        "HG-019"
+      ],
+      "scenario": "Reihenfolge Request-/Response-Middlewares",
+      "expected_evidence": "Jede bestehende Middleware genau wie vereinbart ausgeführt; keine verdeckt übersprungen.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 105
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    },
+    {
+      "id": "T084",
+      "priority": "P0",
+      "requirements": [
+        "HG-015",
+        "HG-026"
+      ],
+      "scenario": "cURL-Alt-Svc, HSTS, automatische Protokoll-/Routenwechsel",
+      "expected_evidence": "Kein aktivierbarer ungeprüfter Alternativpfad im isolierten Adapter.",
+      "source": {
+        "path": "http-guard-specs/specs/06-verification.md",
+        "line": 106
+      },
+      "implementation_status": "not_implemented",
+      "execution_status": "not_run",
+      "evidence": []
+    }
+  ]
+}

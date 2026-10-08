@@ -1,0 +1,31 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/tests/Integration/DnsPolicyTransportTest.php",
+            "mode": "edit",
+            "beforeSha256": "badf002ea51d97bca4c7b6ea5998400ea3fe291e17f8f9f978a3dc9e569b3062",
+            "afterSha256": "0d193d5e1134b839db9e86b886eaba3c8ac2e5a408723f59adeec0044a003d69",
+            "changed": true,
+            "changedLines": 36,
+            "printer": "format-preserving",
+            "editsApplied": 3,
+            "dryRun": false,
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "warning": "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional.",
+            "diff": "+    public function testCurlOptionSetFailureCannotStartAnUnpinnedTransfer(): void\n+    {\n+        $result = $this->isolatedProbe('curl_option_failure');\n+        self::assertSame(1, $result['transport']['nativeConstructed']);\n+        self::assertGreaterThan(0, $result['forcedResolveSetFailures']);\n+    }\n+    public function testUnknownComposerTupleIsRejectedBeforeNativeOrWireContact(): void\n+    {\n+        $result = $this->isolatedProbe('dependency_mismatch');\n+        self::assertSame('transport_unsupported', $result['reasonCode']);\n+        self::assertSame(0, $result['transport']['nativeConstructed']);\n+    }\n+    private function isolatedProbe(string $mode): array\n+    {\n+        $process = proc_open(\n+            [\n+                PHP_BINARY,\n+                __DIR__ . '/Fixtures/IsolatedCapabilityProbe.php',\n+                $mode,\n+            ],\n+            [['pipe', 'r'], ['pipe', 'w'], ['pipe', 'w']],\n+            $pipes\n+        );\n+        self::assertIsResource($process);\n+        fclose($pipes[0]);\n+        $stdout = stream_get_contents($pipes[1]);\n+        $stderr = stream_get_contents($pipes[2]);\n+        fclose($pipes[1]);\n+        fclose($pipes[2]);\n+        self::assertSame(0, proc_close($process), $stderr . ' ' . $stdout);\n+        $result = json_decode($stdout, true, 512, JSON_THROW_ON_ERROR);\n+        self::assertSame('PASS', $result['status']);\n+        self::assertTrue($result['zeroNewTcpAndHttp']);\n+        self::assertSame(0, $result['transport']['active']);\n+        return $result;\n+    }",
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

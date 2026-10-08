@@ -1,0 +1,26 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyResolverBoundariesTest.php",
+            "mode": "create",
+            "beforeSha256": null,
+            "afterSha256": "c11383273972e8d20fe9f8c1d80e153c296730a05d6f6888275b9bc445596456",
+            "changed": true,
+            "changedLines": 197,
+            "printer": "canonical",
+            "editsApplied": 0,
+            "dryRun": false,
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

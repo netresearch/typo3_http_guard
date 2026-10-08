@@ -1,0 +1,25 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/vault/Build/phpunit.xml
+Random Seed:   1791495861
+
+[33;1mN[0m.[33;1mN[0m.                                                                4 / 4 (100%)
+
+Time: 00:00.022, Memory: 12.00 MB
+
+[30;43mOK, but there were issues![0m
+[30;43mTests: 4[0m[30;43m, Assertions: 18[0m[30;43m, PHPUnit Notices: 2[0m[30;43m.[0m
+
+###########################################################################
+Result of unit
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+SUCCESS
+###########################################################################
+

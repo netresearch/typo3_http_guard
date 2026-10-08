@@ -1,0 +1,234 @@
+{
+  "status": "PASS",
+  "major": 7,
+  "image": null,
+  "phpBinary": "/usr/bin/php",
+  "command": [
+    "/usr/bin/php",
+    "-n",
+    "/tmp/http-guard-kan-8VPVrN/dns-transport/tests/Integration/Fixtures/IsolatedCapabilityProbe.php",
+    "missing_curl"
+  ],
+  "exitCode": 0,
+  "stderr": "",
+  "child": {
+    "status": "PASS",
+    "mode": "missing_curl",
+    "errorClass": "Netresearch\\HttpGuard\\PolicyException",
+    "errorFile": "/tmp/http-guard-kan-8VPVrN/dns-transport/src/Transport/RuntimeSupport.php",
+    "errorLine": 14,
+    "reasonCode": "transport_unsupported",
+    "forcedResolveSetFailures": 0,
+    "transport": {
+      "created": 0,
+      "released": 0,
+      "active": 0,
+      "peak": 0,
+      "nativeConstructed": 0
+    },
+    "zeroNewTcpAndHttp": true,
+    "counterSource": "parent_only",
+    "curlLoaded": false,
+    "curlMultiAvailable": false,
+    "guzzleMetadataVersion": "7.15.5",
+    "phpVersion": "8.5.11",
+    "before": [],
+    "after": []
+  },
+  "zeroNewTcpAndHttp": true,
+  "parentBefore": {
+    "public-a": {
+      "tcp": 131,
+      "closed": 131,
+      "requests": 131,
+      "active": 0,
+      "max_active": 3,
+      "aborted": 8,
+      "paths": {
+        "/echo": 79,
+        "/redirect-same": 8,
+        "/redirect-cross": 8,
+        "/slow": 16,
+        "/loop": 8,
+        "/redirect-downgrade": 4,
+        "/redirect-private-ip": 4,
+        "/large": 4
+      },
+      "sni": [
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test"
+      ],
+      "clients": [
+        [
+          [
+            [
+              "commonName",
+              "HTTP Guard SYNTHETIC TEST CLIENT"
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              "commonName",
+              "HTTP Guard SYNTHETIC TEST CLIENT"
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              "commonName",
+              "HTTP Guard SYNTHETIC TEST CLIENT"
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              "commonName",
+              "HTTP Guard SYNTHETIC TEST CLIENT"
+            ]
+          ]
+        ]
+      ]
+    },
+    "public-b": {
+      "tcp": 14,
+      "closed": 14,
+      "requests": 14,
+      "active": 0,
+      "max_active": 2,
+      "aborted": 0,
+      "paths": {
+        "/echo": 4,
+        "/slow": 8,
+        "http://guard.test:8090/echo": 2
+      },
+      "sni": [],
+      "clients": []
+    },
+    "private": {
+      "tcp": 20,
+      "closed": 20,
+      "requests": 20,
+      "active": 0,
+      "max_active": 1,
+      "aborted": 0,
+      "paths": {
+        "/echo": 16,
+        "/redirect-post-get": 4
+      },
+      "sni": [],
+      "clients": []
+    }
+  },
+  "parentAfter": {
+    "public-a": {
+      "tcp": 131,
+      "closed": 131,
+      "requests": 131,
+      "active": 0,
+      "max_active": 3,
+      "aborted": 8,
+      "paths": {
+        "/echo": 79,
+        "/redirect-same": 8,
+        "/redirect-cross": 8,
+        "/slow": 16,
+        "/loop": 8,
+        "/redirect-downgrade": 4,
+        "/redirect-private-ip": 4,
+        "/large": 4
+      },
+      "sni": [
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test",
+        "guard.test"
+      ],
+      "clients": [
+        [
+          [
+            [
+              "commonName",
+              "HTTP Guard SYNTHETIC TEST CLIENT"
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              "commonName",
+              "HTTP Guard SYNTHETIC TEST CLIENT"
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              "commonName",
+              "HTTP Guard SYNTHETIC TEST CLIENT"
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              "commonName",
+              "HTTP Guard SYNTHETIC TEST CLIENT"
+            ]
+          ]
+        ]
+      ]
+    },
+    "public-b": {
+      "tcp": 14,
+      "closed": 14,
+      "requests": 14,
+      "active": 0,
+      "max_active": 2,
+      "aborted": 0,
+      "paths": {
+        "/echo": 4,
+        "/slow": 8,
+        "http://guard.test:8090/echo": 2
+      },
+      "sni": [],
+      "clients": []
+    },
+    "private": {
+      "tcp": 20,
+      "closed": 20,
+      "requests": 20,
+      "active": 0,
+      "max_active": 1,
+      "aborted": 0,
+      "paths": {
+        "/echo": 16,
+        "/redirect-post-get": 4
+      },
+      "sni": [],
+      "clients": []
+    }
+  },
+  "fixtureSha256": "135014836ccbd1fb62a11768ff8aa12be6d43add2e5e75572d74b1af0a6958c1"
+}

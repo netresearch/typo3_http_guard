@@ -1,0 +1,668 @@
+{
+  "+p_xml": "version='1.0' encoding='UTF-8'",
+  "+p_xml-stylesheet": "type=\"text/xsl\" href=\"ipv6-unicast-address-assignments.xsl\"",
+  "+p_xml-model": "href=\"ipv6-unicast-address-assignments.rng\" schematypens=\"http://relaxng.org/ns/structure/1.0\" ",
+  "registry": {
+    "+@xmlns": "http://www.iana.org/assignments",
+    "+@id": "ipv6-unicast-address-assignments",
+    "title": "IPv6 Global Unicast Address Space",
+    "category": "Internet Protocol version 6 (IPv6) Global Unicast Allocations",
+    "updated": "2025-10-10",
+    "xref": {
+      "+@type": "rfc",
+      "+@data": "rfc7249"
+    },
+    "registration_rule": {
+      "+content": [
+        "Allocations to RIRs are made in line with the Global Policy published at",
+        ". \nAll other assignments require IETF Review."
+      ],
+      "xref": {
+        "+@type": "uri",
+        "+@data": "http://www.icann.org/en/resources/policy/global-addressing"
+      }
+    },
+    "description": {
+      "+content": [
+        "The allocation of Internet Protocol version 6 (IPv6) unicast address space is listed\nhere. References to the various other registries detailing the use of the IPv6 address\nspace can be found in the",
+        "."
+      ],
+      "xref": {
+        "+content": "IPv6 Address Space",
+        "+@type": "registry",
+        "+@data": "ipv6-address-space"
+      }
+    },
+    "note": [
+      {
+        "+content": [
+          "The assignable Global Unicast Address space is defined in",
+          "as the address block \ndefined by the prefix 2000::/3.",
+          "was later obsoleted by",
+          ". All address \nspace in this block not listed in the table below is reserved by IANA for future \nallocation."
+        ],
+        "xref": [
+          {
+            "+@type": "rfc",
+            "+@data": "rfc3513"
+          },
+          {
+            "+@type": "rfc",
+            "+@data": "rfc3513"
+          },
+          {
+            "+@type": "rfc",
+            "+@data": "rfc4291"
+          }
+        ]
+      },
+      {
+        "+content": "IPv6 Global Unicast Address Assignments",
+        "+@title": "Formerly known as"
+      }
+    ],
+    "record": [
+      {
+        "+@date": "1999-07-01",
+        "prefix": "2001::/23",
+        "description": "IANA",
+        "whois": "whois.iana.org",
+        "status": "ALLOCATED",
+        "notes": {
+          "+content": [
+            "This range has been partially allocated. See",
+            "for details."
+          ],
+          "xref": {
+            "+content": "IPv6 Special-Purpose Address Space",
+            "+@type": "registry",
+            "+@data": "iana-ipv6-special-registry"
+          }
+        }
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "2001:200::/23",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "2001:400::/23",
+        "description": "ARIN",
+        "whois": "whois.arin.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.arin.net/registry",
+            "http://rdap.arin.net/registry"
+          ]
+        },
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "2001:600::/23",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2002-11-02",
+        "prefix": "2001:800::/22",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": "2001:800::/23 was allocated on 2002-05-02. The more recent \n      allocation (2002-11-02) incorporates the previous allocation."
+      },
+      {
+        "+@date": "2002-05-02",
+        "prefix": "2001:c00::/23",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": {
+          "+content": [
+            "2001:db8::/32 is reserved for Documentation",
+            ". See",
+            "for details."
+          ],
+          "xref": [
+            {
+              "+@type": "rfc",
+              "+@data": "rfc3849"
+            },
+            {
+              "+content": "IPv6 Special-Purpose Address Space",
+              "+@type": "registry",
+              "+@data": "iana-ipv6-special-registry"
+            }
+          ]
+        }
+      },
+      {
+        "+@date": "2003-01-01",
+        "prefix": "2001:e00::/23",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2002-11-01",
+        "prefix": "2001:1200::/23",
+        "description": "LACNIC",
+        "whois": "whois.lacnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.lacnic.net/rdap/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2003-07-01",
+        "prefix": "2001:1400::/22",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": "2001:1400::/23 was allocated on 2003-02-01. The more recent \n      allocation (2003-07-01) incorporates the previous allocation."
+      },
+      {
+        "+@date": "2003-04-01",
+        "prefix": "2001:1800::/23",
+        "description": "ARIN",
+        "whois": "whois.arin.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.arin.net/registry",
+            "http://rdap.arin.net/registry"
+          ]
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-01-01",
+        "prefix": "2001:1a00::/23",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-05-04",
+        "prefix": "2001:1c00::/22",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2019-03-12",
+        "prefix": "2001:2000::/19",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": "2001:2000::/20, 2001:3000::/21, and 2001:3800::/22 \n      were allocated on 2004-05-04. The more recent allocation \n      (2019-03-12) incorporates all these previous allocations."
+      },
+      {
+        "+@date": "2004-06-11",
+        "prefix": "2001:4000::/23",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-06-01",
+        "prefix": "2001:4200::/23",
+        "description": "AFRINIC",
+        "whois": "whois.afrinic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.afrinic.net/rdap/",
+            "http://rdap.afrinic.net/rdap/"
+          ]
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-06-11",
+        "prefix": "2001:4400::/23",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-08-17",
+        "prefix": "2001:4600::/23",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-08-24",
+        "prefix": "2001:4800::/23",
+        "description": "ARIN",
+        "whois": "whois.arin.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.arin.net/registry",
+            "http://rdap.arin.net/registry"
+          ]
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-10-15",
+        "prefix": "2001:4a00::/23",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-12-17",
+        "prefix": "2001:4c00::/23",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-09-10",
+        "prefix": "2001:5000::/20",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-11-30",
+        "prefix": "2001:8000::/19",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2004-11-30",
+        "prefix": "2001:a000::/20",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2006-03-08",
+        "prefix": "2001:b000::/20",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2001-02-01",
+        "prefix": "2002::/16",
+        "description": "6to4",
+        "whois": null,
+        "status": "ALLOCATED",
+        "notes": {
+          "+content": [
+            "See",
+            "for details."
+          ],
+          "xref": {
+            "+content": "IPv6 Special-Purpose Address Space",
+            "+@type": "registry",
+            "+@data": "iana-ipv6-special-registry"
+          }
+        }
+      },
+      {
+        "+@date": "2005-01-12",
+        "prefix": "2003::/18",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2006-10-03",
+        "prefix": "2400::/12",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": "2400::/19 was allocated on 2005-05-20. 2400:2000::/19 was allocated on 2005-07-08. 2400:4000::/21 was \nallocated on 2005-08-08.  2404::/23 was allocated on 2006-01-19. The more recent allocation (2006-10-03) \nincorporates all these previous allocations."
+      },
+      {
+        "+@date": "2024-11-01",
+        "prefix": "2410::/12",
+        "description": "APNIC",
+        "whois": "whois.apnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.apnic.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2006-10-03",
+        "prefix": "2600::/12",
+        "description": "ARIN",
+        "whois": "whois.arin.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.arin.net/registry",
+            "http://rdap.arin.net/registry"
+          ]
+        },
+        "notes": "2600::/22, 2604::/22, 2608::/22 and 260c::/22 were allocated on 2005-04-19. The more \nrecent allocation (2006-10-03) incorporates all these previous allocations."
+      },
+      {
+        "+@date": "2005-11-17",
+        "prefix": "2610::/23",
+        "description": "ARIN",
+        "whois": "whois.arin.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.arin.net/registry",
+            "http://rdap.arin.net/registry"
+          ]
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2006-09-12",
+        "prefix": "2620::/23",
+        "description": "ARIN",
+        "whois": "whois.arin.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.arin.net/registry",
+            "http://rdap.arin.net/registry"
+          ]
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2019-11-06",
+        "prefix": "2630::/12",
+        "description": "ARIN",
+        "whois": "whois.arin.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.arin.net/registry",
+            "http://rdap.arin.net/registry"
+          ]
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2006-10-03",
+        "prefix": "2800::/12",
+        "description": "LACNIC",
+        "whois": "whois.lacnic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.lacnic.net/rdap/"
+        },
+        "notes": "2800::/23 was allocated on 2005-11-17. The more recent allocation (2006-10-03) incorporates the \nprevious allocation."
+      },
+      {
+        "+@date": "2006-10-03",
+        "prefix": "2a00::/12",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": "2a00::/21 was originally allocated on 2005-04-19. 2a01::/23 was allocated on 2005-07-14. \n2a01::/16 (incorporating the 2a01::/23) was allocated on 2005-12-15. The more recent allocation \n(2006-10-03) incorporates these previous allocations."
+      },
+      {
+        "+@date": "2019-06-05",
+        "prefix": "2a10::/12",
+        "description": "RIPE NCC",
+        "whois": "whois.ripe.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": "https://rdap.db.ripe.net/"
+        },
+        "notes": null
+      },
+      {
+        "+@date": "2006-10-03",
+        "prefix": "2c00::/12",
+        "description": "AFRINIC",
+        "whois": "whois.afrinic.net",
+        "status": "ALLOCATED",
+        "rdap": {
+          "server": [
+            "https://rdap.afrinic.net/rdap/",
+            "http://rdap.afrinic.net/rdap/"
+          ]
+        },
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "2d00::/8",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "2e00::/7",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3000::/5",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3800::/6",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3c00::/7",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3e00::/8",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3f00::/9",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3f80::/10",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3fc0::/11",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3fe0::/12",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3ff0::/13",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3ff8::/14",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "1999-07-01",
+        "prefix": "3ffc::/15",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": null
+      },
+      {
+        "+@date": "2008-04",
+        "prefix": "3ffe::/16",
+        "description": "IANA",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": {
+          "+content": [
+            "3ffe:831f::/32 was used for Teredo in some old but widely distributed networking stacks. This usage is deprecated in favor of 2001::/32, which was allocated for the purpose in",
+            ".\n3ffe::/16 and 5f00::/8 were used for the 6bone, but returned",
+            "."
+          ],
+          "xref": [
+            {
+              "+@type": "rfc",
+              "+@data": "rfc4380"
+            },
+            {
+              "+@type": "rfc",
+              "+@data": "rfc5156"
+            }
+          ]
+        }
+      },
+      {
+        "+@date": "2024-07-23",
+        "prefix": "3fff::/20",
+        "description": "Documentation",
+        "whois": null,
+        "status": "RESERVED",
+        "notes": {
+          "+content": [
+            "See",
+            "for details."
+          ],
+          "xref": {
+            "+content": "IPv6 Special-Purpose Address Space",
+            "+@type": "registry",
+            "+@data": "iana-ipv6-special-registry"
+          }
+        }
+      }
+    ],
+    "people": null
+  }
+}

@@ -1,0 +1,48 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/TargetNormalizer.php",
+            "mode": "create",
+            "changed": true,
+            "editsApplied": 0,
+            "beforeSha256": null,
+            "afterSha256": "64ab36cb7705b6a387fdc72a9fe83d3a8cd21c31411e94d18aeefff4c37e476e",
+            "changedLines": 111,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/AddressClassifier.php",
+            "mode": "create",
+            "changed": true,
+            "editsApplied": 0,
+            "beforeSha256": null,
+            "afterSha256": "7db2dfd350e92091c7cdba256bd225076603bdb166bcc63db75a194259695d56",
+            "changedLines": 88,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

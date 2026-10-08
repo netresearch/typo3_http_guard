@@ -1,0 +1,20 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/phpunit.xml
+
+E                                                                   1 / 1 (100%)
+
+Time: 00:00.417, Memory: 10.00 MB
+
+There was 1 error:
+
+1) Netresearch\HttpGuard\Tests\Unit\Policy\WireDnsQueryTest::testDefaultNameserverConfigurationIsOnlyNeededAtActualDnsQuery
+Netresearch\HttpGuard\PolicyException: Outbound HTTP policy: configuration_invalid
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/WireDnsQuery.php:164
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/WireDnsQuery.php:25
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/WireDnsQueryTest.php:127
+
+ERRORS!
+Tests: 1, Assertions: 0, Errors: 1.

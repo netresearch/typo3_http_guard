@@ -1,0 +1,42 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/WireDnsQuery.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "5f7dc0055f1d0a457897e96081505ab32f53f476d3f8b6fcbe4f6644dec7215d",
+            "afterSha256": "a61f9d2f6aa2b6545c934c9e819ef8969c989e06a800dc8229f5fe7a2e9c9d6f",
+            "changedLines": 2,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "effects": [
+                {
+                    "replaced": 1,
+                    "operation": "replace_expression"
+                }
+            ],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

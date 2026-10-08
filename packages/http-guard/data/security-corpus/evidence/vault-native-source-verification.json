@@ -1,0 +1,9 @@
+{
+  "source_commit": "5a070c396a614e5b05f63d79fa564c3748cf21eb",
+  "source": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/nr-vault",
+  "runtime": "/tmp/http-guard-kan-8VPVrN/vault",
+  "tracked_file_count": 898,
+  "tracked_manifest_sha256": "c337617ca91013b2cb6b4abf5f2564b6ff3fb2eab07f4fabf336156513d3815e",
+  "mismatches": [],
+  "runtime_git_note": "Empty runtime repository initialized only for dependency hook installation; source identity established by tracked-file hashes, not runtime HEAD"
+}

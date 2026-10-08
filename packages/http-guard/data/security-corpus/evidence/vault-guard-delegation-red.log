@@ -1,0 +1,51 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/vault/Build/phpunit.xml
+Random Seed:   1791495830
+
+[41;37mF[0m[41;37mF[0m[31;1mE[0m[41;37mF[0m                                                                4 / 4 (100%)
+
+Time: 00:00.036, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Netresearch\NrVault\Tests\Unit\Http\Guard\SecureHttpClientFactoryGuardTest::hostOnlyAndFullRequestPreflightsDelegateWithoutInventingAMethod
+Error: Call to undefined method Netresearch\NrVault\Http\SecureHttpClientFactory::assertRequestAllowed()
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php:126
+
+--
+
+There were 3 failures:
+
+1) Netresearch\NrVault\Tests\Unit\Http\Guard\SecureHttpClientFactoryGuardTest::cancellableBindingKeepsItsClientTickerAndPlatformBudgetsTogether
+Failed asserting that two variables reference the same object.
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php:85
+
+2) Netresearch\NrVault\Tests\Unit\Http\Guard\SecureHttpClientFactoryGuardTest::protectedCapabilityFailureCannotReturnTheLegacyFallback
+Failed asserting that two variables reference the same object.
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php:105
+
+3) Netresearch\NrVault\Tests\Unit\Http\Guard\SecureHttpClientFactoryGuardTest::explicitAdapterReceivesTheSameHardenedPlatformDefaults
+Failed asserting that two variables reference the same object.
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php:57
+
+[37;41mERRORS![0m
+[37;41mTests: 4[0m[37;41m, Assertions: 5[0m[37;41m, Errors: 1[0m[37;41m, Failures: 3[0m[37;41m.[0m
+
+###########################################################################
+Result of unit
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+FAILURE
+###########################################################################
+

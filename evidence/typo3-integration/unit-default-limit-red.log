@@ -1,0 +1,50 @@
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/phpunit.xml
+
+....[31;1mE[0m[41;37mF[0m[41;37mF[0m....[41;37mF[0m.                                                     13 / 13 (100%)
+
+Time: 00:00.066, Memory: 30.00 MB
+
+There was 1 error:
+
+1) Netresearch\NrHttpGuard\Tests\Unit\DiagnosticBootStateTest::testDiagnosticFailureLeavesAFirstDenialBeforeAnyLeaf
+ArgumentCountError: Too few arguments to function TYPO3\CMS\Core\Core\Event\BootCompletedEvent::__construct(), 0 passed in /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticBootStateTest.php on line 59 and exactly 1 expected
+
+/tmp/http-guard-kan-8VPVrN/vault/.Build/vendor/typo3/cms-core/Classes/Core/Event/BootCompletedEvent.php:25
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticBootStateTest.php:59
+
+--
+
+There were 3 failures:
+
+1) Netresearch\NrHttpGuard\Tests\Unit\DiagnosticBootStateTest::testOrdinaryBootstrapStillThrows
+Failed asserting that exception of type "ArgumentCountError" matches expected exception "Netresearch\HttpGuard\PolicyException". Message was: "Too few arguments to function TYPO3\CMS\Core\Core\Event\BootCompletedEvent::__construct(), 0 passed in /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticBootStateTest.php on line 86 and exactly 1 expected" at
+/tmp/http-guard-kan-8VPVrN/vault/.Build/vendor/typo3/cms-core/Classes/Core/Event/BootCompletedEvent.php:25
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticBootStateTest.php:86
+.
+
+2) Netresearch\NrHttpGuard\Tests\Unit\DiagnosticBootStateTest::testPolicyFailuresAreNotAcceptedAsDiagnosticBootstrapFailures
+Failed asserting that exception of type "ArgumentCountError" matches expected exception "Netresearch\HttpGuard\PolicyException". Message was: "Too few arguments to function TYPO3\CMS\Core\Core\Event\BootCompletedEvent::__construct(), 0 passed in /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticBootStateTest.php on line 98 and exactly 1 expected" at
+/tmp/http-guard-kan-8VPVrN/vault/.Build/vendor/typo3/cms-core/Classes/Core/Event/BootCompletedEvent.php:25
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticBootStateTest.php:98
+.
+
+3) Netresearch\NrHttpGuard\Tests\Unit\GlobalHttpDefaultsTest::testLargerPolicyLimitDoesNotWeakenTheCoreDefault
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 [
+     'allow_redirects' => Array &1 [
+-        'max' => 5,
++        'max' => 10,
+         'strict' => false,
+     ],
+ ]
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/GlobalHttpDefaultsTest.php:62
+
+[37;41mERRORS![0m
+[37;41mTests: 13[0m[37;41m, Assertions: 31[0m[37;41m, Errors: 1[0m[37;41m, Failures: 3[0m[37;41m.[0m

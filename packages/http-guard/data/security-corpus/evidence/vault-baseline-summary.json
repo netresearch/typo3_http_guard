@@ -1,0 +1,64 @@
+{
+  "scope": "Legacy nr-vault HTTP baseline only; not HG acceptance",
+  "source_verification": {
+    "source_commit": "5a070c396a614e5b05f63d79fa564c3748cf21eb",
+    "source": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/nr-vault",
+    "runtime": "/tmp/http-guard-kan-8VPVrN/vault",
+    "tracked_file_count": 898,
+    "tracked_manifest_sha256": "c337617ca91013b2cb6b4abf5f2564b6ff3fb2eab07f4fabf336156513d3815e",
+    "mismatches": [],
+    "runtime_git_note": "Empty runtime repository initialized only for dependency hook installation; source identity established by tracked-file hashes, not runtime HEAD"
+  },
+  "resolved_dependencies": {
+    "all_versions": [
+      {
+        "name": "guzzlehttp/guzzle",
+        "version": "8.2.0"
+      },
+      {
+        "name": "typo3/cms-core",
+        "version": "v14.3.7"
+      },
+      {
+        "name": "netresearch/typo3-ci-workflows",
+        "version": "v1.12.0"
+      },
+      {
+        "name": "phpunit/phpunit",
+        "version": "13.4.1"
+      }
+    ],
+    "lock_content_hash": "48d5490b387307d9785f8d822191aea1"
+  },
+  "runs": [
+    {
+      "source_commit": "5a070c396a614e5b05f63d79fa564c3748cf21eb",
+      "command": "Build/Scripts/runTests.sh -s unit Tests/Unit/Http",
+      "exit_code": 0,
+      "test_status": "passed_legacy_http_unit_baseline",
+      "runtime": "native Linux source copy",
+      "dependency_setup_note": "Dependencies complete; CaptainHook post-install hook setup failed because configured bootstrap was absent; production config unchanged",
+      "test_count": 534,
+      "assertion_count": 2132,
+      "seconds": 4.384,
+      "php_runtime": "8.5.10",
+      "phpunit": "13.4.1",
+      "new_guard_evidence": false
+    },
+    {
+      "source_commit": "5a070c396a614e5b05f63d79fa564c3748cf21eb",
+      "command": "Build/Scripts/runTests.sh -s functional Tests/Functional/Http",
+      "exit_code": 0,
+      "test_status": "passed_legacy_http_functional_baseline",
+      "runtime": "native Linux source copy",
+      "test_count": 28,
+      "assertion_count": 287,
+      "seconds": 25.734,
+      "php_runtime": "8.5.10",
+      "phpunit": "13.4.1",
+      "database": "sqlite",
+      "new_guard_evidence": false
+    }
+  ],
+  "hg_tests_passed_by_this_baseline": 0
+}

@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-08-iana-2025-10-v1",
+  "purpose": "Narrow endpoint and hard-deny composition fixtures; allowed policy cases still require fresh resolution and controlled transport.",
+  "network_access": "none; fixtures only",
+  "cases": [
+    {
+      "id": "EP-RFC1918-NARROW",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "10.23.4.12",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "10.23.4.12/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "allow_policy_only",
+        "reason": null,
+        "no_network_assertion": false
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-ULA-NARROW",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "fd12:3456:789a::12",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "fd12:3456:789a::/64"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "allow_policy_only",
+        "reason": null,
+        "no_network_assertion": false
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-CGNAT-NARROW",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "100.100.100.199",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "100.100.100.0/24"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "allow_policy_only",
+        "reason": null,
+        "no_network_assertion": false
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-PRIVATE-UNBOUND",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "10.23.4.12",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "10.23.4.12/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": false,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-PRIVATE-WIDE",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "10.23.4.12",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "10.0.0.0/8"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "configuration_invalid",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-ULA-WIDE",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "fd12:3456:789a::12",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "fc00::/7"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "configuration_invalid",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-CGNAT-METADATA",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "100.100.100.200",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "100.100.100.0/24"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-ULA-METADATA",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "fd00:ec2::254",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "fd00:ec2::/64"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-AZURE-PUBLIC-METADATA",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "168.63.129.16",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "168.63.129.16/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-LINKLOCAL-METADATA",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "169.254.169.254",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "169.254.169.254/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-LOOPBACK-FLAG-HOST",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "127.0.0.1",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "127.0.0.1/32"
+        ],
+        "allow_loopback": true,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "allow_policy_only",
+        "reason": null,
+        "no_network_assertion": false
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-LOOPBACK-NO-FLAG",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "127.0.0.1",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "127.0.0.1/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "configuration_invalid",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-LOOPBACK-WIDE",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "127.0.0.1",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "127.0.0.0/24"
+        ],
+        "allow_loopback": true,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "configuration_invalid",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-LOOPBACK-V6",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "::1",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "::1/128"
+        ],
+        "allow_loopback": true,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "allow_policy_only",
+        "reason": null,
+        "no_network_assertion": false
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-LOOPBACK-V6-NO-FLAG",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "::1",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "::1/128"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "configuration_invalid",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-DOC-NO-GENERIC-EXCEPTION",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "192.0.2.1",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "192.0.2.1/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-UNALLOCATED-V6",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "3000::1",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "3000::/64"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-HARD-OPERATOR-DENY",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "10.23.4.12",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "10.23.4.12/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": [
+          "10.23.4.12/32"
+        ]
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "address_forbidden",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-OTHER-IP-IN-ANSWER",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "10.23.4.13",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "10.23.4.12/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "endpoint_mismatch",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "EP-PUBLIC-OUTSIDE-GRANT",
+      "type": "endpoint_policy",
+      "input": {
+        "address": "8.8.8.8",
+        "origin": "https://synthetic-endpoint.test:8443",
+        "method": "POST",
+        "allowed_cidrs": [
+          "10.23.4.12/32"
+        ],
+        "allow_loopback": false,
+        "registry_issued_client_binding": true,
+        "operator_denied_cidrs": []
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "endpoint_mismatch",
+        "no_network_assertion": true
+      },
+      "test_ids": [
+        "T017",
+        "T021",
+        "T027",
+        "T034",
+        "T036",
+        "T037"
+      ],
+      "execution_status": "not_run"
+    }
+  ]
+}

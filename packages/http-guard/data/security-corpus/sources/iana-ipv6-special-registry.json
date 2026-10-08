@@ -1,0 +1,565 @@
+{
+  "+p_xml": "version='1.0' encoding='UTF-8'",
+  "+p_xml-stylesheet": "type=\"text/xsl\" href=\"iana-ipv6-special-registry.xsl\"",
+  "+p_xml-model": "href=\"iana-ipv6-special-registry.rng\" schematypens=\"http://relaxng.org/ns/structure/1.0\" ",
+  "registry": {
+    "+@xmlns": "http://www.iana.org/assignments",
+    "+@id": "iana-ipv6-special-registry",
+    "title": "IPv6 Special-Purpose Address Space",
+    "category": "Internet Protocol version 6 (IPv6) Global Unicast Allocations",
+    "created": "2006-01-10",
+    "updated": "2025-10-09",
+    "registry": {
+      "+@id": "iana-ipv6-special-registry-1",
+      "title": "IPv6 Special-Purpose Address Space",
+      "xref": [
+        {
+          "+@type": "rfc",
+          "+@data": "rfc4773"
+        },
+        {
+          "+@type": "rfc",
+          "+@data": "rfc6890"
+        },
+        {
+          "+@type": "rfc",
+          "+@data": "rfc8190"
+        }
+      ],
+      "registration_rule": "IETF Review",
+      "note": [
+        "Address prefixes listed in the Special-Purpose Address Registry are\nnot guaranteed routability in any particular local or global context.\n\nThe IPv4 and IPv6 Special-Purpose Address Registries maintain the following \ninformation regarding each entry:\n\n   o  Address Block - A block of IPv4 or IPv6 addresses that has been\n      registered for a special purpose.\n\n   o  Name - A descriptive name for the special-purpose address block.\n\n   o  RFC - The RFC through which the special-purpose address block was\n      requested.\n\n   o  Allocation Date - The date upon which the special-purpose address\n      block was allocated.\n\n   o  Termination Date - The date upon which the allocation is to be\n      terminated.  This field is applicable for limited-use allocations\n      only.\n\n   o  Source - A boolean value indicating whether an address from the\n      allocated special-purpose address block is valid when used as the\n      source address of an IP datagram that transits two devices.\n\n   o  Destination - A boolean value indicating whether an address from\n      the allocated special-purpose address block is valid when used as\n      the destination address of an IP datagram that transits two\n      devices.\n\n   o  Forwardable - A boolean value indicating whether a router may\n      forward an IP datagram whose destination address is drawn from the\n      allocated special-purpose address block between external\n      interfaces.\n\n   o  Globally Reachable - A boolean value indicating whether an IP \n      datagram whose destination address is drawn from the allocated \n      special-purpose address block is forwardable beyond a specified \n      administrative domain.\n\n   o  Reserved-by-Protocol - A boolean value indicating whether the\n      special-purpose address block is reserved by IP, itself.  This\n      value is \"TRUE\" if the RFC that created the special-purpose\n      address block requires all compliant IP implementations to behave\n      in a special way when processing packets either to or from\n      addresses contained by the address block.\n\nIf the value of \"Destination\" is FALSE, the values of \"Forwardable\" and \n\"Globally Reachable\" must also be false.",
+        {
+          "+content": [
+            "IANA IPv6 Special-Purpose Address Registry (pursuant to",
+            ")"
+          ],
+          "+@title": "Formerly known as",
+          "xref": {
+            "+content": "IESG decision",
+            "+@type": "uri",
+            "+@data": "https://datatracker.ietf.org/doc/narrative-minutes-interim-2025-iesg-18-202509181400/"
+          }
+        }
+      ],
+      "record": [
+        {
+          "address": "::1/128",
+          "name": "Loopback Address",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc4291"
+            }
+          },
+          "allocation": "2006-02",
+          "source": "False",
+          "destination": "False",
+          "forwardable": "False",
+          "global": "False",
+          "reserved": "True"
+        },
+        {
+          "address": "::/128",
+          "name": "Unspecified Address",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc4291"
+            }
+          },
+          "allocation": "2006-02",
+          "source": "True",
+          "destination": "False",
+          "forwardable": "False",
+          "global": "False",
+          "reserved": "True"
+        },
+        {
+          "address": "::ffff:0:0/96",
+          "name": "IPv4-mapped Address",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc4291"
+            }
+          },
+          "allocation": "2006-02",
+          "source": "False",
+          "destination": "False",
+          "forwardable": "False",
+          "global": "False",
+          "reserved": "True"
+        },
+        {
+          "address": "64:ff9b::/96",
+          "name": "IPv4-IPv6 Translat.",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc6052"
+            }
+          },
+          "allocation": "2010-10",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "address": "64:ff9b:1::/48",
+          "name": "IPv4-IPv6 Translat.",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc8215"
+            }
+          },
+          "allocation": "2017-06",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "False",
+          "reserved": "False"
+        },
+        {
+          "address": "100::/64",
+          "name": "Discard-Only Address Block",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc6666"
+            }
+          },
+          "allocation": "2012-06",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "False",
+          "reserved": "False"
+        },
+        {
+          "address": "100:0:0:1::/64",
+          "name": "Dummy IPv6 Prefix",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc9780"
+            }
+          },
+          "allocation": "2025-04",
+          "source": "True",
+          "destination": "False",
+          "forwardable": "False",
+          "global": "False",
+          "reserved": "False"
+        },
+        {
+          "address": "2001::/23",
+          "name": "IETF Protocol Assignments",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc2928"
+            }
+          },
+          "allocation": "2000-09",
+          "source": {
+            "+content": "False",
+            "xref": {
+              "+@type": "note",
+              "+@data": "1"
+            }
+          },
+          "destination": {
+            "+content": "False",
+            "xref": {
+              "+@type": "note",
+              "+@data": "1"
+            }
+          },
+          "forwardable": {
+            "+content": "False",
+            "xref": {
+              "+@type": "note",
+              "+@data": "1"
+            }
+          },
+          "global": {
+            "+content": "False",
+            "xref": {
+              "+@type": "note",
+              "+@data": "1"
+            }
+          },
+          "reserved": "False"
+        },
+        {
+          "address": "2001::/32",
+          "name": "TEREDO",
+          "spec": {
+            "xref": [
+              {
+                "+@type": "rfc",
+                "+@data": "rfc4380"
+              },
+              {
+                "+@type": "rfc",
+                "+@data": "rfc8190"
+              }
+            ]
+          },
+          "allocation": "2006-01",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": {
+            "+content": "N/A",
+            "xref": {
+              "+@type": "note",
+              "+@data": "2"
+            }
+          },
+          "reserved": "False"
+        },
+        {
+          "+@date": "2015-10-29",
+          "address": "2001:1::1/128",
+          "name": "Port Control Protocol Anycast",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc7723"
+            }
+          },
+          "allocation": "2015-10",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "+@date": "2017-02-23",
+          "address": "2001:1::2/128",
+          "name": "Traversal Using Relays around NAT Anycast",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc8155"
+            }
+          },
+          "allocation": "2017-02",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "+@date": "2024-04-12",
+          "+@updated": "2024-09-05",
+          "address": "2001:1::3/128",
+          "name": "DNS-SD Service Registration Protocol Anycast",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc9665"
+            }
+          },
+          "allocation": "2024-04",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "address": "2001:2::/48",
+          "name": "Benchmarking",
+          "spec": {
+            "xref": [
+              {
+                "+@type": "rfc",
+                "+@data": "rfc5180"
+              },
+              {
+                "+@type": "rfc-errata",
+                "+@data": "1752"
+              }
+            ]
+          },
+          "allocation": "2008-04",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "False",
+          "reserved": "False"
+        },
+        {
+          "+@date": "2014-12-17",
+          "address": "2001:3::/32",
+          "name": "AMT",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc7450"
+            }
+          },
+          "allocation": "2014-12",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "+@date": "2014-12-17",
+          "address": "2001:4:112::/48",
+          "name": "AS112-v6",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc7535"
+            }
+          },
+          "allocation": "2014-12",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "address": "2001:10::/28",
+          "name": "Deprecated (previously ORCHID)",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc4843"
+            }
+          },
+          "allocation": "2007-03",
+          "termination": "2014-03",
+          "source": null,
+          "destination": null,
+          "forwardable": null,
+          "global": null,
+          "reserved": null
+        },
+        {
+          "+@date": "2014-07-22",
+          "address": "2001:20::/28",
+          "name": "ORCHIDv2",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc7343"
+            }
+          },
+          "allocation": "2014-07",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "+@date": "2022-12-08",
+          "+@updated": "2022-12-13",
+          "address": "2001:30::/28",
+          "name": "Drone Remote ID Protocol Entity Tags (DETs) Prefix",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc9374"
+            }
+          },
+          "allocation": "2022-12",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "address": "2001:db8::/32",
+          "name": "Documentation",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc3849"
+            }
+          },
+          "allocation": "2004-07",
+          "source": "False",
+          "destination": "False",
+          "forwardable": "False",
+          "global": "False",
+          "reserved": "False"
+        },
+        {
+          "address": {
+            "+content": "2002::/16",
+            "xref": {
+              "+@type": "note",
+              "+@data": "3"
+            }
+          },
+          "name": "6to4",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc3056"
+            }
+          },
+          "allocation": "2001-02",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": {
+            "+content": "N/A",
+            "xref": {
+              "+@type": "note",
+              "+@data": "3"
+            }
+          },
+          "reserved": "False"
+        },
+        {
+          "address": "2620:4f:8000::/48",
+          "name": "Direct Delegation AS112 Service",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc7534"
+            }
+          },
+          "allocation": "2011-05",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "True",
+          "reserved": "False"
+        },
+        {
+          "address": "3fff::/20",
+          "name": "Documentation",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc9637"
+            }
+          },
+          "allocation": "2024-07",
+          "source": "False",
+          "destination": "False",
+          "forwardable": "False",
+          "global": "False",
+          "reserved": "False"
+        },
+        {
+          "address": "5f00::/16",
+          "name": "Segment Routing (SRv6) SIDs",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc9602"
+            }
+          },
+          "allocation": "2024-04",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": "False",
+          "reserved": "False"
+        },
+        {
+          "address": "fc00::/7",
+          "name": "Unique-Local",
+          "spec": {
+            "xref": [
+              {
+                "+@type": "rfc",
+                "+@data": "rfc4193"
+              },
+              {
+                "+@type": "rfc",
+                "+@data": "rfc8190"
+              }
+            ]
+          },
+          "allocation": "2005-10",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "True",
+          "global": {
+            "+content": "False",
+            "xref": {
+              "+@type": "note",
+              "+@data": "4"
+            }
+          },
+          "reserved": "False"
+        },
+        {
+          "address": "fe80::/10",
+          "name": "Link-Local Unicast",
+          "spec": {
+            "xref": {
+              "+@type": "rfc",
+              "+@data": "rfc4291"
+            }
+          },
+          "allocation": "2006-02",
+          "source": "True",
+          "destination": "True",
+          "forwardable": "False",
+          "global": "False",
+          "reserved": "True"
+        }
+      ]
+    },
+    "footnote": [
+      {
+        "+content": "Unless allowed by a more specific allocation.",
+        "+@anchor": "1"
+      },
+      {
+        "+content": [
+          "See Section 5 of",
+          "for details."
+        ],
+        "+@anchor": "2",
+        "xref": {
+          "+@type": "rfc",
+          "+@data": "rfc4380"
+        }
+      },
+      {
+        "+content": [
+          "See",
+          "for details."
+        ],
+        "+@anchor": "3",
+        "xref": {
+          "+@type": "rfc",
+          "+@data": "rfc3056"
+        }
+      },
+      {
+        "+content": [
+          "See",
+          "for more details on the routability of Unique-Local addresses.  The Unique-Local prefix is \ndrawn from the IPv6 Global Unicast Address range, but is specified as not globally routed."
+        ],
+        "+@anchor": "4",
+        "xref": {
+          "+@type": "rfc",
+          "+@data": "rfc4193"
+        }
+      }
+    ],
+    "people": null
+  }
+}

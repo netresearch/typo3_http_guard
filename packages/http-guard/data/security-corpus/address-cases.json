@@ -1,0 +1,6497 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-08-iana-2025-10-v1",
+  "purpose": "Every bundled special, supplemental and provider range has binary first/last/adjacent fixtures. Expected values are proposed normative test data, not run results.",
+  "network_access": "none; fixtures only",
+  "cases": [
+    {
+      "id": "ADDR-001-first",
+      "type": "address_classification",
+      "anchor_cidr": "0.0.0.0/8",
+      "position": "first",
+      "input": {
+        "address": "0.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "0.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "0.0.0.0/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-001-last",
+      "type": "address_classification",
+      "anchor_cidr": "0.0.0.0/8",
+      "position": "last",
+      "input": {
+        "address": "0.255.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "0.255.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "0.0.0.0/8",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-001-after",
+      "type": "address_classification",
+      "anchor_cidr": "0.0.0.0/8",
+      "position": "after",
+      "input": {
+        "address": "1.0.0.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "1.0.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-002-first",
+      "type": "address_classification",
+      "anchor_cidr": "0.0.0.0/32",
+      "position": "first",
+      "input": {
+        "address": "0.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "0.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "0.0.0.0/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-002-last",
+      "type": "address_classification",
+      "anchor_cidr": "0.0.0.0/32",
+      "position": "last",
+      "input": {
+        "address": "0.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "0.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "0.0.0.0/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-002-after",
+      "type": "address_classification",
+      "anchor_cidr": "0.0.0.0/32",
+      "position": "after",
+      "input": {
+        "address": "0.0.0.1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "0.0.0.1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "0.0.0.0/8",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-003-first",
+      "type": "address_classification",
+      "anchor_cidr": "10.0.0.0/8",
+      "position": "first",
+      "input": {
+        "address": "10.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "private_ipv4",
+        "normalized_address": "10.0.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "10.0.0.0/8",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-003-last",
+      "type": "address_classification",
+      "anchor_cidr": "10.0.0.0/8",
+      "position": "last",
+      "input": {
+        "address": "10.255.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "private_ipv4",
+        "normalized_address": "10.255.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "10.0.0.0/8",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-003-before",
+      "type": "address_classification",
+      "anchor_cidr": "10.0.0.0/8",
+      "position": "before",
+      "input": {
+        "address": "9.255.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "9.255.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-003-after",
+      "type": "address_classification",
+      "anchor_cidr": "10.0.0.0/8",
+      "position": "after",
+      "input": {
+        "address": "11.0.0.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "11.0.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-004-first",
+      "type": "address_classification",
+      "anchor_cidr": "100.64.0.0/10",
+      "position": "first",
+      "input": {
+        "address": "100.64.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "shared_cgnat",
+        "normalized_address": "100.64.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "100.64.0.0/10",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-004-last",
+      "type": "address_classification",
+      "anchor_cidr": "100.64.0.0/10",
+      "position": "last",
+      "input": {
+        "address": "100.127.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "shared_cgnat",
+        "normalized_address": "100.127.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "100.64.0.0/10",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-004-before",
+      "type": "address_classification",
+      "anchor_cidr": "100.64.0.0/10",
+      "position": "before",
+      "input": {
+        "address": "100.63.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "100.63.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-004-after",
+      "type": "address_classification",
+      "anchor_cidr": "100.64.0.0/10",
+      "position": "after",
+      "input": {
+        "address": "100.128.0.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "100.128.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-005-first",
+      "type": "address_classification",
+      "anchor_cidr": "127.0.0.0/8",
+      "position": "first",
+      "input": {
+        "address": "127.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "loopback",
+        "normalized_address": "127.0.0.0",
+        "endpoint_rule": "requires_bound_endpoint_allowLoopback_and_host_prefix",
+        "matched_cidr": "127.0.0.0/8",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-005-last",
+      "type": "address_classification",
+      "anchor_cidr": "127.0.0.0/8",
+      "position": "last",
+      "input": {
+        "address": "127.255.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "loopback",
+        "normalized_address": "127.255.255.255",
+        "endpoint_rule": "requires_bound_endpoint_allowLoopback_and_host_prefix",
+        "matched_cidr": "127.0.0.0/8",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-005-before",
+      "type": "address_classification",
+      "anchor_cidr": "127.0.0.0/8",
+      "position": "before",
+      "input": {
+        "address": "126.255.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "126.255.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-005-after",
+      "type": "address_classification",
+      "anchor_cidr": "127.0.0.0/8",
+      "position": "after",
+      "input": {
+        "address": "128.0.0.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "128.0.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-006-first",
+      "type": "address_classification",
+      "anchor_cidr": "169.254.0.0/16",
+      "position": "first",
+      "input": {
+        "address": "169.254.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "link_local",
+        "normalized_address": "169.254.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "169.254.0.0/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-006-last",
+      "type": "address_classification",
+      "anchor_cidr": "169.254.0.0/16",
+      "position": "last",
+      "input": {
+        "address": "169.254.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "link_local",
+        "normalized_address": "169.254.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "169.254.0.0/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-006-before",
+      "type": "address_classification",
+      "anchor_cidr": "169.254.0.0/16",
+      "position": "before",
+      "input": {
+        "address": "169.253.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "169.253.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-006-after",
+      "type": "address_classification",
+      "anchor_cidr": "169.254.0.0/16",
+      "position": "after",
+      "input": {
+        "address": "169.255.0.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "169.255.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-007-first",
+      "type": "address_classification",
+      "anchor_cidr": "172.16.0.0/12",
+      "position": "first",
+      "input": {
+        "address": "172.16.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "private_ipv4",
+        "normalized_address": "172.16.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "172.16.0.0/12",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-007-last",
+      "type": "address_classification",
+      "anchor_cidr": "172.16.0.0/12",
+      "position": "last",
+      "input": {
+        "address": "172.31.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "private_ipv4",
+        "normalized_address": "172.31.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "172.16.0.0/12",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-007-before",
+      "type": "address_classification",
+      "anchor_cidr": "172.16.0.0/12",
+      "position": "before",
+      "input": {
+        "address": "172.15.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "172.15.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-007-after",
+      "type": "address_classification",
+      "anchor_cidr": "172.16.0.0/12",
+      "position": "after",
+      "input": {
+        "address": "172.32.0.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "172.32.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-008-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.0/24",
+      "position": "first",
+      "input": {
+        "address": "192.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.0/29",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-008-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.0/24",
+      "position": "last",
+      "input": {
+        "address": "192.0.0.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-008-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.0/24",
+      "position": "before",
+      "input": {
+        "address": "191.255.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "191.255.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-008-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.0/24",
+      "position": "after",
+      "input": {
+        "address": "192.0.1.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.0.1.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-009-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.0/29",
+      "position": "first",
+      "input": {
+        "address": "192.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.0/29",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-009-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.0/29",
+      "position": "last",
+      "input": {
+        "address": "192.0.0.7"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.7",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.0/29",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-009-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.0/29",
+      "position": "before",
+      "input": {
+        "address": "191.255.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "191.255.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-009-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.0/29",
+      "position": "after",
+      "input": {
+        "address": "192.0.0.8"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.8",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.8/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-010-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.8/32",
+      "position": "first",
+      "input": {
+        "address": "192.0.0.8"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.8",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.8/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-010-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.8/32",
+      "position": "last",
+      "input": {
+        "address": "192.0.0.8"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.8",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.8/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-010-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.8/32",
+      "position": "before",
+      "input": {
+        "address": "192.0.0.7"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.7",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.0/29",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-010-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.8/32",
+      "position": "after",
+      "input": {
+        "address": "192.0.0.9"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.9",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.9/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-011-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.9/32",
+      "position": "first",
+      "input": {
+        "address": "192.0.0.9"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.9",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.9/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-011-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.9/32",
+      "position": "last",
+      "input": {
+        "address": "192.0.0.9"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.9",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.9/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-011-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.9/32",
+      "position": "before",
+      "input": {
+        "address": "192.0.0.8"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.8",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.8/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-011-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.9/32",
+      "position": "after",
+      "input": {
+        "address": "192.0.0.10"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.10",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.10/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-012-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.10/32",
+      "position": "first",
+      "input": {
+        "address": "192.0.0.10"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.10",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.10/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-012-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.10/32",
+      "position": "last",
+      "input": {
+        "address": "192.0.0.10"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.10",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.10/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-012-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.10/32",
+      "position": "before",
+      "input": {
+        "address": "192.0.0.9"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.9",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.9/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-012-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.10/32",
+      "position": "after",
+      "input": {
+        "address": "192.0.0.11"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.11",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-013-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.170/32",
+      "position": "first",
+      "input": {
+        "address": "192.0.0.170"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.170",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.170/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-013-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.170/32",
+      "position": "last",
+      "input": {
+        "address": "192.0.0.170"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.170",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.170/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-013-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.170/32",
+      "position": "before",
+      "input": {
+        "address": "192.0.0.169"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.169",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-013-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.170/32",
+      "position": "after",
+      "input": {
+        "address": "192.0.0.171"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.171",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.171/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-014-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.171/32",
+      "position": "first",
+      "input": {
+        "address": "192.0.0.171"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.171",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.171/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-014-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.171/32",
+      "position": "last",
+      "input": {
+        "address": "192.0.0.171"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.171",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.171/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-014-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.171/32",
+      "position": "before",
+      "input": {
+        "address": "192.0.0.170"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.170",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.170/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-014-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.0.171/32",
+      "position": "after",
+      "input": {
+        "address": "192.0.0.172"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.172",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-015-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.2.0/24",
+      "position": "first",
+      "input": {
+        "address": "192.0.2.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "192.0.2.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.2.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-015-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.2.0/24",
+      "position": "last",
+      "input": {
+        "address": "192.0.2.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "192.0.2.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.2.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-015-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.2.0/24",
+      "position": "before",
+      "input": {
+        "address": "192.0.1.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.0.1.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-015-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.0.2.0/24",
+      "position": "after",
+      "input": {
+        "address": "192.0.3.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.0.3.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-016-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.31.196.0/24",
+      "position": "first",
+      "input": {
+        "address": "192.31.196.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.31.196.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.31.196.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-016-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.31.196.0/24",
+      "position": "last",
+      "input": {
+        "address": "192.31.196.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.31.196.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.31.196.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-016-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.31.196.0/24",
+      "position": "before",
+      "input": {
+        "address": "192.31.195.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.31.195.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-016-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.31.196.0/24",
+      "position": "after",
+      "input": {
+        "address": "192.31.197.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.31.197.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-017-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.52.193.0/24",
+      "position": "first",
+      "input": {
+        "address": "192.52.193.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.52.193.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.52.193.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-017-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.52.193.0/24",
+      "position": "last",
+      "input": {
+        "address": "192.52.193.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.52.193.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.52.193.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-017-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.52.193.0/24",
+      "position": "before",
+      "input": {
+        "address": "192.52.192.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.52.192.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-017-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.52.193.0/24",
+      "position": "after",
+      "input": {
+        "address": "192.52.194.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.52.194.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-018-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.88.99.0/24",
+      "position": "first",
+      "input": {
+        "address": "192.88.99.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.88.99.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.88.99.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-018-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.88.99.0/24",
+      "position": "last",
+      "input": {
+        "address": "192.88.99.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.88.99.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.88.99.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-018-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.88.99.0/24",
+      "position": "before",
+      "input": {
+        "address": "192.88.98.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.88.98.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-018-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.88.99.0/24",
+      "position": "after",
+      "input": {
+        "address": "192.88.100.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.88.100.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-019-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.88.99.2/32",
+      "position": "first",
+      "input": {
+        "address": "192.88.99.2"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.88.99.2",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.88.99.2/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-019-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.88.99.2/32",
+      "position": "last",
+      "input": {
+        "address": "192.88.99.2"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.88.99.2",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.88.99.2/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-019-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.88.99.2/32",
+      "position": "before",
+      "input": {
+        "address": "192.88.99.1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.88.99.1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.88.99.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-019-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.88.99.2/32",
+      "position": "after",
+      "input": {
+        "address": "192.88.99.3"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.88.99.3",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.88.99.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-020-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.168.0.0/16",
+      "position": "first",
+      "input": {
+        "address": "192.168.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "private_ipv4",
+        "normalized_address": "192.168.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "192.168.0.0/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-020-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.168.0.0/16",
+      "position": "last",
+      "input": {
+        "address": "192.168.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "private_ipv4",
+        "normalized_address": "192.168.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "192.168.0.0/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-020-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.168.0.0/16",
+      "position": "before",
+      "input": {
+        "address": "192.167.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.167.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-020-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.168.0.0/16",
+      "position": "after",
+      "input": {
+        "address": "192.169.0.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.169.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-021-first",
+      "type": "address_classification",
+      "anchor_cidr": "192.175.48.0/24",
+      "position": "first",
+      "input": {
+        "address": "192.175.48.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.175.48.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.175.48.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-021-last",
+      "type": "address_classification",
+      "anchor_cidr": "192.175.48.0/24",
+      "position": "last",
+      "input": {
+        "address": "192.175.48.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.175.48.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.175.48.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-021-before",
+      "type": "address_classification",
+      "anchor_cidr": "192.175.48.0/24",
+      "position": "before",
+      "input": {
+        "address": "192.175.47.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.175.47.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-021-after",
+      "type": "address_classification",
+      "anchor_cidr": "192.175.48.0/24",
+      "position": "after",
+      "input": {
+        "address": "192.175.49.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "192.175.49.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-022-first",
+      "type": "address_classification",
+      "anchor_cidr": "198.18.0.0/15",
+      "position": "first",
+      "input": {
+        "address": "198.18.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "benchmark",
+        "normalized_address": "198.18.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "198.18.0.0/15",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-022-last",
+      "type": "address_classification",
+      "anchor_cidr": "198.18.0.0/15",
+      "position": "last",
+      "input": {
+        "address": "198.19.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "benchmark",
+        "normalized_address": "198.19.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "198.18.0.0/15",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-022-before",
+      "type": "address_classification",
+      "anchor_cidr": "198.18.0.0/15",
+      "position": "before",
+      "input": {
+        "address": "198.17.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "198.17.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-022-after",
+      "type": "address_classification",
+      "anchor_cidr": "198.18.0.0/15",
+      "position": "after",
+      "input": {
+        "address": "198.20.0.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "198.20.0.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-023-first",
+      "type": "address_classification",
+      "anchor_cidr": "198.51.100.0/24",
+      "position": "first",
+      "input": {
+        "address": "198.51.100.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "198.51.100.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "198.51.100.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-023-last",
+      "type": "address_classification",
+      "anchor_cidr": "198.51.100.0/24",
+      "position": "last",
+      "input": {
+        "address": "198.51.100.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "198.51.100.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "198.51.100.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-023-before",
+      "type": "address_classification",
+      "anchor_cidr": "198.51.100.0/24",
+      "position": "before",
+      "input": {
+        "address": "198.51.99.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "198.51.99.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-023-after",
+      "type": "address_classification",
+      "anchor_cidr": "198.51.100.0/24",
+      "position": "after",
+      "input": {
+        "address": "198.51.101.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "198.51.101.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-024-first",
+      "type": "address_classification",
+      "anchor_cidr": "203.0.113.0/24",
+      "position": "first",
+      "input": {
+        "address": "203.0.113.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "203.0.113.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "203.0.113.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-024-last",
+      "type": "address_classification",
+      "anchor_cidr": "203.0.113.0/24",
+      "position": "last",
+      "input": {
+        "address": "203.0.113.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "203.0.113.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "203.0.113.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-024-before",
+      "type": "address_classification",
+      "anchor_cidr": "203.0.113.0/24",
+      "position": "before",
+      "input": {
+        "address": "203.0.112.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "203.0.112.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-024-after",
+      "type": "address_classification",
+      "anchor_cidr": "203.0.113.0/24",
+      "position": "after",
+      "input": {
+        "address": "203.0.114.0"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "203.0.114.0",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-025-first",
+      "type": "address_classification",
+      "anchor_cidr": "240.0.0.0/4",
+      "position": "first",
+      "input": {
+        "address": "240.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "reserved_or_broadcast",
+        "normalized_address": "240.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "240.0.0.0/4",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-025-last",
+      "type": "address_classification",
+      "anchor_cidr": "240.0.0.0/4",
+      "position": "last",
+      "input": {
+        "address": "255.255.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "reserved_or_broadcast",
+        "normalized_address": "255.255.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "255.255.255.255/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-025-before",
+      "type": "address_classification",
+      "anchor_cidr": "240.0.0.0/4",
+      "position": "before",
+      "input": {
+        "address": "239.255.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "multicast",
+        "normalized_address": "239.255.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "224.0.0.0/4",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-026-first",
+      "type": "address_classification",
+      "anchor_cidr": "255.255.255.255/32",
+      "position": "first",
+      "input": {
+        "address": "255.255.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "reserved_or_broadcast",
+        "normalized_address": "255.255.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "255.255.255.255/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-026-last",
+      "type": "address_classification",
+      "anchor_cidr": "255.255.255.255/32",
+      "position": "last",
+      "input": {
+        "address": "255.255.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "reserved_or_broadcast",
+        "normalized_address": "255.255.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "255.255.255.255/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-026-before",
+      "type": "address_classification",
+      "anchor_cidr": "255.255.255.255/32",
+      "position": "before",
+      "input": {
+        "address": "255.255.255.254"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "reserved_or_broadcast",
+        "normalized_address": "255.255.255.254",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "240.0.0.0/4",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-027-first",
+      "type": "address_classification",
+      "anchor_cidr": "::1/128",
+      "position": "first",
+      "input": {
+        "address": "::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "loopback",
+        "normalized_address": "::1",
+        "endpoint_rule": "requires_bound_endpoint_allowLoopback_and_host_prefix",
+        "matched_cidr": "::1/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-027-last",
+      "type": "address_classification",
+      "anchor_cidr": "::1/128",
+      "position": "last",
+      "input": {
+        "address": "::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "loopback",
+        "normalized_address": "::1",
+        "endpoint_rule": "requires_bound_endpoint_allowLoopback_and_host_prefix",
+        "matched_cidr": "::1/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-027-before",
+      "type": "address_classification",
+      "anchor_cidr": "::1/128",
+      "position": "before",
+      "input": {
+        "address": "::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "::/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-027-after",
+      "type": "address_classification",
+      "anchor_cidr": "::1/128",
+      "position": "after",
+      "input": {
+        "address": "::2"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "::2",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "::/96",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-028-first",
+      "type": "address_classification",
+      "anchor_cidr": "::/128",
+      "position": "first",
+      "input": {
+        "address": "::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "::/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-028-last",
+      "type": "address_classification",
+      "anchor_cidr": "::/128",
+      "position": "last",
+      "input": {
+        "address": "::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "::/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-028-after",
+      "type": "address_classification",
+      "anchor_cidr": "::/128",
+      "position": "after",
+      "input": {
+        "address": "::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "loopback",
+        "normalized_address": "::1",
+        "endpoint_rule": "requires_bound_endpoint_allowLoopback_and_host_prefix",
+        "matched_cidr": "::1/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-029-first",
+      "type": "address_classification",
+      "anchor_cidr": "::ffff:0:0/96",
+      "position": "first",
+      "input": {
+        "address": "::ffff:0:0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "0.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "0.0.0.0/32",
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-029-last",
+      "type": "address_classification",
+      "anchor_cidr": "::ffff:0:0/96",
+      "position": "last",
+      "input": {
+        "address": "::ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "reserved_or_broadcast",
+        "normalized_address": "255.255.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "255.255.255.255/32",
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-029-before",
+      "type": "address_classification",
+      "anchor_cidr": "::ffff:0:0/96",
+      "position": "before",
+      "input": {
+        "address": "::fffe:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "::fffe:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-029-after",
+      "type": "address_classification",
+      "anchor_cidr": "::ffff:0:0/96",
+      "position": "after",
+      "input": {
+        "address": "::1:0:0:0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "::1:0:0:0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-030-first",
+      "type": "address_classification",
+      "anchor_cidr": "64:ff9b::/96",
+      "position": "first",
+      "input": {
+        "address": "64:ff9b::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "64:ff9b::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "64:ff9b::/96",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-030-last",
+      "type": "address_classification",
+      "anchor_cidr": "64:ff9b::/96",
+      "position": "last",
+      "input": {
+        "address": "64:ff9b::ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "64:ff9b::ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "64:ff9b::/96",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-030-before",
+      "type": "address_classification",
+      "anchor_cidr": "64:ff9b::/96",
+      "position": "before",
+      "input": {
+        "address": "64:ff9a:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "64:ff9a:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-030-after",
+      "type": "address_classification",
+      "anchor_cidr": "64:ff9b::/96",
+      "position": "after",
+      "input": {
+        "address": "64:ff9b::1:0:0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "64:ff9b::1:0:0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-031-first",
+      "type": "address_classification",
+      "anchor_cidr": "64:ff9b:1::/48",
+      "position": "first",
+      "input": {
+        "address": "64:ff9b:1::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "64:ff9b:1::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "64:ff9b:1::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-031-last",
+      "type": "address_classification",
+      "anchor_cidr": "64:ff9b:1::/48",
+      "position": "last",
+      "input": {
+        "address": "64:ff9b:1:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "64:ff9b:1:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "64:ff9b:1::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-031-before",
+      "type": "address_classification",
+      "anchor_cidr": "64:ff9b:1::/48",
+      "position": "before",
+      "input": {
+        "address": "64:ff9b:0:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "64:ff9b:0:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-031-after",
+      "type": "address_classification",
+      "anchor_cidr": "64:ff9b:1::/48",
+      "position": "after",
+      "input": {
+        "address": "64:ff9b:2::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "64:ff9b:2::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-032-first",
+      "type": "address_classification",
+      "anchor_cidr": "100::/64",
+      "position": "first",
+      "input": {
+        "address": "100::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "discard",
+        "normalized_address": "100::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100::/64",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-032-last",
+      "type": "address_classification",
+      "anchor_cidr": "100::/64",
+      "position": "last",
+      "input": {
+        "address": "100::ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "discard",
+        "normalized_address": "100::ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100::/64",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-032-before",
+      "type": "address_classification",
+      "anchor_cidr": "100::/64",
+      "position": "before",
+      "input": {
+        "address": "ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-032-after",
+      "type": "address_classification",
+      "anchor_cidr": "100::/64",
+      "position": "after",
+      "input": {
+        "address": "100:0:0:1::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "100:0:0:1::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100:0:0:1::/64",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-033-first",
+      "type": "address_classification",
+      "anchor_cidr": "100:0:0:1::/64",
+      "position": "first",
+      "input": {
+        "address": "100:0:0:1::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "100:0:0:1::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100:0:0:1::/64",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-033-last",
+      "type": "address_classification",
+      "anchor_cidr": "100:0:0:1::/64",
+      "position": "last",
+      "input": {
+        "address": "100::1:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "100::1:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100:0:0:1::/64",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-033-before",
+      "type": "address_classification",
+      "anchor_cidr": "100:0:0:1::/64",
+      "position": "before",
+      "input": {
+        "address": "100::ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "discard",
+        "normalized_address": "100::ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100::/64",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-033-after",
+      "type": "address_classification",
+      "anchor_cidr": "100:0:0:1::/64",
+      "position": "after",
+      "input": {
+        "address": "100:0:0:2::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "100:0:0:2::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-034-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001::/23",
+      "position": "first",
+      "input": {
+        "address": "2001::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "2001::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-034-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001::/23",
+      "position": "last",
+      "input": {
+        "address": "2001:1ff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1ff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-034-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001::/23",
+      "position": "before",
+      "input": {
+        "address": "2000:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "2000:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-034-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001::/23",
+      "position": "after",
+      "input": {
+        "address": "2001:200::"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "2001:200::",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-035-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001::/32",
+      "position": "first",
+      "input": {
+        "address": "2001::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "2001::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-035-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001::/32",
+      "position": "last",
+      "input": {
+        "address": "2001:0:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "2001:0:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-035-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001::/32",
+      "position": "before",
+      "input": {
+        "address": "2000:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "2000:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-035-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001::/32",
+      "position": "after",
+      "input": {
+        "address": "2001:1::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-036-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::1/128",
+      "position": "first",
+      "input": {
+        "address": "2001:1::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::1/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-036-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::1/128",
+      "position": "last",
+      "input": {
+        "address": "2001:1::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::1/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-036-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::1/128",
+      "position": "before",
+      "input": {
+        "address": "2001:1::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-036-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::1/128",
+      "position": "after",
+      "input": {
+        "address": "2001:1::2"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::2",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::2/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-037-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::2/128",
+      "position": "first",
+      "input": {
+        "address": "2001:1::2"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::2",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::2/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-037-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::2/128",
+      "position": "last",
+      "input": {
+        "address": "2001:1::2"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::2",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::2/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-037-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::2/128",
+      "position": "before",
+      "input": {
+        "address": "2001:1::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::1/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-037-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::2/128",
+      "position": "after",
+      "input": {
+        "address": "2001:1::3"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::3",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::3/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-038-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::3/128",
+      "position": "first",
+      "input": {
+        "address": "2001:1::3"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::3",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::3/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-038-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::3/128",
+      "position": "last",
+      "input": {
+        "address": "2001:1::3"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::3",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::3/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-038-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::3/128",
+      "position": "before",
+      "input": {
+        "address": "2001:1::2"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::2",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::2/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-038-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:1::3/128",
+      "position": "after",
+      "input": {
+        "address": "2001:1::4"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::4",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-039-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:2::/48",
+      "position": "first",
+      "input": {
+        "address": "2001:2::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "benchmark",
+        "normalized_address": "2001:2::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:2::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-039-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:2::/48",
+      "position": "last",
+      "input": {
+        "address": "2001:2:0:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "benchmark",
+        "normalized_address": "2001:2:0:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:2::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-039-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:2::/48",
+      "position": "before",
+      "input": {
+        "address": "2001:1:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-039-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:2::/48",
+      "position": "after",
+      "input": {
+        "address": "2001:2:1::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:2:1::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-040-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:3::/32",
+      "position": "first",
+      "input": {
+        "address": "2001:3::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:3::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:3::/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-040-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:3::/32",
+      "position": "last",
+      "input": {
+        "address": "2001:3:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:3:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:3::/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-040-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:3::/32",
+      "position": "before",
+      "input": {
+        "address": "2001:2:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:2:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-040-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:3::/32",
+      "position": "after",
+      "input": {
+        "address": "2001:4::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:4::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-041-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:4:112::/48",
+      "position": "first",
+      "input": {
+        "address": "2001:4:112::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:4:112::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:4:112::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-041-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:4:112::/48",
+      "position": "last",
+      "input": {
+        "address": "2001:4:112:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:4:112:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:4:112::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-041-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:4:112::/48",
+      "position": "before",
+      "input": {
+        "address": "2001:4:111:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:4:111:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-041-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:4:112::/48",
+      "position": "after",
+      "input": {
+        "address": "2001:4:113::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:4:113::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-042-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:10::/28",
+      "position": "first",
+      "input": {
+        "address": "2001:10::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:10::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:10::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-042-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:10::/28",
+      "position": "last",
+      "input": {
+        "address": "2001:1f:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1f:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:10::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-042-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:10::/28",
+      "position": "before",
+      "input": {
+        "address": "2001:f:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:f:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-042-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:10::/28",
+      "position": "after",
+      "input": {
+        "address": "2001:20::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:20::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:20::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-043-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:20::/28",
+      "position": "first",
+      "input": {
+        "address": "2001:20::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:20::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:20::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-043-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:20::/28",
+      "position": "last",
+      "input": {
+        "address": "2001:2f:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:2f:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:20::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-043-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:20::/28",
+      "position": "before",
+      "input": {
+        "address": "2001:1f:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1f:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:10::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-043-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:20::/28",
+      "position": "after",
+      "input": {
+        "address": "2001:30::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:30::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:30::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-044-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:30::/28",
+      "position": "first",
+      "input": {
+        "address": "2001:30::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:30::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:30::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-044-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:30::/28",
+      "position": "last",
+      "input": {
+        "address": "2001:3f:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:3f:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:30::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-044-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:30::/28",
+      "position": "before",
+      "input": {
+        "address": "2001:2f:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:2f:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:20::/28",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-044-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:30::/28",
+      "position": "after",
+      "input": {
+        "address": "2001:40::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:40::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/23",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-045-first",
+      "type": "address_classification",
+      "anchor_cidr": "2001:db8::/32",
+      "position": "first",
+      "input": {
+        "address": "2001:db8::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "2001:db8::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:db8::/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-045-last",
+      "type": "address_classification",
+      "anchor_cidr": "2001:db8::/32",
+      "position": "last",
+      "input": {
+        "address": "2001:db8:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "2001:db8:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:db8::/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-045-before",
+      "type": "address_classification",
+      "anchor_cidr": "2001:db8::/32",
+      "position": "before",
+      "input": {
+        "address": "2001:db7:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "2001:db7:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-045-after",
+      "type": "address_classification",
+      "anchor_cidr": "2001:db8::/32",
+      "position": "after",
+      "input": {
+        "address": "2001:db9::"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "2001:db9::",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-046-first",
+      "type": "address_classification",
+      "anchor_cidr": "2002::/16",
+      "position": "first",
+      "input": {
+        "address": "2002::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "2002::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2002::/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-046-last",
+      "type": "address_classification",
+      "anchor_cidr": "2002::/16",
+      "position": "last",
+      "input": {
+        "address": "2002:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "2002:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2002::/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-046-before",
+      "type": "address_classification",
+      "anchor_cidr": "2002::/16",
+      "position": "before",
+      "input": {
+        "address": "2001:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "2001:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-046-after",
+      "type": "address_classification",
+      "anchor_cidr": "2002::/16",
+      "position": "after",
+      "input": {
+        "address": "2003::"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "2003::",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-047-first",
+      "type": "address_classification",
+      "anchor_cidr": "2620:4f:8000::/48",
+      "position": "first",
+      "input": {
+        "address": "2620:4f:8000::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2620:4f:8000::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2620:4f:8000::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-047-last",
+      "type": "address_classification",
+      "anchor_cidr": "2620:4f:8000::/48",
+      "position": "last",
+      "input": {
+        "address": "2620:4f:8000:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2620:4f:8000:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2620:4f:8000::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-047-before",
+      "type": "address_classification",
+      "anchor_cidr": "2620:4f:8000::/48",
+      "position": "before",
+      "input": {
+        "address": "2620:4f:7fff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "2620:4f:7fff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-047-after",
+      "type": "address_classification",
+      "anchor_cidr": "2620:4f:8000::/48",
+      "position": "after",
+      "input": {
+        "address": "2620:4f:8001::"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "2620:4f:8001::",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-048-first",
+      "type": "address_classification",
+      "anchor_cidr": "3fff::/20",
+      "position": "first",
+      "input": {
+        "address": "3fff::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "3fff::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "3fff::/20",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-048-last",
+      "type": "address_classification",
+      "anchor_cidr": "3fff::/20",
+      "position": "last",
+      "input": {
+        "address": "3fff:fff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "documentation",
+        "normalized_address": "3fff:fff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "3fff::/20",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-048-before",
+      "type": "address_classification",
+      "anchor_cidr": "3fff::/20",
+      "position": "before",
+      "input": {
+        "address": "3ffe:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "3ffe:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-048-after",
+      "type": "address_classification",
+      "anchor_cidr": "3fff::/20",
+      "position": "after",
+      "input": {
+        "address": "3fff:1000::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "3fff:1000::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-049-first",
+      "type": "address_classification",
+      "anchor_cidr": "5f00::/16",
+      "position": "first",
+      "input": {
+        "address": "5f00::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "5f00::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "5f00::/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-049-last",
+      "type": "address_classification",
+      "anchor_cidr": "5f00::/16",
+      "position": "last",
+      "input": {
+        "address": "5f00:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "5f00:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "5f00::/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-049-before",
+      "type": "address_classification",
+      "anchor_cidr": "5f00::/16",
+      "position": "before",
+      "input": {
+        "address": "5eff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "5eff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-049-after",
+      "type": "address_classification",
+      "anchor_cidr": "5f00::/16",
+      "position": "after",
+      "input": {
+        "address": "5f01::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "5f01::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-050-first",
+      "type": "address_classification",
+      "anchor_cidr": "fc00::/7",
+      "position": "first",
+      "input": {
+        "address": "fc00::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unique_local_ipv6",
+        "normalized_address": "fc00::",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "fc00::/7",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-050-last",
+      "type": "address_classification",
+      "anchor_cidr": "fc00::/7",
+      "position": "last",
+      "input": {
+        "address": "fdff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unique_local_ipv6",
+        "normalized_address": "fdff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "fc00::/7",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-050-before",
+      "type": "address_classification",
+      "anchor_cidr": "fc00::/7",
+      "position": "before",
+      "input": {
+        "address": "fbff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "fbff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-050-after",
+      "type": "address_classification",
+      "anchor_cidr": "fc00::/7",
+      "position": "after",
+      "input": {
+        "address": "fe00::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "fe00::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-051-first",
+      "type": "address_classification",
+      "anchor_cidr": "fe80::/10",
+      "position": "first",
+      "input": {
+        "address": "fe80::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "link_local",
+        "normalized_address": "fe80::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "fe80::/10",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-051-last",
+      "type": "address_classification",
+      "anchor_cidr": "fe80::/10",
+      "position": "last",
+      "input": {
+        "address": "febf:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "link_local",
+        "normalized_address": "febf:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "fe80::/10",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-051-before",
+      "type": "address_classification",
+      "anchor_cidr": "fe80::/10",
+      "position": "before",
+      "input": {
+        "address": "fe7f:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "fe7f:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-051-after",
+      "type": "address_classification",
+      "anchor_cidr": "fe80::/10",
+      "position": "after",
+      "input": {
+        "address": "fec0::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "fec0::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-052-first",
+      "type": "address_classification",
+      "anchor_cidr": "224.0.0.0/4",
+      "position": "first",
+      "input": {
+        "address": "224.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "multicast",
+        "normalized_address": "224.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "224.0.0.0/4",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-052-last",
+      "type": "address_classification",
+      "anchor_cidr": "224.0.0.0/4",
+      "position": "last",
+      "input": {
+        "address": "239.255.255.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "multicast",
+        "normalized_address": "239.255.255.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "224.0.0.0/4",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-052-before",
+      "type": "address_classification",
+      "anchor_cidr": "224.0.0.0/4",
+      "position": "before",
+      "input": {
+        "address": "223.255.255.255"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "223.255.255.255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-052-after",
+      "type": "address_classification",
+      "anchor_cidr": "224.0.0.0/4",
+      "position": "after",
+      "input": {
+        "address": "240.0.0.0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "reserved_or_broadcast",
+        "normalized_address": "240.0.0.0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "240.0.0.0/4",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-053-first",
+      "type": "address_classification",
+      "anchor_cidr": "ff00::/8",
+      "position": "first",
+      "input": {
+        "address": "ff00::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "multicast",
+        "normalized_address": "ff00::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "ff00::/8",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-053-last",
+      "type": "address_classification",
+      "anchor_cidr": "ff00::/8",
+      "position": "last",
+      "input": {
+        "address": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "multicast",
+        "normalized_address": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "ff00::/8",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-053-before",
+      "type": "address_classification",
+      "anchor_cidr": "ff00::/8",
+      "position": "before",
+      "input": {
+        "address": "feff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "feff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-054-first",
+      "type": "address_classification",
+      "anchor_cidr": "::/96",
+      "position": "first",
+      "input": {
+        "address": "::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unspecified_or_this_network",
+        "normalized_address": "::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "::/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-054-last",
+      "type": "address_classification",
+      "anchor_cidr": "::/96",
+      "position": "last",
+      "input": {
+        "address": "::ffff:ffff"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "::ffff:ffff",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "::/96",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-054-after",
+      "type": "address_classification",
+      "anchor_cidr": "::/96",
+      "position": "after",
+      "input": {
+        "address": "::1:0:0"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "::1:0:0",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-055-first",
+      "type": "address_classification",
+      "anchor_cidr": "169.254.169.254/32",
+      "position": "first",
+      "input": {
+        "address": "169.254.169.254"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "169.254.169.254",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "169.254.169.254/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-055-last",
+      "type": "address_classification",
+      "anchor_cidr": "169.254.169.254/32",
+      "position": "last",
+      "input": {
+        "address": "169.254.169.254"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "169.254.169.254",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "169.254.169.254/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-055-before",
+      "type": "address_classification",
+      "anchor_cidr": "169.254.169.254/32",
+      "position": "before",
+      "input": {
+        "address": "169.254.169.253"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "link_local",
+        "normalized_address": "169.254.169.253",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "169.254.0.0/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-055-after",
+      "type": "address_classification",
+      "anchor_cidr": "169.254.169.254/32",
+      "position": "after",
+      "input": {
+        "address": "169.254.169.255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "link_local",
+        "normalized_address": "169.254.169.255",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "169.254.0.0/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-056-first",
+      "type": "address_classification",
+      "anchor_cidr": "fd00:ec2::254/128",
+      "position": "first",
+      "input": {
+        "address": "fd00:ec2::254"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "fd00:ec2::254",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "fd00:ec2::254/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-056-last",
+      "type": "address_classification",
+      "anchor_cidr": "fd00:ec2::254/128",
+      "position": "last",
+      "input": {
+        "address": "fd00:ec2::254"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "fd00:ec2::254",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "fd00:ec2::254/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-056-before",
+      "type": "address_classification",
+      "anchor_cidr": "fd00:ec2::254/128",
+      "position": "before",
+      "input": {
+        "address": "fd00:ec2::253"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unique_local_ipv6",
+        "normalized_address": "fd00:ec2::253",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "fc00::/7",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-056-after",
+      "type": "address_classification",
+      "anchor_cidr": "fd00:ec2::254/128",
+      "position": "after",
+      "input": {
+        "address": "fd00:ec2::255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unique_local_ipv6",
+        "normalized_address": "fd00:ec2::255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "fc00::/7",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-057-first",
+      "type": "address_classification",
+      "anchor_cidr": "100.100.100.200/32",
+      "position": "first",
+      "input": {
+        "address": "100.100.100.200"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "100.100.100.200",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100.100.100.200/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-057-last",
+      "type": "address_classification",
+      "anchor_cidr": "100.100.100.200/32",
+      "position": "last",
+      "input": {
+        "address": "100.100.100.200"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "100.100.100.200",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100.100.100.200/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-057-before",
+      "type": "address_classification",
+      "anchor_cidr": "100.100.100.200/32",
+      "position": "before",
+      "input": {
+        "address": "100.100.100.199"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "shared_cgnat",
+        "normalized_address": "100.100.100.199",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "100.64.0.0/10",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-057-after",
+      "type": "address_classification",
+      "anchor_cidr": "100.100.100.200/32",
+      "position": "after",
+      "input": {
+        "address": "100.100.100.201"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "shared_cgnat",
+        "normalized_address": "100.100.100.201",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "100.64.0.0/10",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-058-first",
+      "type": "address_classification",
+      "anchor_cidr": "168.63.129.16/32",
+      "position": "first",
+      "input": {
+        "address": "168.63.129.16"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "platform_hard_deny",
+        "normalized_address": "168.63.129.16",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "168.63.129.16/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-058-last",
+      "type": "address_classification",
+      "anchor_cidr": "168.63.129.16/32",
+      "position": "last",
+      "input": {
+        "address": "168.63.129.16"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "platform_hard_deny",
+        "normalized_address": "168.63.129.16",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "168.63.129.16/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-058-before",
+      "type": "address_classification",
+      "anchor_cidr": "168.63.129.16/32",
+      "position": "before",
+      "input": {
+        "address": "168.63.129.15"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "168.63.129.15",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-058-after",
+      "type": "address_classification",
+      "anchor_cidr": "168.63.129.16/32",
+      "position": "after",
+      "input": {
+        "address": "168.63.129.17"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "168.63.129.17",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-001",
+      "type": "address_classification",
+      "input": {
+        "address": "8.8.8.8"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "8.8.8.8",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-002",
+      "type": "address_classification",
+      "input": {
+        "address": "1.1.1.1"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "1.1.1.1",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-003",
+      "type": "address_classification",
+      "input": {
+        "address": "2001:4860:4860::8888"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "2001:4860:4860::8888",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-004",
+      "type": "address_classification",
+      "input": {
+        "address": "2606:4700:4700::1111"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "2606:4700:4700::1111",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-005",
+      "type": "address_classification",
+      "input": {
+        "address": "2000::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "2000::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-006",
+      "type": "address_classification",
+      "input": {
+        "address": "2001:1000::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "2001:1000::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-007",
+      "type": "address_classification",
+      "input": {
+        "address": "3000::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "3000::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-008",
+      "type": "address_classification",
+      "input": {
+        "address": "4000::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "4000::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-009",
+      "type": "address_classification",
+      "input": {
+        "address": "fec0::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unallocated_or_non_global_ipv6",
+        "normalized_address": "fec0::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-010",
+      "type": "address_classification",
+      "input": {
+        "address": "::ffff:8.8.8.8"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "8.8.8.8",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-011",
+      "type": "address_classification",
+      "input": {
+        "address": "::ffff:10.23.4.12"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "private_ipv4",
+        "normalized_address": "10.23.4.12",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "10.0.0.0/8",
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-012",
+      "type": "address_classification",
+      "input": {
+        "address": "::ffff:127.0.0.1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "loopback",
+        "normalized_address": "127.0.0.1",
+        "endpoint_rule": "requires_bound_endpoint_allowLoopback_and_host_prefix",
+        "matched_cidr": "127.0.0.0/8",
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-013",
+      "type": "address_classification",
+      "input": {
+        "address": "::ffff:169.254.169.254"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "169.254.169.254",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "169.254.169.254/32",
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-014",
+      "type": "address_classification",
+      "input": {
+        "address": "::ffff:100.100.100.200"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "100.100.100.200",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "100.100.100.200/32",
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-015",
+      "type": "address_classification",
+      "input": {
+        "address": "::ffff:168.63.129.16"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "platform_hard_deny",
+        "normalized_address": "168.63.129.16",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "168.63.129.16/32",
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-016",
+      "type": "address_classification",
+      "input": {
+        "address": "0:0:0:0:0:ffff:a17:40c"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "private_ipv4",
+        "normalized_address": "10.23.4.12",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "10.0.0.0/8",
+        "mapped_ipv4": true
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-017",
+      "type": "address_classification",
+      "input": {
+        "address": "::8.8.8.8"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "::808:808",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "::/96",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-018",
+      "type": "address_classification",
+      "input": {
+        "address": "64:ff9b::808:808"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "64:ff9b::808:808",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "64:ff9b::/96",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-019",
+      "type": "address_classification",
+      "input": {
+        "address": "64:ff9b:1::a00:1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "64:ff9b:1::a00:1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "64:ff9b:1::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-020",
+      "type": "address_classification",
+      "input": {
+        "address": "2002:a00:1::"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "2002:a00:1::",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2002::/16",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-021",
+      "type": "address_classification",
+      "input": {
+        "address": "2001::a00:1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "transition_or_translation",
+        "normalized_address": "2001::a00:1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001::/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-022",
+      "type": "address_classification",
+      "input": {
+        "address": "192.0.0.9"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.0.0.9",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.0.0.9/32",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-023",
+      "type": "address_classification",
+      "input": {
+        "address": "192.31.196.1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "192.31.196.1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "192.31.196.0/24",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-024",
+      "type": "address_classification",
+      "input": {
+        "address": "2001:1::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:1::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:1::1/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-025",
+      "type": "address_classification",
+      "input": {
+        "address": "2001:4:112::1"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "special_purpose",
+        "normalized_address": "2001:4:112::1",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "2001:4:112::/48",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-026",
+      "type": "address_classification",
+      "input": {
+        "address": "fd00:ec2::254"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "metadata_hard_deny",
+        "normalized_address": "fd00:ec2::254",
+        "endpoint_rule": "forbidden",
+        "matched_cidr": "fd00:ec2::254/128",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-027",
+      "type": "address_classification",
+      "input": {
+        "address": "fd00:ec2::253"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unique_local_ipv6",
+        "normalized_address": "fd00:ec2::253",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "fc00::/7",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-028",
+      "type": "address_classification",
+      "input": {
+        "address": "fd00:ec2::255"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "unique_local_ipv6",
+        "normalized_address": "fd00:ec2::255",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "fc00::/7",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-029",
+      "type": "address_classification",
+      "input": {
+        "address": "100.100.100.199"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "shared_cgnat",
+        "normalized_address": "100.100.100.199",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "100.64.0.0/10",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-030",
+      "type": "address_classification",
+      "input": {
+        "address": "100.100.100.201"
+      },
+      "expected": {
+        "public_decision": "deny",
+        "address_class": "shared_cgnat",
+        "normalized_address": "100.100.100.201",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": "100.64.0.0/10",
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-031",
+      "type": "address_classification",
+      "input": {
+        "address": "168.63.129.15"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "168.63.129.15",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "ADDR-EXTRA-032",
+      "type": "address_classification",
+      "input": {
+        "address": "168.63.129.17"
+      },
+      "expected": {
+        "public_decision": "allow",
+        "address_class": "ordinary_global_unicast",
+        "normalized_address": "168.63.129.17",
+        "endpoint_rule": "requires_bound_endpoint_and_narrow_cidr",
+        "matched_cidr": null,
+        "mapped_ipv4": false
+      },
+      "test_ids": [
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "requirement_ids": [
+        "HG-010",
+        "HG-011"
+      ],
+      "execution_status": "not_run"
+    }
+  ]
+}

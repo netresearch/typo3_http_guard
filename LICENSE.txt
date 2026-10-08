@@ -1,0 +1,10 @@
+This delivery contains separately licensed components:
+
+packages/http-guard: MIT, see packages/http-guard/LICENSE.txt.
+packages/nr-http-guard: GPL-2.0-or-later, see packages/nr-http-guard/LICENSE.txt.
+integrations/nr-vault: patch for the existing GPL-2.0-or-later nr-vault project;
+the receiving project's license applies.
+
+The supplied original specification and recorded third-party source material
+retain their respective ownership and licensing. No third-party vendor tree
+is included.

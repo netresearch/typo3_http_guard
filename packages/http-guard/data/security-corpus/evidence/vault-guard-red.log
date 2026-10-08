@@ -1,0 +1,47 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/vault/Build/phpunit.xml
+Random Seed:   1791495793
+
+[31;1mE[0m[31;1mE[0m[31;1mE[0m[31;1mE[0m                                                                4 / 4 (100%)
+
+Time: 00:00.022, Memory: 12.00 MB
+
+There were 4 errors:
+
+1) Netresearch\NrVault\Tests\Unit\Http\Guard\SecureHttpClientFactoryGuardTest::hostOnlyAndFullRequestPreflightsDelegateWithoutInventingAMethod
+PHPUnit\Framework\MockObject\Generator\UnknownTypeException: Class or interface "Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface" does not exist
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php:113
+
+2) Netresearch\NrVault\Tests\Unit\Http\Guard\SecureHttpClientFactoryGuardTest::protectedCapabilityFailureCannotReturnTheLegacyFallback
+PHPUnit\Framework\MockObject\Generator\UnknownTypeException: Class or interface "Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface" does not exist
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php:92
+
+3) Netresearch\NrVault\Tests\Unit\Http\Guard\SecureHttpClientFactoryGuardTest::cancellableBindingKeepsItsClientTickerAndPlatformBudgetsTogether
+PHPUnit\Framework\MockObject\Generator\UnknownTypeException: Class or interface "Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface" does not exist
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php:68
+
+4) Netresearch\NrVault\Tests\Unit\Http\Guard\SecureHttpClientFactoryGuardTest::explicitAdapterReceivesTheSameHardenedPlatformDefaults
+PHPUnit\Framework\MockObject\Generator\UnknownTypeException: Class or interface "Netresearch\NrVault\Http\Guard\VaultGuardAdapterInterface" does not exist
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php:37
+
+[37;41mERRORS![0m
+[37;41mTests: 4[0m[37;41m, Assertions: 0[0m[37;41m, Errors: 4[0m[37;41m.[0m
+
+###########################################################################
+Result of unit
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+FAILURE
+###########################################################################
+

@@ -1,0 +1,18 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/phpunit.xml
+
+..F                                                                 3 / 3 (100%)
+
+Time: 00:00.635, Memory: 10.00 MB
+
+There was 1 failure:
+
+1) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyTelemetryTest::testObserveEvaluationReportsOneSafeWouldDenyEvent
+Failed asserting that actual size 0 matches expected size 1.
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php:143
+
+FAILURES!
+Tests: 3, Assertions: 13, Failures: 1.

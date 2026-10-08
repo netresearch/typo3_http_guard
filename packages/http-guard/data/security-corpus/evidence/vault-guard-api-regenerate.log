@@ -1,0 +1,32 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/vault/Build/phpunit.xml
+Random Seed:   1791497725
+
+[41;37mF[0m                                                                   1 / 1 (100%)
+
+Time: 00:00.074, Memory: 16.00 MB
+
+There was 1 failure:
+
+1) Netresearch\NrVault\Tests\Unit\Api\ApiSurfaceSnapshotTest::renderedPublicSurfaceMatchesTheCommittedSnapshot
+Snapshot regenerated at /tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Api/api-surface.txt — inspect the diff and commit it. A removed or changed line is a break and needs a CHANGELOG entry.
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Api/ApiSurfaceSnapshotTest.php:103
+
+[37;41mFAILURES![0m
+[37;41mTests: 1[0m[37;41m, Assertions: 246[0m[37;41m, Failures: 1[0m[37;41m.[0m
+
+###########################################################################
+Result of unit
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+FAILURE
+###########################################################################
+

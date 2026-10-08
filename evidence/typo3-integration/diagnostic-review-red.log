@@ -1,0 +1,45 @@
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/phpunit.xml
+
+.......[41;37mF[0m.[41;37mF[0m[41;37mF[0m[41;37mF[0m......                                                18 / 18 (100%)
+
+Time: 00:00.141, Memory: 32.00 MB
+
+There were 4 failures:
+
+1) Netresearch\NrHttpGuard\Tests\Unit\DiagnosticsServiceTest::testRawSyntaxRejectsBeforePsr7CanEraseIt@empty fragment with data ('http://guard.test:8080/a#')
+Failed asserting that 4 is identical to 2.
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticsServiceTest.php:87
+
+2) Netresearch\NrHttpGuard\Tests\Unit\DiagnosticsServiceTest::testRawSyntaxRejectsBeforePsr7CanEraseIt@backslash with data ('http://guard.test:8080/a\b')
+Failed asserting that 4 is identical to 2.
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticsServiceTest.php:87
+
+3) Netresearch\NrHttpGuard\Tests\Unit\DiagnosticsServiceTest::testOverdueReviewWarnsWithoutDisablingConfiguredProfile
+Failed asserting that null is identical to Array &0 [
+    0 => 'past-review',
+].
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticsServiceTest.php:122
+
+4) Netresearch\NrHttpGuard\Tests\Unit\DiagnosticsServiceTest::testDoctorReportsMixedCaseNoProxyAsUnsupportedWithoutValues
+Failed asserting that 0 is identical to 3.
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticsServiceTest.php:139
+
+--
+
+1 test triggered 2 PHP warnings:
+
+1) /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticsServiceTest.php:124
+Undefined array key "warnings"
+
+2) /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Tests/Unit/DiagnosticsServiceTest.php:124
+Trying to access array offset on null
+
+[37;41mFAILURES![0m
+[37;41mTests: 18[0m[37;41m, Assertions: 42[0m[37;41m, Failures: 4[0m[37;41m, Warnings: 2[0m[37;41m.[0m

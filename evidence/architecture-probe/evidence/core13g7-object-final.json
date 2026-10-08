@@ -1,0 +1,14 @@
+{
+    "status": "PASS",
+    "fixture": "/tmp/http-guard-kan-8VPVrN/probe/core13g7",
+    "case": "object",
+    "checks": [
+        {
+            "check": "invalid_registry_rejected_in_real_bootstrap_before_wire",
+            "status": "PASS",
+            "details": {
+                "case": "object"
+            }
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/vault/Build/phpunit.xml
+Random Seed:   1791495946
+
+....[41;37mF[0m[41;37mF[0m[41;37mF[0m[41;37mF[0m[41;37mF[0m                                                           9 / 9 (100%)
+
+Time: 00:00.044, Memory: 12.00 MB
+
+There were 5 failures:
+
+1) Netresearch\NrVault\Tests\Unit\Http\Guard\VaultHttpClientGuardTest::protectedClientCannotAcceptAnArbitraryInjectedInnerClient
+Failed asserting that exception of type "Netresearch\NrVault\Exception\VaultException" is thrown.
+
+2) Netresearch\NrVault\Tests\Unit\Http\Guard\VaultHttpClientGuardTest::protectedClientCannotInheritAnUnverifiedOauthManager
+Failed asserting that exception of type "Netresearch\NrVault\Exception\VaultException" is thrown.
+
+3) Netresearch\NrVault\Tests\Unit\Http\Guard\VaultHttpClientGuardTest::absentSeparateTokenFactoryFailsBeforeClientCredentialsAreRead
+Netresearch\NrVault\Service\VaultServiceInterface::retrieve('synthetic-client-id'): string was not expected to be called, actually called 1 time.
+
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/OAuth/OAuthTokenManager.php:522
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/OAuth/OAuthTokenManager.php:388
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/OAuth/OAuthTokenManager.php:305
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/OAuth/OAuthTokenManager.php:247
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:1589
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:1391
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:772
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:501
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php:223
+
+4) Netresearch\NrVault\Tests\Unit\Http\Guard\VaultHttpClientGuardTest::oauthUsesSeparateFactoryAndRetainsTokenCacheAcrossTimeoutClone
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'resource.internal.example'
++'token.internal.example'
+
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php:94
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/OAuth/OAuthTokenManager.php:609
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/OAuth/OAuthTokenManager.php:395
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/OAuth/OAuthTokenManager.php:305
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/OAuth/OAuthTokenManager.php:247
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:1589
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:1391
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:772
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:501
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php:182
+
+5) Netresearch\NrVault\Tests\Unit\Http\Guard\VaultHttpClientGuardTest::fullRequestRefusalHappensBeforeResourceSecretRetrieval
+Netresearch\NrVault\Service\VaultServiceInterface::retrieve('synthetic-resource-secret'): string was not expected to be called, actually called 1 time.
+
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:1603
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:1412
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:1399
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:772
+/tmp/http-guard-kan-8VPVrN/vault/Classes/Http/VaultHttpClient.php:501
+/tmp/http-guard-kan-8VPVrN/vault/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php:68
+
+[37;41mFAILURES![0m
+[37;41mTests: 9[0m[37;41m, Assertions: 23[0m[37;41m, Failures: 5[0m[37;41m.[0m
+
+###########################################################################
+Result of unit
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+FAILURE
+###########################################################################
+

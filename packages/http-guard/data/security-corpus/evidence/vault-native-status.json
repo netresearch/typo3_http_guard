@@ -1,0 +1,14 @@
+{
+  "source_commit": "5a070c396a614e5b05f63d79fa564c3748cf21eb",
+  "command": "Build/Scripts/runTests.sh -s unit Tests/Unit/Http",
+  "exit_code": 0,
+  "test_status": "passed_legacy_http_unit_baseline",
+  "runtime": "native Linux source copy",
+  "dependency_setup_note": "Dependencies complete; CaptainHook post-install hook setup failed because configured bootstrap was absent; production config unchanged",
+  "test_count": 534,
+  "assertion_count": 2132,
+  "seconds": 4.384,
+  "php_runtime": "8.5.10",
+  "phpunit": "13.4.1",
+  "new_guard_evidence": false
+}

@@ -1,0 +1,38 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/phpunit.xml
+
+EEEEE                                                               5 / 5 (100%)
+
+Time: 00:00.399, Memory: 10.00 MB
+
+There were 5 errors:
+
+1) Netresearch\HttpGuard\Tests\Unit\Policy\DnsPacketCodecTest::testExactQuestionAndCompressedAddressDecode
+Error: Class "Netresearch\HttpGuard\DnsPacketCodec" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/DnsPacketCodecTest.php:18
+
+2) Netresearch\HttpGuard\Tests\Unit\Policy\DnsPacketCodecTest::testTruncatedResponseNeverReturnsPartialAddresses
+Error: Class "Netresearch\HttpGuard\DnsPacketCodec" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/DnsPacketCodecTest.php:34
+
+3) Netresearch\HttpGuard\Tests\Unit\Policy\DnsPacketCodecTest::testWrongTransactionQuestionRcodeAndPacketBoundsFailClosed
+Error: Class "Netresearch\HttpGuard\DnsPacketCodec" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/DnsPacketCodecTest.php:45
+
+4) Netresearch\HttpGuard\Tests\Unit\Policy\DnsPacketCodecTest::testCompressionPointerCycleAndUnsupportedLabelTagsAreRejected
+Error: Class "Netresearch\HttpGuard\DnsPacketCodec" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/DnsPacketCodecTest.php:66
+
+5) Netresearch\HttpGuard\Tests\Unit\Policy\DnsPacketCodecTest::testAuthorityAndAdditionalAddressesCannotBecomeTargetCandidates
+Error: Class "Netresearch\HttpGuard\DnsPacketCodec" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/DnsPacketCodecTest.php:85
+
+ERRORS!
+Tests: 5, Assertions: 0, Errors: 5.

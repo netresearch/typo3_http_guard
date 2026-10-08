@@ -1,0 +1,22 @@
+{
+  "82": {
+    "reference": "ghcr.io/typo3/core-testing-php82@sha256:ad40d77ca458e4b66cb5c6b58d9197478b3400a8d2e61abf1b49d18ca9aa6baf",
+    "id": "sha256:ad40d77ca458e4b66cb5c6b58d9197478b3400a8d2e61abf1b49d18ca9aa6baf",
+    "tag_observed": "ghcr.io/typo3/core-testing-php82:latest"
+  },
+  "83": {
+    "reference": "ghcr.io/typo3/core-testing-php83@sha256:9379789e9445b89094b6c814ae6fc6c2ebe8f3360b390b8789140c290a71caae",
+    "id": "sha256:9379789e9445b89094b6c814ae6fc6c2ebe8f3360b390b8789140c290a71caae",
+    "tag_observed": "ghcr.io/typo3/core-testing-php83:latest"
+  },
+  "84": {
+    "reference": "ghcr.io/typo3/core-testing-php84@sha256:b0051c4c9fe93cf83e45446e7e6f9f3034509d97cc27d4bb9374c869e36d8692",
+    "id": "sha256:b0051c4c9fe93cf83e45446e7e6f9f3034509d97cc27d4bb9374c869e36d8692",
+    "tag_observed": "ghcr.io/typo3/core-testing-php84:latest"
+  },
+  "85": {
+    "reference": "ghcr.io/typo3/core-testing-php85@sha256:53df750b7e68ccce8da03a03bfe7cb57d732308b932f2ea92b1fd31679626bc6",
+    "id": "sha256:53df750b7e68ccce8da03a03bfe7cb57d732308b932f2ea92b1fd31679626bc6",
+    "tag_observed": "ghcr.io/typo3/core-testing-php85:latest"
+  }
+}

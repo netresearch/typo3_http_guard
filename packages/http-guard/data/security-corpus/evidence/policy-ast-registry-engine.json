@@ -1,0 +1,48 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/PolicyRegistry.php",
+            "mode": "create",
+            "changed": true,
+            "editsApplied": 0,
+            "beforeSha256": null,
+            "afterSha256": "0714e77a821f27c616f59088a0ee3fa520748ab297bfcc249459e842185c0689",
+            "changedLines": 72,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/PolicyEngine.php",
+            "mode": "create",
+            "changed": true,
+            "editsApplied": 0,
+            "beforeSha256": null,
+            "afterSha256": "6f63849f9dd71fe331e8bbd36d1243a6d2dbb67512eaf7f2ea366e377a960ddc",
+            "changedLines": 224,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

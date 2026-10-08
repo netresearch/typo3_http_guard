@@ -1,0 +1,110 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+
+1 file with changes
+===================
+
+1) Tests/Functional/Http/GuardAdapterTest.php:8
+
+    ---------- begin diff ----------
+@@ Line 8 @@
+
+ namespace Netresearch\NrVault\Tests\Functional\Http;
+
++use Psr\Http\Message\StreamInterface;
+ use Closure;
+ use DateTimeImmutable;
+ use GuzzleHttp\Psr7\Request;
+@@ Line 853 @@
+
+         return $files;
+     }
++
+     #[Test]
+     public function publicResourcePrivateTokenAndInverseStaySeparatelyBound(): void
+     {
+@@ Line 862 @@
+                 'Owned public/private HTTP Guard network fixture is not installed'
+             );
+         }
++
+         $fixture = json_decode(
+             (string) file_get_contents($fixtureFile),
+             true,
+@@ Line 890 @@
+                         $ready = true;
+                         break;
+                     }
++
+                     usleep(20000);
+                 }
+             } finally {
+                 restore_error_handler();
+             }
++
+             self::assertTrue(
+                 $ready,
+                 'Owned network fixture interface must be reachable'
+             );
+         }
++
+         foreach ([
+             'public-resource' => [$publicIp, $privateIp, null, 'token'],
+             'private-resource' => [$privateIp, $publicIp, 'resource', null],
+@@ Line 943 @@
+                         ->getStatusCode()
+                 );
+             }
++
+             $hits = $this->hits($case);
+             self::assertCount(3, $hits);
+             self::assertCount(
+@@ Line 985 @@
+             }
+         }
+     }
++
+     #[Test]
+     public function preCancelledProtectedSendReadsNoSecretAndMakesNoContact(): void
+     {
+@@ Line 1012 @@
+             self::assertCount(1, $this->audit);
+         }
+     }
++
+     #[Test]
+     public function truncatedProtectedStreamThrowsAndLeavesNoBackgroundTransfer(): void
+     {
+@@ Line 1030 @@
+         } catch (Throwable $error) {
+             $failure = $error;
+         } finally {
+-            if ($body instanceof \Psr\Http\Message\StreamInterface) {
++            if ($body instanceof StreamInterface) {
+                 $body->close();
+             }
+         }
++
+         self::assertNotNull(
+             $failure,
+             'A truncated body must never be returned as a complete response'
+    ----------- end diff -----------
+
+Applied rules:
+ * NewlineBetweenClassLikeStmtsRector
+ * NewlineAfterStatementRector
+
+
+ [OK] 1 file has been changed by Rector                                         
+
+
+###########################################################################
+Result of rector
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+SUCCESS
+###########################################################################
+

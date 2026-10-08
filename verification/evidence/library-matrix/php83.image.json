@@ -1,0 +1,94 @@
+[
+    {
+        "Id": "sha256:9379789e9445b89094b6c814ae6fc6c2ebe8f3360b390b8789140c290a71caae",
+        "RepoTags": [
+            "ghcr.io/typo3/core-testing-php83:latest"
+        ],
+        "RepoDigests": [
+            "ghcr.io/typo3/core-testing-php83@sha256:9379789e9445b89094b6c814ae6fc6c2ebe8f3360b390b8789140c290a71caae"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-24T12:56:23.02014548Z",
+        "Config": {
+            "ExposedPorts": {
+                "9000/tcp": {}
+            },
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "PHPIZE_DEPS=autoconf \t\tdpkg-dev dpkg \t\tfile \t\tg++ \t\tgcc \t\tlibc-dev \t\tmake \t\tpkgconf \t\tre2c",
+                "PHP_INI_DIR=/usr/local/etc/php",
+                "PHP_CFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+                "PHP_CPPFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+                "PHP_LDFLAGS=-Wl,-O1 -pie",
+                "GPG_KEYS=1198C0117593497A5EC5C199286AF1F9897469DC C28D937575603EB4ABB725861C0779DC5C0A9DE4 AFD8691FDAEDF03BDF6E460563F15A9B715376CA",
+                "PHP_VERSION=8.3.33",
+                "PHP_URL=https://www.php.net/distributions/php-8.3.33.tar.xz",
+                "PHP_ASC_URL=https://www.php.net/distributions/php-8.3.33.tar.xz.asc",
+                "PHP_SHA256=e293ed620cec74651bb4a071317892a478aa6840fab22db45c72d77cd42f9676",
+                "COMPOSER_ALLOW_SUPERUSER=1",
+                "PHPFPM_USER=www-data",
+                "PHPFPM_GROUP=www-data",
+                "PHPFPM_PM=dynamic",
+                "PHPFPM_PM_MAX_CHILDREN=5",
+                "PHPFPM_PM_START_SERVERS=2",
+                "PHPFPM_PM_MIN_SPARE_SERVERS=1",
+                "PHPFPM_PM_MAX_SPARE_SERVERS=3",
+                "PHPFPM_PM_MAX_SPAWN_RATE=32",
+                "PHPFPM_PROCESS_IDLE_TIMEOUT=10s",
+                "PHPFPM_MAX_REQUESTS=0",
+                "PHPFPM_LISTEN_BACKLOG=-1"
+            ],
+            "Entrypoint": [
+                "docker-php-entrypoint"
+            ],
+            "Cmd": [
+                "php-fpm"
+            ],
+            "WorkingDir": "/var/www/html",
+            "Labels": {
+                "org.opencontainers.image.authors": "Christian Kuhn <lolli@schwarzbu.ch> and Stefan Bürk <stefan@buerk.tech>",
+                "org.opencontainers.image.description": "typo3/core-testing-php83",
+                "org.opencontainers.image.source": "https://git.typo3.org/typo3/CI/testing-infrastructure",
+                "org.opencontainers.image.url": "https://git.typo3.org/typo3/CI/testing-infrastructure/-/blob/main/docker-images/README.md"
+            },
+            "StopSignal": "SIGQUIT"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 400745740,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:74d97c428c51a828f9051a7a40a53ff1fc99e54fc30323ce36760701b0b7f711",
+                "sha256:85d44996df160edd9bb5ef68afe7dcbc095fa148851e2b7f2db786c264b4b31b",
+                "sha256:fc66739ad408315e40977d87370235492c7db3fcf7e998e5673ec3c474bd3643",
+                "sha256:6b8474ad811a721d0c97a4d7e34cd257920948209a660cf2145aef573c112bac",
+                "sha256:44402d94a29530fd30da57ccf0414f8d295ba09c16b02e3cb034099cd293545c",
+                "sha256:b9294331649ca35e9cfffcd8383027656578ff996f04482f0d9f35c63cb5660d",
+                "sha256:3f40f1afe3d0cc7639cc6d7dbc898cd879ba6bc74b07a134c7fa7ac644c82e13",
+                "sha256:60253444281d8ec010b75661425bd6b5323590294b00684e09a48099b4e97333",
+                "sha256:d49b1a6f24f6faf586b4da0c2e92d35de43b07c8bcba9f24110bd338f4c6ca91",
+                "sha256:7b88b9c139f53a1978d256975a8a3d8340ae07c8281706b7d5c2c389386c8f59",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:7fe37972c8c15034b14125ea56e4ffbfc429646bc5778d9b57a727a82f35893f",
+                "sha256:8838a9a06cf0884a205828ff8b5a7885b0df1997b9d4811c7a9f13c3acb0077b",
+                "sha256:54892b18e18212b1dfc6da1398b09f4b2d5dbee7e069358cd3494ee89388991c"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-08T13:30:28.812961694Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:9379789e9445b89094b6c814ae6fc6c2ebe8f3360b390b8789140c290a71caae",
+            "size": 1609
+        },
+        "Identity": {
+            "Pull": [
+                {
+                    "Repository": "ghcr.io/typo3/core-testing-php83"
+                }
+            ]
+        }
+    }
+]

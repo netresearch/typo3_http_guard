@@ -1,0 +1,5 @@
+
+Uncaught TYPO3 Exception Too few arguments to function Netresearch\NrHttpGuard\Service\LibraryServiceFactory::globalFactory(), 0 passed in /tmp/http-guard-kan-8VPVrN/extension/core14g8/var/cache/code/di/DependencyInjectionContainer_4a2b499c6594cef9.php on line 13044 and exactly 3 expected
+thrown in file /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/nr-http-guard/Classes/Service/LibraryServiceFactory.php
+in line 77
+

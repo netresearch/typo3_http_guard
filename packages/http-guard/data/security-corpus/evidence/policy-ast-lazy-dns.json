@@ -1,0 +1,37 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/src/WireDnsQuery.php",
+            "mode": "edit",
+            "beforeSha256": "a61f9d2f6aa2b6545c934c9e819ef8969c989e06a800dc8229f5fe7a2e9c9d6f",
+            "afterSha256": "b05853796faf22b6f42e141080204783d8a979a81dd74baf965282a3a3ff6ba6",
+            "changed": true,
+            "changedLines": 53,
+            "printer": "format-preserving",
+            "editsApplied": 5,
+            "dryRun": false,
+            "effects": {
+                "3": {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                }
+            },
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "warning": "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional.",
+            "diff": "-    /**\n-     * @var list<string>\n-     */\n-    private readonly array $nameservers;\n+    /** @var list<string>|null */\n+    private ?array $nameservers;\n-        string $resolvConfPath = '/etc/resolv.conf'\n+        private readonly string $resolvConfPath = '/etc/resolv.conf'\n-        $servers = $nameservers ?? self::systemNameservers($resolvConfPath);\n-        if (!array_is_list($servers) || $servers === [] || count($servers) > 3) {\n-            throw new PolicyException('configuration_invalid');\n-        }\n-        $valid = [];\n-        foreach ($servers as $server) {\n-            if (!is_string($server)) {\n-                throw new PolicyException('configuration_invalid');\n-            }\n-            try {\n-                $valid[] = Cidr::address($server);\n-            } catch (PolicyException) {\n-                throw new PolicyException('configuration_invalid');\n-            }\n-        }\n-        $this->nameservers = array_values(array_unique($valid));\n+        $this->nameservers = $nameservers === null ? null : self::validateNameservers($nameservers);\n-        $id = random_int(0, 65535);\n+        $id = $this->queryId();\n+    /** @param array<array-key,mixed> $servers @return list<string> */\n+    private static function validateNameservers(array $servers): array\n+    {\n+        if (!array_is_list($servers) || $servers === [] || count($servers) > 3) {\n+            throw new PolicyException('configuration_invalid');\n+        }\n+        $valid = [];\n+        foreach ($servers as $server) {\n+            if (!is_string($server)) {\n+                throw new PolicyException('configuration_invalid');\n+            }\n+            try {\n+                $valid[] = Cidr::address($server);\n+            } catch (PolicyException) {\n+                throw new PolicyException('configuration_invalid');\n+            }\n+        }\n+        return array_values(array_unique($valid));\n+    }\n+    private function queryId(): int\n+    {\n+        $this->nameservers ??= self::validateNameservers(\n+            self::systemNameservers($this->resolvConfPath)\n+        );\n+        return random_int(0, 65535);\n+    }",
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

@@ -1,0 +1,6 @@
+{
+  "commit": "5a070c396a614e5b05f63d79fa564c3748cf21eb",
+  "command": "Build/Scripts/runTests.sh -s unit Tests/Unit/Http",
+  "exit_code": 1,
+  "test_status": "runner_failed_no_pass_claim"
+}

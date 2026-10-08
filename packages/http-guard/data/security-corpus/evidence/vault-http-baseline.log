@@ -1,0 +1,422 @@
+runTests.sh: .Build/bin/runTests.sh not found — installing dependencies first.
+No composer.lock file present. Updating dependencies to latest instead of installing from lock file. See https://getcomposer.org/install for more information.
+Loading composer repositories with package information
+Updating dependencies
+Lock file operations: 199 installs, 0 updates, 0 removals
+  - Locking a9f/fractor (v1.1.0)
+  - Locking a9f/fractor-extension-installer (v1.1.0)
+  - Locking a9f/fractor-fluid (v1.1.0)
+  - Locking a9f/fractor-htaccess (v1.1.0)
+  - Locking a9f/fractor-typoscript (v1.1.0)
+  - Locking a9f/fractor-xliff (v1.1.0)
+  - Locking a9f/fractor-xml (v1.1.0)
+  - Locking a9f/fractor-yaml (v1.1.0)
+  - Locking a9f/typo3-fractor (v1.1.0)
+  - Locking bacon/bacon-qr-code (v3.1.1)
+  - Locking bnf/phpstan-psr-container (1.1.0)
+  - Locking captainhook/captainhook (5.29.2)
+  - Locking captainhook/hook-installer (1.0.5)
+  - Locking captainhook/secrets (0.9.7)
+  - Locking christian-riesen/base32 (2.0.1)
+  - Locking clue/ndjson-react (v1.3.0)
+  - Locking colinodell/json5 (v3.0.0)
+  - Locking composer/class-map-generator (1.8.0)
+  - Locking composer/pcre (3.4.0)
+  - Locking composer/semver (3.5.1)
+  - Locking composer/xdebug-handler (3.0.5)
+  - Locking dasprid/enum (1.0.7)
+  - Locking dg/bypass-finals (v1.11.0)
+  - Locking doctrine/dbal (4.4.5)
+  - Locking doctrine/deprecations (1.1.6)
+  - Locking doctrine/instantiator (2.1.0)
+  - Locking doctrine/lexer (3.0.3)
+  - Locking egulias/email-validator (4.0.4)
+  - Locking enshrined/svg-sanitize (0.22.0)
+  - Locking ergebnis/agent-detector (1.2.0)
+  - Locking ergebnis/composer-normalize (2.54.0)
+  - Locking ergebnis/json (1.7.0)
+  - Locking ergebnis/json-normalizer (4.11.0)
+  - Locking ergebnis/json-pointer (3.9.0)
+  - Locking ergebnis/json-printer (3.9.0)
+  - Locking ergebnis/json-schema-validator (4.6.0)
+  - Locking ergebnis/phpstan-rules (2.14.0)
+  - Locking evenement/evenement (v3.0.2)
+  - Locking fidry/cpu-core-counter (1.4.1)
+  - Locking firebase/php-jwt (v7.2.1)
+  - Locking friendsofphp/php-cs-fixer (v3.95.27)
+  - Locking giorgiosironi/eris (1.2.0)
+  - Locking guzzlehttp/guzzle (8.2.0)
+  - Locking guzzlehttp/promises (3.0.2)
+  - Locking guzzlehttp/psr7 (3.1.0)
+  - Locking helmich/typo3-typoscript-parser (v2.8.1)
+  - Locking infection/abstract-testframework-adapter (0.5.1)
+  - Locking infection/extension-installer (0.1.2)
+  - Locking infection/include-interceptor (1.0.0)
+  - Locking infection/infection (0.35.6)
+  - Locking infection/mutator (0.4.1)
+  - Locking justinrainbow/json-schema (6.13.1)
+  - Locking league/flysystem (3.36.0)
+  - Locking league/flysystem-local (3.35.3)
+  - Locking league/flysystem-memory (3.31.0)
+  - Locking league/mime-type-detection (1.17.0)
+  - Locking localheinz/diff (1.3.0)
+  - Locking lolli42/finediff (1.1.2)
+  - Locking marc-mabe/php-enum (v4.7.2)
+  - Locking masterminds/html5 (2.11.0)
+  - Locking mikey179/vfsstream (v1.6.12)
+  - Locking myclabs/deep-copy (1.14.0)
+  - Locking netresearch/typo3-ci-workflows (v1.12.0)
+  - Locking nette/utils (v4.1.5)
+  - Locking nikic/include-interceptor (v0.1.2)
+  - Locking nikic/php-fuzzer (v0.0.11)
+  - Locking nikic/php-parser (v5.9.0)
+  - Locking ondram/ci-detector (4.2.0)
+  - Locking overtrue/phplint (9.7.2)
+  - Locking phar-io/manifest (2.0.4)
+  - Locking phar-io/version (3.2.1)
+  - Locking phpat/phpat (0.12.5)
+  - Locking phpdocumentor/reflection-common (2.2.1)
+  - Locking phpdocumentor/reflection-docblock (6.0.3)
+  - Locking phpdocumentor/type-resolver (2.1.0)
+  - Locking phpstan/extension-installer (1.4.3)
+  - Locking phpstan/phpdoc-parser (2.3.6)
+  - Locking phpstan/phpstan (2.3.1)
+  - Locking phpstan/phpstan-deprecation-rules (2.0.5)
+  - Locking phpstan/phpstan-phpunit (2.1.1)
+  - Locking phpstan/phpstan-strict-rules (2.1.0)
+  - Locking phpunit/php-code-coverage (14.4.1)
+  - Locking phpunit/php-file-iterator (7.0.2)
+  - Locking phpunit/php-invoker (7.0.0)
+  - Locking phpunit/php-text-template (6.0.1)
+  - Locking phpunit/php-timer (9.0.0)
+  - Locking phpunit/phpunit (13.4.1)
+  - Locking psr/cache (3.0.0)
+  - Locking psr/clock (1.0.0)
+  - Locking psr/container (2.0.2)
+  - Locking psr/event-dispatcher (1.0.0)
+  - Locking psr/http-client (1.0.3)
+  - Locking psr/http-factory (1.1.0)
+  - Locking psr/http-message (2.0)
+  - Locking psr/http-server-handler (1.0.2)
+  - Locking psr/http-server-middleware (1.0.2)
+  - Locking psr/log (3.0.2)
+  - Locking react/cache (v1.2.0)
+  - Locking react/child-process (v0.6.7)
+  - Locking react/dns (v1.14.0)
+  - Locking react/event-loop (v1.6.0)
+  - Locking react/promise (v3.3.0)
+  - Locking react/socket (v1.17.0)
+  - Locking react/stream (v1.4.0)
+  - Locking rector/rector (2.7.0)
+  - Locking roave/security-advisories (dev-latest e2f95ea)
+  - Locking sanmai/di-container (0.2)
+  - Locking sanmai/duoclock (0.1.3)
+  - Locking sanmai/later (0.1.8)
+  - Locking sanmai/pipeline (7.12)
+  - Locking saschaegerer/phpstan-typo3 (3.1.0)
+  - Locking sebastian/cli-parser (5.0.1)
+  - Locking sebastian/comparator (8.4.0)
+  - Locking sebastian/complexity (6.0.0)
+  - Locking sebastian/diff (9.0.1)
+  - Locking sebastian/environment (9.3.3)
+  - Locking sebastian/exporter (8.2.1)
+  - Locking sebastian/file-filter (1.0.0)
+  - Locking sebastian/git-state (1.0.0)
+  - Locking sebastian/global-state (9.0.1)
+  - Locking sebastian/lines-of-code (5.0.2)
+  - Locking sebastian/object-enumerator (8.1.0)
+  - Locking sebastian/object-reflector (6.1.0)
+  - Locking sebastian/recursion-context (8.0.1)
+  - Locking sebastian/type (7.0.2)
+  - Locking sebastian/version (7.0.1)
+  - Locking sebastianfeldmann/camino (0.9.5)
+  - Locking sebastianfeldmann/cli (3.4.2)
+  - Locking sebastianfeldmann/git (3.16.0)
+  - Locking simonschaufi/pretty-xml (3.1.1)
+  - Locking ssch/typo3-debug-dump-pass (v0.0.3)
+  - Locking ssch/typo3-rector (v3.16.0)
+  - Locking staabm/side-effects-detector (1.0.5)
+  - Locking symfony/cache (v8.1.8)
+  - Locking symfony/cache-contracts (v3.7.1)
+  - Locking symfony/clock (v8.1.0)
+  - Locking symfony/config (v7.4.17)
+  - Locking symfony/console (v7.4.20)
+  - Locking symfony/dependency-injection (v7.4.20)
+  - Locking symfony/deprecation-contracts (v3.7.1)
+  - Locking symfony/doctrine-messenger (v7.4.20)
+  - Locking symfony/event-dispatcher (v8.1.5)
+  - Locking symfony/event-dispatcher-contracts (v3.7.1)
+  - Locking symfony/expression-language (v7.4.18)
+  - Locking symfony/filesystem (v7.4.18)
+  - Locking symfony/finder (v7.4.20)
+  - Locking symfony/http-foundation (v7.4.20)
+  - Locking symfony/mailer (v7.4.19)
+  - Locking symfony/messenger (v7.4.20)
+  - Locking symfony/mime (v7.4.19)
+  - Locking symfony/options-resolver (v7.4.8)
+  - Locking symfony/polyfill-ctype (v1.37.0)
+  - Locking symfony/polyfill-deepclone (v1.43.1)
+  - Locking symfony/polyfill-intl-grapheme (v1.43.0)
+  - Locking symfony/polyfill-intl-idn (v1.43.0)
+  - Locking symfony/polyfill-intl-normalizer (v1.43.0)
+  - Locking symfony/polyfill-mbstring (v1.43.0)
+  - Locking symfony/polyfill-php80 (v1.43.0)
+  - Locking symfony/polyfill-php81 (v1.38.1)
+  - Locking symfony/polyfill-php82 (v1.43.0)
+  - Locking symfony/polyfill-php83 (v1.43.0)
+  - Locking symfony/polyfill-php84 (v1.43.0)
+  - Locking symfony/polyfill-php85 (v1.43.0)
+  - Locking symfony/polyfill-uuid (v1.43.0)
+  - Locking symfony/process (v7.4.19)
+  - Locking symfony/property-access (v7.4.16)
+  - Locking symfony/property-info (v7.4.20)
+  - Locking symfony/rate-limiter (v7.4.18)
+  - Locking symfony/routing (v7.4.20)
+  - Locking symfony/service-contracts (v3.7.3)
+  - Locking symfony/stopwatch (v8.1.0)
+  - Locking symfony/string (v7.4.19)
+  - Locking symfony/translation (v7.4.17)
+  - Locking symfony/translation-contracts (v3.7.1)
+  - Locking symfony/type-info (v8.1.8)
+  - Locking symfony/uid (v7.4.20)
+  - Locking symfony/validator (v7.4.20)
+  - Locking symfony/var-exporter (v8.1.6)
+  - Locking symfony/yaml (v7.4.20)
+  - Locking symplify/rule-doc-generator-contracts (11.2.0)
+  - Locking thecodingmachine/safe (v3.4.0)
+  - Locking theseer/tokenizer (2.0.1)
+  - Locking tivie/htaccess-parser (0.4.0)
+  - Locking typo3/class-alias-loader (v2.0.1)
+  - Locking typo3/cms-backend (v14.3.7)
+  - Locking typo3/cms-cli (v3.1.3)
+  - Locking typo3/cms-composer-installers (v5.0.2)
+  - Locking typo3/cms-core (v14.3.7)
+  - Locking typo3/cms-dashboard (v14.3.7)
+  - Locking typo3/cms-extbase (v14.3.7)
+  - Locking typo3/cms-fluid (v14.3.7)
+  - Locking typo3/cms-frontend (v14.3.7)
+  - Locking typo3/cms-install (v14.3.7)
+  - Locking typo3/cms-scheduler (v14.3.7)
+  - Locking typo3/html-sanitizer (v2.3.2)
+  - Locking typo3/testing-framework (9.7.0)
+  - Locking typo3fluid/fluid (5.3.2)
+  - Locking ulrichsg/getopt-php (v4.0.4)
+  - Locking webmozart/assert (2.5.0)
+Writing lock file
+Installing dependencies from lock file (including require-dev)
+Package operations: 199 installs, 0 updates, 0 removals
+  - Installing a9f/fractor-extension-installer (v1.1.0): Extracting archive
+  - Installing infection/extension-installer (0.1.2): Extracting archive
+  - Installing typo3/cms-composer-installers (v5.0.2): Extracting archive
+  - Installing typo3/class-alias-loader (v2.0.1): Extracting archive
+  - Installing captainhook/hook-installer (1.0.5): Extracting archive
+  - Installing marc-mabe/php-enum (v4.7.2): Extracting archive
+  - Installing justinrainbow/json-schema (6.13.1): Extracting archive
+  - Installing ergebnis/json-pointer (3.9.0): Extracting archive
+  - Installing ergebnis/json (1.7.0): Extracting archive
+  - Installing ergebnis/json-schema-validator (4.6.0): Extracting archive
+  - Installing ergebnis/json-printer (3.9.0): Extracting archive
+  - Installing ergebnis/json-normalizer (4.11.0): Extracting archive
+  - Installing localheinz/diff (1.3.0): Extracting archive
+  - Installing phpstan/phpstan (2.3.1): Extracting archive
+  - Installing phpstan/extension-installer (1.4.3): Extracting archive
+  - Installing ergebnis/composer-normalize (2.54.0): Extracting archive
+  - Installing symfony/polyfill-ctype (v1.37.0): Extracting archive
+  - Installing webmozart/assert (2.5.0): Extracting archive
+  - Installing symplify/rule-doc-generator-contracts (11.2.0): Extracting archive
+  - Installing nette/utils (v4.1.5): Extracting archive
+  - Installing symfony/finder (v7.4.20): Extracting archive
+  - Installing symfony/polyfill-mbstring (v1.43.0): Extracting archive
+  - Installing symfony/filesystem (v7.4.18): Extracting archive
+  - Installing symfony/polyfill-deepclone (v1.43.1): Extracting archive
+  - Installing symfony/deprecation-contracts (v3.7.1): Extracting archive
+  - Installing symfony/var-exporter (v8.1.6): Extracting archive
+  - Installing psr/container (2.0.2): Extracting archive
+  - Installing symfony/service-contracts (v3.7.3): Extracting archive
+  - Installing symfony/dependency-injection (v7.4.20): Extracting archive
+  - Installing symfony/polyfill-intl-normalizer (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-intl-grapheme (v1.43.0): Extracting archive
+  - Installing symfony/string (v7.4.19): Extracting archive
+  - Installing symfony/console (v7.4.20): Extracting archive
+  - Installing symfony/config (v7.4.17): Extracting archive
+  - Installing sebastian/diff (9.0.1): Extracting archive
+  - Installing ondram/ci-detector (4.2.0): Extracting archive
+  - Installing league/mime-type-detection (1.17.0): Extracting archive
+  - Installing league/flysystem (3.36.0): Extracting archive
+  - Installing league/flysystem-local (3.35.3): Extracting archive
+  - Installing league/flysystem-memory (3.31.0): Extracting archive
+  - Installing a9f/fractor (v1.1.0): Extracting archive
+  - Installing a9f/fractor-fluid (v1.1.0): Extracting archive
+  - Installing tivie/htaccess-parser (0.4.0): Extracting archive
+  - Installing a9f/fractor-htaccess (v1.1.0): Extracting archive
+  - Installing symfony/yaml (v7.4.20): Extracting archive
+  - Installing helmich/typo3-typoscript-parser (v2.8.1): Extracting archive
+  - Installing a9f/fractor-typoscript (v1.1.0): Extracting archive
+  - Installing symfony/polyfill-php80 (v1.43.0): Extracting archive
+  - Installing simonschaufi/pretty-xml (3.1.1): Extracting archive
+  - Installing a9f/fractor-xliff (v1.1.0): Extracting archive
+  - Installing a9f/fractor-xml (v1.1.0): Extracting archive
+  - Installing a9f/fractor-yaml (v1.1.0): Extracting archive
+  - Installing dasprid/enum (1.0.7): Extracting archive
+  - Installing bacon/bacon-qr-code (v3.1.1): Extracting archive
+  - Installing captainhook/secrets (0.9.7): Extracting archive
+  - Installing christian-riesen/base32 (2.0.1): Extracting archive
+  - Installing react/event-loop (v1.6.0): Extracting archive
+  - Installing evenement/evenement (v3.0.2): Extracting archive
+  - Installing react/stream (v1.4.0): Extracting archive
+  - Installing clue/ndjson-react (v1.3.0): Extracting archive
+  - Installing colinodell/json5 (v3.0.0): Extracting archive
+  - Installing psr/log (3.0.2): Extracting archive
+  - Installing composer/pcre (3.4.0): Extracting archive
+  - Installing composer/xdebug-handler (3.0.5): Extracting archive
+  - Installing doctrine/instantiator (2.1.0): Extracting archive
+  - Installing doctrine/lexer (3.0.3): Extracting archive
+  - Installing enshrined/svg-sanitize (0.22.0): Extracting archive
+  - Installing ergebnis/agent-detector (1.2.0): Extracting archive
+  - Installing fidry/cpu-core-counter (1.4.1): Extracting archive
+  - Installing firebase/php-jwt (v7.2.1): Extracting archive
+  - Installing symfony/polyfill-php82 (v1.43.0): Extracting archive
+  - Installing psr/http-message (2.0): Extracting archive
+  - Installing psr/http-factory (1.1.0): Extracting archive
+  - Installing psr/http-client (1.0.3): Extracting archive
+  - Installing guzzlehttp/psr7 (3.1.0): Extracting archive
+  - Installing guzzlehttp/promises (3.0.2): Extracting archive
+  - Installing guzzlehttp/guzzle (8.2.0): Extracting archive
+  - Installing infection/abstract-testframework-adapter (0.5.1): Extracting archive
+  - Installing infection/include-interceptor (1.0.0): Extracting archive
+  - Installing nikic/php-parser (v5.9.0): Extracting archive
+  - Installing infection/mutator (0.4.1): Extracting archive
+  - Installing lolli42/finediff (1.1.2): Extracting archive
+  - Installing mikey179/vfsstream (v1.6.12): Extracting archive
+  - Installing myclabs/deep-copy (1.14.0): Extracting archive
+  - Installing typo3fluid/fluid (5.3.2): Extracting archive
+  - Installing masterminds/html5 (2.11.0): Extracting archive
+  - Installing typo3/html-sanitizer (v2.3.2): Extracting archive
+  - Installing typo3/cms-cli (v3.1.3): Extracting archive
+  - Installing symfony/polyfill-uuid (v1.43.0): Extracting archive
+  - Installing symfony/uid (v7.4.20): Extracting archive
+  - Installing symfony/translation-contracts (v3.7.1): Extracting archive
+  - Installing symfony/translation (v7.4.17): Extracting archive
+  - Installing symfony/routing (v7.4.20): Extracting archive
+  - Installing symfony/options-resolver (v7.4.8): Extracting archive
+  - Installing symfony/rate-limiter (v7.4.18): Extracting archive
+  - Installing symfony/process (v7.4.19): Extracting archive
+  - Installing symfony/polyfill-php85 (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-php84 (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-php83 (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-intl-idn (v1.43.0): Extracting archive
+  - Installing symfony/mime (v7.4.19): Extracting archive
+  - Installing psr/clock (1.0.0): Extracting archive
+  - Installing symfony/clock (v8.1.0): Extracting archive
+  - Installing symfony/messenger (v7.4.20): Extracting archive
+  - Installing psr/event-dispatcher (1.0.0): Extracting archive
+  - Installing symfony/event-dispatcher-contracts (v3.7.1): Extracting archive
+  - Installing symfony/event-dispatcher (v8.1.5): Extracting archive
+  - Installing egulias/email-validator (4.0.4): Extracting archive
+  - Installing symfony/mailer (v7.4.19): Extracting archive
+  - Installing symfony/http-foundation (v7.4.20): Extracting archive
+  - Installing psr/cache (3.0.0): Extracting archive
+  - Installing symfony/cache-contracts (v3.7.1): Extracting archive
+  - Installing symfony/cache (v8.1.8): Extracting archive
+  - Installing symfony/expression-language (v7.4.18): Extracting archive
+  - Installing doctrine/deprecations (1.1.6): Extracting archive
+  - Installing doctrine/dbal (4.4.5): Extracting archive
+  - Installing symfony/doctrine-messenger (v7.4.20): Extracting archive
+  - Installing psr/http-server-handler (1.0.2): Extracting archive
+  - Installing psr/http-server-middleware (1.0.2): Extracting archive
+  - Installing composer/semver (3.5.1): Extracting archive
+  - Installing composer/class-map-generator (1.8.0): Extracting archive
+  - Installing typo3/cms-core (v14.3.7): Extracting archive
+  - Installing typo3/cms-frontend (v14.3.7): Extracting archive
+  - Installing symfony/validator (v7.4.20): Extracting archive
+  - Installing symfony/type-info (v8.1.8): Extracting archive
+  - Installing symfony/property-info (v7.4.20): Extracting archive
+  - Installing symfony/property-access (v7.4.16): Extracting archive
+  - Installing phpstan/phpdoc-parser (2.3.6): Extracting archive
+  - Installing phpdocumentor/reflection-common (2.2.1): Extracting archive
+  - Installing phpdocumentor/type-resolver (2.1.0): Extracting archive
+  - Installing phpdocumentor/reflection-docblock (6.0.3): Extracting archive
+  - Installing typo3/cms-extbase (v14.3.7): Extracting archive
+  - Installing typo3/cms-fluid (v14.3.7): Extracting archive
+  - Installing typo3/cms-backend (v14.3.7): Extracting archive
+  - Installing staabm/side-effects-detector (1.0.5): Extracting archive
+  - Installing sebastian/version (7.0.1): Extracting archive
+  - Installing sebastian/type (7.0.2): Extracting archive
+  - Installing sebastian/recursion-context (8.0.1): Extracting archive
+  - Installing sebastian/object-enumerator (8.1.0): Extracting archive
+  - Installing sebastian/object-reflector (6.1.0): Extracting archive
+  - Installing sebastian/global-state (9.0.1): Extracting archive
+  - Installing sebastian/git-state (1.0.0): Extracting archive
+  - Installing sebastian/file-filter (1.0.0): Extracting archive
+  - Installing sebastian/exporter (8.2.1): Extracting archive
+  - Installing sebastian/environment (9.3.3): Extracting archive
+  - Installing sebastian/comparator (8.4.0): Extracting archive
+  - Installing sebastian/cli-parser (5.0.1): Extracting archive
+  - Installing phpunit/php-timer (9.0.0): Extracting archive
+  - Installing phpunit/php-text-template (6.0.1): Extracting archive
+  - Installing phpunit/php-invoker (7.0.0): Extracting archive
+  - Installing phpunit/php-file-iterator (7.0.2): Extracting archive
+  - Installing theseer/tokenizer (2.0.1): Extracting archive
+  - Installing sebastian/lines-of-code (5.0.2): Extracting archive
+  - Installing sebastian/complexity (6.0.0): Extracting archive
+  - Installing phpunit/php-code-coverage (14.4.1): Extracting archive
+  - Installing phar-io/version (3.2.1): Extracting archive
+  - Installing phar-io/manifest (2.0.4): Extracting archive
+  - Installing phpunit/phpunit (13.4.1): Extracting archive
+  - Installing typo3/testing-framework (9.7.0): Extracting archive
+  - Installing symfony/polyfill-php81 (v1.38.1): Extracting archive
+  - Installing rector/rector (2.7.0): Extracting archive
+  - Installing ssch/typo3-rector (v3.16.0): Extracting archive
+  - Installing ssch/typo3-debug-dump-pass (v0.0.3): Extracting archive
+  - Installing bnf/phpstan-psr-container (1.1.0): Extracting archive
+  - Installing saschaegerer/phpstan-typo3 (3.1.0): Extracting archive
+  - Installing phpstan/phpstan-strict-rules (2.1.0): Extracting archive
+  - Installing phpstan/phpstan-phpunit (2.1.1): Extracting archive
+  - Installing phpstan/phpstan-deprecation-rules (2.0.5): Extracting archive
+  - Installing phpat/phpat (0.12.5): Extracting archive
+  - Installing overtrue/phplint (9.7.2): Extracting archive
+  - Installing ulrichsg/getopt-php (v4.0.4): Extracting archive
+  - Installing nikic/include-interceptor (v0.1.2): Extracting archive
+  - Installing nikic/php-fuzzer (v0.0.11): Extracting archive
+  - Installing thecodingmachine/safe (v3.4.0): Extracting archive
+  - Installing sanmai/pipeline (7.12): Extracting archive
+  - Installing sanmai/later (0.1.8): Extracting archive
+  - Installing sanmai/duoclock (0.1.3): Extracting archive
+  - Installing sanmai/di-container (0.2): Extracting archive
+  - Installing infection/infection (0.35.6): Extracting archive
+  - Installing giorgiosironi/eris (1.2.0): Extracting archive
+  - Installing symfony/stopwatch (v8.1.0): Extracting archive
+  - Installing react/promise (v3.3.0): Extracting archive
+  - Installing react/cache (v1.2.0): Extracting archive
+  - Installing react/dns (v1.14.0): Extracting archive
+  - Installing react/socket (v1.17.0): Extracting archive
+  - Installing react/child-process (v0.6.7): Extracting archive
+  - Installing friendsofphp/php-cs-fixer (v3.95.27): Extracting archive
+  - Installing ergebnis/phpstan-rules (2.14.0): Extracting archive
+  - Installing dg/bypass-finals (v1.11.0): Extracting archive
+  - Installing sebastianfeldmann/cli (3.4.2): Extracting archive
+  - Installing sebastianfeldmann/git (3.16.0): Extracting archive
+  - Installing sebastianfeldmann/camino (0.9.5): Extracting archive
+  - Installing captainhook/captainhook (5.29.2): Extracting archive
+  - Installing a9f/typo3-fractor (v1.1.0): Extracting archive
+  - Installing netresearch/typo3-ci-workflows (v1.12.0): Extracting archive
+  - Installing roave/security-advisories (dev-latest e2f95ea)
+  - Installing typo3/cms-dashboard (v14.3.7): Extracting archive
+  - Installing typo3/cms-install (v14.3.7): Extracting archive
+  - Installing typo3/cms-scheduler (v14.3.7): Extracting archive
+    Install of typo3/cms-core failed
+    Install of rector/rector failed
+The following exception is caused by a process timeout
+Check https://getcomposer.org/doc/06-config.md#process-timeout for details
+
+In Process.php line 1205:
+                                                                               
+  The process "'/usr/bin/unzip' '-qq' '/mnt/c/Users/live/Documents/Codex/2026  
+  -10-08/kan/work/nr-vault/.Build/vendor/composer/tmp-259500fe3888a0a19dfe722  
+  d4c5e73ba.zip' '-d' '/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/  
+  nr-vault/.Build/vendor/composer/e426834d'" exceeded the timeout of 300 seco  
+  nds.                                                                         
+                                                                               
+
+install [--prefer-source] [--prefer-dist] [--prefer-install PREFER-INSTALL] [--dry-run] [--download-only] [--dev] [--no-suggest] [--no-dev] [--no-security-blocking] [--no-blocking] [--no-autoloader] [--no-progress] [--no-install] [--audit] [--audit-format AUDIT-FORMAT] [-v|vv|vvv|--verbose] [-o|--optimize-autoloader] [-a|--classmap-authoritative] [--strict-psr-autoloader] [--apcu-autoloader] [--apcu-autoloader-prefix APCU-AUTOLOADER-PREFIX] [--ignore-platform-req IGNORE-PLATFORM-REQ] [--ignore-platform-reqs] [--] [<packages>...]
+

@@ -1,0 +1,631 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-08-iana-2025-10-v1",
+  "purpose": "Raw-target normalization fixtures preserve ambiguity before a PSR-7 parser may erase it. Syntax acceptance is not send authorization.",
+  "network_access": "none; fixtures only",
+  "cases": [
+    {
+      "id": "URI-DENY-001",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "file:///etc/passwd"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "scheme_forbidden",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-002",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "gopher://api.example.test/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "scheme_forbidden",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-003",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "ftp://api.example.test/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "scheme_forbidden",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-004",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "dict://api.example.test/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "scheme_forbidden",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-005",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "/relative/path"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-006",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "//api.example.test/path"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-007",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://user:password@api.example.test/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-008",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api.example.test/#part"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-009",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api.example.test/#"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T009"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-010",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api..example.test/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-011",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://.api.example.test/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-012",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api.example.test../"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-013",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api%2eexample.test/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-014",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api.example.test\\@127.0.0.1/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-015",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api.example.test\n/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-016",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api.example.test\u0000/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-017",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api .example.test/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-018",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://2130706433/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-019",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://0x7f000001/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-020",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://0177.0.0.1/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-021",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://127.1/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-022",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://127.0.1/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-023",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://127.000.0.1/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T011"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-024",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://[fe80::1%25eth0]/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T012"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-025",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://[::1/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T012"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-026",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://::1/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T012"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-027",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api.example.test:0/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-028",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://api.example.test:65536/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-DENY-029",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://täst.example/"
+      },
+      "expected": {
+        "decision": "deny",
+        "reason": "invalid_target",
+        "dns_queries": 0,
+        "transport_calls": 0,
+        "tcp_connections": 0,
+        "http_requests": 0
+      },
+      "test_ids": [
+        "T010"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-NORMALIZE-001",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "HTTPS://API.Example.Test.:443/path?q=synthetic"
+      },
+      "expected": {
+        "normalization": "allow_syntax_only",
+        "scheme": "https",
+        "host": "api.example.test",
+        "effective_port": 443,
+        "authorization": "must_still_evaluate_policy_and_dns"
+      },
+      "test_ids": [
+        "T008"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-NORMALIZE-002",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://xn--tst-qla.example:8443/"
+      },
+      "expected": {
+        "normalization": "allow_syntax_only",
+        "scheme": "https",
+        "host": "xn--tst-qla.example",
+        "effective_port": 8443,
+        "authorization": "must_still_evaluate_policy_and_dns"
+      },
+      "test_ids": [
+        "T008"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-NORMALIZE-003",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "http://8.8.8.8:80/"
+      },
+      "expected": {
+        "normalization": "allow_syntax_only",
+        "scheme": "http",
+        "host": "8.8.8.8",
+        "effective_port": 80,
+        "authorization": "must_still_evaluate_policy_and_dns"
+      },
+      "test_ids": [
+        "T008"
+      ],
+      "execution_status": "not_run"
+    },
+    {
+      "id": "URI-NORMALIZE-004",
+      "type": "target_normalization",
+      "input": {
+        "raw_uri": "https://[2001:4860:4860::8888]/"
+      },
+      "expected": {
+        "normalization": "allow_syntax_only",
+        "scheme": "https",
+        "host": "2001:4860:4860::8888",
+        "effective_port": 443,
+        "authorization": "must_still_evaluate_policy_and_dns"
+      },
+      "test_ids": [
+        "T008"
+      ],
+      "execution_status": "not_run"
+    }
+  ]
+}

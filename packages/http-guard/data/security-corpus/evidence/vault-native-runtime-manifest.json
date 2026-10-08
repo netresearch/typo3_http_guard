@@ -1,0 +1,9 @@
+{
+  "source_commit": "5a070c396a614e5b05f63d79fa564c3748cf21eb",
+  "source_checkout": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/nr-vault",
+  "runtime_checkout": "/tmp/http-guard-kan-8VPVrN/vault",
+  "source_copy": "rsync exact tracked source, .git and .Build excluded; generated lock retained exactly; all898 tracked files hash-verified",
+  "aborted_windows_dependency_retry": true,
+  "reason": "native Linux filesystem avoids mounted Windows extraction stalls; no package/security settings changed",
+  "runtime_git_note": "empty repo for dependency hooks only; source identity comes from tracked hashes"
+}

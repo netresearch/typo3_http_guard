@@ -1,0 +1,13 @@
+# Source-bound delivery: retain exact bytes when checked out on any platform.
+* -text
+# Imported originals and runtime witnesses retain their recorded whitespace.
+evidence/** -whitespace
+specification/** -whitespace
+packages/http-guard/data/security-corpus/** -whitespace
+verification/evidence/** -whitespace
+integrations/nr-vault/evidence/** -whitespace
+integrations/nr-vault/vault-adapter.patch -whitespace
+# RST headings/tables legitimately use seven equals signs.
+integrations/nr-vault/source-overlay/Documentation/** conflict-marker-size=32
+# Keep the exact qualified analysis configuration, including its final blank line.
+packages/http-guard/phpstan.neon whitespace=-blank-at-eof

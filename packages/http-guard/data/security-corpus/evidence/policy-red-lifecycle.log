@@ -1,0 +1,70 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/phpunit.xml
+
+EEEEEEEEEE                                                        10 / 10 (100%)
+
+Time: 00:00.523, Memory: 10.00 MB
+
+There were 10 errors:
+
+1) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testPublicDoesNotInheritConfiguredEndpoint
+Error: Class "Netresearch\HttpGuard\PolicyRegistry" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:75
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:92
+
+2) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testPostOnlyHostPreflightDoesNotInventMethodOrPort
+Error: Class "Netresearch\HttpGuard\PolicyRegistry" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:75
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:109
+
+3) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testFinalStartRechecksExpiryWithoutSecondDns
+Error: Class "Netresearch\HttpGuard\PolicyRegistry" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:75
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:124
+
+4) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testExpiryDuringBlockingDnsNeverIssuesUsablePlan
+Error: Class "Netresearch\HttpGuard\PolicyRegistry" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:75
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:146
+
+5) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testForeignRegistryOrClientPlanIsRejected
+Error: Class "Netresearch\HttpGuard\PolicyRegistry" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:75
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:159
+
+6) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testMetadataAndOperatorDenyOverrideEndpoint
+Error: Class "Netresearch\HttpGuard\PolicyRegistry" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:75
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:186
+
+7) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testMixedPublicPrivateDnsCannotFilterPrivateAnswer
+Error: Class "Netresearch\HttpGuard\PolicyRegistry" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:75
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:214
+
+8) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testCompleteCnameChainMinimumTtlAndBoundedPositiveCache
+Error: Class "Netresearch\HttpGuard\StaticThenDnsResolver" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:249
+
+9) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testCnameCyclesAndForeignOwnerAnswersFailClosed
+Error: Class "Netresearch\HttpGuard\StaticThenDnsResolver" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:287
+
+10) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testGrantCannotSerializeOrClone
+Error: Class "Netresearch\HttpGuard\PolicyRegistry" not found
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:315
+
+ERRORS!
+Tests: 10, Assertions: 0, Errors: 10.

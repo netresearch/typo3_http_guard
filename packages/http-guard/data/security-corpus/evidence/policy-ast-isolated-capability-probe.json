@@ -1,0 +1,26 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/tests/Integration/Fixtures/IsolatedCapabilityProbe.php",
+            "mode": "create",
+            "beforeSha256": null,
+            "afterSha256": "45115a529aef3f92a3e8c576e18019bfbcf2fb28e44302276c617254802a8dd0",
+            "changed": true,
+            "changedLines": 122,
+            "printer": "canonical",
+            "editsApplied": 0,
+            "dryRun": false,
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

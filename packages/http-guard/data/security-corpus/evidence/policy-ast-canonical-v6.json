@@ -1,0 +1,42 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/Cidr.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 2,
+            "beforeSha256": "6b6e98cf2b50240b43dd2dbf7a611637c564ae8d868079e5ae7cfc3b2457bec1",
+            "afterSha256": "7aa87017722967d0df61385fea7948e71c14a2bc160d8c64b24ab6d545243625",
+            "changedLines": 27,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "effects": {
+                "1": {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                }
+            },
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

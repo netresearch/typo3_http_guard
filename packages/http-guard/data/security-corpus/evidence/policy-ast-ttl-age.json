@@ -1,0 +1,70 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/StaticThenDnsResolver.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 8,
+            "beforeSha256": "1a6bbd525d79571d5d9b8b5ca1c04aa17a4bfe8ac37e19ad10e7e56de00bc470",
+            "afterSha256": "50da9b1d2d85b4b561e3d8f8fbdc6ecb965ac0cf71678c1e7722268b2aff4d93",
+            "changedLines": 59,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "effects": [
+                {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                },
+                {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                },
+                {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                },
+                {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                },
+                {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                },
+                {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                },
+                {
+                    "replaced": 1,
+                    "operation": "replace_statement"
+                },
+                {
+                    "replaced": 1,
+                    "operation": "replace_expression"
+                }
+            ],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

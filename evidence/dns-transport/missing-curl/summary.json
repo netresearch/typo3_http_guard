@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "major": 7,
+      "status": "PASS",
+      "php": "8.5.11",
+      "curlLoaded": false,
+      "nativeConstructed": 0,
+      "zeroNewTcpAndHttp": true
+    },
+    {
+      "major": 8,
+      "status": "PASS",
+      "php": "8.5.11",
+      "curlLoaded": false,
+      "nativeConstructed": 0,
+      "zeroNewTcpAndHttp": true
+    }
+  ]
+}

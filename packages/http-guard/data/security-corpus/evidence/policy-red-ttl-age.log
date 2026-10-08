@@ -1,0 +1,18 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/phpunit.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.547, Memory: 10.00 MB
+
+There was 1 failure:
+
+1) Netresearch\HttpGuard\Tests\Unit\Policy\PolicyLifecycleTest::testDnsCacheDoesNotExtendTtlByTimeSpentInLaterQueries
+Failed asserting that 1 is identical to 0.
+
+/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php:362
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.

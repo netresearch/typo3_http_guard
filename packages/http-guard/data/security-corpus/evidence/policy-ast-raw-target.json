@@ -1,0 +1,42 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/TargetNormalizer.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 3,
+            "beforeSha256": "1533e746c0f06b685e682485308e974c49cb10abdbbb83216df7bf5d768299d7",
+            "afterSha256": "48f649ce791a70f8610d9ff13196fef11f110621b02814f4f718ac052f8b6a94",
+            "changedLines": 35,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "effects": {
+                "2": {
+                    "replaced": 1,
+                    "operation": "replace_expression"
+                }
+            },
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

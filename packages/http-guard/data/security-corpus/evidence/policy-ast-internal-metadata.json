@@ -1,0 +1,36 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/packages/http-guard/src/PolicyEngine.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 3,
+            "beforeSha256": "0cc6e4b8a599d8dc8d1a910f07644c2ead53e085076fdf626c8981b0636b3e9e",
+            "afterSha256": "260533128fe55692ecef4b2df005168eaab42e1d1854031bbf0b2cef3497ad16",
+            "changedLines": 23,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

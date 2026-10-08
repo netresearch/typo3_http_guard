@@ -1,0 +1,31 @@
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+   0/580 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0%[1G[2K  20/580 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   3%[1G[2K  60/580 [▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░]  10%[1G[2K 180/580 [▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░]  31%[1G[2K 240/580 [▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░]  41%[1G[2K 280/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░]  48%[1G[2K 360/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░]  62%[1G[2K 420/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░]  72%[1G[2K 480/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░]  82%[1G[2K 560/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░]  96%[1G[2K 580/580 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+ ------ ---------------------------------------------------------------------- 
+  Line   Classes/Http/SecureHttpClientFactory.php                              
+ ------ ---------------------------------------------------------------------- 
+  384    Call to deprecated method getConfig() of class GuzzleHttp\Client:     
+         ClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0.  
+         🪪  method.deprecated                                                 
+  392    Call to deprecated method getConfig() of class GuzzleHttp\Client:     
+         ClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0.  
+         🪪  method.deprecated                                                 
+  392    Parameter #1 $array of function array_replace expects array, mixed    
+         given.                                                                
+         🪪  argument.type                                                     
+ ------ ---------------------------------------------------------------------- 
+
+
+ [ERROR] Found 3 errors                                                         
+
+
+###########################################################################
+Result of phpstan
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+FAILURE
+###########################################################################
+

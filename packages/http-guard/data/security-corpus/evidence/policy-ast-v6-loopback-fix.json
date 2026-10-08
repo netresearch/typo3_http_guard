@@ -1,0 +1,37 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/src/GuardConfig.php",
+            "mode": "edit",
+            "beforeSha256": "cfe5e9c19aadd6a79914d6996128fd0a98e89f695533da76baeb69641e421bc1",
+            "afterSha256": "250ecd19f14e82b87d9956fbebb575f31a744655a97552f40ae9c30dd807458e",
+            "changed": true,
+            "changedLines": 4,
+            "printer": "format-preserving",
+            "editsApplied": 1,
+            "dryRun": false,
+            "effects": [
+                {
+                    "replaced": 1,
+                    "operation": "replace_expression"
+                }
+            ],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "warning": "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional.",
+            "diff": "-            ) : Cidr::parse('::1/128')->contains(\n-                (string) inet_ntop($network->network)\n-            );\n+            ) : $network->contains('::1');",
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

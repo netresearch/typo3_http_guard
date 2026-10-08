@@ -1,0 +1,31 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /guard/phpunit.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.028, Memory: 14.00 MB
+
+There was 1 failure:
+
+1) Netresearch\HttpGuard\Tests\Integration\MutationWitnessTest::testCriticalMutationHasNativeAndWireWitness with data set "proxy_passthrough" ('proxy_passthrough')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+         'http' => 125,
+     ],
+     'public-b' => Array &2 [
+-        'tcp' => 12,
+-        'http' => 12,
++        'tcp' => 13,
++        'http' => 13,
+     ],
+     'private' => Array &3 [
+         'tcp' => 14,
+
+/guard/tests/Integration/MutationWitnessTest.php:188
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.

@@ -1,0 +1,31 @@
+{
+    "files": [
+        {
+            "path": "outputs/http-guard-implementation/packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php",
+            "mode": "edit",
+            "beforeSha256": "9f4a77259408ff2df1092556bd07e8349d5eef5f34c3ae5bc20d6ff4f81e4cd7",
+            "afterSha256": "4034ee91110f4a09bd9bde14cebfe34cdd885538b13924362f4cccbed10af4a7",
+            "changed": true,
+            "changedLines": 56,
+            "printer": "format-preserving",
+            "editsApplied": 1,
+            "dryRun": false,
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "warning": "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional.",
+            "diff": "+    public function testMemoHitReauthorizesChangedPolicyAndRejectsOldRevisionContext(): void\n+    {\n+        $clock = new PolicyTestClock();\n+        $query = new PolicyTestQuery();\n+        $query->records = [\n+            'memo.example.' => [\n+                1 => [\n+                    [\n+                        'host' => 'memo.example',\n+                        'type' => 'A',\n+                        'ttl' => 120,\n+                        'ip' => '8.8.8.8',\n+                    ],\n+                ],\n+            ],\n+        ];\n+        $initial = GuardConfig::fromArray([]);\n+        $resolver = new StaticThenDnsResolver($initial, $query, $clock);\n+        $beforeRegistry = new PolicyRegistry($initial, $clock);\n+        $oldContext = $beforeRegistry->newContext();\n+        $beforeEngine = new PolicyEngine(\n+            new TargetNormalizer(),\n+            new AddressClassifier(),\n+            $resolver,\n+            $beforeRegistry,\n+            $clock,\n+            new NullDecisionReporter()\n+        );\n+        $request = new Request('GET', 'https://memo.example');\n+        self::assertSame(\n+            'allow',\n+            $beforeEngine->evaluate($request, $oldContext)->decision\n+        );\n+        self::assertSame(3, $query->calls);\n+        $changed = GuardConfig::fromArray(['deniedCidrs' => ['8.8.8.8/32']]);\n+        self::assertNotSame($initial->revision, $changed->revision);\n+        $newRegistry = new PolicyRegistry($changed, $clock);\n+        $newEngine = new PolicyEngine(\n+            new TargetNormalizer(),\n+            new AddressClassifier(),\n+            $resolver,\n+            $newRegistry,\n+            $clock,\n+            new NullDecisionReporter()\n+        );\n+        self::assertSame(\n+            'address_forbidden',\n+            $newEngine->evaluate($request, $newRegistry->newContext())->reasonCode\n+        );\n+        self::assertSame(3, $query->calls);\n+        self::assertSame(\n+            'grant_invalid',\n+            $newEngine->evaluate($request, $oldContext)->reasonCode\n+        );\n+        self::assertSame(3, $query->calls);\n+    }",
+            "parsed": true,
+            "valid": true,
+            "validation": {
+                "parser": "passed",
+                "lint": {
+                    "status": "passed",
+                    "runtime": "8.5"
+                },
+                "checks": "not_run"
+            }
+        }
+    ],
+    "checksPassed": null
+}

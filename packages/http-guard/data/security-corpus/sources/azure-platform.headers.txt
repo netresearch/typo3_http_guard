@@ -1,0 +1,27 @@
+HTTP/2 200 
+etag: "vTHjGkjE0tnW0TWqTCPApq4dHMc="
+content-security-policy: default-src *;script-src 'self' 'unsafe-inline' 'unsafe-eval' *.microsoft.com js.monitor.azure.com dc.services.visualstudio.com try-ppe.dot.net aznb-ame-prod.azureedge.net client-api.arkoselabs.com markdowneditor-public-e0gpfpcwcbbze3ag.b01.azurefd.net markdowneditor-PubDev-czdhe4dpdyaee6fj.b01.azurefd.net markdowneditor-external-Public-fmgmfefddycxdmfj.b01.azurefd.net MarkdownEditor-external-PubDev-dfgagughg7fub7h5.b01.azurefd.net h64.online-metrix.net *.clarity.ms;style-src 'self' 'unsafe-inline' *.microsoft.com aznb-ame-prod.azureedge.net try-ppe.dot.net MarkdownEditor-external-PubDev-dfgagughg7fub7h5.b01.azurefd.net markdowneditor-PubDev-czdhe4dpdyaee6fj.b01.azurefd.net markdowneditor-public-e0gpfpcwcbbze3ag.b01.azurefd.net markdowneditor-external-Public-fmgmfefddycxdmfj.b01.azurefd.net;img-src * data: blob:;frame-ancestors docs.microsoft.com *.docs.microsoft.com learn.microsoft.com *.learn.microsoft.com labclient.labondemand.com portal.azure.com *.portal.azure.com portal.azure.us portal.azure.cn ai.azure.com *.ai.azure.com learn-video.azurefd.net docs.azure.cn *.onecloud.azure-test.net *.sharepoint.com localhost:3000 local.learn.microsoft-int.com;worker-src 'self' blob: *.microsoft.com aznb-ame-prod.azureedge.net;form-action 'self' *.microsoft.com *.azure.cn *.pearsonvue.com;media-src 'self' blob: *.microsoft.com *.azure.cn videoencodingpublic-hgeaeyeba8gycee3.b01.azurefd.net videoencodingpubdevwus.blob.core.windows.net videoencodingpublicwus.blob.core.windows.net;base-uri 'self';font-src 'self' https: data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests
+cross-origin-resource-policy: cross-origin
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 0
+x-azure-ref: 20261007T080824Z-16fb6d884f8wz9pwhC1FRA1s1g00000001zg00000000q4ym
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.01,"failure_fraction":1.0}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://mdec.nelreports.net/api/report?cat=mdocs"}]}
+content-type: text/html
+last-modified: Thu, 24 Sep 2026 11:36:46 GMT
+cross-origin-opener-policy: unsafe-none
+origin-agent-cluster: ?1
+x-dns-prefetch-control: off
+x-download-options: noopen
+x-permitted-cross-domain-policies: none
+x-buildversion: 0.4.03564.8276-6f650523
+content-length: 56155
+cache-control: public, max-age=565
+expires: Thu, 08 Oct 2026 21:31:19 GMT
+date: Thu, 08 Oct 2026 21:21:54 GMT
+akamai-cache-status: Miss from child, Hit from parent
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+set-cookie: MSAKBC=58429e8fa23341369f2b8153ccb949a3; path=/; domain=.learn.microsoft.com; Secure
+

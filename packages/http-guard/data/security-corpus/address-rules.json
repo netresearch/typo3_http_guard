@@ -1,0 +1,1061 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-08-iana-2025-10-v1",
+  "purpose": "Versioned normative address test data; not production implementation or evidence of passed tests",
+  "classification_order": [
+    "strict binary parse",
+    "normalize IPv4-mapped IPv6 to embedded IPv4",
+    "operator hard deny and provider hard deny",
+    "longest matching address-class prefix",
+    "public ordinary allocation or explicitly bound narrow endpoint"
+  ],
+  "public_ipv6_rule": "Must be inside an IANA ALLOCATED regular global-unicast prefix and outside every excluded special range; 2000::/3 alone does not authorize unallocated gaps",
+  "endpoint_constraints": {
+    "min_ipv4_prefix": 24,
+    "min_ipv6_prefix": 64,
+    "loopback_ipv4_prefix": 32,
+    "loopback_ipv6_prefix": 128,
+    "loopback_requires_flag": true,
+    "requires_exact_origin": true,
+    "requires_methods": true,
+    "requires_registry_issued_client_binding": true,
+    "all_resolved_addresses_must_match": true,
+    "hard_denies_override_every_endpoint": true
+  },
+  "iana_special_rules": [
+    {
+      "cidr": "0.0.0.0/8",
+      "family": 4,
+      "name": "\"This network\"",
+      "class": "unspecified_or_this_network",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc791"
+      ]
+    },
+    {
+      "cidr": "0.0.0.0/32",
+      "family": 4,
+      "name": "\"This host on this network\"",
+      "class": "unspecified_or_this_network",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc1122"
+      ]
+    },
+    {
+      "cidr": "10.0.0.0/8",
+      "family": 4,
+      "name": "Private-Use",
+      "class": "private_ipv4",
+      "public": "deny",
+      "endpoint": "requires_bound_endpoint_and_narrow_cidr",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc1918"
+      ]
+    },
+    {
+      "cidr": "100.64.0.0/10",
+      "family": 4,
+      "name": "Shared Address Space",
+      "class": "shared_cgnat",
+      "public": "deny",
+      "endpoint": "requires_bound_endpoint_and_narrow_cidr",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc6598"
+      ]
+    },
+    {
+      "cidr": "127.0.0.0/8",
+      "family": 4,
+      "name": "Loopback",
+      "class": "loopback",
+      "public": "deny",
+      "endpoint": "requires_bound_endpoint_allowLoopback_and_host_prefix",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc1122"
+      ]
+    },
+    {
+      "cidr": "169.254.0.0/16",
+      "family": 4,
+      "name": "Link Local",
+      "class": "link_local",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc3927"
+      ]
+    },
+    {
+      "cidr": "172.16.0.0/12",
+      "family": 4,
+      "name": "Private-Use",
+      "class": "private_ipv4",
+      "public": "deny",
+      "endpoint": "requires_bound_endpoint_and_narrow_cidr",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc1918"
+      ]
+    },
+    {
+      "cidr": "192.0.0.0/24",
+      "family": 4,
+      "name": "IETF Protocol Assignments",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc6890"
+      ]
+    },
+    {
+      "cidr": "192.0.0.0/29",
+      "family": 4,
+      "name": "IPv4 Service Continuity Prefix",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc7335"
+      ]
+    },
+    {
+      "cidr": "192.0.0.8/32",
+      "family": 4,
+      "name": "IPv4 dummy address",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc7600"
+      ]
+    },
+    {
+      "cidr": "192.0.0.9/32",
+      "family": 4,
+      "name": "Port Control Protocol Anycast",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7723"
+      ]
+    },
+    {
+      "cidr": "192.0.0.10/32",
+      "family": 4,
+      "name": "Traversal Using Relays around NAT Anycast",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc8155"
+      ]
+    },
+    {
+      "cidr": "192.0.0.170/32",
+      "family": 4,
+      "name": "NAT64/DNS64 Discovery",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc7050",
+        "rfc8880"
+      ]
+    },
+    {
+      "cidr": "192.0.0.171/32",
+      "family": 4,
+      "name": "NAT64/DNS64 Discovery",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc7050",
+        "rfc8880"
+      ]
+    },
+    {
+      "cidr": "192.0.2.0/24",
+      "family": 4,
+      "name": "Documentation (TEST-NET-1)",
+      "class": "documentation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc5737"
+      ]
+    },
+    {
+      "cidr": "192.31.196.0/24",
+      "family": 4,
+      "name": "AS112-v4",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7535"
+      ]
+    },
+    {
+      "cidr": "192.52.193.0/24",
+      "family": 4,
+      "name": "AMT",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7450"
+      ]
+    },
+    {
+      "cidr": "192.88.99.0/24",
+      "family": 4,
+      "name": "Deprecated (6to4 Relay Anycast)",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "",
+      "source_rfc": [
+        "rfc7526"
+      ]
+    },
+    {
+      "cidr": "192.88.99.2/32",
+      "family": 4,
+      "name": "6a44-relay anycast address",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc6751"
+      ]
+    },
+    {
+      "cidr": "192.168.0.0/16",
+      "family": 4,
+      "name": "Private-Use",
+      "class": "private_ipv4",
+      "public": "deny",
+      "endpoint": "requires_bound_endpoint_and_narrow_cidr",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc1918"
+      ]
+    },
+    {
+      "cidr": "192.175.48.0/24",
+      "family": 4,
+      "name": "Direct Delegation AS112 Service",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7534"
+      ]
+    },
+    {
+      "cidr": "198.18.0.0/15",
+      "family": 4,
+      "name": "Benchmarking",
+      "class": "benchmark",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc2544"
+      ]
+    },
+    {
+      "cidr": "198.51.100.0/24",
+      "family": 4,
+      "name": "Documentation (TEST-NET-2)",
+      "class": "documentation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc5737"
+      ]
+    },
+    {
+      "cidr": "203.0.113.0/24",
+      "family": 4,
+      "name": "Documentation (TEST-NET-3)",
+      "class": "documentation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc5737"
+      ]
+    },
+    {
+      "cidr": "240.0.0.0/4",
+      "family": 4,
+      "name": "Reserved",
+      "class": "reserved_or_broadcast",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc1112"
+      ]
+    },
+    {
+      "cidr": "255.255.255.255/32",
+      "family": 4,
+      "name": "Limited Broadcast",
+      "class": "reserved_or_broadcast",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv4-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc8190",
+        "rfc919"
+      ]
+    },
+    {
+      "cidr": "::1/128",
+      "family": 6,
+      "name": "Loopback Address",
+      "class": "loopback",
+      "public": "deny",
+      "endpoint": "requires_bound_endpoint_allowLoopback_and_host_prefix",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc4291"
+      ]
+    },
+    {
+      "cidr": "::/128",
+      "family": 6,
+      "name": "Unspecified Address",
+      "class": "unspecified_or_this_network",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc4291"
+      ]
+    },
+    {
+      "cidr": "::ffff:0:0/96",
+      "family": 6,
+      "name": "IPv4-mapped Address",
+      "class": "ipv4_mapped_normalize",
+      "public": "deny",
+      "endpoint": "normalize_embedded_ipv4_before_all_rules",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc4291"
+      ]
+    },
+    {
+      "cidr": "64:ff9b::/96",
+      "family": 6,
+      "name": "IPv4-IPv6 Translat.",
+      "class": "transition_or_translation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc6052"
+      ]
+    },
+    {
+      "cidr": "64:ff9b:1::/48",
+      "family": 6,
+      "name": "IPv4-IPv6 Translat.",
+      "class": "transition_or_translation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc8215"
+      ]
+    },
+    {
+      "cidr": "100::/64",
+      "family": 6,
+      "name": "Discard-Only Address Block",
+      "class": "discard",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc6666"
+      ]
+    },
+    {
+      "cidr": "100:0:0:1::/64",
+      "family": 6,
+      "name": "Dummy IPv6 Prefix",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc9780"
+      ]
+    },
+    {
+      "cidr": "2001::/23",
+      "family": 6,
+      "name": "IETF Protocol Assignments",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc2928"
+      ]
+    },
+    {
+      "cidr": "2001::/32",
+      "family": 6,
+      "name": "TEREDO",
+      "class": "transition_or_translation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "N/A",
+      "source_rfc": [
+        "rfc4380",
+        "rfc8190"
+      ]
+    },
+    {
+      "cidr": "2001:1::1/128",
+      "family": 6,
+      "name": "Port Control Protocol Anycast",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7723"
+      ]
+    },
+    {
+      "cidr": "2001:1::2/128",
+      "family": 6,
+      "name": "Traversal Using Relays around NAT Anycast",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc8155"
+      ]
+    },
+    {
+      "cidr": "2001:1::3/128",
+      "family": 6,
+      "name": "DNS-SD Service Registration Protocol Anycast",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc9665"
+      ]
+    },
+    {
+      "cidr": "2001:2::/48",
+      "family": 6,
+      "name": "Benchmarking",
+      "class": "benchmark",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc5180"
+      ]
+    },
+    {
+      "cidr": "2001:3::/32",
+      "family": 6,
+      "name": "AMT",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7450"
+      ]
+    },
+    {
+      "cidr": "2001:4:112::/48",
+      "family": 6,
+      "name": "AS112-v6",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7535"
+      ]
+    },
+    {
+      "cidr": "2001:10::/28",
+      "family": 6,
+      "name": "Deprecated (previously ORCHID)",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "",
+      "source_rfc": [
+        "rfc4843"
+      ]
+    },
+    {
+      "cidr": "2001:20::/28",
+      "family": 6,
+      "name": "ORCHIDv2",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7343"
+      ]
+    },
+    {
+      "cidr": "2001:30::/28",
+      "family": 6,
+      "name": "Drone Remote ID Protocol Entity Tags (DETs) Prefix",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc9374"
+      ]
+    },
+    {
+      "cidr": "2001:db8::/32",
+      "family": 6,
+      "name": "Documentation",
+      "class": "documentation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc3849"
+      ]
+    },
+    {
+      "cidr": "2002::/16",
+      "family": 6,
+      "name": "6to4",
+      "class": "transition_or_translation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "N/A",
+      "source_rfc": [
+        "rfc3056"
+      ]
+    },
+    {
+      "cidr": "2620:4f:8000::/48",
+      "family": 6,
+      "name": "Direct Delegation AS112 Service",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "True",
+      "source_rfc": [
+        "rfc7534"
+      ]
+    },
+    {
+      "cidr": "3fff::/20",
+      "family": 6,
+      "name": "Documentation",
+      "class": "documentation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc9637"
+      ]
+    },
+    {
+      "cidr": "5f00::/16",
+      "family": 6,
+      "name": "Segment Routing (SRv6) SIDs",
+      "class": "special_purpose",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc9602"
+      ]
+    },
+    {
+      "cidr": "fc00::/7",
+      "family": 6,
+      "name": "Unique-Local",
+      "class": "unique_local_ipv6",
+      "public": "deny",
+      "endpoint": "requires_bound_endpoint_and_narrow_cidr",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc4193",
+        "rfc8190"
+      ]
+    },
+    {
+      "cidr": "fe80::/10",
+      "family": 6,
+      "name": "Link-Local Unicast",
+      "class": "link_local",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "iana-ipv6-special",
+      "iana_global_reachable": "False",
+      "source_rfc": [
+        "rfc4291"
+      ]
+    }
+  ],
+  "supplemental_rules": [
+    {
+      "cidr": "224.0.0.0/4",
+      "family": 4,
+      "name": "IPv4 multicast",
+      "class": "multicast",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "rfc1112"
+    },
+    {
+      "cidr": "ff00::/8",
+      "family": 6,
+      "name": "IPv6 multicast",
+      "class": "multicast",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "rfc4291"
+    },
+    {
+      "cidr": "::/96",
+      "family": 6,
+      "name": "Deprecated IPv4-compatible IPv6",
+      "class": "transition_or_translation",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "classification_exceptions": [
+        "::/128",
+        "::1/128"
+      ],
+      "source_id": "rfc4291"
+    }
+  ],
+  "provider_hard_denies": [
+    {
+      "cidr": "169.254.169.254/32",
+      "family": 4,
+      "name": "AWS IMDS IPv4",
+      "class": "metadata_hard_deny",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "aws-imds"
+    },
+    {
+      "cidr": "fd00:ec2::254/128",
+      "family": 6,
+      "name": "AWS IMDS IPv6",
+      "class": "metadata_hard_deny",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "aws-imds"
+    },
+    {
+      "cidr": "100.100.100.200/32",
+      "family": 4,
+      "name": "Alibaba ECS metadata",
+      "class": "metadata_hard_deny",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "alibaba-imds"
+    },
+    {
+      "cidr": "168.63.129.16/32",
+      "family": 4,
+      "name": "Azure platform WireServer",
+      "class": "platform_hard_deny",
+      "public": "deny",
+      "endpoint": "forbidden",
+      "source_id": "azure-platform"
+    }
+  ],
+  "ipv6_allocated_global_prefixes": [
+    {
+      "cidr": "2001::/23",
+      "designation": "IANA",
+      "allocation_date": "1999-07-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:200::/23",
+      "designation": "APNIC",
+      "allocation_date": "1999-07-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:400::/23",
+      "designation": "ARIN",
+      "allocation_date": "1999-07-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:600::/23",
+      "designation": "RIPE NCC",
+      "allocation_date": "1999-07-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:800::/22",
+      "designation": "RIPE NCC",
+      "allocation_date": "2002-11-02",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:c00::/23",
+      "designation": "APNIC",
+      "allocation_date": "2002-05-02",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:e00::/23",
+      "designation": "APNIC",
+      "allocation_date": "2003-01-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:1200::/23",
+      "designation": "LACNIC",
+      "allocation_date": "2002-11-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:1400::/22",
+      "designation": "RIPE NCC",
+      "allocation_date": "2003-07-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:1800::/23",
+      "designation": "ARIN",
+      "allocation_date": "2003-04-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:1a00::/23",
+      "designation": "RIPE NCC",
+      "allocation_date": "2004-01-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:1c00::/22",
+      "designation": "RIPE NCC",
+      "allocation_date": "2004-05-04",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:2000::/19",
+      "designation": "RIPE NCC",
+      "allocation_date": "2019-03-12",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:4000::/23",
+      "designation": "RIPE NCC",
+      "allocation_date": "2004-06-11",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:4200::/23",
+      "designation": "AFRINIC",
+      "allocation_date": "2004-06-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:4400::/23",
+      "designation": "APNIC",
+      "allocation_date": "2004-06-11",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:4600::/23",
+      "designation": "RIPE NCC",
+      "allocation_date": "2004-08-17",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:4800::/23",
+      "designation": "ARIN",
+      "allocation_date": "2004-08-24",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:4a00::/23",
+      "designation": "RIPE NCC",
+      "allocation_date": "2004-10-15",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:4c00::/23",
+      "designation": "RIPE NCC",
+      "allocation_date": "2004-12-17",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:5000::/20",
+      "designation": "RIPE NCC",
+      "allocation_date": "2004-09-10",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:8000::/19",
+      "designation": "APNIC",
+      "allocation_date": "2004-11-30",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:a000::/20",
+      "designation": "APNIC",
+      "allocation_date": "2004-11-30",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2001:b000::/20",
+      "designation": "APNIC",
+      "allocation_date": "2006-03-08",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2002::/16",
+      "designation": "6to4",
+      "allocation_date": "2001-02-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2003::/18",
+      "designation": "RIPE NCC",
+      "allocation_date": "2005-01-12",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2400::/12",
+      "designation": "APNIC",
+      "allocation_date": "2006-10-03",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2410::/12",
+      "designation": "APNIC",
+      "allocation_date": "2024-11-01",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2600::/12",
+      "designation": "ARIN",
+      "allocation_date": "2006-10-03",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2610::/23",
+      "designation": "ARIN",
+      "allocation_date": "2005-11-17",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2620::/23",
+      "designation": "ARIN",
+      "allocation_date": "2006-09-12",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2630::/12",
+      "designation": "ARIN",
+      "allocation_date": "2019-11-06",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2800::/12",
+      "designation": "LACNIC",
+      "allocation_date": "2006-10-03",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2a00::/12",
+      "designation": "RIPE NCC",
+      "allocation_date": "2006-10-03",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2a10::/12",
+      "designation": "RIPE NCC",
+      "allocation_date": "2019-06-05",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2c00::/12",
+      "designation": "AFRINIC",
+      "allocation_date": "2006-10-03",
+      "source_id": "iana-ipv6-unicast"
+    }
+  ],
+  "ipv6_reserved_global_prefixes": [
+    {
+      "cidr": "2d00::/8",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "2e00::/7",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3000::/5",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3800::/6",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3c00::/7",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3e00::/8",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3f00::/9",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3f80::/10",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3fc0::/11",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3fe0::/12",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3ff0::/13",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3ff8::/14",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3ffc::/15",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3ffe::/16",
+      "designation": "IANA",
+      "source_id": "iana-ipv6-unicast"
+    },
+    {
+      "cidr": "3fff::/20",
+      "designation": "Documentation",
+      "source_id": "iana-ipv6-unicast"
+    }
+  ]
+}

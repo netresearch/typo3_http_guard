@@ -1,0 +1,9 @@
+vendor/
+.phpunit.cache/
+.phpstan-cache/
+**/.Build/
+**/var/
+**/typo3temp/
+**/vendor/
+__pycache__/
+*.pyc
