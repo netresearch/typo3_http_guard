@@ -63,6 +63,7 @@ jobs:
     permissions:
       contents: read
   dco:
+    if: github.event_name == 'pull_request' || github.event_name == 'merge_group'
     uses: netresearch/.github/.github/workflows/dco.yml@main
     permissions:
       contents: read
@@ -83,10 +84,22 @@ jobs:
         uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
-      - name: Require every dependency to succeed
+      - name: Require build checks and the applicable sign-off check
         env:
           RESULTS: ${{ toJSON(needs) }}
+          EVENT_NAME: ${{ github.event_name }}
         shell: bash
         run: |
           set -euo pipefail
-          jq -e 'length > 0 and all(.[]; .result == "success")' <<< "$RESULTS"
+          jq -e --arg event "$EVENT_NAME" '
+            keys == ["dco", "documentation", "php", "workflow-lint"]
+            and .php.result == "success"
+            and .documentation.result == "success"
+            and .["workflow-lint"].result == "success"
+            and .dco.result == (
+              if $event == "pull_request" or $event == "merge_group" then "success"
+              elif $event == "push" or $event == "workflow_dispatch" then "skipped"
+              else "unsupported-event"
+              end
+            )
+          ' <<< "$RESULTS"

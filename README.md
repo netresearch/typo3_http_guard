@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/status-0.1.0%20alpha-orange.svg" alt="Status: 0.1.0 alpha"></a>
+  <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/status-0.1.1%20alpha-orange.svg" alt="Status: 0.1.1 alpha"></a>
   <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/TYPO3-13%20%7C%2014-orange.svg?logo=typo3" alt="Supported TYPO3 majors: 13 and 14"></a>
   <a href="Documentation/Development/Index.rst"><img src="https://img.shields.io/badge/PHP-%5E8.2-blue.svg?logo=php" alt="PHP constraint: ^8.2"></a>
   <a href="LICENSE.txt"><img src="https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg" alt="License: GPL-2.0-or-later"></a>
@@ -56,7 +56,7 @@ Install the published 0.1 series from
 composer require netresearch/nr-http-guard:^0.1
 ```
 
-Composer registers the extension automatically. Version 0.1.0 is an alpha for
+Composer registers the extension automatically. Version 0.1.1 is an alpha for
 evaluation; see [the installation guide](Documentation/Installation/Index.rst)
 for the supported Core and transport requirements.
 
