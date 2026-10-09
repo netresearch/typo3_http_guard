@@ -545,36 +545,33 @@ final class ProductionTransportTest extends TestCase
         [$factory] = $this->fixture();
         $binding   = $factory->createTransport();
         $headers   = false;
+        $path      = '/slow/cancellation-' . bin2hex(random_bytes(8));
         $pending   = $binding->client->requestAsync(
             'GET',
-            'http://guard.test:8090/slow',
+            'http://guard.test:8090' . $path,
             [
                 'on_headers' => static function () use (&$headers): void {
                     $headers = true;
                 },
             ],
         );
-        $deadline = microtime(true) + 2;
-        while (!$headers && microtime(true) < $deadline) {
+        $deadline = hrtime(true) + 2000000000;
+        while (!$headers && hrtime(true) < $deadline) {
             $binding->driver->tick();
         }
         self::assertTrue($headers);
+        $identity = $this->connectionForPath($path);
+        self::assertArrayHasKey($identity, $this->counters()['public-a']['connections']);
         $pending->cancel();
         $binding->driver->tick();
         self::assertSame(0, $binding->driver->counters()['active']);
-        $deadline = microtime(true) + 2;
-        do {
-            $stats = $this->counters()['public-a'];
-            if ($stats['active'] === 0) {
-                break;
-            }
-            usleep(10000);
-        } while (microtime(true) < $deadline);
-        self::assertSame(0, $stats['active']);
+        $this->assertConnectionClosed($identity, $path);
+
+        $path = '/echo/callback-' . bin2hex(random_bytes(8));
         try {
             $binding->client->request(
                 'GET',
-                'http://guard.test:8090/echo',
+                'http://guard.test:8090' . $path,
                 [
                     'on_headers' => static function (): void {
                         throw new RuntimeException('synthetic-callback');
@@ -589,6 +586,7 @@ final class ProductionTransportTest extends TestCase
             );
         }
         self::assertSame(0, $binding->driver->counters()['active']);
+        $this->assertConnectionClosed($this->connectionForPath($path), $path);
     }
 
     public function testParallelSameAuthorityPlansCannotContaminate(): void
@@ -1216,5 +1214,40 @@ final class ProductionTransportTest extends TestCase
             static fn ($event) => $event->decision === 'unverifiable' && $event->reasonCode === 'option_forbidden',
         );
         self::assertCount(1, $events);
+    }
+
+    private function connectionForPath(string $path): int
+    {
+        $stats    = $this->counters()['public-a'];
+        $matching = [];
+        foreach (array_replace($stats['closed_connections'], $stats['connections']) as $identity => $record) {
+            if ($record['path'] === $path) {
+                self::assertSame(1, $record['requests'], 'The correlated attempt must use exactly one request');
+                self::assertIsInt($identity);
+                $matching[] = $identity;
+            }
+        }
+        self::assertCount(1, $matching, 'The synthetic path must identify exactly one TCP connection');
+
+        return $matching[0];
+    }
+
+    private function assertConnectionClosed(int $identity, string $path): void
+    {
+        $deadline = hrtime(true) + 2000000000;
+        do {
+            $stats = $this->counters()['public-a'];
+            if (array_key_exists($identity, $stats['closed_connections'])) {
+                break;
+            }
+            usleep(10000);
+        } while (hrtime(true) < $deadline);
+        $diagnostic = json_encode(
+            ['identity' => $identity, 'active' => $stats['active'], 'connections' => $stats['connections']],
+            JSON_THROW_ON_ERROR,
+        );
+        self::assertArrayNotHasKey($identity, $stats['connections'], $diagnostic);
+        self::assertArrayHasKey($identity, $stats['closed_connections'], $diagnostic);
+        self::assertSame(['path' => $path, 'requests' => 1], $stats['closed_connections'][$identity]);
     }
 }
