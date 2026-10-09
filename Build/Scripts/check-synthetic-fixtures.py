@@ -48,9 +48,26 @@ def openssl(*arguments):
 
 
 def check(root):
+    ancestor = root
+    for part in FIXTURE_DIRECTORY.parts:
+        ancestor = ancestor / part
+        if ancestor.is_symlink():
+            raise FixtureError('fixture directory ancestry is symlinked')
     directory = root / FIXTURE_DIRECTORY
     if directory.is_symlink() or not directory.is_dir():
         raise FixtureError('fixture directory is missing or symlinked')
+    # Opengrep matches these CLI exclusions by path suffix, including directories.
+    # Reject additional matching paths before the three fixture exclusions apply.
+    excluded = {name: FIXTURE_DIRECTORY / name
+                for name in ('ca.key', 'client.key', 'server.key')}
+    for path in root.rglob('*'):
+        expected = excluded.get(path.name)
+        if expected is None:
+            continue
+        relative = path.relative_to(root)
+        if (relative.parts[-len(expected.parts):] == expected.parts
+                and relative != expected):
+            raise FixtureError('additional scanner-excluded suffix path')
     # A new key needs review and remains visible to scanning. Only these three
     # exact paths may be excluded after this guard passes; no directory exclusion.
     key_names = {path.relative_to(directory).as_posix()

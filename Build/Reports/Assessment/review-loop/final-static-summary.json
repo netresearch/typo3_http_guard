@@ -1,16 +1,37 @@
 {
   "status": "PASS",
-  "scope": "Final released combined source, current native classic activation helper and runtime qualification guards",
-  "source_head_after_scan": "e4d0a8a4e4ce200050965b40433743fa70a534e2",
+  "scope": "Final reviewed source snapshot after effective synthetic-key exclusion-boundary correction",
+  "source_base_head": "ab230a3f33b20aedce264dce8af32a2d5be14a73",
+  "current_diff_state": {
+    "working_tree_contains_uncommitted_guard_remediation": true,
+    "tested_executable_changes_from_base": [
+      "Build/Scripts/check-synthetic-fixtures.py"
+    ],
+    "metadata_changes_also_pending_commit": true
+  },
+  "tested_file_sha256": {
+    ".github/workflows/ci.yml": "f7a88d2d07e003acf4886d5602e6f51896b506eb44f8b83fecb8d0121a2c4cce",
+    ".github/workflows/security.yml": "a696eb45edc94350ccbc76085481b348a70630931bbe426a9e8b63a1f89445c2",
+    ".github/workflows/verification.yml": "3a5eba999cfc01b93ad003a2a4ee11ae8c9d0c2e0d60f1a34fd60d36c8f72194",
+    "Build/Scripts/check-composer-qualification.py": "40b4e07e49022fcb8ea62bbb1a0c962d464a0b3b71c112079e0982c65c01f3cd",
+    "Build/Scripts/check-installed-runtime.php": "98f80019e5150e1cb5ac740a135cb5e0c7f2dd24ec562666d81e3f33bcabbe22",
+    "Build/Fixtures/initialize-classic.php": "3109bb2cf5f63ec3684129457af61b98c6b1a6d39af36d9a3dfaf80776bdfd2d",
+    "Build/Fixtures/prepare-classic.py": "71cc456d63c4dbed99b2f6d26f0c7b12a63b43542c02391439c3467a5af98da6",
+    "Build/Scripts/check-synthetic-fixtures.py": "f1e3af549096a02aa046718b4ea6d8b6e6a53dd33d5b5a1bc6a980b1325933dc"
+  },
   "opengrep": {
     "version": "1.19.0",
     "binary_sha256": "1d69a41beb88e8e7917f26cc6a16c1edf298f31402807e6d1afbb5d8684c3590",
     "workflow_config": "--config auto --error --severity WARNING --severity ERROR --exclude evidence --exclude verification/evidence --exclude specification/originals --exclude Resources/Private/HttpGuard/data/security-corpus/sources --exclude Tests/HttpGuard/Integration/certificates/ca.key --exclude Tests/HttpGuard/Integration/certificates/client.key --exclude Tests/HttpGuard/Integration/certificates/server.key",
     "exit_code": 0,
     "rules_run": 357,
-    "scanned_files": 443,
+    "scanned_files": 473,
     "findings": 0,
-    "required_new_inputs": [
+    "required_inputs": [
+      {
+        "path": "Build/Scripts/check-synthetic-fixtures.py",
+        "scanned": true
+      },
       {
         "path": "Build/Scripts/check-composer-qualification.py",
         "scanned": true
@@ -64,6 +85,13 @@
     },
     "exhaustive_php_sast": false
   },
+  "suffix_boundary_guard": {
+    "source_sha256": "f1e3af549096a02aa046718b4ea6d8b6e6a53dd33d5b5a1bc6a980b1325933dc",
+    "negative_cases": 19,
+    "positive_cases": 2,
+    "all_assertions_pass": true,
+    "no_value_disclosure": true
+  },
   "workflows": {
     "actionlint": {
       "version": "1.7.12",
@@ -107,35 +135,5 @@
       "default_reusable_audit_skipped_for_strict_local_job": true
     }
   },
-  "source_bindings": [
-    {
-      "sha256": "f7a88d2d07e003acf4886d5602e6f51896b506eb44f8b83fecb8d0121a2c4cce",
-      "path": ".github/workflows/ci.yml"
-    },
-    {
-      "sha256": "a696eb45edc94350ccbc76085481b348a70630931bbe426a9e8b63a1f89445c2",
-      "path": ".github/workflows/security.yml"
-    },
-    {
-      "sha256": "3a5eba999cfc01b93ad003a2a4ee11ae8c9d0c2e0d60f1a34fd60d36c8f72194",
-      "path": ".github/workflows/verification.yml"
-    },
-    {
-      "sha256": "40b4e07e49022fcb8ea62bbb1a0c962d464a0b3b71c112079e0982c65c01f3cd",
-      "path": "Build/Scripts/check-composer-qualification.py"
-    },
-    {
-      "sha256": "98f80019e5150e1cb5ac740a135cb5e0c7f2dd24ec562666d81e3f33bcabbe22",
-      "path": "Build/Scripts/check-installed-runtime.php"
-    },
-    {
-      "sha256": "3109bb2cf5f63ec3684129457af61b98c6b1a6d39af36d9a3dfaf80776bdfd2d",
-      "path": "Build/Fixtures/initialize-classic.php"
-    },
-    {
-      "sha256": "71cc456d63c4dbed99b2f6d26f0c7b12a63b43542c02391439c3467a5af98da6",
-      "path": "Build/Fixtures/prepare-classic.py"
-    }
-  ],
   "old_classic_helper_follow_up_superseded_by_this_final_binding": true
 }
