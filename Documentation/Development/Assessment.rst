@@ -60,6 +60,13 @@ reviews, applicability decisions and measurements under
 <https://github.com/netresearch/typo3_http_guard/tree/main/Build/Reports/Assessment>`_.
 These optional development records are excluded from the extension ZIP.
 
+A subsequent full conformance and enterprise checkpoint run records 109
+passes, 25 failures and one skip across 135 checks. Its newly exposed TER
+title-prefix inconsistency is corrected and the affected checkpoint passes
+on a targeted rerun. The merged recorded result is 110 passes, 24 failures
+and one skip; the unchanged raw runs and snapshot boundaries are preserved
+under ``Build/Reports/Assessment/post/``.
+
 The extension remains an alpha. This assessment does not replace an
 independent security review or an operator pilot with representative
 outbound requests.
@@ -97,6 +104,10 @@ Supported PHP metadata is limited to PHP 8.2 through 8.5. Exact qualified
 TYPO3 and SDK combinations continue to fail closed; the assessment does
 not broaden runtime support.
 
+GitHub enforces signed commits and the existing required review also applies
+to administrators. New CI workflows require actual execution before their
+presence can be treated as operational evidence.
+
 Level 8 static analysis now also runs against genuine TYPO3 13.4.35 vendors
 for each of the three qualified SDK tuples. The inactive Core 14 declaration
 has an explicitly marked analysis shell in ``Build/``; production never
@@ -127,6 +138,10 @@ The fresh dependency resolution under the unchanged qualified Core and SDK
 constraints still selects ``enshrined/svg-sanitize`` 0.22.0. Its strict audit
 fails on the three recorded advisory IDs. The security gate retains this
 failure rather than reporting the graph as clean.
+
+GitHub lists 36 medium alerts for the same three advisory IDs repeated in
+twelve historical fixture lockfiles. These alerts and the three findings in
+the fresh production dependency graph have different counting scopes.
 
 The 18 killed targeted security mutants are historical qualification
 evidence. They do not establish a project-wide Infection mutation score.

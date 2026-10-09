@@ -5,6 +5,8 @@ evidence/** -whitespace
 specification/** -whitespace
 Resources/Private/HttpGuard/data/security-corpus/** -whitespace
 verification/evidence/** -whitespace
+# Raw assessment console logs retain the tool's exact output, including padding.
+Build/Reports/Assessment/**/*.log -whitespace
 integrations/nr-vault/evidence/** -whitespace
 integrations/nr-vault/vault-adapter.patch -whitespace
 # RST headings/tables legitimately use seven equals signs.

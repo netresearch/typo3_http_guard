@@ -1,0 +1,41 @@
+{
+  "initial_native_snapshot_files": 1978,
+  "initial_native_snapshot_at_utc": "2026-10-09T08:25:15.937724+00:00",
+  "head": "d026852ef10d25cde1742e6e8bac56cdd926704d",
+  "branch": "chore/repository-conventions",
+  "origin": "git@github.com:netresearch/typo3_http_guard.git",
+  "native_changed_since_initial_snapshot": [
+    "Build/phpstan-bootstrap14.php",
+    "Configuration/Services.php",
+    "composer.json"
+  ],
+  "current_source_changed_since_initial_snapshot": [
+    ".gitattributes",
+    ".github/workflows/verification.yml",
+    "Build/phpstan-bootstrap14.php",
+    "Configuration/Services.php",
+    "Documentation/Development/Assessment.rst",
+    "Documentation/Development/Licenses.rst",
+    "Documentation/Localization.de_DE/Development/Licenses.rst",
+    "Documentation/Localization.de_DE/Installation/Index.rst",
+    "LICENSES.md",
+    "codecov.yml",
+    "composer.json"
+  ],
+  "native_changes_limited_to_scoped_followup_metadata_and_two_comment_headers": true,
+  "later_current_source_changes": "The parent/team added routine licensing/assessment prose, attributes and comment headers after the initial sealed snapshot. CI also changed the coverage flag to combined-unit-native and explicitly bound uploads to github.sha/ref_name/repository while disabling file fixes. These changed paths are recorded above. The full 135-checkpoint run was not repeated on those later bytes. TC-187 was separately remeasured on updated metadata. No source or remote edits were made by this assessment agent.",
+  "later_ci_diff_review": {
+    "verification.yml": [
+      "coverage flag unit,kernel-integration -> combined-unit-native",
+      "override_commit github.sha",
+      "override_branch github.ref_name",
+      "slug github.repository",
+      "disable_file_fixes true"
+    ],
+    "codecov.yml": [
+      "two old flags replaced by one combined-unit-native flag, carryforward stays false"
+    ],
+    "remote_success_inferred": false,
+    "official_catalog_full_rerun_on_final_ci_upload_metadata": false
+  }
+}

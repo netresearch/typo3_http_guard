@@ -1,0 +1,9 @@
+{
+  "command": "php -r token_get_all semantic strict-types check (read only)",
+  "exit_code": 0,
+  "result": {
+    "files_checked": 73,
+    "missing_strict_type_declaration": []
+  },
+  "stderr": ""
+}

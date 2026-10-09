@@ -4,7 +4,7 @@
   "composer_required_to_build": false,
   "single_package": true,
   "file_count": 128,
-  "archive_sha256": "0f048fa525b104e67e2a07b13952513d6826b45e04f203540fdd08cfb94d548e",
+  "archive_sha256": "9951a487d21f74c1ee408f82b45f700def9f71f0e29f0b55b4d45e499def723d",
   "files": {
     "Classes/Client/EndpointClientFactory.php": "9a193705d246233f762bee09b852ba4281eb5467cf6340afc7017cf7c6d015d2",
     "Classes/Client/PublicFetchClient.php": "bf29e8f752db0f33a9852dcf61cae7617ea7258c3b839deb14a79be9f60a2024",
@@ -91,7 +91,7 @@
     "Documentation/Configuration/_Policy.php": "e6beca6838602421e43b2c67f00fba02bebec5a4180ef8a9f298940e6adc7f71",
     "Documentation/Decisions/Index.rst": "263aee5415ba112e2b25f10970d0126f5b438c053e94e71ecd04955efa7fe858",
     "Documentation/Decisions/SingleExtension.rst": "ac26a3a5fb8dabaef076782d08cf5a3e160c721696e22bfa7468fbc506069be5",
-    "Documentation/Development/Assessment.rst": "9648e2cbdc6d5b74a7d46d1e67ca09218b63fd23fdff9bce639859a712ad8d14",
+    "Documentation/Development/Assessment.rst": "a997086e3828e2568bdeb1b0ad779f12e5f679030c42c3c031c41151a6b68b46",
     "Documentation/Development/Dependencies.rst": "5085b65fd8321a8895ff938d919e0aa44153de4bb28699b63572eb3aad8679d3",
     "Documentation/Development/Index.rst": "4adbac8f3e39fc9c83ef1596af67839f37f430240bf40760491f0af05317351f",
     "Documentation/Development/Licenses.rst": "e25508c632f1ba8ebefc88e37c251cce50af101cfce14d66462e8d93d04b7bcd",

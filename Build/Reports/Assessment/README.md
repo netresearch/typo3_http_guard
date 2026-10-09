@@ -16,6 +16,21 @@ edits preserve the production AST. `documentation/` records warning-free
 English and German rendering and the independent documentation validator.
 
 These are development records, excluded from the installable extension ZIP.
+
+`post/` preserves the full 135-check conformance/readiness rerun and one
+targeted metadata follow-up. The merged outcome is 110 pass, 24 fail and one
+skip; remaining failures are calibrated rather than suppressed. `current/`
+contains fresh execution, dependency audit, workflow validation and the final
+ZIP member manifest. Package hashes in the earlier CI summary describe that
+earlier review build; `final-extension-archive-manifest.json` describes the
+final reviewed ZIP.
+
+GitHub's 36 medium dependency alerts repeat three unique SVG advisories in
+twelve archived fixture locks. The current strict audit records those three
+unique advisories separately. Repository and organization secret-name checks
+confirm the existing coverage upload credential is available; the remote
+coverage service and upload still require execution.
+
 They are not human security approval, a production pilot, a SLSA certification
 or proof of a future release. The manual's
 [assessment](../../../Documentation/Development/Assessment.rst) explains the
