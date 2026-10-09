@@ -2,16 +2,15 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
 
 final class TargetNormalizer
 {
-    public function normalize(
-        \Psr\Http\Message\RequestInterface $request
-    ): Target
+    public function normalize(\Psr\Http\Message\RequestInterface $request): Target
     {
         $uri = $this->validatedUri($request->getUri());
         $raw = (string) $uri;
@@ -36,11 +35,7 @@ final class TargetNormalizer
         }
         if ($headers !== []) {
             $authority = $headers[0];
-            if (!(preg_match(
-                '/^(\[[0-9a-fA-F:.]+\]|[^:]+)(?::([0-9]+))?$/D',
-                $authority,
-                $m
-            ) === 1)) {
+            if (!(preg_match('/^(\[[0-9a-fA-F:.]+\]|[^:]+)(?::([0-9]+))?$/D', $authority, $m) === 1)) {
                 throw new PolicyException('authority_mismatch');
             }
             try {
@@ -57,23 +52,16 @@ final class TargetNormalizer
         if (str_contains($host, ':') || preg_match('/^[0-9.]+$/D', $host) === 1) {
             $literal = Cidr::address($host);
         }
-        $authority = (str_contains($host, ':') ? '[' . $host . ']' : $host) . ($scheme === 'https' && $port === 443 || $scheme === 'http' && $port === 80 ? '' : ':' . $port);
+        $authority    = (str_contains($host, ':') ? '[' . $host . ']' : $host) . ($scheme === 'https' && $port === 443 || $scheme === 'http' && $port === 80 ? '' : ':' . $port);
         $canonicalUri = $uri
             ->withScheme($scheme)
             ->withHost(str_contains($host, ':') ? '[' . $host . ']' : $host)
-            ->withPort(
-                $scheme === 'https' && $port === 443 || $scheme === 'http' && $port === 80 ? null : $port
-            );
+            ->withPort($scheme === 'https' && $port === 443 || $scheme === 'http' && $port === 80 ? null : $port);
         $canonicalRequest = $request->withUri($canonicalUri)->withHeader('Host', $authority);
-        return new Target(
-            $canonicalRequest,
-            $scheme,
-            $host,
-            $port,
-            $scheme . '://' . $authority,
-            $literal
-        );
+
+        return new Target($canonicalRequest, $scheme, $host, $port, $scheme . '://' . $authority, $literal);
     }
+
     public static function host(string $host): string
     {
         if ($host === '' || strlen($host) > 255 || preg_match('/[^\x21-\x7e]/', $host) === 1 || str_contains($host, '%') || str_contains($host, '\\\\')) {
@@ -86,10 +74,11 @@ final class TargetNormalizer
             $host = substr($host, 1, -1);
         }
         if (str_contains($host, ':')) {
-            $packed = NativeOperation::attempt(static fn() => inet_pton($host));
+            $packed = NativeOperation::attempt(static fn () => inet_pton($host));
             if ($packed === false || strlen($packed) !== 16) {
                 throw new PolicyException('invalid_target');
             }
+
             return (string) inet_ntop($packed);
         }
         $host = strtolower($host);
@@ -99,10 +88,7 @@ final class TargetNormalizer
         if ($host === '' || strlen($host) > 253 || str_ends_with($host, '.')) {
             throw new PolicyException('invalid_target');
         }
-        if (preg_match(
-            '/^(?:0x[0-9a-f]+|[0-9]+)(?:\.(?:0x[0-9a-f]+|[0-9]+))*$/D',
-            $host
-        ) === 1) {
+        if (preg_match('/^(?:0x[0-9a-f]+|[0-9]+)(?:\.(?:0x[0-9a-f]+|[0-9]+))*$/D', $host) === 1) {
             return Cidr::address($host);
         }
         foreach (explode('.', $host) as $label) {
@@ -110,8 +96,10 @@ final class TargetNormalizer
                 throw new PolicyException('invalid_target');
             }
         }
+
         return $host;
     }
+
     public function assertRawUri(string $rawUri): void
     {
         if (strlen($rawUri) > 8192 || preg_match('/[\x00-\x20\x7f\\\\]/', $rawUri) === 1 || str_contains($rawUri, '#')) {
@@ -126,11 +114,7 @@ final class TargetNormalizer
         if (!(preg_match('~^https?://([^/?#]*)~iD', $rawUri, $match) === 1) || $match[1] === '' || str_contains($match[1], '@')) {
             throw new PolicyException('invalid_target');
         }
-        if (!(preg_match(
-            '/^(\[[0-9a-fA-F:.]+\]|[^:]+)(?::([1-9][0-9]{0,4}))?$/D',
-            $match[1],
-            $authority
-        ) === 1)) {
+        if (!(preg_match('/^(\[[0-9a-fA-F:.]+\]|[^:]+)(?::([1-9][0-9]{0,4}))?$/D', $match[1], $authority) === 1)) {
             throw new PolicyException('invalid_target');
         }
         self::host($authority[1]);
@@ -138,11 +122,11 @@ final class TargetNormalizer
             throw new PolicyException('invalid_target');
         }
     }
-    private function validatedUri(
-        \Psr\Http\Message\UriInterface $uri
-    ): \Psr\Http\Message\UriInterface
+
+    private function validatedUri(\Psr\Http\Message\UriInterface $uri): \Psr\Http\Message\UriInterface
     {
         $this->assertRawUri((string) $uri);
+
         return $uri;
     }
 }

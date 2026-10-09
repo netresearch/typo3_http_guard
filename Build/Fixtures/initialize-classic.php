@@ -2,9 +2,9 @@
 
 /**
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
 
 use Netresearch\HttpGuard\GuardConfig;
 use Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility;
@@ -24,43 +24,37 @@ putenv('TYPO3_PATH_APP=' . $fixture);
 $loader = require $fixture . '/vendor/autoload.php';
 SystemEnvironmentBuilder::run(0, SystemEnvironmentBuilder::REQUESTTYPE_CLI);
 if (Environment::isComposerMode()) {
-    throw new RuntimeException(
-        'Classic qualification must use the native package manager.'
-    );
+    throw new RuntimeException('Classic qualification must use the native package manager.');
 }
 
 // Match native extension activation before the first ordinary production boot.
-$container = Bootstrap::init($loader, true);
+$container      = Bootstrap::init($loader, true);
 $packageManager = $container->get(PackageManager::class);
 if (!$packageManager instanceof PackageManager) {
     throw new RuntimeException('Unexpected native package manager.');
 }
 if ($packageManager->isPackageActive('nr_http_guard')) {
-    throw new RuntimeException(
-        'Classic fixture must begin with the installed extension inactive.'
-    );
+    throw new RuntimeException('Classic fixture must begin with the installed extension inactive.');
 }
 $packageManager->activatePackage('nr_http_guard');
 ClassLoadingInformation::dumpClassLoadingInformation();
 $packageStates = require $fixture . '/typo3conf/PackageStates.php';
 if (($packageStates['packages']['nr_http_guard']['packagePath'] ?? null) !== 'typo3conf/ext/nr_http_guard/') {
-    throw new RuntimeException(
-        'Native classic extension activation was not persisted.'
-    );
+    throw new RuntimeException('Native classic extension activation was not persisted.');
 }
 if (!$packageManager->isPackageActive('nr_http_guard') || !ClassLoadingInformation::isClassLoadingInformationAvailable() || !class_exists(RequestFactoryCompatibility::class) || !class_exists(GuardConfig::class)) {
     throw new RuntimeException('Native classic extension activation failed.');
 }
 echo json_encode(
     [
-        'status' => 'PASS',
-        'core' => (new Typo3Version())->getVersion(),
-        'extension_active' => true,
+        'status'                         => 'PASS',
+        'core'                           => (new Typo3Version())->getVersion(),
+        'extension_active'               => true,
         'native_class_loading_generated' => true,
-        'composer_mode' => false,
-        'extension_initially_inactive' => true,
-        'package_states_persisted' => true,
-        'package_states_sha256' => hash_file('sha256', $fixture . '/typo3conf/PackageStates.php'),
+        'composer_mode'                  => false,
+        'extension_initially_inactive'   => true,
+        'package_states_persisted'       => true,
+        'package_states_sha256'          => hash_file('sha256', $fixture . '/typo3conf/PackageStates.php'),
     ],
-    JSON_THROW_ON_ERROR
+    JSON_THROW_ON_ERROR,
 ) . "\n";

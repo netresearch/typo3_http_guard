@@ -2,9 +2,10 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
 
 final readonly class AddressClassification
@@ -14,8 +15,6 @@ final readonly class AddressClassification
         public string $addressClass,
         public bool $public,
         public bool $endpointExceptable,
-        public bool $hardDenied
-    )
-    {
-    }
+        public bool $hardDenied,
+    ) {}
 }

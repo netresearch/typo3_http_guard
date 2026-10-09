@@ -2,11 +2,13 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard\Client;
 
+use Closure;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use Netresearch\HttpGuard\EndpointClientFactoryInterface;
@@ -21,73 +23,62 @@ use Netresearch\HttpGuard\Transport\InvocationRegistry;
 use Netresearch\HttpGuard\Transport\TerminalGuardMiddleware;
 use Netresearch\HttpGuard\Transport\TransferDriver;
 use Psr\Http\Client\ClientInterface;
+use ReflectionFunction;
+use ReflectionProperty;
+
 final readonly class GuardedClientFactory implements EndpointClientFactoryInterface
 {
     public function __construct(
         private PolicyEngine $engine,
         private GuardConfig $config,
         private PolicyRegistry $registry,
-        private ?ClientStackProviderInterface $stackProvider = null
-    )
-    {
+        private ?ClientStackProviderInterface $stackProvider = null,
+    ) {
         if ($registry->configuration() !== $config) {
             throw new PolicyException('configuration_invalid');
         }
     }
-    public function middlewarePair(
-        ?string $endpointId = null,
-        bool $publicFetch = false
-    ): MiddlewarePair
+
+    public function middlewarePair(?string $endpointId = null, bool $publicFetch = false): MiddlewarePair
     {
-        $context = $this->registry->newContext($endpointId);
-        $driver = new TransferDriver();
+        $context     = $this->registry->newContext($endpointId);
+        $driver      = new TransferDriver();
         $invocations = new InvocationRegistry();
-        $boundary = new BoundaryMiddleware(
-            $this->engine,
-            $this->config,
-            $this->registry,
-            $context,
-            $invocations,
-            $publicFetch
-        );
-        $terminal = new TerminalGuardMiddleware(
+        $boundary    = new BoundaryMiddleware($this->engine, $this->config, $this->registry, $context, $invocations, $publicFetch);
+        $terminal    = new TerminalGuardMiddleware(
             $this->engine,
             $this->config,
             $context,
             $invocations,
-            new GuardedTransferFactory($this->engine, $context, $driver)
+            new GuardedTransferFactory($this->engine, $context, $driver),
         );
+
         return new MiddlewarePair($boundary, $terminal, $driver, $context);
     }
+
     /** @param array<string,mixed> $defaultOptions */
-    public function createTransport(
-        array $defaultOptions = [],
-        ?string $endpointId = null
-    ): GuardedClientBinding
+    public function createTransport(array $defaultOptions = [], ?string $endpointId = null): GuardedClientBinding
     {
         return $this->build($defaultOptions, $endpointId, false);
     }
+
     public function forEndpoint(string $configuredEndpointId): ClientInterface
     {
         return new Psr18Client($this->createTransport([], $configuredEndpointId));
     }
+
     public function publicClient(): ClientInterface
     {
         return new Psr18Client($this->createTransport());
     }
+
     public function publicFetch(): PublicFetchClientInterface
     {
-        return new PublicFetchClient(
-            $this->build([], null, true),
-            $this->config->data['redirects']['max']
-        );
+        return new PublicFetchClient($this->build([], null, true), $this->config->data['redirects']['max']);
     }
+
     /** @param array<string,mixed> $options */
-    private function build(
-        array $options,
-        ?string $endpointId,
-        bool $publicFetch
-    ): GuardedClientBinding
+    private function build(array $options, ?string $endpointId, bool $publicFetch): GuardedClientBinding
     {
         foreach ([
             'handler',
@@ -105,16 +96,12 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
                 throw new PolicyException('option_forbidden');
             }
         }
-        $pair = $this->middlewarePair($endpointId, $publicFetch);
-        $provider = ($this->stackProvider ?? new DefaultStackProvider())->create(
-            $pair->boundary,
-            $pair->terminal
-        );
-        $entries = self::stackEntries($provider->stack);
+        $pair     = $this->middlewarePair($endpointId, $publicFetch);
+        $provider = ($this->stackProvider ?? new DefaultStackProvider())->create($pair->boundary, $pair->terminal);
+        $entries  = self::stackEntries($provider->stack);
         self::assertPosition($entries, $pair->boundary, $pair->terminal);
         $assertion = static function () use ($provider, $pair, $entries): void {
-            ($provider->registryAssertion ?? static function (): void {
-            })();
+            ($provider->registryAssertion ?? static function (): void {})();
             if (self::stackEntries($provider->stack) !== $entries) {
                 throw new PolicyException('configuration_invalid');
             }
@@ -122,7 +109,7 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
         };
         $pair->boundary->setRegistryAssertion($assertion);
         $pair->terminal->setRegistryAssertion($assertion);
-        $profile = $this->config->mode === 'enforce' ? $this->registry->validateContext($pair->context) : null;
+        $profile  = $this->config->mode === 'enforce' ? $this->registry->validateContext($pair->context) : null;
         $defaults = $provider->defaultOptions;
         unset($defaults['handler'], $defaults['allowed_hosts']);
         if ($publicFetch) {
@@ -148,43 +135,36 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
             $defaults['headers'] = [];
         }
         if ($this->config->mode === 'enforce' && !array_key_exists('allow_redirects', $defaults)) {
-            $defaults['allow_redirects'] = $profile !== null && $profile->redirects === 'none' ? false : [
-                'max' => $this->config->data['redirects']['max'],
-                'strict' => false,
-                'protocols' => ['http', 'https'],
-            ];
+            $defaults['allow_redirects'] = $profile !== null && $profile->redirects === 'none' ? false : ['max' => $this->config->data['redirects']['max'], 'strict' => false, 'protocols' => ['http', 'https']];
         }
         if ($this->config->mode === 'enforce') {
             $defaults['idn_conversion'] = false;
         }
-        $config = array_replace($defaults, $options);
+        $config            = array_replace($defaults, $options);
         $config['handler'] = $provider->stack;
-        return new GuardedClientBinding(
-            new Client($config),
-            $pair->driver,
-            $pair->context
-        );
+
+        return new GuardedClientBinding(new Client($config), $pair->driver, $pair->context);
     }
+
     /**
      * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface> $stack
+     *
      * @return list<array{callable(callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface): (callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface),string}>
      */
     private static function stackEntries(HandlerStack $stack): array
     {
         // This private inventory is version-bound by RuntimeSupport and the G0 probes.
-        return (new \ReflectionProperty(HandlerStack::class, 'stack'))->getValue(
-            $stack
-        );
+        return (new ReflectionProperty(HandlerStack::class, 'stack'))->getValue($stack);
     }
+
     /** @param list<array{callable(callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface): (callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface),string}> $entries */
     private static function assertPosition(
         array $entries,
         BoundaryMiddleware $boundary,
-        TerminalGuardMiddleware $terminal
-    ): void
-    {
-        $boundaries = 0;
-        $terminals = 0;
+        TerminalGuardMiddleware $terminal,
+    ): void {
+        $boundaries    = 0;
+        $terminals     = 0;
         $boundaryIndex = null;
         $terminalIndex = null;
         foreach ($entries as $index => $entry) {
@@ -206,19 +186,14 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
         }
         $defaults = self::stackEntries(
             HandlerStack::create(
-                static fn() => \GuzzleHttp\Promise\Create::rejectionFor(
-                    new PolicyException('configuration_invalid')
-                )
-            )
+                static fn () => \GuzzleHttp\Promise\Create::rejectionFor(new PolicyException('configuration_invalid')),
+            ),
         );
         $prefix = array_slice($entries, 0, $boundaryIndex);
         // The supported Core wrapper remains cumulative before our boundary.
         if (count($prefix) === count($defaults) + 1) {
             $last = $prefix[array_key_last($prefix)];
-            if ($last[1] !== 'typo3_allowed_hosts' || !is_object($last[0]) || strcmp(
-                get_class($last[0]),
-                'TYPO3\CMS\Core\Http\Client\AllowedHostsMiddleware'
-            ) !== 0) {
+            if ($last[1] !== 'typo3_allowed_hosts' || !is_object($last[0]) || strcmp(get_class($last[0]), 'TYPO3\CMS\Core\Http\Client\AllowedHostsMiddleware') !== 0) {
                 throw new PolicyException('configuration_invalid');
             }
             array_pop($prefix);
@@ -228,11 +203,11 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
         }
         foreach ($defaults as $index => $expected) {
             $actual = $prefix[$index];
-            if ($actual[1] !== $expected[1] || !$actual[0] instanceof \Closure || !$expected[0] instanceof \Closure) {
+            if ($actual[1] !== $expected[1] || !$actual[0] instanceof Closure || !$expected[0] instanceof Closure) {
                 throw new PolicyException('configuration_invalid');
             }
-            $a = new \ReflectionFunction($actual[0]);
-            $b = new \ReflectionFunction($expected[0]);
+            $a = new ReflectionFunction($actual[0]);
+            $b = new ReflectionFunction($expected[0]);
             if ([$a->getFileName(), $a->getStartLine(), $a->getEndLine()] !== [$b->getFileName(), $b->getStartLine(), $b->getEndLine()]) {
                 throw new PolicyException('configuration_invalid');
             }

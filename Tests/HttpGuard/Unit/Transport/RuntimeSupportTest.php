@@ -1,6 +1,7 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard\Tests\Unit\Transport;
 
 use Composer\Autoload\ClassLoader;
@@ -11,6 +12,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use PHPUnit\Framework\TestCase;
+
 final class RuntimeSupportTest extends TestCase
 {
     public function testCurrentInstalledCompatibleGraphIsSupported(): void
@@ -23,20 +25,17 @@ final class RuntimeSupportTest extends TestCase
     #[DataProvider('dependencyVersions')]
     #[RunInSeparateProcess]
     #[PreserveGlobalState(false)]
-    public function testSemanticDependencyCompatibility(
-        array $versions,
-        bool $supported
-    ): void
+    public function testSemanticDependencyCompatibility(array $versions, bool $supported): void
     {
         $actualMajor = RuntimeSupport::major();
-        $data = InstalledVersions::getAllRawData()[0];
+        $data        = InstalledVersions::getAllRawData()[0];
         foreach ($versions as $package => $replacement) {
             if ($replacement === null) {
                 unset($data['versions'][$package]);
                 continue;
             }
             $data['versions'][$package]['pretty_version'] = $replacement;
-            $data['versions'][$package]['version'] = ltrim($replacement, 'v') . '.0';
+            $data['versions'][$package]['version']        = ltrim($replacement, 'v') . '.0';
         }
         foreach (ClassLoader::getRegisteredLoaders() as $loader) {
             $loader->unregister();
@@ -63,25 +62,25 @@ final class RuntimeSupportTest extends TestCase
         yield 'independent PSR7 patch' => [['guzzlehttp/psr7' => $seven ? '2.13.2' : '3.1.1'], true];
         yield 'later compatible minor versions' => [
             [
-                'guzzlehttp/guzzle' => $seven ? '7.16.0' : '8.3.0',
+                'guzzlehttp/guzzle'   => $seven ? '7.16.0' : '8.3.0',
                 'guzzlehttp/promises' => $seven ? '2.6.0' : '3.1.0',
-                'guzzlehttp/psr7' => $seven ? '2.14.0' : '3.2.0',
+                'guzzlehttp/psr7'     => $seven ? '2.14.0' : '3.2.0',
             ],
             true,
         ];
         yield 'safe dependency floors' => [
             [
-                'guzzlehttp/guzzle' => $seven ? '7.15.2' : '8.2.0',
+                'guzzlehttp/guzzle'   => $seven ? '7.15.2' : '8.2.0',
                 'guzzlehttp/promises' => $seven ? '2.5.1' : '3.0.2',
-                'guzzlehttp/psr7' => $seven ? '2.13.0' : '3.1.0',
+                'guzzlehttp/psr7'     => $seven ? '2.13.0' : '3.1.0',
             ],
             true,
         ];
         yield 'version prefixes' => [
             [
-                'guzzlehttp/guzzle' => $seven ? 'v7.15.2' : 'v8.2.0',
+                'guzzlehttp/guzzle'   => $seven ? 'v7.15.2' : 'v8.2.0',
                 'guzzlehttp/promises' => $seven ? 'v2.5.1' : 'v3.0.2',
-                'guzzlehttp/psr7' => $seven ? 'v2.13.0' : 'v3.1.0',
+                'guzzlehttp/psr7'     => $seven ? 'v2.13.0' : 'v3.1.0',
             ],
             true,
         ];
@@ -97,6 +96,7 @@ final class RuntimeSupportTest extends TestCase
         yield 'missing PSR7 package' => [['guzzlehttp/psr7' => null], false];
         yield 'unknown development alias' => [['guzzlehttp/guzzle' => 'dev-main'], false];
     }
+
     #[DataProvider('nativeApiShapes')]
     public function testNativeContractChangesFailClosed(
         string $constructor,
@@ -104,10 +104,9 @@ final class RuntimeSupportTest extends TestCase
         bool $disableMulti,
         bool $supported,
         string $stack = '',
-        string $interface = ''
-    ): void
-    {
-        $code = 'namespace GuzzleHttp {' . $stack . '} namespace GuzzleHttp\Handler {' . ($interface . 'class CurlFactory {public function __construct(int $maxHandles) {}}') . 'class CurlMultiHandler {' . $constructor . $invoke . 'public function tick(): void {}' . 'public function close(): void {}' . 'public function __destruct() {}}}' . 'namespace {require $argv[1] . "/Tests/bootstrap.php";' . 'try {\Netresearch\HttpGuard\Transport\RuntimeSupport::assertSupported();' . 'echo "SUPPORTED"; exit(0);}' . 'catch (\Netresearch\HttpGuard\PolicyException $error) {' . 'fwrite(STDERR, $error->reasonCode()); exit(3);}}';
+        string $interface = '',
+    ): void {
+        $code      = 'namespace GuzzleHttp {' . $stack . '} namespace GuzzleHttp\Handler {' . ($interface . 'class CurlFactory {public function __construct(int $maxHandles) {}}') . 'class CurlMultiHandler {' . $constructor . $invoke . 'public function tick(): void {}public function close(): void {}public function __destruct() {}}}namespace {require $argv[1] . "/Tests/bootstrap.php";try {\Netresearch\HttpGuard\Transport\RuntimeSupport::assertSupported();echo "SUPPORTED"; exit(0);}catch (\Netresearch\HttpGuard\PolicyException $error) {fwrite(STDERR, $error->reasonCode()); exit(3);}}';
         $arguments = [PHP_BINARY];
         if ($disableMulti) {
             $arguments[] = '-d';
@@ -122,33 +121,20 @@ final class RuntimeSupportTest extends TestCase
         $stderr = stream_get_contents($pipes[2]);
         fclose($pipes[1]);
         fclose($pipes[2]);
-        self::assertSame(
-            $supported ? 0 : 3,
-            proc_close($process),
-            (string) $stderr
-        );
+        self::assertSame($supported ? 0 : 3, proc_close($process), (string) $stderr);
         self::assertSame($supported ? 'SUPPORTED' : '', $stdout);
         self::assertSame($supported ? '' : 'transport_unsupported', $stderr);
     }
+
     /** @return iterable<string, array{0: string, 1: string, 2: bool, 3: bool, 4?: string, 5?: string}> */
     public static function nativeApiShapes(): iterable
     {
         $constructor = 'public function __construct(array $options = []) {}';
-        $invoke = 'public function __invoke($request, array $options) {}';
+        $invoke      = 'public function __invoke($request, array $options) {}';
         yield 'constructor ignores native factory argument' => ['public function __construct() {}', $invoke, false, false];
         yield 'invocation ignores request options' => [$constructor, 'public function __invoke($request) {}', false, false];
-        yield 'constructor needs an unknown mandatory argument' => [
-            'public function __construct(array $options, int $unknown) {}',
-            $invoke,
-            false,
-            false,
-        ];
-        yield 'compatible optional constructor argument' => [
-            'public function __construct(array $options = [], int $optional = 0) {}',
-            $invoke,
-            false,
-            true,
-        ];
+        yield 'constructor needs an unknown mandatory argument' => ['public function __construct(array $options, int $unknown) {}', $invoke, false, false];
+        yield 'compatible optional constructor argument' => ['public function __construct(array $options = [], int $optional = 0) {}', $invoke, false, true];
         yield 'missing native multi capability' => [$constructor, $invoke, true, false];
         yield 'middleware entries lose positional inventory' => [
             $constructor,

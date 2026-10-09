@@ -2,9 +2,10 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
 
 final readonly class Target
@@ -15,8 +16,6 @@ final readonly class Target
         public string $host,
         public int $port,
         public string $origin,
-        public ?string $literalIp
-    )
-    {
-    }
+        public ?string $literalIp,
+    ) {}
 }

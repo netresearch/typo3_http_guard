@@ -2,9 +2,10 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
 
 /** @internal Bounded DNS wire format parser; no resolver or transport fallback. */
@@ -28,28 +29,25 @@ final class DnsPacketCodec
             $name .= self::labelLength($label) . $label;
         }
         $name .= chr(0);
+
         return pack('nnnnnn', $id, 0x100, 1, 0, 0, 0) . $name . pack('nn', $qtype, 1);
     }
+
     /**
      * @return array{records:list<array{host:string,type:string,ttl:int,ip?:string,ipv6?:string,target?:string}>,truncated:bool}
      */
-    public function decode(
-        string $packet,
-        int $id,
-        string $absoluteFqdn,
-        int $qtype
-    ): array
+    public function decode(string $packet, int $id, string $absoluteFqdn, int $qtype): array
     {
         $length = strlen($packet);
         if ($length < 12 || $length > 65535) {
             self::fail();
         }
         $header = self::numbers('nid/nflags/nqd/nan/nns/nar', substr($packet, 0, 12));
-        if ($header['id'] !== $id || ($header['flags'] & 0x8000) === 0 || ($header['flags'] & 0x7800) !== 0 || ($header['flags'] & 0xf) !== 0 || $header['qd'] !== 1) {
+        if ($header['id'] !== $id || ($header['flags'] & 0x8000) === 0 || ($header['flags'] & 0x7800) !== 0 || ($header['flags'] & 0xF) !== 0 || $header['qd'] !== 1) {
             self::fail();
         }
         $offset = 12;
-        $name = $this->name($packet, $offset);
+        $name   = $this->name($packet, $offset);
         self::bounds($packet, $offset, 4);
         $question = self::numbers('ntype/nclass', substr($packet, $offset, 4));
         $offset += 4;
@@ -67,10 +65,7 @@ final class DnsPacketCodec
             for ($i = 0; $i < $header[$section]; ++$i) {
                 $owner = $this->name($packet, $offset);
                 self::bounds($packet, $offset, 10);
-                $rr = self::numbers(
-                    'ntype/nclass/Nttl/nlength',
-                    substr($packet, $offset, 10)
-                );
+                $rr = self::numbers('ntype/nclass/Nttl/nlength', substr($packet, $offset, 10));
                 $offset += 10;
                 $end = $offset + $rr['length'];
                 self::bounds($packet, $offset, $rr['length']);
@@ -82,10 +77,10 @@ final class DnsPacketCodec
                     $record = [
                         'host' => $owner,
                         'type' => [1 => 'A', 28 => 'AAAA', 5 => 'CNAME'][$rr['type']],
-                        'ttl' => $rr['ttl'],
+                        'ttl'  => $rr['ttl'],
                     ];
                     if ($rr['type'] === 5) {
-                        $cursor = $offset;
+                        $cursor           = $offset;
                         $record['target'] = $this->name($packet, $cursor);
                         if ($cursor !== $end) {
                             self::fail();
@@ -110,14 +105,16 @@ final class DnsPacketCodec
         if ($offset !== $length) {
             self::fail();
         }
+
         return ['records' => $records, 'truncated' => false];
     }
+
     private function name(string $packet, int &$offset): string
     {
         $position = $offset;
         $consumed = null;
-        $labels = [];
-        $visited = [];
+        $labels   = [];
+        $visited  = [];
         $expanded = 1;
         while (true) {
             if (isset($visited[$position]) || count($visited) > 128) {
@@ -126,9 +123,9 @@ final class DnsPacketCodec
             $visited[$position] = true;
             self::bounds($packet, $position, 1);
             $byte = ord($packet[$position]);
-            if (($byte & 0xc0) === 0xc0) {
+            if (($byte & 0xC0) === 0xC0) {
                 self::bounds($packet, $position, 2);
-                $pointer = ($byte & 0x3f) << 8 | ord($packet[$position + 1]);
+                $pointer = ($byte & 0x3F) << 8 | ord($packet[$position + 1]);
                 if ($pointer < 12 || $pointer >= $position) {
                     self::fail();
                 }
@@ -136,12 +133,13 @@ final class DnsPacketCodec
                 $position = $pointer;
                 continue;
             }
-            if (($byte & 0xc0) !== 0 || $byte > 63) {
+            if (($byte & 0xC0) !== 0 || $byte > 63) {
                 self::fail();
             }
             ++$position;
             if ($byte === 0) {
                 $offset = $consumed ?? $position;
+
                 return strtolower(implode('.', $labels));
             }
             self::bounds($packet, $position, $byte);
@@ -157,28 +155,29 @@ final class DnsPacketCodec
             $position += $byte;
         }
     }
-    private static function bounds(
-        string $packet,
-        int $offset,
-        int $count
-    ): void
+
+    private static function bounds(string $packet, int $offset, int $count): void
     {
         if ($offset < 0 || $count < 0 || $offset > strlen($packet) - $count) {
             self::fail();
         }
     }
+
     private static function fail(): never
     {
         throw new PolicyException('resolution_unverified');
     }
+
     private static function labelLength(string $label): string
     {
         $length = strlen($label);
         if ($length < 1 || $length > 63) {
             self::fail();
         }
+
         return chr($length);
     }
+
     /** @return array<string,int> */
     private static function numbers(string $format, string $data): array
     {
@@ -186,6 +185,7 @@ final class DnsPacketCodec
         if ($result === false) {
             self::fail();
         }
+
         return $result;
     }
 }

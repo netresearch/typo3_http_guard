@@ -2,9 +2,10 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
 
 final readonly class Resolution
@@ -18,8 +19,6 @@ final readonly class Resolution
         public string $source,
         public ?int $ttlSeconds,
         public string $generation,
-        public array $cnameChain = []
-    )
-    {
-    }
+        public array $cnameChain = [],
+    ) {}
 }

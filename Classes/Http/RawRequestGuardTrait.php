@@ -2,9 +2,10 @@
 
 /**
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\NrHttpGuard\Http;
 
 use Netresearch\HttpGuard\TargetNormalizer;
@@ -21,22 +22,21 @@ trait RawRequestGuardTrait
         private readonly RawRequestFactoryRegistration $registration,
         private readonly \Netresearch\HttpGuard\PolicyEngine $policyEngine,
         private readonly \Netresearch\HttpGuard\PolicyRegistry $policyRegistry,
-        private readonly \TYPO3\CMS\Core\Http\RequestFactory $originalFactory
-    )
-    {
+        private readonly \TYPO3\CMS\Core\Http\RequestFactory $originalFactory,
+    ) {
         if ($originalFactory::class !== \TYPO3\CMS\Core\Http\RequestFactory::class) {
             throw new \Netresearch\HttpGuard\PolicyException('configuration_invalid');
         }
         parent::__construct($guzzleFactory);
     }
+
     /** @param array<array-key, mixed> $options */
     public function request(
         string $uri,
         string $method = 'GET',
         array $options = [],
-        ?string $context = null
-    ): ResponseInterface
-    {
+        ?string $context = null,
+    ): ResponseInterface {
         $this->registration->assertValid();
         $mode = $this->configuration->load()->mode;
         if ($mode !== 'disabled') {
@@ -46,13 +46,14 @@ trait RawRequestGuardTrait
                 $this->policyEngine->reportDiagnostic(
                     $this->policyRegistry->newContext(),
                     $mode === 'observe' ? 'would_deny' : 'deny',
-                    $error->reasonCode()
+                    $error->reasonCode(),
                 );
                 if ($mode === 'enforce') {
                     throw $error;
                 }
             }
         }
+
         return $this->originalFactory->request($uri, $method, $options, $context);
     }
 }

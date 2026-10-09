@@ -2,9 +2,10 @@
 
 /**
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\NrHttpGuard\Diagnostics;
 
 final class LegacyConfigurationInventory
@@ -13,50 +14,47 @@ final class LegacyConfigurationInventory
      * @return array<string, mixed> */
     public function inspect(array $http): array
     {
-        $allowed = $http['allowed_hosts'] ?? [];
-        $flat = 0;
-        $nested = 0;
+        $allowed     = $http['allowed_hosts'] ?? [];
+        $flat        = 0;
+        $nested      = 0;
         $nestedHosts = 0;
-        $invalid = 0;
+        $invalid     = 0;
         if (!is_array($allowed)) {
-            $invalid++;
+            ++$invalid;
             $allowed = [];
         }
         foreach ($allowed as $entry) {
             if (is_string($entry)) {
-                $flat++;
+                ++$flat;
             } elseif (is_array($entry)) {
-                $nested++;
+                ++$nested;
                 foreach ($entry as $host) {
                     if (is_string($host)) {
-                        $nestedHosts++;
+                        ++$nestedHosts;
                     } else {
-                        $invalid++;
+                        ++$invalid;
                     }
                 }
             } else {
-                $invalid++;
+                ++$invalid;
             }
         }
+
         return [
             'automaticGrantsCreated' => 0,
-            'sources' => [
+            'sources'                => [
+                ['location' => 'HTTP.allowed_hosts', 'semantics' => 'flat Vault legacy entries', 'entries' => $flat],
                 [
-                    'location' => 'HTTP.allowed_hosts',
-                    'semantics' => 'flat Vault legacy entries',
-                    'entries' => $flat,
-                ],
-                [
-                    'location' => 'HTTP.allowed_hosts[context]',
+                    'location'  => 'HTTP.allowed_hosts[context]',
                     'semantics' => 'Core context lists',
-                    'contexts' => $nested,
-                    'entries' => $nestedHosts,
+                    'contexts'  => $nested,
+                    'entries'   => $nestedHosts,
                 ],
             ],
-            'invalidEntries' => $invalid,
+            'invalidEntries'         => $invalid,
             'requiredEndpointFields' => ['origin', 'allowedCidrs', 'methods', 'purpose', 'owner'],
-            'missingLegacyFields' => ['scheme', 'port', 'addressRanges', 'methods', 'purpose', 'owner'],
-            'policyChanged' => false,
+            'missingLegacyFields'    => ['scheme', 'port', 'addressRanges', 'methods', 'purpose', 'owner'],
+            'policyChanged'          => false,
         ];
     }
 }

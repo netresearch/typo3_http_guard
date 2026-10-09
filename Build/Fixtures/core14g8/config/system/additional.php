@@ -1,9 +1,9 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 $case = getenv('HTTP_GUARD_BOOT_TEST') ?: 'normal';
 if ($case === 'object') {
-    $GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'] = \GuzzleHttp\HandlerStack::create();
+    $GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'] = GuzzleHttp\HandlerStack::create();
 }
 if ($case === 'invalid-mode') {
     $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['nr_http_guard']['mode'] = 'invalid';
@@ -23,5 +23,5 @@ if ($case === 'review-overdue') {
 }
 
 if ($case === 'factory-conflict') {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Core\Http\RequestFactory::class] = ['className' => 'Synthetic\ConflictingFactory'];
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][TYPO3\CMS\Core\Http\RequestFactory::class] = ['className' => 'Synthetic\ConflictingFactory'];
 }

@@ -1,6 +1,7 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\NrHttpGuard\Tests\Unit;
 
 use Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility;
@@ -10,16 +11,11 @@ use PHPUnit\Framework\TestCase;
 final class RequestFactoryCompatibilityTest extends TestCase
 {
     #[DataProvider('coreVersions')]
-    public function testSemanticCoreSupport(
-        string $version,
-        bool $supported
-    ): void
+    public function testSemanticCoreSupport(string $version, bool $supported): void
     {
-        self::assertSame(
-            $supported,
-            RequestFactoryCompatibility::supportsVersion($version)
-        );
+        self::assertSame($supported, RequestFactoryCompatibility::supportsVersion($version));
     }
+
     public static function coreVersions(): iterable
     {
         yield 'current13' => ['13.4.36', true];
@@ -37,6 +33,7 @@ final class RequestFactoryCompatibilityTest extends TestCase
         yield 'development' => ['dev-main', false];
         yield 'ambiguous' => ['14.3', false];
     }
+
     public function testCurrentGenuineParentPassesAbiValidation(): void
     {
         RequestFactoryCompatibility::assertSupported();
@@ -45,15 +42,15 @@ final class RequestFactoryCompatibilityTest extends TestCase
             [
                 \Netresearch\NrHttpGuard\Http\GuardedRequestFactory13::class,
                 \Netresearch\NrHttpGuard\Http\GuardedRequestFactory14::class,
-            ]
+            ],
         );
     }
+
     #[DataProvider('parentReferenceShapes')]
     public function testParentReferenceDriftIsRejectedBeforeReplacementAutoload(
         string $coreMajor,
-        bool $reference
-    ): void
-    {
+        bool $reference,
+    ): void {
         // Controlled argv uses PHP_BINARY, a repository fixture and fixed validated provider values.
         // nosemgrep: php.lang.security.exec-use.exec-use
         $process = proc_open(
@@ -64,21 +61,18 @@ final class RequestFactoryCompatibilityTest extends TestCase
                 $reference ? 'reference' : 'value',
             ],
             [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
-            $pipes
+            $pipes,
         );
         self::assertIsResource($process);
         $stdout = stream_get_contents($pipes[1]);
         $stderr = stream_get_contents($pipes[2]);
         fclose($pipes[1]);
         fclose($pipes[2]);
-        self::assertSame(
-            $reference ? 3 : 0,
-            proc_close($process),
-            (string) $stderr
-        );
+        self::assertSame($reference ? 3 : 0, proc_close($process), (string) $stderr);
         self::assertSame($reference ? '' : 'SUPPORTED', $stdout);
         self::assertSame($reference ? 'transport_unsupported' : '', $stderr);
     }
+
     /** @return iterable<string, array{string, bool}> */
     public static function parentReferenceShapes(): iterable
     {

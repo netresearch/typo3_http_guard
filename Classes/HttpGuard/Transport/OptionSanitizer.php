@@ -2,13 +2,12 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Netresearch\HttpGuard\Transport;
 
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Cookie\CookieJarInterface;
 use GuzzleHttp\HandlerStack;
 use Netresearch\HttpGuard\PolicyException;
@@ -82,24 +81,19 @@ final readonly class OptionSanitizer
         'protocols',
     ];
 
-    public function __construct(
-        private int $maxRedirects = 5,
-        private bool $requireVerification = false
-    )
-    {
-    }
+    public function __construct(private int $maxRedirects = 5, private bool $requireVerification = false) {}
 
     /**
-     * @param array<array-key,mixed> $options
+     * @param array<array-key,mixed>                                                                                                 $options
      * @param HandlerStack<covariant callable(RequestInterface, array<array-key, mixed>): \GuzzleHttp\Promise\PromiseInterface>|null $expectedHandler
+     *
      * @return array<string,mixed>
      */
     public function sanitize(
         RequestInterface $request,
         array $options = [],
-        ?HandlerStack $expectedHandler = null
-    ): array
-    {
+        ?HandlerStack $expectedHandler = null,
+    ): array {
         foreach (array_keys($options) as $key) {
             if (!is_string($key) || !in_array($key, self::KNOWN, true)) {
                 throw new PolicyException('option_forbidden');
@@ -166,11 +160,7 @@ final readonly class OptionSanitizer
         if (isset($options['force_ip_resolve']) && !in_array($options['force_ip_resolve'], ['v4', 'v6'], true)) {
             throw new PolicyException('option_forbidden');
         }
-        if (!in_array(
-            $request->getProtocolVersion(),
-            ['1.0', '1.1', '2', '2.0'],
-            true
-        ) || array_key_exists('version', $options) && (!(is_string($options['version']) || is_int($options['version']) || is_float($options['version'])) || !in_array((string) $options['version'], ['1.0', '1.1', '2', '2.0'], true))) {
+        if (!in_array($request->getProtocolVersion(), ['1.0', '1.1', '2', '2.0'], true) || array_key_exists('version', $options) && (!(is_string($options['version']) || is_int($options['version']) || is_float($options['version'])) || !in_array((string) $options['version'], ['1.0', '1.1', '2', '2.0'], true))) {
             throw new PolicyException('option_forbidden');
         }
         $cookies = $options['cookies'] ?? false;
@@ -182,39 +172,32 @@ final readonly class OptionSanitizer
                 throw new PolicyException('option_forbidden');
             }
         }
-        if (isset($options['multiplex']) && !in_array(
-            $options['multiplex'],
-            ['none', 'eager', 'wait', 'require_eager', 'require_wait'],
-            true
-        )) {
+        if (isset($options['multiplex']) && !in_array($options['multiplex'], ['none', 'eager', 'wait', 'require_eager', 'require_wait'], true)) {
             throw new PolicyException('option_forbidden');
         }
         foreach ([
-            'request_factory' => \Psr\Http\Message\RequestFactoryInterface::class,
+            'request_factory'  => \Psr\Http\Message\RequestFactoryInterface::class,
             'response_factory' => \Psr\Http\Message\ResponseFactoryInterface::class,
-            'stream_factory' => \Psr\Http\Message\StreamFactoryInterface::class,
-            'uri_factory' => \Psr\Http\Message\UriFactoryInterface::class,
+            'stream_factory'   => \Psr\Http\Message\StreamFactoryInterface::class,
+            'uri_factory'      => \Psr\Http\Message\UriFactoryInterface::class,
         ] as $key => $interface) {
             if (isset($options[$key]) && !$options[$key] instanceof $interface) {
                 throw new PolicyException('option_forbidden');
             }
         }
-        foreach ([
-            '__redirect_count' => $this->maxRedirects,
-            '__guzzle_digest_retries' => 2,
-            'retries' => 1000,
-        ] as $key => $max) {
+        foreach (['__redirect_count' => $this->maxRedirects, '__guzzle_digest_retries' => 2, 'retries' => 1000] as $key => $max) {
             if (isset($options[$key]) && (!is_int($options[$key]) || $options[$key] < 0 || $options[$key] > $max)) {
                 throw new PolicyException('option_forbidden');
             }
         }
-        $managedAuth = $this->managedAuthentication($options);
-        $leaf = array_intersect_key($options, array_flip(self::LEAF));
-        $leaf['proxy'] = '';
+        $managedAuth       = $this->managedAuthentication($options);
+        $leaf              = array_intersect_key($options, array_flip(self::LEAF));
+        $leaf['proxy']     = '';
         $leaf['protocols'] = $options['protocols'] ?? ['http', 'https'];
         if ($managedAuth !== []) {
             $leaf['curl'] = $managedAuth;
         }
+
         return $leaf;
     }
 
@@ -227,14 +210,7 @@ final readonly class OptionSanitizer
             throw new PolicyException('redirect_forbidden');
         }
         $settings = is_array($redirects) ? $redirects : [];
-        $known = [
-            'max',
-            'strict',
-            'referer',
-            'protocols',
-            'on_redirect',
-            'track_redirects',
-        ];
+        $known    = ['max', 'strict', 'referer', 'protocols', 'on_redirect', 'track_redirects'];
         if (array_diff(array_keys($settings), $known) !== []) {
             throw new PolicyException('redirect_forbidden');
         }
@@ -250,7 +226,7 @@ final readonly class OptionSanitizer
         if (isset($settings['on_redirect']) && !is_callable($settings['on_redirect'])) {
             throw new PolicyException('redirect_forbidden');
         }
-        if (isset($settings['protocols']) && (!self::webProtocols($settings['protocols']))) {
+        if (isset($settings['protocols']) && !self::webProtocols($settings['protocols'])) {
             throw new PolicyException('redirect_forbidden');
         }
     }
@@ -262,14 +238,11 @@ final readonly class OptionSanitizer
     {
         $names = [];
         foreach (self::processEnvironment() as $name => $value) {
-            if (in_array(
-                strtolower((string) $name),
-                ['http_proxy', 'https_proxy', 'all_proxy', 'no_proxy'],
-                true
-            ) && $value !== '') {
+            if (in_array(strtolower((string) $name), ['http_proxy', 'https_proxy', 'all_proxy', 'no_proxy'], true) && $value !== '') {
                 $names[] = (string) $name;
             }
         }
+
         return $names;
     }
 
@@ -306,15 +279,17 @@ final readonly class OptionSanitizer
         }
         $expected = [
             CURLOPT_HTTPAUTH => $auth[2] === 'digest' ? CURLAUTH_DIGEST : CURLAUTH_NTLM,
-            CURLOPT_USERPWD => $auth[0] . ':' . $auth[1],
+            CURLOPT_USERPWD  => $auth[0] . ':' . $auth[1],
         ];
         $raw = $options['curl'];
         if (!is_array($raw) || count($raw) !== 2 || ($raw[CURLOPT_HTTPAUTH] ?? null) !== $expected[CURLOPT_HTTPAUTH] || ($raw[CURLOPT_USERPWD] ?? null) !== $expected[CURLOPT_USERPWD]) {
             throw new PolicyException('option_forbidden');
         }
+
         // Rebuild only source-proven Guzzle7 generated authentication controls.
         return $expected;
     }
+
     private static function webProtocols(mixed $protocols): bool
     {
         if (!is_array($protocols) || !array_is_list($protocols) || $protocols === []) {
@@ -325,10 +300,13 @@ final readonly class OptionSanitizer
                 return false;
             }
         }
+
         return true;
     }
+
     /**
      * PHP normalizes numeric environment names to integer array keys.
+     *
      * @return array<array-key, string>
      */
     private static function processEnvironment(): array

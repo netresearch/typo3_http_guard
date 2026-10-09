@@ -2,12 +2,16 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
 
-final class PolicyException extends \RuntimeException implements OutboundPolicyExceptionInterface
+use InvalidArgumentException;
+use RuntimeException;
+
+final class PolicyException extends RuntimeException implements OutboundPolicyExceptionInterface
 {
     public const REASONS = [
         'invalid_target',
@@ -24,13 +28,15 @@ final class PolicyException extends \RuntimeException implements OutboundPolicyE
         'redirect_forbidden',
         'configuration_invalid',
     ];
+
     public function __construct(private readonly string $reason)
     {
         if (!in_array($reason, self::REASONS, true)) {
-            throw new \InvalidArgumentException('Unknown policy reason');
+            throw new InvalidArgumentException('Unknown policy reason');
         }
         parent::__construct('Outbound HTTP policy: ' . $reason);
     }
+
     public function reasonCode(): string
     {
         return $this->reason;

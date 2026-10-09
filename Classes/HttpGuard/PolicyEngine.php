@@ -2,45 +2,42 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
+
+use DateTimeInterface;
+use Throwable;
+use WeakMap;
 
 final class PolicyEngine implements OutboundPolicyEvaluatorInterface
 {
     /**
-     * @var \WeakMap<ConnectionPlan,RequestPolicyContext>
+     * @var WeakMap<ConnectionPlan,RequestPolicyContext>
      */
-    private \WeakMap $plans;
+    private WeakMap $plans;
+
     public function __construct(
         private readonly TargetNormalizer $normalizer,
         private readonly AddressClassifier $classifier,
         private readonly ResolverInterface $resolver,
         private readonly PolicyRegistry $registry,
         private readonly ClockInterface $clock,
-        private readonly DecisionReporterInterface $reporter
-    )
-    {
-        $this->plans = new \WeakMap();
+        private readonly DecisionReporterInterface $reporter,
+    ) {
+        $this->plans = new WeakMap();
     }
-    public function plan(
-        \Psr\Http\Message\RequestInterface $request,
-        RequestPolicyContext $context
-    ): ConnectionPlan
+
+    public function plan(\Psr\Http\Message\RequestInterface $request, RequestPolicyContext $context): ConnectionPlan
     {
-        $target = null;
+        $target   = null;
         $metadata = ['source' => 'none', 'class' => 'unknown'];
         try {
             $plan = $this->buildPlan($request, $context, $target, $metadata);
-            $this->reportDiagnostic(
-                $context,
-                'allow',
-                null,
-                $target,
-                $metadata['source'],
-                $metadata['class']
-            );
+            $this->reportDiagnostic($context, 'allow', null, $target, $metadata['source'], $metadata['class']);
+
             return $plan;
         } catch (PolicyException $e) {
             $this->reportDiagnostic(
@@ -49,42 +46,24 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
                 $e->reasonCode(),
                 $target,
                 $metadata['source'],
-                $metadata['class']
+                $metadata['class'],
             );
             throw $e;
         }
     }
-    public function evaluate(
-        \Psr\Http\Message\RequestInterface $request,
-        RequestPolicyContext $context
-    ): PolicyDecision
+
+    public function evaluate(\Psr\Http\Message\RequestInterface $request, RequestPolicyContext $context): PolicyDecision
     {
-        $target = null;
+        $target   = null;
         $metadata = ['source' => 'none', 'class' => 'unknown'];
         try {
             $plan = $this->buildPlan($request, $context, $target, $metadata);
-            $this->reportDiagnostic(
-                $context,
-                'allow',
-                null,
-                $target,
-                $metadata['source'],
-                $metadata['class']
-            );
-            return new PolicyDecision(
-                $context->mode,
-                'allow',
-                null,
-                $plan->profileId,
-                $context->policyRevision
-            );
+            $this->reportDiagnostic($context, 'allow', null, $target, $metadata['source'], $metadata['class']);
+
+            return new PolicyDecision($context->mode, 'allow', null, $plan->profileId, $context->policyRevision);
         } catch (PolicyException $e) {
             $decision = $context->mode === 'observe' ? 'would_deny' : 'deny';
-            if (in_array(
-                $e->reasonCode(),
-                ['resolution_unverified', 'transport_unsupported'],
-                true
-            )) {
+            if (in_array($e->reasonCode(), ['resolution_unverified', 'transport_unsupported'], true)) {
                 $decision = 'unverifiable';
             }
             $this->reportDiagnostic(
@@ -93,34 +72,31 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
                 $e->reasonCode(),
                 $target,
                 $metadata['source'],
-                $metadata['class']
+                $metadata['class'],
             );
+
             return new PolicyDecision(
                 $context->mode,
                 $decision,
                 $e->reasonCode(),
                 $this->profileId($context),
-                $context->policyRevision
+                $context->policyRevision,
             );
         }
     }
-    public function assertCurrent(
-        ConnectionPlan $plan,
-        RequestPolicyContext $context
-    ): void
+
+    public function assertCurrent(ConnectionPlan $plan, RequestPolicyContext $context): void
     {
         if (!isset($this->plans[$plan]) || $this->plans[$plan] !== $context || $plan->policyRevision !== $context->policyRevision) {
             throw new PolicyException('grant_invalid');
         }
         $this->registry->validateContext($context);
     }
-    public function hostAllowed(
-        string $host,
-        RequestPolicyContext $context
-    ): bool
+
+    public function hostAllowed(string $host, RequestPolicyContext $context): bool
     {
         try {
-            $profile = $this->registry->validateContext($context);
+            $profile   = $this->registry->validateContext($context);
             $canonical = TargetNormalizer::host($host);
             if ($profile !== null) {
                 $origin = new \GuzzleHttp\Psr7\Uri($profile->origin);
@@ -131,23 +107,24 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
             $addresses = str_contains($canonical, ':') || preg_match('/^[0-9.]+$/D', $canonical) === 1 ? [Cidr::address($canonical)] : $this->resolver->resolve($canonical)->addresses;
             $this->validateAddresses($addresses, $profile);
             $this->registry->validateContext($context);
+
             return true;
         } catch (PolicyException) {
             return false;
         }
     }
+
     public function reportDiagnostic(
         RequestPolicyContext $context,
         string $decision,
         ?string $reasonCode = null,
         ?Target $target = null,
         string $resolverSource = 'none',
-        string $addressClass = 'unknown'
-    ): void
-    {
+        string $addressClass = 'unknown',
+    ): void {
         $event = new DecisionEvent(
             1,
-            $this->clock->now()->format(\DateTimeInterface::RFC3339_EXTENDED),
+            $this->clock->now()->format(DateTimeInterface::RFC3339_EXTENDED),
             $context->mode,
             $decision,
             $reasonCode,
@@ -158,13 +135,14 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
             $target?->port,
             $resolverSource,
             bin2hex(random_bytes(12)),
-            $target?->host
+            $target?->host,
         );
         try {
             $this->reporter->report($event);
-        } catch (\Throwable) {
+        } catch (Throwable) {
         }
     }
+
     /** @param array{source:string,class:string} $metadata
      * @param-out Target $target
      */
@@ -172,12 +150,11 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
         \Psr\Http\Message\RequestInterface $request,
         RequestPolicyContext $context,
         ?Target &$target = null,
-        array &$metadata = ['source' => 'none', 'class' => 'unknown']
-    ): ConnectionPlan
-    {
+        array &$metadata = ['source' => 'none', 'class' => 'unknown'],
+    ): ConnectionPlan {
         $profile = $this->registry->validateContext($context);
-        $target = $this->normalizer->normalize($request);
-        $method = $request->getMethod();
+        $target  = $this->normalizer->normalize($request);
+        $method  = $request->getMethod();
         if (strtoupper($method) === 'CONNECT') {
             throw new PolicyException('invalid_target');
         }
@@ -185,8 +162,8 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
             throw new PolicyException('endpoint_mismatch');
         }
         $resolution = $target->literalIp !== null ? new Resolution([$target->literalIp], 'literal', null, 'literal') : $this->resolver->resolve($target->host);
-        $metadata = ['source' => $resolution->source, 'class' => 'unknown'];
-        $addresses = $this->validateAddresses($resolution->addresses, $profile, $metadata);
+        $metadata   = ['source' => $resolution->source, 'class' => 'unknown'];
+        $addresses  = $this->validateAddresses($resolution->addresses, $profile, $metadata);
         $this->registry->validateContext($context);
         $plan = new ConnectionPlan(
             $target,
@@ -195,21 +172,23 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
             $profile?->id,
             $context->policyRevision,
             $resolution->generation,
-            $this->clock->now()
+            $this->clock->now(),
         );
         $this->plans[$plan] = $context;
+
         return $plan;
     }
+
     /** @param array<array-key,mixed> $addresses
      * @param array{source:string,class:string} $metadata
+     *
      * @return list<string>
      */
     private function validateAddresses(
         array $addresses,
         ?EndpointProfile $profile,
-        array &$metadata = ['source' => 'none', 'class' => 'unknown']
-    ): array
-    {
+        array &$metadata = ['source' => 'none', 'class' => 'unknown'],
+    ): array {
         if (!array_is_list($addresses) || $addresses === []) {
             throw new PolicyException('resolution_unverified');
         }
@@ -247,10 +226,7 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
                 }
                 $matches = false;
                 foreach ($profile->allowedCidrs as $cidr) {
-                    if ($this->classifier->contains(
-                        $cidr,
-                        $classification->canonicalIp
-                    )) {
+                    if ($this->classifier->contains($cidr, $classification->canonicalIp)) {
                         $matches = true;
                         break;
                     }
@@ -261,8 +237,10 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
             }
             $result[] = $classification->canonicalIp;
         }
+
         return array_values(array_unique($result));
     }
+
     private function profileId(RequestPolicyContext $context): ?string
     {
         try {
@@ -271,19 +249,18 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
             return null;
         }
     }
+
     /** @param array<string,true> $classes
      * @param array{source:string,class:string} $metadata
+     *
      * @return array{AddressClassification,array<string,true>}
      */
-    private function classifyForMetadata(
-        string $address,
-        array $classes,
-        array &$metadata
-    ): array
+    private function classifyForMetadata(string $address, array $classes, array &$metadata): array
     {
-        $classification = $this->classifier->classify($address);
+        $classification                         = $this->classifier->classify($address);
         $classes[$classification->addressClass] = true;
-        $metadata['class'] = count($classes) === 1 ? $classification->addressClass : 'mixed';
+        $metadata['class']                      = count($classes) === 1 ? $classification->addressClass : 'mixed';
+
         return [$classification, $classes];
     }
 }

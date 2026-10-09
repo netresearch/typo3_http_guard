@@ -2,12 +2,14 @@
 
 /**
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\NrHttpGuard\Configuration;
 
 use Netresearch\HttpGuard\GuardConfig;
+
 final class GlobalHttpDefaults
 {
     /** @param array<string, mixed> $http
@@ -17,12 +19,13 @@ final class GlobalHttpDefaults
         if ($config->mode !== 'enforce') {
             return $http;
         }
-        $current = $http['allow_redirects'] ?? true;
+        $current     = $http['allow_redirects'] ?? true;
         $coreDefault = ['max' => 5, 'strict' => false];
         if (!array_key_exists('allow_redirects', $http) || $current === true || $current === $coreDefault) {
-            $max = min(5, $config->data['redirects']['max']);
+            $max                     = min(5, $config->data['redirects']['max']);
             $http['allow_redirects'] = $max === 0 ? false : ['max' => $max, 'strict' => false];
         }
+
         return $http;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace Netresearch\HttpGuard\Tests\Unit\Transport;
 
@@ -10,6 +10,7 @@ use Netresearch\HttpGuard\PolicyException;
 use Netresearch\HttpGuard\Transport\OptionSanitizer;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 final class OptionSanitizerTest extends TestCase
 {
@@ -18,11 +19,7 @@ final class OptionSanitizerTest extends TestCase
     protected function setUp(): void
     {
         foreach (getenv(null, true) as $key => $value) {
-            if (in_array(
-                strtolower((string) $key),
-                ['http_proxy', 'https_proxy', 'all_proxy', 'no_proxy'],
-                true
-            )) {
+            if (in_array(strtolower((string) $key), ['http_proxy', 'https_proxy', 'all_proxy', 'no_proxy'], true)) {
                 $this->proxyEnvironment[$key] = $value;
                 putenv($key);
             }
@@ -32,11 +29,7 @@ final class OptionSanitizerTest extends TestCase
     protected function tearDown(): void
     {
         foreach (getenv(null, true) as $key => $value) {
-            if (in_array(
-                strtolower((string) $key),
-                ['http_proxy', 'https_proxy', 'all_proxy', 'no_proxy'],
-                true
-            )) {
+            if (in_array(strtolower((string) $key), ['http_proxy', 'https_proxy', 'all_proxy', 'no_proxy'], true)) {
                 putenv($key);
             }
         }
@@ -47,24 +40,22 @@ final class OptionSanitizerTest extends TestCase
 
     public function testPreservesZeroTimeoutsAndComposedCallbacks(): void
     {
-        $headers = static function (): void {
-        };
-        $stats = static function (): void {
-        };
+        $headers = static function (): void {};
+        $stats   = static function (): void {};
         $options = (new OptionSanitizer(5, false))->sanitize(
             new Request('GET', 'https://guard.test'),
             [
-                'timeout' => 0,
+                'timeout'         => 0,
                 'connect_timeout' => 0,
-                'verify' => false,
-                'on_headers' => $headers,
-                'on_stats' => $stats,
-                'idn_conversion' => false,
-                'decode_content' => true,
+                'verify'          => false,
+                'on_headers'      => $headers,
+                'on_stats'        => $stats,
+                'idn_conversion'  => false,
+                'decode_content'  => true,
                 'allow_redirects' => ['max' => 3, 'protocols' => ['https'], 'strict' => false],
-                'http_errors' => false,
-                'cookies' => false,
-            ]
+                'http_errors'     => false,
+                'cookies'         => false,
+            ],
         );
         self::assertSame(0, $options['timeout']);
         self::assertSame(0, $options['connect_timeout']);
@@ -76,17 +67,11 @@ final class OptionSanitizerTest extends TestCase
     }
 
     #[DataProvider('forbiddenOptions')]
-    public function testRejectsUncontrolledOptions(
-        array $options,
-        string $reason
-    ): void
+    public function testRejectsUncontrolledOptions(array $options, string $reason): void
     {
         $this->expectException(PolicyException::class);
         $this->expectExceptionMessage($reason);
-        (new OptionSanitizer(5, false))->sanitize(
-            new Request('GET', 'https://guard.test'),
-            $options
-        );
+        (new OptionSanitizer(5, false))->sanitize(new Request('GET', 'https://guard.test'), $options);
     }
 
     public static function forbiddenOptions(): iterable
@@ -121,37 +106,26 @@ final class OptionSanitizerTest extends TestCase
             ['allow_redirects' => ['protocols' => ['ftp']]],
             ['allow_redirects' => ['unknown' => true]],
         ] as $i => $options) {
-            yield 'option_' . $i => [
-                $options,
-                isset($options['allow_redirects']) ? 'redirect_forbidden' : 'option_forbidden',
-            ];
+            yield 'option_' . $i => [$options, isset($options['allow_redirects']) ? 'redirect_forbidden' : 'option_forbidden'];
         }
         yield 'explicit_proxy' => [['proxy' => 'http://synthetic-proxy:8080'], 'proxy_unsupported'];
-        yield 'no_proxy_guess' => [
-            [
-                'proxy' => [
-                    'http' => 'http://synthetic-proxy:8080',
-                    'no' => ['guard.test'],
-                ],
-            ],
-            'proxy_unsupported',
-        ];
+        yield 'no_proxy_guess' => [['proxy' => ['http' => 'http://synthetic-proxy:8080', 'no' => ['guard.test']]], 'proxy_unsupported'];
     }
 
     public function testKnownStackIdentityIsRequiredAndRemoved(): void
     {
-        $stack = HandlerStack::create();
+        $stack   = HandlerStack::create();
         $options = (new OptionSanitizer(5, false))->sanitize(
             new Request('GET', 'https://guard.test'),
             ['handler' => $stack],
-            $stack
+            $stack,
         );
         self::assertArrayNotHasKey('handler', $options);
         $this->expectException(PolicyException::class);
         (new OptionSanitizer(5, false))->sanitize(
             new Request('GET', 'https://guard.test'),
             ['handler' => HandlerStack::create()],
-            $stack
+            $stack,
         );
     }
 
@@ -161,22 +135,17 @@ final class OptionSanitizerTest extends TestCase
         putenv('NO_PROXY=*');
         $this->expectException(PolicyException::class);
         $this->expectExceptionMessage('proxy_unsupported');
-        (new OptionSanitizer(5, false))->sanitize(
-            new Request('GET', 'https://guard.test'),
-            ['proxy' => '']
-        );
+        (new OptionSanitizer(5, false))->sanitize(new Request('GET', 'https://guard.test'), ['proxy' => '']);
     }
 
     public function testIncomingProxyHeaderDoesNotBecomeProcessConfiguration(): void
     {
-        $saved = $_SERVER['HTTP_PROXY'] ?? null;
+        $saved                 = $_SERVER['HTTP_PROXY'] ?? null;
         $_SERVER['HTTP_PROXY'] = 'http://incoming-header:8080';
         try {
             self::assertSame(
                 '',
-                (new OptionSanitizer(5, false))->sanitize(
-                    new Request('GET', 'https://guard.test')
-                )['proxy']
+                (new OptionSanitizer(5, false))->sanitize(new Request('GET', 'https://guard.test'))['proxy'],
             );
         } finally {
             if ($saved === null) {
@@ -190,46 +159,36 @@ final class OptionSanitizerTest extends TestCase
     public function testPolicyForbidsDisablingTlsVerification(): void
     {
         $this->expectException(PolicyException::class);
-        (new OptionSanitizer(5, true))->sanitize(
-            new Request('GET', 'https://guard.test'),
-            ['verify' => false]
-        );
+        (new OptionSanitizer(5, true))->sanitize(new Request('GET', 'https://guard.test'), ['verify' => false]);
     }
+
     public function testMalformedLeafTypesHaveStablePolicyErrors(): void
     {
         foreach ([
-            ['protocols' => [new \stdClass()]],
-            ['allow_redirects' => ['protocols' => [new \stdClass()]]],
-            ['version' => new \stdClass()],
+            ['protocols' => [new stdClass()]],
+            ['allow_redirects' => ['protocols' => [new stdClass()]]],
+            ['version' => new stdClass()],
             ['verify' => null],
         ] as $options) {
             try {
-                (new OptionSanitizer())->sanitize(
-                    new Request('GET', 'https://guard.test'),
-                    $options
-                );
+                (new OptionSanitizer())->sanitize(new Request('GET', 'https://guard.test'), $options);
                 self::fail('Malformed option accepted');
             } catch (PolicyException $error) {
-                self::assertContains(
-                    $error->reasonCode(),
-                    ['option_forbidden', 'redirect_forbidden']
-                );
+                self::assertContains($error->reasonCode(), ['option_forbidden', 'redirect_forbidden']);
             }
         }
     }
+
     public function testNumericEnvironmentNamesDoNotBreakProxyDetection(): void
     {
-        $name = '314159';
+        $name     = '314159';
         $original = getenv($name, true);
         try {
             self::assertTrue(putenv($name . '=synthetic numeric-name witness'));
             self::assertArrayHasKey(314159, getenv(null, true));
             self::assertSame([], OptionSanitizer::processProxyNames());
             self::assertTrue(putenv('hTtP_pRoXy=http://synthetic-proxy:8080'));
-            self::assertSame(
-                ['hTtP_pRoXy'],
-                OptionSanitizer::processProxyNames()
-            );
+            self::assertSame(['hTtP_pRoXy'], OptionSanitizer::processProxyNames());
         } finally {
             putenv($original === false ? $name : $name . '=' . $original);
         }

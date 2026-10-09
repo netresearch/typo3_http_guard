@@ -2,15 +2,15 @@
 
 /**
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace {
     if (!in_array($argv[1] ?? '', ['13', '14'], true) || !in_array($argv[2] ?? '', ['value', 'reference'], true)) {
         exit(2);
     }
-    $GLOBALS['httpGuardCoreAbiMajor'] = $argv[1];
+    $GLOBALS['httpGuardCoreAbiMajor']     = $argv[1];
     $GLOBALS['httpGuardCoreAbiReference'] = $argv[2] === 'reference';
 }
 
@@ -25,19 +25,13 @@ namespace TYPO3\CMS\Core\Information {
 }
 
 namespace TYPO3\CMS\Core\Http\Client {
-    class GuzzleClientFactory
-    {
-    }
+    class GuzzleClientFactory {}
 }
 
 namespace TYPO3\CMS\Core\Http {
     trait CompatibleConstructor
     {
-        public function __construct(
-            \TYPO3\CMS\Core\Http\Client\GuzzleClientFactory $guzzleClientFactory
-        )
-        {
-        }
+        public function __construct(Client\GuzzleClientFactory $guzzleClientFactory) {}
     }
     trait ValueRequest
     {
@@ -45,9 +39,8 @@ namespace TYPO3\CMS\Core\Http {
             string $uri,
             string $method = 'GET',
             array $options = [],
-            ?string $context = null
-        ): \Psr\Http\Message\ResponseInterface
-        {
+            ?string $context = null,
+        ): \Psr\Http\Message\ResponseInterface {
             throw new \LogicException('Synthetic parent is never invoked');
         }
     }
@@ -57,9 +50,8 @@ namespace TYPO3\CMS\Core\Http {
             string $uri,
             string $method = 'GET',
             array $options = [],
-            ?string $context = null
-        ): \Psr\Http\Message\ResponseInterface
-        {
+            ?string $context = null,
+        ): \Psr\Http\Message\ResponseInterface {
             throw new \LogicException('Synthetic parent is never invoked');
         }
     }
@@ -67,23 +59,27 @@ namespace TYPO3\CMS\Core\Http {
         if ($GLOBALS['httpGuardCoreAbiReference']) {
             readonly class RequestFactory
             {
-                use CompatibleConstructor, ReferenceRequest;
+                use CompatibleConstructor;
+                use ReferenceRequest;
             }
         } else {
             readonly class RequestFactory
             {
-                use CompatibleConstructor, ValueRequest;
+                use CompatibleConstructor;
+                use ValueRequest;
             }
         }
-    } else if ($GLOBALS['httpGuardCoreAbiReference']) {
+    } elseif ($GLOBALS['httpGuardCoreAbiReference']) {
         class RequestFactory
         {
-            use CompatibleConstructor, ReferenceRequest;
+            use CompatibleConstructor;
+            use ReferenceRequest;
         }
     } else {
         class RequestFactory
         {
-            use CompatibleConstructor, ValueRequest;
+            use CompatibleConstructor;
+            use ValueRequest;
         }
     }
 }
@@ -91,13 +87,13 @@ namespace TYPO3\CMS\Core\Http {
 namespace {
     require dirname(__DIR__) . '/bootstrap.php';
     try {
-        $replacement = \Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility::replacementClass();
+        $replacement = Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility::replacementClass();
         if (!class_exists($replacement)) {
             exit(4);
         }
         echo 'SUPPORTED';
         exit(0);
-    } catch (\Netresearch\HttpGuard\PolicyException $failure) {
+    } catch (Netresearch\HttpGuard\PolicyException $failure) {
         fwrite(STDERR, $failure->reasonCode());
         exit(3);
     }

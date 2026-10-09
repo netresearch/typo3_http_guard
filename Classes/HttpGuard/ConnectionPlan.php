@@ -2,10 +2,13 @@
 
 /**
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
+
+use DateTimeImmutable;
 
 final readonly class ConnectionPlan
 {
@@ -19,8 +22,6 @@ final readonly class ConnectionPlan
         public ?string $profileId,
         public string $policyRevision,
         public string $resolverGeneration,
-        public \DateTimeImmutable $issuedAt
-    )
-    {
-    }
+        public DateTimeImmutable $issuedAt,
+    ) {}
 }

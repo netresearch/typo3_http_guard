@@ -2,62 +2,65 @@
 
 /**
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  */
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Netresearch\NrHttpGuard\Diagnostics;
 
+use Closure;
 use Composer\InstalledVersions;
 use GuzzleHttp\Psr7\Request;
 use Netresearch\HttpGuard\GuardConfig;
 use Netresearch\HttpGuard\PolicyException;
 use Netresearch\HttpGuard\TargetNormalizer;
 use Netresearch\NrHttpGuard\Configuration\ConfigurationLoader;
+use Throwable;
+
 final readonly class DiagnosticsService
 {
     /**
-     * @param \Closure(): \Netresearch\NrHttpGuard\Http\MiddlewareRegistry $registry
-     * @param \Closure(): \Netresearch\HttpGuard\PolicyEngine $engine
-     * @param \Closure(): \Netresearch\HttpGuard\PolicyRegistry $policyRegistry
+     * @param Closure(): \Netresearch\NrHttpGuard\Http\MiddlewareRegistry $registry
+     * @param Closure(): \Netresearch\HttpGuard\PolicyEngine              $engine
+     * @param Closure(): \Netresearch\HttpGuard\PolicyRegistry            $policyRegistry
      */
     public function __construct(
         private ConfigurationLoader $loader,
         private DiagnosticBootState $boot,
         private LegacyConfigurationInventory $legacy,
-        private \Closure $registry,
-        private \Closure $engine,
-        private \Closure $policyRegistry,
-        private \Netresearch\HttpGuard\ClockInterface $clock
-    )
-    {
-    }
+        private Closure $registry,
+        private Closure $engine,
+        private Closure $policyRegistry,
+        private \Netresearch\HttpGuard\ClockInterface $clock,
+    ) {}
+
     public function doctor(): DiagnosticResult
     {
-        $curlInfo = extension_loaded('curl') ? curl_version() : false;
+        $curlInfo    = extension_loaded('curl') ? curl_version() : false;
         $curlVersion = is_array($curlInfo) && is_string($curlInfo['version'] ?? null) ? $curlInfo['version'] : null;
-        $versions = ['php' => PHP_VERSION, 'curl' => $curlVersion];
+        $versions    = ['php' => PHP_VERSION, 'curl' => $curlVersion];
         foreach (['guzzlehttp/guzzle', 'guzzlehttp/promises', 'guzzlehttp/psr7'] as $name) {
             $versions[$name] = InstalledVersions::isInstalled($name) ? InstalledVersions::getPrettyVersion($name) : null;
         }
         $versions['typo3/cms-core'] = (new \TYPO3\CMS\Core\Information\Typo3Version())->getVersion();
-        $variables = \Netresearch\HttpGuard\Transport\OptionSanitizer::processProxyNames();
-        $base = [
+        $variables                  = \Netresearch\HttpGuard\Transport\OptionSanitizer::processProxyNames();
+        $base                       = [
             'eventVersion' => 1,
-            'versions' => $versions,
-            'proxy' => [
+            'versions'     => $versions,
+            'proxy'        => [
                 'processVariablesPresent' => $variables,
-                'serverHttpProxyPresent' => isset($_SERVER['HTTP_PROXY']),
-                'valuesRedacted' => true,
+                'serverHttpProxyPresent'  => isset($_SERVER['HTTP_PROXY']),
+                'valuesRedacted'          => true,
             ],
             'coverage' => [
                 'coreRequestFactoryAfterRegistration' => true,
-                'incomingPsr15' => false,
-                'vaultAutomaticallyCovered' => false,
-                'rawGuzzleAutomaticallyCovered' => false,
-                'requestHandlerOverrideCovered' => false,
-                'proxySupported' => false,
-                'streamHandlerSupported' => false,
-                'earlyBootstrapCallsCovered' => false,
+                'incomingPsr15'                       => false,
+                'vaultAutomaticallyCovered'           => false,
+                'rawGuzzleAutomaticallyCovered'       => false,
+                'requestHandlerOverrideCovered'       => false,
+                'proxySupported'                      => false,
+                'streamHandlerSupported'              => false,
+                'earlyBootstrapCallsCovered'          => false,
             ],
         ];
         try {
@@ -65,7 +68,7 @@ final readonly class DiagnosticsService
             ($this->registry)()->assertValid();
             $protected = $config->mode === 'enforce';
             $httpProxy = $GLOBALS['TYPO3_CONF_VARS']['HTTP']['proxy'] ?? null;
-            $hasProxy = $variables !== [] || !in_array($httpProxy, [null, '', false, []], true);
+            $hasProxy  = $variables !== [] || !in_array($httpProxy, [null, '', false, []], true);
             $supported = true;
             try {
                 \Netresearch\HttpGuard\Transport\RuntimeSupport::assertSupported();
@@ -74,137 +77,139 @@ final readonly class DiagnosticsService
                 $supported = false;
             }
             $code = !$supported || $hasProxy ? 3 : ($protected ? 0 : 2);
+
             return new DiagnosticResult(
                 $base + [
-                    'mode' => $config->mode,
+                    'mode'           => $config->mode,
                     'policyRevision' => $config->revision,
-                    'registryValid' => true,
-                    'warnings' => $this->warnings($config),
-                    'protected' => $protected && $supported && !$hasProxy,
-                    'reasonCode' => !$supported ? 'transport_unsupported' : ($hasProxy ? 'proxy_unsupported' : null),
+                    'registryValid'  => true,
+                    'warnings'       => $this->warnings($config),
+                    'protected'      => $protected && $supported && !$hasProxy,
+                    'reasonCode'     => !$supported ? 'transport_unsupported' : ($hasProxy ? 'proxy_unsupported' : null),
                 ],
-                $code
+                $code,
             );
         } catch (PolicyException $exception) {
             return new DiagnosticResult(
-                $base + [
-                    'registryValid' => false,
-                    'protected' => false,
-                    'reasonCode' => $exception->reasonCode(),
-                ],
-                3
+                $base + ['registryValid' => false, 'protected' => false, 'reasonCode' => $exception->reasonCode()],
+                3,
             );
         }
     }
+
     public function configCheck(): DiagnosticResult
     {
         try {
             $config = $this->configuration();
+
             return new DiagnosticResult(
                 [
-                    'schemaVersion' => 1,
-                    'mode' => $config->mode,
+                    'schemaVersion'  => 1,
+                    'mode'           => $config->mode,
                     'policyRevision' => $config->revision,
-                    'endpointCount' => count($config->data['endpoints']),
-                    'warnings' => $this->warnings($config),
-                    'httpSent' => false,
+                    'endpointCount'  => count($config->data['endpoints']),
+                    'warnings'       => $this->warnings($config),
+                    'httpSent'       => false,
                 ],
-                0
+                0,
             );
         } catch (PolicyException $exception) {
             return $this->failure($exception);
         }
     }
+
     public function legacyReport(): DiagnosticResult
     {
-        $http = $GLOBALS['TYPO3_CONF_VARS']['HTTP'] ?? [];
+        $http   = $GLOBALS['TYPO3_CONF_VARS']['HTTP'] ?? [];
         $report = $this->legacy->inspect(is_array($http) ? $http : []);
+
         return new DiagnosticResult(
             $report + ['httpSent' => false, 'reasonCode' => $this->boot->failureReason],
-            $this->boot->failureReason === null ? 0 : 3
+            $this->boot->failureReason === null ? 0 : 3,
         );
     }
-    public function policyCheck(
-        string $url,
-        ?string $endpointId = null,
-        bool $noDns = false
-    ): DiagnosticResult
+
+    public function policyCheck(string $url, ?string $endpointId = null, bool $noDns = false): DiagnosticResult
     {
         try {
-            $config = $this->configuration();
+            $config     = $this->configuration();
             $normalizer = new TargetNormalizer();
             $normalizer->assertRawUri($url);
             try {
                 $request = new Request('GET', $url);
-            } catch (\Throwable) {
+            } catch (Throwable) {
                 throw new PolicyException('invalid_target');
             }
             $target = $normalizer->normalize($request);
-            if ($noDns && $target->literalIp === null && !array_key_exists(
-                $target->host,
-                $config->data['resolver']['staticHosts']
-            )) {
+            if ($noDns && $target->literalIp === null && !array_key_exists($target->host, $config->data['resolver']['staticHosts'])) {
                 throw new PolicyException('resolution_unverified');
             }
-            $context = ($this->policyRegistry)()->newContext($endpointId);
+            $context  = ($this->policyRegistry)()->newContext($endpointId);
             $decision = ($this->engine)()->evaluate($request, $context);
-            $code = match ($decision->reasonCode) {
+            $code     = match ($decision->reasonCode) {
                 'configuration_invalid', 'transport_unsupported', 'proxy_unsupported' => 3,
-                'resolution_unverified' => 4,
-                default => in_array($decision->decision, ['allow'], true) ? 0 : 2,
+                'resolution_unverified'                                               => 4,
+                default                                                               => in_array($decision->decision, ['allow'], true) ? 0 : 2,
             };
+
             return new DiagnosticResult(
                 [
-                    'mode' => $decision->mode,
-                    'decision' => $decision->decision,
-                    'reasonCode' => $decision->reasonCode,
-                    'profileId' => $decision->profileId,
+                    'mode'           => $decision->mode,
+                    'decision'       => $decision->decision,
+                    'reasonCode'     => $decision->reasonCode,
+                    'profileId'      => $decision->profileId,
                     'policyRevision' => $decision->policyRevision,
-                    'httpSent' => false,
+                    'httpSent'       => false,
                     'diagnosticOnly' => true,
                 ],
-                $code
+                $code,
             );
         } catch (PolicyException $exception) {
             return $this->failure($exception);
         }
     }
+
     private function configuration(): GuardConfig
     {
         if ($this->boot->failureReason !== null) {
             throw new PolicyException($this->boot->failureReason);
         }
+
         return $this->loader->load();
     }
+
     private function failure(PolicyException $exception): DiagnosticResult
     {
         $code = match ($exception->reasonCode()) {
             'configuration_invalid', 'transport_unsupported', 'proxy_unsupported' => 3,
-            'resolution_unverified' => 4,
-            default => 2,
+            'resolution_unverified'                                               => 4,
+            default                                                               => 2,
         };
+
         return new DiagnosticResult(
             [
-                'decision' => 'deny',
-                'reasonCode' => $exception->reasonCode(),
-                'httpSent' => false,
+                'decision'       => 'deny',
+                'reasonCode'     => $exception->reasonCode(),
+                'httpSent'       => false,
                 'diagnosticOnly' => true,
             ],
-            $code
+            $code,
         );
     }
+
     /** @return array{overdueEndpointReviews: list<string>, tlsVerificationPolicyNotRequired: bool} */
     private function warnings(GuardConfig $config): array
     {
         $overdue = [];
-        $today = $this->clock->now()->format('Y-m-d');
+        $today   = $this->clock->now()->format('Y-m-d');
         foreach ($config->data['endpoints'] as $id => $endpoint) {
             if ($endpoint['reviewAfter'] !== null && $endpoint['reviewAfter'] < $today) {
                 $overdue[] = $id;
             }
         }
+
         return [
-            'overdueEndpointReviews' => $overdue,
+            'overdueEndpointReviews'           => $overdue,
             'tlsVerificationPolicyNotRequired' => $config->data['tls']['requireVerification'] === false,
         ];
     }
