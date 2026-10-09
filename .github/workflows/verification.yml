@@ -136,14 +136,10 @@ jobs:
         uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
-        env:
-          HTTP_GUARD_TEST_AUTOLOAD: null
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-        env:
-          HTTP_GUARD_TEST_AUTOLOAD: null
       - name: Set up isolated Python build tooling
         shell: bash
         run: |
@@ -158,15 +154,12 @@ jobs:
           extensions: curl, dom, intl, mbstring, pdo_sqlite, sodium, xml
           coverage: pcov
           tools: composer:v2
-        env:
-          HTTP_GUARD_TEST_AUTOLOAD: null
       - name: Install dependency combination
         env:
           TEST_GUZZLE: ${{ matrix.guzzle }}
           TEST_PROMISES: ${{ matrix.promises }}
           TEST_PSR7: ${{ matrix.psr7 }}
           TEST_CORE: ${{ matrix.core }}
-          HTTP_GUARD_TEST_AUTOLOAD: null
         shell: bash
         run: |
           set -euo pipefail
@@ -201,8 +194,6 @@ jobs:
             done
             "$ready"
           done
-        env:
-          HTTP_GUARD_TEST_AUTOLOAD: null
       - name: Exercise Unit and actual native wire behavior
         env:
           HTTP_GUARD_TEST_AUTOLOAD: ${{ github.workspace }}/.Build/vendor/autoload.php
@@ -221,8 +212,6 @@ jobs:
           path: ${{ runner.temp }}/coverage
           if-no-files-found: error
           retention-days: 14
-        env:
-          HTTP_GUARD_TEST_AUTOLOAD: null
       - name: Remove disposable targets and synthetic keys
         if: always()
         shell: bash
@@ -232,8 +221,6 @@ jobs:
           docker network rm http-guard-production-public http-guard-production-private \
             http-guard-production-v6 || true
           rm -rf Tests/HttpGuard/Integration/certificates
-        env:
-          HTTP_GUARD_TEST_AUTOLOAD: null
   coverage-upload:
     name: Coverage upload
     needs: native-transport
