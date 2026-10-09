@@ -32,3 +32,20 @@ advanced execution is recorded separately from this setting change.
 The first and second startup diagnostics are retained as historical failures.
 A new push is required to verify the CI workflow after the final reviewed
 action reference is allowed; a startup-failed run cannot be retried.
+
+## Follow-up execution and failure propagation
+
+Run `37909245811` at `82f1b476a42358b5ffbf88615aea6184e8864a0d`
+starts correctly. Documentation succeeds with 16 English and 13 German pages;
+workflow lint and DCO also succeed. Its PHP matrix reveals a command-status
+bug: the shared workflow invokes multiline commands using `bash -c`, so a
+passing final Core analysis masks six preceding Guzzle 8 kernel diagnostics.
+Successful Guzzle 8 job status in this run is not a passing kernel analysis.
+
+Both multiline caller commands now explicitly enable `set -euo pipefail`.
+Running the exact corrected PHPStan command against the existing genuine
+Core 14.3.7 / Guzzle 8.2.0 / PHPStan 2.3.1 fixture returns exit 1 after the
+six kernel diagnostics. It stops before the final Core command can mask
+them. `ci-failure-propagation.json` and the local command log preserve this
+regression verification; no source diagnostic or dependency advisory is
+suppressed. The corrected workflow requires its own subsequent GitHub run.

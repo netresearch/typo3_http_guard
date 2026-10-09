@@ -1,0 +1,32 @@
+{
+  "source_revision": "82f1b476a42358b5ffbf88615aea6184e8864a0d",
+  "run_id": 37909245811,
+  "job_id": 113750121670,
+  "job_url": "https://github.com/netresearch/typo3_http_guard/actions/runs/37909245811/job/113750121670",
+  "installed_versions": {
+    "php": "8.5.11",
+    "core": "14.3.7",
+    "guzzle": "8.2.0",
+    "promises": "3.0.2",
+    "psr7": "3.1.0",
+    "phpstan": "2.3.1",
+    "phpunit": "11.5.57"
+  },
+  "observed": {
+    "kernel_diagnostics": 6,
+    "subsequent_core_analysis": "pass",
+    "incorrect_job_status": "success"
+  },
+  "cause": "The reusable workflow invokes multiline command inputs with bash -c without errexit; the final successful command masks the first failure.",
+  "correction": "Explicit set -euo pipefail in both pre-install-cmd and phpstan-cmd caller inputs.",
+  "local_corrected_command": {
+    "exit": 1,
+    "kernel_diagnostics": 6,
+    "core_command_reached": false
+  },
+  "workflow_lint": {
+    "actionlint_exit": 0,
+    "zizmor_findings": 0
+  },
+  "production_source_changed": false
+}
