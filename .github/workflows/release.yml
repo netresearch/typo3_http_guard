@@ -6,6 +6,16 @@ on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
+  workflow_dispatch:
+    inputs:
+      release-tag:
+        description: Signed published release tag to verify without publishing
+        required: true
+        type: string
+      publication-run-id:
+        description: Original tag-push Release workflow run ID
+        required: true
+        type: string
 
 permissions: {}
 
@@ -20,42 +30,88 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: read
+      actions: read
+    outputs:
+      source-sha: ${{ steps.tag.outputs.source-sha }}
+      tag: ${{ steps.tag.outputs.tag }}
+      publication-run-id: ${{ steps.tag.outputs.publication-run-id }}
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
-      - name: Require the signed tag to identify the triggering commit
+      - name: Require a signed tag and the applicable publisher binding
+        id: tag
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
-          TAG: ${{ github.ref_name }}
-          SOURCE_SHA: ${{ github.sha }}
+          TAG: ${{ inputs.release-tag || github.ref_name }}
+          TRIGGER_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          PUBLICATION_RUN_ID: ${{ inputs.publication-run-id || github.run_id }}
         shell: bash
         run: |
           set -euo pipefail
           [[ "$TAG" =~ ^v(0|[1-9][0-9]*)[.](0|[1-9][0-9]*)[.](0|[1-9][0-9]*)$ ]]
+          [[ "$PUBLICATION_RUN_ID" =~ ^[1-9][0-9]*$ ]]
           TAG_SHA=$(gh api "repos/$REPO/git/ref/tags/$TAG" --jq 'select(.object.type == "tag") | .object.sha')
           [[ "$TAG_SHA" =~ ^[0-9a-f]{40}$ ]]
           gh api "repos/$REPO/git/tags/$TAG_SHA" > signed-tag.json
-          jq -e --arg tag "$TAG" --arg sha "$SOURCE_SHA" '
-            .tag == $tag and .object.type == "commit" and .object.sha == $sha
+          jq -e --arg tag "$TAG" '
+            .tag == $tag and .object.type == "commit"
             and .verification.verified == true and .verification.reason == "valid"
           ' signed-tag.json
+          SOURCE_SHA=$(jq -er '.object.sha' signed-tag.json)
+          [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          case "$EVENT_NAME" in
+            push)
+              [[ "$SOURCE_SHA" == "$TRIGGER_SHA" ]]
+              ;;
+            workflow_dispatch)
+              # Verification only: bind the immutable tag to the original
+              # successful publisher, never to the current checkout or run.
+              gh api "repos/$REPO/actions/runs/$PUBLICATION_RUN_ID" > publisher-run.json
+              jq -e --arg repo "$REPO" --arg tag "$TAG" --arg sha "$SOURCE_SHA" '
+                .repository.full_name == $repo and .event == "push"
+                and .name == "Release" and .path == ".github/workflows/release.yml"
+                and .head_branch == $tag and .head_sha == $sha
+              ' publisher-run.json
+              gh api --paginate --slurp "repos/$REPO/actions/runs/$PUBLICATION_RUN_ID/jobs" > publisher-jobs.json
+              jq -e '
+                [.[].jobs[]] as $jobs
+                | ["Verify signed annotated release tag",
+                   "required-checks / Required workflows succeeded",
+                   "release / Build & sign artifacts",
+                   "release / Create GitHub Release"]
+                | all(.[]; . as $name
+                  | [$jobs[] | select(.name == $name)]
+                  | length == 1 and all(.[]; .status == "completed" and .conclusion == "success"))
+              ' publisher-jobs.json
+              [[ "$(gh release view "$TAG" --repo "$REPO" --json isDraft,tagName --jq 'select(.isDraft == false) | .tagName')" == "$TAG" ]]
+              ;;
+            *) exit 1 ;;
+          esac
+          {
+            printf 'source-sha=%s\n' "$SOURCE_SHA"
+            printf 'tag=%s\n' "$TAG"
+            printf 'publication-run-id=%s\n' "$PUBLICATION_RUN_ID"
+          } >> "$GITHUB_OUTPUT"
 
   required-checks:
     needs: verify-tag
+    if: github.event_name == 'push'
     uses: netresearch/typo3-ci-workflows/.github/workflows/release-gate.yml@main
     permissions:
       contents: read
       actions: read
     with:
       required-workflows: ci.yml verification.yml security.yml codeql.yml
-      sha: ${{ github.sha }}
+      sha: ${{ needs.verify-tag.outputs.source-sha }}
       timeout-minutes: 30
 
   release:
     needs: [verify-tag, required-checks]
+    if: github.event_name == 'push'
     uses: netresearch/typo3-ci-workflows/.github/workflows/release-typo3-extension.yml@main
     permissions:
       contents: write
@@ -66,14 +122,13 @@ jobs:
       package-name: netresearch/nr-http-guard
       extension-key: nr_http_guard
       exclude-from-packaging: Build/ExcludeFromPackaging.php
-      # Shared SBOM generation inventories the whole checkout, including tooling
-      # and historical fixture locks; it is not the TER ZIP's dependency graph.
+      # Shared SBOM generation scans the checkout for a supplemental repository
+      # inventory; it does not resolve the installed PHP/TYPO3 dependency graph.
       include-sbom: true
       sign-artifacts: true
       skip-ter: false
       skip-packagist: false
-      # First registration requires TYPO3 Documentation Team approval. The shared
-      # job reports Intercept dispatch/pending, not a successfully rendered manual.
+      # The shared job reports Intercept dispatch/pending, not an online manual.
       skip-docs: false
       # 0.1.0 remains an alpha in ext_emconf.php; no prerelease input is available.
       make-latest: false
@@ -87,8 +142,9 @@ jobs:
     # artifacts independently; registry failures still leave this workflow red.
     if: >-
       always() && needs.verify-tag.result == 'success' &&
-      needs.required-checks.result == 'success' &&
-      (needs.release.result == 'success' || needs.release.result == 'failure')
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event_name == 'push' && needs.required-checks.result == 'success' &&
+        (needs.release.result == 'success' || needs.release.result == 'failure')))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -102,26 +158,33 @@ jobs:
           egress-policy: audit
       - name: Install Cosign
         uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
-      - name: Check out the released commit for package verification
+      - name: Check out the trusted verifier revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.sha }}
+          path: verifier
+          fetch-depth: 0
           persist-credentials: false
       - name: Derive the canonical package manifest without publishing another asset
+        working-directory: verifier
         env:
           CANONICAL_ZIP: ${{ runner.temp }}/nr-http-guard-canonical.zip
+          SOURCE_SHA: ${{ needs.verify-tag.outputs.source-sha }}
         shell: bash
         run: |
           set -euo pipefail
-          python3 Build/Scripts/build-extension.py --output "$CANONICAL_ZIP"
+          # Execute only verifier code from this workflow revision. The selected
+          # old release is read as package data, including no scripts or hooks.
+          python3 Build/Scripts/build-extension.py --source-revision "$SOURCE_SHA" --output "$CANONICAL_ZIP"
           jq -r '.files | to_entries[] | "\(.value)  \(.key)"' "$CANONICAL_ZIP.manifest.json" > expected-runtime.sha256
       - name: Verify exact assets, signatures, checksums and two archive attestations
+        working-directory: verifier
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
-          RUN_ID: ${{ github.run_id }}
-          TAG: ${{ github.ref_name }}
-          SOURCE_SHA: ${{ github.sha }}
+          RUN_ID: ${{ needs.verify-tag.outputs.publication-run-id }}
+          TAG: ${{ needs.verify-tag.outputs.tag }}
+          SOURCE_SHA: ${{ needs.verify-tag.outputs.source-sha }}
           SIGNER_WORKFLOW: netresearch/typo3-ci-workflows/.github/workflows/release-typo3-extension.yml
           SIGNER_ID: https://github.com/netresearch/typo3-ci-workflows/.github/workflows/release-typo3-extension.yml@refs/heads/main
         shell: bash
@@ -168,7 +231,7 @@ jobs:
           sha256sum --strict --check checksums.txt
           for archive in "$PREFIX.zip" "$PREFIX.tar.gz"; do
             gh attestation verify "$archive" --repo "$REPO" \
-              --signer-workflow "$SIGNER_WORKFLOW" --signer-digest "$SIGNER_SHA" \
+              --signer-digest "$SIGNER_SHA" \
               --cert-identity "$SIGNER_ID" --source-digest "$SOURCE_SHA" \
               --source-ref "refs/tags/$TAG" --deny-self-hosted-runners \
               --format json > "../$archive.attestation.json"
@@ -237,6 +300,6 @@ jobs:
           {
             echo 'Two source archives passed provenance verification; all five payloads passed signatures and checksums.'
             printf 'Reusable signer commit: %s\n' "$SIGNER_SHA"
-            echo 'SPDX/CycloneDX SBOMs inventory the whole checkout; no archive-only SBOM or SBOM-attestation claim is made.'
+            echo 'SPDX/CycloneDX SBOMs are supplemental repository inventories; they do not describe the resolved installed PHP/TYPO3 dependency graph.'
             echo 'TER, Packagist and rendered documentation publication are separate outcomes.'
           } >> "$GITHUB_STEP_SUMMARY"
