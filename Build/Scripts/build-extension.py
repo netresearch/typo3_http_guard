@@ -12,7 +12,7 @@ FILES = ('composer.json', 'ext_emconf.php', 'ext_localconf.php', 'README.md',
 DIRECTORIES = ('Classes', 'Configuration', 'Documentation', 'Resources')
 CORPUS = 'Resources/Private/HttpGuard/data/security-corpus/'
 CORPUS_FILES = {'address-rules.json', 'address-cases.json', 'endpoint-cases.json',
-                'uri-cases.json', 'scenario-cases.json', 'sources.json'}
+                'uri-cases.json', 'scenario-cases.json', 'sources.json', 'README.md'}
 
 def is_runtime_asset(path):
     name = str(path.relative_to(ROOT))

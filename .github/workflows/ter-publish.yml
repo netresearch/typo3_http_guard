@@ -1,0 +1,76 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+name: Publish to TER (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing signed release tag to publish (for example v0.1.0)
+        required: true
+        type: string
+      force-republish:
+        description: Replace an existing TER upload and refresh its comment
+        required: false
+        type: boolean
+        default: false
+
+permissions: {}
+
+concurrency:
+  group: ter-publish-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  verify-release:
+    name: Resolve an existing signed release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      sha: ${{ steps.release.outputs.sha }}
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Verify the tag, published release and package version
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$TAG" =~ ^v(0|[1-9][0-9]*)[.](0|[1-9][0-9]*)[.](0|[1-9][0-9]*)$ ]]
+          TAG_SHA=$(gh api "repos/$REPO/git/ref/tags/$TAG" --jq 'select(.object.type == "tag") | .object.sha')
+          [[ "$TAG_SHA" =~ ^[0-9a-f]{40}$ ]]
+          gh api "repos/$REPO/git/tags/$TAG_SHA" > signed-tag.json
+          SOURCE_SHA=$(jq -er --arg tag "$TAG" '
+            select(.tag == $tag and .object.type == "commit"
+              and .verification.verified == true and .verification.reason == "valid")
+            | .object.sha
+          ' signed-tag.json)
+          [[ "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$(gh release view "$TAG" --repo "$REPO" --json isDraft,tagName --jq 'select(.isDraft == false) | .tagName')" == "$TAG" ]]
+          gh api "repos/$REPO/contents/ext_emconf.php?ref=$SOURCE_SHA" --jq .content | base64 --decode > ext_emconf.php
+          # PHP variable names are literal and must not expand in the shell.
+          # shellcheck disable=SC2016
+          VERSION=$(php -r '$EM_CONF = []; $_EXTKEY = "nr_http_guard"; include "ext_emconf.php"; echo $EM_CONF[$_EXTKEY]["version"] ?? "";')
+          [[ "$VERSION" == "${TAG#v}" ]]
+          printf 'sha=%s\n' "$SOURCE_SHA" >> "$GITHUB_OUTPUT"
+
+  publish-to-ter:
+    needs: verify-release
+    uses: netresearch/typo3-ci-workflows/.github/workflows/publish-to-ter.yml@main
+    permissions:
+      contents: read
+    with:
+      # Package the verified immutable commit, even when dispatched on main.
+      ref: ${{ needs.verify-release.outputs.sha }}
+      exclude-from-packaging: Build/ExcludeFromPackaging.php
+      force-republish: ${{ inputs.force-republish }}
+    secrets:
+      TYPO3_TER_ACCESS_TOKEN: ${{ secrets.TYPO3_TER_ACCESS_TOKEN }}

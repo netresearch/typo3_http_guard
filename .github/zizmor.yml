@@ -16,4 +16,7 @@ rules:
         'netresearch/.github/.github/workflows/pr-quality.yml': ref-pin
         'netresearch/typo3-ci-workflows/.github/workflows/docs.yml': ref-pin
         'netresearch/typo3-ci-workflows/.github/workflows/security.yml': ref-pin
+        'netresearch/typo3-ci-workflows/.github/workflows/release-gate.yml': ref-pin
+        'netresearch/typo3-ci-workflows/.github/workflows/release-typo3-extension.yml': ref-pin
+        'netresearch/typo3-ci-workflows/.github/workflows/publish-to-ter.yml': ref-pin
         '*': hash-pin

@@ -1,0 +1,242 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify-tag:
+    name: Verify signed annotated release tag
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Require the signed tag to identify the triggering commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+          SOURCE_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$TAG" =~ ^v(0|[1-9][0-9]*)[.](0|[1-9][0-9]*)[.](0|[1-9][0-9]*)$ ]]
+          TAG_SHA=$(gh api "repos/$REPO/git/ref/tags/$TAG" --jq 'select(.object.type == "tag") | .object.sha')
+          [[ "$TAG_SHA" =~ ^[0-9a-f]{40}$ ]]
+          gh api "repos/$REPO/git/tags/$TAG_SHA" > signed-tag.json
+          jq -e --arg tag "$TAG" --arg sha "$SOURCE_SHA" '
+            .tag == $tag and .object.type == "commit" and .object.sha == $sha
+            and .verification.verified == true and .verification.reason == "valid"
+          ' signed-tag.json
+
+  required-checks:
+    needs: verify-tag
+    uses: netresearch/typo3-ci-workflows/.github/workflows/release-gate.yml@main
+    permissions:
+      contents: read
+      actions: read
+    with:
+      required-workflows: ci.yml verification.yml security.yml codeql.yml
+      sha: ${{ github.sha }}
+      timeout-minutes: 30
+
+  release:
+    needs: [verify-tag, required-checks]
+    uses: netresearch/typo3-ci-workflows/.github/workflows/release-typo3-extension.yml@main
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    with:
+      archive-prefix: nr-http-guard
+      package-name: netresearch/nr-http-guard
+      extension-key: nr_http_guard
+      exclude-from-packaging: Build/ExcludeFromPackaging.php
+      # Shared SBOM generation inventories the whole checkout, including tooling
+      # and historical fixture locks; it is not the TER ZIP's dependency graph.
+      include-sbom: true
+      sign-artifacts: true
+      skip-ter: false
+      skip-packagist: false
+      # First registration requires TYPO3 Documentation Team approval. The shared
+      # job reports Intercept dispatch/pending, not a successfully rendered manual.
+      skip-docs: false
+      # 0.1.0 remains an alpha in ext_emconf.php; no prerelease input is available.
+      make-latest: false
+    secrets:
+      TYPO3_TER_ACCESS_TOKEN: ${{ secrets.TYPO3_TER_ACCESS_TOKEN }}
+
+  verify-artifacts:
+    name: Verify released artifacts and provenance
+    needs: [verify-tag, required-checks, release]
+    # A downstream TER failure can follow a completed GitHub release. Verify its
+    # artifacts independently; registry failures still leave this workflow red.
+    if: >-
+      always() && needs.verify-tag.result == 'success' &&
+      needs.required-checks.result == 'success' &&
+      (needs.release.result == 'success' || needs.release.result == 'failure')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+      attestations: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.0
+      - name: Check out the released commit for package verification
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Derive the canonical package manifest without publishing another asset
+        env:
+          CANONICAL_ZIP: ${{ runner.temp }}/nr-http-guard-canonical.zip
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 Build/Scripts/build-extension.py --output "$CANONICAL_ZIP"
+          jq -r '.files | to_entries[] | "\(.value)  \(.key)"' "$CANONICAL_ZIP.manifest.json" > expected-runtime.sha256
+      - name: Verify exact assets, signatures, checksums and two archive attestations
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          TAG: ${{ github.ref_name }}
+          SOURCE_SHA: ${{ github.sha }}
+          SIGNER_WORKFLOW: netresearch/typo3-ci-workflows/.github/workflows/release-typo3-extension.yml
+          SIGNER_ID: https://github.com/netresearch/typo3-ci-workflows/.github/workflows/release-typo3-extension.yml@refs/heads/main
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$(gh release view "$TAG" --repo "$REPO" --json isDraft,tagName --jq 'select(.isDraft == false) | .tagName')" == "$TAG" ]]
+          # Read the run's resolved reusable SHA, not a moving main branch.
+          gh api "repos/$REPO/actions/runs/$RUN_ID" > release-run.json
+          SIGNER_SHA=$(jq -er --arg path "$SIGNER_WORKFLOW@main" '
+            [.referenced_workflows[] | select(.path == $path and .ref == "refs/heads/main")]
+            | select(length == 1) | .[0].sha
+          ' release-run.json)
+          [[ "$SIGNER_SHA" =~ ^[0-9a-f]{40}$ ]]
+          mkdir release-assets
+          gh release download "$TAG" --repo "$REPO" --dir release-assets
+          cd release-assets
+          PREFIX="nr-http-guard-${TAG#v}"
+          PAYLOADS=("$PREFIX.zip" "$PREFIX.tar.gz" "$PREFIX.sbom.spdx.json" "$PREFIX.sbom.cdx.json" checksums.txt)
+          for payload in "${PAYLOADS[@]}"; do
+            printf '%s\n' "$payload" "$payload.sigstore.json"
+          done | LC_ALL=C sort > ../expected-assets.txt
+          find . -maxdepth 1 -type f -printf '%f\n' | LC_ALL=C sort > ../actual-assets.txt
+          diff -u ../expected-assets.txt ../actual-assets.txt
+          for payload in "${PAYLOADS[@]}"; do
+            cosign verify-blob --bundle "$payload.sigstore.json" \
+              --certificate-identity "$SIGNER_ID" \
+              --certificate-oidc-issuer https://token.actions.githubusercontent.com "$payload"
+          done
+          # The shared TYPO3 builder writes './name'; normalize comparison only.
+          # Keep the signed manifest unchanged for sha256sum's integrity check.
+          : > ../listed-payloads.txt
+          while read -r digest filename extra; do
+            [[ "$digest" =~ ^[0-9a-f]{64}$ && -z "${extra:-}" ]]
+            name="${filename#./}"
+            case "$name" in
+              "$PREFIX.zip"|"$PREFIX.tar.gz"|"$PREFIX.sbom.spdx.json"|"$PREFIX.sbom.cdx.json") ;;
+              *) echo '::error::Unexpected checksum target'; exit 1 ;;
+            esac
+            printf '%s\n' "$name" >> ../listed-payloads.txt
+          done < checksums.txt
+          printf '%s\n' "${PAYLOADS[@]:0:4}" | LC_ALL=C sort > ../expected-payloads.txt
+          LC_ALL=C sort ../listed-payloads.txt > ../sorted-payloads.txt
+          diff -u ../expected-payloads.txt ../sorted-payloads.txt
+          sha256sum --strict --check checksums.txt
+          for archive in "$PREFIX.zip" "$PREFIX.tar.gz"; do
+            gh attestation verify "$archive" --repo "$REPO" \
+              --signer-workflow "$SIGNER_WORKFLOW" --signer-digest "$SIGNER_SHA" \
+              --cert-identity "$SIGNER_ID" --source-digest "$SOURCE_SHA" \
+              --source-ref "refs/tags/$TAG" --deny-self-hosted-runners \
+              --format json > "../$archive.attestation.json"
+          done
+          # Neither archive is extracted. Compare every regular file against the
+          # canonical source manifest after removing only the known root prefix.
+          python3 - "$PREFIX" <<'PY'
+          import hashlib
+          import stat
+          import sys
+          import tarfile
+          import zipfile
+          from pathlib import Path
+
+          expected = {}
+          for line in Path('../expected-runtime.sha256').read_text().splitlines():
+              checksum, name = line.split('  ', 1)
+              if name in expected:
+                  raise SystemExit('Duplicate canonical package path')
+              expected[name] = checksum
+          if not expected:
+              raise SystemExit('Empty canonical package manifest')
+
+          def relative(name):
+              prefix = 'nr-http-guard/'
+              if not name.startswith(prefix):
+                  raise SystemExit('Unexpected archive root')
+              name = name[len(prefix):]
+              if not name or any(part in ('', '.', '..') for part in name.split('/')):
+                  raise SystemExit('Unsafe archive path')
+              return name
+
+          def add(files, name, data):
+              name = relative(name)
+              if name in files:
+                  raise SystemExit('Duplicate archive path')
+              files[name] = hashlib.sha256(data).hexdigest()
+
+          archives = {}
+          with zipfile.ZipFile(sys.argv[1] + '.zip') as archive:
+              files = {}
+              for item in archive.infolist():
+                  if item.is_dir():
+                      continue
+                  if stat.S_IFMT(item.external_attr >> 16) not in (0, stat.S_IFREG):
+                      raise SystemExit('Non-regular ZIP member')
+                  add(files, item.filename, archive.read(item))
+              archives['ZIP'] = files
+          with tarfile.open(sys.argv[1] + '.tar.gz', 'r:gz') as archive:
+              files = {}
+              for item in archive.getmembers():
+                  if item.isdir():
+                      continue
+                  if not item.isfile():
+                      raise SystemExit('Non-regular TAR member')
+                  stream = archive.extractfile(item)
+                  if stream is None:
+                      raise SystemExit('Unreadable TAR member')
+                  add(files, item.name, stream.read())
+              archives['TAR'] = files
+          for kind, files in archives.items():
+              if files != expected:
+                  raise SystemExit(kind + ' differs from the canonical package manifest')
+              print(kind + ': ' + str(len(files)) + ' canonical files verified')
+          PY
+          {
+            echo 'Two source archives passed provenance verification; all five payloads passed signatures and checksums.'
+            printf 'Reusable signer commit: %s\n' "$SIGNER_SHA"
+            echo 'SPDX/CycloneDX SBOMs inventory the whole checkout; no archive-only SBOM or SBOM-attestation claim is made.'
+            echo 'TER, Packagist and rendered documentation publication are separate outcomes.'
+          } >> "$GITHUB_STEP_SUMMARY"

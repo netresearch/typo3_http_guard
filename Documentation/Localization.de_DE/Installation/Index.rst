@@ -4,6 +4,91 @@
 Installation
 ============
 
+Nach Installation und Aktivierung schützt die Extension bestehende Aufrufe
+über die registrierte :php:`RequestFactory` von TYPO3 automatisch. Der
+Standardmodus :literal:`enforce` sperrt private Adressen, Loopback,
+Cloud-Metadatenziele und besondere Netze, auch bei URLs aus Benutzereingaben,
+Importen oder externen Daten. Dafür sind weder Änderungen an der Anwendung
+noch eine Endpoint-Konfiguration erforderlich.
+
+.. _installation-composer:
+
+Mit Composer
+============
+
+Die veröffentlichte 0.1-Reihe aus
+`Packagist <https://packagist.org/packages/netresearch/nr-http-guard>`_
+installieren:
+
+.. code-block:: bash
+    :caption: Installation im TYPO3-Projekt
+
+    composer require netresearch/nr-http-guard:^0.1
+    vendor/bin/typo3 cache:flush
+    vendor/bin/typo3 http-guard:config-check
+    vendor/bin/typo3 http-guard:doctor
+
+Composer registriert die Extension automatisch. Nach dem Neuaufbau der
+Caches gilt für gewöhnliche RequestFactory-Aufrufe der geschützte
+Standardmodus. Version 0.1.0 ist eine Alpha-Version zur Evaluierung. Die
+aufgelösten Dependencies sind vor dem Deployment mit
+:ref:`installation-requirements` abzugleichen. Die Extension benötigt kein
+zusätzliches :literal:`netresearch/http-guard`.
+
+.. _installation-classic:
+
+Klassisch ohne Composer
+======================
+
+:literal:`nr_http_guard` aus dem
+`TYPO3 Extension Repository
+<https://extensions.typo3.org/extension/nr_http_guard>`_ installieren.
+Anschließend die Extension im Extension Manager aktivieren
+und die Caches neu aufbauen. Der Standardmodus schützt öffentliche Anfragen
+ohne eigene Policy-Konfiguration.
+
+Das TER-Paket enthält die Extension-Dateien direkt auf der Archivebene.
+Die Quellarchive aus den
+`GitHub-Releases <https://github.com/netresearch/typo3_http_guard/releases>`_
+enthalten einen Ordner :file:`nr-http-guard/`. Beide Archive enthalten kein
+zusätzliches Vendor-Verzeichnis. Die offizielle TYPO3-Installation stellt
+Guzzle, PSR-Komponenten und Symfony bereit.
+
+1. Eine unterstützte klassische TYPO3-Version installieren oder bereitstellen.
+   Die geprüften offiziellen Archive 13.4.36 und 14.3.8 enthalten Guzzle
+   8.2.0, Promises 3.0.2 und PSR-7 3.1.0 innerhalb der erlaubten Bereiche.
+2. Die Extension aus dem TER installieren oder das dort heruntergeladene
+   ZIP im Extension Manager importieren. Für eine manuelle Installation
+   aus einem GitHub-Release das Quellarchiv entpacken und den **Inhalt**
+   seines Ordners :file:`nr-http-guard/` nach
+   :file:`typo3conf/ext/nr_http_guard/` kopieren. Die
+   :file:`composer.json` der Extension muss direkt in diesem Zielordner
+   liegen. Anschließend die Extension im Extension Manager aktivieren.
+3. System- und Dependency-Injection-Caches neu aufbauen. Das mitgelieferte
+   :file:`composer.json` bleibt dabei erhalten: TYPO3 benötigt seine Metadaten
+   auch ohne eine Composer-Projektinstallation und registriert beide
+   enthaltenen PHP-Namespaces selbst.
+4. Die Diagnose ausführen. Für öffentliche Anfragen ist keine eigene Policy
+   erforderlich; interne Integrationen benötigen ausdrücklich gebundene
+   Endpoint-Clients.
+   Für klassische Projekte lautet der CLI-Einstieg im Regelfall
+   :file:`typo3/sysext/core/bin/typo3`. Der Pfad hängt von der Core-Verknüpfung
+   des Projekts ab.
+
+.. code-block:: bash
+    :caption: Diagnose einer klassischen Installation
+
+    php typo3/sysext/core/bin/typo3 cache:flush
+    php typo3/sysext/core/bin/typo3 http-guard:config-check
+    php typo3/sysext/core/bin/typo3 http-guard:doctor
+
+Die offiziellen Anleitungen erläutern die
+`klassische TYPO3-Installation mit Archiven
+<https://docs.typo3.org/m/typo3/reference-coreapi/14.3/en-us/Administration/Installation/ClassicMode/TarballZip.html>`_
+und das auch klassisch benötigte
+`composer.json einer Extension
+<https://docs.typo3.org/permalink/t3coreapi:ext-composer-json-classic-compatible>`_.
+
 .. _installation-requirements:
 
 Voraussetzungen
@@ -60,91 +145,6 @@ DNS-Server oder ausdrücklich konfigurierte statische Hosteinträge.
     von ihrer Groß-/Kleinschreibung konservativ abgelehnt. Dies gilt auch für
     :literal:`NO_PROXY=*`. Ein Unternehmensproxy benötigt einen gesondert
     qualifizierten Adapter; diese Version enthält keinen Proxybetrieb.
-
-.. _installation-composer:
-
-Mit Composer
-============
-
-Die Lieferung enthält die Extension als vollständiges Quellverzeichnis.
-Sie muss vor einer Veröffentlichung nicht aus Packagist verfügbar sein.
-Für eine lokale Installation wird sie beispielsweise nach
-:file:`packages/nr_http_guard/` im TYPO3-Projekt kopiert. Eine lokale
-Path-Repository-Konfiguration kann im vorhandenen Projekt ergänzt werden:
-
-.. code-block:: json
-    :caption: Ergänzung der Projekt-composer.json
-
-    {
-        "repositories": {
-            "nr-http-guard-local": {
-                "type": "path",
-                "url": "packages/nr_http_guard",
-                "options": {
-                    "symlink": false,
-                    "versions": {"netresearch/nr-http-guard": "0.1.0"}
-                }
-            }
-        }
-    }
-
-Anschließend wird nur das eine Extension-Paket installiert:
-
-.. code-block:: bash
-    :caption: Installation im TYPO3-Projekt
-
-    composer require netresearch/nr-http-guard:0.1.0 --with-all-dependencies
-    vendor/bin/typo3 cache:flush
-    vendor/bin/typo3 http-guard:config-check
-    vendor/bin/typo3 http-guard:doctor
-
-Die Beispiele setzen einen vom Projekt freigegebenen Dependency-Lock voraus.
-Die Auflösung ist vor dem Deployment mit der Tabelle abzugleichen. Die
-Extension benötigt kein zusätzliches :literal:`netresearch/http-guard`.
-
-.. _installation-classic:
-
-Klassisch ohne Composer
-======================
-
-Das Archiv :file:`nr_http_guard_0.1.0.zip` enthält die Extension-Dateien
-direkt auf der Archivebene. Es enthält weder einen übergeordneten
-Projektordner noch ein zusätzliches Vendor-Verzeichnis. Die offizielle
-TYPO3-Installation stellt Guzzle, PSR-Komponenten und Symfony bereit.
-
-1. Eine unterstützte klassische TYPO3-Version installieren oder bereitstellen.
-   Die geprüften offiziellen Archive 13.4.36 und 14.3.8 enthalten Guzzle
-   8.2.0, Promises 3.0.2 und PSR-7 3.1.0 innerhalb der erlaubten Bereiche.
-2. Das lokale ZIP im Extension Manager über die Upload-Funktion importieren.
-   Wenn die Hosting-Umgebung diesen Weg nicht anbietet, das Archiv vollständig
-   nach :file:`typo3conf/ext/nr_http_guard/` entpacken und die Extension im
-   Extension Manager aktivieren.
-3. System- und Dependency-Injection-Caches neu aufbauen. Das mitgelieferte
-   :file:`composer.json` bleibt dabei erhalten: TYPO3 benötigt seine Metadaten
-   auch ohne eine Composer-Projektinstallation und registriert beide
-   enthaltenen PHP-Namespaces selbst.
-4. Die Policy in der Projektkonfiguration setzen und die Diagnose ausführen.
-   Für klassische Projekte lautet der CLI-Einstieg im Regelfall
-   :file:`typo3/sysext/core/bin/typo3`. Der Pfad hängt von der Core-Verknüpfung
-   des Projekts ab.
-
-.. code-block:: bash
-    :caption: Diagnose einer klassischen Installation
-
-    php typo3/sysext/core/bin/typo3 cache:flush
-    php typo3/sysext/core/bin/typo3 http-guard:config-check
-    php typo3/sysext/core/bin/typo3 http-guard:doctor
-
-Dieses Archiv ist zur lokalen Installation vorgesehen. Eine Veröffentlichung
-im TYPO3 Extension Repository ist ein gesonderter Vorgang; die Lieferung
-behauptet keine bereits erfolgte TER-Veröffentlichung.
-
-Die offiziellen Anleitungen erläutern die
-`klassische TYPO3-Installation mit Archiven
-<https://docs.typo3.org/m/typo3/reference-coreapi/14.3/en-us/Administration/Installation/ClassicMode/TarballZip.html>`_
-und das auch klassisch benötigte
-`composer.json einer Extension
-<https://docs.typo3.org/permalink/t3coreapi:ext-composer-json-classic-compatible>`_.
 
 .. _installation-check:
 

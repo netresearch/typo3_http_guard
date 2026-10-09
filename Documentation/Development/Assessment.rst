@@ -117,8 +117,9 @@ the required checks or signed commits.
 The shared Netresearch PR quality workflow provides automated approval for
 non-draft, same-repository PRs whose author has write or administrator access.
 Fork PRs receive no automated approval. This approval does not replace the
-independent human security review required for release. Auto-merge is enabled,
-and the default Actions token remains read-only with explicit per-job scopes.
+independent human security review required for production acceptance.
+Auto-merge is enabled, and the default Actions token remains read-only with
+explicit per-job scopes.
 New CI workflows require actual execution before their presence can be treated
 as operational evidence.
 
@@ -177,7 +178,7 @@ belong to that snapshot before the semantic-contract change. See
 Historical coverage figures and checkpoint totals are not assigned to
 these new runs.
 
-The final semantic-contract source passes five complete Unit/native
+The reviewed semantic-contract snapshot passes five complete Unit/native
 executions covering four distinct SDK version tuples, including the Guzzle
 7 and 8 minima: **201 tests and 2,405 assertions each** on the pinned PHP
 8.5.10 image with PHPUnit 11.5.57. Each consists of 152 Unit tests with
@@ -196,13 +197,21 @@ recorded separately in
 :file:`Build/Reports/Assessment/review-loop/semantic-qualification/summary.json`;
 earlier classic counts keep their historical source binding.
 
+A subsequent test-only correction compares cumulative TCP and HTTP contacts
+without treating asynchronous connection cleanup as a new request. Its
+local suite passes **201 tests and 2,447 assertions**; native-handle and
+cancellation checks remain enforced. The five-run evidence above keeps
+its original test hashes and counts. See
+:ref:`verification-semantic-support` for the correction and its controls.
+
 .. _assessment-open-work:
 
 Remaining qualification work
 ============================
 
 An independent human security review and representative operator pilot
-remain release prerequisites. The original Core resolutions selected
+remain production acceptance prerequisites for the alpha. The original Core
+resolutions selected
 ``enshrined/svg-sanitize`` 0.22.0 and failed on three advisory IDs. The
 initial GitHub inventory counted 36 medium alerts for those same IDs
 repeated in twelve historical fixture lock files. The records now remain
@@ -214,6 +223,10 @@ The 18 killed targeted security mutants are historical qualification
 evidence. They do not establish a project-wide Infection mutation score.
 The existing PHP formatting also leaves coding-style recommendations open;
 syntax linting is not a full PSR-12 style check.
-Signed release artifacts, provenance, registry publication and the named
-CI performance reference remain future release work. Passing repository
+The release workflow verifies artifact signatures, provenance and registry
+publication separately. Consult the
+`release status <https://github.com/netresearch/typo3_http_guard/releases>`_
+for the actual publication outcomes; registering a documentation webhook
+does not by itself prove that TYPO3 has approved and rendered the manual.
+The named CI performance reference remains outstanding. Passing repository
 checks alone does not establish SLSA level 3 or enterprise certification.

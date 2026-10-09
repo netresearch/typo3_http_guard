@@ -6,10 +6,16 @@
 HTTP Guard
 ==========
 
-HTTP Guard controls outbound HTTP requests through the registered TYPO3
-RequestFactory path. The transport checks the destination before each
-connection attempt and binds the connection to the verified IP addresses.
-Internal destinations also require an explicitly bound client.
+Install and activate HTTP Guard to add server-side request forgery (SSRF)
+protection to TYPO3's standard HTTP client, :php:`RequestFactory`. Existing
+calls through the registered factory are protected automatically; no
+application rewrite or custom policy configuration is needed.
+
+When an application fetches URLs from user input, imports or external
+payloads, the default :literal:`enforce` mode blocks private, loopback,
+cloud metadata and special-purpose destinations before a connection starts.
+DNS results and redirects are checked too. Allowed connections are bound
+to verified IP addresses.
 
 Version 0.1.0 is an alpha release. It includes the security core, the TYPO3
 adapter, the address rules and this manual in **one** extension with the key
@@ -18,19 +24,38 @@ command nor an additional HTTP Guard package.
 
 .. _http-guard-start:
 
-Getting started
-===============
+Install and activate
+====================
+
+For a Composer project, install the published 0.1 series and rebuild caches:
+
+.. code-block:: bash
+    :caption: Installation in a TYPO3 project
+
+    composer require netresearch/nr-http-guard:^0.1
+    vendor/bin/typo3 cache:flush
+
+Composer registers the extension automatically. For a classic installation,
+install :literal:`nr_http_guard` from
+`TER <https://extensions.typo3.org/extension/nr_http_guard>`_, then activate
+it in the Extension Manager and rebuild caches.
+Default protection is active without endpoint configuration.
+See :ref:`installation` for requirements and diagnostics.
+
+Internal integrations need an endpoint profile and a client explicitly
+bound to that profile. Adding a profile does not grant ordinary
+RequestFactory calls access to internal destinations.
+
+.. _http-guard-next:
+
+Next steps
+==========
 
 * :ref:`installation`: Requirements and installation with Composer or ZIP.
 * :ref:`configuration`: Every policy field and an internal endpoint example.
 * :ref:`api`: Bound PSR-18 clients and Public Fetch in your own project.
 * :ref:`operations`: Diagnostics, rollout, changes and rollback.
 * :ref:`security`: DNS, transport, redirects and coverage limits.
-
-Without custom configuration, the mode is :literal:`enforce`. Private
-addresses, loopback, metadata destinations and special-purpose networks are
-then blocked for ordinary public requests. An endpoint profile alone does
-not give an ordinary RequestFactory call additional permission.
 
 .. _http-guard-manual:
 

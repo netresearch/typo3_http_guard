@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>netresearch/renovate-config"
+  ],
+  "enabledManagers": [
+    "composer",
+    "github-actions"
+  ],
+  "dependencyDashboard": true,
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "evidence/**",
+    "verification/**",
+    "integrations/**",
+    "specification/**",
+    "Build/Fixtures/**",
+    "Build/Reports/**"
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "automerge": false,
+    "addLabels": [
+      "security",
+      "deps-no-automerge"
+    ],
+    "dependencyDashboardApproval": true,
+    "groupName": "qualified HTTP runtime"
+  },
+  "packageRules": [
+    {
+      "description": "Core and SDK updates require validation of the resolved dependency graph and review for every update type.",
+      "matchPackageNames": [
+        "typo3/cms-**",
+        "guzzlehttp/guzzle",
+        "guzzlehttp/promises",
+        "guzzlehttp/psr7"
+      ],
+      "groupName": "qualified HTTP runtime",
+      "dependencyDashboardApproval": true,
+      "automerge": false,
+      "addLabels": [
+        "dependencies",
+        "deps-no-automerge"
+      ]
+    }
+  ]
+}

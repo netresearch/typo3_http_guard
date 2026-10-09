@@ -18,3 +18,30 @@ Build/phpstan-http-guard.neon whitespace=-blank-at-eof
 Documentation/** conflict-marker-size=128
 # Preserve the original RST heading/table syntax in historical Vault snapshots.
 evidence/historical-two-package/integrations/nr-vault/source-overlay/Documentation/** conflict-marker-size=32
+
+# Publish the complete single extension without repository-only tools or evidence.
+# Keep this boundary aligned with Build/Scripts/build-extension.py and Tailor.
+* export-ignore
+/composer.json -export-ignore
+/ext_emconf.php -export-ignore
+/ext_localconf.php -export-ignore
+/README.md -export-ignore
+/LICENSE.txt -export-ignore
+/LICENSE-HttpGuard.txt -export-ignore
+/LICENSES.md -export-ignore
+/Classes -export-ignore
+/Classes/** -export-ignore
+/Configuration -export-ignore
+/Configuration/** -export-ignore
+/Documentation -export-ignore
+/Documentation/** -export-ignore
+/Resources -export-ignore
+/Resources/** -export-ignore
+/Resources/Private/HttpGuard/data/security-corpus/** export-ignore
+/Resources/Private/HttpGuard/data/security-corpus/README.md -export-ignore
+/Resources/Private/HttpGuard/data/security-corpus/address-rules.json -export-ignore
+/Resources/Private/HttpGuard/data/security-corpus/address-cases.json -export-ignore
+/Resources/Private/HttpGuard/data/security-corpus/endpoint-cases.json -export-ignore
+/Resources/Private/HttpGuard/data/security-corpus/uri-cases.json -export-ignore
+/Resources/Private/HttpGuard/data/security-corpus/scenario-cases.json -export-ignore
+/Resources/Private/HttpGuard/data/security-corpus/sources.json -export-ignore
