@@ -1,9 +1,10 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH.
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 
 // Verify the actual resolved graph, before any qualification matrix overrides.

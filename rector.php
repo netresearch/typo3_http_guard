@@ -3,8 +3,8 @@
 /*
  * SPDX-License-Identifier: GPL-2.0-or-later
  * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
- * Curated modernization preserves the PHP 8.2 runtime floor.
  */
+
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;

@@ -1,9 +1,10 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH.
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 $udp = stream_socket_server('udp://127.0.0.1:0', $errno, $error, STREAM_SERVER_BIND);
 if (!is_resource($udp)) {

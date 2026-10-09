@@ -1,9 +1,10 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH.
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 
 namespace Netresearch\HttpGuard\Tests\Unit\Policy;
@@ -185,6 +186,8 @@ final class NativeOperationTest extends TestCase
             fclose($readOnly);
             fclose($writeOnly);
             fclose($memory);
+            // Delete exactly the file this test created with tempnam; the operation provider never controls its path.
+            // nosemgrep: php.lang.security.unlink-use.unlink-use
             unlink($path);
         }
     }
