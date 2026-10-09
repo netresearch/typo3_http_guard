@@ -386,3 +386,6 @@ e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.
 848a77743f2dac334720308b04a54e8c3948a80c:Build/Reports/Assessment/current/final-extension-archive-manifest.json:generic-api-key:72
 848a77743f2dac334720308b04a54e8c3948a80c:Build/Reports/Assessment/current/source-hashes.json:generic-api-key:88
 ab230a3f33b20aedce264dce8af32a2d5be14a73:Build/Reports/Assessment/review-loop/final-extension-archive-manifest.json:generic-api-key:72
+32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-qualification/final-extension-archive-manifest.json:generic-api-key:73
+32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-runtime/source-end.json:generic-api-key:66
+32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-runtime/source-start.json:generic-api-key:66
