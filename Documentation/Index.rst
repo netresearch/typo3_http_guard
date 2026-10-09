@@ -1,39 +1,41 @@
+.. _start:
+
 .. _http-guard:
 
 ==========
 HTTP Guard
 ==========
 
-HTTP Guard kontrolliert ausgehende HTTP-Anfragen im registrierten
-TYPO3-RequestFactory-Pfad. Der Transport prüft die Zieladresse vor jedem
-Verbindungsversuch und bindet die Verbindung an die geprüften IP-Adressen.
-Interne Ziele benötigen zusätzlich einen ausdrücklich gebundenen Client.
+HTTP Guard controls outbound HTTP requests through the registered TYPO3
+RequestFactory path. The transport checks the destination before each
+connection attempt and binds the connection to the verified IP addresses.
+Internal destinations also require an explicitly bound client.
 
-Die Version 0.1.0 ist eine Alpha-Version. Sie enthält den Sicherheitskern,
-den TYPO3-Adapter, die Adressregeln und dieses Handbuch in **einer** Extension
-mit dem Schlüssel :literal:`nr_http_guard`. Für eine klassische Installation
-ist kein Composer-Aufruf und kein zusätzliches HTTP-Guard-Paket erforderlich.
+Version 0.1.0 is an alpha release. It includes the security core, the TYPO3
+adapter, the address rules and this manual in **one** extension with the key
+:literal:`nr_http_guard`. A classic installation requires neither a Composer
+command nor an additional HTTP Guard package.
 
 .. _http-guard-start:
 
-Einstieg
-========
+Getting started
+===============
 
-* :ref:`installation`: Voraussetzungen und Installation mit Composer oder ZIP.
-* :ref:`configuration`: Alle Policyfelder und ein internes Endpoint-Beispiel.
-* :ref:`api`: Gebundene PSR-18-Clients und Public Fetch im eigenen Projekt.
-* :ref:`operations`: Diagnose, Einführung, Änderungen und Rollback.
-* :ref:`security`: DNS, Transport, Redirects und Grenzen der Abdeckung.
+* :ref:`installation`: Requirements and installation with Composer or ZIP.
+* :ref:`configuration`: Every policy field and an internal endpoint example.
+* :ref:`api`: Bound PSR-18 clients and Public Fetch in your own project.
+* :ref:`operations`: Diagnostics, rollout, changes and rollback.
+* :ref:`security`: DNS, transport, redirects and coverage limits.
 
-Ohne eigene Konfiguration gilt :literal:`enforce`. Private Adressen, Loopback,
-Metadatenziele und besondere Netze sind dann für gewöhnliche öffentliche
-Anfragen gesperrt. Ein Endpoint-Profil allein erteilt einem gewöhnlichen
-RequestFactory-Aufruf keine zusätzliche Berechtigung.
+Without custom configuration, the mode is :literal:`enforce`. Private
+addresses, loopback, metadata destinations and special-purpose networks are
+then blocked for ordinary public requests. An endpoint profile alone does
+not give an ordinary RequestFactory call additional permission.
 
 .. _http-guard-manual:
 
-Handbuch
-========
+Manual
+======
 
 .. toctree::
     :maxdepth: 2
@@ -48,18 +50,16 @@ Handbuch
 
 .. _http-guard-scope:
 
-Geltungsbereich
-===============
+Scope
+=====
 
-Die Extension ersetzt keine Netzwerk-Firewall. Sie kontrolliert den
-dokumentierten TYPO3-HTTP-Pfad nach ihrer Registrierung und die von ihren
-Factories erzeugten Clients. Eingehende PSR-15-Middleware, frühe
-Bootstrap-Anfragen, fremde SDK-Clients, direkte cURL-Aufrufe und eigene
-Socketverbindungen benötigen eine separate Integration. Die vollständige
-Abgrenzung steht unter :ref:`security-coverage`.
+The extension does not replace a network firewall. It controls the
+documented TYPO3 HTTP path after registration and the clients created by its
+factories. Incoming PSR-15 middleware, early bootstrap requests, third-party
+SDK clients, direct cURL calls and custom socket connections require
+separate integration. See :ref:`security-coverage` for the complete scope.
 
-Die optionale nr-vault-Anpassung gehört zu einer gesonderten Migration;
-die globale Extension schützt Vault nicht automatisch. Der erforderliche
-Adapter und seine Nachweise werden im zusätzlichen Quell- und Nachweispaket
-geliefert. Für die Installation und den Betrieb der Extension genügt dieses
-Handbuch.
+The optional nr-vault adaptation is a separate migration. The global
+extension does not protect Vault automatically. The required adapter and
+its evidence are provided in the additional source and evidence package.
+This manual is sufficient to install and operate the extension.

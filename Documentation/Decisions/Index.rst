@@ -1,14 +1,14 @@
 .. _decisions:
 
-===========================
-Architekturentscheidungen
-===========================
+=======================
+Architecture decisions
+=======================
 
-Die ursprüngliche Planung trennte einen frameworkunabhängigen
-HTTP-Guard-Kern und den TYPO3-Adapter in zwei installierbare Pakete.
-Die ausdrücklich gewünschte klassische TYPO3-/TER-Installation führt zu
-der folgenden aktualisierten Verpackungsentscheidung. Die Original-ADRs
-im zusätzlichen Nachweispaket bleiben unverändert.
+The original plan separated a framework-independent HTTP Guard core and
+the TYPO3 adapter into two installable packages. The explicit requirement
+for classic TYPO3 and TER installation led to the following revised
+packaging decision. The original ADRs in the additional evidence package
+remain unchanged.
 
 .. toctree::
     :maxdepth: 1

@@ -10,6 +10,7 @@ __pycache__/
 
 .phpunit-http-guard.cache/
 Documentation-GENERATED/
+Documentation-GENERATED-temp/
 Documentation/_build/
 
 .phpstan-http-guard-cache/

@@ -10,7 +10,7 @@
                project-issues="https://github.com/netresearch/typo3_http_guard/issues"
                edit-on-github="netresearch/typo3_http_guard"
                edit-on-github-branch="main"
-               edit-on-github-directory="Documentation"/>
+               edit-on-github-directory="Documentation/Localization.de_DE"/>
     <project title="HTTP Guard" version="0.1" release="0.1.0"
              copyright="2026 by Netresearch DTT GmbH"/>
 </guides>

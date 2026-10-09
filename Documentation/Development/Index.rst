@@ -1,146 +1,147 @@
 .. _development:
 
 =====================
-Entwicklung und Tests
+Development and tests
 =====================
 
 .. _development-layout:
 
-Eine Extension, zwei interne Namespaces
+One extension, two internal namespaces
 ======================================
 
-.. list-table:: Layout des Extension-Quellverzeichnisses
+.. list-table:: Extension source layout
     :header-rows: 1
 
-    * - Pfad
-      - Aufgabe
+    * - Path
+      - Purpose
     * - :file:`Classes/`
-      - TYPO3-Adapter unter :php:`Netresearch\NrHttpGuard`.
+      - TYPO3 adapter under :php:`Netresearch\NrHttpGuard`.
     * - :file:`Classes/HttpGuard/`
-      - Enthaltener Sicherheitskern unter :php:`Netresearch\HttpGuard`.
+      - Embedded security core under :php:`Netresearch\HttpGuard`.
     * - :file:`Configuration/`
-      - TYPO3-Services, Aliases und RequestFactory-Registrierung.
+      - TYPO3 services, aliases and RequestFactory registration.
     * - :file:`Resources/Private/HttpGuard/data/`
-      - Runtime-Adressregeln, gemeinsamer Corpus und Quellenmetadaten.
+      - Runtime address rules, shared corpus and source metadata.
     * - :file:`Documentation/`
-      - Vollständiges Handbuch und wiederverwendbare Beispiele.
+      - Complete manual and reusable examples.
     * - :file:`Tests/Unit/`
-      - Unit-Tests des TYPO3-Adapters.
+      - Unit tests for the TYPO3 adapter.
     * - :file:`Tests/HttpGuard/`
-      - Policy-, Transport- und echte Wire-Tests des enthaltenen Kerns.
+      - Policy, transport and real wire tests for the embedded core.
 
-Der Kern liest keine TYPO3-Globals und keine Vault-Secrets. Der
-TYPO3-Adapter liefert Konfiguration, Registry, Resolver, Uhr und Reporter.
-Die bestehende Trennung im Code ermöglicht isolierte Kernprüfungen; sie
-erfordert keine zweite installierbare Library. Die Verpackungsentscheidung
-steht unter :ref:`decision-single-extension`.
+The core reads neither TYPO3 globals nor Vault secrets. The TYPO3 adapter
+provides the configuration, registry, resolver, clock and reporter. The
+separation in the code allows isolated core tests; it does not require a
+second installable library. See :ref:`decision-single-extension` for the
+packaging decision.
 
 .. _development-unit:
 
-Lokale Prüfungen
-================
+Local checks
+============
 
-Für die Entwicklung werden die in :file:`composer.json` genannten
-Dev-Werkzeuge installiert. Sie gehören nicht zur klassischen Runtime.
-Der gemeinsame PHPUnit-Einstieg verwendet beide Unit-Verzeichnisse:
+Development uses the tools listed in :file:`composer.json`. These are not
+part of the classic runtime. The combined PHPUnit entry point uses both
+unit test directories:
 
 .. code-block:: bash
-    :caption: Extension und enthaltenen Kern prüfen
+    :caption: Check the extension and its embedded core
 
     vendor/bin/phpunit --configuration phpunit.xml --testsuite Unit
     vendor/bin/phpstan analyse --configuration Build/phpstan-http-guard.neon --no-progress
 
-Diese PHPStan-Konfiguration prüft ausschließlich den enthaltenen
-Sicherheitskern unter :file:`Classes/HttpGuard/` auf Level 8.
+This PHPStan configuration checks only the embedded security core under
+:file:`Classes/HttpGuard/` at level 8.
 
-Die Wire-Tests benötigen kontrollierte Fixtures und Zielzähler und werden
-nicht als gewöhnliche Offline-Unit-Tests ausgeführt. Für eine isolierte
-Policyprüfung mit einem minimalen qualifizierten SDK-Vendor kann der
-separate Kernel-Bootstrap verwendet werden:
+Wire tests require controlled fixtures and destination counters. They are
+not run as ordinary offline unit tests. For an isolated policy check with
+a minimal qualified SDK vendor, use the separate kernel bootstrap:
 
 .. code-block:: bash
-    :caption: Isolierte Policytests ohne TYPO3-Abhängigkeit
+    :caption: Isolated policy tests without a TYPO3 dependency
 
     HTTP_GUARD_TEST_AUTOLOAD=/absolute/sdk/vendor/autoload.php \
         /absolute/sdk/vendor/bin/phpunit \
         --configuration Build/phpunit-http-guard.xml \
         Tests/HttpGuard/Unit/Policy
 
-Der Kernel-Bootstrap lädt ausschließlich die gewählten Dependencies und
-die Produktions-/Test-Namespaces dieses Pakets. Die zusätzliche
-:file:`Build/phpstan-http-guard.neon` prüft
-:file:`Classes/HttpGuard/` auf PHPStan-Level 8.
+The kernel bootstrap loads only the selected dependencies and this
+package's production and test namespaces. The additional configuration
+:file:`Build/phpstan-http-guard.neon` checks :file:`Classes/HttpGuard/` at
+PHPStan level 8.
 
 .. _development-evidence:
 
-Nachweise und Wiederholung
+Evidence and reproduction
 =========================
 
-Die technische Prüfung unterscheidet Policyergebnisse, native
-Transferkonstruktion sowie tatsächlich neue TCP- und HTTP-Kontakte.
-Ein Mock-Handler allein bestätigt kein Pinning. Die Wire-Fixtures verwenden
-eigene synthetische Adressen und DNS-Antworten; fremde Produktivziele sind
-keine Testvoraussetzung.
+The technical verification distinguishes policy results, native transfer
+construction and actual new TCP and HTTP contacts. A mock handler alone
+does not prove pinning. The wire fixtures use their own synthetic addresses
+and DNS responses; third-party production destinations are not required
+for the tests.
 
-Die vollständigen Reproduktionsrunner, Dependency-Locks, Containerstände,
-Laufzeitdaten, Quellenhashes, JUnit-Ausgaben und die Zuordnung der originalen
-45 Anforderungen zu 84 Tests liegen im **optionalen Quell-/Nachweispaket**
-unter :file:`verification/` und :file:`evidence/`. Sie sind keine
-Runtime-Abhängigkeit des TER-ZIP. Die dortige Datei
-:file:`verification/requirements-and-tests.md` erklärt je Anforderung den
-tatsächlich geprüften Umfang und offene Freigabeschritte.
+The complete reproduction runners, dependency locks, container versions,
+runtime data, source hashes, JUnit outputs and mapping of the original
+45 requirements to 84 tests are in the **optional source and evidence
+package** under :file:`verification/` and :file:`evidence/`. They are not
+runtime dependencies of the TER ZIP. Its file
+:file:`verification/requirements-and-tests.md` explains the actual verified
+scope and outstanding acceptance steps for each requirement.
 
-Die Prüfungen umfassen insbesondere:
+The checks cover in particular:
 
-* IPv4-/IPv6-CIDR-Grenzen, mapped IPv6, Metadaten und enge Endpoint-Freigaben.
-* Vollständige DNS-Ketten, TC-Wiederholung über TCP, Limits, NSS-Ausschluss
-  und Memo-/Ablaufprüfung.
-* Tatsächliches cURL-Pinning, fehlende Fähigkeiten, Optionen, Proxy-SAPI,
-  Redirects, Retries, Streaming und Cancel-Lebensdauer.
-* Echte TYPO3-DI-/RequestFactory-Bootstraps, Kontextrestriktionen, CLI und
-  klassische Archive ohne separat installierte Library.
-* Optionale Vault-Migration mit unabhängigen Resource-/OAuth-Bindungen.
-* Isolierte Mutanten für entfernte Sperren und Pin-/Fallback-Verletzungen;
-  die Zeugen prüfen tatsächliche Kontakte vor den Assertions.
+* IPv4 and IPv6 CIDR boundaries, mapped IPv6, metadata and narrow endpoint
+  permissions.
+* Complete DNS chains, TC retry over TCP, limits, NSS exclusion and
+  memoization and expiry checks.
+* Actual cURL pinning, missing capabilities, options, proxy SAPI behaviour,
+  redirects, retries, streaming and cancellation lifetimes.
+* Real TYPO3 DI and RequestFactory bootstraps, context restrictions, CLI
+  commands and classic archives without a separately installed library.
+* Optional Vault migration with independent resource and OAuth bindings.
+* Isolated mutants that remove denials or violate pinning or fallback
+  restrictions; witnesses check actual contacts before the assertions.
 
-Die PHP-/SDK-Kernmatrix ist von der Frameworkmatrix getrennt. Ein Kernlauf
-unter PHP 8.2 qualifiziert nicht automatisch jede TYPO3-Version unter
-diesem PHP. Neue Core-/SDK-Versionen, Handler, Protokolle oder erlaubte
-Optionen benötigen Quellenvergleich und Wiederholung der einschlägigen
-Policy-, Wire-, Integrations- und Mutationstests.
+The PHP and SDK core matrix is separate from the framework matrix. A core
+test run on PHP 8.2 does not automatically qualify every TYPO3 version for
+that PHP version. New Core or SDK versions, handlers, protocols or permitted
+options require source comparison and repetition of the relevant policy,
+wire, integration and mutation tests.
 
-Die historische Mikrobenchmark läuft auf dem aufgezeichneten lokalen Host;
-sie erfüllt nicht die noch offene Messung auf der im Plan verlangten
-benannten CI-Referenz. Ein vollständiger technischer Testlauf ersetzt
-weder die unabhängige menschliche Sicherheitsprüfung noch den konkreten
-Betreiberpilot.
+The historical microbenchmark ran on the recorded local host. It does not
+satisfy the outstanding measurement on the named CI reference required by
+the plan. A complete technical test run replaces neither an independent
+human security review nor the pilot on an actual operator instance.
 
 .. _development-docs:
 
-Handbuch rendern
-===============
+Render the manual
+=================
 
-Die Quellen unter :file:`Documentation/` verwenden die aktuelle
-phpDocumentor-Guides-Konfiguration. :file:`Settings.cfg` wird nicht benötigt.
-Die offizielle TYPO3-Dokumentation beschreibt den
-`Rendering-Container
-<https://docs.typo3.org/permalink/h2document:rendering-container>`_.
+The sources under :file:`Documentation/` use the current phpDocumentor
+Guides configuration. :file:`Settings.cfg` is not required. The official
+TYPO3 documentation describes the
+`rendering container
+<https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/RenderingDocs/Index.html>`_.
 
 .. code-block:: bash
-    :caption: Offizieller Renderer im Extension-Verzeichnis
+    :caption: Official renderer in the extension directory
 
     docker run --rm -v "$PWD":/project \
         ghcr.io/typo3-documentation/render-guides:latest \
         --config=Documentation --no-progress --fail-on-log
 
-Die HTML-Ausgabe wird unter :file:`Documentation-GENERATED-temp/` erzeugt.
-Bei einer eigenen :literal:`--output`-Option muss der Zielpfad innerhalb des
-gemounteten Verzeichnisses liegen, damit die Dateien erhalten bleiben.
-Der Renderer muss mit einer Warnungen berücksichtigenden Option ausgeführt
-werden; ein bloßer Exitcode einer ungeprüften Standardausführung ist kein
-Nachweis fehlerfreier Verweise.
+The generated HTML is written to :file:`Documentation-GENERATED-temp/`.
+If you provide an :literal:`--output` option, the destination must be inside
+the mounted directory so that the files are retained. Run the renderer
+with an option that treats warnings as failures. The exit code from an
+unchecked default invocation does not prove that references are valid.
 
 .. toctree::
     :maxdepth: 1
 
     Licenses
+    Verification
+    Dependencies
+    Assessment

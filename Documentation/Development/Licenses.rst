@@ -1,52 +1,51 @@
 .. _licenses:
 
-==================
-Lizenzen und Daten
-==================
+=================
+Licenses and data
+=================
 
 .. _licenses-extension:
 
-Extension und Sicherheitskern
-============================
+Extension and security core
+===========================
 
-Die eine TYPO3-Extension :literal:`netresearch/nr-http-guard` wird unter
-**GPL-2.0-or-later** geliefert. Der vollständige GPLv2-Text befindet sich in
-:file:`LICENSE.txt` auf der Extension-Ebene.
+The single TYPO3 extension :literal:`netresearch/nr-http-guard` is supplied
+under **GPL-2.0-or-later**. The complete GPLv2 text is in :file:`LICENSE.txt`
+at the extension root.
 
-Der enthaltene Sicherheitskern unter :file:`Classes/HttpGuard/` wurde unter
-MIT erstellt. Seine Lizenz- und Copyright-Hinweise bleiben erhalten;
-der vollständige Text liegt unter :file:`LICENSE-HttpGuard.txt`. Die
-Zusammenführung erzeugt kein zweites veröffentlichtes Paket und behauptet
-keine Umlizenzierung des Kerns. :file:`LICENSES.md` beschreibt die
-Zuordnung im Paket.
+The embedded security core under :file:`Classes/HttpGuard/` was created
+under MIT. Its license and copyright notices are preserved; the complete
+text is in :file:`LICENSE-HttpGuard.txt`. Combining the code does not create
+a second published package or claim to relicense the core.
+:file:`LICENSES.md` describes the license mapping within the package.
 
-Drittanbieter-Laufzeitbibliotheken werden nicht nochmals in einem eigenen
-Vendor-Verzeichnis gebündelt. Die unterstützte TYPO3-Installation stellt
-diese Komponenten bereit; ihre jeweiligen Lizenzhinweise gelten weiter.
-Der optionale Patch für nr-vault gehört zum bestehenden GPL-Projekt nr-vault.
+Third-party runtime libraries are not bundled again in a separate vendor
+directory. The supported TYPO3 installation provides these components;
+their own license notices continue to apply. The optional nr-vault patch
+belongs to the existing GPL-licensed nr-vault project.
 
 .. _licenses-sources:
 
-Adressdaten und Quellen
-======================
+Address data and sources
+========================
 
-Die mitgelieferten Daten unter
-:file:`Resources/Private/HttpGuard/data/security-corpus/` enthalten die
-abgeleiteten Regeln, den binären Testcorpus und eine Quellenmanifestdatei.
-Sie trennt Abrufdatum, Registerstand, Hash des heruntergeladenen Originals
-und Hash der abgeleiteten Regeln. Die primären Register sind die
+The bundled data under
+:file:`Resources/Private/HttpGuard/data/security-corpus/` contains the
+derived rules, binary test corpus and a source manifest. It distinguishes
+the retrieval date, registry version, hash of the downloaded original and
+hash of the derived rules. The primary registries are the
 `IANA IPv4 Special-Purpose Address Registry
 <https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml>`_
-und die
+and the
 `IANA IPv6 Special-Purpose Address Registry
 <https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xhtml>`_.
 
-Zusätzliche Metadaten-Sperren sind in denselben Quellenmetadaten begründet.
-Die jeweilige Quelllizenz und Rechte an aufgezeichnetem Drittmaterial
-bleiben bestehen. Originale Spezifikationen und ADRs werden im optionalen
-Nachweispaket unverändert aufbewahrt; dieses Handbuch übernimmt keine
-nachträgliche Änderung ihrer ursprünglichen Aussagen.
+Additional metadata denials are justified in the same source metadata. The
+respective source licenses and rights to recorded third-party material
+remain in effect. Original specifications and ADRs are preserved unchanged
+in the optional evidence package. This manual does not retrospectively
+alter their original statements.
 
-Adressdaten werden mit der Extension versioniert. Ein Regelupdate benötigt
-eine neue Freigabe mit Corpus-, CIDR- und tatsächlichen Wire-Prüfungen sowie
-einem Austausch der betroffenen Policy-Snapshots.
+Address data is versioned with the extension. A rule update requires a new
+approval with corpus, CIDR and actual wire checks, and replacement of the
+affected policy snapshots.
