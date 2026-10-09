@@ -3,6 +3,8 @@ includes:
 
 parameters:
     level: 8
+    stubFiles:
+        - PhpStan/Client.stub
     bootstrapFiles:
         - phpstan-bootstrap13.php
     paths:

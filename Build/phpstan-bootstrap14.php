@@ -8,6 +8,7 @@ declare (strict_types=1);
 namespace Netresearch\NrHttpGuard\Http;
 
 require __DIR__ . '/../Tests/bootstrap.php';
+RequestFactoryCompatibility::assertSupported();
 /**
  * Static-analysis shell for the excluded, incompatible Core 13 declaration.
  * This bootstrap is never used by production or genuine Core integration tests.

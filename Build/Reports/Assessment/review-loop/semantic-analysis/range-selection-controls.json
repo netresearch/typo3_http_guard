@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "scope": "manifest selection and family controls; not execution of future upstream sources",
+  "results": [
+    {
+      "case": "future13MinorSdk7",
+      "argv": [
+        "--core",
+        "^13.5",
+        "--sdk",
+        "^7.16",
+        "^2.6",
+        "^2.14"
+      ],
+      "expectedAccept": true,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "case": "future14MinorSdk8",
+      "argv": [
+        "--core",
+        "^14.4",
+        "--sdk",
+        "^8.3",
+        "^3.1",
+        "^3.2"
+      ],
+      "expectedAccept": true,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "case": "belowCore13Floor",
+      "argv": [
+        "--core",
+        "13.4.35"
+      ],
+      "expectedAccept": false,
+      "exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "case": "nextCoreMajor",
+      "argv": [
+        "--core",
+        "^15.0"
+      ],
+      "expectedAccept": false,
+      "exit": 1,
+      "verdict": "PASS"
+    },
+    {
+      "case": "mixedSdkFamilies",
+      "argv": [
+        "--core",
+        "^14.3.8",
+        "--sdk",
+        "^7.15.2",
+        "^3.0.2",
+        "^3.1"
+      ],
+      "expectedAccept": false,
+      "exit": 1,
+      "verdict": "PASS"
+    }
+  ],
+  "sourceBinding": {
+    "parserFile": "Build/Scripts/check-composer-qualification.py",
+    "parserMatchesImmutableCurrentHead": true,
+    "canonicalRuntimeGuardFile": "Classes/Http/RequestFactoryCompatibility.php",
+    "guardMatchesExecutedNativeSdkSource": true,
+    "packagedMembers": 130,
+    "allPackagedBytesMatchCurrentSource": true,
+    "theseAnalysisFixesChangePackagedFiles": false
+  },
+  "limitations": [
+    "Synthetic version and metadata selection controls do not execute future upstream code.",
+    "GitHub final-head checks and required approval remain separate merge gates."
+  ]
+}

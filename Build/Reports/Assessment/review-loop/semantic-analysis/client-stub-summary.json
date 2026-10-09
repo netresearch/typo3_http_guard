@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "scope": "Static analysis metadata correction for the supported concrete Guzzle client; production and installable-package source are unchanged.",
+  "runtime_php": "8.5.11",
+  "phpstan": "2.3.1",
+  "shared_profile": "netresearch/typo3-ci-workflows v1.12.0 with extension-installer plugins active",
+  "method": "Each graph runs its own PHPStan and Composer autoloader from its own working directory. A symlink supplies only the shared profile include; the existing classic metadata file is linked to satisfy its path-existence check.",
+  "changed_analysis_files": [
+    "Build/PhpStan/Client.stub",
+    "Build/phpstan-typo3-core13.neon",
+    "Build/phpstan-typo3.neon"
+  ],
+  "correction": "@not-deprecated applies only to GuzzleHttp\\Client::getConfig. The array-or-mixed conditional return metadata is retained; the Guzzle 7 ClientInterface deprecation is unchanged.",
+  "php_edit_method": "Guarded php-ast-edit creation and docblock mutation/restoration; the removed-tag control was restored to the original stub SHA-256.",
+  "positive_execution_count": 6,
+  "positive_result": "Both SDK majors on both actual TYPO3 Core majors, plus both kernel analyses, return exit 0 with zero errors and zero file errors.",
+  "negative_controls": [
+    "Both original Guzzle 7 Core analyses return exit 1 with exactly one method.deprecated finding at CoreStackProvider.php:36.",
+    "A Guzzle 7 ClientInterface-typed call still returns exactly one method.deprecated finding; concrete configuration and option calls are clean, including the conditional array return.",
+    "Removing only @not-deprecated from the concrete stub restores the original method.deprecated finding at the production call site."
+  ],
+  "source_binding": {
+    "start_end_match": true,
+    "start_end_checked_paths": [
+      "Build/PhpStan/Client.stub",
+      "Build/phpstan-typo3-core13.neon",
+      "Build/phpstan-typo3.neon",
+      "Build/phpstan-bootstrap13.php",
+      "Build/phpstan-bootstrap14.php"
+    ],
+    "unchanged_context_commit": "cdec20efa09dc1b5b82b60b3b891a4a6cacea3de",
+    "unchanged_context_paths": [
+      "Classes/Http/CoreStackProvider.php",
+      "Classes/Http/RequestFactoryCompatibility.php",
+      "Build/phpstan-http-guard.neon"
+    ],
+    "files": [
+      {
+        "sha256": "51ac0cbedc524bdc03a9b0bd4f1b742901f4820bf715bab242111d22c7d2236c",
+        "path": "Build/PhpStan/Client.stub"
+      },
+      {
+        "sha256": "d84cf7681edfe418ee88044a8f61d7a491c8e47aa67746210583b105e061f023",
+        "path": "Build/phpstan-typo3-core13.neon"
+      },
+      {
+        "sha256": "77b50617346e6da8928bdd5915a66ba6620f2d947305c52f71a12bf77900e98e",
+        "path": "Build/phpstan-typo3.neon"
+      },
+      {
+        "sha256": "769609e46fa45421bb370ae18d82c1cb91f78467ddcdd7d8a01e13e939d04eec",
+        "path": "Build/phpstan-bootstrap13.php"
+      },
+      {
+        "sha256": "28dc2dd31f584564950c2a53338bc05eb500509abd803d5df3056f17a341b542",
+        "path": "Build/phpstan-bootstrap14.php"
+      },
+      {
+        "sha256": "ef42aac80678866233494131e3b106395550552a743513138626238fd951171a",
+        "path": "Classes/Http/CoreStackProvider.php"
+      },
+      {
+        "sha256": "94444f0c0f75d6974ba09223e463803704a2bd64030ff1d6ddae691dc5753e03",
+        "path": "Classes/Http/RequestFactoryCompatibility.php"
+      },
+      {
+        "sha256": "b75d026a697cc6204fd61263c3834b4fa4e2be65fb6a234e7835450e55fb81f9",
+        "path": "Build/phpstan-http-guard.neon"
+      }
+    ]
+  },
+  "final_core_bootstrap_binding": "All four positive Core analyses were completed against the frozen final Core13 and Core14 bootstraps, each invoking the canonical compatibility guard before declaring its analysis shell.",
+  "controls_fixture_sha256": "e2c8b6961b0d38b16c6b639cbdc2128789d1db0704e4ecd803c4a29eacbea4d3",
+  "primary_sources": [
+    "https://phpstan.org/writing-php-code/phpdocs-basics#deprecations",
+    "https://phpstan.org/user-guide/stub-files"
+  ],
+  "cases": [
+    {
+      "case_id": "core13-g7-red",
+      "graph_id": "core13-g7",
+      "observed_analysis_exit": 1,
+      "versions": {
+        "guzzlehttp/guzzle": "7.15.5",
+        "guzzlehttp/promises": "2.5.3",
+        "guzzlehttp/psr7": "2.13.1",
+        "typo3/cms-core": "v13.4.36",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 1
+        },
+        "files": {
+          "Classes/Http/CoreStackProvider.php": {
+            "errors": 1,
+            "messages": [
+              {
+                "message": "Call to deprecated method getConfig() of class GuzzleHttp\\Client:\nClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0.",
+                "line": 36,
+                "ignorable": true,
+                "identifier": "method.deprecated"
+              }
+            ]
+          }
+        },
+        "errors": []
+      }
+    },
+    {
+      "case_id": "core14-g7-red",
+      "graph_id": "core14-g7",
+      "observed_analysis_exit": 1,
+      "versions": {
+        "guzzlehttp/guzzle": "7.15.5",
+        "guzzlehttp/promises": "2.5.3",
+        "guzzlehttp/psr7": "2.13.1",
+        "typo3/cms-core": "v14.3.8",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 1
+        },
+        "files": {
+          "Classes/Http/CoreStackProvider.php": {
+            "errors": 1,
+            "messages": [
+              {
+                "message": "Call to deprecated method getConfig() of class GuzzleHttp\\Client:\nClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0.",
+                "line": 36,
+                "ignorable": true,
+                "identifier": "method.deprecated"
+              }
+            ]
+          }
+        },
+        "errors": []
+      }
+    },
+    {
+      "case_id": "core13-g7-green",
+      "graph_id": "core13-g7",
+      "observed_analysis_exit": 0,
+      "versions": {
+        "guzzlehttp/guzzle": "7.15.5",
+        "guzzlehttp/promises": "2.5.3",
+        "guzzlehttp/psr7": "2.13.1",
+        "typo3/cms-core": "v13.4.36",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 0
+        },
+        "files": {},
+        "errors": []
+      }
+    },
+    {
+      "case_id": "core13-g8-green",
+      "graph_id": "core13-g8",
+      "observed_analysis_exit": 0,
+      "versions": {
+        "guzzlehttp/guzzle": "8.2.0",
+        "guzzlehttp/promises": "3.0.2",
+        "guzzlehttp/psr7": "3.1.0",
+        "typo3/cms-core": "v13.4.36",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 0
+        },
+        "files": {},
+        "errors": []
+      }
+    },
+    {
+      "case_id": "core14-g7-green",
+      "graph_id": "core14-g7",
+      "observed_analysis_exit": 0,
+      "versions": {
+        "guzzlehttp/guzzle": "7.15.5",
+        "guzzlehttp/promises": "2.5.3",
+        "guzzlehttp/psr7": "2.13.1",
+        "typo3/cms-core": "v14.3.8",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 0
+        },
+        "files": {},
+        "errors": []
+      }
+    },
+    {
+      "case_id": "core14-g8-green",
+      "graph_id": "core14-g8",
+      "observed_analysis_exit": 0,
+      "versions": {
+        "guzzlehttp/guzzle": "8.2.0",
+        "guzzlehttp/promises": "3.0.2",
+        "guzzlehttp/psr7": "3.1.0",
+        "typo3/cms-core": "v14.3.8",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 0
+        },
+        "files": {},
+        "errors": []
+      }
+    },
+    {
+      "case_id": "kernel-g7-green",
+      "graph_id": "core14-g7",
+      "observed_analysis_exit": 0,
+      "versions": {
+        "guzzlehttp/guzzle": "7.15.5",
+        "guzzlehttp/promises": "2.5.3",
+        "guzzlehttp/psr7": "2.13.1",
+        "typo3/cms-core": "v14.3.8",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 0
+        },
+        "files": {},
+        "errors": []
+      }
+    },
+    {
+      "case_id": "kernel-g8-green",
+      "graph_id": "core14-g8",
+      "observed_analysis_exit": 0,
+      "versions": {
+        "guzzlehttp/guzzle": "8.2.0",
+        "guzzlehttp/promises": "3.0.2",
+        "guzzlehttp/psr7": "3.1.0",
+        "typo3/cms-core": "v14.3.8",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 0
+        },
+        "files": {},
+        "errors": []
+      }
+    },
+    {
+      "case_id": "interface-deprecation-control",
+      "graph_id": "core14-g7",
+      "observed_analysis_exit": 1,
+      "versions": {
+        "guzzlehttp/guzzle": "7.15.5",
+        "guzzlehttp/promises": "2.5.3",
+        "guzzlehttp/psr7": "2.13.1",
+        "typo3/cms-core": "v14.3.8",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 1
+        },
+        "files": {
+          "Controls/GetterScopeControl.php": {
+            "errors": 1,
+            "messages": [
+              {
+                "message": "Call to deprecated method getConfig() of interface GuzzleHttp\\ClientInterface:\nClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0.",
+                "line": 14,
+                "ignorable": true,
+                "identifier": "method.deprecated"
+              }
+            ]
+          }
+        },
+        "errors": []
+      }
+    },
+    {
+      "case_id": "removed-tag-mutation",
+      "graph_id": "core13-g7",
+      "observed_analysis_exit": 1,
+      "versions": {
+        "guzzlehttp/guzzle": "7.15.5",
+        "guzzlehttp/promises": "2.5.3",
+        "guzzlehttp/psr7": "2.13.1",
+        "typo3/cms-core": "v13.4.36",
+        "netresearch/typo3-ci-workflows": "v1.12.0",
+        "phpstan/phpstan": "2.3.1"
+      },
+      "result": {
+        "totals": {
+          "errors": 0,
+          "file_errors": 1
+        },
+        "files": {
+          "Classes/Http/CoreStackProvider.php": {
+            "errors": 1,
+            "messages": [
+              {
+                "message": "Call to deprecated method getConfig() of class GuzzleHttp\\Client:\nClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0.",
+                "line": 36,
+                "ignorable": true,
+                "identifier": "method.deprecated"
+              }
+            ]
+          }
+        },
+        "errors": []
+      }
+    }
+  ]
+}
