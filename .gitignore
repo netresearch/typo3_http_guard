@@ -21,6 +21,7 @@ Documentation/_build/
 
 /composer.lock
 /.php-cs-fixer.cache
+/.php-cs-fixer.*.cache
 /.rector-cache/
 /.Build/
 /public/

@@ -38,6 +38,65 @@ pinned PHP images. A future PHP test image may be supplied through
 range does not claim that such a version has already been tested. Before each
 selected suite, an installed-runtime probe verifies the actual PHP/Core graph.
 
+## Functional Core entry points
+
+The three executed Core bootstraps live in `Tests/Functional/`: production
+decoration and wire contracts, classic package activation, and observe/disabled
+mode contracts. The standalone kernel's native tests remain in
+`Tests/HttpGuard/Integration/`.
+
+Use an already prepared genuine fixture and the separately prepared controlled
+wire targets. These routes do not create targets or install a Core graph:
+
+```bash
+bash Build/Scripts/runTests.sh -s integration -f /absolute/fixtures/core14g8
+bash Build/Scripts/runTests.sh -s integration -f /absolute/fixtures/classic14 -- classic
+bash Build/Scripts/runTests.sh -s classic -f /absolute/fixtures/classic14 -- active
+bash Build/Scripts/runTests.sh -s mode -f /absolute/fixtures/core14g8 -- observe
+bash Build/Scripts/runTests.sh -s mode -f /absolute/fixtures/classic14 -- disabled classic
+```
+
+`classic -- prepare` invokes the existing Core schema preparation
+checks on a disposable, initially inactive fixture. `HTTP_GUARD_FIXTURE` remains
+a fallback for `-f`; an explicit option takes precedence. Relative fixture paths
+resolve from this checkout's root, including when the wrapper is called elsewhere.
+Missing loaders, invalid mode/phase arguments and failed Core bootstraps fail.
+
+For `-p`/`-t` selection, the shared container mounts only this checkout, at the
+same absolute path. The fixture and its resolved autoloader must therefore be
+inside this project mount; external paths and escaping vendor symlinks are
+rejected before delegation. Pass a project-contained fixture explicitly:
+
+```bash
+bash Build/Scripts/runTests.sh -s integration -f .Build/fixtures/core14g8 -p 8.5 -t 14
+```
+
+The wrapper delegates these three suites through the installed official
+`suite_http_guard_functional` hook. The hook uses the selected digest-pinned
+PHP image in ephemeral host-network containers so that it can reach the
+separately prepared controlled Core witnesses. It mounts the physically
+validated project, forwards literal fixture arguments, and probes the fixture's
+actual PHP/Core versions before executing the entry point. `-t` validates that
+installed fixture without changing the development Composer graph. Generic
+suites retain the shared runner's existing container routes.
+
+These containers run as the caller's user with a read-only root filesystem,
+all capabilities dropped and `no-new-privileges`. Cleanup removes only their
+captured immutable IDs. Probe, entry-point and cleanup failures propagate.
+Core 13 production fixtures may omit `composer/semver`; the runtime probe then
+registers only that namespace from the installed development tool directory.
+It keeps Core and SDK loading authoritative to the fixture, without loading
+another development Core graph. Missing Semver tools fail explicitly.
+
+The 27 offline routing controls cover validation, literal arguments, container
+ownership and failure propagation; they do not establish Core or wire success.
+The separately recorded 20 host and 20 selected-container Functional routes
+passed with PHP 8.5.11 and 8.5.10 respectively.
+Fresh execution results remain bound to their actual fixture/source records.
+The installed shared runner's mount syntax requires a checkout path without
+whitespace or colons; these fixture routes reject unsupported checkout paths.
+Fixture names may contain spaces, but not line breaks.
+
 ## Owned native transport targets
 
 Run the native suite through the project orchestrator:

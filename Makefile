@@ -1,12 +1,10 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
-.PHONY: test quality style fix-style static rector architecture fuzz mutation performance native package
+-include .Build/vendor/netresearch/typo3-ci-workflows/Makefile.include
 
-test:
-	composer ci:test:php:unit
+.PHONY: style fix-style static architecture fuzz mutation performance native package
 
-quality:
-	composer check:local
+quality: architecture
 
 style:
 	composer ci:test:php:cgl
@@ -16,9 +14,6 @@ fix-style:
 
 static:
 	composer ci:test:php:phpstan
-
-rector:
-	composer ci:test:php:rector
 
 architecture:
 	composer ci:test:php:architecture
@@ -37,3 +32,13 @@ native:
 
 package:
 	python3 Build/Scripts/build-extension.py
+
+# Keep the shared entry points, while preserving the project's reviewed AST
+# workflow and its policy against suppressing diagnostics in baselines.
+rector-fix:
+	@printf '%s\n' 'Review the Rector dry-run and apply PHP edits with php-ast-edit.' >&2
+	@exit 2
+
+phpstan-baseline:
+	@printf '%s\n' 'Fix static-analysis diagnostics; this project does not generate suppressing baselines.' >&2
+	@exit 2

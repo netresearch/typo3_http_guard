@@ -55,11 +55,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 -m unittest discover -s Tests/Build -p 'test_*.py' -v
-          python3 Build/Scripts/build-extension.py --output "$RUNNER_TEMP/nr_http_guard_0.1.0.zip"
+          # These controls need no PHP development dependencies. The development
+          # quality job runs the complete suite, including the real CaptainHook detector.
+          python3 -m unittest Tests.Build.test_build_extension Tests.Build.test_coverage_paths Tests.Build.test_wire_lifecycle -v
+          python3 Build/Scripts/build-extension.py --output "$RUNNER_TEMP/nr_http_guard.zip"
           python3 Build/Scripts/build-extension.py --output "$RUNNER_TEMP/repeated.zip"
-          cmp "$RUNNER_TEMP/nr_http_guard_0.1.0.zip" "$RUNNER_TEMP/repeated.zip"
-          unzip -Z1 "$RUNNER_TEMP/nr_http_guard_0.1.0.zip" > "$RUNNER_TEMP/archive-members.txt"
+          cmp "$RUNNER_TEMP/nr_http_guard.zip" "$RUNNER_TEMP/repeated.zip"
+          unzip -Z1 "$RUNNER_TEMP/nr_http_guard.zip" > "$RUNNER_TEMP/archive-members.txt"
           if grep -E '(^|/)(vendor|Tests|Build|\.github|evidence|verification|specification)/|\.(key|pem)$' "$RUNNER_TEMP/archive-members.txt"; then
             echo 'Unexpected development dependencies, private keys or evidence in installable archive' >&2
             exit 1
@@ -69,14 +71,14 @@ jobs:
         with:
           name: installable-extension
           path: |
-            ${{ runner.temp }}/nr_http_guard_0.1.0.zip
-            ${{ runner.temp }}/nr_http_guard_0.1.0.zip.manifest.json
+            ${{ runner.temp }}/nr_http_guard.zip
+            ${{ runner.temp }}/nr_http_guard.zip.manifest.json
           if-no-files-found: error
           retention-days: 14
   native-transport:
     name: Native transport (${{ matrix.label }})
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: ${{ matrix.coverage-id == '8.2.0' && 60 || 15 }}
     permissions:
       contents: read
     strategy:
@@ -140,6 +142,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0
       - name: Set up isolated Python build tooling
         shell: bash
         run: |
@@ -152,10 +155,11 @@ jobs:
         with:
           php-version: '8.5'
           extensions: curl, dom, intl, mbstring, pdo_sqlite, sodium, xml
-          coverage: pcov
+          coverage: ${{ matrix.coverage-id == '8.2.0' && 'xdebug' || 'pcov' }}
           tools: composer:v2
       - name: Install dependency combination
         env:
+          CAPTAINHOOK_DISABLE: 'true'
           TEST_GUZZLE: ${{ matrix.guzzle }}
           TEST_PROMISES: ${{ matrix.promises }}
           TEST_PSR7: ${{ matrix.psr7 }}
@@ -197,6 +201,7 @@ jobs:
       - name: Exercise Unit and actual native wire behavior
         env:
           HTTP_GUARD_TEST_AUTOLOAD: ${{ github.workspace }}/.Build/vendor/autoload.php
+          XDEBUG_MODE: coverage
         shell: bash
         run: |
           set -euo pipefail
@@ -205,6 +210,38 @@ jobs:
             --coverage-clover "$RUNNER_TEMP/coverage/full-clover.xml" \
             --log-junit "$RUNNER_TEMP/coverage/junit.xml"
           python3 Build/Scripts/normalize-clover.py "$RUNNER_TEMP/coverage/full-clover.xml"
+      - name: Enforce native mutation thresholds for the changed source or full qualification
+        if: matrix.coverage-id == '8.2.0'
+        env:
+          HTTP_GUARD_TEST_AUTOLOAD: ${{ github.workspace }}/.Build/vendor/autoload.php
+          XDEBUG_MODE: coverage
+          MUTATION_EVENT: ${{ github.event_name }}
+          MUTATION_DIFF_BASE: ${{ github.event.pull_request.base.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mutation_scope=()
+          if [[ "$MUTATION_EVENT" == pull_request ]]; then
+            [[ "$MUTATION_DIFF_BASE" =~ ^[0-9a-f]{40}$ ]] || { printf 'Invalid mutation comparison commit.\n' >&2; exit 2; }
+            git cat-file -e "$MUTATION_DIFF_BASE^{commit}"
+            changed_source=$(git diff --name-only --diff-filter=AMR "$MUTATION_DIFF_BASE" HEAD -- ':(glob)Classes/**/*.php')
+            if [[ -z "$changed_source" ]]; then
+              printf 'No production PHP added, modified or renamed; Unit and native behavior passed, mutation measurement is skipped.\n'
+              exit 0
+            fi
+            mutation_scope=(--git-diff-filter=AMR --git-diff-base="$MUTATION_DIFF_BASE")
+          fi
+          .Build/vendor/bin/infection --configuration infection.native.json5 --threads=1 \
+            --with-uncovered --with-timeouts --only-covering-test-cases \
+            --no-progress --show-mutations=0 "${mutation_scope[@]}"
+      - name: Preserve mutation results including failed thresholds
+        if: always() && matrix.coverage-id == '8.2.0'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: native-mutation-results
+          path: .Build/reports/infection-native*
+          if-no-files-found: warn
+          retention-days: 14
       - name: Preserve fresh test coverage
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:

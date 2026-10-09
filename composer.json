@@ -39,6 +39,9 @@
       "Package": {
         "providesPackages": {}
       }
+    },
+    "captainhook": {
+      "config": "Build/captainhook.json"
     }
   },
   "homepage": "https://github.com/netresearch/typo3_http_guard",
@@ -77,8 +80,8 @@
     "vendor-dir": ".Build/vendor"
   },
   "scripts": {
-    "ci:test:php:cgl": "@php .Build/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --dry-run --diff",
-    "ci:fix:php:cgl": "@php .Build/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+    "ci:test:php:cgl": "bash Build/Scripts/php-style.sh check",
+    "ci:fix:php:cgl": "bash Build/Scripts/php-style.sh fix",
     "ci:test:php:rector": "@php .Build/vendor/bin/rector process --config=rector.php --dry-run",
     "ci:test:php:phpstan": "bash Build/Scripts/check-static-analysis.sh",
     "ci:test:php:unit": "bash Build/Scripts/runTests.sh -s unit",
@@ -90,6 +93,8 @@
     "check:harness": "python3 Build/Scripts/verify-harness.py",
     "check:secrets": "python3 Build/Scripts/check-staged-secrets.py",
     "check:local": "bash Build/Scripts/check-local-quality.sh",
-    "test": "@ci:test:php:unit"
+    "test": "@ci:test:php:unit",
+    "ci:cgl": "@ci:fix:php:cgl",
+    "ci:test:php:lint": "bash Build/Scripts/lint-php.sh"
   }
 }

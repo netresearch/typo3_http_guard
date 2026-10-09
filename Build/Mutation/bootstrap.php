@@ -1,12 +1,13 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH.
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 
-require dirname(__DIR__, 2) . '/Tests/Architecture/bootstrap.php';
+require_once dirname(__DIR__, 2) . '/Tests/Architecture/bootstrap.php';
 $parent             = new ReflectionClass(TYPO3\CMS\Core\Http\RequestFactory::class);
 $unavailableFactory = $parent->isReadOnly() ? Netresearch\NrHttpGuard\Http\GuardedRequestFactory13::class : Netresearch\NrHttpGuard\Http\GuardedRequestFactory14::class;
 // Infection reflects every source class before generating mutants. The adapters

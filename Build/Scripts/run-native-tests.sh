@@ -31,12 +31,28 @@ run_id="http-guard-native-${run_dir##*/}"
 owned_containers=()
 owned_networks=()
 cleanup() {
-    local id
-    for id in "${owned_containers[@]}"; do docker rm -f "$id" >/dev/null 2>&1 || true; done
-    for id in "${owned_networks[@]}"; do docker network rm "$id" >/dev/null 2>&1 || true; done
+    local result=$? id cleanup_failed=0
+    trap - EXIT
+    for id in "${owned_containers[@]}"; do
+        if ! docker rm -f "$id" >/dev/null 2>&1; then
+            printf 'Unable to remove an owned native container.\n' >&2
+            cleanup_failed=1
+        fi
+    done
+    for id in "${owned_networks[@]}"; do
+        if ! docker network rm "$id" >/dev/null 2>&1; then
+            printf 'Unable to remove an owned native network.\n' >&2
+            cleanup_failed=1
+        fi
+    done
     # Retain logs and version records for failed and successful runs; remove
     # only freshly generated private keys owned by this run.
-    rm -rf "$run_dir/certificates"
+    if ! rm -rf "$run_dir/certificates"; then
+        printf 'Unable to remove owned native fixture keys.\n' >&2
+        cleanup_failed=1
+    fi
+    if [[ $result -ne 0 ]]; then exit "$result"; fi
+    exit "$cleanup_failed"
 }
 trap cleanup EXIT
 trap 'exit 130' INT
@@ -74,7 +90,7 @@ for spec in 'public 203.0.115.0/24' 'private 10.23.4.0/24'; do
 done
 id=$(docker network create --internal --label "$label" --ipv6 --subnet 203.0.116.0/24 --subnet 2600:7e00:6775:6172::/64 "$run_id-v6")
 owned_networks+=("$id")
-image=python@sha256:f85c5697265c178cc6887276c55fe16cf3d14ca35c3df6a5eab3b360534a55d2
+image=mirror.gcr.io/library/python@sha256:f85c5697265c178cc6887276c55fe16cf3d14ca35c3df6a5eab3b360534a55d2
 for spec in 'public-a 203.0.115.100 public' 'public-b 203.0.115.101 public' 'private 10.23.4.12 private'; do
     read -r target address network <<< "$spec"
     id=$(docker create --name "$run_id-$target" --label "$label" --network "$run_id-$network" --ip "$address" \
@@ -98,7 +114,8 @@ docker start "$id" >/dev/null
 for address in 203.0.115.100:8091 203.0.115.101:8091 10.23.4.12:8091 127.0.0.1:18091; do
     ready=false
     for unused in {1..30}; do
-        if curl --noproxy '*' --silent --fail --max-time 1 "http://$address/reset" >/dev/null; then ready=true; break; fi
+        # Only fixed, credential-free addresses of this run's isolated witnesses reach this reset.
+        if curl --noproxy '*' --silent --fail --max-time 1 "http://$address/reset" >/dev/null; then ready=true; break; fi # NOSONAR: shell:S5332, controlled local fixture administration.
         printf 'Waiting for owned target %s (%s/30).\n' "$address" "$unused"
         sleep 1
     done

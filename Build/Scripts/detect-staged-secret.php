@@ -4,11 +4,12 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 
 // This development helper receives index blob bytes on stdin, never file paths.
 try {
-    require __DIR__ . '/../../.Build/vendor/autoload.php';
+    require_once __DIR__ . '/../../.Build/vendor/autoload.php';
     $detector = CaptainHook\Secrets\Detector::create()
         ->useSupplierConfig(
             [

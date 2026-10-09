@@ -1,9 +1,10 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH.
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 
 namespace Netresearch\HttpGuard\Tests\Integration;
@@ -740,6 +741,11 @@ final class ProductionTransportTest extends TestCase
                 'option_forbidden',
             );
         }
+        /**
+         * Fixed synthetic proxy addresses must be rejected with zero socket contact.
+         *
+         * @SuppressWarnings("php:S5332")
+         */
         foreach (['http://203.0.115.101:8090', 'https://203.0.115.101:8443', 'socks5://203.0.115.101:8090'] as $proxy) {
             $this->zeroContact(
                 fn () => $binding->client->request('GET', 'http://guard.test:8090/echo', ['proxy' => $proxy]),
@@ -896,8 +902,13 @@ final class ProductionTransportTest extends TestCase
             $provider  = new TransportStackProvider([], ['verify' => false, 'timeout' => 0, 'idn_conversion' => true], $leaf);
             [$factory] = $this->fixture(['mode' => $mode], null, $provider);
             $binding   = $factory->createTransport();
-            $request   = new Request('POST', 'http://10.23.4.12:8090/echo', ['X-Test' => 'synthetic'], 'body');
-            $response  = $binding->client->send(
+            /**
+             * The recording leaf returns a synthetic response without opening a socket.
+             *
+             * @SuppressWarnings("php:S5332")
+             */
+            $request  = new Request('POST', 'http://10.23.4.12:8090/echo', ['X-Test' => 'synthetic'], 'body');
+            $response = $binding->client->send(
                 $request,
                 [
                     'stream'             => true,
@@ -996,7 +1007,12 @@ final class ProductionTransportTest extends TestCase
         }
         [$factory] = $this->fixture();
         $binding   = $factory->createTransport();
-        $response  = $binding->client->request('GET', 'http://[::ffff:203.0.115.100]:8090/echo');
+        /**
+         * Credential-free HTTP on our isolated witness proves IPv4-mapped pinning.
+         *
+         * @SuppressWarnings("php:S5332")
+         */
+        $response = $binding->client->request('GET', 'http://[::ffff:203.0.115.100]:8090/echo');
         self::assertSame(
             'public-a',
             json_decode((string) $response->getBody(), true, 512, JSON_THROW_ON_ERROR)['label'],

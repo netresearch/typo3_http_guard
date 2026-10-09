@@ -188,7 +188,7 @@ class HarnessBindingTest(unittest.TestCase):
         scripts.mkdir(parents=True)
         shutil.copyfile(SOURCE / 'Build/Scripts/verify-harness.py', scripts / 'verify-harness.py')
         for name in ('AGENTS.md', '.github/copilot-instructions.md', '.github/instructions/php.instructions.md',
-                     '.github/instructions/tests.instructions.md', '.github/CODEOWNERS', 'captainhook.json'):
+                     '.github/instructions/tests.instructions.md', '.github/CODEOWNERS', 'Build/captainhook.json'):
             self.copy(name)
         # Copy only documented entry points, never vendor or historical evidence.
         import re
@@ -259,7 +259,7 @@ class HarnessBindingTest(unittest.TestCase):
         self.scan(1)
 
     def test_wrong_captainhook_bootstrap_rejected(self):
-        path = self.root / 'captainhook.json'
+        path = self.root / 'Build/captainhook.json'
         hooks = json.loads(path.read_text())
         hooks['config']['bootstrap'] = 'vendor/autoload.php'
         path.write_text(json.dumps(hooks))

@@ -1,7 +1,10 @@
 <?php
 
-/** SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH */
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+ */
+
 declare(strict_types=1);
 use Composer\InstalledVersions;
 use GuzzleHttp\Psr7\Request;
@@ -15,7 +18,7 @@ use Netresearch\HttpGuard\ResolverInterface;
 use Netresearch\HttpGuard\SystemClock;
 use Netresearch\HttpGuard\TargetNormalizer;
 
-require dirname(__DIR__, 2) . '/Tests/bootstrap.php';
+require_once dirname(__DIR__, 2) . '/Tests/bootstrap.php';
 $root     = dirname(__DIR__, 2);
 $profiles = [];
 for ($index = 0; $index < 128; ++$index) {

@@ -2,41 +2,85 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
 set -euo pipefail
-package_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+package_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd -P)
 cd "$package_dir"
 suite=unit
 php_version=
 core_version=
 container_bin=
-while getopts 's:p:t:b:h' option; do
+fixture_path=
+while getopts 's:p:t:b:f:h' option; do
     case "$option" in
         s) suite=$OPTARG ;;
         p) php_version=$OPTARG ;;
         t) core_version=$OPTARG ;;
         b) container_bin=$OPTARG ;;
+        f) fixture_path=$OPTARG ;;
         h)
-            printf '%s\n' 'HTTP Guard tests: -s unit|native|mutation|mutation-native|architecture|fuzz|performance' \
+            printf '%s\n' 'HTTP Guard tests: -s unit|integration|classic|mode|native|mutation|mutation-native|architecture|fuzz|performance' \
                 'No -p/-t: use installed host PHP and the project suite.' \
                 'Explicit -p/-t: delegate to the installed shared container runner.' \
-                '-t updates the selected Core in composer.json: use an isolated checkout.' \
+                '-f selects a prepared genuine Core fixture for integration, classic and mode.' \
+                'integration: [classic]; classic: [active|prepare]; mode: observe|disabled [classic].' \
+                'Fixture routes validate -t against the fixture; other suites update the development graph.' \
                 'Use -- before PHPUnit/tool arguments. Native targets are owned per run.'
             exit 0 ;;
         *) exit 2 ;;
     esac
 done
 shift $((OPTIND - 1))
+functional_suite=false
+case "$suite" in
+    integration|classic|mode) functional_suite=true ;;
+    unit|native|mutation-native|architecture|mutation|fuzz|performance) ;;
+    *) printf 'Unsupported suite: %s. Use -h for project suites.\n' "$suite" >&2; exit 2 ;;
+esac
+if $functional_suite; then
+    fixture_path=${fixture_path:-${HTTP_GUARD_FIXTURE:-}}
+    [[ -n "$fixture_path" ]] || { printf 'Set -f or HTTP_GUARD_FIXTURE to a prepared genuine Core fixture.\n' >&2; exit 2; }
+    [[ "$fixture_path" != *$'\n'* && "$fixture_path" != *$'\r'* ]] || { printf 'Fixture paths must not contain line breaks.\n' >&2; exit 2; }
+    [[ -d "$fixture_path" ]] || { printf 'Fixture directory does not exist.\n' >&2; exit 2; }
+    fixture_path=$(cd -- "$fixture_path" && pwd -P)
+    [[ -f "$fixture_path/vendor/autoload.php" ]] || { printf 'Fixture vendor/autoload.php is missing.\n' >&2; exit 2; }
+    case "$suite" in
+        integration)
+            [[ $# == 0 || ( $# == 1 && $1 == classic ) ]] || { printf 'integration accepts only an optional classic argument.\n' >&2; exit 2; } ;;
+        classic)
+            [[ $# == 0 || ( $# == 1 && ( $1 == active || $1 == prepare ) ) ]] || { printf 'classic accepts only active or prepare.\n' >&2; exit 2; } ;;
+        mode)
+            [[ ( $# == 1 || ( $# == 2 && $2 == classic ) ) && ( $1 == observe || $1 == disabled ) ]] || { printf 'mode requires observe or disabled and optional classic.\n' >&2; exit 2; } ;;
+    esac
+elif [[ -n "$fixture_path" ]]; then
+    printf '%s\n' '-f is only supported for integration, classic and mode.' >&2
+    exit 2
+fi
 # Preserve the safe Core floors when accepting the shared runner's shorthand.
 case "$core_version" in
     13|13.4) core_version='^13.4.36' ;;
     14|14.3) core_version='^14.3.8' ;;
 esac
 if [[ -n "$php_version" || -n "$core_version" || -n "$container_bin" ]]; then
+    if $functional_suite; then
+        # The shared runner mounts this project at the same absolute path. A
+        # foreign fixture or escaping vendor symlink is not present there.
+        case "$package_dir" in
+            *[[:space:]:]*) printf 'The shared project mount requires a checkout path without whitespace or colons.\n' >&2; exit 2 ;;
+        esac
+        fixture_loader=$(realpath "$fixture_path/vendor/autoload.php")
+        [[ "$fixture_path" == "$package_dir" || "$fixture_path" == "$package_dir/"* ]] && \
+            [[ "$fixture_loader" == "$package_dir/"* ]] || { printf 'Selected-container fixtures and their loader must be inside the project mount.\n' >&2; exit 2; }
+        # Do not let an inherited shared-runner root override select a
+        # different checkout or mount after the boundary check above.
+        export RUNTESTS_PROJECT_ROOT="$package_dir"
+        fixture_path=${fixture_path#"$package_dir"/}
+        [[ "$fixture_path" != "$package_dir" ]] || fixture_path=.
+    fi
     runner="$package_dir/.Build/vendor/netresearch/typo3-ci-workflows/assets/Build/Scripts/runTests.sh"
     [[ -x "$runner" ]] || { printf 'Install the shared CI development package first: composer install.\n' >&2; exit 2; }
     [[ -n "$php_version" ]] || php_version=$(php -r 'echo PHP_MAJOR_VERSION, ".", PHP_MINOR_VERSION;')
     runtime_args=(-p "$php_version")
     [[ -z "$container_bin" ]] || runtime_args+=(-b "$container_bin")
-    if [[ -n "$core_version" ]]; then
+    if [[ -n "$core_version" ]] && ! $functional_suite; then
         [[ ! -L "$package_dir/.Build/vendor" ]] || { printf 'Core selection requires a checkout-owned vendor directory, not a shared symlink.\n' >&2; exit 2; }
         # The upstream -t partial update needs a lock absent from fresh extension
         # checkouts. Delegate both operations to its Composer suite instead.
@@ -51,10 +95,14 @@ if [[ -n "$php_version" || -n "$core_version" || -n "$container_bin" ]]; then
         bash "$runner" -s composer "${runtime_args[@]}" -- dump-autoload --no-scripts
         export HTTP_GUARD_EXPECTED_CORE="$core_version"
     fi
+    if $functional_suite; then
+        exec bash "$runner" -s http_guard_functional "${runtime_args[@]}" -- \
+            "$suite" "$fixture_path" "$php_version" "$core_version" "$@"
+    fi
     bash "$runner" -s composer "${runtime_args[@]}" -- exec -- \
         php Build/Scripts/assert-test-runtime.php .Build/vendor/autoload.php "$php_version" "$core_version"
     case "$suite" in
-        architecture|mutation|fuzz|performance|integration)
+        architecture|mutation|fuzz|performance)
             # These project scopes differ from generic shared suites. Execute
             # the host entry point in the selected shared container verbatim.
             exec bash "$runner" -s composer "${runtime_args[@]}" -- exec -- \
@@ -77,8 +125,11 @@ case "$suite" in
     mutation-native)
         HTTP_GUARD_NATIVE_MODE=mutation exec bash "$package_dir/Build/Scripts/run-native-tests.sh" "$@" ;;
     integration)
-        exec php "$package_dir/Tests/Integration/production-bootstrap.php" \
-            "${HTTP_GUARD_FIXTURE:?Set HTTP_GUARD_FIXTURE to a prepared genuine Core fixture}" "$@" ;;
+        exec php "$package_dir/Tests/Functional/production-bootstrap.php" "$fixture_path" "$@" ;;
+    classic)
+        exec php "$package_dir/Tests/Functional/classic-package-bootstrap.php" "$fixture_path" "$@" ;;
+    mode)
+        exec php "$package_dir/Tests/Functional/mode-bootstrap.php" "$fixture_path" "$@" ;;
     architecture)
         exec php "$package_dir/.Build/vendor/bin/phpstan" analyse \
             --configuration "$package_dir/Build/phpstan-architecture.neon" \

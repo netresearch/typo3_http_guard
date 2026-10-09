@@ -221,6 +221,8 @@ final class WireIoBoundaryContractTest extends TestCase
                 State::$authorities,
             );
         } finally {
+            // Removes only this test's freshly created synthetic resolver file; no caller path.
+            // nosemgrep: php.lang.security.unlink-use.unlink-use
             unlink($path);
         }
     }
@@ -241,6 +243,8 @@ final class WireIoBoundaryContractTest extends TestCase
             }
             self::assertSame(0, State::$opened);
         } finally {
+            // Removes only this test's freshly created synthetic resolver file; no caller path.
+            // nosemgrep: php.lang.security.unlink-use.unlink-use
             unlink($path);
         }
     }
@@ -275,6 +279,8 @@ final class WireIoBoundaryContractTest extends TestCase
             self::assertTrue((new WireDnsQuery(resolvConfPath: $path))->query('wire.example.', 1)->complete);
             self::assertSame(['udp://127.0.0.1:53'], State::$authorities);
         } finally {
+            // Removes only this test's freshly created synthetic resolver file; no caller path.
+            // nosemgrep: php.lang.security.unlink-use.unlink-use
             unlink($path);
         }
     }

@@ -1,4 +1,4 @@
-<!-- Last Updated: 2026-10-09 | Last verified: 2026-10-09 -->
+<!-- Last Updated: 2026-10-10 | Last verified: 2026-10-10 -->
 # HTTP Guard agent guide
 
 ## Overview
@@ -33,6 +33,9 @@ composer check:local
 ```
 
 See [development commands](Documentation/Development/Index.rst) and [real Core fixtures](Build/Fixtures/README.md).
+The [Makefile](Makefile) imports the shared extension targets. Use `make quality`,
+`make test-unit`, `make test-functional`, `make rector`, `make architecture`,
+`make fuzz`, `make mutation` and `make performance` for the corresponding checks.
 Do not claim tests passed from command existence; retain actual results and source bindings.
 
 ## Architecture
@@ -86,7 +89,16 @@ User-approved alpha work can proceed without a separate human acceptance gate; n
 
 Unit tests are offline. Native tests use dedicated Docker TCP/HTTP counters and must run serially per shared target.
 `HTTP_GUARD_TEST_AUTOLOAD` selects the installed SDK/Core loader; do not substitute mocks for real ABI proof.
-`HTTP_GUARD_FIXTURE` identifies a prepared genuine Core fixture for the integration bootstrap.
+`-f` or `HTTP_GUARD_FIXTURE` selects a prepared genuine Core fixture for the
+[Functional entry points](Tests/Functional/); integration, classic and mode routes
+validate the actual fixture Core before execution.
+Selected Functional containers use the official `suite_http_guard_functional`
+hook with the pinned image, bounded project mount and separately prepared Core
+witnesses. Only these suites use ephemeral host-network containers; generic
+suites retain the shared runner. The probe may load only the installed Semver
+tool namespace when a production fixture omits it, never a second dev Core
+autoload graph. Keep the 27 routing controls separate from real Core/wire proof.
+The recorded Functional routes used PHP 8.5.11 on host and 8.5.10 in containers.
 Preserve historical evidence as history. Record actual versions, exit codes, counts and limits for fresh runs.
 
 ## Boundaries

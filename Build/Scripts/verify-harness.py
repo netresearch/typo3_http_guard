@@ -63,8 +63,10 @@ def check():
     for name, command in expected.items():
         entry = scripts.get(name)
         require(entry == command or entry == [command], f'Composer hook command drift: {name}')
-    hooks = json.loads((ROOT / 'captainhook.json').read_text())
-    require(hooks.get('config', {}).get('bootstrap') == '.Build/vendor/autoload.php',
+    hook_config = manifest.get('extra', {}).get('captainhook', {}).get('config')
+    require(hook_config == 'Build/captainhook.json', 'Declare the canonical Build/ hook configuration')
+    hooks = json.loads((ROOT / hook_config).read_text())
+    require(hooks.get('config', {}).get('bootstrap') == '../.Build/vendor/autoload.php',
             'CaptainHook bootstrap must match the Composer vendor directory')
     require(manifest.get('config', {}).get('allow-plugins', {}).get('captainhook/hook-installer') is True,
             'CaptainHook installer must be explicitly enabled')

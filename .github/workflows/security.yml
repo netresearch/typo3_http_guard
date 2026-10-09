@@ -87,11 +87,14 @@ jobs:
           set -euo pipefail
           python3 Build/Scripts/check-composer-qualification.py --core "$AUDIT_CORE"
           mkdir -p "$RUNNER_TEMP/runtime-sbom"
-          cp composer.json "$RUNNER_TEMP/runtime-sbom/composer.json"
+          # Resolve installed production packages only; retain consumer constraints
+          # while keeping development tools out of the runtime inventory.
+          jq 'del(."require-dev", ."autoload-dev", .scripts)' composer.json > "$RUNNER_TEMP/runtime-sbom/composer.json"
           cd "$RUNNER_TEMP/runtime-sbom"
           composer require --no-update --no-plugins --no-scripts "typo3/cms-core:$AUDIT_CORE"
           composer update --no-dev --no-plugins --no-scripts --prefer-dist --no-progress --no-interaction
-          php "$GITHUB_WORKSPACE/Build/Scripts/check-installed-runtime.php" "$RUNNER_TEMP/runtime-sbom/vendor/autoload.php"
+          runtime_vendor_dir=$(composer config vendor-dir --absolute --no-plugins)
+          php "$GITHUB_WORKSPACE/Build/Scripts/check-installed-runtime.php" "$runtime_vendor_dir/autoload.php"
         env:
           AUDIT_CORE: ${{ matrix.core }}
       - name: Generate dependency SBOM

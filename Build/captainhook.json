@@ -3,7 +3,7 @@
     "verbosity": "normal",
     "fail-on-first-error": true,
     "ansi-colors": false,
-    "bootstrap": ".Build/vendor/autoload.php"
+    "bootstrap": "../.Build/vendor/autoload.php"
   },
   "pre-commit": {
     "enabled": true,
