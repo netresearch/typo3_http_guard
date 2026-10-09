@@ -117,8 +117,9 @@ the required checks or signed commits.
 The shared Netresearch PR quality workflow provides automated approval for
 non-draft, same-repository PRs whose author has write or administrator access.
 Fork PRs receive no automated approval. This approval does not replace the
-independent human security review required for release. Auto-merge is enabled,
-and the default Actions token remains read-only with explicit per-job scopes.
+independent human security review required for production acceptance.
+Auto-merge is enabled, and the default Actions token remains read-only with
+explicit per-job scopes.
 New CI workflows require actual execution before their presence can be treated
 as operational evidence.
 
@@ -202,7 +203,8 @@ Remaining qualification work
 ============================
 
 An independent human security review and representative operator pilot
-remain release prerequisites. The original Core resolutions selected
+remain production acceptance prerequisites for the alpha. The original Core
+resolutions selected
 ``enshrined/svg-sanitize`` 0.22.0 and failed on three advisory IDs. The
 initial GitHub inventory counted 36 medium alerts for those same IDs
 repeated in twelve historical fixture lock files. The records now remain

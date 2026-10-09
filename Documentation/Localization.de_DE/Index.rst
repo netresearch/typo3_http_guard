@@ -6,10 +6,17 @@
 HTTP Guard
 ==========
 
-HTTP Guard kontrolliert ausgehende HTTP-Anfragen im registrierten
-TYPO3-RequestFactory-Pfad. Der Transport prüft die Zieladresse vor jedem
-Verbindungsversuch und bindet die Verbindung an die geprüften IP-Adressen.
-Interne Ziele benötigen zusätzlich einen ausdrücklich gebundenen Client.
+Nach Installation und Aktivierung schützt HTTP Guard den standardmäßigen
+HTTP-Client von TYPO3, :php:`RequestFactory`, vor Server-Side Request Forgery
+(SSRF). Bestehende Aufrufe über die registrierte Factory werden automatisch
+geprüft. Dafür sind weder Änderungen an der Anwendung noch eine eigene
+Policy-Konfiguration erforderlich.
+
+Wenn die Anwendung URLs aus Benutzereingaben, Importen oder externen Daten
+abruft, sperrt der Standardmodus :literal:`enforce` private Adressen,
+Loopback, Cloud-Metadatenziele und besondere Netze vor dem Verbindungsaufbau.
+Auch DNS-Ergebnisse und Redirects werden geprüft. Erlaubte Verbindungen
+werden an die geprüften IP-Adressen gebunden.
 
 Die Version 0.1.0 ist eine Alpha-Version. Sie enthält den Sicherheitskern,
 den TYPO3-Adapter, die Adressregeln und dieses Handbuch in **einer** Extension
@@ -18,19 +25,40 @@ ist kein Composer-Aufruf und kein zusätzliches HTTP-Guard-Paket erforderlich.
 
 .. _http-guard-start:
 
-Einstieg
-========
+Installieren und aktivieren
+===========================
+
+Im Composer-Projekt die veröffentlichte 0.1-Reihe installieren und die
+Caches neu aufbauen:
+
+.. code-block:: bash
+    :caption: Installation im TYPO3-Projekt
+
+    composer require netresearch/nr-http-guard:^0.1
+    vendor/bin/typo3 cache:flush
+
+Composer registriert die Extension automatisch. Bei einer klassischen
+Installation :literal:`nr_http_guard` aus dem
+`TER <https://extensions.typo3.org/extension/nr_http_guard>`_ installieren.
+Anschließend die Extension im Extension
+Manager aktivieren und die Caches neu aufbauen. Der Schutz ist ohne
+Endpoint-Konfiguration aktiv. Voraussetzungen und Diagnose stehen unter
+:ref:`installation`.
+
+Interne Integrationen benötigen ein Endpoint-Profil und einen Client, der
+ausdrücklich an dieses Profil gebunden ist. Ein Profil allein erlaubt
+gewöhnlichen RequestFactory-Aufrufen keinen Zugriff auf interne Ziele.
+
+.. _http-guard-next:
+
+Weitere Schritte
+================
 
 * :ref:`installation`: Voraussetzungen und Installation mit Composer oder ZIP.
 * :ref:`configuration`: Alle Policyfelder und ein internes Endpoint-Beispiel.
 * :ref:`api`: Gebundene PSR-18-Clients und Public Fetch im eigenen Projekt.
 * :ref:`operations`: Diagnose, Einführung, Änderungen und Rollback.
 * :ref:`security`: DNS, Transport, Redirects und Grenzen der Abdeckung.
-
-Ohne eigene Konfiguration gilt :literal:`enforce`. Private Adressen, Loopback,
-Metadatenziele und besondere Netze sind dann für gewöhnliche öffentliche
-Anfragen gesperrt. Ein Endpoint-Profil allein erteilt einem gewöhnlichen
-RequestFactory-Aufruf keine zusätzliche Berechtigung.
 
 .. _http-guard-manual:
 

@@ -10,8 +10,8 @@
 <h1 align="center">HTTP Guard for TYPO3</h1>
 
 <p align="center">
-  Controlled outbound HTTP for TYPO3.<br>
-  Public destinations by default; internal endpoints through explicitly bound clients.
+  Default SSRF protection for TYPO3's HTTP client.<br>
+  Install, activate and protect existing RequestFactory calls.
 </p>
 
 <p align="center">
@@ -25,17 +25,80 @@ Developed by [Netresearch DTT GmbH](https://www.netresearch.de/).
 
 ## Overview
 
-**HTTP Guard** checks outbound requests before a connection starts and pins the
-connection to the verified destination IP addresses. It protects the registered
-TYPO3 RequestFactory path and the clients created by its own factories.
+Install and activate **HTTP Guard** to add server-side request forgery (SSRF)
+protection to TYPO3's standard HTTP client
+(`TYPO3\CMS\Core\Http\RequestFactory`). Existing calls through the registered
+factory are protected automatically. No application rewrite or custom policy
+configuration is needed to enable the default protection.
 
-Public requests cannot reach private, loopback, metadata or special-purpose
-networks. Trusted integrations use endpoint profiles bound to their clients;
-a host allowlist or a user-supplied endpoint ID does not grant internal access.
+When your application fetches URLs from user input, imports or external
+payloads, the default `enforce` mode blocks private, loopback, cloud metadata
+and special-purpose destinations before a connection starts. DNS results and
+redirects are checked too; allowed connections are pinned to verified IP
+addresses.
+
+Internal integrations need endpoint profiles and clients explicitly bound to
+those profiles. Adding a profile does not grant ordinary RequestFactory calls
+internal access; a user-supplied endpoint ID does not grant that permission.
 
 The extension key is `nr_http_guard` and its Composer package name is
 `netresearch/nr-http-guard`. The security core, policy data and manual are included
 in this one extension.
+
+## Installation
+
+### Composer projects
+
+Install the published 0.1 series from
+[Packagist](https://packagist.org/packages/netresearch/nr-http-guard):
+
+```bash
+composer require netresearch/nr-http-guard:^0.1
+```
+
+Composer registers the extension automatically. Version 0.1.0 is an alpha for
+evaluation; see [the installation guide](Documentation/Installation/Index.rst)
+for the supported Core and transport requirements.
+
+### Classic TYPO3
+
+Install `nr_http_guard` from the
+[TYPO3 Extension Repository](https://extensions.typo3.org/extension/nr_http_guard).
+Activate the extension in the Extension Manager and rebuild the system and
+dependency injection caches.
+
+For a manual installation from [GitHub releases](https://github.com/netresearch/typo3_http_guard/releases),
+extract the source archive and copy the contents of its `nr-http-guard/`
+directory into `typo3conf/ext/nr_http_guard/`, then activate and rebuild caches.
+Use the TER package for the Extension Manager's ZIP import.
+
+The supported official TYPO3 archive supplies the third-party runtime
+dependencies. Keep the extension's `composer.json`: TYPO3 uses its class-loading
+metadata in classic mode too. No separate HTTP Guard library is needed.
+
+## Getting started
+
+Default SSRF protection is active after installation and activation. No endpoint
+configuration is required for ordinary public HTTP requests.
+
+Validate the installation and runtime in a Composer project:
+
+```bash
+vendor/bin/typo3 cache:flush
+vendor/bin/typo3 http-guard:config-check
+vendor/bin/typo3 http-guard:doctor
+```
+
+Classic installations use their Core CLI entry point instead. These diagnostic
+commands send no destination HTTP request. Follow the
+[rollout guide](Documentation/Operations/Index.rst) and test both a public
+destination and a rejected internal destination through your application's
+actual client path.
+
+For internal integrations, configure an endpoint profile and inject a client
+bound to that profile through trusted service wiring. Public Fetch offers a
+dedicated API for untrusted public URLs; validate raw URLs before creating a
+PSR-7 URI object. The [API guide](Documentation/Api/Index.rst) provides examples.
 
 ## Features
 
@@ -90,59 +153,12 @@ to controlled DNS servers or configured static host entries. Process proxy
 variables are not supported. See [the installation requirements](Documentation/Installation/Index.rst)
 for the complete runtime contract.
 
-## Installation
-
-The source is published on GitHub. Version 0.1.0 is an alpha and has not been
-published to Packagist or the TYPO3 Extension Repository.
-
-### Classic TYPO3
-
-Build an importable extension ZIP from this checkout:
-
-```bash
-python3 Build/Scripts/build-extension.py --output /tmp/nr_http_guard_0.1.0.zip
-```
-
-Import the ZIP through the TYPO3 Extension Manager and activate the extension.
-The supported official TYPO3 archive supplies the third-party runtime
-dependencies. Keep the extension's `composer.json`: TYPO3 uses its class-loading
-metadata in classic mode too.
-
-### Composer projects
-
-Use the source directory as a Composer path repository and require
-`netresearch/nr-http-guard:0.1.0`. The
-[Composer installation guide](Documentation/Installation/Index.rst) contains
-the complete project configuration and dependency checks.
-
-## Getting started
-
-Without custom configuration, HTTP Guard uses `enforce` mode. Activation grants
-no internal endpoint permissions.
-
-After installing in a Composer project, validate the configuration and runtime:
-
-```bash
-vendor/bin/typo3 cache:flush
-vendor/bin/typo3 http-guard:config-check
-vendor/bin/typo3 http-guard:doctor
-```
-
-Classic installations use their Core CLI entry point instead. These diagnostic
-commands send no destination HTTP request. Follow the
-[rollout guide](Documentation/Operations/Index.rst) and test both an approved
-destination and a rejected internal destination through your application's
-actual client path.
-
-For internal integrations, configure an endpoint profile and inject a client
-bound to that profile through trusted service wiring. For untrusted public URLs,
-use Public Fetch and validate the raw URL before creating a PSR-7 URI object.
-The [API guide](Documentation/Api/Index.rst) provides complete examples.
-
 ## Documentation
 
-The canonical manual lives in [Documentation](Documentation/Index.rst) and is
-included in the extension ZIP.
+The manual is included in [Documentation](Documentation/Index.rst) and the
+extension ZIP. The
+[hosted English manual](https://docs.typo3.org/p/netresearch/nr-http-guard/main/en-us/)
+is awaiting initial publication by TYPO3.
 
 English is the primary language. A [German translation](Documentation/Localization.de_DE/Index.rst)
 is also included.

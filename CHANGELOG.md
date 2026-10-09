@@ -1,17 +1,21 @@
 # Changelog
 
-All notable changes will be recorded here. No release has been published yet.
+All notable changes to HTTP Guard for TYPO3 are recorded here.
 
-## [Unreleased]
+## [0.1.0] - 2026-10-09
+
+Initial alpha for evaluation, distributed as one complete TYPO3 extension.
 
 ### Added
 
 - One installable TYPO3 extension containing the HTTP policy kernel, controlled transport, typed clients and offline diagnostics.
+- Automatic default SSRF protection for existing calls through TYPO3's registered RequestFactory, blocking private, loopback, cloud metadata and special-purpose destinations, including URLs from users, imports and external payloads.
 - Explicit endpoint binding and public fetch behavior, complete DNS/address validation and per-attempt authorization.
 - Genuine Composer and classic TYPO3 installation fixtures, isolated wire counters, targeted security mutations and a qualification ledger.
 - An English extension manual with a separate German localization.
 - Repository verification and security workflows, dependency update configuration and contributor/security guidance.
 - Floating native CI checks for the latest compatible Core 13/14 and Guzzle 7/8 graphs, including weekly scheduled runs.
+- Publication through the maintained Netresearch release and TER workflows, with matching package content, signed artifacts and provenance; documentation registration uses the official TYPO3 webhook.
 
 ### Changed
 
@@ -19,6 +23,6 @@ All notable changes will be recorded here. No release has been published yet.
 - Production dependencies use semantic ranges with security/API minima: Core `^13.4.36 || ^14.3.8`, PHP `^8.2`, Guzzle `^7.15.2 || ^8.2`, Promises `^2.5.1 || ^3.0.2`, and PSR-7 `^2.13.0 || ^3.1`. Compatible patches and minors require no new extension release.
 - Runtime checks validate the actual Core parent API and SDK capabilities. Each lease uses a public single-use cURL factory to prevent hidden native retries from bypassing authorization.
 
-### Release gates
+### Production qualification
 
-Independent human security review, an operator pilot, signed release artifacts, reviewed SBOM/provenance and explicit registry publication remain pending. The local alpha version is 0.1.0; this is not a published release tag.
+Independent human security review and a representative operator pilot remain outstanding for production acceptance. This alpha publication does not establish enterprise certification or SLSA level 3. The release workflow verifies artifacts and publication separately; registering the documentation webhook does not by itself confirm that an online manual has been approved and rendered.
