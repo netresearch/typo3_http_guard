@@ -223,6 +223,10 @@ The 18 killed targeted security mutants are historical qualification
 evidence. They do not establish a project-wide Infection mutation score.
 The existing PHP formatting also leaves coding-style recommendations open;
 syntax linting is not a full PSR-12 style check.
-Signed release artifacts, provenance, registry publication and the named
-CI performance reference remain future release work. Passing repository
+The release workflow verifies artifact signatures, provenance and registry
+publication separately. Consult the
+`release status <https://github.com/netresearch/typo3_http_guard/releases>`_
+for the actual publication outcomes; registering a documentation webhook
+does not by itself prove that TYPO3 has approved and rendered the manual.
+The named CI performance reference remains outstanding. Passing repository
 checks alone does not establish SLSA level 3 or enterprise certification.

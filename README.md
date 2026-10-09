@@ -182,7 +182,7 @@ evidence and remaining gates.
 The guard covers the documented registered TYPO3 path and factory-created
 clients. Direct cURL calls, custom sockets, early bootstrap requests and unrelated
 SDK clients require separate integration. The optional nr-vault migration is
-provided under [integrations/nr-vault](integrations/nr-vault/EVIDENCE.md); the
+provided in the [source repository](https://github.com/netresearch/typo3_http_guard/blob/main/integrations/nr-vault/EVIDENCE.md); the
 extension does not automatically protect Vault. Policy snapshots are immutable,
 so changes require rebuilding clients and restarting long-lived workers.
 
@@ -197,7 +197,7 @@ controlled wire fixtures and reproduction runners are documented in the
 [development guide](Documentation/Development/Index.rst).
 
 Execution evidence and the original requirement/test mapping are in
-[verification](verification/requirements-and-tests.md). Historical specifications
+[source repository's verification records](https://github.com/netresearch/typo3_http_guard/blob/main/verification/requirements-and-tests.md). Historical specifications
 and recorded evidence retain their original content; they are not runtime
 dependencies.
 
