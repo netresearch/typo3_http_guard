@@ -1,9 +1,10 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH.
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 
 namespace Netresearch\HttpGuard;
@@ -68,7 +69,7 @@ final class TargetNormalizer
             throw new PolicyException('invalid_target');
         }
         if ($host[0] === '[') {
-            if (!str_ends_with($host, ']')) {
+            if (!str_ends_with($host, ']') || !str_contains($host, ':')) {
                 throw new PolicyException('invalid_target');
             }
             $host = substr($host, 1, -1);

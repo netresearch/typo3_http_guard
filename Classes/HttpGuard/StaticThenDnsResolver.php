@@ -104,7 +104,7 @@ final class StaticThenDnsResolver implements ResolverInterface
                         ];
                     } else {
                         $field = $record['type'] === 'A' ? 'ip' : 'ipv6';
-                        if (!isset($record[$field]) || !is_string($record[$field])) {
+                        if (!isset($record[$field]) || !is_string($record[$field]) || str_contains($record[$field], "\x00")) {
                             throw new PolicyException('resolution_unverified');
                         }
                         $packed = NativeOperation::attempt(static fn () => inet_pton($record[$field]));

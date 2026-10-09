@@ -1,9 +1,10 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH.
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 
 $cases = [
@@ -17,7 +18,7 @@ $cases = [
     'classifier_empty_rules',
 ];
 $case = $argv[1] ?? '';
-require getenv('HTTP_GUARD_TEST_AUTOLOAD') ?: dirname(__DIR__, 5) . '/.Build/vendor/autoload.php';
+require_once getenv('HTTP_GUARD_TEST_AUTOLOAD') ?: dirname(__DIR__, 5) . '/.Build/vendor/autoload.php';
 if (!in_array($case, $cases, true)) {
     exit(2);
 }
@@ -49,7 +50,7 @@ spl_autoload_register(
         }
         $name = substr($class, strlen($prefix));
         if (in_array($name, $classes, true)) {
-            require $root . '/Classes/HttpGuard/' . $name . '.php';
+            require_once $root . '/Classes/HttpGuard/' . $name . '.php';
         }
     },
     prepend: true,
@@ -93,7 +94,10 @@ try {
                 if (str_starts_with($case, 'hash_')) {
                     Netresearch\HttpGuard\GuardConfig::fromArray([]);
                 } else {
-                    new Netresearch\HttpGuard\AddressClassifier();
+                    // A malformed trusted bundle must throw during construction. Returning is a failed acceptance check.
+                    throw new LogicException(
+                        'Invalid trusted bundle unexpectedly accepted by ' . (new Netresearch\HttpGuard\AddressClassifier())::class,
+                    );
                 }
                 $result = ['accepted' => true];
             } catch (Throwable $failure) {
@@ -120,9 +124,13 @@ try {
 } finally {
     if (is_file($bundle)) {
         chmod($bundle, 0600);
+        // Only this fresh 0700 temporary fixture owns the fixed bundle path; case argv never supplies a pathname.
+        // nosemgrep: php.lang.security.unlink-use.unlink-use
         unlink($bundle);
     }
     foreach ($classes as $class) {
+        // Delete only the six fixed class copies created under this fresh 0700 temporary fixture root.
+        // nosemgrep: php.lang.security.unlink-use.unlink-use
         unlink($root . '/Classes/HttpGuard/' . $class . '.php');
     }
     foreach (array_reverse($directories) as $directory) {
