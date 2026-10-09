@@ -124,7 +124,10 @@ final class TransferLease
     {
         RuntimeSupport::assertSupported();
         $request = $this->request;
-        if (!$request instanceof RequestInterface || $this->stopCancelled()) {
+        if (!$request instanceof RequestInterface) {
+            throw new PolicyException('transport_unsupported');
+        }
+        if ($this->stopCancelled()) {
             $this->release();
 
             return;

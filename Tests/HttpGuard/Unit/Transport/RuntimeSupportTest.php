@@ -1,9 +1,10 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH.
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
+
 declare(strict_types=1);
 
 namespace Netresearch\HttpGuard\Tests\Unit\Transport;
@@ -16,6 +17,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use PHPUnit\Framework\TestCase;
+use ReflectionProperty;
 
 final class RuntimeSupportTest extends TestCase
 {
@@ -41,11 +43,14 @@ final class RuntimeSupportTest extends TestCase
             $data['versions'][$package]['pretty_version'] = $replacement;
             $data['versions'][$package]['version']        = ltrim($replacement, 'v') . '.0';
         }
-        foreach (ClassLoader::getRegisteredLoaders() as $loader) {
-            $loader->unregister();
-            spl_autoload_register([$loader, 'loadClass'], true, true);
-        }
+        $autoloaders = spl_autoload_functions();
+        $loaders     = ClassLoader::getRegisteredLoaders();
         InstalledVersions::reload($data);
+        // Isolated metadata fixture: retain source/mutant loader priority and replace duplicate vendor metadata directly.
+        $cache = new ReflectionProperty(InstalledVersions::class, 'installedByVendor');
+        $cache->setValue(null, array_fill_keys(array_keys($loaders), $data));
+        self::assertSame($autoloaders, spl_autoload_functions());
+        self::assertSame($loaders, ClassLoader::getRegisteredLoaders());
         self::assertSame($actualMajor, RuntimeSupport::major());
         if (!$supported) {
             $this->expectException(PolicyException::class);
