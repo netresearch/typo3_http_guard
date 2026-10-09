@@ -178,7 +178,7 @@ belong to that snapshot before the semantic-contract change. See
 Historical coverage figures and checkpoint totals are not assigned to
 these new runs.
 
-The final semantic-contract source passes five complete Unit/native
+The reviewed semantic-contract snapshot passes five complete Unit/native
 executions covering four distinct SDK version tuples, including the Guzzle
 7 and 8 minima: **201 tests and 2,405 assertions each** on the pinned PHP
 8.5.10 image with PHPUnit 11.5.57. Each consists of 152 Unit tests with
@@ -196,6 +196,13 @@ actually executed version tuples are described in
 recorded separately in
 :file:`Build/Reports/Assessment/review-loop/semantic-qualification/summary.json`;
 earlier classic counts keep their historical source binding.
+
+A subsequent test-only correction compares cumulative TCP and HTTP contacts
+without treating asynchronous connection cleanup as a new request. Its
+local suite passes **201 tests and 2,447 assertions**; native-handle and
+cancellation checks remain enforced. The five-run evidence above keeps
+its original test hashes and counts. See
+:ref:`verification-semantic-support` for the correction and its controls.
 
 .. _assessment-open-work:
 

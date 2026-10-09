@@ -38,7 +38,7 @@ Ordinary middleware retries and redirects create fresh leases. The native
 hidden retry fence no longer relies on Guzzle's private retry counter or
 private method names.
 
-The final reviewed executable source passes **201 tests and 2,405 assertions**
+The reviewed semantic-contract snapshot passes **201 tests and 2,405 assertions**
 in each of five complete Unit/native executions on the pinned PHP 8.5.10
 image with PHPUnit 11.5.57. Each execution comprises **152 Unit tests and
 1,329 assertions**, plus **49 integration tests and 1,076 assertions**,
@@ -71,6 +71,19 @@ These are five executions covering four distinct SDK version tuples; the
 separate Guzzle 8 minimum resolution selected the same SDK versions as the
 fixed Guzzle 8 snapshot. They establish behavior for those actual versions,
 without claiming execution against future compatible releases.
+
+The subsequent `test-counter correction
+<https://github.com/netresearch/typo3_http_guard/pull/3>`_ changes only the
+test fixtures and assertions. No-contact checks compare cumulative TCP and
+HTTP counters across all four destinations; asynchronous cleanup of an
+earlier connection can change its active/closed counters without creating
+new contact. Native handle and cancellation checks remain enforced.
+The corrected local suite passes **201 tests and 2,447 assertions** on
+PHP 8.5.10 with Guzzle 8.2.0, Promises 3.0.2 and PSR-7 3.1.0. Actual
+fixture cleanup reproduces the old false failure; new TCP and reused-connection
+HTTP contacts still fail the corrected comparison. All eight per-destination
+counter controls reject new contact. The five-run snapshot above retains
+its original source hashes and assertion counts.
 
 The final Composer Core matrix is a separate execution against the corrected
 parent ABI guard: **168 processes, 140 wire assertions and 156 offline
