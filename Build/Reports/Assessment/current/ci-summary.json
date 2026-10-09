@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "source_head": "d026852ef10d25cde1742e6e8bac56cdd926704d",
+  "source_scope": "Current Classes, Tests, Build PHP/Python/shell files; hashes compared with actual executed native runtime",
+  "phpunit": {
+    "php": "8.5.10",
+    "coverage_driver": "Xdebug3.5.3",
+    "core": "14.3.7",
+    "guzzle": "8.2.0",
+    "promises": "3.0.2",
+    "psr7": "3.1.0",
+    "tool": "11.5.57",
+    "tests": 145,
+    "assertions": 2253,
+    "exit": 0,
+    "scope": "Unit plus actual kernel native HTTP/TLS/mTLS/DNS/invocation tests",
+    "coverage": {
+      "files": 73,
+      "methods": 200,
+      "covered_methods": 97,
+      "statements": 2318,
+      "covered_statements": 1873,
+      "line_percent": 80.80241587575496,
+      "method_percent": 48.5
+    },
+    "not_instrumented": [
+      "genuine Core Bootstrap and CLI process probes",
+      "branch coverage"
+    ]
+  },
+  "phpstan": {
+    "version": "2.3.1",
+    "level": 8,
+    "core14_g8": {
+      "exit": 0
+    },
+    "core13_g7": {
+      "exit": 0
+    },
+    "kernel_g7": {
+      "exit": 0
+    },
+    "kernel_g8": {
+      "exit": 1,
+      "errors": 6,
+      "identifiers": {
+        "missingType.generics": 5,
+        "function.alreadyNarrowedType": 1
+      },
+      "suppressed": false
+    }
+  },
+  "g7_unit": {
+    "tests": 96,
+    "assertions": 1173,
+    "exit": 0
+  },
+  "dependency_audit": {
+    "fresh_resolution": true,
+    "production_tuple_unchanged": true,
+    "exit": 1,
+    "package": "enshrined/svg-sanitize",
+    "version": "0.22.0",
+    "advisory_ids": [
+      "PKSA-8j6w-3kr7-s9xk",
+      "PKSA-6j95-1jtb-x6wc",
+      "PKSA-cbx2-m9db-bmzd"
+    ],
+    "production_exceptions": false,
+    "functional_ci_exceptions": "Only these3 documented IDs in disposable checkout manifests"
+  },
+  "workflow_validation": {
+    "actionlint_exit": 0,
+    "zizmor_offline_exit": 0,
+    "zizmor_findings": 0,
+    "third_party_sha_pinned": true,
+    "organization_reusables": "Exact maintained Netresearch contracts follow @main by organization policy",
+    "no_secrets_inherited": true,
+    "coverage_secret": "Main-only upload job consumes XML artifact and executes no repository code",
+    "remote_execution": "Not executed yet; root will push a review PR. Local validation is not remote CI success."
+  },
+  "package": {
+    "deterministic_twice": true,
+    "members": 128,
+    "archive_sha256": "bd9667a12a34dd2f29f5f0e11cf9af686135cee9e687509987ca33a9dad12268",
+    "composer_validate_exit": 0,
+    "php_syntax_exit": 0,
+    "python_compile_exit": 0
+  },
+  "new_automations": [
+    "14 PHP/Core/Guzzle7+8 Unit/static-analysis cells",
+    "3 exact SDK tuple native wire jobs",
+    "Source lint and deterministic package artifact",
+    "English manual rendering through maintained reusable",
+    "DCO check",
+    "Dependency review",
+    "Strict dependency audit with no ignored advisories",
+    "Dependency SBOM for one freshly resolved production graph; no release upload",
+    "Opengrep for current code and tooling",
+    "Full Git history secret scanning",
+    "CodeQL for Actions and Python; PHP unsupported",
+    "Scorecard default-branch scheduled scan",
+    "Composer and GitHub Actions Dependabot",
+    "Isolated main-only measured coverage upload"
+  ],
+  "remaining": [
+    "Six current G8 level8 diagnostics",
+    "Three known upstream SVG dependency advisories",
+    "Remote CI runs and any newly discovered runner-specific failures",
+    "Codecov integration/token must be available before main upload; service status not yet verified",
+    "General coding-style gate and broader Infection MSI unmeasured",
+    "Independent human G6 and operator pilot",
+    "Published release signatures/provenance/SLSA/TER/Packagist/public manual are future gates"
+  ],
+  "production_approved": false,
+  "agent_review_is_human_g6": false
+}

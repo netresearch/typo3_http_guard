@@ -24,6 +24,16 @@ directory. The supported TYPO3 installation provides these components;
 their own license notices continue to apply. The optional nr-vault patch
 belongs to the existing GPL-licensed nr-vault project.
 
+.. _licenses-branding:
+
+Netresearch logo
+===============
+
+The unchanged logo under :file:`Resources/Public/Icons/Extension.svg` is
+copyright Netresearch DTT GmbH and licensed under
+`CC-BY-SA-4.0 <https://creativecommons.org/licenses/by-sa/4.0/>`_.
+The SVG retains its original license and attribution notices.
+
 .. _licenses-sources:
 
 Address data and sources

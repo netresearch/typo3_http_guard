@@ -1,0 +1,41 @@
+🔍 Validating TYPO3 documentation...
+   Directory: /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/Documentation
+
+Found 29 RST files
+
+✅ guides.xml is in https://www.phpdoc.org/guides with a <project> carrying title and release
+✅ Index.rst found
+⚠️  rst2html.py not found - skipping syntax validation
+   Install with: pip install docutils
+
+Checking for common issues...
+ℹ️  Found 3 :ref: references in Index.rst
+ℹ️  Found 2 :ref: references in Options.rst
+ℹ️  Found 1 :ref: references in Assessment.rst
+ℹ️  Found 1 :ref: references in Index.rst
+ℹ️  Found 3 :ref: references in Verification.rst
+ℹ️  Found 6 :ref: references in Index.rst
+ℹ️  Found 3 :ref: references in Index.rst
+ℹ️  Found 3 :ref: references in Index.rst
+ℹ️  Found 2 :ref: references in Options.rst
+ℹ️  Found 1 :ref: references in Index.rst
+ℹ️  Found 6 :ref: references in Index.rst
+ℹ️  Found 3 :ref: references in Index.rst
+ℹ️  Found 1 :ref: references in Index.rst
+ℹ️  Found 3 :ref: references in Index.rst
+ℹ️  Found 1 :ref: references in Index.rst
+ℹ️  Found 3 :ref: references in Index.rst
+
+Checking heading hierarchy...
+✅ Heading hierarchy follows TYPO3 convention
+
+✅ No common issues found
+
+Validation summary:
+  RST files: 29
+  Warnings: 0
+
+✅ Documentation validation complete
+
+Next step: Render locally to check for broken references
+   ./render_docs.sh /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation

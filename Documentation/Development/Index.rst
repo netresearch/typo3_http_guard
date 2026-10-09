@@ -44,6 +44,9 @@ Development uses the tools listed in :file:`composer.json`. These are not
 part of the classic runtime. The combined PHPUnit entry point uses both
 unit test directories:
 
+The qualified development tools are PHPUnit 11.5.57 and PHPStan 2.3.1.
+Tool updates require a separate review and rerun of the checks.
+
 .. code-block:: bash
     :caption: Check the extension and its embedded core
 

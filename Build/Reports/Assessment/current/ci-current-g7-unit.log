@@ -1,0 +1,11 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /tmp/http-guard-kan-8VPVrN/ci-current/phpunit.xml
+
+................................................................. 65 / 96 ( 67%)
+...............................                                   96 / 96 (100%)
+
+Time: 00:00.306, Memory: 16.00 MB
+
+OK (96 tests, 1173 assertions)

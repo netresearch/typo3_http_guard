@@ -1,0 +1,75 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  php:
+    uses: netresearch/.github/.github/workflows/php-ci.yml@main
+    permissions:
+      contents: read
+    with:
+      php-versions: '["8.2", "8.3", "8.4", "8.5"]'
+      extra-matrix: >-
+        [{"core":"13.4.35","guzzle":"7.15.5","promises":"2.5.3","psr7":"2.13.1"},
+         {"core":"13.4.35","guzzle":"8.2.0","promises":"3.0.2","psr7":"3.1.0"},
+         {"core":"14.3.7","guzzle":"7.15.5","promises":"2.5.3","psr7":"2.13.1"},
+         {"core":"14.3.7","guzzle":"8.2.0","promises":"3.0.2","psr7":"3.1.0"}]
+      matrix-exclude: '[{"php":"8.2","extra":{"core":"14.3.7"}}]'
+      extensions: curl, dom, intl, mbstring, pdo_sqlite, sodium, xml
+      timeout-minutes: 15
+      # Static commands below are committed code, never event-supplied input.
+      # Resolve fresh transitive packages within the qualified Core/SDK tuple.
+      # Only the three documented upstream SVG fixture advisories are excepted
+      # in this disposable checkout. The separate strict audit has no exceptions.
+      pre-install-cmd: |
+        composer require --no-update "typo3/cms-core:$MATRIX_CORE" \
+          "guzzlehttp/guzzle:$MATRIX_GUZZLE" "guzzlehttp/promises:$MATRIX_PROMISES" \
+          "guzzlehttp/psr7:$MATRIX_PSR7"
+        composer require --dev --no-update phpunit/phpunit:11.5.57 phpstan/phpstan:2.3.1
+        composer config --json audit.ignore '["PKSA-8j6w-3kr7-s9xk","PKSA-6j95-1jtb-x6wc","PKSA-cbx2-m9db-bmzd"]'
+        composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
+        composer config --no-plugins allow-plugins.typo3/class-alias-loader true
+      phpstan-cmd: |
+        vendor/bin/phpstan analyse --configuration Build/phpstan-http-guard.neon --no-progress
+        if [ "$MATRIX_CORE" = "13.4.35" ]; then
+          HTTP_GUARD_TEST_AUTOLOAD="$PWD/vendor/autoload.php" vendor/bin/phpstan analyse \
+            --configuration Build/phpstan-typo3-core13.neon --no-progress
+        else
+          HTTP_GUARD_TEST_AUTOLOAD="$PWD/vendor/autoload.php" vendor/bin/phpstan analyse \
+            --configuration Build/phpstan-typo3.neon \
+            --autoload-file Build/phpstan-bootstrap14.php --no-progress
+        fi
+      phpunit-cmd: vendor/bin/phpunit --configuration phpunit.xml --testsuite Unit
+      run-composer-audit: false
+      # Full transport coverage is captured separately with dedicated wire fixtures.
+      upload-coverage-codecov: false
+      upload-coverage-artifact: false
+
+  documentation:
+    uses: netresearch/typo3-ci-workflows/.github/workflows/docs.yml@main
+    permissions:
+      contents: read
+
+  workflow-lint:
+    uses: netresearch/.github/.github/workflows/lint-workflows.yml@main
+    permissions:
+      contents: read
+
+  dco:
+    uses: netresearch/.github/.github/workflows/dco.yml@main
+    permissions:
+      contents: read
+      pull-requests: read

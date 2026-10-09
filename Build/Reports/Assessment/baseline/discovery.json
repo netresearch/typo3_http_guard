@@ -1,0 +1,407 @@
+{
+  "discovery_rule": "Frontmatter checkpoints override, otherwise checkpoints.yaml convention; all installed root skills scanned.",
+  "selected_skills": [
+    "agent-harness",
+    "agent-rules",
+    "github-project",
+    "git-workflow",
+    "security-audit",
+    "php-modernization",
+    "typo3-docs",
+    "typo3-testing",
+    "netresearch-branding",
+    "enterprise-readiness",
+    "typo3-conformance"
+  ],
+  "locally_executed_skills": [
+    "agent-harness",
+    "agent-rules",
+    "github-project",
+    "git-workflow",
+    "security-audit",
+    "php-modernization",
+    "typo3-docs",
+    "typo3-testing",
+    "netresearch-branding"
+  ],
+  "delegated_skills": [
+    "enterprise-readiness",
+    "typo3-conformance"
+  ],
+  "checkpoint_skills": [
+    {
+      "skill": "agent-harness",
+      "skill_source": "/home/cybot/.agents/skills/agent-harness/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/agent-harness/checkpoints.yaml",
+      "skill_sha256": "07317412ecc068703229d90e3cb27d659d0d2befa720b5cb4279bee6e4d48fa3",
+      "checkpoint_sha256": "6adf55dd6a85a2ec56e7f98710898eb606ca219e35c3d1c5de1f3ff5b65bbda4",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [
+        {
+          "type": "command",
+          "pattern": "git rev-parse --git-dir",
+          "desc": "Must be a git repository"
+        }
+      ],
+      "mechanical_count": 19,
+      "llm_count": 1
+    },
+    {
+      "skill": "agent-rules",
+      "skill_source": "/home/cybot/.agents/skills/agent-rules/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/agent-rules/checkpoints.yaml",
+      "skill_sha256": "f410bec834db63d989d141bf99a8b70acdd070819bb242c0f3499251e5664207",
+      "checkpoint_sha256": "50e25aed477e99cb53f19acf162a67f30fb7b2c875b05bd2081151032883c333",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [],
+      "mechanical_count": 25,
+      "llm_count": 6
+    },
+    {
+      "skill": "concourse-ci",
+      "skill_source": "/home/cybot/.agents/skills/concourse-ci/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/concourse-ci/checkpoints.yaml",
+      "skill_sha256": "2288bc14f6fd3208418b2b081280dc1864199aa417337e03ed95f3e88ed294a9",
+      "checkpoint_sha256": "58f3b4ae27b160d7072f32a3a53da29297259528b06f2801f7669b89b8466951",
+      "selected": false,
+      "owner": null,
+      "reason": "No Concourse pipeline.",
+      "preconditions": [
+        {
+          "type": "command",
+          "pattern": "find . -name '*.yml' -path '*/ci/*' -o -name 'pipeline*.yml' -o -name '*-pipeline.yml' | head -1 | grep -q ."
+        }
+      ],
+      "mechanical_count": 17,
+      "llm_count": 4
+    },
+    {
+      "skill": "docker-development",
+      "skill_source": "/home/cybot/.agents/skills/docker-development/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/docker-development/checkpoints.yaml",
+      "skill_sha256": "9315de02c3eeda0699f0ebd48232e7ef3e39fd51080a90d5e83e1c19d09afa3d",
+      "checkpoint_sha256": "0d99389399a439fc6cab154b1d32b8630706b8e72442f495545fb7e14b8428d7",
+      "selected": false,
+      "owner": null,
+      "reason": "No application Dockerfile/Compose; Docker serves as test runner only.",
+      "preconditions": [
+        {
+          "type": "command",
+          "pattern": "find . -maxdepth 1 -name Dockerfile -o -name Containerfile -o -name docker-compose.yml -o -name docker-compose.yaml -o -name compose.yml -o -name compose.yaml -o -name docker-bake.hcl | grep -q ."
+        }
+      ],
+      "mechanical_count": 23,
+      "llm_count": 4
+    },
+    {
+      "skill": "enterprise-readiness",
+      "skill_source": "/home/cybot/.agents/skills/enterprise-readiness/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/enterprise-readiness/checkpoints.yaml",
+      "skill_sha256": "480e1a1d04054b1ab4311ae371540676d434444c988e6763653af3c725cdfd9c",
+      "checkpoint_sha256": "74c97e4becaf524ba45f83e38bb11c3ed8d448ac3084fcd1fed86d197673c33b",
+      "selected": true,
+      "owner": "integration_research",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [],
+      "mechanical_count": 37,
+      "llm_count": 23
+    },
+    {
+      "skill": "git-workflow",
+      "skill_source": "/home/cybot/.agents/skills/git-workflow/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/git-workflow/checkpoints.yaml",
+      "skill_sha256": "cc6a32508d8eab89905d04f5646e5148044aaf67bd7e4f5bd9c3d454f1b9f9ad",
+      "checkpoint_sha256": "fca87b42223a5002feb35639d696207341580c134aa1311f74c9c479e805c741",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [],
+      "mechanical_count": 16,
+      "llm_count": 10
+    },
+    {
+      "skill": "github-project",
+      "skill_source": "/home/cybot/.agents/skills/github-project/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/github-project/checkpoints.yaml",
+      "skill_sha256": "e3a4399807149c8999374976c20d9f1eb0f174861a9448b70cda87591e1e2278",
+      "checkpoint_sha256": "f690e16a9ad0788c82ee68c4172bdc76ad3263128aa81f285f9d93989e2ef3e1",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [],
+      "mechanical_count": 29,
+      "llm_count": 7
+    },
+    {
+      "skill": "github-release",
+      "skill_source": "/home/cybot/.agents/skills/github-release/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/github-release/checkpoints.yaml",
+      "skill_sha256": "2f59697b2ada444bd3de79b3383bf883d9486b9e8d130918197687ed0c7939ed",
+      "checkpoint_sha256": "0a619e0928fc997519ae440748b561cf82cbd0c152fd84193b369a7ab0d83eff",
+      "selected": false,
+      "owner": null,
+      "reason": "Root explicitly excludes expansion into release and paid-service work.",
+      "preconditions": [
+        {
+          "type": "file_exists",
+          "target": ".git"
+        }
+      ],
+      "mechanical_count": 16,
+      "llm_count": 4
+    },
+    {
+      "skill": "go-development",
+      "skill_source": "/home/cybot/.agents/skills/go-development/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/go-development/checkpoints.yaml",
+      "skill_sha256": "7056550154b18ef3ed4351da6ac466963859cf52f604c1d657dc27a3b32405a3",
+      "checkpoint_sha256": "6a7546244fe0179c6384780be3ac76d47397340795ba9524c9e740d44b057691",
+      "selected": false,
+      "owner": null,
+      "reason": "No Go code/module.",
+      "preconditions": [
+        {
+          "type": "file_exists",
+          "target": "go.mod"
+        }
+      ],
+      "mechanical_count": 23,
+      "llm_count": 3
+    },
+    {
+      "skill": "netresearch-branding",
+      "skill_source": "/home/cybot/.agents/skills/netresearch-branding/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/netresearch-branding/checkpoints.yaml",
+      "skill_sha256": "db4df4cc0c79235aa6103020fcf06bb5b3f38556f4a08a6848b46d6b92a47dde",
+      "checkpoint_sha256": "736e381937d6c03acc458827c5c9c23305ba3b59c0b45af07324596dc90e8020",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [],
+      "mechanical_count": 22,
+      "llm_count": 7
+    },
+    {
+      "skill": "php-modernization",
+      "skill_source": "/home/cybot/.agents/skills/php-modernization/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/php-modernization/checkpoints.yaml",
+      "skill_sha256": "a55a0af688b99f09e86ab943d3994e2a2cf97b0682f3cf66466e3ff2d2580523",
+      "checkpoint_sha256": "30f3b237329066b7d01cd91e6a4c4c778f753c910971686b1dcbb8dfc3bbd913",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [
+        {
+          "type": "file_exists",
+          "target": "composer.json"
+        }
+      ],
+      "mechanical_count": 29,
+      "llm_count": 15
+    },
+    {
+      "skill": "retro",
+      "skill_source": "/home/cybot/.agents/skills/retro/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/retro/checkpoints.yaml",
+      "skill_sha256": "a87606637e8f0b1f01810fd6526b457018e013c076294747a144902423c2d028",
+      "checkpoint_sha256": "2acb116f28ff8592912dfa7273e5d0aeacbe12e76582010597e83eabdc9aff6e",
+      "selected": false,
+      "owner": null,
+      "reason": "Not the retro skill repository.",
+      "preconditions": [
+        {
+          "type": "file_exists",
+          "target": "skills/retro/SKILL.md",
+          "desc": "project IS the retro skill repo \u2014 RT-* audit its own layout"
+        },
+        {
+          "type": "command",
+          "pattern": "python3 --version",
+          "desc": "python3 available for mechanical pre-pass"
+        }
+      ],
+      "mechanical_count": 15,
+      "llm_count": 0
+    },
+    {
+      "skill": "security-audit",
+      "skill_source": "/home/cybot/.agents/skills/security-audit/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/security-audit/checkpoints.yaml",
+      "skill_sha256": "216ab22b346b0589d5194e2ff04139bd06b43d2a7a2461a52bd59becf4245939",
+      "checkpoint_sha256": "68681a8ec650d4cdbb5b339449a7b2619684583b3f8b8ec9ba86e907eba3c56a",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [],
+      "mechanical_count": 376,
+      "llm_count": 47
+    },
+    {
+      "skill": "skill-repo",
+      "skill_source": "/home/cybot/.agents/skills/skill-repo/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/skill-repo/checkpoints.yaml",
+      "skill_sha256": "54e6ad5b0b5b00eb131efca7d25b675b6605645768fb0c88f7d8af7e328d8f1f",
+      "checkpoint_sha256": "3933956a8a8c6c6ca807bad87e22009f1b105aaa848a0ea93c535383f19dadc5",
+      "selected": false,
+      "owner": null,
+      "reason": "Not a skill/plugin repository.",
+      "preconditions": [
+        {
+          "type": "file_exists",
+          "target": ".claude-plugin/plugin.json"
+        },
+        {
+          "type": "command",
+          "pattern": "find . -path '*/SKILL.md' -not -path './.skill-repo-tools/*' -not -path './node_modules/*' | head -1 | grep -q ."
+        }
+      ],
+      "mechanical_count": 33,
+      "llm_count": 6
+    },
+    {
+      "skill": "typo3-ckeditor5",
+      "skill_source": "/home/cybot/.agents/skills/typo3-ckeditor5/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/typo3-ckeditor5/checkpoints.yaml",
+      "skill_sha256": "44497747e9276c0ab84a7a821114f33738cc07e021c4fe1e9aa46a070d57befc",
+      "checkpoint_sha256": "63d85087fd3caf3adb1c55cf4e7d049ef618e04816495ee23872729519e5533e",
+      "selected": false,
+      "owner": null,
+      "reason": "No CKEditor integration.",
+      "preconditions": [
+        {
+          "type": "file_exists",
+          "target": "ext_emconf.php"
+        },
+        {
+          "type": "command",
+          "pattern": "find . \\( -name .Build -o -name vendor -o -name node_modules \\) -prune -o -type f \\( -path \"*/JavaScript/[Cc]keditor*.[jt]s\" -o -path \"*/Configuration/RTE/*.y*ml\" \\) -print | grep -q ."
+        }
+      ],
+      "mechanical_count": 14,
+      "llm_count": 2
+    },
+    {
+      "skill": "typo3-conformance",
+      "skill_source": "/home/cybot/.agents/skills/typo3-conformance/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/typo3-conformance/checkpoints.yaml",
+      "skill_sha256": "8704298c7aadd51a2cedfbee90daf230bec7944ac93c95c0bffc204d9a2aaace",
+      "checkpoint_sha256": "63967aaf9ad2b68ee4636b1b713899abe8e6dc7b4d77db019d0572cc073a7176",
+      "selected": true,
+      "owner": "integration_research",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [
+        {
+          "type": "json_path",
+          "target": "composer.json",
+          "pattern": ".type == \"typo3-cms-extension\""
+        }
+      ],
+      "mechanical_count": 98,
+      "llm_count": 32
+    },
+    {
+      "skill": "typo3-ddev",
+      "skill_source": "/home/cybot/.agents/skills/typo3-ddev/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/typo3-ddev/checkpoints.yaml",
+      "skill_sha256": "6c1e7cf5ac85230068543606db9cb3e3aabde23355121129c3296c59313a0d94",
+      "checkpoint_sha256": "93e86ac8efeb30abfa18100a4927e30fbd934c970bf8b4169b0c7d05d2ae79ea",
+      "selected": false,
+      "owner": null,
+      "reason": "Distributable extension, not a DDEV-managed deployment.",
+      "preconditions": [
+        {
+          "type": "contains",
+          "target": "composer.json",
+          "pattern": "typo3/cms-"
+        }
+      ],
+      "mechanical_count": 25,
+      "llm_count": 4
+    },
+    {
+      "skill": "typo3-docs",
+      "skill_source": "/home/cybot/.agents/skills/typo3-docs/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/typo3-docs/checkpoints.yaml",
+      "skill_sha256": "107be2846074783d482bb47715d3a019f9c3cb04f700c8ac6fa7dfcc4627230f",
+      "checkpoint_sha256": "4be940717f0f2022263863fa44b8ab9b28855c16c585e663d54c34f740835f4c",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [
+        {
+          "type": "json_path",
+          "target": "composer.json",
+          "pattern": ".type == \"typo3-cms-extension\""
+        }
+      ],
+      "mechanical_count": 35,
+      "llm_count": 10
+    },
+    {
+      "skill": "typo3-extension-upgrade",
+      "skill_source": "/home/cybot/.agents/skills/typo3-extension-upgrade/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/typo3-extension-upgrade/checkpoints.yaml",
+      "skill_sha256": "f46e8c5966d6a8b0c0dd6c800f334c1b57d4e36c7f8a39705272620b0cd65cd5",
+      "checkpoint_sha256": "5636253cd602edb4711bb05825c5f245c02e1a786d422428de1edca7add60d44",
+      "selected": false,
+      "owner": null,
+      "reason": "Root explicitly excludes expansion into an upgrade assessment.",
+      "preconditions": [
+        {
+          "type": "json_path",
+          "target": "composer.json",
+          "pattern": ".type == \"typo3-cms-extension\""
+        }
+      ],
+      "mechanical_count": 46,
+      "llm_count": 15
+    },
+    {
+      "skill": "typo3-project-upgrade",
+      "skill_source": "/home/cybot/.agents/skills/typo3-project-upgrade/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/typo3-project-upgrade/checkpoints.yaml",
+      "skill_sha256": "6a74a86c261c945f800a25f87ddb35aa0f14508b30ac4d8098ff1b9ec6cd0c18",
+      "checkpoint_sha256": "bd9decb483bde65a59f8de623a836ee00d888472e8224b8c2e7b599fa3d24598",
+      "selected": false,
+      "owner": null,
+      "reason": "Extension rather than TYPO3 site/project.",
+      "preconditions": [
+        {
+          "type": "command",
+          "pattern": "grep -qE '\\\"type\\\"[[:space:]]*:[[:space:]]*\\\"(project|typo3-cms-project)\\\"' composer.json",
+          "desc": "composer type:project \u2014 these checks audit a site/project repo, not an extension"
+        }
+      ],
+      "mechanical_count": 9,
+      "llm_count": 4
+    },
+    {
+      "skill": "typo3-testing",
+      "skill_source": "/home/cybot/.agents/skills/typo3-testing/SKILL.md",
+      "checkpoint_source": "/home/cybot/.agents/skills/typo3-testing/checkpoints.yaml",
+      "skill_sha256": "a6457b325d55f59001a1274dc10ae33b96ca6b4bf03f65a794ad85a3b554b66c",
+      "checkpoint_sha256": "7e587fbfc018abb547b4c35d90f25229533c613d7dcafa51bb6a8eea90f9ff28",
+      "selected": true,
+      "owner": "plan_validator",
+      "reason": "Relevant public Netresearch TYPO3 extension baseline.",
+      "preconditions": [
+        {
+          "type": "json_path",
+          "target": "composer.json",
+          "pattern": ".type == \"typo3-cms-extension\""
+        }
+      ],
+      "mechanical_count": 70,
+      "llm_count": 26
+    }
+  ],
+  "relevant_skills_without_checkpoints": [
+    "code-review-and-quality",
+    "ci-cd-and-automation",
+    "documentation-and-adrs"
+  ]
+}

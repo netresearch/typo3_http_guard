@@ -1,0 +1,21 @@
+{
+  "checkpoint_file": "/home/cybot/.agents/skills/agent-harness/checkpoints.yaml",
+  "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+  "skill_id": "agent-harness",
+  "fix_command": "/agent-harness",
+  "schema_version": 1,
+  "summary": {
+    "total": 18,
+    "pass": 6,
+    "fail": 12,
+    "skip": 0,
+    "blocked": 0,
+    "preconditions_declared": 1,
+    "preconditions_ignored": false,
+    "gated_out": 1
+  },
+  "gated_out_ids": ["AH-37"],
+  "checkpoints": [
+    {"id":"AH-01","status":"fail","severity":"error","evidence":"Not found: AGENTS.md","fix_skill":"agent-harness"},{"id":"AH-02","status":"fail","severity":"warning","evidence":"Command failed","fix_skill":"agent-harness"},{"id":"AH-03","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agent-harness"},{"id":"AH-04","status":"pass","severity":"warning","evidence":"Found: docs","fix_skill":"agent-harness"},{"id":"AH-10","status":"pass","severity":"error","evidence":"Command succeeded","fix_skill":"agent-harness"},{"id":"AH-11","status":"fail","severity":"warning","evidence":"Not found: docs/ARCHITECTURE.md","fix_skill":"agent-harness"},{"id":"AH-12","status":"fail","severity":"warning","evidence":"Command failed","fix_skill":"agent-harness"},{"id":"AH-20","status":"pass","severity":"warning","evidence":"Satisfied org-wide via netresearch/.github/pull_request_template.md","fix_skill":"agent-harness"},{"id":"AH-21","status":"fail","severity":"warning","evidence":"Command failed","fix_skill":"agent-harness"},{"id":"AH-22","status":"fail","severity":"warning","evidence":"Script failed","fix_skill":"retro"},{"id":"AH-23","status":"fail","severity":"info","evidence":"Not found: {.claude/hooks/session-end.json,hooks/session-end.json}","fix_skill":"retro"},{"id":"AH-30","status":"pass","severity":"warning","evidence":"Found: Build/Scripts/runTests.sh","fix_skill":"agent-harness"},{"id":"AH-31","status":"fail","severity":"warning","evidence":"Command failed","fix_skill":"agent-harness"},{"id":"AH-32","status":"fail","severity":"warning","evidence":"Not found: {.pre-commit-config.yaml,captainhook.json,lefthook.yml,lefthook.yaml,.lefthook.yml,.husky/pre-commit,.githooks/pre-commit}","fix_skill":"agent-harness"},{"id":"AH-33","status":"pass","severity":"error","evidence":"Command succeeded","fix_skill":"agent-harness"},{"id":"AH-34","status":"fail","severity":"info","evidence":"Not found: {infection.json5,infection.json}","fix_skill":"agent-harness"},{"id":"AH-35","status":"fail","severity":"info","evidence":"Not found: codecov.yml","fix_skill":"agent-harness"},{"id":"AH-36","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"agent-harness"}
+  ]
+}

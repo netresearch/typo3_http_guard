@@ -1,0 +1,199 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+name: Verification
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verification-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    name: Source lint and installable package
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '8.5'
+          coverage: none
+          tools: composer:v2
+      - name: Lint current source and test tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          composer validate --strict --no-check-publish
+          find Classes Configuration Tests Build -name '*.php' -print0 | xargs -0 -n1 php -l
+          php -l ext_localconf.php
+          php -l ext_emconf.php
+          python3 -m compileall -q Build/Scripts Build/Fixtures Tests/HttpGuard/Integration
+      - name: Verify deterministic extension archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 Build/Scripts/build-extension.py --output "$RUNNER_TEMP/nr_http_guard_0.1.0.zip"
+          python3 Build/Scripts/build-extension.py --output "$RUNNER_TEMP/repeated.zip"
+          cmp "$RUNNER_TEMP/nr_http_guard_0.1.0.zip" "$RUNNER_TEMP/repeated.zip"
+          unzip -Z1 "$RUNNER_TEMP/nr_http_guard_0.1.0.zip" > "$RUNNER_TEMP/archive-members.txt"
+          if grep -E '(^|/)(vendor|Tests|Build|\.github|evidence|verification|specification)/|\.(key|pem)$' "$RUNNER_TEMP/archive-members.txt"; then
+            echo 'Unexpected development dependencies, private keys or evidence in installable archive' >&2
+            exit 1
+          fi
+      - name: Preserve installable archive and member hashes
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: installable-extension
+          path: |
+            ${{ runner.temp }}/nr_http_guard_0.1.0.zip
+            ${{ runner.temp }}/nr_http_guard_0.1.0.zip.manifest.json
+          if-no-files-found: error
+          retention-days: 14
+
+  native-transport:
+    name: Native transport (Guzzle ${{ matrix.guzzle }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - guzzle: '7.15.3'
+            promises: '2.5.2'
+            psr7: '2.13.0'
+          - guzzle: '7.15.5'
+            promises: '2.5.3'
+            psr7: '2.13.1'
+          - guzzle: '8.2.0'
+            promises: '3.0.2'
+            psr7: '3.1.0'
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up PHP and coverage
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '8.5'
+          extensions: curl, dom, intl, mbstring, pdo_sqlite, sodium, xml
+          coverage: pcov
+          tools: composer:v2
+      - name: Install qualified dependency tuple
+        env:
+          TEST_GUZZLE: ${{ matrix.guzzle }}
+          TEST_PROMISES: ${{ matrix.promises }}
+          TEST_PSR7: ${{ matrix.psr7 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          composer require --no-update typo3/cms-core:14.3.7 \
+            "guzzlehttp/guzzle:$TEST_GUZZLE" "guzzlehttp/promises:$TEST_PROMISES" \
+            "guzzlehttp/psr7:$TEST_PSR7"
+          composer require --dev --no-update phpunit/phpunit:11.5.57 phpstan/phpstan:2.3.1
+          # Fixture-only exceptions; the separate strict production audit has none.
+          composer config --json audit.ignore '["PKSA-8j6w-3kr7-s9xk","PKSA-6j95-1jtb-x6wc","PKSA-cbx2-m9db-bmzd"]'
+          composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
+          composer config --no-plugins allow-plugins.typo3/class-alias-loader true
+          composer install --prefer-dist --no-progress --no-interaction
+      - name: Start isolated synthetic HTTP, TLS and mTLS targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '10.23.4.12 nss-only-guard.test\n' | sudo tee -a /etc/hosts >/dev/null
+          bash Tests/HttpGuard/Integration/prepare-wire.sh
+          for address in 203.0.115.100 203.0.115.101 10.23.4.12; do
+            ready=false
+            for attempt in {1..30}; do
+              if curl --noproxy '*' --silent --fail "http://$address:8091/reset" >/dev/null; then
+                ready=true
+                break
+              fi
+              printf 'Waiting for %s (attempt %s)\n' "$address" "$attempt"
+              sleep 1
+            done
+            "$ready"
+          done
+      - name: Exercise Unit and actual native wire behavior
+        env:
+          HTTP_GUARD_TEST_AUTOLOAD: ${{ github.workspace }}/vendor/autoload.php
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/coverage"
+          vendor/bin/phpunit --configuration phpunit.xml \
+            --coverage-clover "$RUNNER_TEMP/coverage/full-clover.xml" \
+            --log-junit "$RUNNER_TEMP/coverage/junit.xml"
+      - name: Preserve fresh test coverage
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: native-coverage-${{ matrix.guzzle }}
+          path: ${{ runner.temp }}/coverage
+          if-no-files-found: error
+          retention-days: 14
+      - name: Remove disposable targets and synthetic keys
+        if: always()
+        shell: bash
+        run: |
+          docker rm -f http-guard-production-public-a http-guard-production-public-b \
+            http-guard-production-private http-guard-production-loopback || true
+          docker network rm http-guard-production-public http-guard-production-private \
+            http-guard-production-v6 || true
+          rm -rf Tests/HttpGuard/Integration/certificates
+
+  coverage-upload:
+    name: Coverage upload
+    needs: native-transport
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      # This job never checks out or executes repository code. Its only input is
+      # XML from the preceding main-branch run; the upload secret stays isolated.
+      - name: Download current main coverage
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: native-coverage-8.2.0
+          path: coverage
+      - name: Upload measured Unit and transport coverage
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/full-clover.xml
+          flags: combined-unit-native
+          disable_search: true
+          fail_ci_if_error: true
+          override_commit: ${{ github.sha }}
+          override_branch: ${{ github.ref_name }}
+          slug: ${{ github.repository }}
+          disable_file_fixes: true

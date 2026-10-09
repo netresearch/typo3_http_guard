@@ -25,6 +25,16 @@ Vendor-Verzeichnis gebündelt. Die unterstützte TYPO3-Installation stellt
 diese Komponenten bereit; ihre jeweiligen Lizenzhinweise gelten weiter.
 Der optionale Patch für nr-vault gehört zum bestehenden GPL-Projekt nr-vault.
 
+.. _licenses-branding:
+
+Netresearch-Logo
+===============
+
+Das unveränderte Logo unter :file:`Resources/Public/Icons/Extension.svg`
+steht unter Copyright von Netresearch DTT GmbH und ist unter
+`CC-BY-SA-4.0 <https://creativecommons.org/licenses/by-sa/4.0/>`_ lizenziert.
+Die ursprünglichen Lizenz- und Urheberhinweise bleiben im SVG erhalten.
+
 .. _licenses-sources:
 
 Adressdaten und Quellen

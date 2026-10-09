@@ -1,0 +1,21 @@
+{
+  "checkpoint_file": "/home/cybot/.agents/skills/git-workflow/checkpoints.yaml",
+  "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+  "skill_id": "git-workflow",
+  "fix_command": "/git-workflow",
+  "schema_version": 1,
+  "summary": {
+    "total": 16,
+    "pass": 6,
+    "fail": 10,
+    "skip": 0,
+    "blocked": 0,
+    "preconditions_declared": 0,
+    "preconditions_ignored": false,
+    "gated_out": 0
+  },
+  "gated_out_ids": [],
+  "checkpoints": [
+    {"id":"GW-01","status":"pass","severity":"error","evidence":"Found: .gitignore","fix_skill":"git-workflow"},{"id":"GW-02","status":"fail","severity":"warning","evidence":"Pattern not found in .gitignore","fix_skill":"git-workflow"},{"id":"GW-03","status":"pass","severity":"warning","evidence":"Pattern found in .gitignore","fix_skill":"git-workflow"},{"id":"GW-04","status":"fail","severity":"info","evidence":"Pattern not found in .gitignore","fix_skill":"git-workflow"},{"id":"GW-05","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"git-workflow"},{"id":"GW-06","status":"fail","severity":"warning","evidence":"Not found: {.github/CODEOWNERS,CODEOWNERS,docs/CODEOWNERS}","fix_skill":"git-workflow"},{"id":"GW-08","status":"fail","severity":"warning","evidence":"Script failed","fix_skill":"git-workflow"},{"id":"GW-09","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"git-workflow"},{"id":"GW-10","status":"fail","severity":"info","evidence":"Script failed","fix_skill":"git-workflow"},{"id":"GW-11","status":"fail","severity":"info","evidence":"Script failed","fix_skill":"git-workflow"},{"id":"GW-12","status":"fail","severity":"info","evidence":"Not found: .editorconfig","fix_skill":"git-workflow"},{"id":"GW-13","status":"fail","severity":"info","evidence":"Not found: CONTRIBUTING.md","fix_skill":"git-workflow"},{"id":"GW-14","status":"fail","severity":"warning","evidence":"Not found: {Build/captainhook.json,captainhook.json,.captainhook/captainhook.json,lefthook.yml,.lefthook.yml,.husky,.pre-commit-config.yaml}","fix_skill":"git-workflow"},{"id":"GW-14a","status":"fail","severity":"info","evidence":"Pattern not found in composer.json","fix_skill":"git-workflow"},{"id":"GW-16","status":"pass","severity":"warning","evidence":"Command succeeded","fix_skill":"git-workflow"},{"id":"GW-17","status":"pass","severity":"info","evidence":"Command succeeded","fix_skill":"git-workflow"}
+  ]
+}

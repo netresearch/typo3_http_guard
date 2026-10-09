@@ -13,6 +13,6 @@ integrations/nr-vault/source-overlay/Documentation/** conflict-marker-size=32
 Build/phpstan-http-guard.neon whitespace=-blank-at-eof
 
 # RST manuals use equals-sign headings.
-Documentation/** conflict-marker-size=32
+Documentation/** conflict-marker-size=128
 # Preserve the original RST heading/table syntax in historical Vault snapshots.
 evidence/historical-two-package/integrations/nr-vault/source-overlay/Documentation/** conflict-marker-size=32

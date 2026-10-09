@@ -11,6 +11,9 @@ __pycache__/
 .phpunit-http-guard.cache/
 Documentation-GENERATED/
 Documentation-GENERATED-temp/
+.env
+.env.*
+!.env.example
 Documentation/_build/
 
 .phpstan-http-guard-cache/

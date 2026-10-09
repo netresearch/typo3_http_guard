@@ -8,6 +8,11 @@ under MIT. Its MIT license and copyright notices are preserved; see
 [LICENSE-HttpGuard.txt](LICENSE-HttpGuard.txt). The core is not supplied as a
 second package.
 
+The unchanged Netresearch logo at `Resources/Public/Icons/Extension.svg` is
+copyright Netresearch DTT GmbH and licensed under
+[CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Its source license and attribution notices are retained in the SVG.
+
 The additional patch under `integrations/nr-vault/` belongs to the existing
 GPL-2.0-or-later nr-vault project. The receiving project's license applies.
 

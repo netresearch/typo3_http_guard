@@ -1,0 +1,101 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+name: Security
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-audit-and-sast:
+    uses: netresearch/typo3-ci-workflows/.github/workflows/security.yml@main
+    permissions:
+      contents: read
+      security-events: write
+    with:
+      php-version: '8.5'
+      # The strict job below also fails when the advisory service is unavailable.
+      skip-composer-audit: true
+      # Scan current code, tests and tooling; retrieved research originals and
+      # archived execution evidence are not application source. Keep them intact.
+      opengrep-config: >-
+        --config auto --error --severity WARNING --severity ERROR
+        --exclude evidence --exclude verification/evidence
+        --exclude specification/originals
+        --exclude Resources/Private/HttpGuard/data/security-corpus/sources
+
+  secret-scanning:
+    uses: netresearch/.github/.github/workflows/betterleaks.yml@main
+    permissions:
+      contents: read
+      security-events: write
+
+  dependency-audit-and-sbom:
+    name: Strict dependency audit and SBOM
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '8.5'
+          extensions: curl, intl, mbstring
+          coverage: none
+          tools: composer:v2
+      - name: Resolve an isolated production dependency graph
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/runtime-sbom"
+          cp composer.json "$RUNNER_TEMP/runtime-sbom/composer.json"
+          cd "$RUNNER_TEMP/runtime-sbom"
+          # Resolve known qualified upstream code for evidence, then remove these
+          # assembly-only exceptions before the strict audit. This does not bless it.
+          composer config --json audit.ignore '["PKSA-8j6w-3kr7-s9xk","PKSA-6j95-1jtb-x6wc","PKSA-cbx2-m9db-bmzd"]'
+          composer update --no-dev --no-plugins --no-scripts --prefer-dist --no-progress --no-interaction
+          composer config --unset audit.ignore
+      - name: Generate dependency SBOM
+        uses: anchore/sbom-action@66cbf4bc1f1c0d2edc94016e65bc221b6bb0ad6c # v0.24.3
+        with:
+          path: ${{ runner.temp }}/runtime-sbom
+          format: cyclonedx-json
+          syft-version: v1.54.1
+          output-file: ${{ runner.temp }}/runtime-sbom.cdx.json
+          upload-artifact: false
+          upload-release-assets: false
+          dependency-snapshot: false
+      - name: Audit without advisory exceptions
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/runtime-sbom"
+          composer audit --no-dev --locked --no-plugins --format=json > composer-audit.json
+      - name: Preserve dependency evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: production-dependency-evidence
+          path: |
+            ${{ runner.temp }}/runtime-sbom.cdx.json
+            ${{ runner.temp }}/runtime-sbom/composer.json
+            ${{ runner.temp }}/runtime-sbom/composer.lock
+            ${{ runner.temp }}/runtime-sbom/composer-audit.json
+          if-no-files-found: error
+          retention-days: 14

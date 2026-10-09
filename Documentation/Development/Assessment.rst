@@ -42,6 +42,18 @@ HTML mistaken for active Fluid templates, and factory-composed internal
 interfaces excluded from TYPO3 service discovery. UI, TCA and database checks
 do not apply to this extension's current surfaces.
 
+The automated assessment selects eleven relevant skill catalogs. Their
+755 mechanical checkpoints produce 548 passes, 164 failures and 43 skips,
+with no blocked checks. The security catalog alone contains 376 checkpoints;
+its native-filesystem run verifies all 1,912 frozen source hashes before
+execution and produces 364 passes, seven failures and five skips.
+
+The 180 individual agent-review checkpoints produce 65 passes, 28 findings,
+81 applicability or scope skips, three future-release deferrals and three
+requests for further evidence. They are agent reviews, not independent
+human security approval. Four executable checks misplaced in a catalog's
+model-review section are executed separately and all pass.
+
 The source repository records raw mechanical results, per-checkpoint agent
 reviews, applicability decisions and measurements under
 `Build/Reports/Assessment
@@ -93,6 +105,13 @@ loads that shell. Core 14 and kernel checks have separate configurations.
 The kernel PHPUnit configuration now treats risky tests as failures. The
 container used for controlled wire fixtures is pinned by its image digest.
 
+Development tools are pinned to the actually executed PHPUnit 11.5.57 and
+PHPStan 2.3.1. Fresh Guzzle 8 kernel analysis with PHPStan 2.3.1
+reports five missing ``HandlerStack`` generic annotations and one redundant
+native-cleanup callable-check diagnostic. Those six findings remain open;
+the corresponding CI check reports a failure. These findings do not justify
+removing runtime capability checks during a documentation correction.
+
 .. _assessment-open-work:
 
 Remaining qualification work
@@ -111,6 +130,8 @@ failure rather than reporting the graph as clean.
 
 The 18 killed targeted security mutants are historical qualification
 evidence. They do not establish a project-wide Infection mutation score.
+The existing PHP formatting also leaves coding-style recommendations open;
+syntax linting is not a full PSR-12 style check.
 Signed release artifacts, provenance, registry publication and the named
 CI performance reference remain future release work. Passing repository
 checks alone does not establish SLSA level 3 or enterprise certification.

@@ -1,0 +1,22 @@
+{
+  "source_head": "7a3a39bbaa763eb876ff4c9cdc743b689c557590",
+  "scope": "Unit + HttpGuardIntegration; genuine Core bootstrap CLI runs are separate, uninstrumented",
+  "php": "8.5.10",
+  "driver": "Xdebug3.5.3",
+  "metrics": {
+    "files": "73",
+    "loc": "4805",
+    "ncloc": "4669",
+    "classes": "61",
+    "methods": "200",
+    "coveredmethods": "97",
+    "conditionals": "0",
+    "coveredconditionals": "0",
+    "statements": "2318",
+    "coveredstatements": "1873",
+    "elements": "2518",
+    "coveredelements": "1970"
+  },
+  "statement_percent": 80.8,
+  "method_percent": 48.5
+}

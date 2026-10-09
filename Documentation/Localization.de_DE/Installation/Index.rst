@@ -10,8 +10,8 @@ Voraussetzungen
 ===============
 
 Diese Alpha-Version ist auf TYPO3 **13.4.35** und **14.3.7** begrenzt.
-PHP muss die Anforderungen des eingesetzten TYPO3-Core erfüllen; der
-enthaltene Sicherheitskern setzt PHP 8.2 oder neuer voraus. Qualifiziert
+PHP muss die Anforderungen des eingesetzten TYPO3-Core erfüllen; diese
+Extension erlaubt PHP 8.2 bis 8.5. Qualifiziert
 werden PHP 8.2, 8.3, 8.4 und 8.5 mit diesen vollständigen SDK-Kombinationen:
 
 .. list-table:: Exakte Abhängigkeiten des kontrollierten Transports

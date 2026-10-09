@@ -1,0 +1,4 @@
+Successfully placed 16 rendered HTML, INTERLINK, MD, TOCJSON, SITEMAPXML, CLASSINDEX, CONFVALINDEX, VIEWHELPERSJSON, FILESJSON, and LLMSTXT files into Documentation-GENERATED-temp/en
+Trying to render Localization.de_DE ...
+SUB-PROCESS: 'env' 'php' '/opt/guides/vendor/bin/guides' '--output=Documentation-GENERATED-temp/en/Localization.de_DE' '--input-format=rst' '--fail-on-log' '--localization=Localization.de_DE' '--host=localhost' '--port=1337' '--config=Documentation/Localization.de_DE' '--no-progress' 'run' '/project/Documentation/Localization.de_DE'
+Successfully placed 13 rendered HTML, INTERLINK, MD, TOCJSON, SITEMAPXML, CLASSINDEX, CONFVALINDEX, VIEWHELPERSJSON, FILESJSON, and LLMSTXT files into Documentation-GENERATED-temp/en/Localization.de_DE

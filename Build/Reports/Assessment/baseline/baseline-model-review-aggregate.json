@@ -1,0 +1,35 @@
+{
+  "source_commit": "7a3a39bbaa763eb876ff4c9cdc743b689c557590",
+  "count_semantics": "Model checkpoint decisions recorded separately from mechanical execution. Not applicable, skipped, definition issues and open gates are not passes.",
+  "count": 184,
+  "statuses": [
+    {
+      "status": "deferred_release_gate",
+      "count": 3
+    },
+    {
+      "status": "definition_issue",
+      "count": 4
+    },
+    {
+      "status": "fail",
+      "count": 28
+    },
+    {
+      "status": "needs_review",
+      "count": 3
+    },
+    {
+      "status": "not_applicable",
+      "count": 24
+    },
+    {
+      "status": "pass",
+      "count": 65
+    },
+    {
+      "status": "skip",
+      "count": 57
+    }
+  ]
+}
