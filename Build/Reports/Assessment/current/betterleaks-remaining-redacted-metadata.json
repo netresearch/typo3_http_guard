@@ -1,0 +1,9 @@
+[
+  {
+    "RuleID": "generic-api-key",
+    "File": "packages/http-guard/data/security-corpus/sources/alibaba-imds.headers.txt",
+    "StartLine": 10,
+    "Commit": "1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc",
+    "Fingerprint": "1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc:packages/http-guard/data/security-corpus/sources/alibaba-imds.headers.txt:generic-api-key:10"
+  }
+]
