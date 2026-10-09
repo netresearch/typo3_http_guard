@@ -29,6 +29,13 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Set up isolated Python build tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/http-guard-python"
+          "$RUNNER_TEMP/http-guard-python/bin/python" -m pip install --disable-pip-version-check --requirement Build/requirements.txt
+          printf '%s\n' "$RUNNER_TEMP/http-guard-python/bin" >> "$GITHUB_PATH"
       - name: Set up PHP
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
@@ -133,6 +140,13 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Set up isolated Python build tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/http-guard-python"
+          "$RUNNER_TEMP/http-guard-python/bin/python" -m pip install --disable-pip-version-check --requirement Build/requirements.txt
+          printf '%s\n' "$RUNNER_TEMP/http-guard-python/bin" >> "$GITHUB_PATH"
       - name: Set up PHP and coverage
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
@@ -197,6 +211,7 @@ jobs:
           vendor/bin/phpunit --configuration phpunit.xml \
             --coverage-clover "$RUNNER_TEMP/coverage/full-clover.xml" \
             --log-junit "$RUNNER_TEMP/coverage/junit.xml"
+          python3 Build/Scripts/normalize-clover.py "$RUNNER_TEMP/coverage/full-clover.xml"
       - name: Preserve fresh test coverage
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
@@ -226,8 +241,14 @@ jobs:
         uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
-      # This job never checks out or executes repository code. Its only input is
-      # XML from the preceding main-branch run; the upload secret stays isolated.
+      - name: Check out trusted main source metadata
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout: Classes
+      # This job reads trusted main source metadata and measured XML.
+      # No repository code executes here; the upload secret stays isolated.
       - name: Download current main coverage
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
