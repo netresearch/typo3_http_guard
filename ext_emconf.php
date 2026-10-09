@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 $EM_CONF[$_EXTKEY] = [
     'title' => 'HTTP Guard',
-    'description' => 'Controlled outbound HTTP policy for verified TYPO3 Core client combinations',
+    'description' => 'Controlled outbound HTTP protection for qualified TYPO3 client combinations - by Netresearch',
     'category' => 'services',
     'state' => 'alpha',
     'version' => '0.1.0',
@@ -17,4 +21,7 @@ $EM_CONF[$_EXTKEY] = [
         'conflicts' => [],
         'suggests' => [],
     ],
+    'author' => 'Netresearch DTT GmbH',
+    'author_email' => 'typo3@netresearch.de',
+    'author_company' => 'Netresearch DTT GmbH',
 ];
