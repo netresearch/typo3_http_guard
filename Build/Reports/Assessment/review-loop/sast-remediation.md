@@ -18,8 +18,16 @@ Zero reported findings and a successful finding gate do not establish exhaustive
 
 Clean execution summaries are in `sast-remediation.json`, `sast-php-semantic-ast.json`, `synthetic-fixture-integrity.json` and `synthetic-fixture-mutations.json`. Source positions and hashes in the AST proof bind the annotation stage. The root task owns the security workflow, later source changes and overall qualification verdict.
 
-## Follow-up classic lifecycle scan
+## First classic lifecycle follow-up
 
-After the separately authorized native activation implementation, the current `Build/Fixtures/initialize-classic.php` and `Build/Fixtures/prepare-classic.py` were scanned again with the same official Opengrep v1.19.0 binary. Both files were scanned, with zero findings, zero parser errors and exit 0. Source hashes and the compact result are recorded in `sast-classic-lifecycle-follow-up.json`.
+After the separately authorized native activation implementation, that stage's `Build/Fixtures/initialize-classic.php` and `Build/Fixtures/prepare-classic.py` were scanned again with the same official Opengrep v1.19.0 binary. Both files were scanned, with zero findings, zero parser errors and exit 0. Historical source hashes and the compact result are recorded in `sast-classic-lifecycle-follow-up.json`.
 
 Independent source review found no actionable defect in the new helper or its invocation. The Python subprocess supplies a literal PHP argument array. The helper resolves and checks the local fixture, uses the actual TYPO3 bootstrap and package manager, activates the extension, generates native metadata-based class loading and verifies both extension namespaces. This two-file follow-up does not expand the whole-repository parser coverage described above.
+
+## Final combined source scan
+
+The final released source was scanned again using the exact committed Security workflow configuration and the same verified Opengrep v1.19.0 binary. It runs 357 rules on 443 files, reports zero findings and exits 0. The scan includes the new Composer-qualification guard, installed-runtime guard, revised inactive-package classic activation helper and classic preparation script. Their current source hashes are bound in `final-static-summary.json`. This binding supersedes the first lifecycle helper hash: the final helper is SHA-256 `3109bb2cf5f63ec3684129457af61b98c6b1a6d39af36d9a3dfaf80776bdfd2d` and checks initial inactivity plus the real persisted PackageStates installation path.
+
+The final run retains exactly the same 57 parser-limitation path, scanner-type and initial-token signatures: 56 `PartialParsing` records and one `Syntax error`. Current diagnostic locations are retained in `final-sast-parser-limitations.json`; no new signature appeared. Categories describe each record's initial unsupported token, while the locations preserve the scanner's additional spans. This successful finding gate still does not establish exhaustive PHP SAST.
+
+All six workflow files pass actionlint 1.7.12. Offline strict-collection zizmor 1.30.0 reports zero findings. YAML contract checks confirm that CI and native Verification no longer override PHPStan/PHPUnit development constraints, both exact Core graphs are audited, requested runtime constraints are checked before matrix overrides, the resolved graph is checked afterward, and fixture integrity precedes SAST. These are local results; remote checks are separate.

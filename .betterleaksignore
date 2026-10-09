@@ -4,6 +4,10 @@
 # No path, commit-wide, cookie-name or rule exclusions.
 # Evidence: Build/Reports/Assessment/current/betterleaks-classification.json
 # Cookie remediation: Build/Reports/Assessment/review-loop/cookie-remediation.md
+# Fixture digest metadata: Build/Reports/Assessment/review-loop/fixture-digest-classification.json
+e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:16
+e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:17
+e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:18
 1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc:packages/http-guard/data/security-corpus/sources/alibaba-imds.headers.txt:generic-api-key:10
 1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc:delivery-manifest.json:generic-api-key:12
 1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc:delivery-manifest.json:generic-api-key:598

@@ -1,0 +1,141 @@
+{
+  "status": "PASS",
+  "scope": "Final released combined source, current native classic activation helper and runtime qualification guards",
+  "source_head_after_scan": "e4d0a8a4e4ce200050965b40433743fa70a534e2",
+  "opengrep": {
+    "version": "1.19.0",
+    "binary_sha256": "1d69a41beb88e8e7917f26cc6a16c1edf298f31402807e6d1afbb5d8684c3590",
+    "workflow_config": "--config auto --error --severity WARNING --severity ERROR --exclude evidence --exclude verification/evidence --exclude specification/originals --exclude Resources/Private/HttpGuard/data/security-corpus/sources --exclude Tests/HttpGuard/Integration/certificates/ca.key --exclude Tests/HttpGuard/Integration/certificates/client.key --exclude Tests/HttpGuard/Integration/certificates/server.key",
+    "exit_code": 0,
+    "rules_run": 357,
+    "scanned_files": 443,
+    "findings": 0,
+    "required_new_inputs": [
+      {
+        "path": "Build/Scripts/check-composer-qualification.py",
+        "scanned": true
+      },
+      {
+        "path": "Build/Scripts/check-installed-runtime.php",
+        "scanned": true
+      },
+      {
+        "path": "Build/Fixtures/initialize-classic.php",
+        "scanned": true
+      },
+      {
+        "path": "Build/Fixtures/prepare-classic.py",
+        "scanned": true
+      }
+    ],
+    "parser_limitations": {
+      "same_parser_limitation_signatures": true,
+      "prior_errors": 57,
+      "current_errors": 57,
+      "current_error_types": [
+        {
+          "type": "PartialParsing",
+          "count": 56
+        },
+        {
+          "type": "Syntax error",
+          "count": 1
+        }
+      ],
+      "current_initial_token_categories": [
+        {
+          "category": "intersection type",
+          "count": 1
+        },
+        {
+          "category": "readonly declaration",
+          "count": 53
+        },
+        {
+          "category": "scalar type or cast",
+          "count": 2
+        },
+        {
+          "category": "source patch syntax",
+          "count": 1
+        }
+      ],
+      "positions_preserved": true
+    },
+    "exhaustive_php_sast": false
+  },
+  "workflows": {
+    "actionlint": {
+      "version": "1.7.12",
+      "exit_code": 0,
+      "all_six_workflows": true
+    },
+    "zizmor": {
+      "version": "1.30.0",
+      "exit_code": 0,
+      "offline_strict_collection": true,
+      "findings": 0
+    },
+    "contract": {
+      "ci_root_preflight": true,
+      "audit_root_preflight": true,
+      "installed_runtime_guard": true,
+      "forced_development_package_overrides": [],
+      "audit_core_versions": [
+        "13.4.36",
+        "14.3.8"
+      ],
+      "native_tuple_versions": [
+        {
+          "guzzle": "7.15.3",
+          "promises": "2.5.2",
+          "psr7": "2.13.0"
+        },
+        {
+          "guzzle": "7.15.5",
+          "promises": "2.5.3",
+          "psr7": "2.13.1"
+        },
+        {
+          "guzzle": "8.2.0",
+          "promises": "3.0.2",
+          "psr7": "3.1.0"
+        }
+      ],
+      "fixture_integrity_gates_sast": true,
+      "workflow_opengrep_config": "--config auto --error --severity WARNING --severity ERROR --exclude evidence --exclude verification/evidence --exclude specification/originals --exclude Resources/Private/HttpGuard/data/security-corpus/sources --exclude Tests/HttpGuard/Integration/certificates/ca.key --exclude Tests/HttpGuard/Integration/certificates/client.key --exclude Tests/HttpGuard/Integration/certificates/server.key",
+      "default_reusable_audit_skipped_for_strict_local_job": true
+    }
+  },
+  "source_bindings": [
+    {
+      "sha256": "f7a88d2d07e003acf4886d5602e6f51896b506eb44f8b83fecb8d0121a2c4cce",
+      "path": ".github/workflows/ci.yml"
+    },
+    {
+      "sha256": "a696eb45edc94350ccbc76085481b348a70630931bbe426a9e8b63a1f89445c2",
+      "path": ".github/workflows/security.yml"
+    },
+    {
+      "sha256": "3a5eba999cfc01b93ad003a2a4ee11ae8c9d0c2e0d60f1a34fd60d36c8f72194",
+      "path": ".github/workflows/verification.yml"
+    },
+    {
+      "sha256": "40b4e07e49022fcb8ea62bbb1a0c962d464a0b3b71c112079e0982c65c01f3cd",
+      "path": "Build/Scripts/check-composer-qualification.py"
+    },
+    {
+      "sha256": "98f80019e5150e1cb5ac740a135cb5e0c7f2dd24ec562666d81e3f33bcabbe22",
+      "path": "Build/Scripts/check-installed-runtime.php"
+    },
+    {
+      "sha256": "3109bb2cf5f63ec3684129457af61b98c6b1a6d39af36d9a3dfaf80776bdfd2d",
+      "path": "Build/Fixtures/initialize-classic.php"
+    },
+    {
+      "sha256": "71cc456d63c4dbed99b2f6d26f0c7b12a63b43542c02391439c3467a5af98da6",
+      "path": "Build/Fixtures/prepare-classic.py"
+    }
+  ],
+  "old_classic_helper_follow_up_superseded_by_this_final_binding": true
+}

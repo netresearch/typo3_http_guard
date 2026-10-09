@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "findings": [
+    {
+      "fingerprint": "e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:16",
+      "classification": "public SHA256 integrity metadata",
+      "fixture": "ca.key",
+      "actual_fixture_bytes_match": true,
+      "private_key_value": false
+    },
+    {
+      "fingerprint": "e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:17",
+      "classification": "public SHA256 integrity metadata",
+      "fixture": "client.key",
+      "actual_fixture_bytes_match": true,
+      "private_key_value": false
+    },
+    {
+      "fingerprint": "e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:18",
+      "classification": "public SHA256 integrity metadata",
+      "fixture": "server.key",
+      "actual_fixture_bytes_match": true,
+      "private_key_value": false
+    }
+  ],
+  "new_exact_fingerprints": 3,
+  "old_exact_fingerprints": 376,
+  "total_exact_fingerprints": 379,
+  "paths_or_rules_generally_excluded": false
+}
