@@ -28,7 +28,7 @@ Install the published 0.1 series from
     vendor/bin/typo3 http-guard:doctor
 
 Composer registers the extension automatically. After rebuilding caches,
-ordinary RequestFactory calls use the protected default. Version 0.1.0
+ordinary RequestFactory calls use the protected default. Version 0.1.1
 is an alpha for evaluation. Review the project's resolved dependencies
 against :ref:`installation-requirements` before deployment. The extension
 does not require an additional :literal:`netresearch/http-guard` package.

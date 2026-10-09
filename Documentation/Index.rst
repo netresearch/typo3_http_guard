@@ -17,7 +17,7 @@ cloud metadata and special-purpose destinations before a connection starts.
 DNS results and redirects are checked too. Allowed connections are bound
 to verified IP addresses.
 
-Version 0.1.0 is an alpha release. It includes the security core, the TYPO3
+Version 0.1.1 is an alpha release. It includes the security core, the TYPO3
 adapter, the address rules and this manual in **one** extension with the key
 :literal:`nr_http_guard`. A classic installation requires neither a Composer
 command nor an additional HTTP Guard package.

@@ -18,7 +18,7 @@ Loopback, Cloud-Metadatenziele und besondere Netze vor dem Verbindungsaufbau.
 Auch DNS-Ergebnisse und Redirects werden geprüft. Erlaubte Verbindungen
 werden an die geprüften IP-Adressen gebunden.
 
-Die Version 0.1.0 ist eine Alpha-Version. Sie enthält den Sicherheitskern,
+Die Version 0.1.1 ist eine Alpha-Version. Sie enthält den Sicherheitskern,
 den TYPO3-Adapter, die Adressregeln und dieses Handbuch in **einer** Extension
 mit dem Schlüssel :literal:`nr_http_guard`. Für eine klassische Installation
 ist kein Composer-Aufruf und kein zusätzliches HTTP-Guard-Paket erforderlich.

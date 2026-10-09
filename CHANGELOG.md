@@ -2,6 +2,14 @@
 
 All notable changes to HTTP Guard for TYPO3 are recorded here.
 
+## [0.1.1] - 2026-10-09
+
+Alpha release with the same HTTP protection as 0.1.0.
+
+### Fixed
+
+- Run the shared DCO check only for pull requests or merge groups. The CI gate requires its success there and permits only that check to be skipped on main pushes or manual runs; PHP, documentation and workflow lint must still succeed. The original 0.1.0 tag remains unchanged. Its release was blocked before artifact and TER publication because the PR-only DCO workflow was invoked on main.
+
 ## [0.1.0] - 2026-10-09
 
 Initial alpha for evaluation, distributed as one complete TYPO3 extension.

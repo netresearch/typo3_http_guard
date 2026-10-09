@@ -35,7 +35,7 @@
   "extra": {
     "typo3/cms": {
       "extension-key": "nr_http_guard",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "Package": {
         "providesPackages": {}
       }
