@@ -31,7 +31,7 @@
   },
   "packageRules": [
     {
-      "description": "Qualified runtime changes require explicit whole-tuple qualification and review for every update type.",
+      "description": "Core and SDK updates require validation of the resolved dependency graph and review for every update type.",
       "matchPackageNames": [
         "typo3/cms-**",
         "guzzlehttp/guzzle",
