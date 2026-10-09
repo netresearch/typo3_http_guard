@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+# Development-only parsing of measured coverage reports; never bundled in TER.
+defusedxml>=0.7.1,<1

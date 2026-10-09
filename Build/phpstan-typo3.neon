@@ -1,8 +1,8 @@
 includes:
-    - ../vendor/netresearch/typo3-ci-workflows/config/phpstan/phpstan.neon
+    - ../.Build/vendor/netresearch/typo3-ci-workflows/config/phpstan/phpstan.neon
 
 parameters:
-    level: 8
+    level: 10
     stubFiles:
         - PhpStan/Client.stub
     paths:

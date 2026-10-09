@@ -20,4 +20,13 @@ class Client
     public function getConfig(?string $option = null)
     {
     }
+    /**
+     * Native Guzzle 7/8 constructor configuration is an open option bag.
+     * Request-only PHPDoc cannot describe defaults stored for later middleware.
+     * The native constructor retains its own handler/factory/URI/sharing checks.
+     * @param array<array-key,mixed> $config
+     */
+    public function __construct(array $config = [])
+    {
+    }
 }

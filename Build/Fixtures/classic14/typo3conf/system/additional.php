@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH.
+ */
 declare(strict_types=1);
 require_once dirname(__DIR__, 2) . '/support/RecordingMiddleware.php';
 $GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'] = [

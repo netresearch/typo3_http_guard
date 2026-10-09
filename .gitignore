@@ -18,3 +18,10 @@ Documentation/_build/
 
 .phpstan-http-guard-cache/
 **/.phpunit.result.cache
+
+/composer.lock
+/.php-cs-fixer.cache
+/.rector-cache/
+/.Build/
+/public/
+/.build/

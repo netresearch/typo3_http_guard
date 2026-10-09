@@ -22,6 +22,6 @@ return (new Config())
     ->setCacheFile(__DIR__ . '/.php-cs-fixer.cache')
     ->setFinder(
         Finder::create()->in([__DIR__ . '/Classes', __DIR__ . '/Configuration', __DIR__ . '/Tests', __DIR__ . '/Build'])->exclude(['Reports', 'certificates', 'vendor', '.Build'])->append(
-            [__DIR__ . '/ext_localconf.php', __FILE__],
+            [__DIR__ . '/ext_localconf.php', __DIR__ . '/rector.php', __FILE__],
         ),
     );

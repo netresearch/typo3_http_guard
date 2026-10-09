@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH.
+ */
 declare(strict_types=1);
 require_once dirname(__DIR__, 5) . '/Tests/Fixtures/RecordingMiddleware.php';
 $corpus = json_decode(

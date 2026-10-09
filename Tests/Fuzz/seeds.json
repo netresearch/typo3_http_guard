@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "engine": "Random\\Engine\\Mt19937",
+  "cases_per_seed": 1000,
+  "seeds": [
+    104729,
+    130363,
+    155921,
+    196613
+  ]
+}

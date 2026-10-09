@@ -1,0 +1,22 @@
+{
+  "$schema": ".Build/vendor/infection/infection/resources/schema.json",
+  "source": {
+    "directories": ["Classes"]
+  },
+  "timeout": 10,
+  "threads": 1,
+  "phpUnit": {
+    "configDir": "Build/Mutation/Native",
+    "customPath": ".Build/vendor/bin/phpunit"
+  },
+  "tmpDir": ".Build/cache/infection-native",
+  "logs": {
+    "json": ".Build/reports/infection-native.json",
+    "summaryJson": ".Build/reports/infection-native-summary.json",
+    "text": ".Build/reports/infection-native.log"
+  },
+  "mutators": {"@default": true},
+  "minMsi": 90,
+  "minCoveredMsi": 90,
+  "bootstrap": "Build/Mutation/bootstrap.php"
+}

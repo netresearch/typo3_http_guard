@@ -73,6 +73,23 @@
       "typo3/class-alias-loader": true,
       "typo3/cms-composer-installers": true
     },
-    "sort-packages": true
+    "sort-packages": true,
+    "vendor-dir": ".Build/vendor"
+  },
+  "scripts": {
+    "ci:test:php:cgl": "@php .Build/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --dry-run --diff",
+    "ci:fix:php:cgl": "@php .Build/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+    "ci:test:php:rector": "@php .Build/vendor/bin/rector process --config=rector.php --dry-run",
+    "ci:test:php:phpstan": "bash Build/Scripts/check-static-analysis.sh",
+    "ci:test:php:unit": "bash Build/Scripts/runTests.sh -s unit",
+    "ci:test:php:functional": "bash Build/Scripts/runTests.sh -s native",
+    "ci:test:php:mutation": "bash Build/Scripts/runTests.sh -s mutation",
+    "ci:test:php:architecture": "bash Build/Scripts/runTests.sh -s architecture",
+    "ci:test:php:fuzz": "bash Build/Scripts/runTests.sh -s fuzz",
+    "ci:test:php:performance": "bash Build/Scripts/runTests.sh -s performance",
+    "check:harness": "python3 Build/Scripts/verify-harness.py",
+    "check:secrets": "python3 Build/Scripts/check-staged-secrets.py",
+    "check:local": "bash Build/Scripts/check-local-quality.sh",
+    "test": "@ci:test:php:unit"
   }
 }

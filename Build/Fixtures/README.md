@@ -1,6 +1,86 @@
 # Genuine TYPO3 integration fixtures
 
-These fixtures install and bootstrap real TYPO3 13.4.36 and 14.3.8 with Guzzle 7.15.5 and 8.2.0. They use the single local extension, including its embedded HTTP Guard kernel. The Core string request entry is decorated by the production extension; the original Core factory remains its inner service. Fresh qualification passes all 168 Composer matrix processes and both classic cells' 84 processes; see the [current verification report](../../Documentation/Development/Verification.rst) for measured results.
+## Local host and container entry points
+
+Install development tools with `composer install`. With no runtime-selection
+flags, the project wrapper uses the installed host PHP and `.Build/vendor/`:
+
+```bash
+bash Build/Scripts/runTests.sh -s unit
+composer ci:test:php:architecture
+composer ci:test:php:fuzz
+composer ci:test:php:mutation
+composer ci:test:php:performance
+```
+
+These invoke real project runners; unavailable tools and failed checks fail.
+Mutation thresholds remain enforced and a low score is a failed result. Unit
+execution is offline. Architecture, fuzz, Infection and performance measurements
+have their own scopes and source-bound results, separate from native wire counts.
+
+For a selected PHP/Core graph, use an isolated checkout and delegate to the
+installed `netresearch/typo3-ci-workflows` shared runner:
+
+```bash
+bash Build/Scripts/runTests.sh -s unit -p 8.5 -t 13.4.36
+bash Build/Scripts/runTests.sh -s unit -p 8.5 -t 14.3.8
+```
+
+Core selection delegates require/update to the shared runner's Composer suite;
+it creates the initial lock when absent and changes that checkout's development
+manifest/lock/vendor. A shared vendor symlink is refused. Do not run it against a shared or
+protected checkout. Shorthand `13`/`13.4` selects `^13.4.36`, and `14`/`14.3`
+selects `^14.3.8`, preserving safe floors. A successful solver is not runtime proof.
+The generic shared runner remains installed under `.Build/vendor/`; it is not
+copied into this extension. `runTests.conf` sets the explicit Unit suite and
+pinned PHP images. A future PHP test image may be supplied through
+`HTTP_GUARD_PHP_IMAGE=<image>@sha256:<digest>`; permission in the production PHP
+range does not claim that such a version has already been tested. Before each
+selected suite, an installed-runtime probe verifies the actual PHP/Core graph.
+
+## Owned native transport targets
+
+Run the native suite through the project orchestrator:
+
+```bash
+bash Build/Scripts/runTests.sh -s native
+# Explicit selected container graph, in an isolated checkout:
+bash Build/Scripts/runTests.sh -s native -p 8.5 -t 14.3.8
+```
+
+Each invocation owns uniquely named and labelled containers/networks, captures
+immutable IDs at creation and removes only those IDs on success, failure or
+interrupt. It holds a local-user lock throughout preparation, execution and
+teardown. The existing PHP wire cases retain their fixed synthetic IPs; Docker
+IPAM refuses overlapping subnets. A pre-existing foreign subnet or occupied
+loopback port causes failure. The runner neither adopts nor deletes another
+run's targets, including older `http-guard-production-*` containers.
+
+Synthetic TLS keys are generated per run and removed at teardown. The tests'
+certificate path is overlaid with a read-only container bind mount; existing
+repository certificates are neither reused nor changed. Logs, JUnit, image
+metadata and the actual PHP/Core/SDK tuple remain under `.Build/runtime/native.*`.
+The tests use the pinned PHP image and Docker host networking for the controlled
+bridge/loopback destinations. These Linux Docker fixtures are local test inputs,
+not production endpoints. Runs on the same Docker daemon serialize their fixed
+address resources; parallel use of the same counters is unsupported.
+
+`HTTP_GUARD_TEST_AUTOLOAD` and `HTTP_GUARD_PHPUNIT` may select a genuine installed
+SDK/Core graph. The container inspects actual PHP/Core versions before executing;
+an explicit selection mismatch fails. An external vendor directory is mounted
+read-only, not changed. The selected graph and native cURL capabilities must also
+pass the production/test API checks.
+
+`bash Build/Scripts/runTests.sh -s mutation-native` uses the same owned targets
+for the combined Unit/native Infection scope in `infection.native.json5`.
+It enables coverage and uses one thread because wire counters are shared within
+the run. All production `Classes/`, default mutators and both 90% thresholds
+remain in scope; a lower score propagates as failure. This optional longer
+measurement is separate from the offline mutation entry point and from fuzzing.
+
+## Genuine Core bootstrap and classic installation
+
+These fixtures install and bootstrap real TYPO3 13.4.36 and 14.3.8 with Guzzle 7.15.5 and 8.2.0. They use the single local extension, including its embedded HTTP Guard kernel. The Core string request entry is decorated by the production extension; the original Core factory remains its inner service. The recorded qualification passes 168 Composer matrix processes and 84 classic processes, each bound to its documented source snapshot; see the [verification report](../../Documentation/Development/Verification.rst) for measured results.
 
 Use a native Linux runtime directory, PHP with curl/curl-multi, Composer and Docker. The recorded execution used PHP 8.5.11 and libcurl 8.5.0. The two Docker networks are internal. Their target servers use synthetic public `203.0.114.102:8080` and private `10.23.5.12:8080` addresses; the policy allows the private address only through the explicitly bound endpoint. The subnet choices must be available locally. Do not run unrelated traffic against these targets while collecting counters.
 
@@ -18,7 +98,7 @@ Preparation reads the active `Build/Fixtures/core13g7`, `core13g8`, `core14g7` a
 
 The runner executes 168 processes: four enforce wire runs with 35 assertions each, eight observe/disabled wire runs, 152 actual TYPO3 CLI commands, and four ordinary startup denials. These are runner expectations; the current verification report records the actual successful processes and assertions. The CLI and startup-denial records compare independently instrumented TCP accepts and HTTP request counts before and after. Counter polling is excluded from target counts. The shared normative `EP-PRIVATE-UNBOUND` record is loaded from the embedded kernel corpus and records its case ID/hash plus zero native handler construction for the denied unbound request. A flat legacy Vault allowlist entry exists alongside the Core context lists without creating a new Public grant.
 
-The wire helper reuses the named containers `http-guard-ext-wire-public` and `http-guard-ext-wire-private` when their image, network address and target ID match. It uses a pinned Python image, an unprivileged user, a read-only filesystem and no Linux capabilities. It does not delete the servers after the matrix. Remove these two containers manually when finished; keep the shared `http-guard-g0-probe` network if another probe still needs it. No production site or external application is modified.
+The legacy standalone Core wire helper reuses the named containers `http-guard-ext-wire-public` and `http-guard-ext-wire-private` when their image, network address and target ID match. It uses a pinned Python image, an unprivileged user, a read-only filesystem and no Linux capabilities. It does not delete the servers after the matrix. This legacy helper is separate from the per-run native orchestrator above; do not combine their resources. Remove these two containers manually when finished; keep the shared `http-guard-g0-probe` network if another probe still needs it. No production site or external application is modified.
 
 Unit tests can use a prepared runtime's vendor autoloader and PHPUnit executable through `HTTP_GUARD_TEST_AUTOLOAD` and `HTTP_GUARD_PHPUNIT`. These environment variables are test harness seams and cannot select policy or runtime transport inside TYPO3.
 
