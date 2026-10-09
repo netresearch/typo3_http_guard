@@ -6,6 +6,11 @@
 # Cookie remediation: Build/Reports/Assessment/review-loop/cookie-remediation.md
 # Fixture digest metadata: Build/Reports/Assessment/review-loop/fixture-digest-classification.json
 # Package digest metadata: Build/Reports/Assessment/review-loop/package-digest-classification.json
+# These three exact historical lines contain the public synthetic key file SHA-256
+# digests verified by check-synthetic-fixtures.py; they contain no credential bytes.
+64fc13774b630932931d1e1ffc289993dbd0abf2:Build/Scripts/check-staged-secrets.py:generic-api-key:17
+64fc13774b630932931d1e1ffc289993dbd0abf2:Build/Scripts/check-staged-secrets.py:generic-api-key:18
+64fc13774b630932931d1e1ffc289993dbd0abf2:Build/Scripts/check-staged-secrets.py:generic-api-key:19
 e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:16
 e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:17
 e4d0a8a4e4ce200050965b40433743fa70a534e2:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:18
