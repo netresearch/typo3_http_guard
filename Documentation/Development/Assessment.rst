@@ -107,9 +107,20 @@ and capability checks. Historical PHP 8.2–8.5 coverage does not claim future
 PHP executions. See :ref:`verification-semantic-support` for the separate
 semantic-contract proof.
 
-GitHub enforces signed commits and the existing required review also applies
-to administrators. New CI workflows require actual execution before their
-presence can be treated as operational evidence.
+GitHub enforces signed commits and the CI, Verification and Security gates,
+including for administrators. The ``t3x-pull-request`` ruleset follows the
+Netresearch TYPO3 extension convention: contributors need one approval and
+reviews are dismissed on new commits; administrators, Renovate and Dependabot
+have a bypass for that rule only through pull requests. This does not bypass
+the required checks or signed commits.
+
+The shared Netresearch PR quality workflow provides automated approval for
+non-draft, same-repository PRs whose author has write or administrator access.
+Fork PRs receive no automated approval. This approval does not replace the
+independent human security review required for release. Auto-merge is enabled,
+and the default Actions token remains read-only with explicit per-job scopes.
+New CI workflows require actual execution before their presence can be treated
+as operational evidence.
 
 The initial level 8 analysis also ran against genuine TYPO3 13.4.35 vendors
 for each of the three qualified SDK tuples. The inactive Core 14 declaration

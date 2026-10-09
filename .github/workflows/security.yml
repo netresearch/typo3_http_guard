@@ -4,6 +4,7 @@ name: Security
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
     branches: [main]
   schedule:
@@ -14,6 +15,21 @@ permissions:
   contents: read
 
 jobs:
+  pr-quality:
+    if: github.event_name == 'pull_request'
+    uses: netresearch/.github/.github/workflows/pr-quality.yml@main
+    permissions:
+      contents: read
+      pull-requests: write
+    with:
+      auto-approve-require-write: true
+      security-controls-path: Documentation/Development/Assessment.rst
+      auto-approve-message: >-
+        Automated approval for a repository maintainer PR. The separate CI,
+        Verification and Security gates must pass before merge. This is not
+        independent human security approval. See the
+        [documented controls](https://github.com/netresearch/typo3_http_guard/blob/${{ github.event.pull_request.head.sha }}/Documentation/Development/Assessment.rst).
+
   dependency-audit-and-sast:
     uses: netresearch/typo3-ci-workflows/.github/workflows/security.yml@main
     permissions:
@@ -139,6 +155,7 @@ jobs:
       - secret-scanning
       - dependency-audit-and-sbom
       - fixture-integrity
+      - pr-quality
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -148,10 +165,16 @@ jobs:
         uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
-      - name: Require every dependency to succeed
+      - name: Require security checks and applicable PR quality checks to succeed
         env:
           RESULTS: ${{ toJSON(needs) }}
+          EVENT_NAME: ${{ github.event_name }}
         shell: bash
         run: |
           set -euo pipefail
-          jq -e 'length > 0 and all(.[]; .result == "success")' <<< "$RESULTS"
+          # PR metadata applies only to PRs; every security job must always run.
+          jq -e --arg event "$EVENT_NAME" '
+            length > 0 and all(to_entries[];
+              .value.result == "success" or
+              (.key == "pr-quality" and $event != "pull_request" and .value.result == "skipped")
+            )' <<< "$RESULTS"
