@@ -41,9 +41,10 @@ die Untersuchung; sie erlaubt keinen automatischen Ersatztransport.
       - Unbekannte, fremde oder abgelaufene Bindung.
       - Profilgültigkeit prüfen und Client korrekt neu erzeugen.
     * - :literal:`transport_unsupported`
-      - Fehlendes cURL/cURL-multi, unbekanntes SDK-Tuple oder ungeprüfte
-        Transportfähigkeit.
-      - :literal:`doctor`, konkrete Versionen und PHP-Funktionen prüfen.
+      - Fehlendes cURL/cURL-multi, nicht unterstützte Hauptversion oder
+        Untergrenze, inkompatible Core-/SDK-API oder zweiter nativer
+        Versuch derselben Lease.
+      - :literal:`doctor`, Versionsbereiche, APIs und PHP-Funktionen prüfen.
     * - :literal:`proxy_unsupported`
       - Explizite Proxyoption oder echte Proxy-Prozessvariable.
       - Deployment-Umgebung und Proxyanforderung mit Betreiber klären.

@@ -1,0 +1,2357 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          462,
+          462
+        ],
+        [
+          496,
+          496
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          498,
+          498
+        ]
+      ],
+      "checks": 35
+    },
+    {
+      "fixture": "classic13",
+      "case": "observe",
+      "label": "observe-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          498,
+          498
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          501,
+          501
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "disabled",
+      "label": "disabled-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          501,
+          501
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "factory-conflict",
+      "label": "ordinary-boot-factory-conflict-final",
+      "exitCode": 1,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "normal-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "normal-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "normal-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "normal-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "invalid-mode",
+      "label": "invalid-mode-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "invalid-mode",
+      "label": "invalid-mode-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "invalid-mode",
+      "label": "invalid-mode-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "invalid-mode",
+      "label": "invalid-mode-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "invalid-schema",
+      "label": "invalid-schema-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "invalid-schema",
+      "label": "invalid-schema-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "invalid-schema",
+      "label": "invalid-schema-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "invalid-schema",
+      "label": "invalid-schema-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "object",
+      "label": "object-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "object",
+      "label": "object-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "object",
+      "label": "object-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "object",
+      "label": "object-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "factory-conflict",
+      "label": "factory-conflict-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "factory-conflict",
+      "label": "factory-conflict-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "factory-conflict",
+      "label": "factory-conflict-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "factory-conflict",
+      "label": "factory-conflict-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "observe",
+      "label": "observe-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "observe",
+      "label": "observe-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "observe",
+      "label": "observe-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "observe",
+      "label": "observe-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "disabled",
+      "label": "disabled-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "disabled",
+      "label": "disabled-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "disabled",
+      "label": "disabled-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "disabled",
+      "label": "disabled-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "policy-private-deny-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "policy-unverified-final",
+      "exitCode": 4,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "policy-explicit-endpoint-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "policy-userinfo-redacted-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "policy-empty-fragment-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "policy-raw-backslash-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "doctor-missing-curl-multi-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "normal",
+      "label": "doctor-mixed-no-proxy-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "review-overdue",
+      "label": "review-overdue-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic13",
+      "case": "review-overdue",
+      "label": "review-overdue-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          468,
+          468
+        ],
+        [
+          504,
+          504
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          506,
+          506
+        ]
+      ],
+      "checks": 35
+    },
+    {
+      "fixture": "classic14",
+      "case": "observe",
+      "label": "observe-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          506,
+          506
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          509,
+          509
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "disabled",
+      "label": "disabled-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          509,
+          509
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "factory-conflict",
+      "label": "ordinary-boot-factory-conflict-final",
+      "exitCode": 1,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "normal-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "normal-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "normal-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "normal-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "invalid-mode",
+      "label": "invalid-mode-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "invalid-mode",
+      "label": "invalid-mode-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "invalid-mode",
+      "label": "invalid-mode-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "invalid-mode",
+      "label": "invalid-mode-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "invalid-schema",
+      "label": "invalid-schema-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "invalid-schema",
+      "label": "invalid-schema-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "invalid-schema",
+      "label": "invalid-schema-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "invalid-schema",
+      "label": "invalid-schema-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "object",
+      "label": "object-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "object",
+      "label": "object-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "object",
+      "label": "object-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "object",
+      "label": "object-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "factory-conflict",
+      "label": "factory-conflict-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "factory-conflict",
+      "label": "factory-conflict-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "factory-conflict",
+      "label": "factory-conflict-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "factory-conflict",
+      "label": "factory-conflict-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "observe",
+      "label": "observe-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "observe",
+      "label": "observe-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "observe",
+      "label": "observe-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "observe",
+      "label": "observe-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "disabled",
+      "label": "disabled-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "disabled",
+      "label": "disabled-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "disabled",
+      "label": "disabled-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "disabled",
+      "label": "disabled-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "policy-private-deny-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "policy-unverified-final",
+      "exitCode": 4,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "policy-explicit-endpoint-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "policy-userinfo-redacted-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "policy-empty-fragment-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "policy-raw-backslash-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "doctor-missing-curl-multi-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "normal",
+      "label": "doctor-mixed-no-proxy-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "review-overdue",
+      "label": "review-overdue-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "classic14",
+      "case": "review-overdue",
+      "label": "review-overdue-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "wireAfter": [
+        [
+          474,
+          474
+        ],
+        [
+          512,
+          512
+        ]
+      ],
+      "checks": 0
+    }
+  ]
+}

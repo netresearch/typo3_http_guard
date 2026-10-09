@@ -1164,7 +1164,7 @@ final class ProductionTransportTest extends TestCase
             );
         }
     }
-    public function testMalformedPlanPinAndHiddenCurlRewindRetryFailClosed(): void
+    public function testMalformedPlanPinIsRejectedBeforeContact(): void
     {
         [$factory, , , $registry] = $this->fixture();
         $before = $this->counters();
@@ -1192,41 +1192,6 @@ final class ProductionTransportTest extends TestCase
             self::assertSame('resolution_unverified', $error->reasonCode());
         }
         self::assertSame($before, $this->counters());
-        $binding = $factory->createTransport();
-        $pending = $binding->client->requestAsync(
-            'POST',
-            'http://guard.test:8090/slow',
-            ['body' => 'synthetic']
-        );
-        $binding->driver->tick();
-        $leases = (new \ReflectionProperty($binding->driver, 'leases'))->getValue(
-            $binding->driver
-        );
-        $lease = reset($leases);
-        $handler = (new \ReflectionProperty($lease, 'handler'))->getValue($lease);
-        $handles = (new \ReflectionProperty($handler, 'handles'))->getValue($handler);
-        $record = reset($handles);
-        $easy = $record['easy'];
-        self::assertSame(2, $easy->options['_curl_retries']);
-        $bypass = 0;
-        $retry = new \ReflectionMethod(
-            \GuzzleHttp\Handler\CurlFactory::class,
-            'retryFailedRewind'
-        );
-        $result = $retry->invoke(
-            null,
-            static function () use (&$bypass) {
-                ++$bypass;
-                return Create::promiseFor(new Response(200));
-            },
-            $easy,
-            ['errno' => 0, 'error' => 'synthetic']
-        );
-        self::assertSame(PromiseInterface::REJECTED, $result->getState());
-        self::assertSame(0, $bypass);
-        $pending->cancel();
-        $binding->driver->tick();
-        self::assertSame(0, $binding->driver->counters()['active']);
     }
     public function testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact(): void
     {

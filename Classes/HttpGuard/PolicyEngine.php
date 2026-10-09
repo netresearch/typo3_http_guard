@@ -128,7 +128,7 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
                     return false;
                 }
             }
-            $addresses = str_contains($canonical, ':') || preg_match('/^[0-9.]+$/D', $canonical) ? [Cidr::address($canonical)] : $this->resolver->resolve($canonical)->addresses;
+            $addresses = str_contains($canonical, ':') || preg_match('/^[0-9.]+$/D', $canonical) === 1 ? [Cidr::address($canonical)] : $this->resolver->resolve($canonical)->addresses;
             $this->validateAddresses($addresses, $profile);
             $this->registry->validateContext($context);
             return true;

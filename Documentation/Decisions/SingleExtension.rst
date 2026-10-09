@@ -34,10 +34,12 @@ PSR-4 metadata.
 
 The extension does not contain a second vendor copy. Classic projects use
 the dependencies of the official Core archive; Composer projects use their
-qualified locks. The runtime contract continues to check exact, complete
-SDK tuples. The tuple 7.15.3 / 2.5.2 / 2.13.0 included in both tested
-official Core archives receives targeted additional qualification after
-the previous implementation rejected it as expected.
+project locks. Production constraints use semantic ranges with explicit
+minima and supported majors. Runtime guards check the actual parent API,
+SDK capabilities and middleware inventory. A single-use public cURL factory
+enforces one native attempt per lease independently of private SDK retry
+counters. Fixed Core/SDK fixtures remain reproducible test snapshots; the
+currently tested official Core archives supply the Guzzle 8 graph.
 
 The manual, installation paths, configuration fields, APIs and operational
 limits are fully documented under :file:`Documentation/`. Additional
@@ -52,9 +54,11 @@ Consequences
 
 Runtime loading paths and test configurations change; policy rules and
 APIs remain unchanged. The additional classic dependency row extends only
-the exact qualified tuple. Untested patch versions and mixed versions
-remain blocked. The PHP and SDK matrix is rerun against the combined source,
-as are real Core archives, wire tests and mutation tests.
+the reproducible fixture coverage. Compatible patches and minors within
+the semantic ranges remain usable without a new extension release. Actual
+API incompatibilities and unsupported major graphs fail closed. Fixed and
+floating native CI rows exercise Core, wire and mutation-sensitive behavior;
+each recorded execution remains bound to its own source and dependency lock.
 
 The package is a GPL-2.0-or-later extension that preserves the MIT notices
 of its embedded core. Its internal framework-independent structure allows

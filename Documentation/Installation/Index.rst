@@ -9,39 +9,40 @@ Installation
 Requirements
 ============
 
-This alpha version is restricted to TYPO3 **13.4.36** and **14.3.8**.
-PHP must meet the requirements of the selected TYPO3 Core. This extension
-permits PHP 8.2 through 8.5. The historical kernel matrix covered PHP 8.2,
-8.3, 8.4 and 8.5; the refreshed combined Unit/native suite uses PHP 8.5.10.
-Kernel and framework matrices have separate scope. Current executions are
-recorded in :ref:`verification-current-core`. The controlled transport accepts
-these complete SDK combinations:
+Composer supports TYPO3 :literal:`^13.4.36 || ^14.3.8` and PHP
+:literal:`^8.2`. PHP must also meet the selected Core's requirements.
+Compatible updates within these ranges do not require a new HTTP Guard
+release. The runtime checks the actual Core parent API and SDK capabilities
+and rejects incompatible APIs before a native send.
 
-.. list-table:: Exact dependencies of the controlled transport
+.. list-table:: Supported transport dependency ranges
     :header-rows: 1
 
     * - Guzzle
       - Promises
       - PSR-7
-      - Usage
-    * - 7.15.3
-      - 2.5.2
-      - 2.13.0
-      - Additional kernel qualification tuple
-    * - 7.15.5
-      - 2.5.3
-      - 2.13.1
-      - Qualified Composer installation
-    * - 8.2.0
-      - 3.0.2
-      - 3.1.0
-      - Composer and official classic Core archives 13.4.36 and 14.3.8
+    * - :literal:`^7.15.2`
+      - :literal:`^2.5.1`
+      - :literal:`^2.13.0`
+    * - :literal:`^8.2`
+      - :literal:`^3.0.2`
+      - :literal:`^3.1`
 
-Composer constraints list the individual permitted versions. At runtime,
-HTTP Guard also checks the **complete combination**. Mixing entries from
-different rows is rejected. A new Core or Guzzle patch version requires
-qualification before it is supported; successful Composer resolution
-alone does not establish compatibility.
+The minima provide the required transport APIs. Composer must resolve a
+compatible complete graph within the supported majors. Each transfer
+lease allocates at most one native handle; hidden SDK retries cannot
+bypass the per-attempt policy boundary.
+
+The fixed Core/SDK fixtures record reproducible tests at specific versions,
+not the full set of installable dependencies. Current compatibility checks
+are described in :ref:`verification-semantic-support`. Historical kernel
+coverage spans PHP 8.2–8.5; future compatible PHP versions are permitted
+but are not claimed as already tested. Classic extension metadata permits
+TYPO3 13.4.36–14.3.99 and PHP 8.2.0–8.99.99. The classic TYPO3 upper bound
+is narrower than the Composer ranges and currently targets the 13.4/14.3
+LTS branches. The contiguous TER notation cannot express the separate
+Core 14 minimum: the runtime rejects Core 14.0–14.2 and 14.3 patches before
+14.3.8. Core's own PHP requirements and the same runtime checks apply.
 
 The controlled transport requires :literal:`ext-curl`, the
 :literal:`curl_multi_exec` function and, for its functionality, at least
@@ -107,7 +108,8 @@ vendor directory. The official TYPO3 installation supplies Guzzle,
 PSR components and Symfony.
 
 1. Prepare a supported classic TYPO3 installation. The official Core
-   archives contain the Guzzle 8 combination in the table.
+   archives tested at 13.4.36 and 14.3.8 contain Guzzle 8.2.0, Promises
+   3.0.2 and PSR-7 3.1.0, within the supported ranges.
 2. Import the extension ZIP using the Extension Manager's upload function.
    If the hosting environment does not offer that route, extract the
    complete archive into :file:`typo3conf/ext/nr_http_guard/` and activate
@@ -161,7 +163,9 @@ client in use. Successful diagnostics do not qualify an arbitrary SDK path.
 Updates and removal
 ===================
 
-Update the extension, address rules and dependency lock together.
+Update the project dependency lock within the supported ranges. A compatible
+dependency patch or minor does not require updating the extension. Review
+extension and address-rule updates separately when those components change.
 Rebuild caches and restart long-lived workers after each policy or
 package change. Existing clients retain their immutable configuration
 snapshot until they are replaced.

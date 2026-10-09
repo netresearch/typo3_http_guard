@@ -34,10 +34,13 @@ aus den mitgelieferten PSR-4-Metadaten.
 
 Die Extension enthält keine zweite Vendor-Kopie. Klassische Projekte nutzen
 die Dependencies des offiziellen Core-Archivs; Composer-Projekte ihre
-qualifizierten Locks. Der Runtimevertrag prüft weiterhin exakte vollständige
-SDK-Tuples. Das in beiden geprüften offiziellen Core-Archiven enthaltene
-Tuple 7.15.3 / 2.5.2 / 2.13.0 wird zusätzlich gezielt qualifiziert, nachdem
-der bisherige Stand es erwartungsgemäß gesperrt hat.
+Projekt-Locks. Die Produktionsconstraints verwenden semantische Bereiche
+mit ausdrücklichen Untergrenzen und Hauptversionen. Laufzeitprüfungen
+kontrollieren die echte Elternklasse, SDK-Fähigkeiten und Middleware-Struktur.
+Eine Factory über das öffentliche cURL-Interface begrenzt jede Lease auf
+einen nativen Versuch, unabhängig von privaten SDK-Wiederholungszählern.
+Feste Core-/SDK-Fixtures bleiben reproduzierbare Teststände. Die aktuell
+geprüften offiziellen Core-Archive liefern den Guzzle-8-Graph.
 
 Das Handbuch, Installationswege, Konfigurationsfelder, APIs und
 Betriebsgrenzen liegen vollständig unter :file:`Documentation/`. Zusätzliche
@@ -52,10 +55,12 @@ Folgen
 
 Die Runtime-Ladepfade und Testkonfigurationen ändern sich, die Policyregeln
 und APIs bleiben unverändert. Die zusätzliche klassische Dependency-Zeile
-erweitert ausschließlich das exakte qualifizierte Tuple; ungeprüfte
-Patchversionen und gemischte Versionen bleiben gesperrt. Die PHP-/SDK-Matrix
-wird mit dem zusammengeführten Quellstand erneut ausgeführt, ebenso echte
-Core-Archive, Wire- und Mutationstests.
+erweitert den reproduzierbaren Prüfumfang. Kompatible Patch- und Minor-Updates
+innerhalb der semantischen Bereiche benötigen keine neue Extension-Version.
+Echte API-Inkompatibilitäten und nicht unterstützte Hauptversionen werden
+abgelehnt. Feste und frei aufgelöste native CI-Zellen prüfen Core-, Wire-
+und mutationsrelevantes Verhalten. Jeder Lauf bleibt seinem Quellstand und
+Dependency-Lock zugeordnet.
 
 Das Paket gilt als GPL-2.0-or-later-Extension mit erhaltenen MIT-Hinweisen
 des eingebetteten Kerns. Der interne frameworkunabhängige Aufbau erlaubt

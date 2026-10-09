@@ -67,3 +67,26 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
+  gate:
+    name: CI gate
+    needs:
+      - php
+      - documentation
+      - workflow-lint
+      - dco
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Require every dependency to succeed
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          jq -e 'length > 0 and all(.[]; .result == "success")' <<< "$RESULTS"

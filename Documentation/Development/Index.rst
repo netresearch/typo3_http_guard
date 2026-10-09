@@ -44,14 +44,25 @@ Development uses the tools listed in :file:`composer.json`. These are not
 part of the classic runtime. The combined PHPUnit entry point uses both
 unit test directories:
 
-The qualified development tools are PHPUnit 11.5.57 and PHPStan 2.3.1.
-Tool updates require a separate review and rerun of the checks.
+Development constraints allow PHPUnit :literal:`^11.5`, PHPStan
+:literal:`^2.3` and the CI meta-package :literal:`^1.12`. Earlier recorded
+runs used PHPUnit 11.5.57 and PHPStan 2.3.1. Resolve a current compatible
+development graph and run the applicable checks.
 
-Current framework fixtures use the exact patched Core releases 13.4.36 and
-14.3.8 with explicit manifests under :file:`Build/Fixtures/`. Their four
-Composer bootstrap and wire cells, both classic installations, and the
-complete Unit/native suite with all three SDK tuples pass. Measured results
-are separated from historical reports in :ref:`verification-current-core`.
+Fixed framework fixtures use Core 13.4.36 and 14.3.8 with explicit manifests
+under :file:`Build/Fixtures/`. Their three historical SDK snapshots and the
+14 fixed CI cells preserve reproducible evidence. Native verification adds
+one Guzzle 7 minimum row and four floating rows, for eight rows in total.
+The four floating native
+Core 13/14 and Guzzle 7/8 rows resolve the latest compatible graphs on pull
+requests and weekly schedules. Semantic support and current source-bound
+results are recorded in :ref:`verification-semantic-support`; earlier
+snapshot counts remain in :ref:`verification-current-core`.
+The final reviewed source passes five complete Unit/native executions with
+201 tests and 2,405 assertions each on PHP 8.5.10 and PHPUnit 11.5.57,
+covering four distinct SDK version tuples. The genuine Composer Core matrix
+separately passes 168 processes, 140 wire assertions and 156 no-contact
+witnesses. See the source bindings and actual versions in the current proof.
 The patched dependency audits and Core 13 maintenance warning are documented
 in :ref:`dependency-report-current`.
 
@@ -119,9 +130,10 @@ The checks cover in particular:
 
 The PHP and SDK core matrix is separate from the framework matrix. A core
 test run on PHP 8.2 does not automatically qualify every TYPO3 version for
-that PHP version. New Core or SDK versions, handlers, protocols or permitted
-options require source comparison and repetition of the relevant policy,
-wire, integration and mutation tests.
+that PHP version. Compatible dependency patches and minors remain
+installable within the supported ranges. Changes to supported majors,
+minima, handlers, protocols or permitted options require source comparison
+and the relevant policy, wire, integration and mutation tests.
 
 The historical microbenchmark ran on the recorded local host. It does not
 satisfy the outstanding measurement on the named CI reference required by

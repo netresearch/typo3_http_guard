@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "review_verdict": "No new required code finding after fixing the Core return-by-reference ABI guard and completing the subsequent review.",
+  "fixed_finding": {
+    "id": "CORE_REFERENCE_ABI",
+    "red": "Two fatal subprocess failures for Core13 and readonlyCore14",
+    "green": "19 tests /31 assertions; reference drift now rejects with controlled transport_unsupported before replacement autoload"
+  },
+  "package": {
+    "file": "nr_http_guard_0.1.0-reviewed.zip",
+    "sha256": "5b21ba51e5059c3d345e80c8fa4d0e9f3f12e755e19e2976989df73c7348a295",
+    "members": 130,
+    "repeated_build_byte_identical": true,
+    "all_members_match_current_repository": true,
+    "all_members_match_both_classic_extractions": true,
+    "classic_extensions_have_no_source_symlinks_or_private_vendor": true,
+    "manual_pages": {
+      "English": 16,
+      "German": 13
+    },
+    "development_tests_keys_and_evidence_excluded": true
+  },
+  "genuine_core_matrices": {
+    "Composer": {
+      "status": "PASS",
+      "processes": 168,
+      "wire_assertions": 140,
+      "offline_zero_contact_witnesses": 156,
+      "summary_sha256": "5adf90b1bf5b924afeeb1c06e2b1880e894684aab90660f488c1a676cc2d70cf",
+      "independent_counter_comparison": true,
+      "per_fixture_processes": {
+        "core13g7": 42,
+        "core13g8": 42,
+        "core14g7": 42,
+        "core14g8": 42
+      }
+    },
+    "classic": {
+      "status": "PASS",
+      "processes": 84,
+      "wire_assertions": 70,
+      "offline_zero_contact_witnesses": 78,
+      "summary_sha256": "902facc19cde62a00274f07c7af889b1ee1264315e0d3cf9ef2522bd712ac447",
+      "independent_counter_comparison": true,
+      "per_fixture_processes": {
+        "classic13": 42,
+        "classic14": 42
+      }
+    }
+  },
+  "operative_source_binding": {
+    "files": 141,
+    "all_current_bytes_match_tested_native_snapshot": true,
+    "scope": "Current production, tests, fixture configuration, runner scripts and policy corpus; full member hashes independently bind the packaged manual."
+  },
+  "native_sdk_evidence": {
+    "actual_graphs": 5,
+    "each": "201 tests /2405 assertions; no failures, errors or skips",
+    "current_byte_identical_inputs": 106,
+    "comment_only_test_deltas": 2,
+    "all108_inputs_preserve_executable_php_or_exact_bytes": true,
+    "annotation_proof": "Both recorded files reconstructed byte-exactly by removing only the added two comment lines; non-comment PHP lexer streams also compare identically."
+  },
+  "sast_annotation_review": {
+    "status": "PASS",
+    "rule": "php.lang.security.exec-use.exec-use",
+    "annotated_calls": 2,
+    "finding_classification": "Controlled test subprocess execution",
+    "reasons": [
+      "Array-form proc_open invokes PHP_BINARY without a shell.",
+      "Runtime API source strings and optional flags come from the fixed nativeApiShapes provider; the repository path is the only argv path.",
+      "Core reference fixture arguments come from the fixed parentReferenceShapes provider and are validated as13/14 andvalue/reference by the fixture.",
+      "Synthetic TYPO3 classes and fixture globals exist only in disposable child processes.",
+      "The annotations are attached to the two specific proc_open statements; production methods and other rules remain analyzed."
+    ],
+    "executable_php_changes": false
+  },
+  "independent_negative_controls": {
+    "Core_floor_mutation": "detected",
+    "Core_future_minor_mutation": "detected",
+    "warning_handler_restoration_mutation": "detected",
+    "supported_range_controls": 4,
+    "stable_gate_controls": 15
+  },
+  "limits": [
+    "This proof records reviewed local source and package bytes; it is not a claim about a later GitHub HEAD.",
+    "Fresh final-head GitHub checks and its independent required approval remain necessary before merge.",
+    "The independent human security, operator pilot and CI-reference performance release gates remain separate.",
+    "No production or TER publication approval is claimed."
+  ]
+}

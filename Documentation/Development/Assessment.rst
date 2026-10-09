@@ -100,10 +100,12 @@ prose use English. Repository labels and topics follow the corresponding
 Netresearch TYPO3 extension conventions. Source headers retain the existing
 GPL-2.0-or-later extension and MIT embedded-kernel licensing.
 
-Supported PHP metadata is limited to PHP 8.2 through 8.5. Exact TYPO3 and
-SDK combinations continue to fail closed. The review loop replaces the
-previous Core targets with the patched 13.4.36 and 14.3.8 releases and
-repeats the relevant runtime qualification; it does not widen the Core range.
+Production metadata uses PHP :literal:`^8.2` and Core
+:literal:`^13.4.36 || ^14.3.8`. Compatible future patches and minors remain
+usable without a new extension release, subject to the actual Core/SDK API
+and capability checks. Historical PHP 8.2–8.5 coverage does not claim future
+PHP executions. See :ref:`verification-semantic-support` for the separate
+semantic-contract proof.
 
 GitHub enforces signed commits and the existing required review also applies
 to administrators. New CI workflows require actual execution before their
@@ -117,8 +119,9 @@ loads that shell. Core 14 and kernel checks have separate configurations.
 The kernel PHPUnit configuration now treats risky tests as failures. The
 container used for controlled wire fixtures is pinned by its image digest.
 
-Development tools are pinned to the actually executed PHPUnit 11.5.57 and
-PHPStan 2.3.1. The initial Guzzle 8 kernel analysis with PHPStan 2.3.1
+Development tools use :literal:`phpunit/phpunit:^11.5`,
+:literal:`phpstan/phpstan:^2.3` and the CI meta-package :literal:`^1.12`.
+The earlier executed tool versions were PHPUnit 11.5.57 and PHPStan 2.3.1. The initial Guzzle 8 kernel analysis with PHPStan 2.3.1
 reports five missing ``HandlerStack`` generic annotations and one redundant
 native-cleanup callable-check diagnostic. Those six findings were open at
 that recorded snapshot. The subsequent review loop adds precise generic
@@ -127,11 +130,12 @@ analysis-only :file:`Build/PhpStan/HandlerStack.stub` supplies
 Guzzle 7's missing class-level template and preserves its final contract;
 method and property signatures remain those of the installed SDK. It is
 excluded from the extension ZIP and never substitutes a runtime handler.
-Fresh kernel PHPStan 2.3.1 level 8 checks pass for all three SDK tuples
+At the earlier review snapshot, kernel PHPStan 2.3.1 level 8 checks passed
+for all three SDK tuples
 without suppressions or a baseline. Regression results are recorded
 separately from the initial assessment.
 
-The refreshed analyses against Core 13.4.36 and 14.3.8 pass all four
+That snapshot's refreshed analyses against Core 13.4.36 and 14.3.8 passed all four
 integration configurations and all three kernel SDK configurations with
 PHPStan 2.3.1 at level 8 and zero errors. These are new executions; the
 earlier six-diagnostic result remains in the frozen assessment records.
@@ -148,16 +152,38 @@ advisory exceptions. Core 13's upstream abandoned annotations warning
 remains visible under the explicit reporting policy described in
 :ref:`dependency-report-current`.
 
-All four current Composer fixtures pass their actual bootstrap, mode, CLI
+The prior review snapshot at commit :literal:`e69ddad` passed all four
+Composer fixtures through actual bootstrap, mode, CLI
 and wire matrix: 168 processes, 140 wire assertions and 156 offline
 TCP/HTTP no-contact witnesses. Both current classic archives separately
 pass 84 processes, 70 wire assertions and 78 offline witnesses. Real Core
 activation persists the extension's PackageStates and generates its
 class-loading cache. All three exact SDK tuples pass the refreshed combined
-Unit/native suite with 145 tests and 2,253 assertions each. See
-:ref:`verification-current-core` for the separate source-bound records.
+Unit/native suite with 145 tests and 2,253 assertions each. These counts
+belong to that snapshot before the semantic-contract change. See
+:ref:`verification-current-core` for that proof and
+:ref:`verification-semantic-support` for current source-bound results.
 Historical coverage figures and checkpoint totals are not assigned to
 these new runs.
+
+The final semantic-contract source passes five complete Unit/native
+executions covering four distinct SDK version tuples, including the Guzzle
+7 and 8 minima: **201 tests and 2,405 assertions each** on the pinned PHP
+8.5.10 image with PHPUnit 11.5.57. Each consists of 152 Unit tests with
+1,329 assertions and 49 integration tests with 1,076 assertions. All 108
+bound production, test and PHPUnit configuration inputs remain unchanged
+across the executions. The separately
+repeated Composer Core matrix passes **168 processes, 140 wire assertions
+and 156 offline no-contact witnesses** after the parent ABI correction.
+The shared curated Core 13 and Core 14 PHPStan profiles report zero errors.
+The by-reference parent ABI regression passes 19 tests and 31 assertions;
+the security-floor, future-minor acceptance and warning-handler restoration
+mutants fail their expected controls. These source-bound results and the
+actually executed version tuples are described in
+:ref:`verification-semantic-support`. Classic installation evidence is
+recorded separately in
+:file:`Build/Reports/Assessment/review-loop/semantic-qualification/summary.json`;
+earlier classic counts keep their historical source binding.
 
 .. _assessment-open-work:
 

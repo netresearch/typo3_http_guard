@@ -29,7 +29,7 @@ trait RawRequestGuardTrait
         }
         parent::__construct($guzzleFactory);
     }
-    /** @param array<string, mixed> $options */
+    /** @param array<array-key, mixed> $options */
     public function request(
         string $uri,
         string $method = 'GET',

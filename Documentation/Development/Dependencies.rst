@@ -22,21 +22,24 @@ On 9 October 2026, TYPO3 released
 `13.4.36 <https://get.typo3.org/release-notes/13.4.36>`_ and
 `14.3.8 <https://get.typo3.org/release-notes/14.3.8>`_. Both releases require
 :literal:`enshrined/svg-sanitize` **1.0.0**, which fixes the three recorded
-SVG advisories. The extension now restricts Core to these exact patches.
-It does not alias, replace or modify the framework's sanitizer dependency.
+SVG advisories. These patches are now the minimum Core versions in
+:literal:`^13.4.36 || ^14.3.8`; compatible updates remain installable.
+The extension does not alias, replace or modify the framework's sanitizer
+dependency.
 
-Fresh full Core/Backend/Frontend/Fluid resolutions for both patches with
-Guzzle 7.15.5 / Promises 2.5.3 / PSR7 2.13.1 and Guzzle 8.2.0 / Promises
-3.0.2 / PSR7 3.1.0 all select sanitizer 1.0.0. All four vulnerability
-audits report **zero advisory findings**. Composer's advisory blocking
+The pre-semantic-range review snapshot resolved full
+Core/Backend/Frontend/Fluid graphs for both patches with Guzzle 7.15.5 /
+Promises 2.5.3 / PSR7 2.13.1 and Guzzle 8.2.0 / Promises 3.0.2 / PSR7 3.1.0.
+All four graphs selected sanitizer 1.0.0, and their vulnerability audits
+reported **zero advisory findings**. Composer's advisory blocking
 remains enabled; active preparation and CI contain no ignored advisory IDs.
 
 The security workflow resolves two isolated production dependency graphs
-from the actual root manifest, one for each exact Core target. Its
-preflight checks reject differences between package constraints and the
-qualified fixtures before matrix overrides. After resolution, the installed
-runtime check validates the real Core, parent ABI and complete SDK tuple
-before generating a CycloneDX SBOM. Each Core job preserves its own manifest,
+from the actual root manifest, one for each supported Core major. Its
+preflight checks verify supported ranges and fixture consistency before
+matrix overrides. After resolution, the installed runtime check validates
+the actual Core parent API and the supported SDK minima, majors and
+capabilities before generating a CycloneDX SBOM. Each Core job preserves its own manifest,
 lock, SBOM and audit JSON. The audit fails on any vulnerability advisory or
 an unavailable audit service; abandoned-package metadata is reported
 separately. These workflow guards are implemented and locally checked;
@@ -69,8 +72,8 @@ historical audit output and Git history remain unchanged.
 Historical Composer resolution
 ==============================
 
-The security core embedded directly in the extension accepts three complete,
-exact combinations:
+The recorded security core accepted three complete exact combinations before
+the semantic-range correction:
 
 * Guzzle 7.15.3 / Promises 2.5.2 / PSR-7 2.13.0, from the then-official
   classic Core archives.
@@ -78,8 +81,9 @@ exact combinations:
 * Guzzle 8.2.0 / Promises 3.0.2 / PSR-7 3.1.0.
 
 There is no additional production package for the core. In addition to the
-Composer constraints, the runtime rejects unknown or mixed combinations
-before native send. Minimal test locks are resolved with PHP 8.2 platform
+Composer constraints, that historical runtime rejected unknown or mixed
+combinations before native send. The current semantic contract is described
+in :ref:`installation-requirements` and :ref:`verification-semantic-support`. Minimal test locks are resolved with PHP 8.2 platform
 requirements; higher PHP versions do not replace checking the lower bound.
 
 The recorded extension limited Core to 13.4.35 or 14.3.7. These Core versions
@@ -150,11 +154,17 @@ recorded by digest and by the actual executed PHP, OS and curl data.
 Updates
 =======
 
-Updating transport dependencies requires a new source review of handlers,
-options, redirects, proxy environment and hidden retry paths. Then the full
-applicable P0 corpus, real TYPO3/Vault paths and six targeted mutations for
-each Guzzle major are repeated. Only after that are the manifest and runtime
-tuples extended. A new Composer resolution alone is not approval.
+Compatible transport updates resolve within the semantic ranges without a
+new extension release. Keep the project lock and vendor security updates
+current. The fixed fixtures preserve source-bound regression evidence; four
+floating native Core 13/14 and Guzzle 7/8 rows resolve the latest compatible
+graphs in pull requests and weekly scheduled CI.
+
+Changes to supported majors, minima, handler APIs, allowed options or policy
+permissions require source review and the applicable policy, wire, Core and
+mutation tests. Hidden native retries are fenced by the public single-use
+factory rather than a private SDK counter. A successful resolution alone
+does not prove safe transport behavior.
 
 New address data is updated from the documented primary sources during
 development and release, checked and supplied as a versioned corpus. The

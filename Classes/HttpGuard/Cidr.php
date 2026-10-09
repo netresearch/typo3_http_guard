@@ -20,16 +20,16 @@ final readonly class Cidr
     }
     public static function address(string $address): string
     {
-        if ($address === '' || preg_match('/[^0-9a-fA-F:.]/D', $address)) {
+        if ($address === '' || preg_match('/[^0-9a-fA-F:.]/D', $address) === 1) {
             throw new PolicyException('invalid_target');
         }
-        if (!str_contains($address, ':') && !preg_match(
+        if (!str_contains($address, ':') && !(preg_match(
             '/^(0|[1-9][0-9]{0,2})(\.(0|[1-9][0-9]{0,2})){3}$/D',
             $address
-        )) {
+        ) === 1)) {
             throw new PolicyException('invalid_target');
         }
-        $packed = @inet_pton($address);
+        $packed = NativeOperation::attempt(static fn() => inet_pton($address));
         if ($packed === false) {
             throw new PolicyException('invalid_target');
         }
@@ -41,10 +41,10 @@ final readonly class Cidr
     }
     public static function parse(string $value, bool $strict = true): self
     {
-        if (!preg_match('~^([^/]+)/(0|[1-9][0-9]{0,2})$~D', $value, $parts)) {
+        if (!(preg_match('~^([^/]+)/(0|[1-9][0-9]{0,2})$~D', $value, $parts) === 1)) {
             throw new PolicyException('configuration_invalid');
         }
-        $raw = @inet_pton($parts[1]);
+        $raw = NativeOperation::attempt(static fn() => inet_pton($parts[1]));
         if ($raw === false || !str_contains($parts[1], ':') && self::address($parts[1]) !== $parts[1]) {
             throw new PolicyException('configuration_invalid');
         }

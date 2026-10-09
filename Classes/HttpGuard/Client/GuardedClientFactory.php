@@ -166,8 +166,8 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
         );
     }
     /**
-     * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key, mixed>): \GuzzleHttp\Promise\PromiseInterface> $stack
-     * @return list<array{callable,string}>
+     * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface> $stack
+     * @return list<array{callable(callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface): (callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface),string}>
      */
     private static function stackEntries(HandlerStack $stack): array
     {
@@ -176,7 +176,7 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
             $stack
         );
     }
-    /** @param list<array{callable,string}> $entries */
+    /** @param list<array{callable(callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface): (callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface),string}> $entries */
     private static function assertPosition(
         array $entries,
         BoundaryMiddleware $boundary,

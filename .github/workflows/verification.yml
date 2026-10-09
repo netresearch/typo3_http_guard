@@ -6,6 +6,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: 41 11 * * 1
 permissions:
   contents: read
 concurrency:
@@ -64,7 +66,7 @@ jobs:
           if-no-files-found: error
           retention-days: 14
   native-transport:
-    name: Native transport (Guzzle ${{ matrix.guzzle }})
+    name: Native transport (${{ matrix.label }})
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -73,15 +75,54 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - guzzle: '7.15.3'
+          - label: Guzzle 7.15.3
+            core: '14.3.8'
+            guzzle: '7.15.3'
             promises: '2.5.2'
             psr7: '2.13.0'
-          - guzzle: '7.15.5'
+            coverage-id: '7.15.3'
+          - label: Guzzle 7.15.5
+            core: '14.3.8'
+            guzzle: '7.15.5'
             promises: '2.5.3'
             psr7: '2.13.1'
-          - guzzle: '8.2.0'
+            coverage-id: '7.15.5'
+          - label: Guzzle 8.2.0
+            core: '14.3.8'
+            guzzle: '8.2.0'
             promises: '3.0.2'
             psr7: '3.1.0'
+            coverage-id: '8.2.0'
+          - label: Minimum Guzzle 7.15.2
+            core: 14.3.8
+            guzzle: 7.15.2
+            promises: 2.5.1
+            psr7: 2.13.0
+            coverage-id: minimum-g7
+          - label: Latest compatible TYPO3 13 / Guzzle 7
+            core: '^13.4.36'
+            guzzle: '^7.15.2'
+            promises: '^2.5.1'
+            psr7: '^2.13'
+            coverage-id: latest-core13-g7
+          - label: Latest compatible TYPO3 13 / Guzzle 8
+            core: '^13.4.36'
+            guzzle: '^8.2'
+            promises: '^3.0.2'
+            psr7: '^3.1'
+            coverage-id: latest-core13-g8
+          - label: Latest compatible TYPO3 14 / Guzzle 7
+            core: '^14.3.8'
+            guzzle: '^7.15.2'
+            promises: '^2.5.1'
+            psr7: '^2.13'
+            coverage-id: latest-core14-g7
+          - label: Latest compatible TYPO3 14 / Guzzle 8
+            core: '^14.3.8'
+            guzzle: '^8.2'
+            promises: '^3.0.2'
+            psr7: '^3.1'
+            coverage-id: latest-core14-g8
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
@@ -98,20 +139,35 @@ jobs:
           extensions: curl, dom, intl, mbstring, pdo_sqlite, sodium, xml
           coverage: pcov
           tools: composer:v2
-      - name: Install qualified dependency tuple
+      - name: Install dependency combination
         env:
           TEST_GUZZLE: ${{ matrix.guzzle }}
           TEST_PROMISES: ${{ matrix.promises }}
           TEST_PSR7: ${{ matrix.psr7 }}
+          TEST_CORE: ${{ matrix.core }}
         shell: bash
         run: |
           set -euo pipefail
-          composer require --no-update typo3/cms-core:14.3.8 \
+          composer require --no-update "typo3/cms-core:$TEST_CORE" \
             "guzzlehttp/guzzle:$TEST_GUZZLE" "guzzlehttp/promises:$TEST_PROMISES" \
             "guzzlehttp/psr7:$TEST_PSR7"
           composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
           composer config --no-plugins allow-plugins.typo3/class-alias-loader true
           composer install --prefer-dist --no-progress --no-interaction
+      - name: Analyze resolved kernel and TYPO3 signatures
+        env:
+          TEST_CORE: ${{ matrix.core }}
+          HTTP_GUARD_TEST_AUTOLOAD: ${{ github.workspace }}/vendor/autoload.php
+        shell: bash
+        run: |
+          set -euo pipefail
+          vendor/bin/phpstan analyse --configuration Build/phpstan-http-guard.neon --no-progress
+          if [[ "$TEST_CORE" == 13.* || "$TEST_CORE" == ^13.* ]]; then
+            vendor/bin/phpstan analyse --configuration Build/phpstan-typo3-core13.neon --no-progress
+          else
+            vendor/bin/phpstan analyse --configuration Build/phpstan-typo3.neon \
+              --autoload-file Build/phpstan-bootstrap14.php --no-progress
+          fi
       - name: Start isolated synthetic HTTP, TLS and mTLS targets
         shell: bash
         run: |
@@ -143,7 +199,7 @@ jobs:
       - name: Preserve fresh test coverage
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: native-coverage-${{ matrix.guzzle }}
+          name: native-coverage-${{ matrix.coverage-id }}
           path: ${{ runner.temp }}/coverage
           if-no-files-found: error
           retention-days: 14
@@ -188,3 +244,24 @@ jobs:
           override_branch: ${{ github.ref_name }}
           slug: ${{ github.repository }}
           disable_file_fixes: true
+  gate:
+    name: Verification gate
+    needs:
+      - package
+      - native-transport
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Require every dependency to succeed
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          jq -e 'length > 0 and all(.[]; .result == "success")' <<< "$RESULTS"

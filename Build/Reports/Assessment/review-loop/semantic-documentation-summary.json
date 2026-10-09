@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "source_base_head": "e69ddadf9812e8d8b76db825bbc35a78df5d4184",
+  "scope": "Final reviewed documentation working-tree snapshot relative to source_base_head; executable proof is bound separately to the actual tested inputs",
+  "renderer_digest": "sha256:fcf1ea87377ac401ce595b8c320c03b2b1bf2505ec0109561ca2fe56d7d71fc1",
+  "exit_code": 0,
+  "fail_on_log": true,
+  "english_pages": 16,
+  "german_pages": 13,
+  "warnings": 0,
+  "git_diff_check_exit_code": 0,
+  "markdown_reviewed_separately": true,
+  "tested_file_sha256": {
+    "CHANGELOG.md": "a08ab53563eb4a4a3ccebd2f55bf01234d9d4c382718e63ae16c4d6f620831bf",
+    "CONTRIBUTING.md": "15bf0877dc737e0ce6a21a3de1453b486049ae3ce49cd3cb4be35f0c771eacbf",
+    "Documentation/Decisions/SingleExtension.rst": "f1ee62eec40afc7373596f3795178c57742a27134c68a92ca4ee1333b36a3331",
+    "Documentation/Development/Assessment.rst": "cdf66d9f941addfb882a38b10081c8913744489a66129b6e212cb6013178d2e3",
+    "Documentation/Development/Dependencies.rst": "5bea6717322f51c1ef94fd664de85a7d5119ceb964a18437358c5c35a10edf78",
+    "Documentation/Development/Index.rst": "e6c3425b2b488677436d659393aaae9f95b4b90b741c41e703118dce6b3b67a2",
+    "Documentation/Development/Verification.rst": "c8e37e3f8e62bdb35384d4286c6de47db43b69eef5397b2701831d68849b7880",
+    "Documentation/Installation/Index.rst": "9cd5070815acfdfd123d52414a8eef02ba8a10f038108b79e3a33d2110f3c2a9",
+    "Documentation/Localization.de_DE/Decisions/SingleExtension.rst": "0802e68b47f054302cfea6f1921e53037cbef84fcee3dfbda422bc41ace8299d",
+    "Documentation/Localization.de_DE/Development/Index.rst": "434647da60a3cc4e84ad889643673fa7bc7363628b202ca1c2b9297503ed4a9a",
+    "Documentation/Localization.de_DE/Installation/Index.rst": "d52ef46d82ea8bec7e3afc999dd51adc09bb7e8285a6927115e19744d0c3bcb9",
+    "Documentation/Localization.de_DE/Operations/Reasons.rst": "97eb15147152385cf96a3b7b22e00e199e6a09c395fe9c517c3aab52f6df94fd",
+    "Documentation/Operations/Reasons.rst": "dc933125633b30a7c973fd28bbdcd10ae373bab788a0c637ae732179a31e93d5",
+    "README.md": "3c5b9d9574b5b89b0341fe4fc454e63482ebaea0c8a25ae26886a587d4c53904",
+    "SECURITY.md": "bad247506272814886c525b74855822a1320cb6b6b23f70e3edd13025138dbbc"
+  },
+  "final_current_full_suite_totals": {
+    "executions": 5,
+    "distinct_sdk_version_tuples": 4,
+    "tests_per_execution": 201,
+    "assertions_per_execution": 2405,
+    "unit_tests": 152,
+    "unit_assertions": 1329,
+    "integration_tests": 49,
+    "integration_assertions": 1076,
+    "errors": 0,
+    "failures": 0,
+    "skips": 0,
+    "php": "8.5.10",
+    "phpunit": "11.5.57",
+    "pinned_image": "ghcr.io/typo3/core-testing-php85@sha256:53df750b7e68ccce8da03a03bfe7cb57d732308b932f2ea92b1fd31679626bc6",
+    "bound_inputs": 108,
+    "inputs_identical_start_end": true,
+    "current_production_inputs_match_binding": true,
+    "subsequent_test_only_deltas": [
+      "Tests/HttpGuard/Unit/Transport/RuntimeSupportTest.php",
+      "Tests/Unit/RequestFactoryCompatibilityTest.php"
+    ],
+    "subsequent_test_only_sha256": {
+      "Tests/HttpGuard/Unit/Transport/RuntimeSupportTest.php": "90659e60d99a16d02e58fe4730978a43e2097222bf2a03f5f81c53c9881d2fb2",
+      "Tests/Unit/RequestFactoryCompatibilityTest.php": "108cb962420d196a85baa91b0dc1f5bca2fd131d874609c8813043ff2677efe8"
+    },
+    "evidence": "Build/Reports/Assessment/review-loop/semantic-runtime/summary.json",
+    "source_binding": "Build/Reports/Assessment/review-loop/semantic-runtime/source-binding.json",
+    "source_binding_sha256": "7cd6e31054c52b9c28d66f8ed70546aa5ca420cb3ca36146e9227a3e59068cbd"
+  },
+  "working_tree_state": "Documentation changes are uncommitted relative to source_base_head",
+  "renderer_log_sha256": "c92c76403b82e53dab59506ac06ce7b7be8ee669e1a19628c10b905cce5c435a",
+  "current_composer_core_process_totals": {
+    "processes": 168,
+    "wire_assertions": 140,
+    "tcp_http_no_contact_witnesses": 156,
+    "evidence": "work/range-correction/qualification/composer-final/production-matrix-summary.json"
+  },
+  "classic_results_policy": "Earlier 84/70/78 results remain explicitly bound to e69ddad; final classic installation evidence is recorded separately in semantic-qualification/summary.json without an advance pass claim in the documentation."
+}

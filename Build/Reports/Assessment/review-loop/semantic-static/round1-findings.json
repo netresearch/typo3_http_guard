@@ -1,0 +1,29 @@
+{
+  "version": "1.19.0",
+  "findings": [
+    {
+      "rule": "php.lang.security.exec-use.exec-use",
+      "path": "Tests/HttpGuard/Unit/Transport/RuntimeSupportTest.php",
+      "line": 117,
+      "severity": "ERROR"
+    },
+    {
+      "rule": "php.lang.security.exec-use.exec-use",
+      "path": "Tests/Unit/RequestFactoryCompatibilityTest.php",
+      "line": 57,
+      "severity": "ERROR"
+    }
+  ],
+  "scanned_paths": 485,
+  "parser_diagnostics": 58,
+  "primary_error_types": [
+    {
+      "type": "PartialParsing",
+      "count": 57
+    },
+    {
+      "type": "Syntax error",
+      "count": 1
+    }
+  ]
+}

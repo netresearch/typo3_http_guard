@@ -2,7 +2,7 @@
 
 ## Supported scope
 
-HTTP Guard is currently an unpublished alpha. There are no supported stable releases yet. The qualified PHP, TYPO3 and complete SDK tuples are listed in [the installation manual](Documentation/Installation/Index.rst). An independently changed SDK component is not a supported tuple.
+HTTP Guard is currently an unpublished alpha. There are no supported stable releases yet. Supported PHP, TYPO3 and SDK semantic ranges are listed in [the installation manual](Documentation/Installation/Index.rst). Compatible dependency patches and minors within those ranges can install and run without a new extension release. Individual components may update within their supported family when Composer resolves a compatible graph and the actual Core/SDK API and capability checks pass.
 
 The automated tests and agent reviews do not replace the independent human security review and operator pilot required before production use. See [the verification report](Documentation/Development/Verification.rst) and [the operations manual](Documentation/Operations/Index.rst).
 
@@ -18,6 +18,6 @@ Security checks must distinguish the production dependency graph from disposable
 
 Known exploitable dependency findings block release. An unreachable advisory service is an inconclusive audit, not a clean result. Any exception must document the advisory, affected scope, exploitability, owner and review date; do not replace an exact security qualification with a blanket ignore.
 
-Use the complete test matrix when changing URI normalization, address rules, DNS, middleware ordering, invocation lifetime, SDK tuples or the controlled transport. Tests generate synthetic certificate keys solely for isolated local fixtures. These are not production credentials. Do not commit generated credentials, private endpoints, runtime caches or fresh test secrets.
+Use the complete applicable test matrix when changing URI normalization, address rules, DNS, middleware ordering, invocation lifetime, supported dependency majors or minima, or the controlled transport. Fixed fixtures preserve exact execution snapshots; floating native rows check latest compatible Core/SDK graphs. Each lease must admit at most one native handle, independently of private SDK retry counters. Tests generate synthetic certificate keys solely for isolated local fixtures. These are not production credentials. Do not commit generated credentials, private endpoints, runtime caches or fresh test secrets.
 
 Release provenance, signed tags, SBOM review, registry publication and production approval remain separate release gates. The repository workflows do not publish to TER, Packagist or a production instance.

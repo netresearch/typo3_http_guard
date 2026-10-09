@@ -13,6 +13,7 @@ final readonly class ClientStackConfiguration
     /**
      * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key, mixed>): \GuzzleHttp\Promise\PromiseInterface> $stack
      * @param array<string,mixed> $defaultOptions
+     * @param (\Closure(): void)|null $registryAssertion
      */
     public function __construct(
         public HandlerStack $stack,

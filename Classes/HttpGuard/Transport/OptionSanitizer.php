@@ -261,7 +261,7 @@ final readonly class OptionSanitizer
     public static function processProxyNames(): array
     {
         $names = [];
-        foreach (getenv(null, true) ?: [] as $name => $value) {
+        foreach (self::processEnvironment() as $name => $value) {
             if (in_array(
                 strtolower((string) $name),
                 ['http_proxy', 'https_proxy', 'all_proxy', 'no_proxy'],
@@ -326,5 +326,13 @@ final readonly class OptionSanitizer
             }
         }
         return true;
+    }
+    /**
+     * PHP normalizes numeric environment names to integer array keys.
+     * @return array<array-key, string>
+     */
+    private static function processEnvironment(): array
+    {
+        return getenv(null, true);
     }
 }

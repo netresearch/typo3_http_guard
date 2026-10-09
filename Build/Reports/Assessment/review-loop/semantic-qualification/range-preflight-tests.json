@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "cases": 19,
+  "results": [
+    {
+      "case": "recorded core13 SDK7",
+      "accepted": true,
+      "expected": true
+    },
+    {
+      "case": "recorded core14 SDK8",
+      "accepted": true,
+      "expected": true
+    },
+    {
+      "case": "new independent SDK7 patches",
+      "accepted": true,
+      "expected": true
+    },
+    {
+      "case": "new independent SDK8 patches",
+      "accepted": true,
+      "expected": true
+    },
+    {
+      "case": "semantic SDK7 selection",
+      "accepted": true,
+      "expected": true
+    },
+    {
+      "case": "semantic SDK8 selection",
+      "accepted": true,
+      "expected": true
+    },
+    {
+      "case": "compatible later minor",
+      "accepted": true,
+      "expected": true
+    },
+    {
+      "case": "old core",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "unsafe SDK7 floor",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "unsupported next core",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "mismatched major graph",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "next SDK major",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "range widens below security floor",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "promise range widens below dependency floor",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "old package security floor",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "unsupported major added",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "removed known supported family",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "fixture excluded by new minimum",
+      "accepted": false,
+      "expected": false
+    },
+    {
+      "case": "classic provenance changed",
+      "accepted": false,
+      "expected": false
+    }
+  ],
+  "future_version_acceptance": "Version-policy probes only; no future upstream source execution is claimed"
+}

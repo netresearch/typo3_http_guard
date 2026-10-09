@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-2.0-or-later
 # SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
-"""Check the requested runtime before CI replaces it with individual matrix pins."""
+"""Validate supported package ranges and reproducible CI fixture selections."""
 import argparse
 import ast
 import json
@@ -20,6 +20,45 @@ def exact_versions(constraint):
     return {value.strip() for value in versions}
 
 
+def version_tuple(version):
+    if re.fullmatch(r'\d+\.\d+\.\d+', version) is None:
+        raise ValueError('expected a stable three-component version')
+    return tuple(map(int, version.split('.')))
+
+
+def caret_ranges(constraint):
+    # Project manifests use the documented caret notation. This is deliberately
+    # not a replacement for Composer's general-purpose constraint parser.
+    ranges = []
+    for value in constraint.split('||'):
+        match = re.fullmatch(r'\s*\^(\d+)\.(\d+)(?:\.(\d+))?\s*', value)
+        if match is None:
+            raise ValueError('package support must use caret ranges')
+        lower = tuple(int(part or 0) for part in match.groups())
+        if lower[0] == 0:
+            raise ValueError('runtime packages require stable major versions')
+        ranges.append((lower, (lower[0] + 1, 0, 0)))
+    return ranges
+
+
+def contains(ranges, version):
+    parsed = version_tuple(version)
+    return any(lower <= parsed < upper for lower, upper in ranges)
+
+
+def selected_range(ranges, selection):
+    if selection.startswith('^'):
+        selected = caret_ranges(selection)
+        if len(selected) != 1 or not any(
+                lower <= selected[0][0] and selected[0][1] <= upper
+                for lower, upper in ranges):
+            raise ValueError('CI-selected range is outside package support')
+        return selected[0][0]
+    if not contains(ranges, selection):
+        raise ValueError('CI-selected version is outside package support')
+    return version_tuple(selection)
+
+
 def check(root, core=None, sdk=None):
     requested = json.loads((root / 'composer.json').read_text())['require']
     manifests = [root / 'Build/Fixtures' / cell / 'composer.json'
@@ -29,19 +68,32 @@ def check(root, core=None, sdk=None):
     # This immutable SDK fixture remains the separately qualified 7.15.3 tuple;
     # it is not an installed dependency graph or a classic Core support claim.
     legacy = json.loads((root / 'verification/dependencies/combined-kernel/guzzle7ter.composer.json').read_text())['require']
-    allowed = {CORE: cores}
+    recorded = {CORE: cores}
     for package in SDK:
-        allowed[package] = set().union(*(exact_versions(row[package]) for row in [*required, legacy]))
-    for package, versions in allowed.items():
-        if exact_versions(requested[package]) != versions:
-            raise ValueError(f'{package}: requested versions differ from qualified fixtures')
-    if core is not None and core not in cores:
-        raise ValueError('CI-selected Core version is outside the requested qualified versions')
+        recorded[package] = set().union(*(exact_versions(row[package]) for row in [*required, legacy]))
+    floors = {
+        CORE: {13: (13, 4, 36), 14: (14, 3, 8)},
+        SDK[0]: {7: (7, 15, 2), 8: (8, 2, 0)},
+        SDK[1]: {2: (2, 5, 1), 3: (3, 0, 2)},
+        SDK[2]: {2: (2, 13, 0), 3: (3, 1, 0)},
+    }
+    declared = {}
+    for package, versions in recorded.items():
+        ranges = caret_ranges(requested[package])
+        if {lower[0] for lower, _ in ranges} != set(floors[package]):
+            raise ValueError(f'{package}: unsupported or missing major family')
+        if any(lower < floors[package][lower[0]] for lower, _ in ranges):
+            raise ValueError(f'{package}: range includes an unsupported dependency floor')
+        if not all(contains(ranges, version) for version in versions):
+            raise ValueError(f'{package}: recorded fixtures fall outside package support')
+        declared[package] = ranges
+    if core is not None:
+        selected_range(declared[CORE], core)
     if sdk is not None:
-        selected = tuple(sdk)
-        rows = [row for row in required if row[CORE] == core]
-        if selected not in {tuple(row[package] for package in SDK) for row in rows}:
-            raise ValueError('CI-selected Core/SDK tuple differs from qualified fixtures')
+        selected = [selected_range(declared[package], value)
+                    for package, value in zip(SDK, sdk)]
+        if tuple(value[0] for value in selected) not in {(7, 2, 2), (8, 3, 3)}:
+            raise ValueError('CI-selected SDK major families are incompatible')
 
     classic = json.loads((root / 'Build/Fixtures/classic-tarballs.json').read_text())
     assignments = [node for node in ast.parse((root / 'Build/Fixtures/prepare-classic.py').read_text()).body
@@ -56,9 +108,10 @@ def check(root, core=None, sdk=None):
     for version in cores:
         if classic[version]['sha256'] != releases[version] or classic[version]['url'] != f'https://get.typo3.org/{version}/tar.gz':
             raise ValueError('classic release provenance differs from executable fixture')
-    return {'status': 'PASS', 'requested_runtime_matches_qualified_fixtures': True,
-            'core_versions': sorted(cores),
-            'sdk_tuples': len({tuple(row[package] for package in SDK) for row in [*required, legacy]}),
+    return {'status': 'PASS', 'package_ranges_include_recorded_fixtures': True,
+            'recorded_core_versions': sorted(cores),
+            'recorded_sdk_tuples': len({tuple(row[package] for package in SDK) for row in [*required, legacy]}),
+            'selected_runtime_within_supported_ranges': True if core is not None or sdk is not None else None,
             'classic_provenance_matches': True}
 
 

@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = [
         ],
     ],
     'constraints' => [
-        'depends' => ['typo3' => '13.4.36-14.3.8', 'php' => '8.2.0-8.5.99'],
+        'depends' => ['typo3' => '13.4.36-14.3.99', 'php' => '8.2.0-8.99.99'],
         'conflicts' => [],
         'suggests' => [],
     ],

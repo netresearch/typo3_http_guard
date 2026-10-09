@@ -14,16 +14,110 @@ Verification report
     does not claim another execution against subsequent repository changes.
     See :ref:`development-assessment` for the separate repository assessment.
 
+.. _verification-semantic-support:
+
+Semantic support and current proof
+==================================
+
+Production supports the semantic ranges in :ref:`installation-requirements`.
+Compatible Core and SDK patches and minors do not require an extension
+release. PHP :literal:`^8.2` permits compatible future PHP versions, subject
+to Core's own requirements; this is not a claim that future PHP releases
+have already been executed in the test matrix.
+
+The Core guard checks the actual parent API before loading the replacement
+subclass, including readonly compatibility and the callable constructor.
+Additional optional constructor arguments remain compatible. SDK guards
+check supported minima and majors, public methods and the actual middleware
+storage shape. Missing capabilities and incompatible APIs fail closed.
+
+Each lease uses the public :literal:`CurlFactoryInterface` through a
+single-use factory. The attempt is consumed before body preparation; a
+second creation is denied before the delegate can allocate a native handle.
+Ordinary middleware retries and redirects create fresh leases. The native
+hidden retry fence no longer relies on Guzzle's private retry counter or
+private method names.
+
+The final reviewed executable source passes **201 tests and 2,405 assertions**
+in each of five complete Unit/native executions on the pinned PHP 8.5.10
+image with PHPUnit 11.5.57. Each execution comprises **152 Unit tests and
+1,329 assertions**, plus **49 integration tests and 1,076 assertions**,
+without errors, failures or skips. All 108 bound production, test and PHPUnit
+configuration inputs have identical hashes at the start and end of the runs.
+
+.. list-table:: Actually executed Core and SDK versions
+    :header-rows: 1
+
+    * - Execution
+      - Core
+      - Guzzle / Promises / PSR-7
+    * - Guzzle 7 minimum
+      - 13.4.36
+      - 7.15.2 / 2.5.1 / 2.13.0
+    * - Historical Guzzle 7 archive snapshot
+      - 14.3.8
+      - 7.15.3 / 2.5.2 / 2.13.0
+    * - Fixed Guzzle 7 snapshot
+      - 14.3.8
+      - 7.15.5 / 2.5.3 / 2.13.1
+    * - Fixed Guzzle 8 snapshot
+      - 14.3.8
+      - 8.2.0 / 3.0.2 / 3.1.0
+    * - Separately resolved Guzzle 8 minimum
+      - 14.3.8
+      - 8.2.0 / 3.0.2 / 3.1.0
+
+These are five executions covering four distinct SDK version tuples; the
+separate Guzzle 8 minimum resolution selected the same SDK versions as the
+fixed Guzzle 8 snapshot. They establish behavior for those actual versions,
+without claiming execution against future compatible releases.
+
+The final Composer Core matrix is a separate execution against the corrected
+parent ABI guard: **168 processes, 140 wire assertions and 156 offline
+TCP/HTTP no-contact witnesses**. The shared curated Core 13 and Core 14
+PHPStan profiles also finish with zero errors. The public Core by-reference
+ABI regression passes **19 tests and 31 assertions** after its four-case
+reproduction exposed the incompatible parent signatures. Security-floor,
+future-minor acceptance and warning-handler restoration mutants fail their
+expected controls. Classic installation evidence is recorded separately in
+:file:`Build/Reports/Assessment/review-loop/semantic-qualification/summary.json`;
+the classic results below retain their earlier source binding.
+
+At the earlier factory module handoff, the targeted suite passed
+**five tests and 23 assertions** on each
+of actual Guzzle 7.15.3, 7.15.5 and 8.2.0, using PHP 8.5.11 and PHPUnit
+11.5.57. A real public :literal:`CurlFactory::finish` control creates a
+second native handle without the fence; the guarded case rejects it before
+allocation. The tests do not tick the native handler or perform network I/O.
+Removing the fence causes the guarded witness to fail on both current
+Guzzle majors. These targeted counts are separate from full transport and
+genuine Core process suites.
+
+Three historical fixed SDK snapshots and 14 fixed CI cells are retained.
+The native verification matrix adds a Guzzle 7 minimum row alongside the
+three snapshots and four floating rows, for eight native rows in total.
+The four floating Core 13/14 and Guzzle 7/8 rows resolve the
+latest compatible graphs during pull requests and weekly scheduled runs.
+Preflight checks verify the declared ranges and fixture consistency;
+installed-runtime checks inspect the real resolved Core/SDK capabilities.
+Current source bindings and execution reports are recorded in the
+`semantic compatibility evidence
+<https://github.com/netresearch/typo3_http_guard/tree/main/Build/Reports/Assessment/review-loop/semantic-runtime>`_.
+Local results and committed workflow definitions do not establish success
+of a later remote run against another commit.
+
 .. _verification-current-core:
 
-Patched Core requalification
-============================
+Patched Core snapshot before semantic ranges
+============================================
 
-The current exact Core targets are **13.4.36 and 14.3.8**. Both patched
+The earlier review snapshot at commit :literal:`e69ddad` used exact Core
+targets **13.4.36 and 14.3.8**. The results in this section belong to that
+source before the semantic-contract correction. Both patched
 Core releases resolve SVG sanitizer 1.0.0 without advisory exceptions.
 RequestFactory and GuzzleClientFactory sources are byte-identical to their
-previous patch revisions. The runtime keeps its exact Core, parent ABI and
-complete SDK-combination checks.
+previous patch revisions. That snapshot retained exact Core and complete
+SDK-combination checks as well as its parent ABI checks.
 
 Fresh genuine Composer installations with Guzzle 7.15.5 / Promises 2.5.3 /
 PSR7 2.13.1 and Guzzle 8.2.0 / Promises 3.0.2 / PSR7 3.1.0 pass the
@@ -205,10 +299,11 @@ reference system; that part of T079 remains open. The later transport runs
 separately include the actual 4 MiB sink test without an additional guard
 body buffer.
 
-The verification qualifies the recorded Linux/PHP/SDK tuples and actual
+The historical verification qualifies its recorded Linux/PHP/SDK tuples and actual
 Core paths. It does not qualify every framework/PHP cross-product, hosting
-environment or future patch version. Unknown and mixed SDK tuples remain
-blocked before native send. Early bootstrap requests, third-party SDKs,
+environment or future patch version. That historical runtime blocked unknown
+and mixed SDK tuples before native send. Current semantic support is
+described in :ref:`verification-semantic-support`. Early bootstrap requests, third-party SDKs,
 request-owned handler replacement before middleware entry and direct socket
 calls need their own integration. Vault is integrated only through its
 explicitly selected adapter.

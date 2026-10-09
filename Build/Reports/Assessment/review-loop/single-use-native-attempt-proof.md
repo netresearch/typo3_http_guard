@@ -1,0 +1,15 @@
+# Single native attempt per lease
+
+This factory handoff snapshot is based on `e69ddadf9812e8d8b76db825bbc35a78df5d4184`. The base commit does not contain the new factory. Exact handoff file digests and execution data are in `single-use-native-attempt-proof.json`. Subsequent curated-profile corrections to TransferLease and the final combined full suites have separate source bindings; this targeted proof does not claim their execution.
+
+Both real installed Guzzle majors use a hidden rewind retry that can invoke the native handler again through `CurlFactory::finish`. The earlier lease prevented that with a private `_curl_retries` counter. A future compatible SDK update should not require an extension release merely because its private counter changes.
+
+`SingleUseCurlFactory` implements the existing public `CurlFactoryInterface`. It consumes the attempt before calling the inner factory, rejects every subsequent creation with `transport_unsupported`, and delegates release without changing the inner factory's cleanup contract. Each transfer lease receives its own decorator around `CurlFactory(0)`. Fresh connection, no reuse, DNS cache, destination pinning and explicit native handler cleanup remain in place. Ordinary middleware retries and redirects allocate fresh leases.
+
+All PHP creation and edits used guarded AST transactions. The first test construction failed before the factory existed; its real unfenced finish-path control already reached a second handle allocation. The control's original cleanup assertion was corrected to require the public release contract rather than a major-specific cancellation call count. Five final tests with 23 assertions pass on each actual SDK graph: 7.15.3 / 2.5.2 / 2.13.0, 7.15.5 / 2.5.3 / 2.13.1, and 8.2.0 / 3.0.2 / 3.1.0. The targeted runs use PHP 8.5.11 and PHPUnit 11.5.57.
+
+The public native control creates an actual cURL handle, calls real `CurlFactory::finish` with no response and zero error, and lets the installed `CurlMultiHandler` receive the hidden retry. Without the fence, the delegate creates a second native handle. With the fence, the second invocation is rejected before the delegate can allocate it. No private counter is supplied, no private retry method is reflected, and no native tick or network I/O occurs. This proves allocation behavior; it does not claim a second TCP or HTTP contact.
+
+A separate guarded-AST mutation removes the single-use rejection. The guarded public finish witness then fails on actual Guzzle 7.15.5 and 8.2.0, with the expected message that the hidden retry passed the fence. Normal first create/release, failed preparation, and preparation reentry are also covered. Only after these independent controls passed was the private retry-counter assignment removed. The malformed destination-pin witness remains in the production suite.
+
+The annotated final factory passes actual Guzzle 8 kernel PHPStan 2.3.1 at level 8 with zero errors and no baseline or suppression. Full minimum/current native and Core qualification is recorded separately; these targeted counts do not inherit prior full-suite coverage, mutation scores or network witnesses.

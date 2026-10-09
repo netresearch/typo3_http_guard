@@ -41,9 +41,9 @@ investigation; it does not permit an automatic replacement transport.
       - Unknown, foreign or expired binding.
       - Check profile validity and recreate the client correctly.
     * - :literal:`transport_unsupported`
-      - Missing cURL or cURL-multi, unknown SDK tuple or unqualified
-        transport capability.
-      - Check :literal:`doctor`, exact versions and PHP functions.
+      - Missing cURL or cURL-multi, unsupported dependency major or minimum,
+        incompatible Core/SDK API, or a second native attempt in one lease.
+      - Check :literal:`doctor`, supported ranges, APIs and PHP functions.
     * - :literal:`proxy_unsupported`
       - Explicit proxy option or actual proxy process variable.
       - Review the deployment environment and proxy needs with the operator.

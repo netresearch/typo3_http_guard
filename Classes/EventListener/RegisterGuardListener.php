@@ -11,6 +11,7 @@ use Netresearch\NrHttpGuard\Http\MiddlewareRegistry;
 use TYPO3\CMS\Core\Core\Event\BootCompletedEvent;
 final readonly class RegisterGuardListener
 {
+    /** @param \Closure(): MiddlewareRegistry $registry */
     public function __construct(
         private \Closure $registry,
         private \Netresearch\NrHttpGuard\Diagnostics\DiagnosticBootState $boot

@@ -1,0 +1,292 @@
+[
+  {
+    "type": "Syntax error",
+    "path": "integrations/nr-vault/vault-adapter.patch",
+    "line": null
+  },
+  {
+    "type": "PartialParsing",
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/VaultHttpClient.php",
+    "line": 78
+  },
+  {
+    "type": "PartialParsing",
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/SecureHttpClientFactory.php",
+    "line": 139
+  },
+  {
+    "type": "PartialParsing",
+    "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+    "line": 453
+  },
+  {
+    "type": "PartialParsing",
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/OAuth/OAuthTokenManager.php",
+    "line": 147
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Transport/OptionSanitizer.php",
+    "line": 19
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/GuardConfig.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php",
+    "line": 271
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/PolicyEngine.php",
+    "line": 17
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Transport/TransferLease.php",
+    "line": 37
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Client/GuardedClientFactory.php",
+    "line": 24
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+    "line": 30
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/StaticThenDnsResolver.php",
+    "line": 17
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Diagnostics/DiagnosticsService.php",
+    "line": 16
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/WireDnsQuery.php",
+    "line": 15
+  },
+  {
+    "type": "PartialParsing",
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php",
+    "line": 31
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php",
+    "line": 23
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Cidr.php",
+    "line": 11
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/DecisionReporter.php",
+    "line": 21
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Http/MiddlewareRegistry.php",
+    "line": 21
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/PolicyRegistry.php",
+    "line": 17
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Service/LibraryServiceFactory.php",
+    "line": 24
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Http/CoreStackProvider.php",
+    "line": 17
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Http/RawRequestGuardTrait.php",
+    "line": 20
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Client/PublicFetchClient.php",
+    "line": 15
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Tests/Fixtures/RecordingMiddleware.php",
+    "line": 15
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/EventListener/RegisterGuardListener.php",
+    "line": 12
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Http/RawRequestFactoryRegistration.php",
+    "line": 13
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Transport/SingleUseCurlFactory.php",
+    "line": 21
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/PolicyException.php",
+    "line": 27
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Transport/RequestEnvelope.php",
+    "line": 11
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Command/AbstractGuardCommand.php",
+    "line": 17
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Transport/GuardedTransferFactory.php",
+    "line": 14
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Documentation/Localization.de_DE/Api/_ErpClient.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Documentation/Api/_ErpClient.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Client/PublicFetchClient.php",
+    "line": 17
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Build/phpstan-bootstrap14.php",
+    "line": 16
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Client/ClientStackConfiguration.php",
+    "line": 11
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/EndpointProfile.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/DecisionEvent.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Client/MiddlewarePair.php",
+    "line": 14
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Client/EndpointClientFactory.php",
+    "line": 13
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/EndpointGrant.php",
+    "line": 11
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/ClientScope.php",
+    "line": 11
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Client/GuardedClientBinding.php",
+    "line": 14
+  },
+  {
+    "type": "PartialParsing",
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardTransferTicker.php",
+    "line": 17
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Client/Psr18Client.php",
+    "line": 13
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/ConnectionPlan.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Documentation/Api/_PublicDocument.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Documentation/Localization.de_DE/Api/_PublicDocument.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Resolution.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/DnsAnswer.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/Target.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/AddressClassification.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/PolicyDecision.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/HttpGuard/RequestPolicyContext.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Diagnostics/DiagnosticResult.php",
+    "line": 10
+  },
+  {
+    "type": "PartialParsing",
+    "path": "Classes/Http/GuardedRequestFactory14.php",
+    "line": 10
+  }
+]
