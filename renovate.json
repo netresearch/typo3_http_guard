@@ -25,7 +25,9 @@
     "addLabels": [
       "security",
       "deps-no-automerge"
-    ]
+    ],
+    "dependencyDashboardApproval": true,
+    "groupName": "qualified HTTP runtime"
   },
   "packageRules": [
     {
