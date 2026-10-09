@@ -158,20 +158,27 @@ jobs:
           egress-policy: audit
       - name: Install Cosign
         uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
-      - name: Check out the released commit for package verification
+      - name: Check out the trusted verifier revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ needs.verify-tag.outputs.source-sha }}
+          ref: ${{ github.sha }}
+          path: verifier
+          fetch-depth: 0
           persist-credentials: false
       - name: Derive the canonical package manifest without publishing another asset
+        working-directory: verifier
         env:
           CANONICAL_ZIP: ${{ runner.temp }}/nr-http-guard-canonical.zip
+          SOURCE_SHA: ${{ needs.verify-tag.outputs.source-sha }}
         shell: bash
         run: |
           set -euo pipefail
-          python3 Build/Scripts/build-extension.py --output "$CANONICAL_ZIP"
+          # Execute only verifier code from this workflow revision. The selected
+          # old release is read as package data, including no scripts or hooks.
+          python3 Build/Scripts/build-extension.py --source-revision "$SOURCE_SHA" --output "$CANONICAL_ZIP"
           jq -r '.files | to_entries[] | "\(.value)  \(.key)"' "$CANONICAL_ZIP.manifest.json" > expected-runtime.sha256
       - name: Verify exact assets, signatures, checksums and two archive attestations
+        working-directory: verifier
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}

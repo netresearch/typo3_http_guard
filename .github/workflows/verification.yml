@@ -48,6 +48,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python3 -m unittest discover -s Tests/Build -p 'test_*.py' -v
           python3 Build/Scripts/build-extension.py --output "$RUNNER_TEMP/nr_http_guard_0.1.0.zip"
           python3 Build/Scripts/build-extension.py --output "$RUNNER_TEMP/repeated.zip"
           cmp "$RUNNER_TEMP/nr_http_guard_0.1.0.zip" "$RUNNER_TEMP/repeated.zip"
