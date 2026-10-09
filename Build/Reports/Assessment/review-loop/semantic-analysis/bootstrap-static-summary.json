@@ -1,0 +1,32 @@
+{
+  "tool": "Opengrep 1.19.0",
+  "config": "auto",
+  "severities": [
+    "WARNING",
+    "ERROR"
+  ],
+  "rules_executed": 83,
+  "scope": [
+    "Build/phpstan-bootstrap13.php",
+    "Build/phpstan-bootstrap14.php"
+  ],
+  "actual_scanned": [
+    "Build/phpstan-bootstrap13.php",
+    "Build/phpstan-bootstrap14.php"
+  ],
+  "findings": 0,
+  "parser_diagnostics": 1,
+  "diagnostics": [
+    {
+      "path": "Build/phpstan-bootstrap14.php",
+      "type": "PartialParsing",
+      "message": "Syntax error at line Build/phpstan-bootstrap14.php:17:\n `readonly` was unexpected"
+    }
+  ],
+  "source_digests": {
+    "Build/phpstan-bootstrap13.php": "769609e46fa45421bb370ae18d82c1cb91f78467ddcdd7d8a01e13e939d04eec",
+    "Build/phpstan-bootstrap14.php": "28dc2dd31f584564950c2a53338bc05eb500509abd803d5df3056f17a341b542"
+  },
+  "production_source_changed": false,
+  "limit": "Core14 readonly declaration is partially parsed by Opengrep, as in the prior full scan. PHP lint and actual PHPStan validate both bootstraps. Client.stub metadata is parsed and checked by PHPStan. Final GitHub Security scans the full configured current-source scope."
+}

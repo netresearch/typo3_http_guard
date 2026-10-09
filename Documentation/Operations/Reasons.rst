@@ -1,63 +1,64 @@
 .. _operations-reasons:
 
-========================
-Ablehnungsgründe verstehen
-========================
+=======================
+Understanding denials
+=======================
 
-Reason-Codes sind feste technische Werte. Die folgende Zuordnung beschreibt
-die Untersuchung; sie erlaubt keinen automatischen Ersatztransport.
+Reason codes are fixed technical values. This mapping guides
+investigation; it does not permit an automatic replacement transport.
 
-.. list-table:: Codes von PolicyException
+.. list-table:: PolicyException codes
     :header-rows: 1
     :widths: 25 38 37
 
     * - Code
-      - Auslöser
-      - Nächster Prüfschritt
+      - Trigger
+      - Next check
     * - :literal:`invalid_target`
-      - Ungültige URI, verbotene rohe Syntax, Userinfo oder Fragment.
-      - Ursprünglichen String vor PSR-7-Erstellung untersuchen.
+      - Invalid URI, forbidden raw syntax, userinfo or fragment.
+      - Inspect the original string before PSR-7 construction.
     * - :literal:`scheme_forbidden`
-      - Anderes Scheme als HTTP/HTTPS.
-      - Tatsächlichen Anwendungspfad korrigieren.
+      - Scheme other than HTTP or HTTPS.
+      - Correct the actual application path.
     * - :literal:`authority_mismatch`
-      - Host-Header passt nicht zur kanonischen URI-Authority.
-      - Host-/Port-Overrides im aufrufenden Code entfernen.
+      - Host header does not match the canonical URI authority.
+      - Remove host or port overrides from the calling code.
     * - :literal:`address_forbidden`
-      - Verbotene Adressklasse, Betreiber-Sperre oder Kandidat außerhalb
-        eines gebundenen Netzes.
-      - Vollständige IP-Liste und exaktes Profil prüfen.
+      - Forbidden address class, operator restriction or candidate outside
+        a bound network.
+      - Check the complete IP list and exact profile.
     * - :literal:`resolution_unverified`
-      - DNS unvollständig, ungültig, leer, nicht erreichbar oder nicht
-        überprüfbar; bei Offline-Diagnose kein statischer Eintrag.
-      - DNS-Serverkonfiguration und statische Hostdaten prüfen.
+      - DNS incomplete, invalid, empty, unreachable or unverifiable;
+        no static entry during offline diagnostics.
+      - Check DNS server configuration and static host data.
     * - :literal:`resolution_limit`
-      - Adress-/CNAME-Grenze oder Zyklus.
-      - DNS-Kette beheben; keine Kandidaten abschneiden.
+      - Address or CNAME limit exceeded, or a cycle.
+      - Fix the DNS chain; do not truncate candidates.
     * - :literal:`endpoint_mismatch`
-      - Origin oder Methode entspricht nicht dem gebundenen Profil.
-      - Servicebindung, Zielport und Methode abgleichen.
+      - Origin or method differs from the bound profile.
+      - Compare service binding, target port and method.
     * - :literal:`grant_invalid`
-      - Unbekannte, fremde oder abgelaufene Bindung.
-      - Profilgültigkeit prüfen und Client korrekt neu erzeugen.
+      - Unknown, foreign or expired binding.
+      - Check profile validity and recreate the client correctly.
     * - :literal:`transport_unsupported`
-      - Fehlendes cURL/cURL-multi, unbekanntes SDK-Tuple oder ungeprüfte
-        Transportfähigkeit.
-      - :literal:`doctor`, konkrete Versionen und PHP-Funktionen prüfen.
+      - Missing cURL or cURL-multi, unsupported dependency major or minimum,
+        incompatible Core/SDK API, or a second native attempt in one lease.
+      - Check :literal:`doctor`, supported ranges, APIs and PHP functions.
     * - :literal:`proxy_unsupported`
-      - Explizite Proxyoption oder echte Proxy-Prozessvariable.
-      - Deployment-Umgebung und Proxyanforderung mit Betreiber klären.
+      - Explicit proxy option or actual proxy process variable.
+      - Review the deployment environment and proxy needs with the operator.
     * - :literal:`option_forbidden`
-      - Unbekannte oder unkontrollierte SDK-/Transportoption.
-      - RequestFactory-Defaults und Requestoptionen prüfen.
+      - Unknown or uncontrolled SDK or transport option.
+      - Check RequestFactory defaults and request options.
     * - :literal:`redirect_forbidden`
-      - Verbotene Redirect-Origin, Downgrade oder ungültige Redirectoption.
-      - Tatsächliche Location und Profilregeln untersuchen.
+      - Forbidden redirect origin, downgrade or invalid redirect option.
+      - Inspect the actual Location and profile rules.
     * - :literal:`configuration_invalid`
-      - Schemafehler, widersprüchliche Registry oder Middlewareposition.
-      - :literal:`config-check`, :literal:`doctor` und Serviceverdrahtung
-        prüfen; fehlerhaften Deploymentstand beheben.
+      - Schema error, inconsistent registry or middleware position.
+      - Check :literal:`config-check`, :literal:`doctor` and service wiring;
+        correct the invalid deployment configuration.
 
-Interne DNS-Fehler werden an der Resolvergrenze gegebenenfalls als
-:literal:`resolution_unverified` zusammengefasst. Ein Reason-Code ist kein
-vollständiger Netzwerkdiagnosebericht und enthält absichtlich keine Secrets.
+Internal DNS errors may be summarized as
+:literal:`resolution_unverified` at the resolver boundary. A reason
+code is not a complete network diagnostic report and deliberately
+contains no secrets.

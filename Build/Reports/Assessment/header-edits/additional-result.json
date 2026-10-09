@@ -1,0 +1,54 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "Configuration/Services.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "6e61eafcfd0daccd3d113994f192c4cacb582ac97eee1a51b8473d1477e3d1d9",
+            "afterSha256": "fd3556c11a0a0515bc8b0c4016cf7f56fe45c6245b4622c6085d46158442ffb5",
+            "changedLines": 4,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        },
+        {
+            "path": "Build/phpstan-bootstrap14.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "f16d7e5fba0a75ac3d81aaf16ad62a8c00d390162e46b31a30066c80d5ad39da",
+            "afterSha256": "d8f8fc0321d9d3d3b215221a277661e1e0e361dfabc1bbce9fca59a8cffe8b04",
+            "changedLines": 4,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

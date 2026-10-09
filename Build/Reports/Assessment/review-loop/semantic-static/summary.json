@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "completed_utc": "2026-10-09T12:12:21Z",
+  "source_base_head": "e69ddadf9812e8d8b76db825bbc35a78df5d4184",
+  "working_tree_changes_pending_commit": true,
+  "opengrep": {
+    "version": "1.19.0",
+    "findings": 0,
+    "scanned_paths": 496,
+    "parser_diagnostics": 58,
+    "primary_error_types": [
+      {
+        "type": "PartialParsing",
+        "count": 57
+      },
+      {
+        "type": "Syntax error",
+        "count": 1
+      }
+    ],
+    "binary_sha256": "1d69a41beb88e8e7917f26cc6a16c1edf298f31402807e6d1afbb5d8684c3590",
+    "workflow_config": "--config auto --error --severity WARNING --severity ERROR --exclude evidence --exclude verification/evidence --exclude specification/originals --exclude Resources/Private/HttpGuard/data/security-corpus/sources --exclude Tests/HttpGuard/Integration/certificates/ca.key --exclude Tests/HttpGuard/Integration/certificates/client.key --exclude Tests/HttpGuard/Integration/certificates/server.key",
+    "exit_code": 0,
+    "rules_run": 357,
+    "exhaustive_php_sast": false,
+    "vendor_scanned": false
+  },
+  "source_binding": {
+    "start_regular_files": 694,
+    "end_regular_files": 711,
+    "all_scanned_paths_bound_at_start": true,
+    "operative_source_changes": 0,
+    "inventory_delta_categories": [
+      {
+        "classification": "documentation",
+        "count": 3
+      },
+      {
+        "classification": "execution evidence",
+        "count": 19
+      }
+    ],
+    "full_inventories_are_literal_equal": false,
+    "note": "Published execution evidence and documentation prose changed during the scan. Operative code, PHP examples, scripts, workflows, dependency manifests and assets remained unchanged."
+  },
+  "round1": {
+    "exit_code": 1,
+    "findings": 2,
+    "rule": "php.lang.security.exec-use.exec-use",
+    "triage": "Test-only argument-array launches with constant PHP_BINARY, repository fixtures/code and controlled provider values",
+    "remediation": "Two exact call-site annotations; no rule or test-directory exclusion",
+    "annotation_semantic_tokens_equal": true,
+    "focused_revalidation": {
+      "status": "PASS",
+      "php": "8.5.11",
+      "phpunit": "11.5.57",
+      "guzzle": "8.2.0",
+      "promises": "3.0.2",
+      "psr7": "3.1.0",
+      "typo3_core": "14.3.8",
+      "tests": 48,
+      "assertions": 121,
+      "sdk_cases": 29,
+      "core_cases": 19,
+      "log": "annotation-focused-revalidation.log"
+    }
+  },
+  "synthetic_fixture_guard": {
+    "certificate_chain_verified": true,
+    "exact_certificate_files": 3,
+    "exact_key_files": 3,
+    "fixtures": [
+      "ca",
+      "client",
+      "server"
+    ],
+    "public_keys_match": true,
+    "status": "PASS",
+    "synthetic_ca": "CN=HTTP Guard SYNTHETIC TEST CA",
+    "source_sha256": "f1e3af549096a02aa046718b4ea6d8b6e6a53dd33d5b5a1bc6a980b1325933dc",
+    "negative_controls": 19,
+    "positive_controls": 2,
+    "all_21_control_assertions_pass": true,
+    "no_value_disclosure": true,
+    "guard_fixtures_and_security_workflow_bytes_match_at_end": true
+  },
+  "research_headers": {
+    "status": "PASS",
+    "captured_cookie_values_present": false
+  },
+  "target_inventory_diagnostic": {
+    "option": "--x-ls",
+    "exit_code": 2,
+    "limitation": "Packaged exit helper NameError after printing targets; not used as the scanner gate result"
+  },
+  "raw_execution_evidence": "work/review-loop/semantic-static"
+}

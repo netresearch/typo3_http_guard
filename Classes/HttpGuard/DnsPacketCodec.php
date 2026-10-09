@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard;
 
@@ -142,7 +146,7 @@ final class DnsPacketCodec
             }
             self::bounds($packet, $position, $byte);
             $label = substr($packet, $position, $byte);
-            if (preg_match('/[^A-Za-z0-9_-]/D', $label)) {
+            if (preg_match('/[^A-Za-z0-9_-]/D', $label) === 1) {
                 self::fail();
             }
             $expanded += $byte + 1;

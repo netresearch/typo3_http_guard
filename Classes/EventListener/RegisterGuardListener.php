@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\NrHttpGuard\EventListener;
 
@@ -7,6 +11,7 @@ use Netresearch\NrHttpGuard\Http\MiddlewareRegistry;
 use TYPO3\CMS\Core\Core\Event\BootCompletedEvent;
 final readonly class RegisterGuardListener
 {
+    /** @param \Closure(): MiddlewareRegistry $registry */
     public function __construct(
         private \Closure $registry,
         private \Netresearch\NrHttpGuard\Diagnostics\DiagnosticBootState $boot

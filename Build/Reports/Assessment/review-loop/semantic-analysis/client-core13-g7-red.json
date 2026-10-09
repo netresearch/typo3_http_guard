@@ -1,0 +1,33 @@
+{
+  "case_id": "core13-g7-red",
+  "graph_id": "core13-g7",
+  "observed_analysis_exit": 1,
+  "versions": {
+    "guzzlehttp/guzzle": "7.15.5",
+    "guzzlehttp/promises": "2.5.3",
+    "guzzlehttp/psr7": "2.13.1",
+    "typo3/cms-core": "v13.4.36",
+    "netresearch/typo3-ci-workflows": "v1.12.0",
+    "phpstan/phpstan": "2.3.1"
+  },
+  "result": {
+    "totals": {
+      "errors": 0,
+      "file_errors": 1
+    },
+    "files": {
+      "Classes/Http/CoreStackProvider.php": {
+        "errors": 1,
+        "messages": [
+          {
+            "message": "Call to deprecated method getConfig() of class GuzzleHttp\\Client:\nClientInterface::getConfig will be removed in guzzlehttp/guzzle:8.0.",
+            "line": 36,
+            "ignorable": true,
+            "identifier": "method.deprecated"
+          }
+        ]
+      }
+    },
+    "errors": []
+  }
+}

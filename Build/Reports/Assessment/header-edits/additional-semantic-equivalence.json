@@ -1,0 +1,22 @@
+{
+    "baseline_commit": "7a3a39bbaa763eb876ff4c9cdc743b689c557590",
+    "scope": "Additional license headers: runtime DI configuration and analysis-only Core14 bootstrap",
+    "files": [
+        {
+            "path": "Configuration\/Services.php",
+            "baseline_sha256": "6e61eafcfd0daccd3d113994f192c4cacb582ac97eee1a51b8473d1477e3d1d9",
+            "current_sha256": "fd3556c11a0a0515bc8b0c4016cf7f56fe45c6245b4622c6085d46158442ffb5",
+            "baseline_semantic_sha256": "783866b0b8bfac0522cfc252397a8de63ef1dc71832485a1efaf7000720f65e8",
+            "current_semantic_sha256": "783866b0b8bfac0522cfc252397a8de63ef1dc71832485a1efaf7000720f65e8",
+            "ast_equivalent": true
+        },
+        {
+            "path": "Build\/phpstan-bootstrap14.php",
+            "baseline_sha256": "f16d7e5fba0a75ac3d81aaf16ad62a8c00d390162e46b31a30066c80d5ad39da",
+            "current_sha256": "d8f8fc0321d9d3d3b215221a277661e1e0e361dfabc1bbce9fca59a8cffe8b04",
+            "baseline_semantic_sha256": "fbde9fa669d171c48f5fc00b21dbd6c00685a4602c3f76fd54514d759b82ab28",
+            "current_semantic_sha256": "fbde9fa669d171c48f5fc00b21dbd6c00685a4602c3f76fd54514d759b82ab28",
+            "ast_equivalent": true
+        }
+    ]
+}

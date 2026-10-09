@@ -6,7 +6,7 @@ cache-control: public, max-age=86400
 etag: W/"ab5ea01d2e12ddfd7c6bcaa3ecbcf239"
 link: <https://www.rfc-editor.org/info/rfc1112/>; rel="canonical"
 cf-r2-served: 1
-set-cookie: __cf_bm=SHZxorX031RCeHLVPGZ7sQQAYs58XSp5t3Nkk_GfV5Y-1791494657.9855793-1.0.1.1-HAEr3y84ko0p6mpr4lw2LqprCRAxQ1BAeL38Kwq0tJrC.i1QxGUMW3QWJ2vl70qFxSDhvQlmKUyG2MEwJDKvqaGynHKu9LZ7krbQLmxjTXdyODDHrRkzZtRkIL2jgXgL; HttpOnly; SameSite=None; Secure; Path=/; Domain=rfc-editor.org; Expires=Thu, 08 Oct 2026 21:54:18 GMT
+set-cookie: __cf_bm=[REDACTED]; HttpOnly; SameSite=None; Secure; Path=/; Domain=rfc-editor.org; Expires=Thu, 08 Oct 2026 21:54:18 GMT
 server: cloudflare
 cf-ray: a478362c69a4e50f-TXL
 alt-svc: h3=":443"; ma=86400

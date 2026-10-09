@@ -1,0 +1,27 @@
+{
+  "recorded_at_utc": "2026-10-09T08:30:12.076846+00:00",
+  "purpose": "Scoped TC-187 retest after metadata correction; final two comment-only files refreshed; initial135 results preserved unchanged. Subsequent routine documentation prose updates do not imply another full135 execution.",
+  "files": {
+    "composer.json": {
+      "before_sha256": "a8ec89b6454199f7657d705b0254b9aff6f072b6d8091c682877fdbb585b63e4",
+      "after_sha256": "72afb4fce657e4780282074856eef5a58bc504f2f3c07f200355252325186004",
+      "changed": true
+    },
+    "ext_emconf.php": {
+      "before_sha256": "86789586503f99cbe31d61490ce46c351b8fdb9eb1edb8b288c49ba15717d663",
+      "after_sha256": "86789586503f99cbe31d61490ce46c351b8fdb9eb1edb8b288c49ba15717d663",
+      "changed": false
+    },
+    "Configuration/Services.php": {
+      "before_sha256": "6e61eafcfd0daccd3d113994f192c4cacb582ac97eee1a51b8473d1477e3d1d9",
+      "after_sha256": "fd3556c11a0a0515bc8b0c4016cf7f56fe45c6245b4622c6085d46158442ffb5",
+      "changed": true
+    },
+    "Build/phpstan-bootstrap14.php": {
+      "before_sha256": "f16d7e5fba0a75ac3d81aaf16ad62a8c00d390162e46b31a30066c80d5ad39da",
+      "after_sha256": "d8f8fc0321d9d3d3b215221a277661e1e0e361dfabc1bbce9fca59a8cffe8b04",
+      "changed": true
+    }
+  },
+  "original_catalog_sha256": "63967aaf9ad2b68ee4636b1b713899abe8e6dc7b4d77db019d0572cc073a7176"
+}

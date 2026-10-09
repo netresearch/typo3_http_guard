@@ -1,0 +1,1 @@
+{"certificate_chain_verified": true, "exact_certificate_files": 3, "exact_key_files": 3, "fixtures": ["ca", "client", "server"], "public_keys_match": true, "status": "PASS", "synthetic_ca": "CN=HTTP Guard SYNTHETIC TEST CA"}

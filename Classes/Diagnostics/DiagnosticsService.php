@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\NrHttpGuard\Diagnostics;
 
@@ -11,6 +15,11 @@ use Netresearch\HttpGuard\TargetNormalizer;
 use Netresearch\NrHttpGuard\Configuration\ConfigurationLoader;
 final readonly class DiagnosticsService
 {
+    /**
+     * @param \Closure(): \Netresearch\NrHttpGuard\Http\MiddlewareRegistry $registry
+     * @param \Closure(): \Netresearch\HttpGuard\PolicyEngine $engine
+     * @param \Closure(): \Netresearch\HttpGuard\PolicyRegistry $policyRegistry
+     */
     public function __construct(
         private ConfigurationLoader $loader,
         private DiagnosticBootState $boot,
@@ -57,17 +66,10 @@ final readonly class DiagnosticsService
             $protected = $config->mode === 'enforce';
             $httpProxy = $GLOBALS['TYPO3_CONF_VARS']['HTTP']['proxy'] ?? null;
             $hasProxy = $variables !== [] || !in_array($httpProxy, [null, '', false, []], true);
-            $supported = $curlVersion !== null && version_compare($curlVersion, '7.59.0', '>=') && in_array(
-                $versions['guzzlehttp/guzzle'],
-                ['7.15.3', '7.15.5', '8.2.0'],
-                true
-            ) && in_array(
-                $versions['typo3/cms-core'],
-                ['v13.4.35', 'v14.3.7', '13.4.35', '14.3.7'],
-                true
-            );
+            $supported = true;
             try {
                 \Netresearch\HttpGuard\Transport\RuntimeSupport::assertSupported();
+                \Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility::assertSupported();
             } catch (PolicyException) {
                 $supported = false;
             }
@@ -203,7 +205,7 @@ final readonly class DiagnosticsService
         }
         return [
             'overdueEndpointReviews' => $overdue,
-            'tlsVerificationPolicyNotRequired' => !$config->data['tls']['requireVerification'],
+            'tlsVerificationPolicyNotRequired' => $config->data['tls']['requireVerification'] === false,
         ];
     }
 }

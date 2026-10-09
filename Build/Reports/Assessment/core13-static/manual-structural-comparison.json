@@ -1,0 +1,170 @@
+{
+  "pages": [
+    {
+      "path": "Api/Index.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Configuration/Endpoints.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 5,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Configuration/Index.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Configuration/Options.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Decisions/Index.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Decisions/SingleExtension.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Development/Index.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Development/Licenses.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Index.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Installation/Index.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Operations/Index.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Operations/Reasons.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    },
+    {
+      "path": "Security/Index.rst",
+      "anchors_exact": true,
+      "missing_anchors": [],
+      "missing_reference_targets": [],
+      "added_reference_targets": [],
+      "code_blocks_exact": true,
+      "literalinclude_targets_exact": true,
+      "configuration_fields_types_defaults_equivalent": true,
+      "translated_required_default_annotations": 0,
+      "api_signature_directives_exact": true
+    }
+  ],
+  "all_original_pages": 13,
+  "missing_anchors": 0,
+  "missing_reference_targets": 0,
+  "complete_technical_prose_review": "completed; no translation defect found",
+  "default_annotation_normalization": {
+    "German": "kein Default; erforderlich",
+    "English": "no default; required",
+    "count": 5
+  },
+  "package_php_upper_bound_alignment_recommendation": "Extension now requires >=8.2 <8.6; root owner advised to state package PHP8.2\u20138.5 explicitly in Installation separately from core syntax lower bound."
+}

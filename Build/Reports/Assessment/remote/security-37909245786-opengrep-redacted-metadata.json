@@ -1,0 +1,125 @@
+{
+  "tool": {
+    "name": "Opengrep OSS",
+    "version": null
+  },
+  "results": [
+    {
+      "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "path": "Build/Fixtures/prepare-classic.py",
+      "start_line": 44,
+      "end_line": 44,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "55b8b443aaddcb5d:1"
+      }
+    },
+    {
+      "rule": "trailofbits.python.tarfile-extractall-traversal.tarfile-extractall-traversal",
+      "path": "Build/Fixtures/prepare-classic.py",
+      "start_line": 49,
+      "end_line": 50,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "beed8ce692a34ba9:1"
+      }
+    },
+    {
+      "rule": "php.lang.security.exec-use.exec-use",
+      "path": "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php",
+      "start_line": 415,
+      "end_line": 419,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "ed3f7fea9d181a4a:1"
+      }
+    },
+    {
+      "rule": "php.lang.security.exec-use.exec-use",
+      "path": "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php",
+      "start_line": 470,
+      "end_line": 483,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "10677fababfe30a8:1"
+      }
+    },
+    {
+      "rule": "generic.secrets.security.detected-private-key.detected-private-key",
+      "path": "Tests/HttpGuard/Integration/certificates/ca.key",
+      "start_line": 1,
+      "end_line": 2,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "93f541d918c776a1:1"
+      }
+    },
+    {
+      "rule": "generic.secrets.security.detected-private-key.detected-private-key",
+      "path": "Tests/HttpGuard/Integration/certificates/client.key",
+      "start_line": 1,
+      "end_line": 2,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "c0cf4984558e794b:1"
+      }
+    },
+    {
+      "rule": "generic.secrets.security.detected-private-key.detected-private-key",
+      "path": "Tests/HttpGuard/Integration/certificates/server.key",
+      "start_line": 1,
+      "end_line": 2,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "b0bb32fd6ab72b30:1"
+      }
+    },
+    {
+      "rule": "php.lang.security.exec-use.exec-use",
+      "path": "Tests/HttpGuard/Unit/Policy/WireDnsQueryTest.php",
+      "start_line": 12,
+      "end_line": 16,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "54918bdae767be7e:1"
+      }
+    },
+    {
+      "rule": "php.lang.security.injection.tainted-filename.tainted-filename",
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+      "start_line": 41,
+      "end_line": 41,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "c1c2bc327203f64a:1"
+      }
+    },
+    {
+      "rule": "php.lang.security.injection.tainted-filename.tainted-filename",
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+      "start_line": 63,
+      "end_line": 63,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "bdacfde3568cb31a:1"
+      }
+    },
+    {
+      "rule": "php.lang.security.injection.tainted-filename.tainted-filename",
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+      "start_line": 92,
+      "end_line": 92,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "bdacfde3568cb31a:2"
+      }
+    },
+    {
+      "rule": "php.lang.security.exec-use.exec-use",
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+      "start_line": 95,
+      "end_line": 110,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "35a6350ce25b87d:1"
+      }
+    },
+    {
+      "rule": "php.lang.security.unlink-use.unlink-use",
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+      "start_line": 155,
+      "end_line": 155,
+      "partialFingerprints": {
+        "primaryLocationLineHash": "964d29a88cf521a:1"
+      }
+    }
+  ]
+}

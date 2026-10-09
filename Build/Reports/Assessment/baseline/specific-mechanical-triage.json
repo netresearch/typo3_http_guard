@@ -1,0 +1,475 @@
+{
+  "source_head": "7a3a39bbaa763eb876ff4c9cdc743b689c557590",
+  "checkpoints": [
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-24",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: Resources/Public/",
+      "fix_skill": "typo3-conformance",
+      "triage": "not_applicable",
+      "rationale": "Service extension contains no public assets or backendUI; Resources/Private data is intentional."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-35",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: Configuration/TCA/",
+      "fix_skill": "typo3-conformance",
+      "triage": "not_applicable",
+      "rationale": "No database tables/TCA defined."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-51",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: {ext_tables.php,Configuration/Backend/Modules.php,Configuration/Backend/AjaxRoutes.php,Configuration/Backend/Routes.php}",
+      "fix_skill": "typo3-conformance",
+      "triage": "not_applicable",
+      "rationale": "No backend routes/modules are registered; pure service extension permitted by checkpoint text."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-17",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern not found in Classes/Service/LibraryServiceFactory.php",
+      "fix_skill": "typo3-conformance",
+      "triage": "false_positive",
+      "rationale": "All76checkedPHP files have declare (strict_types=1); regex forbids legal whitespace. File token evidence in php-file-metadata.json."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-194",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "triage": "improvement",
+      "rationale": "vendor layout is rootvendor; the repository wrapper explicitly uses it. Adopt standard .Build only with consistent wrapper/fixture/bootstrap changes; not a runtime security defect."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-36",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern should not be in Classes/Configuration/ConfigurationLoader.php",
+      "fix_skill": "typo3-conformance",
+      "triage": "accepted_framework_seam",
+      "rationale": "TYPO3 global HTTP handler registry and SYSObjects are the actual supported integration surface. Typed policy EXTCONF is atomically snapshotted byConfigurationLoader; ExtensionConfiguration would not cover this nested contract. Kernel is isolated."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-53",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: Configuration/Icons.php",
+      "fix_skill": "typo3-conformance",
+      "triage": "not_applicable",
+      "rationale": "No extension backendUI/icons registered."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-90",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "triage": "improvement",
+      "rationale": "Centralized reusable CI controls missing; requiring a broad helper package must not silently replace qualifiedSDKtuples. Use suitable shared workflows and explicit configs."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-93",
+      "status": "skip",
+      "severity": "info",
+      "evidence": "No files match glob: {phpstan.neon,Build/phpstan.neon,Build/phpstan/phpstan.neon,phpstan.neon.dist} (checkpoint not applicable)",
+      "fix_skill": "typo3-conformance",
+      "triage": "unmeasured",
+      "rationale": "Conditional file absent; no execution of this check. MissingCI/security functionality is separately assessed and absence is not evidence of protection."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-141",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "triage": "duplicate",
+      "rationale": "Same centralCItools recommendation asTC-90."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-153",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "typo3-conformance",
+      "triage": "false_positive",
+      "rationale": "Direct checkpoint identifies3internalkernelinterfaces. Classes/HttpGuard excludedfromserviceprototype; LibraryServiceFactory constructs resolver/query and factory owns transfer/provider. ActualcompiledCoreDIpasses."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-59",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: Makefile",
+      "fix_skill": "typo3-conformance",
+      "triage": "optional",
+      "rationale": "Existing verified scripts are usable; Makefile is convenience ratherthanprotection."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-55",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "triage": "improvement",
+      "rationale": "Add canonicalGitHubissues metadata."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-56",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "triage": "improvement",
+      "rationale": "Add canonicalGitHubsource metadata."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-57",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "triage": "improvement",
+      "rationale": "Add canonicalGitHubhomepage metadata."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-65",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern found in Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.html (should be absent)",
+      "fix_skill": "typo3-conformance",
+      "triage": "false_positive",
+      "rationale": "Archived retrieved alibaba-imds researchHTML is not an active Fluidtemplate and is excludedfrominstallableZIP."
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-68",
+      "status": "fail",
+      "severity": "error",
+      "evidence": "Pattern found in Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.html (should be absent)",
+      "fix_skill": "typo3-conformance",
+      "triage": "false_positive",
+      "rationale": "Same inactive thirdpartysourceHTML; no servedtemplate/inlineJSbackendflow. Do not edit fetched originals to pass regex."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-01",
+      "status": "fail",
+      "severity": "error",
+      "evidence": "Command failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-02",
+      "status": "fail",
+      "severity": "error",
+      "evidence": "Command failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-03",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Command failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-04",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-05",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-06",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "triage": "future_release_gate",
+      "rationale": "No release is authorized/published yet. Provenance/release permissions remain obligations before futurerelease, not current controls."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-07",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Command failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-08",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-09",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-10",
+      "status": "skip",
+      "severity": "warning",
+      "evidence": "No files match glob: .github/workflows/*.yml (checkpoint not applicable)",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured",
+      "rationale": "Conditional file absent; no execution of this check. MissingCI/security functionality is separately assessed and absence is not evidence of protection."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-11",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Target file not found: .github/workflows/ci.yml",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-12",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Target file not found: .github/workflows/ci.yml",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-13",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Target file not found: .github/workflows/ci.yml",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-14",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: codecov.yml",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-15",
+      "status": "skip",
+      "severity": "info",
+      "evidence": "No files match glob: .github/workflows/*.yml (checkpoint not applicable)",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured",
+      "rationale": "Conditional file absent; no execution of this check. MissingCI/security functionality is separately assessed and absence is not evidence of protection."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-18",
+      "status": "fail",
+      "severity": "error",
+      "evidence": "Not found: .github/workflows/ci.yml",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-19",
+      "status": "skip",
+      "severity": "warning",
+      "evidence": "No files match glob: .github/workflows/*.yml (checkpoint not applicable)",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured",
+      "rationale": "Conditional file absent; no execution of this check. MissingCI/security functionality is separately assessed and absence is not evidence of protection."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-20",
+      "status": "skip",
+      "severity": "warning",
+      "evidence": "No files match glob: .github/workflows/*.yml (checkpoint not applicable)",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured",
+      "rationale": "Conditional file absent; no execution of this check. MissingCI/security functionality is separately assessed and absence is not evidence of protection."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-21",
+      "status": "skip",
+      "severity": "warning",
+      "evidence": "No files match glob: .github/workflows/*.yml (checkpoint not applicable)",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured",
+      "rationale": "Conditional file absent; no execution of this check. MissingCI/security functionality is separately assessed and absence is not evidence of protection."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-22",
+      "status": "fail",
+      "severity": "error",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-23",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-24",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-26",
+      "status": "skip",
+      "severity": "info",
+      "evidence": "No files match glob: .github/workflows/*.yml (checkpoint not applicable)",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured",
+      "rationale": "Conditional file absent; no execution of this check. MissingCI/security functionality is separately assessed and absence is not evidence of protection."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-27",
+      "status": "skip",
+      "severity": "warning",
+      "evidence": "No files match glob: .github/workflows/*.yml (checkpoint not applicable)",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured",
+      "rationale": "Conditional file absent; no execution of this check. MissingCI/security functionality is separately assessed and absence is not evidence of protection."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-32",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Target file not found: codecov.yml",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-44",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Not found: CHANGELOG.md",
+      "fix_skill": "enterprise-readiness",
+      "triage": "confirmed_gap",
+      "rationale": "Required recurringCI/dependency/coverage/badge/changelogcontrol is absent. Configurecontrol first, add truthfullymeasured badgeslater."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-54",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Target file not found: .github/workflows/release.yml",
+      "fix_skill": "enterprise-readiness",
+      "triage": "future_release_gate",
+      "rationale": "No release is authorized/published yet. Provenance/release permissions remain obligations before futurerelease, not current controls."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-70",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Command failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured_general_mutation_metric",
+      "rationale": "18targetedsecuritymutants killed is real evidence but does not establishInfectionMSI>=90orcoveredMSI>=90. Add a deliberate generalmutationassessment before claimingthose thresholds."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-71",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured_general_mutation_metric",
+      "rationale": "18targetedsecuritymutants killed is real evidence but does not establishInfectionMSI>=90orcoveredMSI>=90. Add a deliberate generalmutationassessment before claimingthose thresholds."
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-72",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "enterprise-readiness",
+      "triage": "unmeasured_general_mutation_metric",
+      "rationale": "18targetedsecuritymutants killed is real evidence but does not establishInfectionMSI>=90orcoveredMSI>=90. Add a deliberate generalmutationassessment before claimingthose thresholds."
+    }
+  ]
+}

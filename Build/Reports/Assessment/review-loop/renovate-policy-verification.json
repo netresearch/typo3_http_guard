@@ -1,0 +1,714 @@
+{
+  "renovateVersion": "44.148.4",
+  "builtInDefaultsIncluded": true,
+  "vulnerabilityForceAppliedAfterPackageRules": true,
+  "qualificationCases": 100,
+  "ignoredPathsVerified": 11,
+  "currentManifestsRetained": [
+    "composer.json",
+    ".github/workflows/ci.yml",
+    ".github/workflows/security.yml"
+  ],
+  "cases": [
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "patch",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "patch",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "minor",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "minor",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "major",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "major",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "pin",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "pin",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "pinDigest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "pinDigest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "digest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "digest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "bump",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "bump",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "rollback",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "rollback",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "replacement",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-core",
+      "updateType": "replacement",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "patch",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "patch",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "minor",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "minor",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "major",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "major",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "pin",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "pin",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "pinDigest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "pinDigest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "digest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "digest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "bump",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "bump",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "rollback",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "rollback",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "replacement",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "typo3/cms-extbase",
+      "updateType": "replacement",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "patch",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "patch",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "minor",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "minor",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "major",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "major",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "pin",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "pin",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "pinDigest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "pinDigest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "digest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "digest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "bump",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "bump",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "rollback",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "rollback",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "replacement",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/guzzle",
+      "updateType": "replacement",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "patch",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "patch",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "minor",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "minor",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "major",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "major",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "pin",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "pin",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "pinDigest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "pinDigest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "digest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "digest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "bump",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "bump",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "rollback",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "rollback",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "replacement",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/promises",
+      "updateType": "replacement",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "patch",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "patch",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "minor",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "minor",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "major",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "major",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "pin",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "pin",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "pinDigest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "pinDigest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "digest",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "digest",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "bump",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "bump",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "lockFileMaintenance",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "rollback",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "rollback",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "replacement",
+      "vulnerability": false,
+      "automerge": false,
+      "dashboardApproval": true
+    },
+    {
+      "packageName": "guzzlehttp/psr7",
+      "updateType": "replacement",
+      "vulnerability": true,
+      "automerge": false,
+      "dashboardApproval": true
+    }
+  ]
+}

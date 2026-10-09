@@ -56,7 +56,10 @@
       "claims": [
         "100.100.100.200 ECS metadata target"
       ],
-      "evidence_kind": "downloaded primary provider HTML"
+      "evidence_kind": "downloaded primary provider HTML",
+      "headers_file": "sources/alibaba-imds.headers.txt",
+      "headers_sha256": "7ab563ec1c52e4d62bbc16cb93df30926e12c34180421543f692a630844a68ba",
+      "headers_sanitization": "All Set-Cookie values redacted; historical anonymous public-document response is not reused as credentials."
     },
     {
       "id": "azure-platform",
@@ -69,7 +72,10 @@
         "168.63.129.16 Azure platform WireServer target"
       ],
       "scope_note": "Guard HTTP target hard deny only; does not prescribe a machine firewall rule or change Azure VM platform networking.",
-      "evidence_kind": "downloaded primary provider HTML"
+      "evidence_kind": "downloaded primary provider HTML",
+      "headers_file": "sources/azure-platform.headers.txt",
+      "headers_sha256": "d1e2303a4fbe7bbf2846e084c38dd6837f44f188b6ef53d5198bafd7a0443818",
+      "headers_sanitization": "Set-Cookie values redacted"
     },
     {
       "id": "rfc4291",
@@ -81,7 +87,10 @@
         "2.5.5.1 deprecated IPv4-compatible IPv6",
         "2.7 multicast ff00::/8"
       ],
-      "evidence_kind": "downloaded primary RFC text"
+      "evidence_kind": "downloaded primary RFC text",
+      "headers_file": "sources/rfc4291.headers.txt",
+      "headers_sha256": "086808d0f4d7645e651d2ad2dbe4655db79d2dba9088b25c92ffe95e5f149050",
+      "headers_sanitization": "Set-Cookie values redacted"
     },
     {
       "id": "rfc1112",
@@ -92,7 +101,10 @@
       "sections": [
         "4 IPv4 host groups multicast 224.0.0.0/4"
       ],
-      "evidence_kind": "downloaded primary RFC text"
+      "evidence_kind": "downloaded primary RFC text",
+      "headers_file": "sources/rfc1112.headers.txt",
+      "headers_sha256": "e9330ff3c87690cbc22c8f034ef508ff9fdb6ce5d7e9661383e603abef87754a",
+      "headers_sanitization": "Set-Cookie values redacted"
     }
   ],
   "derived_files": [

@@ -1,0 +1,86 @@
+{
+  "initial_official_full_runs": {
+    "typo3-conformance": {
+      "total": 98,
+      "pass": 84,
+      "fail": 13,
+      "skip": 1,
+      "blocked": 0,
+      "preconditions_declared": 1,
+      "preconditions_ignored": false,
+      "gated_out": 0
+    },
+    "enterprise-readiness": {
+      "total": 37,
+      "pass": 25,
+      "fail": 12,
+      "skip": 0,
+      "blocked": 0,
+      "preconditions_declared": 0,
+      "preconditions_ignored": false,
+      "gated_out": 0
+    },
+    "combined": {
+      "total": 135,
+      "pass": 109,
+      "fail": 25,
+      "skip": 1,
+      "blocked": 0
+    }
+  },
+  "scoped_followup": {
+    "checkpoint": "TC-187",
+    "summary": {
+      "total": 1,
+      "pass": 1,
+      "fail": 0,
+      "skip": 0,
+      "blocked": 0,
+      "preconditions_declared": 1,
+      "preconditions_ignored": false,
+      "gated_out": 0
+    },
+    "original_command_and_precondition_preserved": true,
+    "not_a_second_full_catalog_run": true
+  },
+  "effective_merged_statuses": {
+    "typo3-conformance": {
+      "total": 98,
+      "pass": 85,
+      "fail": 12,
+      "skip": 1,
+      "blocked": 0
+    },
+    "enterprise-readiness": {
+      "total": 37,
+      "pass": 25,
+      "fail": 12,
+      "skip": 0,
+      "blocked": 0
+    },
+    "combined": {
+      "total": 135,
+      "pass": 110,
+      "fail": 24,
+      "skip": 1,
+      "blocked": 0
+    }
+  },
+  "remaining_real_readiness_limits": [
+    "Six current Guzzle8 kernel PHPStan level8 diagnostics (five missing HandlerStack generic annotations, one callable capability check); no suppressions or runtime cleanup weakening applied.",
+    "Strict dependency audit remains red with three upstream enshrined/svg-sanitize advisories.",
+    "Live pushed GitHub workflows, external coverage upload and registered OpenSSF badges are pending/unverified.",
+    "General Infection MSI and covered MSI are unmeasured; eighteen targeted mutation witnesses are a different scoped measurement.",
+    "Coding-style gate, independent human G6 and an actual operator pilot remain open.",
+    "Release provenance/attestation is unimplemented and no release approval is claimed."
+  ],
+  "independent_current_execution_evidence": {
+    "full_suite": "145 tests / 2253 assertions, 80.80% measured line coverage; branch coverage unmeasured (work/assessment/ci-final/README.md).",
+    "unit_only_baseline": "57.25% line coverage, a different earlier scope; not compared as identical suites.",
+    "core13_static": "Real Core13 level8 passes on all three exact SDK tuples, separate execution evidence.",
+    "workflow_syntax": "Local actionlint and offline zizmor pass; no remote workflow success inferred."
+  },
+  "source_binding": "source-binding.json",
+  "triage": "triage.json",
+  "no_source_or_remote_mutations_by_this_assessment": true
+}

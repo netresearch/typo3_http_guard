@@ -1,55 +1,55 @@
 .. _configuration:
 
 =============
-Konfiguration
+Configuration
 =============
 
-Die Policy liegt ausschließlich unter
+The policy is configured exclusively in
 :php:`$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['nr_http_guard']`.
-Sie wird als unveränderlicher Snapshot geladen. Änderungen an
-:literal:`HTTP.allowed_hosts` oder Vaults bisherigen Hostlisten erzeugen
-keine HTTP-Guard-Endpoint-Freigabe.
+It is loaded as an immutable snapshot. Changes to
+:literal:`HTTP.allowed_hosts` or Vault's legacy host lists do not
+create an HTTP Guard endpoint permission.
 
-Die Beispiele gehören in die Projektkonfiguration, etwa
-:file:`config/system/additional.php` oder bei entsprechendem klassischem
-Projektlayout in :file:`typo3conf/AdditionalConfiguration.php`.
-HTTP Guard bietet keinen Backend-Editor für Sicherheitsfreigaben.
+Add the examples to the project configuration, for example
+:file:`config/system/additional.php` or, in a matching classic project
+layout, :file:`typo3conf/AdditionalConfiguration.php`. HTTP Guard does
+not provide a backend editor for security permissions.
 
 .. _configuration-example:
 
-Internes Endpoint-Beispiel
+Internal endpoint example
 =========================
 
-Der Beispielhost und seine Adresse sind durch die konkret genehmigte
-Produktionsintegration zu ersetzen. Das Profil wirkt nur für einen Client,
-den die vertrauenswürdige Serviceverdrahtung an :literal:`erp-orders` bindet.
+Replace the example host and address with the approved production
+integration. The profile applies only to a client that trusted service
+wiring binds to :literal:`erp-orders`.
 
 .. literalinclude:: _Policy.php
     :language: php
-    :caption: Projektkonfiguration für einen gebundenen ERP-Client
+    :caption: Project configuration for a bound ERP client
 
-Die statische Auflösung ist optional. Ohne sie erfolgt die kontrollierte
-DNS-Auflösung. Alle gefundenen IP-Adressen müssen zum erlaubten Netz passen.
-Ein gültiger öffentlicher Kandidat neben einem verbotenen privaten Kandidaten
-macht die Antwort nicht zulässig.
+Static resolution is optional. Without it, the controlled DNS resolver
+is used. Every resolved address must match the permitted network. A
+valid public candidate alongside a forbidden private candidate does
+not make the response acceptable.
 
 .. _configuration-schema:
 
-Schema und Validierung
-======================
+Schema and validation
+=====================
 
-Unbekannte Felder, falsche Typen, ungültige Origins und ungültige CIDRs führen
-zu :literal:`configuration_invalid`. Zeichenketten wie :literal:`"5"` oder
-:literal:`"true"` ersetzen keine Integer oder Boolean. :literal:`CONNECT`
-ist als Endpoint-Methode verboten. Profil-IDs bestehen aus höchstens 64
-ASCII-Zeichen; erlaubt sind Buchstaben, Ziffern, Punkt, Unterstrich und
-Bindestrich, beginnend mit Buchstabe oder Ziffer.
+Unknown fields, incorrect types, invalid origins and invalid CIDRs
+produce :literal:`configuration_invalid`. Strings such as
+:literal:`"5"` or :literal:`"true"` do not substitute for integers or
+booleans. :literal:`CONNECT` is forbidden as an endpoint method.
+Profile IDs contain at most 64 ASCII characters: letters, digits,
+dots, underscores and hyphens, starting with a letter or digit.
 
-Die normalisierte Policy und der SHA-256-Hash der mitgelieferten Adressregeln
-bestimmen die Revision. Gleichwertige Schreibweisen werden normalisiert.
-Eine geänderte Regeldatei erzeugt eine andere Revision. Zur Verwendung neuer
-Revisionen müssen Registry, Engine und Clients neu erzeugt werden; daraus
-folgt keine automatische Widerrufsfunktion für alte Worker.
+The normalized policy and the SHA-256 hash of the supplied address rules
+determine the revision. Equivalent forms are normalized. Changing the
+rule file produces a different revision. To use a new revision,
+recreate the registry, engine and clients. This does not automatically
+revoke clients in existing workers.
 
 .. toctree::
     :maxdepth: 1

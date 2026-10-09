@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard;
 
@@ -12,6 +16,7 @@ final class DecisionReporter implements DecisionReporterInterface
     private float $windowStart = -1;
     private int $windowCount = 0;
     private int $loggerFailures = 0;
+    /** @param (\Closure(array<string,mixed>): void)|null $logger */
     public function __construct(
         private readonly GuardConfig $config,
         private readonly ClockInterface $clock,
@@ -73,7 +78,7 @@ final class DecisionReporter implements DecisionReporterInterface
             'scheme' => in_array($event->scheme, ['http', 'https'], true) ? $event->scheme : null,
             'port' => $event->port !== null && $event->port >= 1 && $event->port <= 65535 ? $event->port : null,
             'resolverSource' => self::safe($event->resolverSource),
-            'correlationId' => preg_match('/^[0-9a-f]{24,64}$/D', $event->correlationId) ? $event->correlationId : null,
+            'correlationId' => preg_match('/^[0-9a-f]{24,64}$/D', $event->correlationId) === 1 ? $event->correlationId : null,
         ];
         if ($event->host !== null) {
             try {
@@ -108,6 +113,6 @@ final class DecisionReporter implements DecisionReporterInterface
     }
     private static function safe(?string $value): ?string
     {
-        return $value !== null && preg_match('/^[a-zA-Z0-9_+-]{1,64}$/D', $value) ? $value : null;
+        return $value !== null && preg_match('/^[a-zA-Z0-9_+-]{1,64}$/D', $value) === 1 ? $value : null;
     }
 }

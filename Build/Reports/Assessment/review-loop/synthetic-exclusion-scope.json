@@ -1,0 +1,160 @@
+{
+  "opengrep_version": "1.19.0",
+  "synthetic_probe_content_only": true,
+  "path_control_scanned": [
+    "Tests/HttpGuard/Integration/certificates/ca.key",
+    "nested/Tests/HttpGuard/Integration/certificates/ca.key"
+  ],
+  "current_exclusion_scanned": [],
+  "leading_slash_exclusion_scanned": [],
+  "dot_rooted_exclusion_scanned": [
+    "Tests/HttpGuard/Integration/certificates/ca.key",
+    "nested/Tests/HttpGuard/Integration/certificates/ca.key"
+  ],
+  "absolute_exclusion_scanned": [
+    "Tests/HttpGuard/Integration/certificates/ca.key",
+    "nested/Tests/HttpGuard/Integration/certificates/ca.key"
+  ],
+  "directory_control_scanned": [
+    "Tests/HttpGuard/Integration/certificates/ca.key",
+    "nested/Tests/HttpGuard/Integration/certificates/ca.key/anything.txt",
+    "unrelated/ca.key"
+  ],
+  "directory_exclusion_scanned": [
+    "unrelated/ca.key"
+  ],
+  "guard_mutations": {
+    "status": "PASS",
+    "source_sha256": "f1e3af549096a02aa046718b4ea6d8b6e6a53dd33d5b5a1bc6a980b1325933dc",
+    "negative_cases": 19,
+    "positive_cases": 2,
+    "cases": [
+      {
+        "case": "valid_exact_fixtures",
+        "before_exit": 0,
+        "current_exit": 0,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional_suffix_file_ca.key",
+        "before_exit": 0,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional_suffix_file_client.key",
+        "before_exit": 0,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional_suffix_file_server.key",
+        "before_exit": 0,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional_suffix_directory_with_child",
+        "before_exit": 0,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional_suffix_symlink",
+        "before_exit": 0,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "symlinked_fixture_ancestor_1",
+        "before_exit": 0,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "symlinked_fixture_ancestor_2",
+        "before_exit": 0,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "symlinked_fixture_ancestor_3",
+        "before_exit": 0,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "symlinked_fixture_ancestor_4",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "unrelated_key_path_remains_scanner_input",
+        "before_exit": 0,
+        "current_exit": 0,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed_fixed_fixture_ca.key",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed_fixed_fixture_client.key",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed_fixed_fixture_server.key",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed_fixed_fixture_ca.crt",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed_fixed_fixture_client.crt",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed_fixed_fixture_server.crt",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional_fixture_additional.key",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional_fixture_additional.pem",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "symlinked_fixed_key",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "missing_fixed_certificate",
+        "before_exit": 1,
+        "current_exit": 1,
+        "no_value_disclosure": true
+      }
+    ]
+  }
+}

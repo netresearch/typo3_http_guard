@@ -1,0 +1,134 @@
+[
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-documentation-summary.json",
+    "before": "18f19f01526f21bf148462af950f89eeba6b4515ac798cd3b37a20964ada9d25",
+    "after": "41973aab3c4764cc17d72b09eb2206281c934e02a0d0d65c24a9a353fbceaa15",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-final-review.json",
+    "before": null,
+    "after": "99de8c2d90e98001ee4317fa724009e35af5fd7452172f93c5daae012f4efba7",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/classic-production-matrix-summary.json",
+    "before": null,
+    "after": "902facc19cde62a00274f07c7af889b1ee1264315e0d3cf9ef2522bd712ac447",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/composer-production-matrix-summary.json",
+    "before": null,
+    "after": "5adf90b1bf5b924afeeb1c06e2b1880e894684aab90660f488c1a676cc2d70cf",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/core13-phpstan.json",
+    "before": null,
+    "after": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/core13g7-audit.json",
+    "before": null,
+    "after": "096d61fd1218b9103cdef9fdfebb6192d6052d1d2d5e53d226de79caff42c1a4",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/core13g8-audit.json",
+    "before": null,
+    "after": "096d61fd1218b9103cdef9fdfebb6192d6052d1d2d5e53d226de79caff42c1a4",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/core14-phpstan.json",
+    "before": null,
+    "after": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/core14g7-audit.json",
+    "before": null,
+    "after": "3d68c4566587606c21e4bcd82b55d322ddb79158f657d9fb90bf0d24ab5bccdf",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/core14g8-audit.json",
+    "before": null,
+    "after": "3d68c4566587606c21e4bcd82b55d322ddb79158f657d9fb90bf0d24ab5bccdf",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/executable-input-hashes.json",
+    "before": null,
+    "after": "fedb8ef9e88fdeb6beba1c98b42dc4195d0cef6cc02241788a5fc26a955394c4",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/final-extension-archive-manifest.json",
+    "before": null,
+    "after": "689352fd7cecab97608f13958daca4f7201f6a176ac609bdd259bdfa2dc1dcf1",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/range-preflight-tests.json",
+    "before": null,
+    "after": "5f8949781b3e78ff1c9ba70467b89a7a9b739a51573c325ec7288592aa5e5db0",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-qualification/summary.json",
+    "before": null,
+    "after": "c62acad0ab374b1f014a3ba647a8f07b39fb776f295d32b88d6bfc6002fe07ea",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/annotation-focused-revalidation.log",
+    "before": null,
+    "after": "04ec9fc667e087cd7072480f6b5ad2368f1800b4cb7ba9fe354e592be4e8123e",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/source-binding.json",
+    "before": null,
+    "after": "7cd6e31054c52b9c28d66f8ed70546aa5ca420cb3ca36146e9227a3e59068cbd",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/source-end.json",
+    "before": null,
+    "after": "5a95e2a7aa049ea418f938193bb029ea2a2e11b405b500fbd9109284b38be627",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/source-start.json",
+    "before": null,
+    "after": "5a95e2a7aa049ea418f938193bb029ea2a2e11b405b500fbd9109284b38be627",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/summary.json",
+    "before": "9060d29aca5bce9e38a1eddb22c55a6353647bf528027ac347d522cfac3bf9a0",
+    "after": "4ad1c56ef84925357d59fe9a3147561821a70213d86b21223c17d67bd291fafd",
+    "classification": "execution evidence"
+  },
+  {
+    "path": "Documentation/Development/Assessment.rst",
+    "before": "d89d6568fb7ca6c49e35612790b4b5130d630f3a556b63cbe021ab4bbbe77432",
+    "after": "cdf66d9f941addfb882a38b10081c8913744489a66129b6e212cb6013178d2e3",
+    "classification": "documentation"
+  },
+  {
+    "path": "Documentation/Development/Verification.rst",
+    "before": "33c94f7d51c8fea929a09055d5735347d4795f3b3f4a35ca2a19b9f507c34302",
+    "after": "c8e37e3f8e62bdb35384d4286c6de47db43b69eef5397b2701831d68849b7880",
+    "classification": "documentation"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Development/Index.rst",
+    "before": "77405888ed66c41b5430de51aa0a189d25da81c6237c06d698fc17dd66705519",
+    "after": "434647da60a3cc4e84ad889643673fa7bc7363628b202ca1c2b9297503ed4a9a",
+    "classification": "documentation"
+  }
+]

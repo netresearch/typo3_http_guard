@@ -1,0 +1,29 @@
+{
+    "status": "PASS",
+    "files": [
+        {
+            "path": "Tests\/HttpGuard\/Integration\/DnsPolicyTransportTest.php",
+            "semantic_ast_unchanged": true,
+            "before_sha256": "a43ab3db7d79a2119893c8a9542dbcc3a7fddbf83c3aadcd19572e8c7b671ce2",
+            "after_sha256": "1f0071703bee2ffbac0778b162549a742e05d46dfeae9f6801315c7e13dbeb73"
+        },
+        {
+            "path": "Tests\/HttpGuard\/Unit\/Policy\/WireDnsQueryTest.php",
+            "semantic_ast_unchanged": true,
+            "before_sha256": "da0c1edac898d9afb27415d8f1b223625a30aac6295f31552585ad852a80b956",
+            "after_sha256": "cafd86951fdc96f2d951eecdce6749083422be84586f8061eea004a105a49394"
+        },
+        {
+            "path": "integrations\/nr-vault\/source-overlay\/Tests\/Functional\/Http\/Fixtures\/guard-router.php",
+            "semantic_ast_unchanged": true,
+            "before_sha256": "882bf310872f01988246c3d83cfcd320ac9738a7c1028c942ce4d7168081733b",
+            "after_sha256": "cadd1441f8a78a496142158c875352ee60ce71f7cbdd07cf7ff7e7d5fab9a02e"
+        },
+        {
+            "path": "integrations\/nr-vault\/source-overlay\/Tests\/Functional\/Http\/GuardAdapterTest.php",
+            "semantic_ast_unchanged": true,
+            "before_sha256": "71c66dcee2eca5003ea3adde47b352cef40de94bf9dc7eb359171327ce23c473",
+            "after_sha256": "619c44bd1ff3951e101d1c1f64a2f5e89748d93d2c2755a2b64eb51e1a2cc26d"
+        }
+    ]
+}

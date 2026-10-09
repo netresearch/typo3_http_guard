@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 
 namespace Netresearch\HttpGuard\Transport;
@@ -85,7 +89,9 @@ final readonly class OptionSanitizer
     {
     }
 
-    /** @param array<array-key,mixed> $options
+    /**
+     * @param array<array-key,mixed> $options
+     * @param HandlerStack<covariant callable(RequestInterface, array<array-key, mixed>): \GuzzleHttp\Promise\PromiseInterface>|null $expectedHandler
      * @return array<string,mixed>
      */
     public function sanitize(
@@ -255,7 +261,7 @@ final readonly class OptionSanitizer
     public static function processProxyNames(): array
     {
         $names = [];
-        foreach (getenv(null, true) ?: [] as $name => $value) {
+        foreach (self::processEnvironment() as $name => $value) {
             if (in_array(
                 strtolower((string) $name),
                 ['http_proxy', 'https_proxy', 'all_proxy', 'no_proxy'],
@@ -320,5 +326,13 @@ final readonly class OptionSanitizer
             }
         }
         return true;
+    }
+    /**
+     * PHP normalizes numeric environment names to integer array keys.
+     * @return array<array-key, string>
+     */
+    private static function processEnvironment(): array
+    {
+        return getenv(null, true);
     }
 }

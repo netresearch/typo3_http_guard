@@ -1,152 +1,153 @@
 .. _security:
 
-=======================
-Schutzmodell und Grenzen
-=======================
+=========================
+Security model and limits
+=========================
 
 .. _security-attempt:
 
-Ein Verbindungsversuch
-=====================
+A connection attempt
+====================
 
-Die äußere Grenze prüft Authority, Kontext, erlaubte Optionen und die
-Registryposition. Danach erreicht jeder neue SDK-Leaf-Versuch das letzte
-Guard-Terminal. Dort wird die Policy frisch bewertet. Ein ungültiger
-Kandidat verwirft die gesamte Adressemenge. Erst beim Fortschritt des
-Versands entsteht der native Transfer; nach DNS-/Body-Vorbereitung werden
-Profilgültigkeit und Plan nochmals geprüft.
+The outer boundary checks authority, context, permitted options and
+registry position. Every new SDK leaf attempt then reaches the final
+guard terminal, where the policy is evaluated afresh. One invalid
+candidate rejects the entire address set. The native transfer is
+constructed only when send progress starts. After DNS and body
+preparation, profile validity and the plan are checked again.
 
-Die genehmigten Adressen werden mit :literal:`CURLOPT_RESOLVE` vollständig
-an den Host gebunden. URL-Authority und Hostname bleiben für Host-Header,
-TLS-SNI und Zertifikatsprüfung erhalten. Es gibt keinen ungebundenen
-DNS-/Stream-/Default-Handler-Ersatz, wenn Pinning oder Verbindungsaufbau
-fehlschlagen.
+All approved addresses are bound to the host using
+:literal:`CURLOPT_RESOLVE`. URL authority and hostname remain intact
+for the Host header, TLS SNI and certificate verification. Failed
+pinning or connection establishment never falls back to an unbound
+DNS, stream or default handler.
 
-Jeder native Versuch besitzt einen eigenen cURL-multi-Handler und eine
-cURL-Factory ohne retained Easy-Handle-Pool. Fresh-Connect, Forbid-Reuse,
-ausgeschalteter nativer DNS-Cache, feste Protokolle und fehlende externe
-Sharing-Handles verhindern die Übernahme alter Route-/Verbindungszustände.
-Ein versteckter SDK-Rewind-Retry kann den Terminalpfad nicht umgehen.
+Each native attempt owns a cURL-multi handler and a cURL factory without
+a retained easy-handle pool. Fresh connections, forbidden reuse,
+disabled native DNS caching, fixed protocols and the absence of
+external sharing handles prevent reuse of previous routing or
+connection state. A hidden SDK rewind retry cannot bypass the terminal.
 
-Abbruch, Callbackfehler und Transportfehler räumen die Ressourcen des
-zugehörigen Versuchs auf. Ein Policyfehler widerruft den betreffenden
-Aufruf, selbst wenn eine fremde Retry-Entscheidung unkritisch erneut senden
-wollte. Reguläre Netzwerk-Retries benötigen einen neuen Policyplan.
+Cancellation, callback errors and transport errors clean up resources
+owned by the affected attempt. A policy error cancels that call even
+if an external retry decision would otherwise resend it. Ordinary
+network retries require a new policy plan.
 
 .. _security-dns:
 
-DNS und statische Auflösung
-==========================
+DNS and static resolution
+=========================
 
-Der Defaultresolver fragt A, AAAA und CNAME für den exakten absoluten
-FQDN ab. Er nutzt weder NSS noch Suchdomain-Erweiterungen oder
-:file:`/etc/hosts` als stillen Ersatz. Statische Hosts sind ausschließlich
-die expliziten Einträge der Policy.
+The default resolver queries A, AAAA and CNAME records for the exact
+absolute FQDN. It uses neither NSS, search-domain expansion nor
+:file:`/etc/hosts` as an implicit fallback. Static hosts are only the
+explicit policy entries.
 
-Der DNS-Wire-Backend verwendet numerische, vertrauenswürdige Nameserver aus
-:file:`/etc/resolv.conf`. Diese Datei wird erst bei der ersten DNS-Anfrage
-gelesen. Bis zu drei Nameserver sind erlaubt. Bekannte Zeilen wie
-:literal:`search`, :literal:`domain`, :literal:`options` und
-:literal:`sortlist` werden erkannt, ihre Such-/NSS-Wirkung aber nicht
-übernommen; unbekannte Serverkonfiguration wird abgelehnt.
+The DNS wire backend uses numeric, trusted nameservers from
+:file:`/etc/resolv.conf`. The file is read lazily on the first DNS
+request. Up to three nameservers are permitted. Known directives
+such as :literal:`search`, :literal:`domain`, :literal:`options` and
+:literal:`sortlist` are recognized without adopting their search or
+NSS behavior. Unknown server configuration is rejected.
 
-UDP-Antworten werden auf Transaktions-ID, Frage, RCODE, Typen, Längen und
-Kompressionsgrenzen geprüft. Bei gesetztem TC-Bit wird derselbe Query über
-TCP mit Längenpräfix innerhalb derselben Queryfrist wiederholt. Eine erneut
-abgeschnittene, widersprüchliche, leere oder unvollständige Antwort wird
-nicht akzeptiert. Die CNAME-Kette wird vollständig bis zur terminalen
-Adresse verfolgt und begrenzt.
+UDP responses are checked for transaction ID, question, RCODE, types,
+lengths and compression boundaries. A set TC bit repeats the same
+query over length-prefixed TCP within the same query deadline.
+Repeatedly truncated, inconsistent, empty or incomplete responses
+are not accepted. The complete CNAME chain is followed to its
+terminal address and constrained by limits.
 
-Die Defaultfrist beträgt eine Sekunde je Nameserver und Query. Bei drei
-Nameservern, neun Namen in der maximalen CNAME-Kette und drei Querytypen
-kann die sequenzielle Auflösung theoretisch bis zu 81 Sekunden benötigen,
-zuzüglich lokalem Verwaltungsaufwand. Dies ist keine zugesicherte
-Gesamtfrist für Anwendung und HTTP. SDK-Timeouts beginnen nicht als
-allgemeiner Resolver-Abbruchvertrag. Ein eigener Resolver ist eine
-vertrauenswürdige interne Erweiterung und muss dieselbe vollständige,
-begrenzt überprüfbare Antwortsemantik erfüllen.
+The default deadline is one second per nameserver and query. With
+three nameservers, nine names in a maximum-length CNAME chain and
+three query types, sequential resolution can theoretically take up
+to 81 seconds plus local overhead. This is not a guaranteed total
+deadline for the application and HTTP. SDK timeouts do not provide
+a general resolver cancellation contract. A custom resolver is a
+trusted internal extension and must preserve the same complete,
+bounded and verifiable response semantics.
 
-Positive DNS-Memo-Einträge gelten höchstens fünf Sekunden und nie länger
-als die kleinste verbleibende TTL der benutzten Kette. Auch ein Memo-Treffer
-passiert die Adress-, Betreiber-, Profil- und Ablaufprüfung des verwendeten
-Policy-Snapshots.
+Positive DNS memo entries last at most five seconds and never longer
+than the smallest remaining TTL in the chain. A memo hit still passes
+the address, operator, profile and expiry checks of the policy
+snapshot in use.
 
 .. _security-addresses:
 
-Adressregeln
-============
+Address rules
+=============
 
-Adressen werden binär ausgewertet, einschließlich CIDR-Grenzen und
-IPv4-mapped IPv6. Nicht öffentliche oder besondere Netze sind in der
-Standardpolicy gesperrt. Die Regeln basieren auf versionierten IANA-Registern
-und zusätzlichen fest dokumentierten Metadaten-Sperren. Link-Local,
-Multicast, Dokumentations-/reservierte Bereiche und Metadatenziele erhalten
-keine allgemeine Endpoint-Ausnahme.
+Addresses are evaluated in binary form, including CIDR boundaries
+and IPv4-mapped IPv6. Non-public and special networks are blocked
+by the default policy. The rules use versioned IANA registries and
+additional fixed, documented metadata restrictions. Link-local,
+multicast, documentation or reserved ranges and metadata targets
+do not receive a general endpoint exception.
 
-Enge private RFC1918-, ULA- und CGNAT-Netze sowie einzeln freigegebenes
-Loopback können für gebundene Clients genehmigt werden. Betreiber-Sperren
-bleiben vorrangig. Die genaue Ausnahmekonfiguration steht unter
-:ref:`configuration-endpoints`.
+Narrow private RFC1918, ULA and CGNAT networks and individually
+approved loopback addresses can be permitted for bound clients.
+Operator restrictions take precedence. See
+:ref:`configuration-endpoints` for the exact exception configuration.
 
-Die ausgelieferten Regeln und die Quellen-/Hashmetadaten liegen unter
-:file:`Resources/Private/HttpGuard/data/security-corpus/`. Eine Änderung
-dieser Regeln ist ein Policyupdate mit neuer Revision und erneuter
-Regression-/Wire-Prüfung; sie gehört nicht in eine spontane Laufzeitfreigabe.
+The supplied rules and source hash metadata are under
+:file:`Resources/Private/HttpGuard/data/security-corpus/`.
+Changing these rules is a policy update with a new revision and
+renewed regression and wire testing; it is not a spontaneous
+runtime permission change.
 
 .. _security-redirects:
 
-Redirects, Credentials und TLS
+Redirects, credentials and TLS
 =============================
 
-Response-Middleware darf eine Location verändern; die Guard-Grenze prüft
-die tatsächliche Location danach und vor dem SDK-Folgeversand. Gewöhnliche
-Requests bleiben auf derselben Origin und dürfen kein HTTPS auf HTTP
-herabstufen. Dies gilt auch für 307/308 mit erhaltener Methode und Body.
-Ein Profil kann Redirects ganz verbieten. Public Fetch verwendet eigene
-Requests ohne Integrationsgeheimnisse und kann öffentliche Originwechsel
-unter derselben Adresspolicy gestatten. PSR-18 bleibt ohne Redirect-Folgen.
+Response middleware may rewrite a Location. The guard boundary checks
+the resulting Location afterwards, before the SDK's next send.
+Ordinary requests remain on the same origin and cannot downgrade
+HTTPS to HTTP. This also applies to 307 and 308 responses preserving
+method and body. A profile can forbid redirects altogether.
+Public Fetch creates its own requests without integration secrets
+and can permit public origin changes under the same address policy.
+PSR-18 does not follow redirects.
 
-TLS-Verifikation, CA-Bundles und mTLS bleiben Transportoptionen unter der
-zusätzlichen TLS-Policy. HTTP Guard ist kein Ersatz für korrekt konfigurierte
-Zertifikate, CA-Trust oder Secretverwaltung.
+TLS verification, CA bundles and mTLS remain transport options subject
+to the additional TLS policy. HTTP Guard does not replace correct
+certificate configuration, CA trust or secret management.
 
 .. _security-proxy:
 
-Proxy und eingehende Header
-==========================
+Proxies and incoming headers
+===========================
 
-Explizite Proxyrouten und echte HTTP-/HTTPS-/ALL-/NO_PROXY-Prozessvariablen
-werden abgelehnt, auch bei einem vermuteten NO_PROXY-Treffer. Dabei liest
-der Guard Prozessvariablen lokal und übernimmt nicht den eingehenden
-:literal:`Proxy`-HTTP-Header als vertrauenswürdige Proxykonfiguration.
-PHP-SAPIs können diesen Header in :php:`$_SERVER` entfernen; eine solche
-SAPI-Bereinigung und die unabhängige Prozessprüfung sind unterschiedliche
-Mechanismen.
+Explicit proxy routes and actual HTTP, HTTPS, ALL and NO_PROXY process
+variables are rejected, even when a NO_PROXY match is expected.
+The guard reads process variables locally rather than trusting the
+incoming :literal:`Proxy` HTTP header as proxy configuration.
+PHP SAPIs may remove that header from :php:`$_SERVER`; SAPI sanitization
+and the independent process check are different mechanisms.
 
 .. _security-coverage:
 
-Abdeckung und Vertrauensgrenze
-=============================
+Coverage and trust boundary
+===========================
 
-Geschützt sind der registrierte Core-RequestFactory-Pfad nach Aktivierung
-und die gebundenen Clients der Guard-Factories. Bei widersprüchlichen
-Middlewarepositionen oder ABI-/Versionskonflikten wird der geschützte
-Pfad ausdrücklich abgelehnt. Bestehende Core-Kontextrestriktionen bleiben
-kumulativ. Eine flache Legacy-Hostliste für Vault erteilt dem öffentlichen
-Core-Client keine privaten Rechte.
+Protection covers the registered Core RequestFactory path after
+activation and the bound clients produced by guard factories.
+Inconsistent middleware positions or ABI and version conflicts
+explicitly reject the protected path. Existing Core context
+restrictions remain cumulative. A flat legacy Vault host list does
+not grant private access to the public Core client.
 
-Die Extension kann keine beliebige PHP-Codeausführung einschließen.
-Folgende Pfade benötigen eine eigene Integration:
+The extension cannot contain arbitrary PHP code execution. These
+paths require their own integration:
 
-* Frühe Bootstrap-Aufrufe vor der Registrierung.
-* Unabhängige Guzzle-Clients, fremde SDKs, direkte cURL- oder Socketaufrufe.
-* Ein requesteigener Guzzle-Handler, der den Stack bereits vor dem ersten
-  Middlewareeintritt ersetzt.
-* Eingehende PSR-15-Middleware und sonstige nicht ausgehende HTTP-Verarbeitung.
-* Vault ohne den bewussten optionalen Adapterpatch.
+* Early bootstrap calls before registration.
+* Independent Guzzle clients, external SDKs and direct cURL or socket calls.
+* A request-specific Guzzle handler replacing the stack before the first
+  middleware entry.
+* Incoming PSR-15 middleware and other processing unrelated to outbound HTTP.
+* Vault without deliberate integration of the optional adapter patch.
 
-Rohe URI-Informationen können bereits vor PSR-18 verloren gehen; die genaue
-Kompositionspflicht steht unter :ref:`api-raw-uri`. Policy-Snapshots werden
-nicht automatisch in alten Workern aktualisiert; siehe
-:ref:`operations-changes`. Beobachtungsmodus, Offline-Prüfung und
-Agentenreview sind keine alternative Durchsetzung am echten Transport.
+Raw URI information may be lost before PSR-18; see
+:ref:`api-raw-uri` for the caller's validation responsibility.
+Policy snapshots do not update automatically in existing workers;
+see :ref:`operations-changes`. Observe mode, offline diagnostics and
+agent review do not substitute for enforcement at the actual transport.

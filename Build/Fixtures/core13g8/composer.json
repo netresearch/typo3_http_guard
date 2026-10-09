@@ -1,0 +1,23 @@
+{
+  "name": "http-guard/production-core13g8",
+  "require": {
+    "typo3/cms-core": "13.4.36",
+    "typo3/cms-backend": "13.4.36",
+    "typo3/cms-frontend": "13.4.36",
+    "typo3/cms-fluid": "13.4.36",
+    "guzzlehttp/guzzle": "8.2.0",
+    "guzzlehttp/promises": "3.0.2",
+    "guzzlehttp/psr7": "3.1.0",
+    "netresearch/nr-http-guard": "dev-main"
+  },
+  "config": {
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true
+    },
+    "process-timeout": 0
+  },
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "description": "Disposable exact TYPO3 qualification fixture for HTTP Guard"
+}

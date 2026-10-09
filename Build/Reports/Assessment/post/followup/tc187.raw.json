@@ -1,0 +1,21 @@
+{
+  "checkpoint_file": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/post/followup/tc187.checkpoints.yaml",
+  "project_root": "/tmp/http-guard-kan-8VPVrN/assessment-post-repo",
+  "skill_id": "typo3-conformance",
+  "fix_command": "/typo3-conformance",
+  "schema_version": 1,
+  "summary": {
+    "total": 1,
+    "pass": 1,
+    "fail": 0,
+    "skip": 0,
+    "blocked": 0,
+    "preconditions_declared": 1,
+    "preconditions_ignored": false,
+    "gated_out": 0
+  },
+  "gated_out_ids": [],
+  "checkpoints": [
+    {"id":"TC-187","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"typo3-conformance"}
+  ]
+}

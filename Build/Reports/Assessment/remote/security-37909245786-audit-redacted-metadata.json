@@ -1,0 +1,29 @@
+{
+  "package_version": "0.22.0",
+  "advisories": [
+    {
+      "packageName": "enshrined/svg-sanitize",
+      "advisoryId": "PKSA-8j6w-3kr7-s9xk",
+      "cve": "CVE-2026-107380",
+      "severity": "medium",
+      "affectedVersions": "<=0.22.0"
+    },
+    {
+      "packageName": "enshrined/svg-sanitize",
+      "advisoryId": "PKSA-6j95-1jtb-x6wc",
+      "cve": "CVE-2026-107381",
+      "severity": "medium",
+      "affectedVersions": "<=0.22.0"
+    },
+    {
+      "packageName": "enshrined/svg-sanitize",
+      "advisoryId": "PKSA-cbx2-m9db-bmzd",
+      "cve": "CVE-2026-107379",
+      "severity": "medium",
+      "affectedVersions": "<=0.22.0"
+    }
+  ],
+  "count": 3,
+  "abandoned": [],
+  "exact_expected_ids": true
+}

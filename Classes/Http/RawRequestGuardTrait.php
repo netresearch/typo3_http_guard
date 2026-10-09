@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\NrHttpGuard\Http;
 
@@ -25,7 +29,7 @@ trait RawRequestGuardTrait
         }
         parent::__construct($guzzleFactory);
     }
-    /** @param array<string, mixed> $options */
+    /** @param array<array-key, mixed> $options */
     public function request(
         string $uri,
         string $method = 'GET',

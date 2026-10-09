@@ -1,0 +1,17 @@
+{
+  "source_head": "5f37a66c638519cc0f01d9f03d30efc6ed0f4957",
+  "ci_run": 37906751418,
+  "actual_annotation": "reviewdog/action-actionlint@1758727be30241166609dad4c97588b6ad411f32 is not allowed",
+  "owner": "Maintained netresearch/.github lint-workflows reusable",
+  "official_tag": "v1.79.1",
+  "commit_signature": "unsigned",
+  "docker_image": "ghcr.io/reviewdog/action-actionlint:v1.79.1@sha256:61c6ed36443e860ea2901831c9949df6dc6dca0abc4b85ba65dc880df58c246d",
+  "required_permissions": {
+    "contents": "read"
+  },
+  "caller_permissions_satisfy_contract": true,
+  "recommendation": "Permit only this reviewed full-SHA reference; retain SHA pinning and existing default policy",
+  "workflow_source_mutations": 0,
+  "remote_mutations": 0,
+  "rerun_required": true
+}

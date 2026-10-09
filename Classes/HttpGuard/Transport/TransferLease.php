@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard\Transport;
 
@@ -14,6 +18,7 @@ use Netresearch\HttpGuard\PolicyException;
 use Netresearch\HttpGuard\RequestPolicyContext;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Netresearch\HttpGuard\NativeOperation;
 
 /** A lazy, single-attempt owner. No multi handle is shared with another lease. */
 final class TransferLease
@@ -116,14 +121,7 @@ final class TransferLease
             $this->release();
             return;
         }
-        {
-            try {
-                $plan = $this->engine->plan($request, $this->context);
-            } catch (PolicyException $error) {
-                $this->policyFailureReported = true;
-                throw $error;
-            }
-        }
+        $plan = $this->planRequest($request);
         $this->plan = $plan;
         $this->engine->assertCurrent($plan, $this->context);
         if ($this->stopCancelled()) {
@@ -132,7 +130,7 @@ final class TransferLease
         $this->request = $plan->target->canonicalRequest;
         $handler = new CurlMultiHandler(
             [
-                'handle_factory' => new CurlFactory(0),
+                'handle_factory' => new SingleUseCurlFactory(new CurlFactory(0)),
                 'transport_sharing' => 'none',
                 'select_timeout' => 0.001,
             ]
@@ -149,8 +147,6 @@ final class TransferLease
         }
         $leaf['curl'] = $raw;
         $leaf['proxy'] = '';
-        // Suppress CurlFactory's direct-handler rewind retry, which has no policy boundary.
-        $leaf['_curl_retries'] = 2;
         $userHeaders = $leaf['on_headers'] ?? null;
         $leaf['on_headers'] = static function (...$arguments) use ($userHeaders): void {
             if ($userHeaders !== null) {
@@ -214,11 +210,7 @@ final class TransferLease
             {
                 $method = RuntimeSupport::major() === 8 ? "close" : "__destruct";
                 {
-                    $callback = [$this->handler, $method];
-                    if (!is_callable($callback)) {
-                        throw new \LogicException("Unsupported native cleanup");
-                    }
-                    \Closure::fromCallable($callback)();
+                    self::nativeCleanupCallback($this->handler, $method)();
                 }
             }
         }
@@ -229,6 +221,18 @@ final class TransferLease
         $this->options = [];
         $this->driver->release($this);
     }
+    /** @return \Closure(): void */
+    private static function nativeCleanupCallback(
+        CurlMultiHandler $handler,
+        string $method
+    ): \Closure
+    {
+        $callback = [$handler, $method];
+        if (!is_callable($callback)) {
+            throw new \LogicException("Unsupported native cleanup");
+        }
+        return \Closure::fromCallable($callback);
+    }
     private static function pin(ConnectionPlan $plan): string
     {
         if ($plan->addresses === []) {
@@ -236,7 +240,7 @@ final class TransferLease
         }
         $addresses = [];
         foreach ($plan->addresses as $ip) {
-            if (@inet_pton($ip) === false) {
+            if (NativeOperation::attempt(static fn() => inet_pton($ip)) === false) {
                 throw new PolicyException('resolution_unverified');
             }
             $addresses[] = str_contains($ip, ':') ? '[' . $ip . ']' : $ip;
@@ -246,7 +250,7 @@ final class TransferLease
     /** @param list<string> $addresses */
     private static function sameAddressIn(string $ip, array $addresses): bool
     {
-        $binary = @inet_pton($ip);
+        $binary = NativeOperation::attempt(static fn() => inet_pton($ip));
         if ($binary === false) {
             return false;
         }
@@ -254,7 +258,7 @@ final class TransferLease
             $binary = substr($binary, 12);
         }
         foreach ($addresses as $allowed) {
-            $candidate = @inet_pton($allowed);
+            $candidate = NativeOperation::attempt(static fn() => inet_pton($allowed));
             if ($candidate !== false && strlen($candidate) === 16 && substr($candidate, 0, 12) === str_repeat("\x00", 10) . "\xff\xff") {
                 $candidate = substr($candidate, 12);
             }
@@ -274,4 +278,13 @@ final class TransferLease
         return false;
     }
     private bool $policyFailureReported = false;
+    private function planRequest(RequestInterface $request): ConnectionPlan
+    {
+        try {
+            return $this->engine->plan($request, $this->context);
+        } catch (PolicyException $error) {
+            $this->policyFailureReported = true;
+            throw $error;
+        }
+    }
 }

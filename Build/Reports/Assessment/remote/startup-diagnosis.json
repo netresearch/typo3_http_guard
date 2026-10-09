@@ -1,0 +1,19 @@
+{
+  "source_head": "848a77743f2dac334720308b04a54e8c3948a80c",
+  "startup_runs": {
+    "CI": 37906134405,
+    "Security": 37906133217,
+    "Verification": 37906132037
+  },
+  "root_cause": "Selected-actions rejects SHA-pinned setup-php because creator is not Marketplace-verified",
+  "exact_blocked_refs": [
+    "shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240",
+    "shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962"
+  ],
+  "recommendation": "Parent adds only these reviewed full-SHA refs to repository allowed patterns; preserve SHA requirement and existing GitHub/verified/Netresearch rules",
+  "codeql_conflict": "Configured default setup python/extended conflicts with advanced workflow Actions+Python SARIF submission",
+  "codeql_recommendation": "Parent disables default setup after selecting maintained advanced workflow; preserve scopes and no PHP CodeQL claim",
+  "workflow_source_mutations": 0,
+  "remote_mutations": 0,
+  "rerun_required": true
+}

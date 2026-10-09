@@ -1,0 +1,27 @@
+{
+  "scope": "Follow-up scan after authorized native classic lifecycle implementation",
+  "opengrep_version": "1.19.0",
+  "opengrep_binary_sha256": "1d69a41beb88e8e7917f26cc6a16c1edf298f31402807e6d1afbb5d8684c3590",
+  "findings": 0,
+  "parser_errors": 0,
+  "scanned_paths": [
+    "Build/Fixtures/initialize-classic.php",
+    "Build/Fixtures/prepare-classic.py"
+  ],
+  "exit_code": 0,
+  "sources": [
+    {
+      "path": "Build/Fixtures/initialize-classic.php",
+      "sha256": "2c79e7f554050bd939fc87d6c32990a0c59c8ecc8bd6ac2e78f4183fce07c04b"
+    },
+    {
+      "path": "Build/Fixtures/prepare-classic.py",
+      "sha256": "71cc456d63c4dbed99b2f6d26f0c7b12a63b43542c02391439c3467a5af98da6"
+    }
+  ],
+  "review": {
+    "argv_boundary": "Literal PHP subprocess argument array; local fixture realpath is checked before loading the official local vendor autoloader.",
+    "native_lifecycle": "Uses actual TYPO3 Bootstrap, PackageManager activation and ClassLoadingInformation generation.",
+    "actionable_findings": []
+  }
+}

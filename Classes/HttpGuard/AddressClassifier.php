@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard;
 
@@ -89,7 +93,7 @@ final class AddressClassifier
     public function contains(string $canonicalCidr, string $canonicalIp): bool
     {
         $network = $this->cidrs[$canonicalCidr] ??= Cidr::parse($canonicalCidr);
-        $packed = @inet_pton($canonicalIp);
+        $packed = NativeOperation::attempt(static fn() => inet_pton($canonicalIp));
         if ($packed === false) {
             return false;
         }

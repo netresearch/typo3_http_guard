@@ -1,0 +1,9 @@
+# Effective synthetic-key exclusion boundary
+
+Independent final review found that Opengrep v1.19.0 interprets the three CLI key exclusions as suffix patterns. For example, excluding `Tests/HttpGuard/Integration/certificates/ca.key` also excludes `nested/Tests/HttpGuard/Integration/certificates/ca.key`. A directory with that suffix also hides its descendants. The original integrity guard checked only the fixed fixture directory, so it did not protect this additional scope.
+
+Harmless generic-pattern probes establish the behavior without private-key material. A control scans both root and nested files; the committed pattern and a leading slash exclude both. Dot-rooted and absolute patterns fail to exclude either file. A separate control scans a root fixture path, a child of a nested suffix directory and an unrelated `ca.key`; the committed exclusion scans only the unrelated file. Results are preserved in `synthetic-exclusion-scope.json`.
+
+The integrity preflight now rejects every additional matching suffix path found across the source tree, including files, directories and symlinks. It also rejects symlinks in each fixed fixture-directory ancestor. Since the Security workflow requires this preflight before SAST, only the three original byte-verified keys can be omitted by a passing job. No new scanner exclusion or broad key-file rule was added. Unrelated key paths remain scanner inputs.
+
+The refreshed guard passes the two positive controls and rejects all 19 negative controls without displaying a failed value. Eight newly covered cases passed the previous guard and now fail: three nested suffix files, one suffix directory with a child, one suffix symlink and three symlinked parent directories. The already-rejected fixed-directory symlink and ten existing byte/inventory mutations still fail. The guard hash and before/after exits are recorded in the compact JSON proof. No private key or certificate was modified.

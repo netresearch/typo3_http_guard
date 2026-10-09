@@ -1,16 +1,22 @@
-# Lizenzhinweise
+# License notices
 
-Die eine TYPO3-Extension `netresearch/nr-http-guard` wird unter
-GPL-2.0-or-later geliefert; siehe LICENSE.txt.
+The single TYPO3 extension `netresearch/nr-http-guard` is supplied under
+GPL-2.0-or-later; see [LICENSE.txt](LICENSE.txt).
 
-Der enthaltene Sicherheitskern unter Classes/HttpGuard/ wurde ursprünglich
-unter MIT erstellt. Seine MIT-Lizenz und Copyright-Hinweise bleiben erhalten;
-siehe LICENSE-HttpGuard.txt. Der Kern wird nicht als zweites Paket geliefert.
+The embedded security core under `Classes/HttpGuard/` was originally created
+under MIT. Its MIT license and copyright notices are preserved; see
+[LICENSE-HttpGuard.txt](LICENSE-HttpGuard.txt). The core is not supplied as a
+second package.
 
-Der zusätzliche Patch unter integrations/nr-vault/ gehört zum bestehenden
-GPL-2.0-or-later-Projekt nr-vault. Die Lizenz des empfangenden Projekts gilt.
+The unchanged Netresearch logo at `Resources/Public/Icons/Extension.svg` is
+copyright Netresearch DTT GmbH and licensed under
+[CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Its source license and attribution notices are retained in the SVG.
 
-Unveränderte ursprüngliche Spezifikationen und aufgezeichnetes Material von
-Dritten behalten ihre jeweiligen Rechte und Lizenzhinweise. Drittanbieter-
-Laufzeitbibliotheken oder vendor-Verzeichnisse sind nicht in dieser Extension
-gebündelt; die unterstützte TYPO3-Installation stellt ihre Komponenten bereit.
+The additional patch under `integrations/nr-vault/` belongs to the existing
+GPL-2.0-or-later nr-vault project. The receiving project's license applies.
+
+Unchanged original specifications and recorded third-party material retain
+their respective rights and license notices. Third-party runtime libraries and
+vendor directories are not bundled in this extension; the supported TYPO3
+installation provides these components.

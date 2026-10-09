@@ -3,7 +3,14 @@
         default-code-language="php">
     <extension class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
                typo3-core-preferred="14"
-               interlink-shortcode="nr_http_guard"/>
+               interlink-shortcode="netresearch/nr-http-guard"
+               project-home="https://github.com/netresearch/typo3_http_guard"
+               project-contact="https://github.com/netresearch/typo3_http_guard/security/advisories/new"
+               project-repository="https://github.com/netresearch/typo3_http_guard"
+               project-issues="https://github.com/netresearch/typo3_http_guard/issues"
+               edit-on-github="netresearch/typo3_http_guard"
+               edit-on-github-branch="main"
+               edit-on-github-directory="Documentation"/>
     <project title="HTTP Guard" version="0.1" release="0.1.0"
              copyright="2026 by Netresearch DTT GmbH"/>
 </guides>

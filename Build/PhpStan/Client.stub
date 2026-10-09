@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
+namespace GuzzleHttp;
+
+/**
+ * Analysis metadata for the concrete API retained by supported Guzzle versions.
+ * The deprecated Guzzle 7 ClientInterface contract remains unchanged.
+ */
+class Client
+{
+    /**
+     * @not-deprecated
+     * @param string|null $option
+     * @return ($option is null ? array<string, mixed> : mixed)
+     */
+    public function getConfig(?string $option = null)
+    {
+    }
+}

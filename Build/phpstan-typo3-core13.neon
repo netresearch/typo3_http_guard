@@ -1,0 +1,16 @@
+includes:
+    - ../vendor/netresearch/typo3-ci-workflows/config/phpstan/phpstan.neon
+
+parameters:
+    level: 8
+    stubFiles:
+        - PhpStan/Client.stub
+    bootstrapFiles:
+        - phpstan-bootstrap13.php
+    paths:
+        - ../Classes
+    excludePaths:
+        analyseAndScan:
+            - ../Classes/HttpGuard
+            - ../Classes/Http/GuardedRequestFactory14.php
+    tmpDir: /tmp/nr-http-guard-combined-phpstan-core13

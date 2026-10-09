@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard\Transport;
 
@@ -20,6 +24,7 @@ use Psr\Http\Message\ResponseInterface;
 
 final class BoundaryMiddleware
 {
+    /** @var \Closure(): void|null */
     private ?\Closure $registryAssertion = null;
     public function __construct(
         private readonly PolicyEngine $engine,
@@ -31,10 +36,15 @@ final class BoundaryMiddleware
     )
     {
     }
+    /** @param \Closure(): void|null $assertion */
     public function setRegistryAssertion(?\Closure $assertion): void
     {
         $this->registryAssertion = $assertion;
     }
+    /**
+     * @param callable(RequestInterface, array<array-key, mixed>): PromiseInterface $next
+     * @return callable(RequestInterface, array<array-key, mixed>): PromiseInterface
+     */
     public function __invoke(callable $next): callable
     {
         return function (
@@ -164,7 +174,7 @@ final class BoundaryMiddleware
     ): ResponseInterface
     {
         try {
-            if (empty($options['allow_redirects']) || !$response->hasHeader('Location') || !in_array(
+            if (in_array($options['allow_redirects'] ?? false, [false, []], true) || !$response->hasHeader('Location') || !in_array(
                 $response->getStatusCode(),
                 [301, 302, 303, 307, 308],
                 true

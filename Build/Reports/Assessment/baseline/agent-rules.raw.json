@@ -1,0 +1,21 @@
+{
+  "checkpoint_file": "/home/cybot/.agents/skills/agent-rules/checkpoints.yaml",
+  "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+  "skill_id": "agents",
+  "fix_command": "/agent-rules",
+  "schema_version": 1,
+  "summary": {
+    "total": 25,
+    "pass": 3,
+    "fail": 22,
+    "skip": 0,
+    "blocked": 0,
+    "preconditions_declared": 0,
+    "preconditions_ignored": false,
+    "gated_out": 0
+  },
+  "gated_out_ids": [],
+  "checkpoints": [
+    {"id":"AG-01","status":"fail","severity":"error","evidence":"Not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-02","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-03","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-04","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-05","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-06","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-07","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-08","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-09","status":"fail","severity":"error","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-10","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-11","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-13","status":"fail","severity":"warning","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-14","status":"fail","severity":"info","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-15","status":"fail","severity":"info","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-16","status":"fail","severity":"info","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-17","status":"fail","severity":"info","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-18","status":"fail","severity":"info","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-19","status":"pass","severity":"error","evidence":"No target files found or no files matched pattern: AGENTS.md (OK for regex_not)","fix_skill":"agents"},{"id":"AG-20","status":"pass","severity":"error","evidence":"No target files found or no files matched pattern: AGENTS.md (OK for regex_not)","fix_skill":"agents"},{"id":"AG-12","status":"fail","severity":"info","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-26","status":"fail","severity":"info","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-27","status":"fail","severity":"error","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"},{"id":"AG-29","status":"fail","severity":"warning","evidence":"Command failed","fix_skill":"agents"},{"id":"AG-31","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"agents"},{"id":"AG-28","status":"fail","severity":"info","evidence":"Target file not found: AGENTS.md","fix_skill":"agents"}
+  ]
+}
