@@ -69,17 +69,23 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if peer:
                 state['clients'].append(peer.get('subject', []))
         if self.path.startswith('/redirect-same'):
-            return self.redirect('/echo')
+            self.redirect('/echo')
+            return
         if self.path.startswith('/redirect-cross'):
-            return self.redirect('http://other.test:8090/echo')
+            self.redirect('http://other.test:8090/echo')
+            return
         if self.path.startswith('/redirect-private'):
-            return self.redirect('http://10.23.4.12:8090/echo' if self.path.startswith('/redirect-private-ip') else 'http://erp.test:8090/echo')
+            self.redirect('http://10.23.4.12:8090/echo' if self.path.startswith('/redirect-private-ip') else 'http://erp.test:8090/echo')
+            return
         if self.path.startswith('/redirect-downgrade'):
-            return self.redirect('http://guard.test:8090/echo')
+            self.redirect('http://guard.test:8090/echo')
+            return
         if self.path.startswith('/redirect-post-get'):
-            return self.redirect('/echo')
+            self.redirect('/echo')
+            return
         if self.path.startswith('/loop'):
-            return self.redirect('/loop')
+            self.redirect('/loop')
+            return
         if self.path.startswith('/reset'):
             self.connection.shutdown(socket.SHUT_RDWR)
             self.close_connection = True
