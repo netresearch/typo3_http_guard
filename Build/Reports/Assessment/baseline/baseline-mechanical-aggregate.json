@@ -1,0 +1,180 @@
+{
+  "source_commit": "7a3a39bbaa763eb876ff4c9cdc743b689c557590",
+  "count_semantics": "Raw mechanical outcomes, not a conformance score. Absence checks on inapplicable ecosystems can pass.",
+  "completed_batches": 11,
+  "all_summary_lengths_consistent": true,
+  "counts": {
+    "total": 755,
+    "pass": 548,
+    "fail": 164,
+    "skip": 43,
+    "blocked": 0
+  },
+  "batches": [
+    {
+      "skill_id": "agent-harness",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/agent-harness/checkpoints.yaml",
+      "summary": {
+        "total": 18,
+        "pass": 6,
+        "fail": 12,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 1
+      }
+    },
+    {
+      "skill_id": "agents",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/agent-rules/checkpoints.yaml",
+      "summary": {
+        "total": 25,
+        "pass": 3,
+        "fail": 22,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "git-workflow",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/git-workflow/checkpoints.yaml",
+      "summary": {
+        "total": 16,
+        "pass": 6,
+        "fail": 10,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "github-project",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/github-project/checkpoints.yaml",
+      "summary": {
+        "total": 29,
+        "pass": 10,
+        "fail": 13,
+        "skip": 6,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "netresearch-branding",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/netresearch-branding/checkpoints.yaml",
+      "summary": {
+        "total": 22,
+        "pass": 10,
+        "fail": 10,
+        "skip": 2,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "php-modernization",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/php-modernization/checkpoints.yaml",
+      "summary": {
+        "total": 29,
+        "pass": 8,
+        "fail": 13,
+        "skip": 8,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "typo3-docs",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/typo3-docs/checkpoints.yaml",
+      "summary": {
+        "total": 35,
+        "pass": 28,
+        "fail": 7,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "typo3-testing",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/typo3-testing/checkpoints.yaml",
+      "summary": {
+        "total": 70,
+        "pass": 25,
+        "fail": 31,
+        "skip": 14,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "enterprise-readiness",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/enterprise-readiness/checkpoints.yaml",
+      "summary": {
+        "total": 37,
+        "pass": 7,
+        "fail": 23,
+        "skip": 7,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "typo3-conformance",
+      "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+      "checkpoint_file": "/home/cybot/.agents/skills/typo3-conformance/checkpoints.yaml",
+      "summary": {
+        "total": 98,
+        "pass": 81,
+        "fail": 16,
+        "skip": 1,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    },
+    {
+      "skill_id": "security-audit",
+      "project_root": ".",
+      "checkpoint_file": "/home/cybot/.agents/skills/security-audit/checkpoints.yaml",
+      "summary": {
+        "total": 376,
+        "pass": 364,
+        "fail": 7,
+        "skip": 5,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      }
+    }
+  ]
+}

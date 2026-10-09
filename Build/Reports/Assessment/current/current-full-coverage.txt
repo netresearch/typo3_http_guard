@@ -1,0 +1,110 @@
+
+
+Code Coverage Report:
+  2026-10-09 08:20:33
+
+ Summary:
+  Classes: 36.07% (22/61)
+  Methods: 48.50% (97/200)
+  Lines:   80.80% (1873/2318)
+
+Netresearch\HttpGuard\AddressClassification
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\AddressClassifier
+  Methods:  66.67% ( 2/ 3)   Lines:  96.97% ( 64/ 66)
+Netresearch\HttpGuard\Cidr
+  Methods:  40.00% ( 4/10)   Lines:  60.00% ( 45/ 75)
+Netresearch\HttpGuard\ClientScope
+  Methods:  25.00% ( 1/ 4)   Lines:  25.00% (  1/  4)
+Netresearch\HttpGuard\Client\ClientStackConfiguration
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\Client\DefaultStackProvider
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  4/  4)
+Netresearch\HttpGuard\Client\GuardedClientBinding
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\Client\GuardedClientFactory
+  Methods:  66.67% ( 6/ 9)   Lines:  94.29% (132/140)
+Netresearch\HttpGuard\Client\MiddlewarePair
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\Client\Psr18Client
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+Netresearch\HttpGuard\Client\PublicFetchClient
+  Methods:  50.00% ( 1/ 2)   Lines:  95.83% ( 23/ 24)
+Netresearch\HttpGuard\ConnectionPlan
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\DecisionEvent
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\DecisionReporter
+  Methods:  80.00% ( 4/ 5)   Lines:  88.71% ( 55/ 62)
+Netresearch\HttpGuard\DnsAnswer
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\DnsPacketCodec
+  Methods:  28.57% ( 2/ 7)   Lines:  84.82% ( 95/112)
+Netresearch\HttpGuard\EndpointGrant
+  Methods:  50.00% ( 2/ 4)   Lines:  50.00% (  2/  4)
+Netresearch\HttpGuard\EndpointProfile
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\GuardConfig
+  Methods:  55.56% ( 5/ 9)   Lines:  88.50% (200/226)
+Netresearch\HttpGuard\NullDecisionReporter
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\PolicyDecision
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\PolicyEngine
+  Methods:  50.00% ( 5/10)   Lines:  92.50% (148/160)
+Netresearch\HttpGuard\PolicyException
+  Methods:  50.00% ( 1/ 2)   Lines:  75.00% (  3/  4)
+Netresearch\HttpGuard\PolicyRegistry
+  Methods:  50.00% ( 2/ 4)   Lines:  96.08% ( 49/ 51)
+Netresearch\HttpGuard\RequestPolicyContext
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\Resolution
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\StaticThenDnsResolver
+  Methods:  66.67% ( 2/ 3)   Lines:  85.40% (117/137)
+Netresearch\HttpGuard\SystemClock
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+Netresearch\HttpGuard\Target
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\HttpGuard\TargetNormalizer
+  Methods:  50.00% ( 2/ 4)   Lines:  89.25% ( 83/ 93)
+Netresearch\HttpGuard\Transport\BoundaryMiddleware
+  Methods:  40.00% ( 2/ 5)   Lines:  92.25% (119/129)
+Netresearch\HttpGuard\Transport\GuardedTransferFactory
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  8/  8)
+Netresearch\HttpGuard\Transport\InvocationRegistry
+  Methods:  80.00% ( 4/ 5)   Lines:  90.00% (  9/ 10)
+Netresearch\HttpGuard\Transport\OptionSanitizer
+  Methods:  50.00% ( 4/ 8)   Lines:  80.56% (116/144)
+Netresearch\HttpGuard\Transport\RequestEnvelope
+  Methods:  25.00% ( 1/ 4)   Lines:  25.00% (  1/  4)
+Netresearch\HttpGuard\Transport\RuntimeSupport
+  Methods:  50.00% ( 1/ 2)   Lines:  62.86% ( 22/ 35)
+Netresearch\HttpGuard\Transport\TerminalGuardMiddleware
+  Methods:  66.67% ( 2/ 3)   Lines:  96.00% ( 72/ 75)
+Netresearch\HttpGuard\Transport\TransferDriver
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 20/ 20)
+Netresearch\HttpGuard\Transport\TransferLease
+  Methods:  50.00% ( 5/10)   Lines:  93.06% (161/173)
+Netresearch\HttpGuard\WireDnsQuery
+  Methods:  20.00% ( 2/10)   Lines:  71.79% ( 84/117)
+Netresearch\NrHttpGuard\Configuration\ConfigurationLoader
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  6/  6)
+Netresearch\NrHttpGuard\Configuration\GlobalHttpDefaults
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  8/  8)
+Netresearch\NrHttpGuard\Diagnostics\DiagnosticBootState
+  Methods:  50.00% ( 1/ 2)   Lines:  95.83% ( 23/ 24)
+Netresearch\NrHttpGuard\Diagnostics\DiagnosticResult
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Netresearch\NrHttpGuard\Diagnostics\DiagnosticsService
+  Methods:  25.00% ( 2/ 8)   Lines:  65.28% ( 94/144)
+Netresearch\NrHttpGuard\Diagnostics\LegacyConfigurationInventory
+  Methods:   0.00% ( 0/ 1)   Lines:  94.74% ( 36/ 38)
+Netresearch\NrHttpGuard\EventListener\RegisterGuardListener
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 14/ 14)
+Netresearch\NrHttpGuard\Http\RawRequestFactoryRegistration
+  Methods:  50.00% ( 1/ 2)   Lines:  77.78% (  7/  9)
+Netresearch\NrHttpGuard\Http\RawRequestGuardTrait
+  Methods:  50.00% ( 1/ 2)   Lines:  93.75% ( 15/ 16)
+Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility
+  Methods:  50.00% ( 1/ 2)   Lines:  82.61% ( 19/ 23)

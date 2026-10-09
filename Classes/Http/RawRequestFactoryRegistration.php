@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\NrHttpGuard\Http;
 
@@ -8,6 +12,10 @@ use TYPO3\CMS\Core\Http\RequestFactory;
 
 final readonly class RawRequestFactoryRegistration
 {
+    /**
+     * @param \Closure(): mixed $factory
+     * @param \Closure(): mixed $psrFactory
+     */
     public function __construct(
         private \Closure $factory,
         private \Closure $psrFactory

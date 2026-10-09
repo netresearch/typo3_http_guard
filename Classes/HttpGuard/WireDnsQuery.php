@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard;
 
@@ -60,12 +64,18 @@ final class WireDnsQuery implements DnsQueryInterface
             self::fail();
         }
         $authority = str_contains($server, ':') ? '[' . $server . ']' : $server;
-        $socket = @stream_socket_client(
-            ($tcp ? 'tcp' : 'udp') . '://' . $authority . ':' . $this->port,
-            $errno,
-            $error,
-            $remaining,
-            STREAM_CLIENT_CONNECT
+        $socket = NativeOperation::attempt(
+            function () use ($tcp, $authority, $remaining) {
+                $errno = 0;
+                $error = "";
+                return stream_socket_client(
+                    ($tcp ? "tcp" : "udp") . "://" . $authority . ":" . $this->port,
+                    $errno,
+                    $error,
+                    $remaining,
+                    STREAM_CLIENT_CONNECT
+                );
+            }
         );
         if ($socket === false) {
             self::fail();
@@ -78,7 +88,9 @@ final class WireDnsQuery implements DnsQueryInterface
             $written = 0;
             while ($written < strlen($payload)) {
                 $this->ready($socket, $deadline, false);
-                $count = @fwrite($socket, substr($payload, $written));
+                $count = NativeOperation::attempt(
+                    static fn() => fwrite($socket, substr($payload, $written))
+                );
                 if ($count === false || $count === 0) {
                     self::fail();
                 }
@@ -89,7 +101,7 @@ final class WireDnsQuery implements DnsQueryInterface
             }
             if (!$tcp) {
                 $this->ready($socket, $deadline, true);
-                $packet = @fread($socket, 65535);
+                $packet = NativeOperation::attempt(static fn() => fread($socket, 65535));
                 if ($packet === false || $packet === '') {
                     self::fail();
                 }
@@ -112,7 +124,7 @@ final class WireDnsQuery implements DnsQueryInterface
         $remaining = $length;
         while ($remaining > 0) {
             $this->ready($socket, $deadline, true);
-            $chunk = @fread($socket, $remaining);
+            $chunk = NativeOperation::attempt(static fn() => fread($socket, $remaining));
             if ($chunk === false || $chunk === '') {
                 self::fail();
             }
@@ -135,14 +147,18 @@ final class WireDnsQuery implements DnsQueryInterface
         $read = $reading ? [$socket] : [];
         $write = $reading ? [] : [$socket];
         $except = [];
-        if (@stream_select($read, $write, $except, $seconds, $micros) !== 1) {
+        if (NativeOperation::attempt(
+            static fn() => stream_select($read, $write, $except, $seconds, $micros)
+        ) !== 1) {
             self::fail();
         }
     }
     /** @return list<string> */
     private static function systemNameservers(string $path): array
     {
-        $text = @file_get_contents($path, false, null, 0, 65537);
+        $text = NativeOperation::attempt(
+            static fn() => file_get_contents($path, false, null, 0, 65537)
+        );
         if ($text === false || strlen($text) > 65536) {
             throw new PolicyException('configuration_invalid');
         }

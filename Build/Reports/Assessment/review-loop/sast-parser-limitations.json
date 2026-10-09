@@ -1,0 +1,878 @@
+{
+  "version": "1.19.0",
+  "total_errors": 57,
+  "errors": [
+    {
+      "scanner_type": "Syntax error",
+      "path": "integrations/nr-vault/vault-adapter.patch",
+      "locations": [
+        {
+          "line": 595,
+          "column": null
+        }
+      ],
+      "unsupported_token": "declare",
+      "category": "source patch syntax"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/VaultHttpClient.php",
+      "locations": [
+        {
+          "line": 78,
+          "column": 7
+        },
+        {
+          "line": 1060,
+          "column": 68
+        },
+        {
+          "line": 1083,
+          "column": 34
+        },
+        {
+          "line": 1273,
+          "column": 67
+        },
+        {
+          "line": 1279,
+          "column": 68
+        },
+        {
+          "line": 1290,
+          "column": 34
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/SecureHttpClientFactory.php",
+      "locations": [
+        {
+          "line": 139,
+          "column": 17
+        },
+        {
+          "line": 140,
+          "column": 17
+        },
+        {
+          "line": 380,
+          "column": 6
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+      "locations": [
+        {
+          "line": 453,
+          "column": 58
+        },
+        {
+          "line": 642,
+          "column": 38
+        },
+        {
+          "line": 643,
+          "column": 38
+        },
+        {
+          "line": 958,
+          "column": 58
+        },
+        {
+          "line": 1219,
+          "column": 58
+        }
+      ],
+      "unsupported_token": "string",
+      "category": "scalar type or cast"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/OAuth/OAuthTokenManager.php",
+      "locations": [
+        {
+          "line": 147,
+          "column": 13
+        },
+        {
+          "line": 149,
+          "column": 13
+        },
+        {
+          "line": 178,
+          "column": 17
+        },
+        {
+          "line": 179,
+          "column": 17
+        },
+        {
+          "line": 180,
+          "column": 17
+        },
+        {
+          "line": 181,
+          "column": 17
+        },
+        {
+          "line": 184,
+          "column": 17
+        },
+        {
+          "line": 185,
+          "column": 17
+        },
+        {
+          "line": 674,
+          "column": 68
+        },
+        {
+          "line": 688,
+          "column": 34
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/OptionSanitizer.php",
+      "locations": [
+        {
+          "line": 19,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/GuardConfig.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php",
+      "locations": [
+        {
+          "line": 271,
+          "column": 67
+        }
+      ],
+      "unsupported_token": "&MockObject",
+      "category": "intersection type"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/PolicyEngine.php",
+      "locations": [
+        {
+          "line": 17,
+          "column": 17
+        },
+        {
+          "line": 18,
+          "column": 17
+        },
+        {
+          "line": 19,
+          "column": 17
+        },
+        {
+          "line": 20,
+          "column": 17
+        },
+        {
+          "line": 21,
+          "column": 17
+        },
+        {
+          "line": 22,
+          "column": 17
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/TransferLease.php",
+      "locations": [
+        {
+          "line": 36,
+          "column": 17
+        },
+        {
+          "line": 37,
+          "column": 17
+        },
+        {
+          "line": 38,
+          "column": 17
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/GuardedClientFactory.php",
+      "locations": [
+        {
+          "line": 24,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+      "locations": [
+        {
+          "line": 29,
+          "column": 17
+        },
+        {
+          "line": 30,
+          "column": 17
+        },
+        {
+          "line": 31,
+          "column": 17
+        },
+        {
+          "line": 32,
+          "column": 17
+        },
+        {
+          "line": 33,
+          "column": 17
+        },
+        {
+          "line": 34,
+          "column": 26
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Diagnostics/DiagnosticsService.php",
+      "locations": [
+        {
+          "line": 16,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/StaticThenDnsResolver.php",
+      "locations": [
+        {
+          "line": 17,
+          "column": 17
+        },
+        {
+          "line": 18,
+          "column": 17
+        },
+        {
+          "line": 19,
+          "column": 17
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/WireDnsQuery.php",
+      "locations": [
+        {
+          "line": 15,
+          "column": 13
+        },
+        {
+          "line": 19,
+          "column": 26
+        },
+        {
+          "line": 20,
+          "column": 26
+        },
+        {
+          "line": 21,
+          "column": 26
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php",
+      "locations": [
+        {
+          "line": 31,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Cidr.php",
+      "locations": [
+        {
+          "line": 11,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php",
+      "locations": [
+        {
+          "line": 22,
+          "column": 17
+        },
+        {
+          "line": 23,
+          "column": 17
+        },
+        {
+          "line": 24,
+          "column": 17
+        },
+        {
+          "line": 25,
+          "column": 17
+        },
+        {
+          "line": 26,
+          "column": 17
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/DecisionReporter.php",
+      "locations": [
+        {
+          "line": 20,
+          "column": 17
+        },
+        {
+          "line": 21,
+          "column": 17
+        },
+        {
+          "line": 22,
+          "column": 26
+        },
+        {
+          "line": 23,
+          "column": 17
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Http/MiddlewareRegistry.php",
+      "locations": [
+        {
+          "line": 21,
+          "column": 17
+        },
+        {
+          "line": 24,
+          "column": 17
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/PolicyRegistry.php",
+      "locations": [
+        {
+          "line": 17,
+          "column": 17
+        },
+        {
+          "line": 18,
+          "column": 17
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Service/LibraryServiceFactory.php",
+      "locations": [
+        {
+          "line": 24,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Http/CoreStackProvider.php",
+      "locations": [
+        {
+          "line": 17,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Http/RawRequestGuardTrait.php",
+      "locations": [
+        {
+          "line": 20,
+          "column": 17
+        },
+        {
+          "line": 21,
+          "column": 17
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/PublicFetchClient.php",
+      "locations": [
+        {
+          "line": 15,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Tests/Fixtures/RecordingMiddleware.php",
+      "locations": [
+        {
+          "line": 15,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/EventListener/RegisterGuardListener.php",
+      "locations": [
+        {
+          "line": 12,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Http/RawRequestFactoryRegistration.php",
+      "locations": [
+        {
+          "line": 13,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/PolicyException.php",
+      "locations": [
+        {
+          "line": 27,
+          "column": 50
+        }
+      ],
+      "unsupported_token": "string",
+      "category": "scalar type or cast"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/RequestEnvelope.php",
+      "locations": [
+        {
+          "line": 11,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Command/AbstractGuardCommand.php",
+      "locations": [
+        {
+          "line": 17,
+          "column": 19
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/GuardedTransferFactory.php",
+      "locations": [
+        {
+          "line": 14,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Documentation/Api/_ErpClient.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Documentation/Localization.de_DE/Api/_ErpClient.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Client/PublicFetchClient.php",
+      "locations": [
+        {
+          "line": 17,
+          "column": 41
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Build/phpstan-bootstrap14.php",
+      "locations": [
+        {
+          "line": 16,
+          "column": 11
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/EndpointProfile.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/DecisionEvent.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/MiddlewarePair.php",
+      "locations": [
+        {
+          "line": 14,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Client/EndpointClientFactory.php",
+      "locations": [
+        {
+          "line": 13,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/EndpointGrant.php",
+      "locations": [
+        {
+          "line": 11,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/ClientScope.php",
+      "locations": [
+        {
+          "line": 11,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/ClientStackConfiguration.php",
+      "locations": [
+        {
+          "line": 11,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/GuardedClientBinding.php",
+      "locations": [
+        {
+          "line": 14,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardTransferTicker.php",
+      "locations": [
+        {
+          "line": 17,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/Psr18Client.php",
+      "locations": [
+        {
+          "line": 13,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/ConnectionPlan.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Documentation/Api/_PublicDocument.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Documentation/Localization.de_DE/Api/_PublicDocument.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Resolution.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/DnsAnswer.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/Target.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/AddressClassification.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/PolicyDecision.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/HttpGuard/RequestPolicyContext.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Diagnostics/DiagnosticResult.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    },
+    {
+      "scanner_type": "PartialParsing",
+      "path": "Classes/Http/GuardedRequestFactory14.php",
+      "locations": [
+        {
+          "line": 10,
+          "column": 7
+        }
+      ],
+      "unsupported_token": "readonly",
+      "category": "readonly declaration"
+    }
+  ]
+}

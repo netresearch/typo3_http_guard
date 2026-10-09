@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "fingerprint": "ab230a3f33b20aedce264dce8af32a2d5be14a73:Build/Reports/Assessment/review-loop/final-extension-archive-manifest.json:generic-api-key:72",
+  "classification": "Public SHA256 source integrity metadata; not a credential",
+  "member": "Classes/HttpGuard/Transport/InvocationToken.php",
+  "archive_and_current_source_member_bytes_equal": true,
+  "member_sha256_matches_manifest": true,
+  "archive_sha256_matches_manifest": true,
+  "independent_review": "Round2 reviewer independently verified immutable ab230a3 Git bytes, archive bytes and full archive checksum"
+}

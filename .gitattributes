@@ -5,6 +5,8 @@ evidence/** -whitespace
 specification/** -whitespace
 Resources/Private/HttpGuard/data/security-corpus/** -whitespace
 verification/evidence/** -whitespace
+# Raw assessment console logs retain the tool's exact output, including padding.
+Build/Reports/Assessment/**/*.log -whitespace
 integrations/nr-vault/evidence/** -whitespace
 integrations/nr-vault/vault-adapter.patch -whitespace
 # RST headings/tables legitimately use seven equals signs.
@@ -13,6 +15,6 @@ integrations/nr-vault/source-overlay/Documentation/** conflict-marker-size=32
 Build/phpstan-http-guard.neon whitespace=-blank-at-eof
 
 # RST manuals use equals-sign headings.
-Documentation/** conflict-marker-size=32
+Documentation/** conflict-marker-size=128
 # Preserve the original RST heading/table syntax in historical Vault snapshots.
 evidence/historical-two-package/integrations/nr-vault/source-overlay/Documentation/** conflict-marker-size=32

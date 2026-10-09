@@ -1,0 +1,54 @@
+{
+  "format": "historical-composer-records/v1",
+  "records": [
+    {
+      "original_path": "evidence/architecture-probe/dependencies/core13g7/composer.json",
+      "archive_path": "evidence/architecture-probe/dependencies/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core13g7/composer.json",
+      "original_sha256": "29faa3fabb06689607ff56cfd792107f969c51eb65f3a67e898e0095f1b29782"
+    },
+    {
+      "original_path": "evidence/architecture-probe/dependencies/core13g7/composer.lock",
+      "archive_path": "evidence/architecture-probe/dependencies/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core13g7/composer.lock",
+      "original_sha256": "1048fd27296807836d2c424bce79f177bc4b850b4866b258ec7f04363646ff43"
+    },
+    {
+      "original_path": "evidence/architecture-probe/dependencies/core13g8/composer.json",
+      "archive_path": "evidence/architecture-probe/dependencies/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core13g8/composer.json",
+      "original_sha256": "8abdf7e510eda5bc326d08eac619e51c05f50ca50dea516174acb7443dd062d8"
+    },
+    {
+      "original_path": "evidence/architecture-probe/dependencies/core13g8/composer.lock",
+      "archive_path": "evidence/architecture-probe/dependencies/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core13g8/composer.lock",
+      "original_sha256": "cd5080fb1ac80fbe1b491f70474a570392dd51f69f049a5af90772dce2e5a6bd"
+    },
+    {
+      "original_path": "evidence/architecture-probe/dependencies/core14g7/composer.json",
+      "archive_path": "evidence/architecture-probe/dependencies/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core14g7/composer.json",
+      "original_sha256": "a55f81acedf3ae9e8294259985178673821c9922c6300bac706e3486923ff2e3"
+    },
+    {
+      "original_path": "evidence/architecture-probe/dependencies/core14g7/composer.lock",
+      "archive_path": "evidence/architecture-probe/dependencies/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core14g7/composer.lock",
+      "original_sha256": "833d998ceee7125394d001dda4c3ff7e3d4154a3826c633fa32c2fd5888ed643"
+    },
+    {
+      "original_path": "evidence/architecture-probe/dependencies/core14g8/composer.json",
+      "archive_path": "evidence/architecture-probe/dependencies/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core14g8/composer.json",
+      "original_sha256": "542c67e4ce801e2f19c03685ae301f62ffda2887d543779af10fd052ce8f0bb4"
+    },
+    {
+      "original_path": "evidence/architecture-probe/dependencies/core14g8/composer.lock",
+      "archive_path": "evidence/architecture-probe/dependencies/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core14g8/composer.lock",
+      "original_sha256": "d1c697be37463636d62e9f0e92fa532d790c75c5da4798fbfafbbe7c1bb07ceb"
+    }
+  ],
+  "source_commit": "83f8105ec50d766b31d860ca979464de3c146c22"
+}

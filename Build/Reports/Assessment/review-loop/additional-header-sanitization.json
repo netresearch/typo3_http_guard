@@ -1,0 +1,30 @@
+{
+  "change": "Redacted current public-document response-cookie values only; body originals unchanged.",
+  "files": [
+    {
+      "file": "sources/azure-platform.headers.txt",
+      "cookie_names_only": [
+        "MSAKBC"
+      ],
+      "before_sha256": "aeb7c958d021e466ca8094db7e98befadd44b456aa2583a0ad3dbd3fac391665",
+      "after_sha256": "d1e2303a4fbe7bbf2846e084c38dd6837f44f188b6ef53d5198bafd7a0443818"
+    },
+    {
+      "file": "sources/rfc1112.headers.txt",
+      "cookie_names_only": [
+        "__cf_bm"
+      ],
+      "before_sha256": "e69679d3ced959321f635148eac76620fcde8d21f6d7e6f65550f3bf1393e6a4",
+      "after_sha256": "e9330ff3c87690cbc22c8f034ef508ff9fdb6ce5d7e9661383e603abef87754a"
+    },
+    {
+      "file": "sources/rfc4291.headers.txt",
+      "cookie_names_only": [
+        "__cf_bm"
+      ],
+      "before_sha256": "18fb181bc764229d68d50c7a4fb86936286ceba54758ffd994d6707da3efaaaf",
+      "after_sha256": "086808d0f4d7645e651d2ad2dbe4655db79d2dba9088b25c92ffe95e5f149050"
+    }
+  ],
+  "values_saved": false
+}

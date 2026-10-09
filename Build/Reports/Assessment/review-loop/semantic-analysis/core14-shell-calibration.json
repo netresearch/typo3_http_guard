@@ -1,0 +1,84 @@
+{
+  "analysis_file": "Build/phpstan-bootstrap14.php",
+  "source_digest": "28dc2dd31f584564950c2a53338bc05eb500509abd803d5df3056f17a341b542",
+  "scope": "synthetic analysis shell selection and ABI probes; not future upstream qualification",
+  "original_abi_gate": [
+    {
+      "version": "14.3.9",
+      "parent": "readonly-value",
+      "exit": 0
+    },
+    {
+      "version": "14.3.9",
+      "parent": "readonly-reference",
+      "exit": 255
+    }
+  ],
+  "final": [
+    {
+      "version": "14.3.8",
+      "parent": "readonly",
+      "expected_accept": true,
+      "actual_accept": true,
+      "controlled_rejection": false,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "version": "14.3.9",
+      "parent": "readonly",
+      "expected_accept": true,
+      "actual_accept": true,
+      "controlled_rejection": false,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "version": "14.4.0",
+      "parent": "readonly",
+      "expected_accept": true,
+      "actual_accept": true,
+      "controlled_rejection": false,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "version": "14.3.7",
+      "parent": "readonly",
+      "expected_accept": false,
+      "actual_accept": false,
+      "controlled_rejection": true,
+      "exit": 42,
+      "verdict": "PASS"
+    },
+    {
+      "version": "13.4.36",
+      "parent": "mutable",
+      "expected_accept": false,
+      "actual_accept": false,
+      "controlled_rejection": true,
+      "exit": 42,
+      "verdict": "PASS"
+    },
+    {
+      "version": "14.3.9",
+      "parent": "mutable",
+      "expected_accept": false,
+      "actual_accept": false,
+      "controlled_rejection": true,
+      "exit": 42,
+      "verdict": "PASS"
+    },
+    {
+      "version": "14.3.9",
+      "parent": "readonly-reference",
+      "expected_accept": false,
+      "actual_accept": false,
+      "controlled_rejection": true,
+      "exit": 42,
+      "verdict": "PASS"
+    }
+  ],
+  "uses_canonical_runtime_version_and_abi_guard": true,
+  "packaged_archive_changed": false
+}

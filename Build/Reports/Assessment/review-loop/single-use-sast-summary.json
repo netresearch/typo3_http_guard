@@ -1,0 +1,28 @@
+{
+  "source_base_head": "e69ddadf9812e8d8b76db825bbc35a78df5d4184",
+  "scope": "Auxiliary four-file scan during active shared semantic edits. Final full scan must bind the combined reviewed snapshot.",
+  "opengrep_version": "1.19.0",
+  "exit_code": 0,
+  "findings": 0,
+  "scanned_files": [
+    "Classes/HttpGuard/Transport/SingleUseCurlFactory.php",
+    "Classes/HttpGuard/Transport/TransferLease.php",
+    "Tests/HttpGuard/Integration/ProductionTransportTest.php",
+    "Tests/HttpGuard/Unit/Transport/SingleUseCurlFactoryTest.php"
+  ],
+  "parser_limitations": [
+    {
+      "path": "Classes/HttpGuard/Transport/TransferLease.php",
+      "type": "PartialParsing",
+      "message": "Syntax error at line Classes/HttpGuard/Transport/TransferLease.php:36:\n `readonly` was unexpected"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/SingleUseCurlFactory.php",
+      "type": "PartialParsing",
+      "message": "Syntax error at line Classes/HttpGuard/Transport/SingleUseCurlFactory.php:21:\n `readonly` was unexpected"
+    }
+  ],
+  "coverage_note": "Not exhaustive PHP SAST. SingleUseCurlFactory adds one readonly constructor PartialParsing limitation to the previous full scan; final full metadata must recompute current paths and signatures. TransferLease retains its existing limitation.",
+  "stable_factory_file_sha256": "dee0706a82d70409ee4f726b8d663e74ca9b8371ad465e86095c35f798104e86",
+  "limits": "TransferLease was subsequently updated for curated-profile validation. This auxiliary scan does not claim final combined-source coverage."
+}

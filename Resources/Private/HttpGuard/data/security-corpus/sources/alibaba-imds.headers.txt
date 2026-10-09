@@ -6,8 +6,8 @@ server: Tengine
 vary: Accept-Encoding
 vary: Accept-Encoding
 vary: Accept-Encoding
-set-cookie: help_csrf=nVywiTnw6ezGd8BQY%2B425Ak5WrKko26Afrex8jG5VipLWunS7y6EDLv9EIJDSoJJVJ2isMtfPFxij%2FaqOn7PBzaI44X%2FfzKOO09IYOwGdmXi06h9%2FfhQ2kvQWEof5HdPomMRWnEganSRfcsyoanwBw%3D%3D; Domain=alibabacloud.com; Path=/
-set-cookie: cr_token=afc4a4ef-0711-4663-9002-6a63788d48d7; Domain=alibabacloud.com; Path=/
+set-cookie: help_csrf=[REDACTED]; Domain=alibabacloud.com; Path=/
+set-cookie: cr_token=[REDACTED]; Domain=alibabacloud.com; Path=/
 access-control-allow-credentials: true
 access-control-allow-methods: GET,POST,OPTIONS
 access-control-allow-headers: DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization

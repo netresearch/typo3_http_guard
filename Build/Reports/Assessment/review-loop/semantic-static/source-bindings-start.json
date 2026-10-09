@@ -1,0 +1,2778 @@
+[
+  {
+    "path": ".betterleaksignore",
+    "sha256": "4fd4be546254e12460afd9eae37f72bfc17164a33cc384b3cc68901cdd9f531b"
+  },
+  {
+    "path": ".gitattributes",
+    "sha256": "9bb4158782a2eccf22ce681636404c142b8595f8dbc3206be3868f93a9bf5be8"
+  },
+  {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "3afb12a6fc9b52806ee775291a2a5da976ec758e2049ac266ba045f7eabd57ca"
+  },
+  {
+    "path": ".github/workflows/codeql.yml",
+    "sha256": "b5f5a1745f266ad9a7f142655b9223f9177939edc7f56afffad3a903ae5c23bd"
+  },
+  {
+    "path": ".github/workflows/dependency-review.yml",
+    "sha256": "713cf63d1f6fe190ec9b7acebcd9f35f771f5a0fe60428b0cd3cbc6b85ae60db"
+  },
+  {
+    "path": ".github/workflows/scorecard.yml",
+    "sha256": "953c06862856bf6d4db56ac88cef6bcce6bd3ce092c8cfeb692e66df51976a6a"
+  },
+  {
+    "path": ".github/workflows/security.yml",
+    "sha256": "765447dfb907176f1d6202f455334034c0adf5b92ae2876728569c2f8090c80f"
+  },
+  {
+    "path": ".github/workflows/verification.yml",
+    "sha256": "b276b14e1646f2fa11d289f1119475293a4922f7781c664ee6dd49c2f59ef9d3"
+  },
+  {
+    "path": ".github/zizmor.yml",
+    "sha256": "af30223a6101bf43648ddb83d44975c56a3f6eeba736147203f6a4ba75c20e62"
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "295cbfea125b686c64eea40e67f5f08bd48a5ec509b1623b1271a70c50d76a03"
+  },
+  {
+    "path": "Build/Fixtures/README.md",
+    "sha256": "a9f19e0f5cb6146f94060f24afb4aa0f4443abae31e2e9ff7c2eb691261778a6"
+  },
+  {
+    "path": "Build/Fixtures/classic-tarballs.json",
+    "sha256": "974c5e2551c2619191f716ca8860d41c94b015d60bafe877f4bf0c4bbc036415"
+  },
+  {
+    "path": "Build/Fixtures/classic13/typo3conf/PackageStates.php",
+    "sha256": "d7f2369688f19a4ee6ab91eed5260337642bf2772f68f54d615eb7673672313f"
+  },
+  {
+    "path": "Build/Fixtures/classic13/typo3conf/system/additional.php",
+    "sha256": "99b0d538dc02ac7ba453a238f51e1bf033b2a61a155b3122cade8597446443f0"
+  },
+  {
+    "path": "Build/Fixtures/classic13/typo3conf/system/settings.php",
+    "sha256": "5d970bdafd68cf9c72ce569c5fa89a22d9a77f8cf4fb5fb99af16ab16b000d97"
+  },
+  {
+    "path": "Build/Fixtures/classic14/typo3conf/PackageStates.php",
+    "sha256": "24b0a8086812a0da7efd845f9a488a8bd15bbc8dafc0bb1aa47adc8a64b8df3b"
+  },
+  {
+    "path": "Build/Fixtures/classic14/typo3conf/system/additional.php",
+    "sha256": "99b0d538dc02ac7ba453a238f51e1bf033b2a61a155b3122cade8597446443f0"
+  },
+  {
+    "path": "Build/Fixtures/classic14/typo3conf/system/settings.php",
+    "sha256": "5d970bdafd68cf9c72ce569c5fa89a22d9a77f8cf4fb5fb99af16ab16b000d97"
+  },
+  {
+    "path": "Build/Fixtures/core13g7/composer.json",
+    "sha256": "4bf63804b765cdeb96c3021c918a22079eb583651e2d97048e59dfe7d67d2c91"
+  },
+  {
+    "path": "Build/Fixtures/core13g7/config/system/additional.php",
+    "sha256": "6f252ff03abaa7c50bb7a17cbbadeae0bdbf99c64778f60a768aaa0855da6811"
+  },
+  {
+    "path": "Build/Fixtures/core13g7/config/system/settings.php",
+    "sha256": "769e101e5e48e2dd9c58272a6f516fa79492af1ebbefbf6102c21ed1a4e37fd2"
+  },
+  {
+    "path": "Build/Fixtures/core13g8/composer.json",
+    "sha256": "9c08918e8aa67ee034f0aaf19d7b29aa8ac61f59ae08a54bb22110cc0d981508"
+  },
+  {
+    "path": "Build/Fixtures/core13g8/config/system/additional.php",
+    "sha256": "6f252ff03abaa7c50bb7a17cbbadeae0bdbf99c64778f60a768aaa0855da6811"
+  },
+  {
+    "path": "Build/Fixtures/core13g8/config/system/settings.php",
+    "sha256": "769e101e5e48e2dd9c58272a6f516fa79492af1ebbefbf6102c21ed1a4e37fd2"
+  },
+  {
+    "path": "Build/Fixtures/core14g7/composer.json",
+    "sha256": "deb1d45e0fdba5c93a1ef042af0cd069a32befafd0af54242cbcaaba305a969a"
+  },
+  {
+    "path": "Build/Fixtures/core14g7/config/system/additional.php",
+    "sha256": "6f252ff03abaa7c50bb7a17cbbadeae0bdbf99c64778f60a768aaa0855da6811"
+  },
+  {
+    "path": "Build/Fixtures/core14g7/config/system/settings.php",
+    "sha256": "769e101e5e48e2dd9c58272a6f516fa79492af1ebbefbf6102c21ed1a4e37fd2"
+  },
+  {
+    "path": "Build/Fixtures/core14g8/composer.json",
+    "sha256": "9006535f3e1ad976cd2eecc840a738f0ec299b66eacd681efe506ffee00e1a48"
+  },
+  {
+    "path": "Build/Fixtures/core14g8/config/system/additional.php",
+    "sha256": "6f252ff03abaa7c50bb7a17cbbadeae0bdbf99c64778f60a768aaa0855da6811"
+  },
+  {
+    "path": "Build/Fixtures/core14g8/config/system/settings.php",
+    "sha256": "769e101e5e48e2dd9c58272a6f516fa79492af1ebbefbf6102c21ed1a4e37fd2"
+  },
+  {
+    "path": "Build/Fixtures/initialize-classic.php",
+    "sha256": "3109bb2cf5f63ec3684129457af61b98c6b1a6d39af36d9a3dfaf80776bdfd2d"
+  },
+  {
+    "path": "Build/Fixtures/prepare-classic.py",
+    "sha256": "71cc456d63c4dbed99b2f6d26f0c7b12a63b43542c02391439c3467a5af98da6"
+  },
+  {
+    "path": "Build/Fixtures/prepare-wire.sh",
+    "sha256": "e9e70378e2aa04eefd6c638ad8ea39417f6b7ee77297ee044c329f0043beb705"
+  },
+  {
+    "path": "Build/Fixtures/prepare.py",
+    "sha256": "d9ecf0e8e4cd52e2dc1dfadee8c5445e615099f8f196cd071ba84cddcabb5d7a"
+  },
+  {
+    "path": "Build/Fixtures/run-matrix.py",
+    "sha256": "8f5b4490161f4212f0c8fe849b7dace3c1887085daf944514e9435ec2f8b1840"
+  },
+  {
+    "path": "Build/Fixtures/wire_server.py",
+    "sha256": "bcabda63076ce10e72cc669500e6d128315edc9866d2b71ec6e448fc3c0bbfee"
+  },
+  {
+    "path": "Build/PhpStan/HandlerStack.stub",
+    "sha256": "865769065c3093c5723dd9a9d7bd769afed179689ce876676750695e45094385"
+  },
+  {
+    "path": "Build/Reports/Assessment/README.md",
+    "sha256": "f9d9d54a534ab0c450d2aad9c03f9e88418646b4e75f2ba2c3c7e3052b92359b"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/agent-harness.raw.json",
+    "sha256": "6daeec194b04ca6d6addf2d77e7844739c95165846cdc74dae96db021fddf367"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/agent-rules.raw.json",
+    "sha256": "fc387146b23ee2b31e7d01c462d22c2f78273a6d40fc415977bc1d4ddba68b66"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/baseline-mechanical-aggregate.json",
+    "sha256": "a0f04b96d5a0a2dfb4b2650aba4fd122b10b1ecd3f9289f20a5ce5453094de6c"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/baseline-model-review-aggregate.json",
+    "sha256": "67bd6b98a744fbc32b01c0c0206d6e70cfd1203e0449efde7240b4e3e8278bb3"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/baseline-review.md",
+    "sha256": "4eb07acd4aa769c47f6b051be61b61cb3aeb70fb00577d06bf751d4840566925"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/composer-validate.log",
+    "sha256": "43add299dc97ecbd90ec2dc456ef5a0bd824bb9abdae2a3d7cdb520e21f8e86d"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/discovery.json",
+    "sha256": "0cea5c8d7e6a70e82c4dd7e3f7ea7a2bbebb1c9e43ffe6b49a01fff06f285dd4"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/enterprise-readiness-llm-review.json",
+    "sha256": "1c7e2ff2c90ef3a89a918c9eb45d6a0e9f5256c2c7f4e08900c2f98d69c179d4"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/enterprise-readiness-mechanical.json",
+    "sha256": "444a4a51eb13a8832e14b9f900a0460e7c80b1bdc06a85454c161226242c9e64"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/full-coverage-summary.json",
+    "sha256": "323ce5d7b6cca56ab94fd2722258c10230a13331c04dd9a8fc8ee89c6a292213"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/full-coverage.log",
+    "sha256": "96ce33244aca9e7f01995d13f18b7aacb97a015c828e69cee7066b4c7e8dbf00"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/git-workflow.raw.json",
+    "sha256": "12b0aacc9faf64cf98a5a1382cb2552bfc9ed283c2eb57b6a5b728ab9632776f"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/github-project.raw.json",
+    "sha256": "c8de61ede3498b1a88ac3bd1bea78e51b674d30f62b36668a4af5694a1317abe"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/llm-review-results.json",
+    "sha256": "e6f9cd8a383ba46b9ef2d5104e000966b42444eb06a6312aa0ec8c5b2748decc"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/mechanical-calibration.json",
+    "sha256": "750e8f4112a620e2752d10e3cc12686941445bdab187266874a857e6ad355545"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/mechanical-triage.json",
+    "sha256": "cd2824235e3d0c190d8a706922fa8223a4ef00c80f06060459b451858c88488f"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/metadata.json",
+    "sha256": "5d85cceb75d5a6401a5e296bff02e2d3565925c3ca964e4867318ad52590dabb"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/netresearch-branding.raw.json",
+    "sha256": "a47ebee261956a2deca9a1b3f804f8197f2e1dcaee50c31a0eb448393bcc4c9a"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/php-file-metadata.json",
+    "sha256": "f9700bebc82efa7b2cd37b2c5bb4a85958ce6c4ef7e05e021fa4337060aec58f"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/php-modernization.raw.json",
+    "sha256": "eb2cabcac1e976534402f47264ba539aa273f9f4d7a3cee2cbf02eacbd4bd01a"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/phpstan-core14g8-baseline.log",
+    "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/security-audit.raw.json",
+    "sha256": "63926740d0b0dbccb5a3931ed85c3c116a0e8fa4beb2f0c08d3294b8740576fd"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/snapshot-head.log",
+    "sha256": "2cb0871e5c1f4e3db9040ad0f9c8e1bf834adc715b3a7910b03fb9255e036c7d"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/snapshot-manifest.json",
+    "sha256": "14c6af657bc40c75c033c64935b530581a78f2900701e15a1f7e6bd07cd140de"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/snapshot-origin.log",
+    "sha256": "01fd6c236e83fdb16866d0e41bbdf9a95eda5ff51f3804f501c805138a77e087"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/snapshot-status-after.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/snapshot-status-before.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/specific-mechanical-triage.json",
+    "sha256": "cf0cd952d53923e25dd5d0c312a1095afaade49a5943ddbb324e16756398687e"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/typo3-conformance-llm-review.json",
+    "sha256": "4beeffbe0564a7fce2c86c61979afd737d57d7a6f3ffc97fc1f7764bd1aaa992"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/typo3-conformance-mechanical.json",
+    "sha256": "aaf30c955a1747b1b475cd223fdc106231f056a02ec5714c616b83c1c3871da9"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/typo3-docs.raw.json",
+    "sha256": "d1e9928d04744107503450a0b264b5afc2a5cfa1efc47010d14b4dc99f9151c2"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/typo3-testing.raw.json",
+    "sha256": "81303ab099e8e196c57c5b67fff50adfc13bbdc841775761f2be35085a146acf"
+  },
+  {
+    "path": "Build/Reports/Assessment/baseline/unit-coverage-summary.json",
+    "sha256": "241b7e240c85bc9bf8e4c8a4dd794e923f704d66a0ed45408e6769cf5c407ca4"
+  },
+  {
+    "path": "Build/Reports/Assessment/core13-static/README.md",
+    "sha256": "609d0ec949707e2dc282600f0170b41c6f74f9ae29682d5005ed273c980ebfed"
+  },
+  {
+    "path": "Build/Reports/Assessment/core13-static/manual-structural-comparison.json",
+    "sha256": "d091ba5f1c524e7833c1ea1765d399d8c8a6ee43bcd1c06b0eb9e6c299868c97"
+  },
+  {
+    "path": "Build/Reports/Assessment/core13-static/summary.json",
+    "sha256": "4eb592bc537339b8fbda5351a79e9a8bbf389ac84e4bfade042665c816631bc4"
+  },
+  {
+    "path": "Build/Reports/Assessment/current-tree-review.md",
+    "sha256": "4ec4aeb4827da07873886603dfdac19b37b274f42ffd00756f3a17918ec048e5"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/README.md",
+    "sha256": "06da1ed2c283989cf694eb718099d573668ece68aaee561fa57b2cf1ea4af84d"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/betterleaks-after-fingerprints.exit",
+    "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/betterleaks-after-fingerprints.log",
+    "sha256": "d3105d1d0332161555335215b95acdfe8fdb628021bbcfe0060e691ca96fb5f2"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/betterleaks-classification.json",
+    "sha256": "8a9fc30a1936b73a03edb085613fa7e6ff35576726e8679552000ef429970086"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/betterleaks-remaining-redacted-metadata.json",
+    "sha256": "98786533ed020d416f59c3715f60c6697c39986562bc4ea2222aca230410f513"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-actionlint.exit",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-actionlint.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-current-audit.json",
+    "sha256": "0e0cf04874b378c35cefa138c12726387151ac18f00b13b160f41585f677e436"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-current-core14-phpstan.exit",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-current-core14-phpstan.log",
+    "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-current-g7-core13-phpstan.log",
+    "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-current-g7-kernel-phpstan.log",
+    "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-current-g7-unit.log",
+    "sha256": "a1ab273fc0e516c770e52d507e9c30f76d828fd8568863ef6504b69d2087d772"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-current-tests.log",
+    "sha256": "75f7a736bd62149d6b66b5ca6e53bed9e1d53617035139fa06df511bb366dba4"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-summary.json",
+    "sha256": "865550bd00aecf1f059941fd851f518297942bf699e983dc0fd6e38f9416012f"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-zizmor.exit",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/ci-zizmor.json",
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/coverage-converted.json",
+    "sha256": "74463ef2ca519dd3dbd6d08b650c29f302c03cc0dc3c50f1c52ad8dada77ecab"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/current-full-coverage-summary.json",
+    "sha256": "d1bf93a8c4627874420afc29f87f8acace47c1353fd356c380d3b00ea7c4e523"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/current-full-coverage.txt",
+    "sha256": "81b0f9060ef94ac5fe3ba873179aa29b1c70ed5169a54e8a4f39651c0f780685"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/final-extension-archive-manifest.json",
+    "sha256": "6cf8213e8594b6fab026c115eb4e7c4c03be011de0f167495cd9dd5096330eeb"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/github-dependabot-alert-summary.json",
+    "sha256": "0fb018fc53a1cbfda4ee7c5f5eb27c6fd5a17185ad54d6cce7fbfb8544d01cfa"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/github-main-protection.json",
+    "sha256": "550a9546792cab063333772a92c7ce2b700dc16b53f9a0daee7864f40be0f884"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/kernel-g8-phpstan-2.3.1-diagnostics.log",
+    "sha256": "5cad1c20b6d14ab81581bc9fce1450a1acaabf7c7233cb7da1fac1b91f6f03ad"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/opengrep-applicability.json",
+    "sha256": "9a49239cf769458e4d953e9178247cd148decf02f5c197cdf29af074233af38b"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/runtime-source-hash-comparison.exit",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/secret-and-sast-triage-summary.json",
+    "sha256": "0777e8513b53303c9e0092163e43f53750683a5b888d89089b822383d40484db"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/secret-and-sast-triage.md",
+    "sha256": "c7110a9fbb696e32a31ee39e71c131f744349314ac929f8d3d42da9faf6ba7bb"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/secret-scan-calibration.json",
+    "sha256": "228a9e74885c237a5cad2e1520777c8b028527546788a85d320b6f9b94b9e87c"
+  },
+  {
+    "path": "Build/Reports/Assessment/current/source-hashes.json",
+    "sha256": "6bfbd13599d61349e6cc33f14159ae5dd4517a881e80257524171bf92fa021fc"
+  },
+  {
+    "path": "Build/Reports/Assessment/documentation/docs-de.log",
+    "sha256": "8586f833393f865c4f1d167a65e1414f6d019fb413dccaa7a7ffc22d10b504aa"
+  },
+  {
+    "path": "Build/Reports/Assessment/documentation/docs-en.log",
+    "sha256": "b0e0ffcf661b1667d66ae15a3d97c185cce243065cd3ac795f406785f1163904"
+  },
+  {
+    "path": "Build/Reports/Assessment/documentation/docs-validation.log",
+    "sha256": "c9fc1ffc3298231fa7b29957c8ae72dd2cac148da7f7b97172f30fa3c6d9cb68"
+  },
+  {
+    "path": "Build/Reports/Assessment/header-edits/additional-result.json",
+    "sha256": "a966d299b5b5233d91dc4d20c9e44251221a6fb9f2a196f3a299e7ee74607de0"
+  },
+  {
+    "path": "Build/Reports/Assessment/header-edits/additional-semantic-equivalence.json",
+    "sha256": "cc6432daa9ceaf5482afb36aec246131874f046fb2e2eac9697fc9dee70ea883"
+  },
+  {
+    "path": "Build/Reports/Assessment/header-edits/semantic-equivalence.json",
+    "sha256": "581c994d0ca2c80a7dfe441613a0713384de456230506b700137db64f8593d78"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/README.md",
+    "sha256": "d8aced42bb210d6deb5c5d74bf1247cc1fe8ff883a2868e0824f09486d6a109d"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/enterprise-readiness.raw.json",
+    "sha256": "5d50417042b483ed5050a2ee897c577df98161e529cb7b5f045b5c41598e1d3a"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/followup/snapshot.json",
+    "sha256": "d0f45d8f71a08daf4f0e3835e674b9a657092e15e19d0865c6ac74a26347001d"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/followup/tc187.raw.json",
+    "sha256": "d22a69b397510fa54996b2ce325978f843a3f465c6ee41e578e94f7c588b20a6"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/snapshot-manifest.json",
+    "sha256": "3555f34b5807fd06c20f7f69e3117df61bc77856d4867cc671bf3e2c9447814a"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/source-binding.json",
+    "sha256": "108c07076b3d533e9788fd917a88d7ddcdad8ad5b3fbc1161183e7df8017ec73"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/strict-types-token-check.json",
+    "sha256": "fdd387d29dff1b04520697d34410a2389a481c3fa0e018d1b394c2e040404ae0"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/summary.json",
+    "sha256": "2758418f13191167794df680eb444ffcfbf59d6e666950d05b99a6a26b67e034"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/triage.json",
+    "sha256": "af52c104c3bfa968030a86b39bc1e150c084d7126a639cf39badf02d9009b4a0"
+  },
+  {
+    "path": "Build/Reports/Assessment/post/typo3-conformance.raw.json",
+    "sha256": "4c2fa44ddbd1f04b056122e7a9c7c523de8382c2935f83f1270baf6eb1fdd381"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/README.md",
+    "sha256": "c5bd4786d980561da38359069519b95e3311b313fcc7f46a628f1ce3a33bc302"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/ci-failure-propagation.json",
+    "sha256": "48f1334da426d417731a500352fb342a940a48c4b87b472ed9bc11b6e8399664"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/codeql-default-setup.json",
+    "sha256": "9179edc14cce212de6ba9933e426821e87f3f969b21bf04708f4133067b0bfde"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/codeql-run.json",
+    "sha256": "cae5505a3596769f022d9f84a800967fcd62cb10e0d13f7c896eded07fd5a20b"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/dependency-review-run.json",
+    "sha256": "60cfe2004b989566e29571857ac33cf89c5ca33d8f1fe8a02c91acd5f10a2287"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/phpstan-command-after.exit",
+    "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/phpstan-command-after.log",
+    "sha256": "5cad1c20b6d14ab81581bc9fce1450a1acaabf7c7233cb7da1fac1b91f6f03ad"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/phpstan-command-after.sh",
+    "sha256": "b9ceadee5a6fa0833f27bfd04ba2623e9ed535fecf7111278495386012db852a"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/reviewdog-actionlint-verification.json",
+    "sha256": "59b3c69a6183c53fc4c0484fef3b710552f9567e37db455e7541ad541047a591"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/second-startup-diagnosis.json",
+    "sha256": "5a25fd9993e5acc849e2bcddcd4d1f8e415725218b56e92813ac18a4c9d91df4"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/security-37909245786-audit-redacted-metadata.json",
+    "sha256": "fd46908406bdd1b31e540747bb60c50b3ba4e8625948dce90075ba53610d5c82"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/security-37909245786-betterleaks-redacted-metadata.json",
+    "sha256": "e193156534f0044ef74e2e179550ebfe07e861083b9e414182778d906dadd637"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/security-37909245786-final-jobs.json",
+    "sha256": "781ef23058c294e8a5a18354ccf6dd9fb5884c1dbb9b3301ff57c1c648fb25d6"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/security-37909245786-final-run.json",
+    "sha256": "a0c3f92dffccff0903b8aa7a25450438990ce8288221014913ef151a1a48b1be"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/security-37909245786-opengrep-comparison.json",
+    "sha256": "4c9d231d68afe2a9c16da7f3a2f3785609089122a5efbe7bf72f459868fd3bbc"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/security-37909245786-opengrep-redacted-metadata.json",
+    "sha256": "1d9e13d4795aa2813dadba7d66313b24680e711fb2168281ed91b9685caff050"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/security-37909245786-summary.json",
+    "sha256": "dda8e5e6559471b0f925a2c6c38c9a4771ad824097f1f5e951c87c9bf1852a05"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/security-37909245786-summary.md",
+    "sha256": "d4606638c78cf7724ad0513412e2e6a4276dd8e76dcd06687e7c4375570891ea"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/selected-actions.json",
+    "sha256": "26d2e2c53832377e205e9fa1fd8b3c93f578e4b02dff135bbf3a4fff70738fd7"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/setup-php-2.37.2-verification.json",
+    "sha256": "32f024028d6d8ad655c1dc6f2e6da419017d639bc9a96b81290d5283d3b23b63"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/startup-diagnosis.json",
+    "sha256": "32f84c73073a8cdd928128332fff7bf15356642dbe0aa0589ff37f491ca3bbd3"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/verification-run.json",
+    "sha256": "ac43f1f671572b851c8dbc6c3b5af9094a37655e1b8448565f2667f52aa50c06"
+  },
+  {
+    "path": "Build/Reports/Assessment/remote/workflow-permissions.json",
+    "sha256": "d1ab1b8b5b33f79820b6785fbeb02d8dd94af1a01aec2adc1b3b91962e4311cc"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/README.md",
+    "sha256": "72f8735e9a0aed16d97f2701e0e087bc7de1df1daacbc088e7b51c3d38b483b0"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/additional-header-sanitization.json",
+    "sha256": "3a4e6f31b232c191d8db01799dcea07813e1d36397cf5d5333db118adc524293"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/anonymous-cookie-provenance.json",
+    "sha256": "3b935dbe38e4e9e690f3fda0c31bec555607655e61498615fd2ebf849a1f5fc3"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/cookie-independent-review.md",
+    "sha256": "0755dfb54b0be0856e068985e24288f351add102b9ad57cf5a2106d069247828"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/cookie-remediation.md",
+    "sha256": "a35857d57f3868602e7eff01c56260514c9a329b95a5eb0462393db81cbc465c"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/cookie-sanitization.json",
+    "sha256": "1cfffd8ca8487431e2b60d9fe5d5f632df2d2875688ce239bf56fd3e5ba7c1fc"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/final-extension-archive-manifest.json",
+    "sha256": "44343359d0e508111e5572c66dfc35ec299ec8ceed109380bb4d4e2beeca2424"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/final-sast-parser-limitations.json",
+    "sha256": "daf3381ee0722ab9b9a9c15416277c1eb06be3d840fac5fdfc8d60ff768892d6"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/final-static-summary.json",
+    "sha256": "b09260d454023e1491b225b900a367d7da9b866bf71f171dca4cf745b8cd3720"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/fixture-digest-classification.json",
+    "sha256": "fbdc3d34efb35141ffa359cee468ab58c84bfb0bef052aaf3bff6791c0648283"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/package-digest-classification.json",
+    "sha256": "0778cc582c6f2e97f4cfa30aca50ef25661f8f7e86f2d70e444e6d0963f2a0ea"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification-guards.json",
+    "sha256": "2eaaa8b586198a2af28bba840772219c78cbb11e4d78088381c1799fb9308fa9"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/README.md",
+    "sha256": "f8dce05965e0fade5ca6301ffa162f6140b3b4a9be6e01eeeac334a36b41eaca"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/classic-current-manifest-archive-hashes.sha256",
+    "sha256": "215562c31895ac28477b5e7c334cb57fba4b525cddc33c7cfb9bfd9a7231f0a9"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/classic-matrix-round2/production-matrix-summary.json",
+    "sha256": "ef8ce0c840edb1466bd661b29551d1b579a2dca8fe3ac41d2ac917a6fdd74b72"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/classic-round2-persisted-package-states.sha256",
+    "sha256": "daca601d197a24019a6f5b6bd0d6927431fa734e733e359b56fd4f121fcd46db"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/composer-matrix/production-matrix-summary.json",
+    "sha256": "20f7fb684810309cfba31f090c4542dda22397bd7292bbcf9d49719cf5e58908"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/core13g7-phpstan.json",
+    "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/core13g8-phpstan.json",
+    "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/core14g7-phpstan.json",
+    "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/core14g8-phpstan.json",
+    "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/current-runtime-test-source-hashes.sha256",
+    "sha256": "cea5137af4f99ce4e3ae3f89f608249d52962891a257d4197d9a10acbeca5c6d"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/executable-input-hashes-before-classic-fixes.sha256",
+    "sha256": "4a1f506886690367102e69e5dbdc25bf416e0005ebcedbba40f303d688060203"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/executable-input-hashes-round1.sha256",
+    "sha256": "abc3102d454102da75ee31f9d556e05eb874736b1f7c6dc0e24a696ad256f1ab"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/executable-input-hashes.sha256",
+    "sha256": "7b217ce59a5b48d0f1529e4742966e34d3de11cc1a115e3366d43f2a35b7f0a5"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/full-g7-phpunit.log",
+    "sha256": "4956a4bd0dbd20ae57dc3ca6f0d0a0022d21103f69fd016327e354749b1f3b0c"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/full-g7.junit.xml",
+    "sha256": "dfed80574b4de7c1a7567e055254782709b0b81a2f78a4730cd322a74ae777f7"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/full-g7ter-phpunit.log",
+    "sha256": "fcf6007c7e1674e14d27aa8df460d291cd78722b0bdcf0db52c7ea850204e9d6"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/full-g7ter.junit.xml",
+    "sha256": "5bf65f836bc5b0845d20cfc97be7d517b60c2d52fb69df1d1626e753b6fb8fbf"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/full-g8-phpunit.log",
+    "sha256": "7ced25a633bf8e8a5e6af8819b3c83a63549870a8ef5e4e4b86e8642d3f0d29f"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/full-g8.junit.xml",
+    "sha256": "c907df853f207fd728004272ad35ab4d0e415dc3d32a1feef0e6f0d79d0c2f4b"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/installed-fixture-input-hashes.sha256",
+    "sha256": "46b261e38f7cfe0b658d9f1ae8b463deb29ff73cbe99beaddd0239270ef5fd4a"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/kernelg7-phpstan.json",
+    "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/kernelg7ter-phpstan.json",
+    "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/kernelg8-phpstan.json",
+    "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/resolved-production-packages.json",
+    "sha256": "768286a2a2eb514f4df2c57e07c8c680c852a236922d60b213d5cacce4e00d1a"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/runtime-test-source-hashes-round1.sha256",
+    "sha256": "a0b191216f6746c54ca6df8d1aad09708ebaadb4ce8aabb238ddd0166f94f5c2"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/runtime-test-source-hashes.sha256",
+    "sha256": "660bf5caafc08d3d63fdd8a41cd530ffd3b53c338386a74a58df878131ac178a"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/static-configuration-hashes.sha256",
+    "sha256": "453a7c0abb66826671ba9f6cf0134e9f2ab517ff83f7388855790e6bfe68d599"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/summary.json",
+    "sha256": "905c055f5faaf7ffe6980df42b3f0dc3c17aa9b62a56aecb4922c97821402c30"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/qualification/tested-current-source-binding.json",
+    "sha256": "4eb0426e0d7f95e959c42c2cf772482ebd7495351ed06203ae46280088174434"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/renovate-policy-verification.json",
+    "sha256": "bcf98508e371dc44d81192d52e8ecba19006398325e80fea93f09986678f62b1"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/renovate-validation-repository.log",
+    "sha256": "8d713bf5164a9413fcfbb50ce16bdc24dae33015774a82f2141b588739f3d7bc"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/research-header-guard.json",
+    "sha256": "d4f149537c5753c036ffde1a48e40bc9b73fac296d2e226fe1baede16588a338"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/research-header-independent-mutations.json",
+    "sha256": "6d21320165dfe6acefc8f2f78123928306354d57dd0f40a835225c3390cc9650"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/sast-classic-lifecycle-follow-up.json",
+    "sha256": "ee71e2656a2514580f3838475ece9d3e78fa27648c87a5ad4dce76ade3d6b27d"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/sast-parser-baseline-comparison.json",
+    "sha256": "099012083d9c9fd903d6470a129c8d0b31c93e95121c10d9721994d4add9f303"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/sast-parser-limitations.json",
+    "sha256": "3c54ced1230da940d77691bcaaa776d3ca856b77cacdbfddba0cfd7d6e23c899"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/sast-php-semantic-ast.json",
+    "sha256": "f58c78cab9716f184e19e6db0232d492bd556790cbe1d55e7c842ddab1800fd6"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/sast-remediation.json",
+    "sha256": "80a683e068ef7a21bbce31a678236b42748673b5d0c348ddac325ef8c1e7410a"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/sast-remediation.md",
+    "sha256": "252e443b7dcd7ca45263c990a0de82f5af45b065262782a040b82179b952565e"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-documentation-summary.json",
+    "sha256": "18f19f01526f21bf148462af950f89eeba6b4515ac798cd3b37a20964ada9d25"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g7-current-full.log",
+    "sha256": "779ef647ea54cf74790aa5eb91d514ab0db60fc1781d1e9edd1c1707b1381d02"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g7-current-junit.xml",
+    "sha256": "a2a137116cad89c1885d0199f730d8e2895dc74cc81752d6992410ea7ef56689"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g7-ter-full.log",
+    "sha256": "f359e8a414c2ffdc6080bf02aeb7087296fecdbeb22eb6719621a28c9c684d8c"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g7-ter-junit.xml",
+    "sha256": "935f6ebd3879b31d7d134e684723d8d11eb959857dfe740a0f9194d72bb409c6"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g8-full.log",
+    "sha256": "d73ef0b1523818cf40134165185243093c609340a97016d632ac97b5a61450c1"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g8-junit.xml",
+    "sha256": "a2a78b03f6d54b132a5c8320ae17078a390acfe822b3cb45e22bbcbe14f7e38d"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/minimum-g7-full.log",
+    "sha256": "21fcf66e13e8d4bd6facd2e10a41ae25d855c469fb60192b8475677a431aba18"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/minimum-g7-junit.xml",
+    "sha256": "2350ad33ddb12b639d3bf570fff552f7377b8f78bff32777c4309376970a7e00"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/minimum-g8-full.log",
+    "sha256": "88e87f9b8805de934191a8798e3e1ac3c471d096bb95e8f2d07e9a0bea768c74"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/minimum-g8-junit.xml",
+    "sha256": "58e9e28649ea1826e1a7d58a0fc4b2a3169ad6481c9cbfbb09c1f033dcfd8a75"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/semantic-runtime/summary.json",
+    "sha256": "9060d29aca5bce9e38a1eddb22c55a6353647bf528027ac347d522cfac3bf9a0"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/single-use-native-attempt-proof.json",
+    "sha256": "d11e0e2b6cf04ed43429e96c77757953e5a308ce66b1bf0885b4e0a974ec511a"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/single-use-native-attempt-proof.md",
+    "sha256": "2d50df75ef04fdf2aff01616206cc5de597523e5f9e34aa986fa25b39e3f6eab"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/single-use-sast-summary.json",
+    "sha256": "f4e6c306db52ede93e87ff4ba998c50a7abb794d07ca1654b6eea8d1050123af"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/synthetic-exclusion-scope.json",
+    "sha256": "c70c7e02bd992035ed0778ec0012cb488e43203382bd7af8778fad451234c699"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/synthetic-exclusion-scope.md",
+    "sha256": "cd43a583ca6491e9d69ff48f46c7a3975fa877fae129e975b621e2de52b58230"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/synthetic-fixture-integrity.json",
+    "sha256": "27fe3c8b9f59b03cea1b7bc307ce260d38723ed881fda1fc1bc0ee425240345a"
+  },
+  {
+    "path": "Build/Reports/Assessment/review-loop/synthetic-fixture-mutations.json",
+    "sha256": "fbaa8f760f8302247fa634f3ef4c9257ae815cbf5d67e684f30217082aae2a3a"
+  },
+  {
+    "path": "Build/Scripts/build-extension.py",
+    "sha256": "ef5d93669964975396a8044218a6467b6718ef8fb95654b6ae72c65674fd7041"
+  },
+  {
+    "path": "Build/Scripts/check-composer-qualification.py",
+    "sha256": "94a8ea88b5eb28d4bb544a437932fdcf6f8772fcae53972056d8cad7c9c08235"
+  },
+  {
+    "path": "Build/Scripts/check-installed-runtime.php",
+    "sha256": "98f80019e5150e1cb5ac740a135cb5e0c7f2dd24ec562666d81e3f33bcabbe22"
+  },
+  {
+    "path": "Build/Scripts/check-research-headers.py",
+    "sha256": "13a1d898bfefa85bd4988630016ed95b3cc304c4684711662ffdcc4620c9ea14"
+  },
+  {
+    "path": "Build/Scripts/check-synthetic-fixtures.py",
+    "sha256": "f1e3af549096a02aa046718b4ea6d8b6e6a53dd33d5b5a1bc6a980b1325933dc"
+  },
+  {
+    "path": "Build/Scripts/runTests.sh",
+    "sha256": "69544ffa52c83cf1a5e11a465044de7a19c30de2391afb7da257c08cff7228d7"
+  },
+  {
+    "path": "Build/phpstan-bootstrap13.php",
+    "sha256": "c0f6272413c9bb582f35facb13fb201e1e8d73c57c93f581c9150b5829fd7d68"
+  },
+  {
+    "path": "Build/phpstan-bootstrap14.php",
+    "sha256": "d8f8fc0321d9d3d3b215221a277661e1e0e361dfabc1bbce9fca59a8cffe8b04"
+  },
+  {
+    "path": "Build/phpstan-http-guard.neon",
+    "sha256": "b75d026a697cc6204fd61263c3834b4fa4e2be65fb6a234e7835450e55fb81f9"
+  },
+  {
+    "path": "Build/phpstan-typo3-core13.neon",
+    "sha256": "bb2804d7ae8e99ecabbc73dfa078f0750c864f515b712469a6ff3b0363bf1cd5"
+  },
+  {
+    "path": "Build/phpstan-typo3.neon",
+    "sha256": "99b4777cdfd95fdd0b13817cadbfddf83863b3affbd550a080307c680c0bd3a5"
+  },
+  {
+    "path": "Build/phpunit-http-guard.xml",
+    "sha256": "d3ca7da019618e0935a92e9edd31ac128cabd6fd89a5bd067339f1d75422e417"
+  },
+  {
+    "path": "CHANGELOG.md",
+    "sha256": "a08ab53563eb4a4a3ccebd2f55bf01234d9d4c382718e63ae16c4d6f620831bf"
+  },
+  {
+    "path": "CONTRIBUTING.md",
+    "sha256": "15bf0877dc737e0ce6a21a3de1453b486049ae3ce49cd3cb4be35f0c771eacbf"
+  },
+  {
+    "path": "Classes/Client/EndpointClientFactory.php",
+    "sha256": "9a193705d246233f762bee09b852ba4281eb5467cf6340afc7017cf7c6d015d2"
+  },
+  {
+    "path": "Classes/Client/PublicFetchClient.php",
+    "sha256": "bf29e8f752db0f33a9852dcf61cae7617ea7258c3b839deb14a79be9f60a2024"
+  },
+  {
+    "path": "Classes/Command/AbstractGuardCommand.php",
+    "sha256": "820a14c72fd85ab097dd4bf091507a3fc977bc0e4f48d95ff7e507c4216dc56f"
+  },
+  {
+    "path": "Classes/Command/ConfigCheckCommand.php",
+    "sha256": "37b5a7f0770a973d50f7d2c97d700a12cb1449895fe9cc152d00886d71b012f8"
+  },
+  {
+    "path": "Classes/Command/DoctorCommand.php",
+    "sha256": "7b203e94971c5127251c8c4ef3033aad2d295771368efe26111beb1118aded9e"
+  },
+  {
+    "path": "Classes/Command/LegacyReportCommand.php",
+    "sha256": "1c692388e73bc39f6c4dc437871319aa743d6cbc50d1c3565289eef1b8895cc1"
+  },
+  {
+    "path": "Classes/Command/PolicyCheckCommand.php",
+    "sha256": "83d46c48f0d8d69580e9ce2c46ad4aa4cfef923c1ebbdb92e062d67ae04fd74c"
+  },
+  {
+    "path": "Classes/Configuration/ConfigurationLoader.php",
+    "sha256": "c1f286ebe7a646c5940638bd359aa3622bef2b397f99237743ad030b9de6c762"
+  },
+  {
+    "path": "Classes/Configuration/GlobalHttpDefaults.php",
+    "sha256": "797b56d2b4174ba7457134c69f2adaf6006a1a26efe75f3f7c04edcdd47bb366"
+  },
+  {
+    "path": "Classes/Diagnostics/DiagnosticBootState.php",
+    "sha256": "ef5cbdb0291589866d456c0c8904f3f4802ad4b878520e8f870e1c88e57a900b"
+  },
+  {
+    "path": "Classes/Diagnostics/DiagnosticResult.php",
+    "sha256": "20b4a573a35c46d4e242ceae84a3310b3d9c86dc15589f4f877e2a9e069c6319"
+  },
+  {
+    "path": "Classes/Diagnostics/DiagnosticsService.php",
+    "sha256": "51f354bc71699351e1fff5847ec9ca64f46960c7be68bc25db566fd7f028bc0b"
+  },
+  {
+    "path": "Classes/Diagnostics/LegacyConfigurationInventory.php",
+    "sha256": "66e22b8abbe3f4edf68a8e5dc36f468ae144068560c87da76a5e9aa5df655556"
+  },
+  {
+    "path": "Classes/EventListener/RegisterGuardListener.php",
+    "sha256": "a163d6e4a6f4d37e85ba6b1cfd641aab6629844e20e5e7a8df18dd6a1f8a0374"
+  },
+  {
+    "path": "Classes/Http/CoreStackProvider.php",
+    "sha256": "ef42aac80678866233494131e3b106395550552a743513138626238fd951171a"
+  },
+  {
+    "path": "Classes/Http/GuardedRequestFactory13.php",
+    "sha256": "873648d67268b0295f9a3564165c028da94e9d739cb976795a0d26dc4e0ff0fa"
+  },
+  {
+    "path": "Classes/Http/GuardedRequestFactory14.php",
+    "sha256": "00e0d3844fb21599f546bf4146ebe6aeb627e8cec7337540d2ed1c36f3189bd4"
+  },
+  {
+    "path": "Classes/Http/MiddlewareRegistry.php",
+    "sha256": "3714ec2082dec3e80979dc788e18da41c34010fb6cbba70fecc022cf1076b080"
+  },
+  {
+    "path": "Classes/Http/RawRequestFactoryRegistration.php",
+    "sha256": "3e0c0f1ddd82eb984330f8af0015ae7cc549993b120895c5418b506d07d0afeb"
+  },
+  {
+    "path": "Classes/Http/RawRequestGuardTrait.php",
+    "sha256": "6e3c3d4b604a2a42a415bcf808bcd3732fcfd1e44ae27f1dc60c285140160164"
+  },
+  {
+    "path": "Classes/Http/RequestFactoryCompatibility.php",
+    "sha256": "94444f0c0f75d6974ba09223e463803704a2bd64030ff1d6ddae691dc5753e03"
+  },
+  {
+    "path": "Classes/HttpGuard/AddressClassification.php",
+    "sha256": "474cfe825e9e5129cd4f878fec636876969e093e88df4dab6dafd3d9dc77d18f"
+  },
+  {
+    "path": "Classes/HttpGuard/AddressClassifier.php",
+    "sha256": "6b3137f65a626c998147c382c1213cd5c38befee0a1b2c0691908f93dceca820"
+  },
+  {
+    "path": "Classes/HttpGuard/Cidr.php",
+    "sha256": "ca8d1d4a4f227ba1f14388e1ae98f576569446797e22eab2908f234af202a217"
+  },
+  {
+    "path": "Classes/HttpGuard/Client/ClientStackConfiguration.php",
+    "sha256": "a14d01965f383d0548c9f7a4e5687beb5f13123452160890bd30f2c7b8c4edd1"
+  },
+  {
+    "path": "Classes/HttpGuard/Client/ClientStackProviderInterface.php",
+    "sha256": "1332922c40968bd38d4e99fd64ad8959fa35014bd62b4023d330f512bdb896fb"
+  },
+  {
+    "path": "Classes/HttpGuard/Client/DefaultStackProvider.php",
+    "sha256": "c598565cd3c070d8d01292c645c1e70e287d1db334b16192b1139f6042421a16"
+  },
+  {
+    "path": "Classes/HttpGuard/Client/GuardedClientBinding.php",
+    "sha256": "7d39ef9d2fbc53110071513d07acd269d839d167e50ae19b64553a703ac93722"
+  },
+  {
+    "path": "Classes/HttpGuard/Client/GuardedClientFactory.php",
+    "sha256": "7d3a62c6fd0a1ecd1d710dc6aa29c29d59235a4395e9e23c89fc94f516e8ee22"
+  },
+  {
+    "path": "Classes/HttpGuard/Client/MiddlewarePair.php",
+    "sha256": "bd00c4a20a45c39743b1a0d5744014971026ecf36dfba227bd1f9aa6605629c9"
+  },
+  {
+    "path": "Classes/HttpGuard/Client/Psr18Client.php",
+    "sha256": "65d1894a0bcb91f70907d87d959f108daf1991e648c598fdd2dd1efc1bb2d919"
+  },
+  {
+    "path": "Classes/HttpGuard/Client/PublicFetchClient.php",
+    "sha256": "fb42ac5e69bfdcb31617c8a9be6eedd07dddf1db84817f07e516bdebdcfb0855"
+  },
+  {
+    "path": "Classes/HttpGuard/ClientScope.php",
+    "sha256": "7dd0fe2c7b24da9d3525ef063de08985b42990265674f120c638635d83a34242"
+  },
+  {
+    "path": "Classes/HttpGuard/ClockInterface.php",
+    "sha256": "0a9fbc1d5fc1f1cd6da2348bf93fbc63b96d0f02231fc0bc0015705ded8b2d4a"
+  },
+  {
+    "path": "Classes/HttpGuard/ConnectionPlan.php",
+    "sha256": "da91c4098cf0b9021c945ef55935f0f979c94b86efc1154b836bd66efbebfd48"
+  },
+  {
+    "path": "Classes/HttpGuard/DecisionEvent.php",
+    "sha256": "fb5d39e7c4975af3be0d85bc081b4c15d571f5e63d38461184da67fd512f4e12"
+  },
+  {
+    "path": "Classes/HttpGuard/DecisionReporter.php",
+    "sha256": "b4dcf36a41fd30e9d1426863144df77e8315bb496367f8dfff20d9a02af5a9dd"
+  },
+  {
+    "path": "Classes/HttpGuard/DecisionReporterInterface.php",
+    "sha256": "44d6cd28fdfafbe9c864844860ddec888cfd8174dd52b0746279038b9a43bd5d"
+  },
+  {
+    "path": "Classes/HttpGuard/DnsAnswer.php",
+    "sha256": "23ee38ed0f005e3eb70dcfbd44a193f93843cfa465fc3ff5e8de474ea7823738"
+  },
+  {
+    "path": "Classes/HttpGuard/DnsPacketCodec.php",
+    "sha256": "071a9cdf1e66c003d8dee29ce848085b1daa8c61fd3f459ebe45d423fee57236"
+  },
+  {
+    "path": "Classes/HttpGuard/DnsQueryInterface.php",
+    "sha256": "eaa1a5c955f890b6caf4ddb68db6cfdcb9acbcba5e7ca90961cf4b60b9e7e1e6"
+  },
+  {
+    "path": "Classes/HttpGuard/EndpointClientFactoryInterface.php",
+    "sha256": "4a5786218235466b118cc13bdedf143edc48088e9191d6ccb4182c46dfdb7536"
+  },
+  {
+    "path": "Classes/HttpGuard/EndpointGrant.php",
+    "sha256": "701d60e897df0485e1af80e2da11bac8905f91eb6dadbfc84a15ead84fad624a"
+  },
+  {
+    "path": "Classes/HttpGuard/EndpointProfile.php",
+    "sha256": "e8d1191676a3c03be921111b5edb04f399c5012dc2507bf8540b4e3373c41e5a"
+  },
+  {
+    "path": "Classes/HttpGuard/GuardConfig.php",
+    "sha256": "9c74811d9b78332c4088c1223daa62e0c02705b113bff2990a9ad0b864b7b769"
+  },
+  {
+    "path": "Classes/HttpGuard/NativeOperation.php",
+    "sha256": "0372f8651bfe53c7ad8a667b25f5eefe1fcd9fcccc20ff8b8e58d71e7f618f94"
+  },
+  {
+    "path": "Classes/HttpGuard/NullDecisionReporter.php",
+    "sha256": "bfc06122c27b03c47e5ba6cb6af681430b2bddb8118fcb7099afe3f419a4bc44"
+  },
+  {
+    "path": "Classes/HttpGuard/OutboundPolicyEvaluatorInterface.php",
+    "sha256": "f86490e54e2fa36eff2dfda4a9e27c0ccd022b4ad450c7872d01f4bf638648ac"
+  },
+  {
+    "path": "Classes/HttpGuard/OutboundPolicyExceptionInterface.php",
+    "sha256": "3822d26f2685a2a02d1bb529b3822e6de53ea704312d48e324a47ee4627e3c84"
+  },
+  {
+    "path": "Classes/HttpGuard/PolicyDecision.php",
+    "sha256": "5915104a3f1701563b90335cb4c2e494ac4aad84375d372d76066b2cca346127"
+  },
+  {
+    "path": "Classes/HttpGuard/PolicyEngine.php",
+    "sha256": "2baa1fcc4fe2659b6acde8b1ceb20070d8cceae9419819ca646ab54f039ff330"
+  },
+  {
+    "path": "Classes/HttpGuard/PolicyException.php",
+    "sha256": "10e1659cefc11215f729cdc00a57d696024051404de3ada4480518c7afc2a507"
+  },
+  {
+    "path": "Classes/HttpGuard/PolicyRegistry.php",
+    "sha256": "f57c51d71a9d771607faac69fef26d6ee4881dcf49b4af4403f1e92037670956"
+  },
+  {
+    "path": "Classes/HttpGuard/PublicFetchClientInterface.php",
+    "sha256": "510c49b840678f28c9d7e34bdbb702fdf397818e7266392974c2d547b691ee0f"
+  },
+  {
+    "path": "Classes/HttpGuard/RequestPolicyContext.php",
+    "sha256": "e8db0ac9ef944ee7e45a1327a1557ded71171128b48c5bce99759ac111b44149"
+  },
+  {
+    "path": "Classes/HttpGuard/Resolution.php",
+    "sha256": "d3d17d03a4ba230992757bc66e25933e61d51d8a014b4cf3ad057ec89a277394"
+  },
+  {
+    "path": "Classes/HttpGuard/ResolverInterface.php",
+    "sha256": "f167db7a8fcd89412a8ea818e2666b1620d8cf95022152b47ffacd4990e53914"
+  },
+  {
+    "path": "Classes/HttpGuard/StaticThenDnsResolver.php",
+    "sha256": "670d92c6fa66fc09390402a2826466d44d30ba2360cfcbd942dc266f8c9850f0"
+  },
+  {
+    "path": "Classes/HttpGuard/SystemClock.php",
+    "sha256": "16e17a60b6d44e856a2f19d8808123a914a62f350fa50a4fa8eb5ad6ec7cb9cb"
+  },
+  {
+    "path": "Classes/HttpGuard/Target.php",
+    "sha256": "25de2d9c25aeb57f4971ac4449ee523d9699853447bed75fee47e9a257522b1d"
+  },
+  {
+    "path": "Classes/HttpGuard/TargetNormalizer.php",
+    "sha256": "c858480e9808a815fb74888e0731650b82723c408fe4621f3740b2f578cb5b78"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+    "sha256": "1eb983890e70cdac7d61037d6fb75d8580e8c186e378143dacbc2576c8ccfa97"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/GuardedTransferFactory.php",
+    "sha256": "7aff9ffd74be7b17703425d065224636cec324fad0d05f9903152a9dc06016dd"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/InvocationRegistry.php",
+    "sha256": "a1c11088125b5d244cc3d119722229c706342beec0e5f28593f55b0a5805b0bc"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/InvocationToken.php",
+    "sha256": "3d68de48be8878635c08dc9b16d13162fe4d92dac52caa40f50892b7baf99adb"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/OptionSanitizer.php",
+    "sha256": "3083fcb8db269d32b708a5e160399ac1bb4e225001002c024fa134cd1f1d7f5c"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/RequestEnvelope.php",
+    "sha256": "0061ab88b0ec87fd306240e4d722a48fb10ffa7dc321548ac80250ae3964ce74"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/RuntimeSupport.php",
+    "sha256": "bde7bc5e2b03e503ff40e43902337226e839f4c0277b03ecbfeb78fbe217de40"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/SingleUseCurlFactory.php",
+    "sha256": "dee0706a82d70409ee4f726b8d663e74ca9b8371ad465e86095c35f798104e86"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php",
+    "sha256": "db5d08def5f0466f44e9dd208ba78eef1cfcfd35da64f2cc3b5c533608c7ec4e"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/TransferDriver.php",
+    "sha256": "c7779b92266c9e113a27fb6b715d3a9f8ded878fc6afa0ac0d8704cd3048ce9a"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/TransferDriverInterface.php",
+    "sha256": "23081e6896d4748bd58ca1c8a090f2d88db918343a088f98fecde0a61952385a"
+  },
+  {
+    "path": "Classes/HttpGuard/Transport/TransferLease.php",
+    "sha256": "8bea0be713f103dc63fd6d45aa1603becb4863d3b23f86fb4e1810575daea4e2"
+  },
+  {
+    "path": "Classes/HttpGuard/WireDnsQuery.php",
+    "sha256": "dd0c39a66042ba1094713be8da274294dfd7ab5a898e5383920a521d664100d9"
+  },
+  {
+    "path": "Classes/Service/LibraryServiceFactory.php",
+    "sha256": "0b7eb4d2c7b928efb4cef774dcce2f242a98ec04e9cc413b5a72dc35bf1873d8"
+  },
+  {
+    "path": "Configuration/Services.php",
+    "sha256": "fd3556c11a0a0515bc8b0c4016cf7f56fe45c6245b4622c6085d46158442ffb5"
+  },
+  {
+    "path": "Configuration/Services.yaml",
+    "sha256": "84a996ce172b6373b8f9016f4a073dc7cb6e24d6d08b24abe89d99b473890130"
+  },
+  {
+    "path": "Documentation/.editorconfig",
+    "sha256": "0f0a49d306d429cda955ca90ecd9196e981c58641e772b0d410473790d9aed42"
+  },
+  {
+    "path": "Documentation/Api/Index.rst",
+    "sha256": "1331ab481dd9dfc875db2213ced2a7c2245c8ae87ae9d65b3aa46fc341aedb51"
+  },
+  {
+    "path": "Documentation/Api/_ErpClient.php",
+    "sha256": "c7d6142831b07346ed062ad2bf9db959237137d8ebedfbb4a96dc22d9a873633"
+  },
+  {
+    "path": "Documentation/Api/_PublicDocument.php",
+    "sha256": "eb49744313d56f2528b201e26b8c0a5586514cbcb40d53b592f711c657cfadc2"
+  },
+  {
+    "path": "Documentation/Configuration/Endpoints.rst",
+    "sha256": "e14aa3dab6cd5ba14769bd9d65411959abc32b85a03c7e700dc6b73f2860ec9c"
+  },
+  {
+    "path": "Documentation/Configuration/Index.rst",
+    "sha256": "b83bb9ce7906132f01fc2802fa912136c1e0a4c59760b32076c0f9d0e91aae5e"
+  },
+  {
+    "path": "Documentation/Configuration/Options.rst",
+    "sha256": "6eee2ad3d6b6b9e2ed98a329dff321bd16f54c11db27a4fd93706da3a29356af"
+  },
+  {
+    "path": "Documentation/Configuration/_Policy.php",
+    "sha256": "e6beca6838602421e43b2c67f00fba02bebec5a4180ef8a9f298940e6adc7f71"
+  },
+  {
+    "path": "Documentation/Decisions/Index.rst",
+    "sha256": "263aee5415ba112e2b25f10970d0126f5b438c053e94e71ecd04955efa7fe858"
+  },
+  {
+    "path": "Documentation/Decisions/SingleExtension.rst",
+    "sha256": "f1ee62eec40afc7373596f3795178c57742a27134c68a92ca4ee1333b36a3331"
+  },
+  {
+    "path": "Documentation/Development/Assessment.rst",
+    "sha256": "d89d6568fb7ca6c49e35612790b4b5130d630f3a556b63cbe021ab4bbbe77432"
+  },
+  {
+    "path": "Documentation/Development/Dependencies.rst",
+    "sha256": "5bea6717322f51c1ef94fd664de85a7d5119ceb964a18437358c5c35a10edf78"
+  },
+  {
+    "path": "Documentation/Development/Index.rst",
+    "sha256": "e6c3425b2b488677436d659393aaae9f95b4b90b741c41e703118dce6b3b67a2"
+  },
+  {
+    "path": "Documentation/Development/Licenses.rst",
+    "sha256": "e25508c632f1ba8ebefc88e37c251cce50af101cfce14d66462e8d93d04b7bcd"
+  },
+  {
+    "path": "Documentation/Development/Verification.rst",
+    "sha256": "33c94f7d51c8fea929a09055d5735347d4795f3b3f4a35ca2a19b9f507c34302"
+  },
+  {
+    "path": "Documentation/Index.rst",
+    "sha256": "0868ad265fc31003d15d1ee1881098f6a8db932fddc93ba59ddcbc5cc2061e26"
+  },
+  {
+    "path": "Documentation/Installation/Index.rst",
+    "sha256": "9cd5070815acfdfd123d52414a8eef02ba8a10f038108b79e3a33d2110f3c2a9"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/.editorconfig",
+    "sha256": "0f0a49d306d429cda955ca90ecd9196e981c58641e772b0d410473790d9aed42"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Api/Index.rst",
+    "sha256": "078d7194076771ec2d7bd1db23b5ce9107d7db6725f69b085c290a7af8dafe1b"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Api/_ErpClient.php",
+    "sha256": "c7d6142831b07346ed062ad2bf9db959237137d8ebedfbb4a96dc22d9a873633"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Api/_PublicDocument.php",
+    "sha256": "eb49744313d56f2528b201e26b8c0a5586514cbcb40d53b592f711c657cfadc2"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Configuration/Endpoints.rst",
+    "sha256": "14f538ae73a1bcc192eb14391279454f51d04c9c0512b237caefe26431a46239"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Configuration/Index.rst",
+    "sha256": "3fb6cea13dff7cb9cf8748547a9f3ee0ad25998381186732922c1f52de11c0e1"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Configuration/Options.rst",
+    "sha256": "3c1270dab9f101044583107f345358768da47ca598cd3581ae0b659285802814"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Configuration/_Policy.php",
+    "sha256": "e6beca6838602421e43b2c67f00fba02bebec5a4180ef8a9f298940e6adc7f71"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Decisions/Index.rst",
+    "sha256": "d712d017206731903e68b9e98300c67b306788640fe68da65657f6f7a1fcb1c9"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Decisions/SingleExtension.rst",
+    "sha256": "0802e68b47f054302cfea6f1921e53037cbef84fcee3dfbda422bc41ace8299d"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Development/Index.rst",
+    "sha256": "77405888ed66c41b5430de51aa0a189d25da81c6237c06d698fc17dd66705519"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Development/Licenses.rst",
+    "sha256": "0b1927990e921f6a9889a698f4493a8632cdc9538044ab8ebea2f1bc42bd61d6"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Index.rst",
+    "sha256": "2b190f5d68a2977c72fd79f221d337efec38e361cb85379846f0c0c38adf7955"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Installation/Index.rst",
+    "sha256": "d52ef46d82ea8bec7e3afc999dd51adc09bb7e8285a6927115e19744d0c3bcb9"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Operations/Index.rst",
+    "sha256": "3cda87e14a7b8084c0b548769c55ccae1a68e1bfb78ada96f36094f3793697f8"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Operations/Reasons.rst",
+    "sha256": "97eb15147152385cf96a3b7b22e00e199e6a09c395fe9c517c3aab52f6df94fd"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/Security/Index.rst",
+    "sha256": "298db5612b46862d67d19291e450efaeb0276f90598df1f1e0cc20de13edeaa0"
+  },
+  {
+    "path": "Documentation/Localization.de_DE/guides.xml",
+    "sha256": "25fc672b0944471102b3e86d856a2f27e92c1483c0900d2b7409a612e2cccabe"
+  },
+  {
+    "path": "Documentation/Operations/Index.rst",
+    "sha256": "fab3de0e96c7caf18805231c6efb6a3320824f748e72b5c1a14bea1250c76306"
+  },
+  {
+    "path": "Documentation/Operations/Reasons.rst",
+    "sha256": "dc933125633b30a7c973fd28bbdcd10ae373bab788a0c637ae732179a31e93d5"
+  },
+  {
+    "path": "Documentation/Security/Index.rst",
+    "sha256": "316be2899f1d635ab2d79c8520bba887024a3104e7ce18a8a9dd3ec0bf3abaa9"
+  },
+  {
+    "path": "Documentation/guides.xml",
+    "sha256": "a00771eab95ee0cf951ce57f20b232920a67af3ee279b053a2070c9b19dbc739"
+  },
+  {
+    "path": "LICENSE-HttpGuard.txt",
+    "sha256": "f06cd293d145a24239c84dcbd7221011a2e5bc1158afa02fe72e4158ada10879"
+  },
+  {
+    "path": "LICENSE.txt",
+    "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+  },
+  {
+    "path": "LICENSES.md",
+    "sha256": "71d3ca245a3dc110bb9f14f35b710c1c20b8a7298b13b433c361d687d26be3f6"
+  },
+  {
+    "path": "README.md",
+    "sha256": "3c5b9d9574b5b89b0341fe4fc454e63482ebaea0c8a25ae26886a587d4c53904"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/README.md",
+    "sha256": "9be5f9dcd17e1571d3416239fac0f91534855cc2ccc69cfcf4b5d910e294af3f"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/address-cases.json",
+    "sha256": "0cc1f00d95aae1bfbfa68f4261b81e9c966af0aae8072220b8905e2b1978a452"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/address-rules.json",
+    "sha256": "902487802ef2f9edc3c0b1ecbcd343bb4cadf216ffddb6ebb64d2d7e9f5c585c"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/checksums.sha256",
+    "sha256": "f08af7adac986ea3f67bb513ba34c15885e624b976844e2199cdcef40fc0d946"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/derived-hashes.json",
+    "sha256": "e8dbb03909ac2fa07809439d35d4799655728510c5999c06caaf63c358ae0b9e"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/endpoint-cases.json",
+    "sha256": "4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/library-matrix-guzzle7-install.log",
+    "sha256": "7e8e9d54cddacee6059260b0fdd20d25d86f8b8b887b9e1a93c7eae0cdba1e3a"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/library-matrix-guzzle8-install.log",
+    "sha256": "8978ba3e4d84294f8c62b08e20de6a7b9ed5542df6c097fec3d89b0dd0faa9fb"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-benchmark.json",
+    "sha256": "cddaa71717529d515edfe08da012a546adeb22a0d56538bcda57573f5363157d"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-performance.json",
+    "sha256": "5b41053622b0d7801baf8835ab6d26a75a8c0c2c67b7bb3a3dd044874356851d"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-performance2.json",
+    "sha256": "2590ec472e76ede4f2f15a8735ac49a583c9496d2060124c6a19ee57a3bd55d0"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-prefix-index.json",
+    "sha256": "4e6313660e7a9d8463bada4410d00ad406432815538d2f3a5756b92a23f3ca1b"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-cache-revision-test.json",
+    "sha256": "63acc5f31faccbf1b1968ef60fad78d27e5aba170f0d12eee887daa1c41f95ab"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-canonical-v6.json",
+    "sha256": "0db8d018defcc820d9f4fe7bd91150b9e8e0c4ffc4127b6c0d9d0e5fde78ef67"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-config.json",
+    "sha256": "792bf8c21aef6621c9ca08b73f3810fa1f3398cc0c3f3ed81b0426098a749a5c"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-corpus-red.json",
+    "sha256": "edeaf705f932d50cce5131448ae3068779bce3404c3427d23fd4d7e98dcf34a2"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-data-revision.json",
+    "sha256": "236118d2da3e2604b69fcca8d30c61f2dd490d93d2f1e38c8f5976654cb1aa2f"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-codec.json",
+    "sha256": "679591f2d455824c1609a534e79f3015ae47886476d491d11571eb8bcb4f6805"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-red.json",
+    "sha256": "326d3cb7cd816df76528910cc9f9ed25c3215bebe006c4f763d19fbf3c26b336"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-transport-tests.json",
+    "sha256": "fd8e939fa0b2a9ac377a9183e4c0a67ffa8534ffdf0aa89322e70c0af81cac93"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-wire-red.json",
+    "sha256": "6b7259077df5429ab56947e991e2b6132c31f839b36d002302fba24f081e2d56"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-wire.json",
+    "sha256": "aceac0587cd207aef8ff155fad230b0d0dda69fbd2c6492acf153ea2a54c2158"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-internal-metadata.json",
+    "sha256": "e0f6a4adce303c6ddba6b562c11181b2e546cb13a2f8ccefaec9077e846fc2ba"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-isolated-capability-probe.json",
+    "sha256": "76b110193e2df32c863bf5b5ea57dfd5714e7c919e8d8e8cc2b1e5a15968a81a"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-isolated-capability-tests.json",
+    "sha256": "64fd9bb02e9fb03980d79c42adbc582b3d80c3b56821dd8f24ad34d69b5c4343"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-helper.json",
+    "sha256": "4d9b38d400febc42385e10d0faebbcf71214eb4cee1627cb462620e583a56bdc"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-test.json",
+    "sha256": "ab77ff1c341808b3d349ef4b234df9321f4b93504ca706f6d5fe0bea8e5e7857"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-types.json",
+    "sha256": "409b5241dfda3bc9298dd5c0e456ddd6b41af3947496514f7c12ff587cd664e4"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns.json",
+    "sha256": "7a806309752444ff2b16524e8c04f03536cd33bc3b8a147fdd9a7045d0f4b1a4"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lifecycle-red.json",
+    "sha256": "572b28aa252489b64f7174f0cfd3987c3effaf158cee3a78242099ccae037f16"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-normalizer-classifier.json",
+    "sha256": "b697419a10d75de56cdc0ce234cf4df3f4ab699a1bb9632a6ea1257b3d93c96c"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-observe-event.json",
+    "sha256": "34867588c943008861c7ac7cdb47125d47b863ac4b03da547c36bce2a4b318a6"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-observe-red.json",
+    "sha256": "90df2a90ae244c7feee82c063682b32f82f160fffb81529b0585a9ba46f36bbb"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-private-grants.json",
+    "sha256": "4729c48595e339e538889a89ea2caa2f82e216555252b725a57d48d3976bfb4f"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-public-interfaces.json",
+    "sha256": "54d8e3431e1994b698e8d3d2083107a8861e817e90fa6e0e3edf2173ff205cc1"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-raw-target.json",
+    "sha256": "3d36a5ba83f92bc21361197c709e6e7b656d99185c51b261fd9eef3a30260c7d"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-registry-engine.json",
+    "sha256": "5a1863019a746beb82704ef942217b7d729f476dcbec344bf5e4641808ab177f"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-reporter.json",
+    "sha256": "c8cd8326dbcf608d24fceb333918d2c3dd7cb6740b98bdbd2b24207f2634b8ae"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-resolver-boundaries.json",
+    "sha256": "9486f7c2a4eba89c47619486477b81c346f4529aa51b435c812e7d7bd0bde24a"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-resolver.json",
+    "sha256": "db2ad64b1d1f56cb6f1917635ea068c4a75a9d39a8d0eb9a62322bf4ebf36123"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-static-final.json",
+    "sha256": "3763600ed747e7615afe63fb6652270c3a06dc2bcf06ce8df3888a60d6d8fdd7"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-static-validation.json",
+    "sha256": "88a63501ab3544e47e61269ffa1d0aa0e7476eeb11d6a86af1017236c23d92d0"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-strict-red.json",
+    "sha256": "c84f557cb6220a1d8864f4bd2a94631fca5f4af48fddc98ab085bc4b9810f36c"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-telemetry-red.json",
+    "sha256": "77230a9b7a6d09521bc87e1bb70f5803ebb04129e33428b21e53ae11b02aa7f4"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-ttl-age-red.json",
+    "sha256": "048252a3cb8f819c5616338a1279ead59c0cec496ad9618693016b2de6924a47"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-ttl-age.json",
+    "sha256": "c0370ae06b9e8c74cfe6b797fd92ae32136476073c6be59a54c1472efb388c75"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-type-contracts.json",
+    "sha256": "5d37424381e5102216fb1b62eb878113698c4f5726b5d3baa3e47eec790d7ca6"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-v6-loopback-fix.json",
+    "sha256": "0d41d4dae47787a9789068226e87b8bf422971040585986885ee217795f5e92e"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-v6-loopback-test.json",
+    "sha256": "80cecf76cad139e70cdcfc575c840695eb973c8a73edcc9b614aaed98fb2e55b"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-after.json",
+    "sha256": "5da8bfbe674159c06d07a1982de837775402b4c0d744a8698a4d3b88857d7147"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-after2.json",
+    "sha256": "4530479bd49c79932157b64dc9e4d8f9f9de2ce856c19fca510af4747faf260d"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-before.json",
+    "sha256": "c3f1559b28cf74d5b45a01070330768fb1b11920359680830643c132f127fd29"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-final.json",
+    "sha256": "4c9a19ea5ce5fad71c1072634bf64d578132e3be1fbc4fe0723225610db2aa43"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-indexed.json",
+    "sha256": "d2194bf26c98fbc002c81b53db25ec71e2b2906c85bfea657bb807400d524700"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-execution-manifest.json",
+    "sha256": "a254838e4d272e030a773c065db7d0a75d3ec0168abe93012b19c991a0925ada"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-g7.log",
+    "sha256": "fb08b0536f098732b4f7d958be8836ec48e45e992d75d16e937f0833a8359142"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-g8.log",
+    "sha256": "fe8152d460de64f565466c73775e042a317ec191f010d1382f2f2c37e58ef417"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-phpstan-8.log",
+    "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-phpstan-8.log",
+    "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-binary.log",
+    "sha256": "34fa52bb2fced422a2821cbc656388fc405d6ca45db0fd00d3f070fe69f76200"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-corpus.log",
+    "sha256": "339652ebee74863ed58dc9eff69954c23f43c1496e26bd137bb17888a930ac58"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-dns-packets.log",
+    "sha256": "53e3e46dd45bae15cb92b10ff9717c6652dc4e7b13bd57b9e031050320f7de6b"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-dns-wire.log",
+    "sha256": "bb54ea0aa720bcef148e172c54a976aa1d54a6ed3f5e6d26ade02fe1274b28da"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-lazy-dns.log",
+    "sha256": "ed65cc13d9a3df7f4776dddb89cc5bfe576f6f9c4ec978175c7bdb3f17fe7d1b"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-lifecycle.log",
+    "sha256": "6b8e99071973e0725b00665fde1fe0ab6768e7f5cae272200705a56eb450eb40"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-observe-event.log",
+    "sha256": "f824e433a346ece85d53363017698b39e205cdcb95408c9bb061e779de9de56b"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-strict-inputs.log",
+    "sha256": "88be46dcddb7ef6d3e33c79f86bc177536da81c7bf06b74db67b5b48e08b5cb8"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-telemetry.log",
+    "sha256": "f9df33355848beb3658ab020f690ad07b91975e1445c1f88916bb2345fc4f9ce"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-ttl-age.log",
+    "sha256": "54767216c2a248c6aabb8f020ab2189fb1ee020bd6ec9cfec9ae127dd659eb51"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-v6-loopback-prefix.log",
+    "sha256": "18e6f398869b6d0d5b613caa8ca7ae1aad451f1288228651d36a17205b8129ed"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-runtime-g7.json",
+    "sha256": "7108c44fd9b57bc36bfdcb7c8a814a442ebd19f88da4804e495d708d66c70f71"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-runtime-g8.json",
+    "sha256": "f9ef8a9e8baaeb5e2948b85eefe9bcb5deeced922793132545871fb665657de8"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-source-sha256.txt",
+    "sha256": "598690dd275dd08af96baa5c68de43487b93d25c80eb99cc370031db16b4ad33"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-baseline-summary.json",
+    "sha256": "278c3f01021d151ee8b309bc837066b05ecde07a994de07442eb634c0a6328c3"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-dependency-retry.log",
+    "sha256": "6c5f76701d52f8442a02b8e05324e2eb31f89a099bcfdf3218364fb65795ec75"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-analyze.log",
+    "sha256": "c63ae88a3c97499d8ae161c02424e55e63e5849a09aefbebb192d8e4719af5a9"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-extract.log",
+    "sha256": "68629462a6d2a39bbd99409f174c8f236ba1341374df436d1a7b1d5a660e25e8"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-render-final.log",
+    "sha256": "53ed6f285d44fca0ed9faaa449f915e1dfea9d450add0f48d39bf46d5a65b4a3"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-render.log",
+    "sha256": "f5925ae78309c330c93c1a46d086554553d66f4d983f433955a1e579b661c19f"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-validate.log",
+    "sha256": "1a003436678f47fb2c216a4b2cfaf738f6e1f30e9515a9d20bb8f9729bb6121b"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-auth.log",
+    "sha256": "6a8739b48912159e0a864d014d2e362a0539556d1b25d1a35b6b03bc5745e3ed"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log",
+    "sha256": "f3a8bd24c083d1afd97cc6e70ebf1ce5edd6e7ce32e09028b752c691c313d35d"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-expanded.log",
+    "sha256": "c56e974e61f420dae4e1bc3ad61e54ae5d20e88d4e90daaa64505ea7abf0a226"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-first.log",
+    "sha256": "8ac986b623991187033080df3c1cdf13b1bed66767453f290f142c1c2e896113"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-green.log",
+    "sha256": "036290b398c8453014315a08c2ebbb9d92f84ffaf306961f9637c28c73849389"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-second.log",
+    "sha256": "4cd7e2af609433453e9b7749133f512db497fe32c356784775445b6ffdb5c1c9"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-api-regenerate.log",
+    "sha256": "709afb0405a5a994b3f026f517761c0ec2e280468f7d963c6462d2feeefd6105"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-clean.log",
+    "sha256": "5e81a2b37864551a9c9b3411a60e6bd3109d17b7ab56c918426f212c6e7819fa"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-final-fix.log",
+    "sha256": "aa573fa8d843a78f5edeed2bd92c16f838cece50f4ee92d6fc3145fc0c122dd5"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-first.log",
+    "sha256": "7092e2a5dd1348a90698d631c396b248a238acfda452b128e74cf99e7158739b"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-fix.log",
+    "sha256": "1700da163381cd895c861a2a24b8be6cb9e80c4e03f13aff20f4dc43709b83e6"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-last-fix.log",
+    "sha256": "38bee5e219fd3fc7958b185c6fedf1ef67cd4c1b4af3589f015f0fcbe906cab6"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-rector.log",
+    "sha256": "fb04497bd40349d8b53df19691a7dce3dc1d4f98d5ce86a7b38df15b9236665f"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-delegation-green.log",
+    "sha256": "ab01169014a4c8ca61ef810975a5f876757daea15cee69af43e62404e7f14358"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-delegation-red.log",
+    "sha256": "3ae1c74335f127588e5869cb0cc5bc9a09441af17293f1a3f6c2e54da44babbc"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-functional.log",
+    "sha256": "72bfe43eaeb109e7d6f690802fda03007aa77993c9c8fe45fde39092fd8974e6"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-fuzz.log",
+    "sha256": "bf067419cbae64d3717bcfbf0d3c68b01a30627ec3e5782b318769d71af39276"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-unit-final.log",
+    "sha256": "3e3ee75affe620b4268f4f7bd06593c3e10b2bdb4a4f1dee5dd698d20637bf6c"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-unit.log",
+    "sha256": "58fd44aeaeb7c6253d9598837e758c40beb6fa8996a74ecb2ebcb85b200d78f1"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-functional.log",
+    "sha256": "521289deeaf7c7dd5a30b430e77a3f909edde4849d0c1910c65d910c9fd2ee45"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-unit-final.log",
+    "sha256": "e9d1a619f34096e560985fcd6cfc854a77df88b9a912ee96c16ad8fb96223f13"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-unit.log",
+    "sha256": "8d39c8d2c915e5387938db507fdf4a32c32610ba9dc8b56c57a445d685fe2f42"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-lint-validate-final.log",
+    "sha256": "cd6cc3a35f8bb3af45c9effd8ed1c9ab801146e36a9b29f791376c2a6914e955"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-lint-validate.log",
+    "sha256": "a75689e4c1ce0895ccff61374852de08504d6d85afad553e27eba45bdaa95468"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-oauth-green.log",
+    "sha256": "28008ddd85e453da49fde8ffc8a8c41e43d98cc50558378cb8493f54be729118"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-oauth-red.log",
+    "sha256": "f4855af324909dd3e7130f769280693f97c8fe66407d1b3da5eac7276e01fcaf"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-binding.log",
+    "sha256": "60dd789b52d09f871bd716ea20b82637f5cc3112878d14e5d11c09df7f0ca880"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-clean.log",
+    "sha256": "1f7d7a97fd56cf12766ed4cdd9d3ae94cc65e8074751063968e7234c0d73d744"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-complete.log",
+    "sha256": "e5d7a476fc895ce1624407afa3cae39576fb699be2c2499e11321bce4d2d0496"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-final.log",
+    "sha256": "97e8215e0b720d18af4da000c39aac3bac57a793e1866f595c5fddf53c0fc944"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-first.log",
+    "sha256": "0cfb6a431d41c8542a7339989f2528d0bf112af1908c3475dda027b2e616aa32"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-second.log",
+    "sha256": "3fcca15303606f8b728fbebf8ec2b451fe00a7fd0c7cbf6af48604beab4de33d"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-third.log",
+    "sha256": "378402d73f3a1f6a74e948dc2c8efaf9d2980fa6c19c1348764e751638ffe00d"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan.log",
+    "sha256": "6942d570a0ad8ad70fc48af3364b7b754abe1eee9f8d740eff2e40fa8fd4e749"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-clean.log",
+    "sha256": "5f58b5763fd0d3780acb31004983278224b3b7aee7489024791bea48e56781f6"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-complete.log",
+    "sha256": "8b4d46487119521a287f1daf24689123430537043bd6aa3442182dc87c94b8b8"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-first.log",
+    "sha256": "3958ad840df4843dc901ea9058045261f7d7dfcb29b14007c0a063cbd3b66c02"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-fix.log",
+    "sha256": "8dc0a4c506b1cc1c72c79e48f6b0d36d87fd6927f403799a12d9e92afccbe2af"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-new-fix.log",
+    "sha256": "32b2d1bc756d5172b07c63aa1bb27d73dbc53572648114e696e99492f83c12ff"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-red.log",
+    "sha256": "e941010b975229a0de8ba5301decfa24de4e1130316622ee9db0128ee1788bc6"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-repo-checks.log",
+    "sha256": "472ce8d9cc09a9882fc5ac996d6d4540b0a99fdcebd39f32edb244adf9b022f5"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-bootstrap-regenerate.log",
+    "sha256": "40dd5315ac00b0118c7a97256c9601be4d26b6edf89cd1d19f6994b670b0e9f7"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-composer-audit.err",
+    "sha256": "bcdc6d3b5745e92d0138cfafb75635dd175a338e01ff30e5339de5bc4e25983f"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-composer-audit.json",
+    "sha256": "b216d5fffa5e7ee99e11d96ed53efcdaccb6facd77f04654a5b97a3ef9765030"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-functional-final.log",
+    "sha256": "ee441455e2dc375d0581531fbef7b6882b7a15ecad92888c7bfbde2ef518f31e"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-functional.log",
+    "sha256": "89fd44bbcfdcf48deefe36b39118f2ced534cfe726bac682d679fb95c1154a24"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-unit.log",
+    "sha256": "78b2bcf963ab976ba3e34cbee15282ff992be1c69baf5d3e6c555fcd9beb0c50"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan-clean.log",
+    "sha256": "105de9070b068af90c8163b7d0f7c26e3db3b43fd4446436c96278de193b97ca"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan-final.log",
+    "sha256": "0cfb6a431d41c8542a7339989f2528d0bf112af1908c3475dda027b2e616aa32"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan.log",
+    "sha256": "c92d70013c404caf67f01d604c4577649f391dbed32045ffd0236437d4b504ba"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-runtime-install.log",
+    "sha256": "49f763090c0a9f0f4d0c9d73fa938f7022f6794f984171459abd77cbae142189"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-tested-library-manifest.json",
+    "sha256": "696e7e9d499a5cdec8949b4b9a5d1ff98f8989f0f5ca5a088a9e5b11cd314404"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-adapter-final.log",
+    "sha256": "a6a9737e665e29e23368fb946663c6c7dc1ff7076430324c5bdae006d27c83c7"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-adapter-source-final.log",
+    "sha256": "1fde6c1555526ab1285a28d67cf272e925177ff173c96b8242ca79faaa7b7c57"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-cgl-helper.log",
+    "sha256": "0dae17382d407352db2f7b5c84dcec4943eb450ff5d7945e9ac58ee6b699ccd2"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-phpstan-final.log",
+    "sha256": "0b0dc83b1547ae95f71ae01b77752c21fc12bf1f371ef1d51ca56108214da8fb"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-tested-library-manifest.json",
+    "sha256": "c5395a17737f169281be50a57dc9a237c8b3e4d9530e2f1d2db544833abb0e39"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-baseline-status.json",
+    "sha256": "ff23bf6e41ef1dc2aaf8bc90eee9b9bc1b7638b1afaee8e73679cec31b76e386"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-baseline.log",
+    "sha256": "da5b5a6035af5e78115c342e75e5714355b74ef0adaa7671837f58de0c635963"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-retry-status.json",
+    "sha256": "1295309c1c6022b778687671466f92bfe142795b34ec806d089d25524c641058"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-dependency.log",
+    "sha256": "205f9838dda5fbb80354043ade7474085067fd07844a4d7b4714a607ee791c1e"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-functional-status.json",
+    "sha256": "a105f42778339c2dfd76f038ae3c14a6f5b9cdcd77a93e3c0fdb8482e5d06138"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-http-baseline.log",
+    "sha256": "c06451f5205348a38f10def785fdfea7cca93591299ad93967823c885f03a85c"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-http-functional.log",
+    "sha256": "0a07e2bbe7bf226be873bfd03206d1329e703c9f90acc4594f9a05caea2fe5e4"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-runtime-manifest.json",
+    "sha256": "8ee0ee176a9401ab6918a034e5b52e5bdd3fdd7e7ea57632ee2ed628672111f3"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-source-verification.json",
+    "sha256": "577c885481a55210fedc09645966cadada1077beb7b95d63a56e0b21a255b841"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-status.json",
+    "sha256": "0525e4df6e7190b573359c9b24523f6373e26c5ea22cbcd06d11d7ab51149d97"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-resolved-dependencies.json",
+    "sha256": "e5a61b5fc7f7383376dd6d1b70a5ed9a58422b03099a337cc941a45e6dce4261"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-run-checksums.sha256",
+    "sha256": "d3c22faaf084903c3a0f0ad5fe0f98745cc208218ebd7ba5866f504a87c78236"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/policy-coverage.json",
+    "sha256": "5ccc2ca1eac6474e27362603c499182c9f4ac2c818d707a12dda6db3cfcecf64"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/requirements-tests.json",
+    "sha256": "246fc8caa23fed311aa35e4c38990dc127aeea041bbbcf2f352e7d1fa1222124"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/requirements-tests.md",
+    "sha256": "580f9e10e9bbc6cb61d01f2e34a514dbe2bf173ac351f7142b619217fee0d118"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/scenario-cases.json",
+    "sha256": "505451cd873a2b025c63416cf3ab4110eeb2f023553adb2bf2cf440482da9e66"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/scripts/derive-address-rules.jq",
+    "sha256": "7ca3fc45efbcff02b510381913fa8d690d3c944bdd2b5c0a7919b79bd29d43a2"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/scripts/extract-ledger.py",
+    "sha256": "507b2caa108fc9dd1de879fac7f00cc7c24e362139c5d13c0f8616261ab336cf"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/scripts/generate-corpus.py",
+    "sha256": "183acd8fdd59d5f934dee0b68c40cc0ef19aff7f2c675d472ea8165101b36c99"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/scripts/verify-native-copy.py",
+    "sha256": "870d8399363c5c35c0e845fe4c51a3cda8575b2d53cb0e656c145d3aa75e5013"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/sources.json",
+    "sha256": "f9fcf849ec1c8dd2586b7b0a6a5238e7e84714d1b78bbdec8b633ee10b08e33e"
+  },
+  {
+    "path": "Resources/Private/HttpGuard/data/security-corpus/uri-cases.json",
+    "sha256": "ad2f381db880524e45449272e48dd364c15abad9bb2c9ee3db69e354f8773cab"
+  },
+  {
+    "path": "Resources/Public/Icons/Extension.svg",
+    "sha256": "ca88779a6d008b4606bbe8d45f4640d6967f82b66b302d95b9153dcf2cfb9e29"
+  },
+  {
+    "path": "SECURITY.md",
+    "sha256": "bad247506272814886c525b74855822a1320cb6b6b23f70e3edd13025138dbbc"
+  },
+  {
+    "path": "Tests/Fixtures/RecordingMiddleware.php",
+    "sha256": "d25f653dfa6b6dcb6aaf86277825ceab7256dcff5583c1658427e6110eff040f"
+  },
+  {
+    "path": "Tests/Fixtures/RequestFactoryReferenceShape.php",
+    "sha256": "60890f9e8e7da73946dcad66826b66daa238b17075f0f31003f77c6bfb9f2767"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php",
+    "sha256": "1f0071703bee2ffbac0778b162549a742e05d46dfeae9f6801315c7e13dbeb73"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/Fixtures/IncomingProxyHeader.php",
+    "sha256": "69d9f258d3888de4dbba140a0f0646192ef8f41a276467ab0d24d069c9dbcb2d"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/Fixtures/IsolatedCapabilityProbe.php",
+    "sha256": "135014836ccbd1fb62a11768ff8aa12be6d43add2e5e75572d74b1af0a6958c1"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/Fixtures/run-missing-curl.py",
+    "sha256": "9ada4c4fb94dd1fb4a235f3348ffe7313214eb43384eb1b65f999bb8cb903bc3"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/MutationWitnessTest.php",
+    "sha256": "1e663efe12467976d4eb46255893aba2178b25455f8790316c52b4e32a9dc4e7"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/ProductionTransportTest.php",
+    "sha256": "1442b53f61935d1e45d0b85924694ab1fc3441c0a72124ccf947b8154f313a0c"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/ca.crt",
+    "sha256": "af8f3c497f04692454e65ca6ec85ed9714acf1bbaa3d77ea046527a0c61d1506"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/ca.key",
+    "sha256": "352c03de1c19e4a8eb803db73713d38d9c23cd658862db07529ba6f233eee592"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/ca.srl",
+    "sha256": "1e8a0487c9812f521591ff3146dc2afad4ed21363decbe61f6b83ca26874b1a0"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/client.crt",
+    "sha256": "8068b4b85387837623d44a79df8fb89359a82d727828fcea33031dfa8821d80e"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/client.csr",
+    "sha256": "f9ee8bceaabbf099c75e2e8e7e80e6834effca16dfdf84cd17a55c4fd5a8be93"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/client.ext",
+    "sha256": "b332f2257d9f16c3c30d86527ca1b26ecb75bab6c60903c606b391b49d054453"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/client.key",
+    "sha256": "e1a150875e3ef0e3117a9ef5c7969b64448c279b6d1cfd7a0f044478fa3c9e06"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/server.crt",
+    "sha256": "8192115901730d167db25b0b1f7c4eb54adbe3ba585e1be055ee14de8ebe0b35"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/server.csr",
+    "sha256": "d866e2031e7a7d7cd7c6321dc778d44d7c2e23b44ebd693db4ef8ccf79c152c1"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/server.ext",
+    "sha256": "d4efd98edafd065d0330909dccca4bee2556baae2575f8a45817054f2d044d16"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/certificates/server.key",
+    "sha256": "ae691852afc79c13ba926ab28cd31c26b3aaeded2be5fa657ff624629ac74269"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/prepare-wire.sh",
+    "sha256": "fd74a0821cac262a9073281802136f85110ab2ef114d7b0db2290b29c1a2cec8"
+  },
+  {
+    "path": "Tests/HttpGuard/Integration/wire_server.py",
+    "sha256": "4410666849b12ef6c79427804ef2fe8e6c78f1203b4607dfc3633b7780edbfe0"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+    "sha256": "ee8e828071b97d563ddf95893b3f5ec2fe35fa2c3edaab06786152ac896786d7"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/DnsPacketCodecTest.php",
+    "sha256": "a7ecf6e5c7d5b1e5534f3240a0ee3af7da921d278186a0dda05218b574731fbd"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/Fixtures/DnsTruncationResponder.php",
+    "sha256": "b2ee18ff5b969fed3673155bd39ea59ce949f9bf911e9899da741dc3b2ce4e28"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/NativeOperationTest.php",
+    "sha256": "980f8633242440da8b7f4ffb0dabb3a0eb26453155d0bcfa94fad68a772aa76a"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+    "sha256": "36afac679199bfc70786170fd1d3373dd10796f67c45670c04b82e1d74ee63fe"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/PolicyLifecycleTest.php",
+    "sha256": "4034ee91110f4a09bd9bde14cebfe34cdd885538b13924362f4cccbed10af4a7"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/PolicyResolverBoundariesTest.php",
+    "sha256": "c11383273972e8d20fe9f8c1d80e153c296730a05d6f6888275b9bc445596456"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+    "sha256": "ce7ab946c802c65216cccb99dcf64f730781db99ac1facb288a37813e47cda26"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/PolicyTelemetryTest.php",
+    "sha256": "84a549963dfe6178e6829caa13ad378e94fc177058ec719731eebbc9b517bc81"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Policy/WireDnsQueryTest.php",
+    "sha256": "cafd86951fdc96f2d951eecdce6749083422be84586f8061eea004a105a49394"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php",
+    "sha256": "f7c4cc7916309450dd8ebc6b29756bfafb78eb9ad5092228c245af251e664e22"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Transport/RuntimeSupportTest.php",
+    "sha256": "90659e60d99a16d02e58fe4730978a43e2097222bf2a03f5f81c53c9881d2fb2"
+  },
+  {
+    "path": "Tests/HttpGuard/Unit/Transport/SingleUseCurlFactoryTest.php",
+    "sha256": "96bf263c3f490326a3a505b94a629ac3974537bfb87c27b4cfb33050b674213a"
+  },
+  {
+    "path": "Tests/HttpGuard/bootstrap.php",
+    "sha256": "9b8cee58e38f05e08370c2391830dea74dae10cce8e7b2d0eac642ec5a9d36d1"
+  },
+  {
+    "path": "Tests/Integration/classic-package-bootstrap.php",
+    "sha256": "40c0474e3bdcc5c5491b9c403653b914a1bc313b75ee92bbdd99e0c5aaa1ed51"
+  },
+  {
+    "path": "Tests/Integration/mode-bootstrap.php",
+    "sha256": "c61d5b52b66b6c4627887519b262b7691490bd711cf494771a00c6f48f938157"
+  },
+  {
+    "path": "Tests/Integration/production-bootstrap.php",
+    "sha256": "9842e25040e58ee819411d6bf2875f6f00d672d02ab5ed1100340ab5e934a5e8"
+  },
+  {
+    "path": "Tests/Unit/ConfigurationLoaderTest.php",
+    "sha256": "bdc13f80e051888a9f67cde8b914ac259016e3f23ef3799275785e7508d9afef"
+  },
+  {
+    "path": "Tests/Unit/DiagnosticBootStateTest.php",
+    "sha256": "ab28c4c23e52c9da51eb0271acdb19fe58afeb030cb7f34fc304fe59f539b463"
+  },
+  {
+    "path": "Tests/Unit/DiagnosticsServiceTest.php",
+    "sha256": "04f79e8040d3d751dedb85d991d280c1e38e58ab05480b559881fccc44f753f9"
+  },
+  {
+    "path": "Tests/Unit/GlobalHttpDefaultsTest.php",
+    "sha256": "7f0b558590f796506d91d011619165d8ba3eff33a744843d3b79b422fc6c4a3e"
+  },
+  {
+    "path": "Tests/Unit/LegacyConfigurationInventoryTest.php",
+    "sha256": "b88dbd92a741ee6bccffb12e95fb4447980f9bf8515c6e46a25e0188288ee5bc"
+  },
+  {
+    "path": "Tests/Unit/RawRequestFactoryModeTest.php",
+    "sha256": "f0ba6ac1f7f965eef6e9f83565e35c02436c261f47f78a4f6434bb21c4a345d3"
+  },
+  {
+    "path": "Tests/Unit/RequestFactoryCompatibilityTest.php",
+    "sha256": "108cb962420d196a85baa91b0dc1f5bca2fd131d874609c8813043ff2677efe8"
+  },
+  {
+    "path": "Tests/bootstrap.php",
+    "sha256": "f31e3acb8fc8190e6cc7ecd9a3d3ea3f09dbe689815d24b7571cba5784487fbb"
+  },
+  {
+    "path": "codecov.yml",
+    "sha256": "6c5eeeb96f3c054e54c42378b6e2e4a399579fae70e261bd002ccc342799d796"
+  },
+  {
+    "path": "composer.json",
+    "sha256": "92297233b84d0bfadcb43fc4f1c68b99d47214354390c93023b8abfcb4695804"
+  },
+  {
+    "path": "ext_emconf.php",
+    "sha256": "821eca94c1ffd07135c3a70427e407de68ea431f64a5ca19ca7c47d11776a8d6"
+  },
+  {
+    "path": "ext_localconf.php",
+    "sha256": "2bb1f2d49916a050208e0ab0bb268ac78ec58deaf9eaa74c52801dcf222306e2"
+  },
+  {
+    "path": "integrations/nr-vault/EVIDENCE.md",
+    "sha256": "344ee586ea03758ed055c52f793cffef95c385930e203d3d2faa1a0ea0f9ce45"
+  },
+  {
+    "path": "integrations/nr-vault/README.md",
+    "sha256": "17556675d7c7bf24798aa7e9929398002e06218e645156964fa529ac1106d495"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/checksums.json",
+    "sha256": "ffb35a5912b082c9016c5c6cf79eabc04798005ea7afbd736994cfe3ace3fb85"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/checksums.json",
+    "sha256": "8370fb25617556abd3140bfed700ee3c147431b7efe580eac7f721baa63d1384"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/guzzle7.kernel-manifest.json",
+    "sha256": "acb9ad145e900b1ecd7fa456fdf6cff59b8c0db1d99af2ae8733021a6c3fe7ed"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/guzzle7.runtime.json",
+    "sha256": "20e3d17b114447ee5cdd4d83b21a57eafd3754cb16feea34e0506b808f23e384"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/guzzle7.shared-unbound.json",
+    "sha256": "2f3be7cbdca3e362282527838861979dc0ecd404f7f1d76bf3b589c4e2b61e5c"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/guzzle7.tested-source-manifest.json",
+    "sha256": "e21d59449bd56f458c4bf7643c7df5a4cdccdac7df019c3ae630741db2fc0aba"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/guzzle8.kernel-manifest.json",
+    "sha256": "acb9ad145e900b1ecd7fa456fdf6cff59b8c0db1d99af2ae8733021a6c3fe7ed"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/guzzle8.runtime.json",
+    "sha256": "7ab5eac113a30b34e58ddeb91f9debe6288bc4f81d32ca22cd3a40132ef1d8b3"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/guzzle8.shared-unbound.json",
+    "sha256": "2f3be7cbdca3e362282527838861979dc0ecd404f7f1d76bf3b589c4e2b61e5c"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/guzzle8.tested-source-manifest.json",
+    "sha256": "5b0e7b127128017cb6e2d7dff4592f36ad45cef3e80e324f1418e76646737f69"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/packaging-source-delta.json",
+    "sha256": "244b1b15365451c85cea0f9b012b5db9541b2d0986d9fa5d4685a1e1202195aa"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/summary.json",
+    "sha256": "58049f6ebcfac120e50910862d6009052364caaa6ba7084cd093add0fc999a66"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-api-snapshot.log",
+    "sha256": "ab6daadc14dbc9965a65ae1f9a4655c5a234ec51d6efa989e44a8f36de0e2762"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-cgl-check.log",
+    "sha256": "8e876b3bea6449acbaf8ddf2f0a708de80b629d92888a322bf376618b6215efb"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-cgl-fix.log",
+    "sha256": "c74db55187a34b74967aaf1443f53aafa37a35caeabb50ef9370b4a9e4d7f122"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-docs-render.log",
+    "sha256": "5b17dbc6eca05706363cb7e037c0ae0cdf6176411cdae77ed2c0bdebb40a57cc"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-g7-adapter-frozen.log",
+    "sha256": "8ad7c8ea66d9fe77c606cba8a68c45c9983f4dce1a3540957f0e306b97af9cf6"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-g7-adapter.log",
+    "sha256": "43d85388c1477005339ea53e24a63fc65baf3e89cfe2d35fc1abbbf236acc93c"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-g8-adapter-frozen.log",
+    "sha256": "864cc762c909a668fb103acb944b97ca33ff9f4d34d43c882f8b56978cbc6a4c"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-g8-adapter.log",
+    "sha256": "7a7148d6f47d45d8ffdca8c41f1b52c2c8e0a1d000ae7182be41d12f82ec29e7"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-guard-unit.log",
+    "sha256": "10efe770e5b7173c5d404a72d8196bd5ba890ae57e2162836642dd0b702b8298"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-patch-clone.log",
+    "sha256": "2f2471be14b04b3602f796d03aafeaa4a041713717be09ad9256bc97c0fe07eb"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-phpstan-frozen.log",
+    "sha256": "10d5d95e2d6a7a97023c25e72fc51f10d651f3fe570e080fa23cd08e708a2c63"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-phpstan.log",
+    "sha256": "9ed4b408048c5029770110733886a139c27dbdc2e969964ab4affc93210caf70"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-rector-check.log",
+    "sha256": "5f58b5763fd0d3780acb31004983278224b3b7aee7489024791bea48e56781f6"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-rector-fix.log",
+    "sha256": "fba9fbb5346350dd2981b1d466169cdde917d0a7f6f7188515abfac00a638afe"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-rector.log",
+    "sha256": "53e2e4ba665b29286ed629e6b5331a5cc466b8ed8778e2b58dd2dbd9639ba16c"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/single-extension/vault-single-extension-repo-checks.log",
+    "sha256": "472ce8d9cc09a9882fc5ac996d6d4540b0a99fdcebd39f32edb244adf9b022f5"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-docs-final-render.log",
+    "sha256": "c6a2164c73d7b4b6c8a89fb8209bad286300966628484e5c88f6cb71b7719094"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-docs-final-validate.log",
+    "sha256": "1a003436678f47fb2c216a4b2cfaf738f6e1f30e9515a9d20bb8f9729bb6121b"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-earlier-fuzz-baseline.log",
+    "sha256": "bf067419cbae64d3717bcfbf0d3c68b01a30627ec3e5782b318769d71af39276"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-final-cgl-check.log",
+    "sha256": "f4f3cb631786de7be5db80829c21a572c7b4859b80b2b1ad3a1fb5446967fccc"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-final-rector-check.log",
+    "sha256": "5f58b5763fd0d3780acb31004983278224b3b7aee7489024791bea48e56781f6"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-final-repo-checks.log",
+    "sha256": "472ce8d9cc09a9882fc5ac996d6d4540b0a99fdcebd39f32edb244adf9b022f5"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-composer-audit.err",
+    "sha256": "bcdc6d3b5745e92d0138cfafb75635dd175a338e01ff30e5339de5bc4e25983f"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-composer-audit.json",
+    "sha256": "b216d5fffa5e7ee99e11d96ed53efcdaccb6facd77f04654a5b97a3ef9765030"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-final-adapter-cases.log",
+    "sha256": "6d9251470f6940a55bf3fc77827e2d291482718398dc5c5cb99fc07dfe057321"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
+    "sha256": "190c24b5ba56fc8b6e8a054a1573ba85f6155e8ca4119e4db3b1c89941122273"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log",
+    "sha256": "7e0c4c612aba590aacd83dff609616ed519063be6c43ad34e4bdf8c75554ce19"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-final-phpstan-frozen-clean.log",
+    "sha256": "c4154819e4e0ebb2dfac3480cd4191eda4de0085385e9c8e8981a6834dd57531"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-final-runtime.json",
+    "sha256": "b67e0a1cbf295010b5faaceab6d45829753e1075881898151c12e7e56f3bb954"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json",
+    "sha256": "7a2f5d907f89daf6ca574c5b3a6e95fafeb15a3b53513d1dfd502c52a6483cb1"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-final-unit-frozen.log",
+    "sha256": "92ac108161f85ae2e9388c8ad324bc9ba8a63477043212c141619fa9bc1ccc0b"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle7-shared-unbound.json",
+    "sha256": "a9d16d15d4f3683985d54aef8c80b17b03550a70a4b8bb189ec64203833fb298"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle8-final-adapter-cases.log",
+    "sha256": "d3db3eac1267885d7ce7f84cf0b60ac681b3ddf81a30eaf81a2b133b1cc56212"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json",
+    "sha256": "b71d8f8d25f6a1c279499131bcdb7f11d2df052952ce136476aa5abf8a341dcf"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
+    "sha256": "f4c7bf8278b24744519d2ad73463509474fb72c3c9d086ed25e12a3f1c0e291d"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle8-final-phpstan-frozen-clean.log",
+    "sha256": "200472c188f59d5dcc5d06087fe851522f77a8f1e9002e8788304128420da58b"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle8-final-runtime.json",
+    "sha256": "5310e9239c1758f79a924c5d3076148cda1fea2a3e919e31c310a07f52d074fc"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
+    "sha256": "f79b60c6a57589afdd93e75ef05333341a8a0caeaf0bcd4f2ea14c217216dec4"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle8-final-unit-frozen.log",
+    "sha256": "d92a180964df2a79e7a423a8fcb8b433d0473e3828352142e15c874cdf2e1fc9"
+  },
+  {
+    "path": "integrations/nr-vault/evidence/vault-guzzle8-shared-unbound.json",
+    "sha256": "a9d16d15d4f3683985d54aef8c80b17b03550a70a4b8bb189ec64203833fb298"
+  },
+  {
+    "path": "integrations/nr-vault/patch-application-check.json",
+    "sha256": "6ebddcd18d9e15abedc371f5e585a1903ca9a939566e49639d056fd407b4922d"
+  },
+  {
+    "path": "integrations/nr-vault/source-manifest.json",
+    "sha256": "525474f8f71f76516fcef9806b5873fa61166b5227449929046fa006c3e15c73"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Build/FunctionalTestsBootstrap.php",
+    "sha256": "746034771a0aa47d5774ed3cfe0b45f8c525c08fde744ad5c70ff5489a9152da"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Build/Scripts/runGuardAdapterTests.sh",
+    "sha256": "495dd67c13dda7c84eeedf05727bcf313f68c9c1061e1cb7633e94d5cf450d4b"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/CHANGELOG.md",
+    "sha256": "db44eca8d15d4328a7adbfc5a81e1beae82386a568ffc0a24f7e0838b10c369a"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardOAuthManagerState.php",
+    "sha256": "b5fde7b07fa2f49728dde7338cdb2a2e3e6a3d527122749b50aa075364671820"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardTransferTicker.php",
+    "sha256": "0cab2f0b003144cb9e8e9c6c79a6716c8a734d90e44a897b3307869a0b5acbef"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php",
+    "sha256": "610ed50dd27ed118395886cf27b6faaa120913f922468972842aebab555bc78c"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapterInterface.php",
+    "sha256": "c2393f2cf3aac80ada3cd95b495c08b3c914e7560cd9b4e47152f7c0bc2a895e"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/OAuth/OAuthTokenManager.php",
+    "sha256": "e32416214749903aea62f0686b4ccdfaffbb1b774e8f149dbe66a57aaf0bf5df"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/SecureHttpClientFactory.php",
+    "sha256": "d7ec1e9856448004e32fdaca089716cf2af56b2cee742f44c5058a6e28fdd2a4"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Classes/Http/VaultHttpClient.php",
+    "sha256": "45a68b1c2c89c362eff449b1bc93a3931f7ee5ba955e12fbb70268a88cd66209"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Configuration/Services.yaml",
+    "sha256": "6373d5eb4982735719c798c6ed4a9703a50b275a0670fe8e831b24b3be74640a"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Documentation/Developer/Adr/ADR-041-OptInHttpGuardAdapter.rst",
+    "sha256": "16139d4eb20de738610b83818be8a4c9f5bf4649509c7a36639840f88aae87eb"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Documentation/Developer/Adr/Index.rst",
+    "sha256": "ca13ad0ebf857358a4896b7f93dc81722aada473972e53c3efb0a6a7da734ad5"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Documentation/Developer/HttpGuard.rst",
+    "sha256": "ea47232762d914d4b9c83e8500453571629152912143aacdcbc6a2d2d744aa6f"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Documentation/Developer/Index.rst",
+    "sha256": "7d097a69851562e6e10fe70bdffe541f5225b61943040e17c2767b12d5b9adf1"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Tests/Fixtures/HttpGuardBootstrap.php",
+    "sha256": "4de1502783d79a9c87ed0d1ee22322c03689283ed07930a36972412de47aca5a"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+    "sha256": "cadd1441f8a78a496142158c875352ee60ce71f7cbdd07cf7ff7e7d5fab9a02e"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+    "sha256": "619c44bd1ff3951e101d1c1f64a2f5e89748d93d2c2755a2b64eb51e1a2cc26d"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Tests/Unit/Api/api-surface.txt",
+    "sha256": "cef627f727390df1a1ded9cc971c5969ffae6bce3ed5d29564eb27b7a71db654"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php",
+    "sha256": "687ea25b13548da38bcac549354fe3370ea71703fd250f95122bacd100cde33c"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php",
+    "sha256": "713a1710144ed8029d383a50875bd8c49cb03306c35713708452eb42fce81c5a"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/Tests/bootstrap.php",
+    "sha256": "95ee69ee3fa9fdd21cc128fb8394ddbf277fa1fb3201c215865e6614e08c520f"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/composer.json",
+    "sha256": "866721f5e2c9d808d02e990d08b1ffe4357c595b5c372ac7860bcf97df791fca"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/phpstan.neon",
+    "sha256": "cd99053e13a0ac76f830e2cc50c3bf0712818b2027c12fbcb6de2e31eb8df2a6"
+  },
+  {
+    "path": "integrations/nr-vault/source-overlay/rector.php",
+    "sha256": "0a9bea6c40f818933a88c25bcf5420613792de2a4bea7a45b319fe8e321afbf0"
+  },
+  {
+    "path": "integrations/nr-vault/vault-adapter.patch",
+    "sha256": "781c5b3b33b299d3250e12ea0c526fd7aa4554bca82e2e6deebafe4a0b5bef6a"
+  },
+  {
+    "path": "phpunit.xml",
+    "sha256": "71ed1f0988171a0a8a413851ea54fb133b76f8c38e358bb2e9e8b93f228f4872"
+  },
+  {
+    "path": "specification/DOCUMENT-QA.md",
+    "sha256": "3ac55909209e9f783ce150ce3c4b17b2350d49b5ea666d2bab008ea3612bc6a1"
+  },
+  {
+    "path": "specification/README.md",
+    "sha256": "d4afb09848fed544ae0fa47844f94086e206e6d017ba9af44b02a7b128403e47"
+  },
+  {
+    "path": "specification/adr/ADR-0001-schutzumfang-und-vertrauensgrenzen.md",
+    "sha256": "824e62a0a802dd25b65145c95a6d3f3a6a2d0370913d1d017f4087f796f1d93a"
+  },
+  {
+    "path": "specification/adr/ADR-0002-bibliothek-und-integrationen.md",
+    "sha256": "60c86ebf73b99a7cb9a48c00f9f24a450014e50bf3fcad735dea49f90517239a"
+  },
+  {
+    "path": "specification/adr/ADR-0003-middleware-und-kontrollierter-transport.md",
+    "sha256": "761047ed99824663b57fa9db20aefcc137418479be14a405ce15749af35be8a1"
+  },
+  {
+    "path": "specification/adr/ADR-0004-fail-closed-und-betriebsmodi.md",
+    "sha256": "f79be0d92decc2d71e4d2ffb5a568849a4f0f20eb17fdbda68425aa42dc93d42"
+  },
+  {
+    "path": "specification/adr/ADR-0005-dns-und-connection-plan.md",
+    "sha256": "03d991a71e6e1e75df9c4c98616f300f237e59d62e9a1fe79db076d3aa61fdaa"
+  },
+  {
+    "path": "specification/adr/ADR-0006-clientgebundene-endpoint-grants.md",
+    "sha256": "bba738dd2cbb50bc74fcd8fedacfb5d4546bdedce34bd34788ec2dec635159df"
+  },
+  {
+    "path": "specification/adr/ADR-0007-unterstuetzte-transporte.md",
+    "sha256": "834a0d5cd96c957c226b604352ff59eed7b8406834ab03a765c37c2d09782ec4"
+  },
+  {
+    "path": "specification/adr/ADR-0008-redirects-und-credential-grenzen.md",
+    "sha256": "f4151921e64efb72b83a8f18a5535a4cdb61f7bd6d2b1331afb932da810cea1d"
+  },
+  {
+    "path": "specification/adr/ADR-0009-normalisierung-und-adressklassen.md",
+    "sha256": "a92efc90af27470c194bd60779174d7ef7516cb154f47622e11ae3dfc8856931"
+  },
+  {
+    "path": "specification/adr/ADR-0010-cache-isolation-und-parallelitaet.md",
+    "sha256": "406dc6ef1506dda50710ca17d485d4c97e7e601cd8d475604fcf366e4c54147d"
+  },
+  {
+    "path": "specification/adr/ADR-0011-vault-streaming-und-cancellation.md",
+    "sha256": "663174bf3aef55842dde2dbae0921f40e452f42ddf3a83e33a6769029f8b3b85"
+  },
+  {
+    "path": "specification/adr/ADR-0012-fehler-und-beobachtbarkeit.md",
+    "sha256": "68efe4511f980383f15de76ba1c3bd22e1fa039722642f3e8e998120fbc18bf0"
+  },
+  {
+    "path": "specification/adr/ADR-0013-kompatibilitaet-und-migration.md",
+    "sha256": "ae9cc181590428d241bed7175b4bc4e878b806610ae2803bcc2833a9f80ac1d8"
+  },
+  {
+    "path": "specification/adr/ADR-0014-sicherheitsnachweis-und-release-gates.md",
+    "sha256": "abf06a99093ff9bb44299ba55c8d80d6c7d8e33a8e1c0e8aa2dc049bceaf543a"
+  },
+  {
+    "path": "specification/adr/README.md",
+    "sha256": "5dc0ada8bce7a42dd2966876aec7aa1615b8a0eb355c75940bfa616ebe459d7d"
+  },
+  {
+    "path": "specification/specs/01-product-requirements.md",
+    "sha256": "f46a2618ae05acad4aa645f656026a08528bcbf3c120051bd84eeae13fc775b5"
+  },
+  {
+    "path": "specification/specs/02-security-model.md",
+    "sha256": "1315c7fdf9c24c1fc9bf854429c194550eb99101458fc70d06aa54de921c4b7f"
+  },
+  {
+    "path": "specification/specs/03-architecture.md",
+    "sha256": "1b376ef642739cc4549cadae173ce5e6f0f04f00c98334b5e5a61ceff9c5372e"
+  },
+  {
+    "path": "specification/specs/04-configuration-and-api.md",
+    "sha256": "0870e9dca60aa30e88dc5e3bb6b139cd7c38fe6615f6c16ff3d45e2ea92f4516"
+  },
+  {
+    "path": "specification/specs/05-nr-vault-migration.md",
+    "sha256": "9fd98d689ff44206b743b8a9034ca70657520bbacd9561631f2b78177a022e15"
+  },
+  {
+    "path": "specification/specs/06-verification.md",
+    "sha256": "7360a3ac68dd2bdd9c044959557d3dc6a2b561b79fc5b34c57d77f3e492df937"
+  },
+  {
+    "path": "specification/specs/07-delivery-and-operations.md",
+    "sha256": "5e81e9e5d1a7904f39745d9724c51aaa3abb523cb400fb40ce1e4c39fec372ba"
+  },
+  {
+    "path": "specification/specs/08-evidence-and-sources.md",
+    "sha256": "60a2e3f890100cd07a1eee16e17747ac9577a551886ef0ee16afdeb34034f98e"
+  },
+  {
+    "path": "verification/README.md",
+    "sha256": "dea1f1c47724f9135f2916de028a9e238e96492e68487ce765317e6bd498b247"
+  },
+  {
+    "path": "verification/archive/README.md",
+    "sha256": "0991d4ab25e117e1759753b053586543cb77e43fe92c028388597c4e87300d0f"
+  },
+  {
+    "path": "verification/archive/source-7a3a39b-manifest.json",
+    "sha256": "4f4a7c6ce9e7a77149d5051f482ef2261f820f3fcfb1a2d6026fe4e08ccfe6b4"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/README.md",
+    "sha256": "66265ec3a244c206a19f6fa8123f4c0b678badfbfde3c307a7a474c88ae42cc4"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle7.composer-audit.json",
+    "sha256": "5336f8aa9a59cd25dde3c3079ee514fff801762ab600e79073e4cc82a73ca668"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle7.composer.json",
+    "sha256": "47b8b2fee7e3b0c70d8b3adb9b2a4c6ec92d2e8a579c7db3ff81f972da9b1668"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle7.composer.lock",
+    "sha256": "f944691b2f9b2702f62be74514a9be961d64ea11a34014e880e419c5503622a8"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle7ter.composer-audit.json",
+    "sha256": "5336f8aa9a59cd25dde3c3079ee514fff801762ab600e79073e4cc82a73ca668"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle7ter.composer.json",
+    "sha256": "026678ffef9a79051139cd57c5727387bf864af17c95894cc9a4b650fd9ad085"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle7ter.composer.lock",
+    "sha256": "b573f006c1ca36ecd7748a6b8d7fb479ab70d6b742d7407eed4f490f0724a83f"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle8.composer-audit.json",
+    "sha256": "5336f8aa9a59cd25dde3c3079ee514fff801762ab600e79073e4cc82a73ca668"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle8.composer.json",
+    "sha256": "a64c5c69065dde7cbee3b13993c797d038f278074f84735b66a2a167347075bd"
+  },
+  {
+    "path": "verification/dependencies/combined-kernel/guzzle8.composer.lock",
+    "sha256": "e4404007fdce0ed395bcb03bad129d60346bd5b6b03909504f8f74de620727a3"
+  },
+  {
+    "path": "verification/dependencies/guzzle7.composer-audit.json",
+    "sha256": "5336f8aa9a59cd25dde3c3079ee514fff801762ab600e79073e4cc82a73ca668"
+  },
+  {
+    "path": "verification/dependencies/guzzle7.composer.json",
+    "sha256": "9f7a77a4e881d56f83378e1991338fc117942c473a3eeaf76802cafc2b21db6c"
+  },
+  {
+    "path": "verification/dependencies/guzzle7.composer.lock",
+    "sha256": "dc1bafbb2c1f08bf6c4722073d3def7bd9488b86b883170c0e56be1440ce1fbb"
+  },
+  {
+    "path": "verification/dependencies/guzzle7.validation-audit.log",
+    "sha256": "1d23564f959dd3026ba0b98bf8d5365f239cfc5d147c3ed3fc4aa5e5102f6554"
+  },
+  {
+    "path": "verification/dependencies/guzzle8.composer-audit.json",
+    "sha256": "5336f8aa9a59cd25dde3c3079ee514fff801762ab600e79073e4cc82a73ca668"
+  },
+  {
+    "path": "verification/dependencies/guzzle8.composer.json",
+    "sha256": "d914335933d283e269ac86142d51bdadaa3632da79e03c4ee70a91c1ef843fd8"
+  },
+  {
+    "path": "verification/dependencies/guzzle8.composer.lock",
+    "sha256": "6f6393d7007f7606e25387b6ebdc29fd94b929b0d7cf1da5330f682494f2349e"
+  },
+  {
+    "path": "verification/dependencies/guzzle8.validation-audit.log",
+    "sha256": "1d23564f959dd3026ba0b98bf8d5365f239cfc5d147c3ed3fc4aa5e5102f6554"
+  },
+  {
+    "path": "verification/dependencies/php-images.json",
+    "sha256": "b3b49fb5986e7f4071a9f176873ee664d4308beb95bec5ba45cfafd2f9153ac2"
+  },
+  {
+    "path": "verification/independent-extension-review.md",
+    "sha256": "020b1d04ea06eb677d4228db0e5877fa02bdfbb8f60b91c9930b106a5995c19f"
+  },
+  {
+    "path": "verification/requirements-and-tests.json",
+    "sha256": "ad3f488dcab78e9d0c7b3b4588431c7c939caa5389c6c930fa07da5429bb5043"
+  },
+  {
+    "path": "verification/requirements-and-tests.md",
+    "sha256": "40d4fe2e68de4d8b0a1e4c1f461b6dabd25add3b5867e12daac3c057d4d1a97c"
+  },
+  {
+    "path": "verification/scripts/run-library-matrix.sh",
+    "sha256": "7f372a171b7212548603c614e21a4c2d7030cd6589c5752455c14e35f8333731"
+  },
+  {
+    "path": "verification/scripts/run-mutations.py",
+    "sha256": "59606684c7662a3d6f1ce8d9fa1c51fa94c4474adfef48ccccffb91c011e660e"
+  }
+]

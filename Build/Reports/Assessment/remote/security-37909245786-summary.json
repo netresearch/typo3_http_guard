@@ -1,0 +1,120 @@
+{
+  "run": {
+    "check_suite_id": 102710407466,
+    "conclusion": "failure",
+    "created_at": "2026-10-09T09:07:27Z",
+    "event": "pull_request",
+    "head_sha": "82f1b476a42358b5ffbf88615aea6184e8864a0d",
+    "html_url": "https://github.com/netresearch/typo3_http_guard/actions/runs/37909245786",
+    "id": 37909245786,
+    "run_attempt": 1,
+    "status": "completed",
+    "updated_at": "2026-10-09T09:11:03Z"
+  },
+  "jobs": [
+    {
+      "conclusion": "failure",
+      "failed_steps": [
+        {
+          "name": "Audit without advisory exceptions",
+          "number": 8
+        }
+      ],
+      "id": 113750120767,
+      "name": "Strict dependency audit and SBOM",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "failed_steps": [
+        {
+          "name": "Run betterleaks",
+          "number": 6
+        }
+      ],
+      "id": 113750121233,
+      "name": "secret-scanning / Secret Scanning",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "failed_steps": [],
+      "id": 113750121287,
+      "name": "dependency-audit-and-sast / Preflight (event gate)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "failed_steps": [
+        {
+          "name": "Run Opengrep scan",
+          "number": 6
+        }
+      ],
+      "id": 113750774460,
+      "name": "dependency-audit-and-sast / SAST (Opengrep)",
+      "status": "completed"
+    },
+    {
+      "conclusion": "skipped",
+      "failed_steps": [],
+      "id": 113750776801,
+      "name": "dependency-audit-and-sast / Composer Audit",
+      "status": "completed"
+    }
+  ],
+  "analysis_ref": "refs/pull/2/merge",
+  "analysis_commit": "94902abb18e6503e1d74b686928d2e785833953d",
+  "new_wiring_failure": false,
+  "betterleaks": {
+    "version": "1.1.2",
+    "commits_scanned": 8,
+    "exit_code": 2,
+    "count": 1,
+    "classification": "needs-review",
+    "value_disclosed": false,
+    "exact_expected_location": true
+  },
+  "opengrep": {
+    "actual_count": 13,
+    "expected_count": 13,
+    "same_rule_path_line_set": true,
+    "new_findings": [],
+    "exit_code": 1,
+    "rules_run": 357,
+    "files_scanned": 402,
+    "suppressed": false
+  },
+  "strict_audit": {
+    "package_version": "0.22.0",
+    "advisories": [
+      {
+        "packageName": "enshrined/svg-sanitize",
+        "advisoryId": "PKSA-8j6w-3kr7-s9xk",
+        "cve": "CVE-2026-107380",
+        "severity": "medium",
+        "affectedVersions": "<=0.22.0"
+      },
+      {
+        "packageName": "enshrined/svg-sanitize",
+        "advisoryId": "PKSA-6j95-1jtb-x6wc",
+        "cve": "CVE-2026-107381",
+        "severity": "medium",
+        "affectedVersions": "<=0.22.0"
+      },
+      {
+        "packageName": "enshrined/svg-sanitize",
+        "advisoryId": "PKSA-cbx2-m9db-bmzd",
+        "cve": "CVE-2026-107379",
+        "severity": "medium",
+        "affectedVersions": "<=0.22.0"
+      }
+    ],
+    "count": 3,
+    "abandoned": [],
+    "exact_expected_ids": true,
+    "exit_code": 1,
+    "exceptions_during_audit": false
+  },
+  "overall": "Expected failure: one unverified historical cookie, unchanged 13 classified SAST findings and exactly three upstream SVG advisories. No green overall or production-readiness claim."
+}

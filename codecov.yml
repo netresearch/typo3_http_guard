@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+coverage:
+  precision: 2
+  round: down
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 1%
+    patch:
+      default:
+        target: 80%
+        threshold: 2%
+comment:
+  layout: reach,diff,flags,files
+  behavior: default
+  require_changes: true
+flags:
+  combined-unit-native:
+    carryforward: false
+# These thresholds do not assert an achieved coverage percentage.

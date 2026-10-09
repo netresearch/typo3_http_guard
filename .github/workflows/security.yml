@@ -1,0 +1,180 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+name: Security
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pr-quality:
+    if: github.event_name == 'pull_request'
+    uses: netresearch/.github/.github/workflows/pr-quality.yml@main
+    permissions:
+      contents: read
+      pull-requests: write
+    with:
+      auto-approve-require-write: true
+      security-controls-path: Documentation/Development/Assessment.rst
+      auto-approve-message: >-
+        Automated approval for a repository maintainer PR. The separate CI,
+        Verification and Security gates must pass before merge. This is not
+        independent human security approval. See the
+        [documented controls](https://github.com/netresearch/typo3_http_guard/blob/${{ github.event.pull_request.head.sha }}/Documentation/Development/Assessment.rst).
+
+  dependency-audit-and-sast:
+    uses: netresearch/typo3-ci-workflows/.github/workflows/security.yml@main
+    permissions:
+      contents: read
+      security-events: write
+    with:
+      php-version: '8.5'
+      # The strict job below also fails when the advisory service is unavailable.
+      skip-composer-audit: true
+      # Scan current code, tests and tooling; retrieved research originals and
+      # archived execution evidence are not application source. Keep them intact.
+      opengrep-config: >-
+        --config auto --error --severity WARNING --severity ERROR
+        --exclude evidence --exclude verification/evidence
+        --exclude specification/originals
+        --exclude Resources/Private/HttpGuard/data/security-corpus/sources
+        --exclude Tests/HttpGuard/Integration/certificates/ca.key
+        --exclude Tests/HttpGuard/Integration/certificates/client.key
+        --exclude Tests/HttpGuard/Integration/certificates/server.key
+    # Exclude only fixed synthetic keys after verifying bytes, certificates and trust.
+    needs:
+      - fixture-integrity
+
+  secret-scanning:
+    uses: netresearch/.github/.github/workflows/betterleaks.yml@main
+    permissions:
+      contents: read
+      security-events: write
+
+  dependency-audit-and-sbom:
+    name: Strict dependency audit and SBOM (TYPO3 ${{ matrix.core }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: '8.5'
+          extensions: curl, intl, mbstring
+          coverage: none
+          tools: composer:v2
+      - name: Resolve an isolated production dependency graph
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 Build/Scripts/check-composer-qualification.py --core "$AUDIT_CORE"
+          mkdir -p "$RUNNER_TEMP/runtime-sbom"
+          cp composer.json "$RUNNER_TEMP/runtime-sbom/composer.json"
+          cd "$RUNNER_TEMP/runtime-sbom"
+          composer require --no-update --no-plugins --no-scripts "typo3/cms-core:$AUDIT_CORE"
+          composer update --no-dev --no-plugins --no-scripts --prefer-dist --no-progress --no-interaction
+          php "$GITHUB_WORKSPACE/Build/Scripts/check-installed-runtime.php" "$RUNNER_TEMP/runtime-sbom/vendor/autoload.php"
+        env:
+          AUDIT_CORE: ${{ matrix.core }}
+      - name: Generate dependency SBOM
+        uses: anchore/sbom-action@66cbf4bc1f1c0d2edc94016e65bc221b6bb0ad6c # v0.24.3
+        with:
+          path: ${{ runner.temp }}/runtime-sbom
+          format: cyclonedx-json
+          syft-version: v1.54.1
+          output-file: ${{ runner.temp }}/runtime-sbom.cdx.json
+          upload-artifact: false
+          upload-release-assets: false
+          dependency-snapshot: false
+      - name: Audit without advisory exceptions
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/runtime-sbom"
+          # Core 13 still requires abandoned doctrine/annotations; report that upstream
+          # maintenance warning while failing on every vulnerability or unavailable audit.
+          composer audit --no-dev --locked --no-plugins --abandoned=report --format=json > composer-audit.json
+      - name: Preserve dependency evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: production-dependency-evidence-${{ matrix.core }}
+          path: |
+            ${{ runner.temp }}/runtime-sbom.cdx.json
+            ${{ runner.temp }}/runtime-sbom/composer.json
+            ${{ runner.temp }}/runtime-sbom/composer.lock
+            ${{ runner.temp }}/runtime-sbom/composer-audit.json
+          if-no-files-found: error
+          retention-days: 14
+    strategy:
+      fail-fast: false
+      matrix:
+        core:
+          - 13.4.36
+          - 14.3.8
+
+  fixture-integrity:
+    name: Fixture and research integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Verify synthetic TLS fixtures and sanitized research headers
+        run: |
+          python3 Build/Scripts/check-synthetic-fixtures.py
+          python3 Build/Scripts/check-research-headers.py
+  gate:
+    name: Security gate
+    needs:
+      - dependency-audit-and-sast
+      - secret-scanning
+      - dependency-audit-and-sbom
+      - fixture-integrity
+      - pr-quality
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Require security checks and applicable PR quality checks to succeed
+        env:
+          RESULTS: ${{ toJSON(needs) }}
+          EVENT_NAME: ${{ github.event_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # PR metadata applies only to PRs; every security job must always run.
+          jq -e --arg event "$EVENT_NAME" '
+            length > 0 and all(to_entries[];
+              .value.result == "success" or
+              (.key == "pr-quality" and $event != "pull_request" and .value.result == "skipped")
+            )' <<< "$RESULTS"

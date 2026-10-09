@@ -1,0 +1,31 @@
+{
+  "count": 36,
+  "unique_advisories": [
+    "GHSA-9rjx-3jch-6vjf",
+    "GHSA-m9xh-6747-9r6f",
+    "GHSA-v383-3rw5-q8rf"
+  ],
+  "packages": [
+    "enshrined/svg-sanitize"
+  ],
+  "scopes": [
+    "evidence/architecture-probe/dependencies/core13g7/composer.lock",
+    "evidence/architecture-probe/dependencies/core13g8/composer.lock",
+    "evidence/architecture-probe/dependencies/core14g7/composer.lock",
+    "evidence/architecture-probe/dependencies/core14g8/composer.lock",
+    "evidence/packaging/composer-locks/core13g7/composer.lock",
+    "evidence/packaging/composer-locks/core13g8/composer.lock",
+    "evidence/packaging/composer-locks/core14g7/composer.lock",
+    "evidence/packaging/composer-locks/core14g8/composer.lock",
+    "evidence/typo3-integration/locks/core13g7/composer.lock",
+    "evidence/typo3-integration/locks/core13g8/composer.lock",
+    "evidence/typo3-integration/locks/core14g7/composer.lock",
+    "evidence/typo3-integration/locks/core14g8/composer.lock"
+  ],
+  "by_severity": [
+    {
+      "severity": "medium",
+      "count": 36
+    }
+  ]
+}

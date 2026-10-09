@@ -1,0 +1,292 @@
+{
+  "initial_raw_statuses_are_unchanged": true,
+  "catalog_applicability_does_not_rewrite_raw_outcomes": true,
+  "checkpoints": [
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-35",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: Configuration/TCA/",
+      "fix_skill": "typo3-conformance",
+      "classification": "not_applicable",
+      "rationale": "HTTP service extension declares no database tables or TCA; no TCA directory is needed.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-51",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: {ext_tables.php,Configuration/Backend/Modules.php,Configuration/Backend/AjaxRoutes.php,Configuration/Backend/Routes.php}",
+      "fix_skill": "typo3-conformance",
+      "classification": "not_applicable",
+      "rationale": "No backend module, Ajax routes or backend routes are registered. The checkpoint permits a pure service extension.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-17",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern not found in Classes/Service/LibraryServiceFactory.php",
+      "fix_skill": "typo3-conformance",
+      "classification": "false_positive",
+      "rationale": "The literal regex rejects legal whitespace in declare (strict_types=1). A fresh token-based check found strict_types=1 in all 73 Classes PHP files. This does not establish coding-style compliance.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-187",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "typo3-conformance",
+      "classification": "corrected_followup_pass",
+      "rationale": "The initial mismatch was genuine. The title is HTTP Guard and the corrected Composer description starts with HTTP Guard - . The exact original official command passes in the scoped follow-up, with its original precondition enforced.",
+      "effective_status": "pass"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-194",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "classification": "documented_convention_deviation",
+      "rationale": "The repository deliberately uses vendor/ with matching bootstrap, documentation and CI. The shared .Build/vendor convention is not implemented; the raw failure is preserved.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-36",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern should not be in Classes/Configuration/ConfigurationLoader.php",
+      "fix_skill": "typo3-conformance",
+      "classification": "framework_boundary_reviewed",
+      "rationale": "TYPO3 global configuration is read only at the extension configuration/registration boundary for HTTP middleware, SYS Objects and nested EXTCONF snapshots. The embedded policy kernel does not depend on TYPO3 globals. This is a contextual framework-boundary exception, not a claim that arbitrary global access is acceptable.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-53",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: Configuration/Icons.php",
+      "fix_skill": "typo3-conformance",
+      "classification": "not_applicable",
+      "rationale": "The canonical extension icon is present, but the service extension registers no feature-specific backend module icon or IconRegistry entries.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-90",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "classification": "documented_tooling_deviation",
+      "rationale": "Standalone tool requirements and exact SDK qualification fixtures are used rather than the netresearch/typo3-ci-workflows Composer development package. The shared-tooling convention remains unmet; adding broad dependency ranges must not weaken exact tuple qualification.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-93",
+      "status": "skip",
+      "severity": "info",
+      "evidence": "No files match glob: {phpstan.neon,Build/phpstan.neon,Build/phpstan/phpstan.neon,phpstan.neon.dist} (checkpoint not applicable)",
+      "fix_skill": "typo3-conformance",
+      "classification": "unmeasured_catalog_target",
+      "rationale": "The catalog searches only phpstan.neon, Build/phpstan.neon, Build/phpstan/phpstan.neon or phpstan.neon.dist. Actual configs are Build/phpstan-http-guard.neon, Build/phpstan-typo3-core13.neon and Build/phpstan-typo3.neon. The raw skip is not a static-analysis pass; real executions are separate evidence, including six current G8 kernel diagnostics.",
+      "effective_status": "skip"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-141",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "JSON path not found in composer.json",
+      "fix_skill": "typo3-conformance",
+      "classification": "duplicate_tooling_deviation",
+      "rationale": "Duplicate evidence for the missing shared Composer development package described by TC-90.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-153",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "typo3-conformance",
+      "classification": "false_positive_scope",
+      "rationale": "The exact command reports DnsQueryInterface, ClientStackProviderInterface and TransferDriverInterface. Classes/HttpGuard is excluded from the Symfony service prototype: WireDnsQuery is constructed by LibraryServiceFactory, the stack provider is explicitly supplied by the context factory or defaults internally, and TransferDriver is created inside GuardedClientFactory. They are not unbound Symfony-autowired services. Genuine Core container boot evidence exists separately.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-59",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Not found: Makefile",
+      "fix_skill": "typo3-conformance",
+      "classification": "improvement",
+      "rationale": "No Makefile exists. Documented Build/Scripts entry points and workflows provide current tasks; a conventional convenience entry point can still be added.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-65",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern found in Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.html (should be absent)",
+      "fix_skill": "typo3-conformance",
+      "classification": "false_positive_archived_source",
+      "rationale": "The detected Bootstrap attributes occur in immutable downloaded Alibaba documentation in the security corpus, not an active Fluid template. Build/Scripts/build-extension.py excludes corpus sources from the installable ZIP.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "typo3-conformance",
+      "id": "TC-68",
+      "status": "fail",
+      "severity": "error",
+      "evidence": "Pattern found in Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.html (should be absent)",
+      "fix_skill": "typo3-conformance",
+      "classification": "false_positive_archived_source",
+      "rationale": "The inline script occurs only in the same immutable archived Alibaba HTML. It is never rendered or executed by the extension and is excluded from the installable ZIP; changing the archived original would damage evidence provenance.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-04",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "classification": "pending_verified_badge",
+      "rationale": "A Scorecard badge is not shown. Do not advertise an unverified external score or completed remote run.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-05",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "classification": "pending_verified_badge",
+      "rationale": "No registered Best Practices project ID/badge is verified; no badge should be invented.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-06",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "classification": "release_provenance_gap",
+      "rationale": "No SLSA/provenance claim is made. An actual release attestation must be implemented and verified before advertising it.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-15",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Pattern not found in /tmp/tmp.XrgYoP065m",
+      "fix_skill": "enterprise-readiness",
+      "classification": "release_provenance_gap",
+      "rationale": "No qualifying release provenance/attestation workflow exists. New CI checks do not substitute for release artifact provenance.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-22",
+      "status": "fail",
+      "severity": "error",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "classification": "pending_live_ci",
+      "rationale": "CI workflows are now configured and locally validated, but their first pushed GitHub run is pending. No successful live run is inferred from local actionlint or a presence check.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-23",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "classification": "pending_live_coverage_service",
+      "rationale": "The coverage workflow is configured, but Codecov service/token availability and upload are unverified. Actual local full-suite line coverage is measured separately.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-24",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Pattern not found in README.md",
+      "fix_skill": "enterprise-readiness",
+      "classification": "pending_verified_badge",
+      "rationale": "No registered OpenSSF Baseline badge ID/state is verified; no badge should be invented.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-26",
+      "status": "fail",
+      "severity": "info",
+      "evidence": "Pattern not found in /tmp/tmp.XrgYoP065m",
+      "fix_skill": "enterprise-readiness",
+      "classification": "release_provenance_gap",
+      "rationale": "No qualifying provenance evidence is produced for a published release; this is an open future release control.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-54",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Target file not found: .github/workflows/release.yml",
+      "fix_skill": "enterprise-readiness",
+      "classification": "release_workflow_gap",
+      "rationale": "There is no release.yml with measured explicit permissions. An actual release workflow requires a separate reviewed implementation before release; no release was authorized here.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-70",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Command failed",
+      "fix_skill": "enterprise-readiness",
+      "classification": "genuine_unmeasured_quality_gap",
+      "rationale": "No general Infection configuration exists. Eighteen targeted security mutation witnesses do not establish general mutation adequacy.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-71",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "enterprise-readiness",
+      "classification": "genuine_unmeasured_quality_gap",
+      "rationale": "General Infection MSI >=90 is unmeasured and not claimed. Passing targeted mutants does not replace this metric.",
+      "effective_status": "fail"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "id": "ER-72",
+      "status": "fail",
+      "severity": "warning",
+      "evidence": "Script failed",
+      "fix_skill": "enterprise-readiness",
+      "classification": "genuine_unmeasured_quality_gap",
+      "rationale": "General Infection covered MSI >=90 is unmeasured and not claimed. Passing targeted mutants does not replace this metric.",
+      "effective_status": "fail"
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "skill_id": "enterprise-readiness",
+  "source_head": "7a3a39bbaa763eb876ff4c9cdc743b689c557590",
+  "source_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+  "scope": "future published security extension; current alpha, not released",
+  "checkpoints": [
+    {
+      "id": "ER-10b",
+      "status": "not_applicable",
+      "evidence": "No workflow Actions exist in the baseline; SHA-pin inspection cannot establish a protective CI control. MissingCI is tracked byER-18.",
+      "severity": "warning",
+      "description": "Verify third-party actions are SHA-pinned. Org-internal reusable workflows MUST use @main or @tag (pinning them is an anti-pattern).",
+      "domain": "security",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-16",
+      "status": "fail",
+      "evidence": "Live required_signatures API isenabled:false; main has1review+conversationresolution butenforce_admins:false. Commit7a3a39b is verified validSSH, but existing signed commits are distinct from enforced future signatures. Inherited CONTRIBUTING documents signing.",
+      "recommendation": "Enable required signatures on protected main and enforce applicable review rules; preserve human approval and never simulate it.",
+      "severity": "warning",
+      "description": "Repository should require signed commits",
+      "domain": "security",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-27b",
+      "status": "fail",
+      "evidence": "No workflow jobs exist, hence no hardened runner or egress policy in recurring verification.",
+      "recommendation": "Use org hardened reusable workflows or a fullSHA harden-runner as first own runner step. Begin verified audit egress where fixture access is required, then explicit allowlist/block when qualified.",
+      "severity": "warning",
+      "description": "Verify Harden-Runner is correctly configured in all workflow jobs with appropriate egress policy",
+      "domain": "security",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-34",
+      "status": "needs_review",
+      "evidence": "PHPUnit tests use DataProvider, RunInSeparateProcess and PreserveGlobalState present in minimum supportedPHPUnit11.5; actual96/1173Unit run uses11.5.57. Manifest also allows12.5/13.4 without a CI matrix proving their complete config/behavior.",
+      "recommendation": "Use compatible pinned test toolchain per supportedPHP matrix or prove all resolved PHPUnit majors in CI; do not claim unexecuted versions pass.",
+      "severity": "warning",
+      "description": "PHPUnit attributes and features must be compatible with all PHPUnit versions resolved across the CI PHP version matrix",
+      "domain": "testing",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-17",
+      "status": "deferred_release_gate",
+      "evidence": "No release/tag/provenance workflow or attestation exists; live releasesAPI is[]. Alpha ZIP qualification does not proveSLSA2/3.",
+      "recommendation": "Before future release: sign existing tags, gate audit/SBOM, generate provenance from approved build and verify it. SLSA3 additionally needs isolated immutable org reusable build, not only an attest step.",
+      "severity": "info",
+      "description": "SLSA provenance should use actions/attest-build-provenance (preferred) or slsa-github-generator",
+      "domain": "security",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-35",
+      "status": "pass",
+      "evidence": "No PHPStan baseline or phpstan-ignore suppression exists. Existing kernel/actualCore14 level8 clean logs and a fresh Core14 baseline run are separate from missing higher-level/allCore static CI.",
+      "severity": "warning",
+      "description": "PHPStan baseline should be empty (ignoreErrors: []). All static analysis issues should be fixed, not suppressed. Review entries and plan to eliminate them",
+      "domain": "quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-36",
+      "status": "not_applicable",
+      "evidence": "No baseline workflow/reusable calls/release body exists to evaluate this conditional. No workflow absence is claimed as safe/pass; recurringCI/release controls are separately missing/deferred.",
+      "severity": "warning",
+      "description": "Third-party reusable workflows MUST use SHA pins. Org-internal reusable workflows MUST use @main/@tag for centralized security updates",
+      "domain": "security",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-30",
+      "status": "not_applicable",
+      "evidence": "No baseline workflow/reusable calls/release body exists to evaluate this conditional. No workflow absence is claimed as safe/pass; recurringCI/release controls are separately missing/deferred.",
+      "severity": "warning",
+      "description": "Workflows with both push and pull_request triggers must scope push to specific branches to prevent duplicate CI runs",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-33",
+      "status": "not_applicable",
+      "evidence": "No baseline workflow/reusable calls/release body exists to evaluate this conditional. No workflow absence is claimed as safe/pass; recurringCI/release controls are separately missing/deferred.",
+      "severity": "warning",
+      "description": "Third-party reusable workflows must be pinned to commit SHAs, not tags, for supply chain security",
+      "domain": "security",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-37",
+      "status": "not_applicable",
+      "evidence": "No npm/CaptainHook/PHPStan extension-installer/merge-queue/database-schema surface exists for this conditional in the baseline source and current main protection/rulesets.",
+      "severity": "warning",
+      "description": "npm audit runs in CI when package.json exists",
+      "domain": "supply-chain",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-38",
+      "status": "fail",
+      "evidence": "RootComposer manifest and test tooling exist; no configured Dependabot/Renovate dependency-update file exists. GitHub automated security updates are enabled but do not provide a version-update configuration/Actions monitoring.",
+      "recommendation": "Configure Composer and GitHubActions version updates, without bulk-updating historical evidence locks. Qualify security SDK tuple changes as a reviewed set.",
+      "severity": "info",
+      "description": "Update bot configured for all dependency ecosystems",
+      "domain": "supply-chain",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-39",
+      "status": "not_applicable",
+      "evidence": "No npm/CaptainHook/PHPStan extension-installer/merge-queue/database-schema surface exists for this conditional in the baseline source and current main protection/rulesets.",
+      "severity": "warning",
+      "description": "CaptainHook disabled in Docker/CI Composer commands",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-40",
+      "status": "not_applicable",
+      "evidence": "No npm/CaptainHook/PHPStan extension-installer/merge-queue/database-schema surface exists for this conditional in the baseline source and current main protection/rulesets.",
+      "severity": "warning",
+      "description": "PHPStan extension-installer generates non-empty config",
+      "domain": "quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-41",
+      "status": "not_applicable",
+      "evidence": "Build/Scripts/runTests.sh has no php-lint suite and baseline has no lintCI. Add scoped lint in upcomingCI, rather than claiming no lint means scope validation passed.",
+      "severity": "warning",
+      "description": "PHP lint scope excludes vendor and build directories",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-42",
+      "status": "not_applicable",
+      "evidence": "No npm/CaptainHook/PHPStan extension-installer/merge-queue/database-schema surface exists for this conditional in the baseline source and current main protection/rulesets.",
+      "severity": "info",
+      "description": "Merge queue thread resolution awareness",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-45",
+      "status": "pass",
+      "evidence": "14 original normativeADRs retained under specification/adr; Documentation/Decisions/SingleExtension.rst has status/context/decision/consequences and explicitly supersedes only packaging. A different directory spelling is not absence of architectural decisions.",
+      "severity": "warning",
+      "description": "Architecture Decision Records for significant decisions",
+      "domain": "documentation",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-46",
+      "status": "fail",
+      "evidence": "No CHANGELOG.md exists and git tag-l returns no tags. No unmatched published release is claimed.",
+      "recommendation": "Add an Unreleased changelog for alpha source changes; create version entries only with a future real signed release.",
+      "severity": "warning",
+      "description": "Every git tag has a corresponding CHANGELOG entry",
+      "domain": "documentation",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-47",
+      "status": "not_applicable",
+      "evidence": "No npm/CaptainHook/PHPStan extension-installer/merge-queue/database-schema surface exists for this conditional in the baseline source and current main protection/rulesets.",
+      "severity": "warning",
+      "description": "UpgradeWizard for new database columns on existing tables",
+      "domain": "migration",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-48",
+      "status": "not_applicable",
+      "evidence": "No baseline workflow/reusable calls/release body exists to evaluate this conditional. No workflow absence is claimed as safe/pass; recurringCI/release controls are separately missing/deferred.",
+      "severity": "warning",
+      "description": "CI uses org reusable workflows instead of standalone third-party actions",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-50",
+      "status": "pass",
+      "evidence": "Fresh frozen-snapshotUnit run96/1173 and deprecation-scan across12kernel matrixlogs plus unifiedCore14 show no PHP deprecated/warning/notice matches. No CI build exists yet; this verdict is confined to the measured runs.",
+      "severity": "warning",
+      "description": "Build should produce no deprecation warnings \u2014 these become errors in future versions and block CI",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-51",
+      "status": "needs_review",
+      "evidence": "Repo allow_auto_merge:false; no dependency version bot configured yet, so no bot PR accumulation scenario has been measured. Automatic merging independently changed SDK versions would violate exact tuple qualification.",
+      "recommendation": "If enabling bot automerge, limit it to trusted dependency labels and passing required checks; hold runtime SDK/Core tuple changes for coordinated human review.",
+      "severity": "warning",
+      "description": "Repos with Dependabot/Renovate should have auto-merge workflow to prevent PR accumulation",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-52",
+      "status": "not_applicable",
+      "evidence": "No baseline workflow/reusable calls/release body exists to evaluate this conditional. No workflow absence is claimed as safe/pass; recurringCI/release controls are separately missing/deferred.",
+      "severity": "error",
+      "description": "Caller workflows grant all permissions required by called reusable workflows",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "ER-53",
+      "status": "not_applicable",
+      "evidence": "No baseline workflow/reusable calls/release body exists to evaluate this conditional. No workflow absence is claimed as safe/pass; recurringCI/release controls are separately missing/deferred.",
+      "severity": "warning",
+      "description": "Release workflow must not produce duplicate content in release notes",
+      "domain": "ci",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    }
+  ],
+  "summary": {
+    "not_applicable": 13,
+    "fail": 4,
+    "needs_review": 2,
+    "deferred_release_gate": 1,
+    "pass": 3
+  },
+  "independent_human_security_review": "pending"
+}

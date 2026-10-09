@@ -9,6 +9,8 @@ final class WireDnsQueryTest extends TestCase
 {
     public function testUdpTruncationRetriesCompleteLengthPrefixedTcp(): void
     {
+        // Trusted PHP binary and committed DNS responder argv; no request-controlled executable.
+        // nosemgrep: php.lang.security.exec-use.exec-use
         $process = proc_open(
             [PHP_BINARY, __DIR__ . '/Fixtures/DnsTruncationResponder.php'],
             [['pipe', 'r'], ['pipe', 'w'], ['pipe', 'w']],

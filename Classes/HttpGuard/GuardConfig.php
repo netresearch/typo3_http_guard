@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard;
 
@@ -92,7 +96,7 @@ final readonly class GuardConfig
             } catch (PolicyException) {
                 self::invalid();
             }
-            if (str_contains($canonical, ':') || preg_match('/^[0-9.]+$/D', $canonical) || isset($hosts[$canonical]) || !is_array($ips) || !array_is_list($ips) || $ips === [] || count($ips) > $r['maxAddresses']) {
+            if (str_contains($canonical, ':') || preg_match('/^[0-9.]+$/D', $canonical) === 1 || isset($hosts[$canonical]) || !is_array($ips) || !array_is_list($ips) || $ips === [] || count($ips) > $r['maxAddresses']) {
                 self::invalid();
             }
             $addresses = [];
@@ -119,10 +123,10 @@ final readonly class GuardConfig
         if (!is_int($logging['allowedSampleRate']) && !is_float($logging['allowedSampleRate']) || !is_finite((float) $logging['allowedSampleRate']) || $logging['allowedSampleRate'] < 0 || $logging['allowedSampleRate'] > 1 || !in_array($logging['hostMode'], ['hash', 'plain'], true)) {
             self::invalid();
         }
-        if ($logging['hostHmacKeyEnv'] !== null && (!is_string($logging['hostHmacKeyEnv']) || !preg_match(
+        if ($logging['hostHmacKeyEnv'] !== null && (!is_string($logging['hostHmacKeyEnv']) || !(preg_match(
             '/^[A-Za-z_][A-Za-z0-9_]{0,127}$/D',
             $logging['hostHmacKeyEnv']
-        ))) {
+        ) === 1))) {
             self::invalid();
         }
         self::integer($logging['denyRateLimitPerMinute'], 1, 10000);
@@ -131,7 +135,7 @@ final readonly class GuardConfig
         }
         $profiles = [];
         foreach ($result['endpoints'] as $id => $endpoint) {
-            if (!is_string($id) || !preg_match('/^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$/D', $id) || !is_array($endpoint)) {
+            if (!is_string($id) || !(preg_match('/^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$/D', $id) === 1) || !is_array($endpoint)) {
                 self::invalid();
             }
             self::keys(
@@ -165,10 +169,10 @@ final readonly class GuardConfig
             if (!is_bool($endpoint['allowLoopback']) || !in_array($endpoint['redirects'], ['none', 'same-origin'], true)) {
                 self::invalid();
             }
-            if (!is_string($endpoint['origin']) || !preg_match(
+            if (!is_string($endpoint['origin']) || !(preg_match(
                 '~^https?://(?:\[[0-9a-fA-F:.]+\]|[A-Za-z0-9.-]+)(?::[1-9][0-9]{0,4})?$~iD',
                 $endpoint['origin']
-            )) {
+            ) === 1)) {
                 self::invalid();
             }
             try {
@@ -188,7 +192,7 @@ final readonly class GuardConfig
                 self::invalid();
             }
             foreach ($endpoint['methods'] as $method) {
-                if (!is_string($method) || strlen($method) > 64 || !preg_match("/^[!#\$%&'*+.^_`|~0-9A-Za-z-]+\$/D", $method) || strtoupper($method) === 'CONNECT') {
+                if (!is_string($method) || strlen($method) > 64 || !(preg_match("/^[!#\$%&'*+.^_`|~0-9A-Za-z-]+\$/D", $method) === 1) || strtoupper($method) === 'CONNECT') {
                     self::invalid();
                 }
             }
@@ -229,7 +233,7 @@ final readonly class GuardConfig
     }
     private static function text(mixed $value, int $max): void
     {
-        if (!is_string($value) || trim($value) === '' || !preg_match('//u', $value) || preg_match('/[\x00-\x1f\x7f]/', $value) || preg_match_all('/./us', $value) > $max) {
+        if (!is_string($value) || trim($value) === '' || !(preg_match('//u', $value) === 1) || preg_match('/[\x00-\x1f\x7f]/', $value) === 1 || preg_match_all('/./us', $value) > $max) {
             self::invalid();
         }
     }
@@ -239,7 +243,7 @@ final readonly class GuardConfig
             self::invalid();
         }
         $pattern = $instant ? '~^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(?:\.[0-9]{1,6})?(Z|[+-][0-9]{2}:[0-9]{2})$~D' : '~^([0-9]{4})-([0-9]{2})-([0-9]{2})$~D';
-        if (!preg_match($pattern, $value, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1])) {
+        if (!(preg_match($pattern, $value, $m) === 1) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1])) {
             self::invalid();
         }
         if ($instant) {
@@ -275,7 +279,7 @@ final readonly class GuardConfig
                 self::invalid();
             }
             $literal = explode('/', $value)[0];
-            $raw = @inet_pton($literal);
+            $raw = NativeOperation::attempt(static fn() => inet_pton($literal));
             if ($raw !== false && strlen($raw) === 16 && substr($raw, 0, 12) === str_repeat(chr(0), 10) . chr(255) . chr(255)) {
                 self::invalid();
             }
@@ -300,7 +304,7 @@ final readonly class GuardConfig
             static fn(
                 Cidr $a,
                 Cidr $b
-            ): int => ($a->family <=> $b->family ?: $a->prefix <=> $b->prefix) ?: strcmp($a->cidr, $b->cidr)
+            ): int => ($a->family <=> $b->family) !== 0 ? $a->family <=> $b->family : (($a->prefix <=> $b->prefix) !== 0 ? $a->prefix <=> $b->prefix : strcmp($a->cidr, $b->cidr))
         );
         $minimal = [];
         foreach ($networks as $network) {
@@ -324,9 +328,11 @@ final readonly class GuardConfig
     /** @param array<string,mixed> $data */
     private static function revision(array $data): string
     {
-        $rulesHash = @hash_file(
-            'sha256',
-            dirname(__DIR__, 2) . '/Resources/Private/HttpGuard/data/security-corpus/address-rules.json'
+        $rulesHash = NativeOperation::attempt(
+            static fn() => hash_file(
+                'sha256',
+                dirname(__DIR__, 2) . '/Resources/Private/HttpGuard/data/security-corpus/address-rules.json'
+            )
         );
         if ($rulesHash === false) {
             self::invalid();

@@ -1,0 +1,113 @@
+{
+  "scope": "Current semantic-range revision; genuine Composer and exact final ZIP classic installations",
+  "date": "2026-10-09",
+  "status": "PASS",
+  "core_versions": [
+    "13.4.36",
+    "14.3.8"
+  ],
+  "composer": {
+    "status": "PASS",
+    "process_runs": 168,
+    "positive_wire_checks": 140,
+    "offline_no_contact_witnesses": 156
+  },
+  "classic": {
+    "status": "PASS",
+    "process_runs": 84,
+    "positive_wire_checks": 70,
+    "offline_no_contact_witnesses": 78
+  },
+  "classic_activation": [
+    {
+      "fixture": "classic13",
+      "core": "13.4.36",
+      "core_archive_sha256": "49aed89d1d90e2919c4fcc05d6fea95b8b693d3481589d74ed5215084c3fce3b",
+      "extension_archive_sha256": "5b21ba51e5059c3d345e80c8fa4d0e9f3f12e755e19e2976989df73c7348a295",
+      "extension_installed_from_zip": true,
+      "composer_run": false,
+      "native_activation": {
+        "status": "PASS",
+        "core": "13.4.36",
+        "extension_active": true,
+        "native_class_loading_generated": true,
+        "composer_mode": false,
+        "extension_initially_inactive": true,
+        "package_states_persisted": true,
+        "package_states_sha256": "b29e7b6a939e877911c743779dcae5f1540c793df91cee28f3f3a00fd86cd1ca"
+      }
+    },
+    {
+      "fixture": "classic14",
+      "core": "14.3.8",
+      "core_archive_sha256": "55f26416c4d6b988d7a7b25aa5eb49d060044ba6dec98761ba9ec2fe9fd6caac",
+      "extension_archive_sha256": "5b21ba51e5059c3d345e80c8fa4d0e9f3f12e755e19e2976989df73c7348a295",
+      "extension_installed_from_zip": true,
+      "composer_run": false,
+      "native_activation": {
+        "status": "PASS",
+        "core": "14.3.8",
+        "extension_active": true,
+        "native_class_loading_generated": true,
+        "composer_mode": false,
+        "extension_initially_inactive": true,
+        "package_states_persisted": true,
+        "package_states_sha256": "6b000e3f432350e908fdf995952a2c268e5296fb72a211686b7650d24a18f672"
+      }
+    }
+  ],
+  "source_binding": {
+    "files": 162,
+    "current_and_executed_snapshot_bytes_identical": true,
+    "record": "executable-input-hashes.json"
+  },
+  "final_archive": {
+    "sha256": "5b21ba51e5059c3d345e80c8fa4d0e9f3f12e755e19e2976989df73c7348a295",
+    "members": 130,
+    "repeated_bytes_identical": true,
+    "all_members_match_current_source_and_both_classic_installs": true
+  },
+  "production_audits": {
+    "core13g7": {
+      "vulnerability_advisories": 0,
+      "abandoned_packages": [
+        "doctrine/annotations"
+      ]
+    },
+    "core13g8": {
+      "vulnerability_advisories": 0,
+      "abandoned_packages": [
+        "doctrine/annotations"
+      ]
+    },
+    "core14g7": {
+      "vulnerability_advisories": 0,
+      "abandoned_packages": []
+    },
+    "core14g8": {
+      "vulnerability_advisories": 0,
+      "abandoned_packages": []
+    }
+  },
+  "curated_core_phpstan": {
+    "version": "2.3.1",
+    "level": 8,
+    "profiles": {
+      "core13": {
+        "errors": 0,
+        "file_errors": 0
+      },
+      "core14": {
+        "errors": 0,
+        "file_errors": 0
+      }
+    }
+  },
+  "semantic_range_preflight": {
+    "status": "PASS",
+    "cases": 19,
+    "future_version_probes": "Version policy only; future upstream source is not claimed as executed"
+  },
+  "full_unit_and_native_suites": "../semantic-runtime/summary.json",
+  "human_release_approval": false
+}

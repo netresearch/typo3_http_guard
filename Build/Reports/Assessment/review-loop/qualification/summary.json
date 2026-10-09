@@ -1,0 +1,367 @@
+{
+  "scope": "Fresh exact Core patch runtime qualification",
+  "date": "2026-10-09",
+  "status": "PASS",
+  "core_versions": [
+    "13.4.36",
+    "14.3.8"
+  ],
+  "composer": {
+    "status": "PASS",
+    "runs": 168,
+    "positive_wire_checks": 140,
+    "offline_tcp_http_no_contact_witnesses": 156
+  },
+  "classic": {
+    "status": "PASS",
+    "runs": 84,
+    "positive_wire_checks": 70,
+    "offline_tcp_http_no_contact_witnesses": 78,
+    "evidence": "classic-matrix-round2/production-matrix-summary.json",
+    "activation": [
+      {
+        "fixture": "/tmp/http-guard-kan-8VPVrN/review-qualification/classic-sites-round2/classic13",
+        "core": "13.4.36",
+        "core_archive_sha256": "49aed89d1d90e2919c4fcc05d6fea95b8b693d3481589d74ed5215084c3fce3b",
+        "extension_archive_sha256": "62bd2ac965059872374e377dc74a09526092c5821ef316fd1cf2c2e3c614200a",
+        "extension_installed_from_zip": true,
+        "composer_run": false,
+        "native_activation": {
+          "status": "PASS",
+          "core": "13.4.36",
+          "extension_active": true,
+          "native_class_loading_generated": true,
+          "composer_mode": false,
+          "extension_initially_inactive": true,
+          "package_states_persisted": true,
+          "package_states_sha256": "b29e7b6a939e877911c743779dcae5f1540c793df91cee28f3f3a00fd86cd1ca"
+        }
+      },
+      {
+        "fixture": "/tmp/http-guard-kan-8VPVrN/review-qualification/classic-sites-round2/classic14",
+        "core": "14.3.8",
+        "core_archive_sha256": "55f26416c4d6b988d7a7b25aa5eb49d060044ba6dec98761ba9ec2fe9fd6caac",
+        "extension_archive_sha256": "62bd2ac965059872374e377dc74a09526092c5821ef316fd1cf2c2e3c614200a",
+        "extension_installed_from_zip": true,
+        "composer_run": false,
+        "native_activation": {
+          "status": "PASS",
+          "core": "14.3.8",
+          "extension_active": true,
+          "native_class_loading_generated": true,
+          "composer_mode": false,
+          "extension_initially_inactive": true,
+          "package_states_persisted": true,
+          "package_states_sha256": "6b000e3f432350e908fdf995952a2c268e5296fb72a211686b7650d24a18f672"
+        }
+      }
+    ],
+    "initially_inactive_then_persisted": true,
+    "persisted_package_states_hashes": "classic-round2-persisted-package-states.sha256"
+  },
+  "full_suite": {
+    "php": "8.5.10",
+    "phpunit": "11.5.57",
+    "core": "14.3.8",
+    "image": "ghcr.io/typo3/core-testing-php85@sha256:53df750b7e68ccce8da03a03bfe7cb57d732308b932f2ea92b1fd31679626bc6",
+    "cells": [
+      {
+        "guzzle": "7.15.3",
+        "tests": 145,
+        "assertions": 2253,
+        "failures": 0,
+        "skips": 0,
+        "log": "full-g7ter-phpunit.log",
+        "junit": "full-g7ter.junit.xml"
+      },
+      {
+        "guzzle": "7.15.5",
+        "tests": 145,
+        "assertions": 2253,
+        "failures": 0,
+        "skips": 0,
+        "log": "full-g7-phpunit.log",
+        "junit": "full-g7.junit.xml"
+      },
+      {
+        "guzzle": "8.2.0",
+        "tests": 145,
+        "assertions": 2253,
+        "failures": 0,
+        "skips": 0,
+        "log": "full-g8-phpunit.log",
+        "junit": "full-g8.junit.xml"
+      }
+    ]
+  },
+  "static_analysis": {
+    "phpstan": "2.3.1",
+    "level": 8,
+    "php": "8.5.11",
+    "cells": {
+      "core13g7": {
+        "errors": 0,
+        "file_errors": 0
+      },
+      "core13g8": {
+        "errors": 0,
+        "file_errors": 0
+      },
+      "core14g7": {
+        "errors": 0,
+        "file_errors": 0
+      },
+      "core14g8": {
+        "errors": 0,
+        "file_errors": 0
+      },
+      "kernelg7ter": {
+        "errors": 0,
+        "file_errors": 0
+      },
+      "kernelg7": {
+        "errors": 0,
+        "file_errors": 0
+      },
+      "kernelg8": {
+        "errors": 0,
+        "file_errors": 0
+      }
+    }
+  },
+  "source_binding": {
+    "status": "PASS",
+    "files_compared": 158,
+    "provenance_metadata_delta_only": true,
+    "record": "tested-current-source-binding.json",
+    "runtime_hashes": "runtime-test-source-hashes.sha256",
+    "broader_snapshot_hashes": "executable-input-hashes.sha256",
+    "dependency_hashes": "installed-fixture-input-hashes.sha256",
+    "static_config_hashes": "static-configuration-hashes.sha256",
+    "round2_changed_files": [
+      "Build/Fixtures/classic-tarballs.json",
+      "Build/Fixtures/classic13/typo3conf/PackageStates.php",
+      "Build/Fixtures/classic14/typo3conf/PackageStates.php",
+      "Build/Fixtures/initialize-classic.php"
+    ]
+  },
+  "resolved_packages": {
+    "core13g7": {
+      "packages": [
+        {
+          "name": "enshrined/svg-sanitize",
+          "version": "1.0.0"
+        },
+        {
+          "name": "guzzlehttp/guzzle",
+          "version": "7.15.5"
+        },
+        {
+          "name": "guzzlehttp/promises",
+          "version": "2.5.3"
+        },
+        {
+          "name": "guzzlehttp/psr7",
+          "version": "2.13.1"
+        },
+        {
+          "name": "typo3/cms-core",
+          "version": "v13.4.36"
+        }
+      ]
+    },
+    "core13g8": {
+      "packages": [
+        {
+          "name": "enshrined/svg-sanitize",
+          "version": "1.0.0"
+        },
+        {
+          "name": "guzzlehttp/guzzle",
+          "version": "8.2.0"
+        },
+        {
+          "name": "guzzlehttp/promises",
+          "version": "3.0.2"
+        },
+        {
+          "name": "guzzlehttp/psr7",
+          "version": "3.1.0"
+        },
+        {
+          "name": "typo3/cms-core",
+          "version": "v13.4.36"
+        }
+      ]
+    },
+    "core14g7": {
+      "packages": [
+        {
+          "name": "enshrined/svg-sanitize",
+          "version": "1.0.0"
+        },
+        {
+          "name": "guzzlehttp/guzzle",
+          "version": "7.15.5"
+        },
+        {
+          "name": "guzzlehttp/promises",
+          "version": "2.5.3"
+        },
+        {
+          "name": "guzzlehttp/psr7",
+          "version": "2.13.1"
+        },
+        {
+          "name": "typo3/cms-core",
+          "version": "v14.3.8"
+        }
+      ]
+    },
+    "core14g8": {
+      "packages": [
+        {
+          "name": "enshrined/svg-sanitize",
+          "version": "1.0.0"
+        },
+        {
+          "name": "guzzlehttp/guzzle",
+          "version": "8.2.0"
+        },
+        {
+          "name": "guzzlehttp/promises",
+          "version": "3.0.2"
+        },
+        {
+          "name": "guzzlehttp/psr7",
+          "version": "3.1.0"
+        },
+        {
+          "name": "typo3/cms-core",
+          "version": "v14.3.8"
+        }
+      ]
+    },
+    "core14g7ter": {
+      "packages": [
+        {
+          "name": "enshrined/svg-sanitize",
+          "version": "1.0.0"
+        },
+        {
+          "name": "guzzlehttp/guzzle",
+          "version": "7.15.3"
+        },
+        {
+          "name": "guzzlehttp/promises",
+          "version": "2.5.2"
+        },
+        {
+          "name": "guzzlehttp/psr7",
+          "version": "2.13.0"
+        },
+        {
+          "name": "typo3/cms-core",
+          "version": "v14.3.8"
+        }
+      ]
+    },
+    "classic13": {
+      "packages": [
+        {
+          "name": "enshrined/svg-sanitize",
+          "version": "1.0.0"
+        },
+        {
+          "name": "guzzlehttp/guzzle",
+          "version": "8.2.0"
+        },
+        {
+          "name": "guzzlehttp/promises",
+          "version": "3.0.2"
+        },
+        {
+          "name": "guzzlehttp/psr7",
+          "version": "3.1.0"
+        }
+      ]
+    },
+    "classic14": {
+      "packages": [
+        {
+          "name": "enshrined/svg-sanitize",
+          "version": "1.0.0"
+        },
+        {
+          "name": "guzzlehttp/guzzle",
+          "version": "8.2.0"
+        },
+        {
+          "name": "guzzlehttp/promises",
+          "version": "3.0.2"
+        },
+        {
+          "name": "guzzlehttp/psr7",
+          "version": "3.1.0"
+        }
+      ]
+    }
+  },
+  "intermediate_classic_archive": {
+    "package": "netresearch/nr-http-guard",
+    "extension_key": "nr_http_guard",
+    "composer_required_to_build": false,
+    "single_package": true,
+    "file_count": 128,
+    "archive_sha256": "62bd2ac965059872374e377dc74a09526092c5821ef316fd1cf2c2e3c614200a"
+  },
+  "fixture_repairs": [
+    {
+      "file": "Build/Fixtures/classic13/typo3conf/PackageStates.php",
+      "change": "Retain original inactive state; actual activation now discovers and persists extracted package"
+    },
+    {
+      "file": "Build/Fixtures/classic14/typo3conf/PackageStates.php",
+      "change": "Retain original inactive state; actual activation now discovers and persists extracted package"
+    },
+    {
+      "file": "Build/Fixtures/initialize-classic.php",
+      "change": "Require initially inactive extension, real Core activation, persisted package path, and native class-loading generation"
+    },
+    {
+      "file": "Build/Fixtures/prepare-classic.py",
+      "change": "Require successful native activation before ordinary matrix bootstrap"
+    },
+    {
+      "file": "Build/phpstan-bootstrap13.php",
+      "change": "Model qualified exact Core version 13.4.36"
+    }
+  ],
+  "preserved_failing_before_outputs": [
+    "classic-matrix/classic13-wire-final.stdout",
+    "classic-matrix-after-activation/classic13-wire-final.stdout",
+    "classic-round2-active-start.stdout.log"
+  ],
+  "final_distribution_zip": "Parent-owned; intermediate archive above is not final artifact",
+  "git_writes": {
+    "commits": false,
+    "pushes": false,
+    "merges": false
+  },
+  "round2": {
+    "finding": "Pre-active fixture templates made PackageManager activation return before persisting PackageStates",
+    "resolution": "Templates remain inactive; actual Core activation must persist the exact installed package path",
+    "active_start_guard": {
+      "test": "Previously active classic fixture must be rejected",
+      "actual_exit_code": 1,
+      "expected_exit_code": 1,
+      "expected_guard": "Classic fixture must begin with the installed extension inactive.",
+      "guard_observed": true,
+      "stdout": "\nUncaught TYPO3 Exception Classic fixture must begin with the installed extension inactive.\nthrown in file /tmp/http-guard-kan-8VPVrN/review-qualification/source/Build/Fixtures/initialize-classic.php\nin line 39\n\n",
+      "stderr": ""
+    },
+    "ast_proof": "classic-round2-activation-ast-proof.json",
+    "official_archive_inventory_hash_proof": "classic-current-manifest-archive-hashes.sha256",
+    "production_execution_inputs_unchanged": true
+  }
+}

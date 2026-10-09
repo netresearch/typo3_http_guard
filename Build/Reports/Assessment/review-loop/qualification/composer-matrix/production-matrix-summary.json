@@ -1,0 +1,4709 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          366,
+          366
+        ],
+        [
+          368,
+          368
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          370,
+          370
+        ]
+      ],
+      "checks": 35
+    },
+    {
+      "fixture": "core13g7",
+      "case": "observe",
+      "label": "observe-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          370,
+          370
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          373,
+          373
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "disabled",
+      "label": "disabled-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          373,
+          373
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "factory-conflict",
+      "label": "ordinary-boot-factory-conflict-final",
+      "exitCode": 1,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "normal-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "normal-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "normal-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "normal-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "invalid-mode",
+      "label": "invalid-mode-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "invalid-mode",
+      "label": "invalid-mode-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "invalid-mode",
+      "label": "invalid-mode-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "invalid-mode",
+      "label": "invalid-mode-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "invalid-schema",
+      "label": "invalid-schema-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "invalid-schema",
+      "label": "invalid-schema-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "invalid-schema",
+      "label": "invalid-schema-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "invalid-schema",
+      "label": "invalid-schema-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "object",
+      "label": "object-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "object",
+      "label": "object-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "object",
+      "label": "object-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "object",
+      "label": "object-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "factory-conflict",
+      "label": "factory-conflict-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "factory-conflict",
+      "label": "factory-conflict-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "factory-conflict",
+      "label": "factory-conflict-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "factory-conflict",
+      "label": "factory-conflict-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "observe",
+      "label": "observe-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "observe",
+      "label": "observe-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "observe",
+      "label": "observe-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "observe",
+      "label": "observe-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "disabled",
+      "label": "disabled-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "disabled",
+      "label": "disabled-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "disabled",
+      "label": "disabled-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "disabled",
+      "label": "disabled-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "policy-private-deny-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "policy-unverified-final",
+      "exitCode": 4,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "policy-explicit-endpoint-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "policy-userinfo-redacted-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "policy-empty-fragment-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "policy-raw-backslash-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "doctor-missing-curl-multi-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "normal",
+      "label": "doctor-mixed-no-proxy-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "review-overdue",
+      "label": "review-overdue-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g7",
+      "case": "review-overdue",
+      "label": "review-overdue-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          372,
+          372
+        ],
+        [
+          376,
+          376
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          378,
+          378
+        ]
+      ],
+      "checks": 35
+    },
+    {
+      "fixture": "core13g8",
+      "case": "observe",
+      "label": "observe-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          378,
+          378
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          381,
+          381
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "disabled",
+      "label": "disabled-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          381,
+          381
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "factory-conflict",
+      "label": "ordinary-boot-factory-conflict-final",
+      "exitCode": 1,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "normal-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "normal-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "normal-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "normal-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "invalid-mode",
+      "label": "invalid-mode-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "invalid-mode",
+      "label": "invalid-mode-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "invalid-mode",
+      "label": "invalid-mode-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "invalid-mode",
+      "label": "invalid-mode-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "invalid-schema",
+      "label": "invalid-schema-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "invalid-schema",
+      "label": "invalid-schema-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "invalid-schema",
+      "label": "invalid-schema-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "invalid-schema",
+      "label": "invalid-schema-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "object",
+      "label": "object-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "object",
+      "label": "object-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "object",
+      "label": "object-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "object",
+      "label": "object-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "factory-conflict",
+      "label": "factory-conflict-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "factory-conflict",
+      "label": "factory-conflict-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "factory-conflict",
+      "label": "factory-conflict-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "factory-conflict",
+      "label": "factory-conflict-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "observe",
+      "label": "observe-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "observe",
+      "label": "observe-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "observe",
+      "label": "observe-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "observe",
+      "label": "observe-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "disabled",
+      "label": "disabled-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "disabled",
+      "label": "disabled-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "disabled",
+      "label": "disabled-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "disabled",
+      "label": "disabled-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "policy-private-deny-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "policy-unverified-final",
+      "exitCode": 4,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "policy-explicit-endpoint-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "policy-userinfo-redacted-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "policy-empty-fragment-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "policy-raw-backslash-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "doctor-missing-curl-multi-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "normal",
+      "label": "doctor-mixed-no-proxy-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "review-overdue",
+      "label": "review-overdue-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core13g8",
+      "case": "review-overdue",
+      "label": "review-overdue-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          378,
+          378
+        ],
+        [
+          384,
+          384
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          386,
+          386
+        ]
+      ],
+      "checks": 35
+    },
+    {
+      "fixture": "core14g7",
+      "case": "observe",
+      "label": "observe-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          386,
+          386
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          389,
+          389
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "disabled",
+      "label": "disabled-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          389,
+          389
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "factory-conflict",
+      "label": "ordinary-boot-factory-conflict-final",
+      "exitCode": 1,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "normal-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "normal-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "normal-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "normal-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "invalid-mode",
+      "label": "invalid-mode-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "invalid-mode",
+      "label": "invalid-mode-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "invalid-mode",
+      "label": "invalid-mode-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "invalid-mode",
+      "label": "invalid-mode-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "invalid-schema",
+      "label": "invalid-schema-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "invalid-schema",
+      "label": "invalid-schema-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "invalid-schema",
+      "label": "invalid-schema-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "invalid-schema",
+      "label": "invalid-schema-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "object",
+      "label": "object-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "object",
+      "label": "object-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "object",
+      "label": "object-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "object",
+      "label": "object-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "factory-conflict",
+      "label": "factory-conflict-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "factory-conflict",
+      "label": "factory-conflict-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "factory-conflict",
+      "label": "factory-conflict-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "factory-conflict",
+      "label": "factory-conflict-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "observe",
+      "label": "observe-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "observe",
+      "label": "observe-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "observe",
+      "label": "observe-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "observe",
+      "label": "observe-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "disabled",
+      "label": "disabled-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "disabled",
+      "label": "disabled-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "disabled",
+      "label": "disabled-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "disabled",
+      "label": "disabled-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "policy-private-deny-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "policy-unverified-final",
+      "exitCode": 4,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "policy-explicit-endpoint-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "policy-userinfo-redacted-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "policy-empty-fragment-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "policy-raw-backslash-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "doctor-missing-curl-multi-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "normal",
+      "label": "doctor-mixed-no-proxy-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "review-overdue",
+      "label": "review-overdue-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g7",
+      "case": "review-overdue",
+      "label": "review-overdue-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          384,
+          384
+        ],
+        [
+          392,
+          392
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          394,
+          394
+        ]
+      ],
+      "checks": 35
+    },
+    {
+      "fixture": "core14g8",
+      "case": "observe",
+      "label": "observe-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          394,
+          394
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          397,
+          397
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "disabled",
+      "label": "disabled-wire-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": null,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          397,
+          397
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "factory-conflict",
+      "label": "ordinary-boot-factory-conflict-final",
+      "exitCode": 1,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "normal-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "normal-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "normal-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "normal-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "invalid-mode",
+      "label": "invalid-mode-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "invalid-mode",
+      "label": "invalid-mode-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "invalid-mode",
+      "label": "invalid-mode-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "invalid-mode",
+      "label": "invalid-mode-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "invalid-schema",
+      "label": "invalid-schema-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "invalid-schema",
+      "label": "invalid-schema-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "invalid-schema",
+      "label": "invalid-schema-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "invalid-schema",
+      "label": "invalid-schema-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "object",
+      "label": "object-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "object",
+      "label": "object-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "object",
+      "label": "object-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "object",
+      "label": "object-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "factory-conflict",
+      "label": "factory-conflict-doctor-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "factory-conflict",
+      "label": "factory-conflict-config-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "factory-conflict",
+      "label": "factory-conflict-legacy-report-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "factory-conflict",
+      "label": "factory-conflict-policy-check-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "observe",
+      "label": "observe-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "observe",
+      "label": "observe-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "observe",
+      "label": "observe-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "observe",
+      "label": "observe-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "disabled",
+      "label": "disabled-doctor-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "disabled",
+      "label": "disabled-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "disabled",
+      "label": "disabled-legacy-report-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "disabled",
+      "label": "disabled-policy-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "policy-private-deny-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "policy-unverified-final",
+      "exitCode": 4,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "policy-explicit-endpoint-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "policy-userinfo-redacted-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "policy-empty-fragment-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "policy-raw-backslash-final",
+      "exitCode": 2,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "doctor-missing-curl-multi-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "normal",
+      "label": "doctor-mixed-no-proxy-final",
+      "exitCode": 3,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "review-overdue",
+      "label": "review-overdue-doctor-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    },
+    {
+      "fixture": "core14g8",
+      "case": "review-overdue",
+      "label": "review-overdue-config-check-final",
+      "exitCode": 0,
+      "zeroNewTargetTcpAndHttp": true,
+      "wireBefore": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "wireAfter": [
+        [
+          390,
+          390
+        ],
+        [
+          400,
+          400
+        ]
+      ],
+      "checks": 0
+    }
+  ]
+}

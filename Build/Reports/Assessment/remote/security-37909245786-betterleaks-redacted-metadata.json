@@ -1,0 +1,21 @@
+{
+  "tool": {
+    "name": "betterleaks",
+    "version": null
+  },
+  "results": [
+    {
+      "rule": "generic-api-key",
+      "path": "packages/http-guard/data/security-corpus/sources/alibaba-imds.headers.txt",
+      "start_line": 10,
+      "end_line": 10,
+      "partialFingerprints": {
+        "primaryLocationLineHash": ""
+      },
+      "alert": {
+        "github/alertNumber": 284,
+        "github/alertUrl": "https://api.github.com/repos/netresearch/typo3_http_guard/code-scanning/alerts/284"
+      }
+    }
+  ]
+}

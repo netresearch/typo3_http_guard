@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "classification": "Three independently verified public SHA256 source integrity records; no credential values are excepted",
+  "immutable_commit": "32e3d3bf7edc5f0b64cc32f2448695174c2ad255",
+  "member": "Classes/HttpGuard/Transport/InvocationToken.php",
+  "findings": [
+    {
+      "fingerprint": "32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-qualification/final-extension-archive-manifest.json:generic-api-key:73",
+      "immutable_git_blob": "32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-qualification/final-extension-archive-manifest.json",
+      "line": 73,
+      "rule": "generic-api-key",
+      "classification": "Public SHA256 source integrity metadata; not a credential",
+      "member": "Classes/HttpGuard/Transport/InvocationToken.php",
+      "only_candidate_is_verified_member_sha256": true,
+      "json_member_association_matches": true
+    },
+    {
+      "fingerprint": "32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-runtime/source-end.json:generic-api-key:66",
+      "immutable_git_blob": "32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-runtime/source-end.json",
+      "line": 66,
+      "rule": "generic-api-key",
+      "classification": "Public SHA256 source integrity metadata; not a credential",
+      "member": "Classes/HttpGuard/Transport/InvocationToken.php",
+      "only_candidate_is_verified_member_sha256": true,
+      "json_member_association_matches": true
+    },
+    {
+      "fingerprint": "32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-runtime/source-start.json:generic-api-key:66",
+      "immutable_git_blob": "32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-runtime/source-start.json",
+      "line": 66,
+      "rule": "generic-api-key",
+      "classification": "Public SHA256 source integrity metadata; not a credential",
+      "member": "Classes/HttpGuard/Transport/InvocationToken.php",
+      "only_candidate_is_verified_member_sha256": true,
+      "json_member_association_matches": true
+    }
+  ],
+  "proof": {
+    "immutable_committed_and_current_source_bytes_equal": true,
+    "both_source_snapshots_name_the_same_verified_member": true,
+    "archive_manifest_member_sha256_matches_source": true,
+    "archive_manifest_whole_archive_sha256_matches": true,
+    "current_zip_member_bytes_equal": true,
+    "both_final_classic_extracted_member_bytes_equal": true,
+    "immutable_line_contains_only_verified_digest_candidate": true,
+    "member_is_public_transport_source_without_a_credential_literal": true
+  },
+  "ignore_policy": {
+    "exact_immutable_fingerprints_added": 3,
+    "total_exact_fingerprints": 383,
+    "new_path_rule_or_commit_wide_exclusions": false,
+    "future_changed_metadata_and_actual_credentials_remain_scanned": true
+  },
+  "independent_review": "Semantic final reviewer compared each immutable Git blob and candidate line with the committed/current member, final ZIP and both classic extractions before adding only the three exact fingerprints.",
+  "limits": "A whole-history scanner rerun is still required; this classification alone does not establish a clean scan."
+}

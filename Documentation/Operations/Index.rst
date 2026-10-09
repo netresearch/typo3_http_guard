@@ -1,21 +1,21 @@
 .. _operations:
 
-=======
-Betrieb
-=======
+==========
+Operations
+==========
 
 .. _operations-diagnostics:
 
-Diagnosebefehle
-==============
+Diagnostic commands
+===================
 
-Alle Befehle schreiben JSON. :literal:`config-check`, :literal:`doctor`
-und :literal:`legacy-report` senden weder Ziel-HTTP noch DNS-Anfragen.
-:literal:`policy-check` darf DNS verwenden, sendet jedoch kein Ziel-HTTP.
-Mit :literal:`--no-dns` bleibt auch dieser Befehl offline.
+All commands output JSON. :literal:`config-check`, :literal:`doctor`
+and :literal:`legacy-report` send neither target HTTP nor DNS requests.
+:literal:`policy-check` may use DNS but sends no target HTTP. With
+:literal:`--no-dns`, that command also remains offline.
 
 .. code-block:: bash
-    :caption: Composer-Projekt; für klassische Projekte CLI-Pfad ersetzen
+    :caption: Composer project; replace the CLI path for classic projects
 
     vendor/bin/typo3 http-guard:config-check
     vendor/bin/typo3 http-guard:doctor
@@ -23,136 +23,134 @@ Mit :literal:`--no-dns` bleibt auch dieser Befehl offline.
     vendor/bin/typo3 http-guard:policy-check https://www.example.org --no-dns
     vendor/bin/typo3 http-guard:policy-check https://erp.internal.example:8443 --endpoint erp-orders
 
-.. list-table:: Diagnose und Bedeutung
+.. list-table:: Diagnostics and their meaning
     :header-rows: 1
 
-    * - Befehl
-      - Ergebnis
+    * - Command
+      - Result
     * - :literal:`config-check`
-      - Schema, Modus, Policyrevision, Profilanzahl und Review-/TLS-Warnungen.
+      - Schema, mode, policy revision, profile count, review and TLS warnings.
     * - :literal:`doctor`
-      - Tatsächliche Versionen, Registry, cURL, Proxyvariablennamen und
-        deklarierte Abdeckung. :literal:`protected` gilt nur im unterstützten
-        Enforce-Modus ohne Proxykonflikt.
+      - Actual versions, registry, cURL, proxy variable names and declared
+        coverage. :literal:`protected` applies only in supported enforce
+        mode without a proxy conflict.
     * - :literal:`legacy-report`
-      - Bestandsaufnahme bisheriger HTTP-Kontexte, Hostlisten und Optionen.
-        Erzeugt weder Profile noch automatische Freigaben.
+      - Inventory of existing HTTP contexts, host lists and options.
+        Does not create profiles or automatic permissions.
     * - :literal:`policy-check <url>`
-      - Aktuelle diagnostische Bewertung als GET, optional mit benanntem
-        Profil. Keine übertragbare Grant-/Transportberechtigung.
+      - Current diagnostic evaluation as GET, optionally with a named
+        profile. Does not grant a transferable transport permission.
 
-.. list-table:: Verwendete Exitcodes
+.. list-table:: Exit codes
     :header-rows: 1
 
     * - Code
-      - Bedeutung
+      - Meaning
     * - 0
-      - Erfolgreiche Prüfung beziehungsweise erlaubte Policyentscheidung.
-        :literal:`config-check` allein sagt nichts über geschützten Versand.
+      - Successful check or allowed policy decision.
+        :literal:`config-check` alone says nothing about protected sends.
     * - 2
-      - Policyablehnung, nicht verifizierbare Beobachtung oder bei
-        :literal:`doctor` ausdrücklich ungeschützter Modus.
+      - Policy denial, unverifiable observation or, for :literal:`doctor`,
+        an explicitly unprotected mode.
     * - 3
-      - Ungültige Konfiguration/Registry oder nicht unterstützter
-        Transport/Proxy. Die Policy wird nicht stillschweigend abgeschaltet.
+      - Invalid configuration or registry, or unsupported transport or
+        proxy. The policy is not silently disabled.
     * - 4
-      - Auflösung nicht überprüfbar, beispielsweise ein DNS-Host ohne
-        statischen Eintrag bei :literal:`policy-check --no-dns`.
+      - Resolution cannot be verified, for example a DNS host without a
+        static entry when using :literal:`policy-check --no-dns`.
 
-Die genaue JSON-Nutzlast bleibt maßgeblich: :literal:`httpSent=false`
-bedeutet, dass der Diagnosebefehl kein Ziel-HTTP gesendet hat, nicht dass
-eine Anwendung später automatisch geschützt ist.
+The actual JSON payload is authoritative. :literal:`httpSent=false`
+means the diagnostic command sent no target HTTP; it does not mean
+that an application will subsequently be protected automatically.
 
 .. _operations-rollout:
 
-Einführung im Betreiberprojekt
-==============================
+Rollout in an operator project
+=============================
 
-1. Ausgehende HTTP-Pfade inventarisieren: Core RequestFactory, gebundene
-   PSR-18-Clients, Vault, fremde SDKs, direkte Guzzle-/cURL-Aufrufe und frühe
-   Bootstrap-Verbindungen. Jeden Pfad seiner tatsächlichen Integration
-   zuordnen.
-2. In Staging die Schema-, Registry-, Legacy- und Transportdiagnose
-   ausführen. Core-Kontexte und vorhandene Restriktionen prüfen.
-3. Bei Bedarf ausdrücklich :literal:`observe` einsetzen. Beobachtungen
-   dienen der Untersuchung; beobachtete Anfragen werden nicht automatisch
-   zu erlaubten Profilen. Der Modus bietet keine erzwungene Pin-Bindung.
-4. Interne Integrationen einzeln begründen. Exakte Origins, Methoden,
-   Verantwortliche, enge Netze und geeignete Ablaufzeiten setzen. Clients
-   im vertrauenswürdigen Servicecode fest an Profile binden.
-5. In einem kontrollierten Pilot :literal:`enforce` aktivieren. Zulässige
-   und unzulässige Ziele, Redirects, Abbrüche, OAuth-Legs und Logredaktion
-   mit tatsächlichen Zielzählern prüfen.
-6. Policy, Paketstand, Dependency-Lock und Nachweise zusammen freigeben.
+1. Inventory outbound HTTP paths: Core RequestFactory, bound PSR-18
+   clients, Vault, external SDKs, direct Guzzle or cURL calls and early
+   bootstrap connections. Map each path to its actual integration.
+2. Run schema, registry, legacy and transport diagnostics in staging.
+   Check Core contexts and existing restrictions.
+3. Explicitly select :literal:`observe` if needed. Observations support
+   investigation; observed requests do not automatically become permitted
+   profiles. This mode provides no enforced pin binding.
+4. Justify internal integrations individually. Configure exact origins,
+   methods, owners, narrow networks and suitable expiry dates. Bind
+   clients to profiles in trusted service code.
+5. Enable :literal:`enforce` in a controlled pilot. Test allowed and
+   denied targets, redirects, cancellation, OAuth legs and log redaction
+   using actual target counters.
+6. Approve the policy, package revision, dependency lock and evidence
+   together.
 
-Die Lieferung enthält technische Nachweise und reproduzierbare Fixtures.
-Eine unabhängige menschliche Sicherheitsprüfung und ein Pilot mit den
-tatsächlichen Betreiber-Endpunkten sind dadurch nicht ersetzt.
+The project includes technical evidence and reproducible fixtures.
+They do not replace independent human security review or a pilot
+with the operator's actual endpoints.
 
 .. _operations-changes:
 
-Policy ändern oder widerrufen
-============================
+Changing or revoking policy
+==========================
 
-Konfiguration, Registry, Engine und Clients besitzen einen unveränderlichen
-Stand. Nach Änderungen sind TYPO3-System-/DI-Caches neu aufzubauen und
-langlebige Worker kontrolliert neu zu starten. Alte Clients übernehmen keine
-neue Policy allein durch eine Dateiänderung. Für einen sofort erforderlichen
-operativen Stopp zusätzlich den betroffenen Worker oder Netzwerkpfad
-beenden; ein bereits laufender Transfer wird nicht nachträglich als
-widerrufen dargestellt.
+Configuration, registry, engine and clients have an immutable snapshot.
+After changes, rebuild TYPO3 system and DI caches and restart long-lived
+workers in a controlled manner. Existing clients do not acquire a new
+policy solely because a file changed. If an immediate operational stop
+is necessary, also terminate the affected worker or network path.
+A transfer already running is not retroactively revoked.
 
-:literal:`expiresAt` wird bei jedem neuen Versuch unmittelbar vor dem
-nativen Verbindungsstart erneut geprüft. :literal:`reviewAfter` löst
-ausschließlich eine Warnung aus. Einen DNS-Memo-Cache zu leeren ersetzt
-keinen Registry-/Client-Austausch.
+:literal:`expiresAt` is rechecked on every new attempt immediately
+before starting the native connection. :literal:`reviewAfter` only
+produces a warning. Clearing DNS memoization does not replace a
+registry or client update.
 
 .. _operations-logging:
 
-Entscheidungsprotokolle
-======================
+Decision logs
+=============
 
-Die TYPO3-Integration schreibt über den Loggerkanal
-:literal:`Netresearch.HttpGuard`. Der Reporter verwendet Ereignisversion 1
-mit Zeitpunkt, Modus, Entscheidung, festem Reason-Code, Profil-ID,
-Policyrevision, Adressklasse, Scheme, Port, Resolverquelle und einer
-intern erzeugten Korrelations-ID. Ein Host kann gemäß
-:ref:`configuration-logging` fehlen, als HMAC erscheinen oder ausdrücklich
-im Klartext stehen.
+The TYPO3 integration uses the :literal:`Netresearch.HttpGuard` logging
+channel. The reporter uses event version 1 with timestamp, mode,
+decision, fixed reason code, profile ID, policy revision, address class,
+scheme, port, resolver source and an internally generated correlation
+ID. According to :ref:`configuration-logging`, the host can be omitted,
+represented by an HMAC or explicitly logged in clear text.
 
-Bodies, Headers, Cookies, Zugangsdaten, Querys, vollständige URLs,
-Zertifikat-/Key-Pfade und Requestobjekte gehören nicht zum Ereignisformat.
-Die Korrelations-ID stammt nicht aus einem beliebigen eingehenden Header.
-Für erlaubte Entscheidungen gilt standardmäßig keine Logstichprobe.
-Ablehnungen werden pro Reporter und Zeitfenster gedrosselt; Zähler erfassen
-weiterhin jede Entscheidung mit begrenzten Labels. Reporterzähler leben
-in der Instanz und benötigen für eine zentrale Langzeitauswertung eine
-eigene Metrik-Anbindung. Loggerfehler verändern die Autorisierung nicht.
+Bodies, headers, cookies, credentials, queries, complete URLs,
+certificate or key paths and request objects are not part of the event
+format. The correlation ID is not taken from an arbitrary incoming
+header. By default, allowed decisions are not sampled for logging.
+Denial events are rate limited per reporter and time window; counters
+continue to record every decision with bounded labels. Reporter
+counters live in the instance and need a separate metrics integration
+for centralized long-term reporting. Logger failures do not change
+authorization.
 
-Bei :literal:`observe` zeigt :literal:`would_deny` eine festgestellte
-Policyverletzung. :literal:`unverifiable` kennzeichnet fehlende überprüfbare
-Transportbindung oder Auflösung. Diese Ereignisse stellen keinen Nachweis
-einer erzwungenen sicheren Verbindung dar.
+In :literal:`observe` mode, :literal:`would_deny` indicates a detected
+policy violation. :literal:`unverifiable` indicates missing verifiable
+transport binding or resolution. These events do not prove an
+enforced safe connection.
 
 .. _operations-rollback:
 
 Rollback
 ========
 
-Für einen bewussten Rollback werden vorherige Policy, Extension und
-Dependency-Lock gemeinsam wiederhergestellt; danach Caches neu aufbauen,
-Worker neu starten und Funktions-/Auditprüfungen wiederholen.
-Alternativ kann ausdrücklich :literal:`observe` oder :literal:`disabled`
-deployt werden. Beide reduzieren den zusätzlichen Schutz und müssen im
-Betrieb als ungeschützt ausgewiesen werden. :literal:`doctor` meldet den
-bewusst ungeschützten Modus mit Exitcode 2, sofern keine andere ungültige
-Fähigkeit Exitcode 3 auslöst.
+For a deliberate rollback, restore the previous policy, extension and
+dependency lock together. Rebuild caches, restart workers and repeat
+functional and audit checks. Alternatively, explicitly deploy
+:literal:`observe` or :literal:`disabled`. Both reduce the additional
+protection and must be identified operationally as unprotected.
+:literal:`doctor` reports the deliberately unprotected mode with exit
+code 2 unless another invalid capability produces exit code 3.
 
-Eine hohe Ablehnungsrate löst keinen automatischen Rollback aus. Ursache,
-betroffener Pfad, Reason-Code und Profilbindung werden zuerst untersucht.
-Bestehende Vault-Kontrollen werden durch einen solchen Moduswechsel nicht
-entfernt. Die eigenen Deployment-, Cache- und Workerabläufe des
-Betreiberprojekts sind im Pilot zu überprüfen.
+A high denial rate does not trigger an automatic rollback. Investigate
+the cause, affected path, reason code and profile binding first.
+Existing Vault controls are not removed by changing the mode.
+Verify the project's actual deployment, cache and worker procedures
+in the pilot.
 
 .. toctree::
     :maxdepth: 1

@@ -1,65 +1,67 @@
 .. _decision-single-extension:
 
-==============================
-Eine installierbare Extension
-==============================
+=========================
+One installable extension
+=========================
 
-:Status: Angenommen
-:Datum: 2026-10-09
-:Bezug: Aktualisiert die Zwei-Paket-Verpackung aus dem ursprünglichen ADR-002
+:Status: Accepted
+:Date: 2026-10-09
+:Reference: Revises the two-package layout from the original ADR-002
 
 .. _decision-single-extension-context:
 
-Anlass
-======
+Context
+=======
 
-Die Extension soll alle Runtimekomponenten und ihr vollständiges Handbuch
-enthalten und sich in klassischen TYPO3-Projekten ohne Composer-Aufruf
-installieren lassen. Ein zusätzlich erforderliches Library-Paket würde
-diesen Installationsweg vom separaten Dependency-Management abhängig machen.
-Die Trennung von Policy-/Transportcode und TYPO3-Integration bleibt für
-isolierte Prüfung und Adapterentwicklung erforderlich.
+The extension must include all its runtime components and its complete
+manual, and support installation in classic TYPO3 projects without a
+Composer command. An additional required library package would make this
+installation path depend on separate dependency management. The separation
+between policy and transport code and TYPO3 integration remains necessary
+for isolated tests and adapter development.
 
 .. _decision-single-extension-choice:
 
-Entscheidung
-============
+Decision
+========
 
-Es wird eine TYPO3-Extension :literal:`netresearch/nr-http-guard` mit dem
-Schlüssel :literal:`nr_http_guard` geliefert. Der Sicherheitskern liegt
-unter :file:`Classes/HttpGuard/`, seine Runtime-Daten unter
-:file:`Resources/Private/HttpGuard/data/`. Die öffentlichen PHP-Namespaces
-und APIs bleiben erhalten. TYPO3 registriert beide Produktionsnamespaces
-aus den mitgelieferten PSR-4-Metadaten.
+One TYPO3 extension, :literal:`netresearch/nr-http-guard`, is supplied with
+the key :literal:`nr_http_guard`. The security core is under
+:file:`Classes/HttpGuard/`, and its runtime data is under
+:file:`Resources/Private/HttpGuard/data/`. The public PHP namespaces and APIs
+remain intact. TYPO3 registers both production namespaces from the bundled
+PSR-4 metadata.
 
-Die Extension enthält keine zweite Vendor-Kopie. Klassische Projekte nutzen
-die Dependencies des offiziellen Core-Archivs; Composer-Projekte ihre
-qualifizierten Locks. Der Runtimevertrag prüft weiterhin exakte vollständige
-SDK-Tuples. Das in beiden geprüften offiziellen Core-Archiven enthaltene
-Tuple 7.15.3 / 2.5.2 / 2.13.0 wird zusätzlich gezielt qualifiziert, nachdem
-der bisherige Stand es erwartungsgemäß gesperrt hat.
+The extension does not contain a second vendor copy. Classic projects use
+the dependencies of the official Core archive; Composer projects use their
+project locks. Production constraints use semantic ranges with explicit
+minima and supported majors. Runtime guards check the actual parent API,
+SDK capabilities and middleware inventory. A single-use public cURL factory
+enforces one native attempt per lease independently of private SDK retry
+counters. Fixed Core/SDK fixtures remain reproducible test snapshots; the
+currently tested official Core archives supply the Guzzle 8 graph.
 
-Das Handbuch, Installationswege, Konfigurationsfelder, APIs und
-Betriebsgrenzen liegen vollständig unter :file:`Documentation/`. Zusätzliche
-Spezifikationen, ausführliche Ausführungsnachweise und der optionale
-Vault-Patch bleiben ein getrenntes Quell-/Nachweispaket und werden nicht als
-Runtime-Voraussetzung installiert.
+The manual, installation paths, configuration fields, APIs and operational
+limits are fully documented under :file:`Documentation/`. Additional
+specifications, detailed execution evidence and the optional Vault patch
+remain a separate source and evidence package. They are not installed as
+runtime prerequisites.
 
 .. _decision-single-extension-consequences:
 
-Folgen
-======
+Consequences
+============
 
-Die Runtime-Ladepfade und Testkonfigurationen ändern sich, die Policyregeln
-und APIs bleiben unverändert. Die zusätzliche klassische Dependency-Zeile
-erweitert ausschließlich das exakte qualifizierte Tuple; ungeprüfte
-Patchversionen und gemischte Versionen bleiben gesperrt. Die PHP-/SDK-Matrix
-wird mit dem zusammengeführten Quellstand erneut ausgeführt, ebenso echte
-Core-Archive, Wire- und Mutationstests.
+Runtime loading paths and test configurations change; policy rules and
+APIs remain unchanged. The additional classic dependency row extends only
+the reproducible fixture coverage. Compatible patches and minors within
+the semantic ranges remain usable without a new extension release. Actual
+API incompatibilities and unsupported major graphs fail closed. Fixed and
+floating native CI rows exercise Core, wire and mutation-sensitive behavior;
+each recorded execution remains bound to its own source and dependency lock.
 
-Das Paket gilt als GPL-2.0-or-later-Extension mit erhaltenen MIT-Hinweisen
-des eingebetteten Kerns. Der interne frameworkunabhängige Aufbau erlaubt
-separate Kernprüfungen, ist jedoch kein Versprechen eines zweiten
-veröffentlichten Composerprodukts. Die Alpha-Version wird lokal als
-importierbares ZIP geliefert; TER-Veröffentlichung und Betreiberfreigabe
-bleiben gesonderte Aktionen.
+The package is a GPL-2.0-or-later extension that preserves the MIT notices
+of its embedded core. Its internal framework-independent structure allows
+separate core tests, but does not promise a second published Composer
+product. The alpha version is supplied locally as an importable ZIP. TER
+publication and operator acceptance remain separate actions.

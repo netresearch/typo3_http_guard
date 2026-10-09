@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard\Transport;
 
@@ -13,6 +17,7 @@ use Netresearch\HttpGuard\TargetNormalizer;
 use Psr\Http\Message\RequestInterface;
 final class TerminalGuardMiddleware
 {
+    /** @var \Closure(): void|null */
     private ?\Closure $registryAssertion = null;
     public function __construct(
         private readonly PolicyEngine $engine,
@@ -23,10 +28,15 @@ final class TerminalGuardMiddleware
     )
     {
     }
+    /** @param \Closure(): void|null $assertion */
     public function setRegistryAssertion(?\Closure $assertion): void
     {
         $this->registryAssertion = $assertion;
     }
+    /**
+     * @param callable(RequestInterface, array<array-key, mixed>): PromiseInterface $next
+     * @return callable(RequestInterface, array<array-key, mixed>): PromiseInterface
+     */
     public function __invoke(callable $next): callable
     {
         return function (

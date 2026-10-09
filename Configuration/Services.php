@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 use Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility;
 use Psr\Http\Message\RequestFactoryInterface;

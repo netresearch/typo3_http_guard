@@ -1,0 +1,342 @@
+{
+  "skill_id": "typo3-conformance",
+  "source_head": "7a3a39bbaa763eb876ff4c9cdc743b689c557590",
+  "source_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment/baseline/repo-snapshot",
+  "scope": "future published security extension; current alpha, not released",
+  "checkpoints": [
+    {
+      "id": "TC-60",
+      "status": "fail",
+      "evidence": "73 production PHP files follow both native PSR-4 mappings; constructor DI and tested Core13/14 shells are present. Many files lack required PSR-12 blank lines between declaration/namespace/imports/class and around methods; ownership state in registry/resolver/transfer objects is intentional.",
+      "recommendation": "Add a verified PHP coding-style gate and format without changing guard semantics. Stateful capability/transfer owners must retain their lifetime rules.",
+      "severity": "warning",
+      "description": "Classes should follow TYPO3 coding standards",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-61",
+      "status": "pass",
+      "evidence": "RawRequestGuardTrait preserves PSR-7 ResponseInterface and actual Core RequestFactory signature; CoreStackProvider uses actual GuzzleClientFactory. No TSFE, SiteLanguage, FlexForm or user context surface exists.",
+      "severity": "warning",
+      "description": "Extension should use modern TYPO3 APIs",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-62",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "info",
+      "description": "TCA configuration should follow current standards",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-63",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "info",
+      "description": "Translation keys complete for all features",
+      "domain": "i18n",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-64",
+      "status": "pass",
+      "evidence": "Documentation includes installation, all policy fields, endpoint binding, public API, exact supported SDK/Core tuples, observe/disabled operations and remaining G6/pilot gates. Existing rendered-manual evidence is separate from current new English-document changes.",
+      "severity": "info",
+      "description": "Extension documentation should be complete",
+      "domain": "documentation",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-80",
+      "status": "deferred_release_gate",
+      "evidence": "Live HTTP checks return404 for TER nr_http_guard, Packagist netresearch/nr-http-guard and docs.typo3.org package manual. Baseline README explicitly states unpublished alpha; no tag/release exists. public-listings.json records exact URLs/status.",
+      "recommendation": "Register/publish only after the independent human security review and user-authorized release; absence is not an installation or runtime failure.",
+      "severity": "warning",
+      "description": "Extension should have complete TER, Packagist, and documentation listings",
+      "domain": "publishing",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-81",
+      "status": "deferred_release_gate",
+      "evidence": "No TER publishing workflow exists; this task authorizes a GitHub repository and local alpha ZIP, not TER publication.",
+      "recommendation": "Prepare metadata setup and a release approval gate before future TER publication, without uploading now.",
+      "severity": "warning",
+      "description": "TER publish workflow should include metadata setup via tailor ter:update",
+      "domain": "publishing",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-69",
+      "status": "fail",
+      "evidence": "Core endpoints match13.4.35||14.3.7 vs legacy13.4.35-14.3.7 interval; the unrepresentable gap is intentional and enforced by runtime. PHP Composer^8.2 permits8.6..8.99 while ext_emconf stops8.5.99 and measured qualification covers8.2..8.5.",
+      "recommendation": "Align Composer PHP ceiling with the qualified PHP8.2\u20138.5 interval; do not widen exact Core or SDK qualifications to suppress warnings.",
+      "severity": "error",
+      "description": "ext_emconf.php and composer.json version constraints must be synchronized to prevent installation failures",
+      "domain": "configuration",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-70",
+      "status": "pass",
+      "evidence": "Configuration/Services.yaml factory keys and Closure injection follow actual compiled Core containers. Embedded Classes/HttpGuard is excluded from the NrHttpGuard namespace prototype, DTOs/version shells excluded, exported endpoint/public interfaces explicitly aliased.",
+      "severity": "warning",
+      "description": "Services.yaml should use proper factory wiring, interface bindings, and EventDispatcher autowiring patterns",
+      "domain": "architecture",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-71",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "error",
+      "description": "Custom ViewHelper tag attributes must use htmlspecialchars(value, ENT_QUOTES) to prevent XSS",
+      "domain": "security",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-72",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "info",
+      "description": "Unused XLIFF translation keys should be removed to maintain translation hygiene",
+      "domain": "quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-73",
+      "status": "pass",
+      "evidence": "ClockInterface/ResolverInterface/DecisionReporterInterface and exported client interfaces are wired. DnsQueryInterface/TransferDriverInterface/ClientStackProviderInterface belong to explicitly constructed embedded-kernel owners, whose namespace is excluded from auto-discovery; directTC-153 log records false positives.",
+      "severity": "error",
+      "description": "All custom interfaces used for constructor injection must have explicit aliases in Services.yaml",
+      "domain": "architecture",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-74",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "error",
+      "description": "All LLL: references must have corresponding XLIFF entries; orphaned XLIFF keys should be removed",
+      "domain": "i18n",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-75",
+      "status": "pass",
+      "evidence": "No deprecated constant replacement pair found in active Classes source.",
+      "severity": "warning",
+      "description": "Deprecated constants should not be referenced in active code when enum replacements exist",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-76",
+      "status": "pass",
+      "evidence": "No TYPO3 cache has-then-get double lookup found; resolver TTL cache owns a per-engine immutable policy snapshot.",
+      "severity": "warning",
+      "description": "Cache has()+get() double-lookup should be replaced with get() and false check",
+      "domain": "performance",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-95",
+      "status": "fail",
+      "evidence": "php-file-metadata.json checks76PHP files under Classes,Configuration,Build plus ext_localconf: all76 have actual strict_types;0/76 carry copyright/license header in the first15lines. RootLICENSE and embeddedMIT notices exist.",
+      "recommendation": "Add correct per-file provenance/license headers, retaining GPL integration versus embedded MIT attribution. Do not invent a third-party copyright.",
+      "severity": "warning",
+      "description": "Copyright headers on all PHP files including configuration",
+      "domain": "coding-standards",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-96",
+      "status": "pass",
+      "evidence": "Documentation/guides.xml project release0.1.0 matches ext_emconf version0.1.0 and extra.typo3/cms.version0.1.0. guides project version0.1 is the intentional short series, not a release mismatch.",
+      "severity": "error",
+      "description": "guides.xml version must match ext_emconf.php version to avoid documentation version mismatch",
+      "domain": "configuration",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-97",
+      "status": "pass",
+      "evidence": "No database repositories/DataMapper/query-builder loops exist. Sequential A/AAAA queries and CNAME hops are protocol validation with bounded query/hop limits; repeated retry attempts must independently reauthorize and cannot be bulk-authorized.",
+      "severity": "warning",
+      "description": "Detect loop-inside-loop patterns where inner loop calls repository/adapter methods (N+1 query anti-pattern)",
+      "domain": "performance",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-98",
+      "status": "pass",
+      "evidence": "Public endpoint/public-fetch/PSR18 contracts are separate from internal factories/drivers. Additional lifecycle setters/debug counters on concrete internal transfer owners are not public domain API; constructor/framework helpers are exempt. No missing exported consumer method found.",
+      "severity": "warning",
+      "description": "All public domain methods on implementation classes should be declared in their interface",
+      "domain": "architecture",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-99",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "warning",
+      "description": "Fluid templates should use f:translate instead of hardcoded English strings (check quoted strings >3 words in attributes)",
+      "domain": "i18n",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-100b",
+      "status": "not_applicable",
+      "evidence": "NeitherAGENTS.md norMakefile exists in baseline. Automation is implemented as Build/Scripts/runTests.sh and verified fixture scripts; missing agent guidance is assessed separately by parent agent-harness.",
+      "severity": "info",
+      "description": "Targets documented in AGENTS.md should exist in Makefile and vice versa",
+      "domain": "documentation",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-100c",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "warning",
+      "description": "New ext_tables.sql columns requiring data migration should have an UpgradeWizardInterface implementation",
+      "domain": "architecture",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-100d",
+      "status": "pass",
+      "evidence": "No ext_conf_template UI exists. Nested policy under documented EXTCONF/nr_http_guard is deliberately parsed and validated atomically by GuardConfig::fromArray; ConfigurationLoader reads that contract. No phantom UI option was found.",
+      "severity": "warning",
+      "description": "Options in ext_conf_template.txt should match implemented functionality (no phantom options)",
+      "domain": "configuration",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-100f",
+      "status": "pass",
+      "evidence": "Core13/14 RequestFactory readonly/signature divergence uses two shells selected by real reflection and exact parentABI guard. Guzzle7/8 controlledCurl leaf and HandlerStack prefixes are matched to installed source, with genuine Core/SDK tuple matrices. No unbridged differing public method found; exact dependencies intentionally remain narrow.",
+      "severity": "error",
+      "description": "Multi-version dependencies must use adapter pattern when APIs differ between major versions",
+      "domain": "architecture",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-100g",
+      "status": "needs_review",
+      "evidence": "No phpstan-ignore tags/baseline suppressions exist. Kernel level8 evidence covers all SDK tuples; integration PHPStan config targets actual Core14 with explicitly analysis-only excludedCore13 declaration shell. Genuine Core13 runtime evidence does not establish a separate Core13 PHPStan run.",
+      "recommendation": "Add an actual Core13 static-analysis job/bootstrap and retain Core14 analysis; do not treat the static shell as runtime evidence.",
+      "severity": "warning",
+      "description": "PHPStan ignore tags must not be version-specific \u2014 replace with adapter pattern for multi-version deps",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-100h",
+      "status": "pass",
+      "evidence": "CoreStackProvider implements internal ClientStackProviderInterface and is passed explicitly through contextFactory; global factory chooses DefaultStackProvider internally. No injected DI Adapter interface is left unresolved. Embedded interfaces are factory-composed, not autowired.",
+      "severity": "error",
+      "description": "Adapter interfaces must be wired in Services.yaml and type-hinted in constructors (not concrete classes)",
+      "domain": "architecture",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-100e",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "warning",
+      "description": "Domain models with cryptographic fields should have a named constructor that validates field consistency",
+      "domain": "architecture",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-180",
+      "status": "pass",
+      "evidence": "LibraryServiceFactory receives a non-null LogManager through constructor DI, obtains a concrete TYPO3 PSR3logger once and wraps scalar DecisionReporter events. No nullableLoggerInterface scattered null checks; kernel intentionally accepts safe loggerClosure as framework boundary.",
+      "severity": "warning",
+      "description": "Loggers come from constructor injection (non-nullable LoggerInterface) or LoggerAwareTrait with NullLogger default; never nullable with scattered null checks",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-181",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "warning",
+      "description": "PSR-14 event dispatch must be try/catch guarded for non-validation events",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-182",
+      "status": "pass",
+      "evidence": "Capability selection has explicit fail-closed transport_unsupported/configuration_invalid outcomes; unsafe fallback transport would violate the security contract. Factory wiring was exercised by genuine Core matrices and no PHPStan baseline exists.",
+      "severity": "info",
+      "description": "Factory patterns must have capability fallback; PHPStan baseline must shrink",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-183",
+      "status": "pass",
+      "evidence": "No GeneralUtility::makeInstance call exists in production DI-managedClasses. Test fixture bootstrap uses real Core entry points separately.",
+      "severity": "warning",
+      "description": "GeneralUtility::makeInstance() in DI-managed classes should use constructor injection (except AbstractTask)",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    },
+    {
+      "id": "TC-184",
+      "status": "not_applicable",
+      "evidence": "No TCA/database/Fluid/backend UI/XLIFF/domain-model schema/content exception handler or custom event-dispatch surface exists for this checkpoint. Technical CLI reason codes are stable machine output. BootCompletedEvent is consumed, not dispatched.",
+      "severity": "error",
+      "description": "TYPO3 content exception handler classes must be declared public: true and shared: false in Configuration/Services.yaml (required for GeneralUtility::makeInstance() DI resolution)",
+      "domain": "code-quality",
+      "review_kind": "agent-source-review",
+      "not_human_G6": true
+    }
+  ],
+  "summary": {
+    "fail": 3,
+    "pass": 15,
+    "not_applicable": 11,
+    "deferred_release_gate": 2,
+    "needs_review": 1
+  },
+  "independent_human_security_review": "pending"
+}

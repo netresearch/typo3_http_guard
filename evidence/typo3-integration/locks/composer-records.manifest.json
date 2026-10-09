@@ -1,0 +1,54 @@
+{
+  "format": "historical-composer-records/v1",
+  "records": [
+    {
+      "original_path": "evidence/typo3-integration/locks/core13g7/composer.json",
+      "archive_path": "evidence/typo3-integration/locks/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core13g7/composer.json",
+      "original_sha256": "a00fbfe91025916c5f31f031283e7f9c3fb645ecd504410ec5f187296c280f40"
+    },
+    {
+      "original_path": "evidence/typo3-integration/locks/core13g7/composer.lock",
+      "archive_path": "evidence/typo3-integration/locks/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core13g7/composer.lock",
+      "original_sha256": "0d9246142b6321af30ff2529502748d957d8a78aff7f2d034d9dab6ff8e3c893"
+    },
+    {
+      "original_path": "evidence/typo3-integration/locks/core13g8/composer.json",
+      "archive_path": "evidence/typo3-integration/locks/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core13g8/composer.json",
+      "original_sha256": "d773c3b655abb801d7edb49fca3816c373c65132239ffff0d874196aee6eec2f"
+    },
+    {
+      "original_path": "evidence/typo3-integration/locks/core13g8/composer.lock",
+      "archive_path": "evidence/typo3-integration/locks/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core13g8/composer.lock",
+      "original_sha256": "269c010a0ff2ce2c3916a78ea758df4e4557bcd39754043afbb520c6ba28384d"
+    },
+    {
+      "original_path": "evidence/typo3-integration/locks/core14g7/composer.json",
+      "archive_path": "evidence/typo3-integration/locks/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core14g7/composer.json",
+      "original_sha256": "7d54d932e31d4469f5ae7dbf31996c62c3406c133bc73f020459437bd316902f"
+    },
+    {
+      "original_path": "evidence/typo3-integration/locks/core14g7/composer.lock",
+      "archive_path": "evidence/typo3-integration/locks/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core14g7/composer.lock",
+      "original_sha256": "535992b7f2d57202ecc7bac8a49a3c2537aa81c22672793f183b162b1efd9b06"
+    },
+    {
+      "original_path": "evidence/typo3-integration/locks/core14g8/composer.json",
+      "archive_path": "evidence/typo3-integration/locks/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core14g8/composer.json",
+      "original_sha256": "9a345589413822164047c3ff804498049acef0b4d109a257a3e0f55d6caac7e0"
+    },
+    {
+      "original_path": "evidence/typo3-integration/locks/core14g8/composer.lock",
+      "archive_path": "evidence/typo3-integration/locks/composer-records-13.4.35-14.3.7.zip",
+      "member_path": "core14g8/composer.lock",
+      "original_sha256": "de82142de0f7030c5d73555599177d117ae3990a3de1bf0386fe7438bb22cf29"
+    }
+  ],
+  "source_commit": "83f8105ec50d766b31d860ca979464de3c146c22"
+}

@@ -1,0 +1,1856 @@
+{
+  "source_commit": "7a3a39bbaa763eb876ff4c9cdc743b689c557590",
+  "reviewer": "plan_validator",
+  "review_method": "Actual source and checkpoint prompt review; absent feature predicates evaluated explicitly; no blanket generated passes",
+  "reviews": [
+    {
+      "skill": "agent-harness",
+      "id": "AH-40",
+      "status": "skip",
+      "rationale": "AGENTS.md is absent; there is no agent architecture claim to compare. The missing harness is separately recorded by mechanical AH-01.",
+      "evidence": [
+        "README.md",
+        "Classes/",
+        "Documentation/Decisions/"
+      ],
+      "domain": "documentation",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "agent-rules",
+      "id": "AG-25",
+      "status": "skip",
+      "rationale": "AGENTS.md is absent, so factual accuracy of its content cannot be reviewed.",
+      "evidence": [
+        "AGENTS.md absent"
+      ],
+      "domain": "repo-health",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "agent-rules",
+      "id": "AG-21",
+      "status": "skip",
+      "rationale": "No AGENTS.md Commands section exists. Missing contributor commands are covered by mechanical harness checks.",
+      "evidence": [
+        "AGENTS.md absent",
+        "composer.json"
+      ],
+      "domain": "repo-health",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "agent-rules",
+      "id": "AG-22",
+      "status": "skip",
+      "rationale": "No AGENTS.md exists; there are no dates or version claims to evaluate for staleness.",
+      "evidence": [
+        "AGENTS.md absent"
+      ],
+      "domain": "repo-health",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "agent-rules",
+      "id": "AG-23",
+      "status": "fail",
+      "rationale": "No project-specific agent context, entry-point map, test instructions, or transport/security gotchas are provided through AGENTS.md.",
+      "evidence": [
+        "AGENTS.md absent",
+        "verification/README.md",
+        "Documentation/Security/Index.rst"
+      ],
+      "domain": "repo-health",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "agent-rules",
+      "id": "AG-24",
+      "status": "skip",
+      "rationale": "No agent instruction file exists; documentation drift against that file is not applicable.",
+      "evidence": [
+        "AGENTS.md absent"
+      ],
+      "domain": "repo-health",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "agent-rules",
+      "id": "AG-30",
+      "status": "fail",
+      "rationale": "No hook framework/configuration exists for formatting, linting, and commit-message validation.",
+      "evidence": [
+        "git tracked file inventory",
+        "composer.json has no scripts"
+      ],
+      "domain": "repo-health",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-20",
+      "status": "pass",
+      "rationale": "Both available commits use descriptive feat: conventional subjects, so the observed proportion is 2/2. This small history does not establish a mature workflow.",
+      "evidence": [
+        "repo-snapshot git log -20"
+      ],
+      "domain": "git-workflow",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-21",
+      "status": "pass",
+      "rationale": "Both commit objects carry gpgsig headers. This checks signature presence only, not local keyring trust; required signature enforcement is separately absent on GitHub.",
+      "evidence": [
+        "repo-snapshot git cat-file commit for both commits",
+        "remote/branch-protection.json"
+      ],
+      "domain": "git-workflow",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-22",
+      "status": "pass",
+      "rationale": "Both subjects describe concrete implementation/package behavior and are within the recommended approximate subject length. No empty or one-word subjects exist; no issue references are required where no issue was assigned.",
+      "evidence": [
+        "repo-snapshot git log --format=%s -10"
+      ],
+      "domain": "git-workflow",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-23",
+      "status": "skip",
+      "rationale": "CODEOWNERS is absent, so path coverage and syntax cannot be reviewed; mechanical GW-06 reports the missing file.",
+      "evidence": [
+        "CODEOWNERS and .github/CODEOWNERS absent"
+      ],
+      "domain": "git-workflow",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-24",
+      "status": "fail",
+      "rationale": "No local PR template exists and both conventional organization-wide template locations return 404. Contributors receive no testing/review guidance template.",
+      "evidence": [
+        "remote/org-pr-template.json",
+        "remote/org-pr-template-root.json",
+        "git tracked inventory"
+      ],
+      "domain": "git-workflow",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-25",
+      "status": "fail",
+      "rationale": "No hook framework covers pre-commit or commit-msg. No composer scripts provide an alternative consistent developer entry point.",
+      "evidence": [
+        "composer.json",
+        "git tracked file inventory"
+      ],
+      "domain": "git-workflow",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-26",
+      "status": "pass",
+      "rationale": "The repository has no release tag; the checkpoint explicitly passes this initial pre-release case. No launch or publication task was performed.",
+      "evidence": [
+        "repo-snapshot git tag -l",
+        "README.md Alpha status"
+      ],
+      "domain": "release",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-27",
+      "status": "skip",
+      "rationale": "The actual GitHub releases list is empty, so release-body duplication/quality is not applicable.",
+      "evidence": [
+        "remote/releases.json"
+      ],
+      "domain": "release",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-28",
+      "status": "skip",
+      "rationale": "No release/publish workflow exists in this pre-release repository. Manual release trigger design is outside this baseline's authorized scope.",
+      "evidence": [
+        ".github/workflows absent",
+        "README.md Alpha status"
+      ],
+      "domain": "release",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "git-workflow",
+      "id": "GW-30",
+      "status": "skip",
+      "rationale": "There is no staging branch or root application composer.lock with dev-branch pins in the frozen repository. No fetch/update mutation was performed for this non-applicable application merge rule.",
+      "evidence": [
+        "repo-snapshot refs",
+        "composer.json",
+        "root composer.lock absent"
+      ],
+      "domain": "git-workflow",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "github-project",
+      "id": "GH-22",
+      "status": "pass",
+      "rationale": "No merge queue or code-owner requirement is enabled, so neither conflict exists. One human approval is required; this organizational repository is not established as a solo-maintainer-only repo, so lack of bot approval is not treated as a permanent merge block.",
+      "evidence": [
+        "remote/branch-protection.json",
+        "remote/rulesets.json"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "github-project",
+      "id": "GH-28",
+      "status": "skip",
+      "rationale": "No auto-merge workflow exists and allow_auto_merge is false. The dangerous-trigger/strategy checks do not describe an existing workflow; automation absence is recorded separately.",
+      "evidence": [
+        "remote/repository.json",
+        ".github/workflows absent"
+      ],
+      "domain": "ci",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "github-project",
+      "id": "GH-29",
+      "status": "skip",
+      "rationale": "No auto-approve workflow exists. There is no author_association bot rule to misconfigure; one required human approval remains a valid organization review policy.",
+      "evidence": [
+        "remote/branch-protection.json",
+        ".github/workflows absent"
+      ],
+      "domain": "ci",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "github-project",
+      "id": "GH-32",
+      "status": "pass",
+      "rationale": "required_conversation_resolution is true in classic protection. enforce_admins=false is an advisory emergency-bypass trade-off under this checkpoint, not an error by itself.",
+      "evidence": [
+        "remote/branch-protection.json",
+        "remote/rulesets.json"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "github-project",
+      "id": "GH-36",
+      "status": "skip",
+      "rationale": "No PR review feedback is being declared resolved in this baseline. This gate must run against the later fix PR before reporting it ready.",
+      "evidence": [
+        "baseline scope",
+        "no reviewed PR number"
+      ],
+      "domain": "pr-process",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "github-project",
+      "id": "GH-15",
+      "status": "fail",
+      "rationale": "README has no badges, so there is no standard badge sequence. Add only badges backed by actual CI/coverage/project services; do not invent passing indicators.",
+      "evidence": [
+        "README.md"
+      ],
+      "domain": "repo-health",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": false
+    },
+    {
+      "skill": "github-project",
+      "id": "GH-16",
+      "status": "fail",
+      "rationale": "Installation and development prose exist, but actionable developer commands, an English License section and Netresearch Credits section are missing. English primary text is also the user's explicit requirement.",
+      "evidence": [
+        "README.md",
+        "composer.json"
+      ],
+      "domain": "repo-health",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "netresearch-branding",
+      "id": "NB-20",
+      "status": "fail",
+      "rationale": "The actual GitHub description does not end with '- by Netresearch'.",
+      "evidence": [
+        "remote/repository.json"
+      ],
+      "domain": "branding",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "netresearch-branding",
+      "id": "NB-21",
+      "status": "fail",
+      "rationale": "No extension icon exists at the conventional Extension.svg/png path. No visual inspection is claimed for an absent asset; there are no backend modules requiring feature icons.",
+      "evidence": [
+        "Resources/Public/Icons/Extension.svg absent",
+        "Configuration/Backend/Modules.php absent"
+      ],
+      "domain": "branding",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "netresearch-branding",
+      "id": "NB-22",
+      "status": "skip",
+      "rationale": "No production CSS, SCSS, or Fluid UI templates exist. Archived provider HTML under the security corpus is third-party source evidence, not a branded interface.",
+      "evidence": [
+        "Classes/",
+        "Resources/Private/HttpGuard/data/security-corpus/sources/"
+      ],
+      "domain": "branding",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "netresearch-branding",
+      "id": "NB-23",
+      "status": "fail",
+      "rationale": "README has a license link but no Netresearch credit section or company website link.",
+      "evidence": [
+        "README.md: Stand und Freigabe",
+        "LICENSES.md"
+      ],
+      "domain": "branding",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "netresearch-branding",
+      "id": "NB-24",
+      "status": "skip",
+      "rationale": "There are no user-facing backend screens or modules; a README logo is optional under this rubric. The absent mandatory extension icon is handled by NB-21.",
+      "evidence": [
+        "README.md",
+        "Configuration/"
+      ],
+      "domain": "branding",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "netresearch-branding",
+      "id": "NB-25",
+      "status": "skip",
+      "rationale": "No generated branded web/visual output is delivered. This gate does not apply to inert third-party source snapshots.",
+      "evidence": [
+        "Resources/",
+        "README.md"
+      ],
+      "domain": "branding",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "netresearch-branding",
+      "id": "NB-26",
+      "status": "skip",
+      "rationale": "No branded web interface is implemented, so color/typography component decisions are not applicable.",
+      "evidence": [
+        "Configuration/",
+        "Resources/"
+      ],
+      "domain": "branding",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-32",
+      "status": "pass",
+      "rationale": "Readonly classes contain promoted instance properties, not static properties. Static utility methods appear in non-readonly utility classes.",
+      "evidence": [
+        "Classes/Service/LibraryServiceFactory.php",
+        "Classes/Diagnostics/DiagnosticsService.php",
+        "Classes/HttpGuard/* DTOs"
+      ],
+      "domain": "code-quality",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-20",
+      "status": "pass",
+      "rationale": "Security plans, grants, decisions, resolution and client bindings already use typed DTOs. Configuration/Guzzle options and diagnostic JSON payloads deliberately retain validated array schemas; replacing native SDK option arrays would not improve their boundary contract.",
+      "evidence": [
+        "Classes/HttpGuard/ConnectionPlan.php",
+        "PolicyDecision.php",
+        "Resolution.php",
+        "GuardConfig.php",
+        "Classes/Diagnostics/DiagnosticResult.php"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-21",
+      "status": "pass",
+      "rationale": "Mode and reason strings are validated against closed sets at configuration/reporting boundaries. No scattered state-constant switch was found requiring an enum to make the accepted values safe; enum migration remains optional API design work.",
+      "evidence": [
+        "Classes/HttpGuard/GuardConfig.php",
+        "PolicyException.php",
+        "DecisionReporter.php"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-22",
+      "status": "pass",
+      "rationale": "Constructor promotion, readonly DTOs, match and union types are used. Nullable delegation is already concise; no concrete old-style pattern requiring modernization was found in the reviewed transport/policy/diagnostic paths.",
+      "evidence": [
+        "Classes/HttpGuard/ConnectionPlan.php",
+        "Classes/Diagnostics/DiagnosticsService.php",
+        "Classes/HttpGuard/Transport/OptionSanitizer.php"
+      ],
+      "domain": "code-quality",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-23",
+      "status": "fail",
+      "rationale": "Both active PHPStan configurations declare level 8, below this skill's level 9/max recommendation. The TYPO3 configuration excludes the Core13 replacement class and has no phpstan-typo3 extension. Existing zero-error level-8 runs remain valid evidence, not level-9 coverage.",
+      "evidence": [
+        "Build/phpstan-http-guard.neon",
+        "Build/phpstan-typo3.neon"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-29",
+      "status": "pass",
+      "rationale": "No duplicated generic translation, entity extraction or key-access helpers were found. Separate DNS frame/packet validation and SDK transport options are boundary-specific checks, not duplicate business utilities to collapse into a trait.",
+      "evidence": [
+        "Classes/HttpGuard/DnsPacketCodec.php",
+        "WireDnsQuery.php",
+        "Transport/OptionSanitizer.php"
+      ],
+      "domain": "dry",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-31",
+      "status": "pass",
+      "rationale": "The only production trait, RawRequestGuardTrait, is used by the two RequestFactory replacements in the same Http namespace/layer.",
+      "evidence": [
+        "Classes/Http/RawRequestGuardTrait.php",
+        "GuardedRequestFactory13.php",
+        "GuardedRequestFactory14.php"
+      ],
+      "domain": "architecture",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-34",
+      "status": "skip",
+      "rationale": "No sodium_memzero or other destructive secret-buffer cleanup exists, so no copy-on-write cleanup claim can be invalidated. HMAC retention is separately reported by SA-LLM-48.",
+      "evidence": [
+        "Classes/ source search",
+        "DecisionReporter.php"
+      ],
+      "domain": "code-quality",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-38",
+      "status": "pass",
+      "rationale": "The project-owned transport driver and RuntimeSupport isolate tested Guzzle major differences. Shutdown dispatch is selected from the exact version tuple, not method_exists on a statically narrowed library type. Core13/14 RequestFactory replacements have dedicated compatibility checks.",
+      "evidence": [
+        "Classes/HttpGuard/Transport/RuntimeSupport.php",
+        "TransferLease.php",
+        "Classes/Http/RequestFactoryCompatibility.php"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-80",
+      "status": "pass",
+      "rationale": "Reviewed casts convert validated URI/IP/reflection/version values or established framework input types. Broad catches at resolver and promise boundaries intentionally translate untrusted callback/provider failures into fail-closed outcomes or rejections; logger failures do not authorize transport. No PHPStan ignore-based type bypass was found.",
+      "evidence": [
+        "Classes/HttpGuard/Cidr.php",
+        "TargetNormalizer.php",
+        "Transport/BoundaryMiddleware.php",
+        "StaticThenDnsResolver.php",
+        "Classes/Command/PolicyCheckCommand.php"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-40",
+      "status": "pass",
+      "rationale": "Readonly classes are DTOs and injected services. Capability objects reject serialization; no readonly ORM entity, form-bound hydration model or deserializer target exists.",
+      "evidence": [
+        "Classes/HttpGuard/ClientScope.php",
+        "EndpointGrant.php",
+        "Classes/Diagnostics/DiagnosticResult.php",
+        "Classes/Service/LibraryServiceFactory.php"
+      ],
+      "domain": "code-quality",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-41",
+      "status": "skip",
+      "rationale": "No Infection configuration exists. Actual delivered 18 targeted negative mutation runs are separate evidence; this checkpoint's Infection PR-diff configuration does not describe that harness.",
+      "evidence": [
+        "verification/scripts/run-mutations.py",
+        "verification/evidence/extension-mutations/"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-42",
+      "status": "skip",
+      "rationale": "No API Platform dependency, ApiResource attribute, Doctrine entity or state-provider API exists.",
+      "evidence": [
+        "composer.json",
+        "Classes/ inventory"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-43",
+      "status": "skip",
+      "rationale": "The extension provides outbound Guzzle middleware, not incoming PSR-15 process methods. No PSR-15 broad-catch control-flow exception sink exists.",
+      "evidence": [
+        "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+        "TerminalGuardMiddleware.php"
+      ],
+      "domain": "code-quality",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "php-modernization",
+      "id": "PM-54",
+      "status": "pass",
+      "rationale": "This is an initial alpha package, with no prior published range narrowed in a patch. Exact Core/SDK tuples are intentional fail-closed qualifications documented and tested; their constraints must not be broadened from symbol availability alone. The fixed Core tuples already require PSR log 3, so its explicit constraint removes no supported Core resolution.",
+      "evidence": [
+        "composer.json",
+        "Documentation/Installation/Index.rst",
+        "Classes/HttpGuard/Transport/RuntimeSupport.php"
+      ],
+      "domain": "code-quality",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-AI-05",
+      "status": "skip",
+      "rationale": "No agent instruction/rule files exist in the baseline, so no embedded authorization-bypass instruction was found. Missing harness context is separately recorded; later agent instructions must be reviewed when added.",
+      "evidence": [
+        "AGENTS.md/CLAUDE.md/.github/copilot-instructions.md absent"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-16",
+      "status": "pass",
+      "rationale": "The source/history publication review and current production search found no real credential material. Synthetic TLS keys/passwords are explicitly owned test fixtures; no private specification credential value was emitted. This is a scoped source finding, not a guarantee that future commits are secret-free.",
+      "evidence": [
+        "Classes/",
+        "Tests/ fixtures",
+        "source-bound prior publication/history review"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-17",
+      "status": "skip",
+      "rationale": "No SQL/query builder or database persistence layer exists in production.",
+      "evidence": [
+        "Classes/ inventory"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-18",
+      "status": "skip",
+      "rationale": "Production does not parse untrusted XML. guides.xml is build documentation metadata, not a request-supplied XML entry point.",
+      "evidence": [
+        "Classes/ source search",
+        "Documentation/guides.xml"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-19",
+      "status": "skip",
+      "rationale": "No production Fluid/browser HTML rendering or frontend input output sink exists. Archived provider HTML is inert corpus source material.",
+      "evidence": [
+        "Classes/",
+        "Resources/Private/HttpGuard/data/security-corpus/sources/"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-20",
+      "status": "skip",
+      "rationale": "There are no inbound authentication routes/controllers. Endpoint grants authorize outbound clients and are reviewed under SSRF/access-control checkpoints.",
+      "evidence": [
+        "Classes/",
+        "Configuration/"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-21",
+      "status": "pass",
+      "rationale": "No untrusted unserialize call exists. Four capability classes implement __serialize/__unserialize only to throw, preventing export/import of scope/envelope/grant authority.",
+      "evidence": [
+        "Classes/HttpGuard/ClientScope.php",
+        "EndpointGrant.php",
+        "Transport/InvocationToken.php",
+        "RequestEnvelope.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-22",
+      "status": "skip",
+      "rationale": "No upload controller, file storage model, or user-controlled uploaded path handling exists.",
+      "evidence": [
+        "Classes/ inventory"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-23",
+      "status": "pass",
+      "rationale": "Host anonymization uses keyed SHA-256 HMAC; correlation IDs/transaction IDs use cryptographic randomness. Revision/source SHA-256 is used as identity/checksum, not claimed as authenticated encryption. No custom encryption or weak password hashing exists.",
+      "evidence": [
+        "Classes/HttpGuard/DecisionReporter.php",
+        "PolicyEngine.php",
+        "DnsPacketCodec.php",
+        "GuardConfig.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-24",
+      "status": "skip",
+      "rationale": "No inbound web response/security-header middleware exists. Outbound HTTP policy is not a web-application header implementation.",
+      "evidence": [
+        "Classes/HttpGuard/Transport/",
+        "Documentation/Security/Index.rst"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-25",
+      "status": "skip",
+      "rationale": "No state-changing browser endpoint or backend form exists to require CSRF tokens.",
+      "evidence": [
+        "Classes/Controller absent",
+        "Configuration/Backend absent"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-26",
+      "status": "pass",
+      "rationale": "Enforce uses strict raw URI/Host validation, complete DNS answer classification, owned scope/grant identity, exact origin/method/CIDRs and controlled native IP pins. Rechecks occur after DNS/body preparation; alternate proxies/handlers/streams and unknown options fail closed. Observe/disabled are explicitly unprotected, not presented as an enforced SSRF boundary.",
+      "evidence": [
+        "TargetNormalizer.php",
+        "PolicyEngine.php",
+        "StaticThenDnsResolver.php",
+        "Transport/TerminalGuardMiddleware.php",
+        "TransferLease.php",
+        "OptionSanitizer.php",
+        "Documentation/Security/Index.rst"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-27",
+      "status": "pass",
+      "rationale": "No eval, user-selected include or shell execution exists in production. Trusted injected PHP callbacks are explicit code authority, not untrusted string execution.",
+      "evidence": [
+        "Classes/ source search",
+        "Transport/OptionSanitizer.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-28",
+      "status": "skip",
+      "rationale": "No HTTP entity/resource controller or identifier-based CRUD exists. Outbound endpoint IDs are taken from trusted service configuration and object-bound.",
+      "evidence": [
+        "Classes/HttpGuard/PolicyRegistry.php",
+        "Documentation/Api/Index.rst"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-29",
+      "status": "pass",
+      "rationale": "URI/host syntax, DNS nameservers/query time, records/hops/address counts and memo entries are bounded; PublicFetch redirects are bounded and caller sinks avoid an additional guard response copy. Cancellation prevents queued startup. Caller-provided bodies/worker lifetime remain application-owned, explicitly outside a generic incoming rate-limit claim.",
+      "evidence": [
+        "TargetNormalizer.php",
+        "GuardConfig.php",
+        "WireDnsQuery.php",
+        "StaticThenDnsResolver.php",
+        "Transport/TransferLease.php",
+        "Client/PublicFetchClient.php"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-30",
+      "status": "pass",
+      "rationale": "PolicyException emits only stable reason codes. DecisionReporter excludes URLs, querys, headers, bodies, credentials and key paths; host logging is explicit optional plain/HMAC mode. CLI diagnostics expose version/proxy variable names, not secret values.",
+      "evidence": [
+        "PolicyException.php",
+        "DecisionReporter.php",
+        "Classes/Diagnostics/DiagnosticsService.php",
+        "Documentation/Operations/Index.rst"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-31",
+      "status": "pass",
+      "rationale": "EndpointGrant and RequestPolicyContext are object-identity bound to registry revision/client scope; arbitrary headers/options cannot supply capability. Boundary/terminal authenticate invocation and origin, with replay/swap/cross-client regressions. No inbound role access surface exists.",
+      "evidence": [
+        "PolicyRegistry.php",
+        "PolicyEngine.php",
+        "ClientScope.php",
+        "Transport/BoundaryMiddleware.php",
+        "TerminalGuardMiddleware.php"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-32",
+      "status": "pass",
+      "rationale": "Config/method/reason membership checks use strict comparisons. Option types are validated before coercion; canonical numeric parsing and date/calendar checks reject ambiguous values. Reviewed loose operators perform numeric bounds, not secret authorization equality.",
+      "evidence": [
+        "GuardConfig.php",
+        "TargetNormalizer.php",
+        "Transport/OptionSanitizer.php",
+        "DecisionReporter.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-33",
+      "status": "skip",
+      "rationale": "No JWT signing, validation or algorithm selection exists.",
+      "evidence": [
+        "Classes/ source search"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-34",
+      "status": "pass",
+      "rationale": "Incoming HTTP_HOST is not used as a trusted outbound authority. Request Host headers must match canonical URI host/port; process proxy authority is separated from incoming HTTP_PROXY SAPI data.",
+      "evidence": [
+        "TargetNormalizer.php",
+        "Transport/OptionSanitizer.php",
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-35",
+      "status": "skip",
+      "rationale": "No password, API token or MAC authentication comparison exists. Capability checks compare opaque PHP object identity, not secret strings needing constant-time equality.",
+      "evidence": [
+        "PolicyEngine.php",
+        "Transport/BoundaryMiddleware.php",
+        "TerminalGuardMiddleware.php"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-36",
+      "status": "skip",
+      "rationale": "No SQL/query identifiers or dynamic ORM query construction exist.",
+      "evidence": [
+        "Classes/ inventory"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-37",
+      "status": "pass",
+      "rationale": "Reviewed URI/host/date/CIDR patterns have bounded inputs and no nested unbounded backtracking construction. DNS packet/name decoding is separately bounded by offsets, hops and packet size.",
+      "evidence": [
+        "TargetNormalizer.php",
+        "GuardConfig.php",
+        "Cidr.php",
+        "DnsPacketCodec.php"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-38",
+      "status": "skip",
+      "rationale": "No account/role assignment or mass-assignment endpoint exists.",
+      "evidence": [
+        "Classes/ inventory"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-39",
+      "status": "pass",
+      "rationale": "TYPO3 LibraryServiceFactory injects the Netresearch.HttpGuard logger; denials/would-deny use warning, allowed events use info, with bounded labels and suppression/sampling. Logger exceptions increment a diagnostic counter and do not change authorization.",
+      "evidence": [
+        "Classes/Service/LibraryServiceFactory.php:25",
+        "Classes/HttpGuard/DecisionReporter.php"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-40",
+      "status": "pass",
+      "rationale": "Final transfer construction rechecks owned plan, grant/registry expiry and cancellation after potentially blocking DNS/body work; native cURL is pinned. Private-target authorization is not based on a prior host-only preflight or reusable stale DNS result.",
+      "evidence": [
+        "PolicyEngine.php:assertCurrent",
+        "Transport/TransferLease.php",
+        "TerminalGuardMiddleware.php",
+        "ProductionTransportTest.php:testExpiryDuringDnsAndBodyPreparationPreventsFirstConnection"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-IMG-01",
+      "status": "skip",
+      "rationale": "No image processing/resizing/upload pipeline exists; synthetic TLS fixtures and archived HTML are not image-processing code.",
+      "evidence": [
+        "composer.json",
+        "Classes/ inventory"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LOCK-01",
+      "status": "skip",
+      "rationale": "No flock/application resource locking exists in production.",
+      "evidence": [
+        "Classes/ source search"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-55",
+      "status": "definition_issue",
+      "rationale": "This is a mechanical checkpoint mistakenly located under llm_reviews, with no LLM domain/prompt. It was not falsely reported as an LLM review; its source definition is retained for separate checker triage.",
+      "evidence": [
+        "skill-source-snapshots/security-audit/checkpoints.yaml"
+      ],
+      "domain": null,
+      "severity": "warning",
+      "original_type": "regex_not",
+      "prompt_present": false
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-56",
+      "status": "definition_issue",
+      "rationale": "This is a mechanical checkpoint mistakenly located under llm_reviews, with no LLM domain/prompt. It was not falsely reported as an LLM review; its source definition is retained for separate checker triage.",
+      "evidence": [
+        "skill-source-snapshots/security-audit/checkpoints.yaml"
+      ],
+      "domain": null,
+      "severity": "error",
+      "original_type": "regex_not",
+      "prompt_present": false
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-57",
+      "status": "definition_issue",
+      "rationale": "This is a mechanical checkpoint mistakenly located under llm_reviews, with no LLM domain/prompt. It was not falsely reported as an LLM review; its source definition is retained for separate checker triage.",
+      "evidence": [
+        "skill-source-snapshots/security-audit/checkpoints.yaml"
+      ],
+      "domain": null,
+      "severity": "error",
+      "original_type": "regex_not",
+      "prompt_present": false
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-58",
+      "status": "definition_issue",
+      "rationale": "This is a mechanical checkpoint mistakenly located under llm_reviews, with no LLM domain/prompt. It was not falsely reported as an LLM review; its source definition is retained for separate checker triage.",
+      "evidence": [
+        "skill-source-snapshots/security-audit/checkpoints.yaml"
+      ],
+      "domain": null,
+      "severity": "warning",
+      "original_type": "command",
+      "prompt_present": false
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-SUPPRESS-01",
+      "status": "pass",
+      "rationale": "Each reviewed @inet_pton/@hash_file/socket read-write/select/config-read operation checks false, byte count, readiness or validated data and throws a policy denial/unverified result. Suppression prevents PHP warning disclosure; it is not the success condition.",
+      "evidence": [
+        "AddressClassifier.php:92",
+        "Cidr.php",
+        "GuardConfig.php:327",
+        "StaticThenDnsResolver.php",
+        "WireDnsQuery.php:63-174",
+        "Transport/TransferLease.php"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-41",
+      "status": "pass",
+      "rationale": "Guard-generated exceptions use stable redacted reason codes. Native SDK exceptions remain caller-facing transport failures, not directly rendered web error payloads; the extension contains no API exception renderer to leak their details. Documentation does not promise to redact arbitrary application/native SDK logging.",
+      "evidence": [
+        "PolicyException.php",
+        "Documentation/Api/Index.rst:Policyfehler",
+        "Classes/Command/AbstractGuardCommand.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-42",
+      "status": "skip",
+      "rationale": "No generic external-provider adapter with HTTP-to-user-error mapping exists. PSR-18 intentionally returns HTTP error responses and preserves transport exceptions according to its contract.",
+      "evidence": [
+        "Client/Psr18Client.php",
+        "Documentation/Api/Index.rst"
+      ],
+      "domain": "security",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-43",
+      "status": "skip",
+      "rationale": "No raw binary encryption key reader applies trim. The HMAC key is read verbatim from the selected process environment; TLS options refer to readable file paths.",
+      "evidence": [
+        "Classes/Service/LibraryServiceFactory.php:31",
+        "Transport/OptionSanitizer.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-44",
+      "status": "skip",
+      "rationale": "No JSON inbound web endpoint exists; JSON is trusted CLI output and structured logging data.",
+      "evidence": [
+        "Classes/Command/AbstractGuardCommand.php",
+        "Classes/Diagnostics/DiagnosticResult.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-45",
+      "status": "pass",
+      "rationale": "Credential-bearing transport is bound to one origin/method/grant and redirects are terminal-checked. PublicFetch builds a separate credential-free request, and the optional Vault integration binds resource/token origins separately before secret lookup.",
+      "evidence": [
+        "Transport/TerminalGuardMiddleware.php",
+        "Client/PublicFetchClient.php",
+        "integrations/nr-vault/source-overlay/Classes/Http/HttpGuardClientFactoryAdapter.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-46",
+      "status": "pass",
+      "rationale": "Anonymized host logging uses keyed HMAC. Plain SHA-256 policy/source hashes are documented identities/checksums, not a MAC-based tamper-authentication promise; no security proof relies on an attacker being unable to recompute them.",
+      "evidence": [
+        "DecisionReporter.php:88",
+        "GuardConfig.php:revision",
+        "verification/README.md"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-47",
+      "status": "skip",
+      "rationale": "No sodium_memzero cleanup exists, so there is no COW duplicate falsely claimed as cleared. Retention/lifecycle of the host HMAC key is separately advisory.",
+      "evidence": [
+        "Classes/ source search"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-48",
+      "status": "fail",
+      "rationale": "DecisionReporter stores hostHmacKey as readonly ?string without a clearing lifecycle. This is an optional in-process secret-retention hardening gap under the rubric, not demonstrated disclosure or a transport bypass. The source environment string also remains operator-owned, so destructor zeroization alone cannot promise complete erasure.",
+      "evidence": [
+        "Classes/HttpGuard/DecisionReporter.php:19",
+        "Classes/Service/LibraryServiceFactory.php:32"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-49",
+      "status": "pass",
+      "rationale": "Leaf automatic redirects are disabled; the controlled stack checks redirected origin against invocation/grant. Body/auth/certificate secrets cannot follow cross-origin redirects. PublicFetch follows only its own bounded credential-free requests and PSR-18 follows none.",
+      "evidence": [
+        "Transport/OptionSanitizer.php",
+        "TerminalGuardMiddleware.php",
+        "Client/PublicFetchClient.php",
+        "ProductionTransportTest.php:testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-LLM-50",
+      "status": "skip",
+      "rationale": "No encryption/decryption implementation or crypto-finally cleanup claim exists. HMAC lifecycle is covered separately.",
+      "evidence": [
+        "Classes/ inventory",
+        "DecisionReporter.php"
+      ],
+      "domain": "security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-DEP-05",
+      "status": "fail",
+      "rationale": "Actual GitHub API lists 36 open alerts representing 3 SVG advisories repeated across 12 historical Core fixture locks. Existing audit/report warnings are transparent, but there is no repository-level alert tracking/dismissal rationale. Preserve historical locks; track host Core dependency remediation and requalification rather than rewriting prior evidence. No override-based fix is recommended.",
+      "evidence": [
+        "remote/dependabot-alerts.json",
+        "docs/Pruefbericht.md",
+        "evidence/architecture-probe/dependencies/",
+        "evidence/packaging/composer-locks/",
+        "evidence/typo3-integration/locks/"
+      ],
+      "domain": "supply-chain",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-DEP-06",
+      "status": "skip",
+      "rationale": "No root npm/pnpm dependency manifest or overrides exist. No dependency update mutation was performed.",
+      "evidence": [
+        "package.json absent"
+      ],
+      "domain": "supply-chain",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-GHA-03",
+      "status": "skip",
+      "rationale": "There are no GitHub Actions workflows to inspect for expression injection, head checkout in pull_request_target, token overpermission or pinning. Missing CI is a separate finding; new workflows require a later actual review.",
+      "evidence": [
+        ".github/workflows absent"
+      ],
+      "domain": "ci-security",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "security-audit",
+      "id": "SA-DEP-04",
+      "status": "skip",
+      "rationale": "The checkpoint explicitly applies only when root package.json exists; this PHP extension has none.",
+      "evidence": [
+        "package.json absent"
+      ],
+      "domain": "supply-chain",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-20",
+      "status": "pass",
+      "rationale": "Index.rst has consistent heading adornments, clear outbound scope, maxdepth 2, and a logical Installation/Configuration/API/Operations/Security/Development/Decisions toctree. Separate Introduction folder naming is a convention gap, not missing introductory content.",
+      "evidence": [
+        "Documentation/Index.rst"
+      ],
+      "domain": "documentation",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-21",
+      "status": "pass",
+      "rationale": "README and manual agree on one extension, version 0.1.0 alpha, embedded core, exact tested SDK tuples, and explicit separate Vault migration. Neither claims existing TER/Packagist publication or operator acceptance.",
+      "evidence": [
+        "README.md",
+        "Documentation/Index.rst",
+        "Documentation/Installation/Index.rst"
+      ],
+      "domain": "documentation",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-22",
+      "status": "pass",
+      "rationale": "guides.xml uses the correct phpDocumentor namespace, project title/release attributes, TYPO3 theme extension and nr_http_guard interlink shortcut. No obsolete project settings node exists. Missing vendor metadata is separately reported by the mechanical check.",
+      "evidence": [
+        "Documentation/guides.xml"
+      ],
+      "domain": "documentation",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-23",
+      "status": "fail",
+      "rationale": "Installation, full policy JSON configuration, PHP client usage and operational diagnosis are present. A conventional changelog/version-history file is absent. TypoScript/FlexForms do not apply to this JSON-configured service extension.",
+      "evidence": [
+        "Documentation/Installation/Index.rst",
+        "Configuration/Index.rst",
+        "Api/Index.rst",
+        "CHANGELOG.md absent"
+      ],
+      "domain": "documentation",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-24",
+      "status": "pass",
+      "rationale": "Active RST files and directory names follow CamelCase/Index conventions. Underscore-prefixed PHP literalinclude snippets are source examples, not wrongly named RST chapters.",
+      "evidence": [
+        "Documentation tracked file inventory"
+      ],
+      "domain": "documentation",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-32",
+      "status": "skip",
+      "rationale": "No backend module TypoScript or plugin.tx configuration exists; the extension uses JSON policy plus dependency injection.",
+      "evidence": [
+        "Documentation/Configuration/Index.rst",
+        "Configuration/"
+      ],
+      "domain": "documentation",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-33",
+      "status": "pass",
+      "rationale": "All four documented command names match Services.yaml. policy-check's required url and optional --endpoint/--no-dns match configure(); the other diagnostic commands take no custom arguments. Their JSON and exit-code behavior agrees with DiagnosticsService.",
+      "evidence": [
+        "Documentation/Operations/Index.rst",
+        "Classes/Command/",
+        "Configuration/Services.yaml",
+        "Classes/Diagnostics/DiagnosticsService.php"
+      ],
+      "domain": "documentation",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-40",
+      "status": "skip",
+      "rationale": "No git release tags exist, so no tagged version entry can be missing. An initial changelog file is still desirable and covered by TD-23/TD-48.",
+      "evidence": [
+        "repo-snapshot git tag -l"
+      ],
+      "domain": "documentation",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-42",
+      "status": "skip",
+      "rationale": "There are no backend UI modules, empty Screenshots sections, TODO screenshot placeholders or figure references. Screenshots are not required to explain a headless outbound policy service.",
+      "evidence": [
+        "Documentation/",
+        "Configuration/Backend/Modules.php absent"
+      ],
+      "domain": "documentation",
+      "severity": "medium",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-docs",
+      "id": "TD-50",
+      "status": "pass",
+      "rationale": "Reviewed RequestFactory, forEndpoint, PSR-18 sendRequest, PublicFetch fetch and TargetNormalizer raw-string examples match their real signatures and namespaces. PublicFetch explicitly accepts no endpoint ID; secret-bearing resource and token scopes remain separate.",
+      "evidence": [
+        "Documentation/Api/Index.rst",
+        "Api/_ErpClient.php",
+        "Api/_PublicDocument.php",
+        "Classes/HttpGuard/EndpointClientFactoryInterface.php",
+        "PublicFetchClientInterface.php"
+      ],
+      "domain": "documentation",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-133",
+      "status": "skip",
+      "rationale": "No CoversClass metadata or conflicting PHPUnit source exclusion exists.",
+      "evidence": [
+        "Tests/ source search",
+        "phpunit.xml",
+        "Build/phpunit-http-guard.xml"
+      ],
+      "domain": "test-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": false
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-134",
+      "status": "skip",
+      "rationale": "No vfsStream usage exists; filesystem tests create their own real fixtures.",
+      "evidence": [
+        "Tests/ source search"
+      ],
+      "domain": "test-quality",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": false
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-136",
+      "status": "pass",
+      "rationale": "Active PHPStan configs have no duplicate extension includes or extension-installer registration. Historical optional Vault config explicitly delegates auto-registration and does not double-include extensions; it is a separate package overlay.",
+      "evidence": [
+        "Build/phpstan-http-guard.neon",
+        "Build/phpstan-typo3.neon",
+        "integrations/nr-vault/source-overlay/phpstan.neon"
+      ],
+      "domain": "static-analysis",
+      "severity": "error",
+      "original_type": "llm_review",
+      "prompt_present": false
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-19",
+      "status": "skip",
+      "rationale": "No root package.json or JavaScript test framework dependencies exist.",
+      "evidence": [
+        "package.json absent"
+      ],
+      "domain": "dependencies",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-85",
+      "status": "skip",
+      "rationale": "No CoversClass attributes are present, so there is no stale coverage target. Explicit coverage metadata could improve attribution, but no incorrect attribute was found.",
+      "evidence": [
+        "Tests/ source search"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-80",
+      "status": "fail",
+      "rationale": "The embedded kernel tests are under Tests/HttpGuard/Unit and Integration, and real Core transport fixtures are run by Build scripts rather than the conventional Tests/Functional tree. Test class/method names and namespaces are coherent; the finding is conventional discovery/layout, not absence of functional evidence.",
+      "evidence": [
+        "phpunit.xml",
+        "Tests/HttpGuard/",
+        "Build/Scripts/run-native-bootstrap.sh",
+        "verification/evidence/extension-matrix/"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-81",
+      "status": "fail",
+      "rationale": "Both PHPUnit configs have bootstraps, explicit suites and Classes-only source filters. Root phpunit.xml enables warning/risky failure, but Build/phpunit-http-guard.xml omits failOnRisky. Both pin schema 11.5 while require-dev permits PHPUnit 12/13, requiring a documented or tested config compatibility choice.",
+      "evidence": [
+        "phpunit.xml",
+        "Build/phpunit-http-guard.xml",
+        "composer.json"
+      ],
+      "domain": "code-quality",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-82",
+      "status": "fail",
+      "rationale": "No CI workflow/matrix exists. Delivered local twelve-cell core matrix and native Core fixtures remain actual evidence, but provide no ongoing PR regression gate.",
+      "evidence": [
+        ".github/workflows absent",
+        "verification/evidence/extension-matrix/summary.json"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-83",
+      "status": "fail",
+      "rationale": "The active TYPO3 PHPStan config uses level 8 and Classes with explicit version-specific exclusions but lacks phpstan-typo3. Existing level-8 zero-error results are valid; full CI/static-analysis coverage should be made conventional and version-aware.",
+      "evidence": [
+        "Build/phpstan-typo3.neon",
+        "composer.json",
+        "evidence/packaging/static-analysis/"
+      ],
+      "domain": "code-quality",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-84",
+      "status": "pass",
+      "rationale": "Tests exercise real plans, forged scopes/envelopes, DNS truncation/malformed answers, grants, expiry, redirects, TLS/mTLS, callbacks, cancellation and counter isolation. Wire tests assert native attempts plus target TCP/HTTP deltas. No third-party internal mocking shortcuts or infrastructure skips were found; this is qualitative review, not a new full coverage measurement.",
+      "evidence": [
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php",
+        "DnsPolicyTransportTest.php",
+        "Tests/HttpGuard/Unit/Policy/",
+        "verification/evidence/extension-matrix/"
+      ],
+      "domain": "code-quality",
+      "severity": "info",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-91",
+      "status": "pass",
+      "rationale": "No markTestSkipped guards exist in the extension/kernel tests. Actual delivered matrix JUnit files record zero skips; absent infrastructure is not silently labeled a pass.",
+      "evidence": [
+        "Tests/ source search",
+        "verification/evidence/extension-matrix/"
+      ],
+      "domain": "test-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-92",
+      "status": "pass",
+      "rationale": "No createMock/getMockBuilder usages exist in extension/kernel tests; final/readonly capabilities and DTOs are exercised as actual objects.",
+      "evidence": [
+        "Tests/ source search"
+      ],
+      "domain": "test-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-87",
+      "status": "fail",
+      "rationale": "LibraryServiceFactory has no corresponding Service unit/functional test. Native bootstrap exercises DI construction, but dedicated reporter/environment and factory composition branches would improve direct coverage.",
+      "evidence": [
+        "Classes/Service/LibraryServiceFactory.php",
+        "Tests/Unit/Service/LibraryServiceFactoryTest.php absent"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-88",
+      "status": "skip",
+      "rationale": "No ViewHelpers directory/classes exist.",
+      "evidence": [
+        "Classes/ inventory"
+      ],
+      "domain": "code-quality",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-77",
+      "status": "skip",
+      "rationale": "No production EventDispatcherInterface::dispatch call exists, hence no swallowed dispatch exception path needs a dedicated test.",
+      "evidence": [
+        "Classes/ source search"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-78",
+      "status": "fail",
+      "rationale": "Malformed IP, DNS/socket and timeout failures have actual tests, but trusted-bundle file/hash failure branches are not specifically tested, and some suppressed stream I/O failure branches lack dedicated unit cases. No trigger_error calls exist. This is a narrow branch-coverage improvement, not evidence that suppression hides authorization failures.",
+      "evidence": [
+        "Classes/HttpGuard/GuardConfig.php:327",
+        "WireDnsQuery.php:81,115,145",
+        "Tests/HttpGuard/Unit/Policy/WireDnsQueryTest.php",
+        "PolicyStrictInputsTest.php"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-86",
+      "status": "skip",
+      "rationale": "No backend/AJAX controllers or inbound state-changing endpoints exist.",
+      "evidence": [
+        "Classes/Controller absent"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-27",
+      "status": "fail",
+      "rationale": "No CI matrix covers the declared PHP/Core range. The exact local matrix is documented; additionally ^8.2 permits future PHP minors while ext_emconf currently ends at 8.5.99, a distinct declaration gap reported by conformance TC-69.",
+      "evidence": [
+        "composer.json",
+        "ext_emconf.php",
+        ".github/workflows absent"
+      ],
+      "domain": "ci",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-17b",
+      "status": "skip",
+      "rationale": "No Playwright/browser UI test configuration exists; this headless extension has no rendered application UI to require two-browser coverage.",
+      "evidence": [
+        "Playwright config absent"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-89",
+      "status": "fail",
+      "rationale": "Core transport/policy and command branches are extensively tested, but LibraryServiceFactory reporter/environment assembly has no direct focused test. Simple delegations are not counted as untested new business logic.",
+      "evidence": [
+        "Classes/Service/LibraryServiceFactory.php:25",
+        "Tests/Unit/ inventory"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-112",
+      "status": "skip",
+      "rationale": "No domain entity/model UID mocks or guarded persistence entities exist.",
+      "evidence": [
+        "Classes/Domain absent",
+        "Tests/ source search"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-113",
+      "status": "pass",
+      "rationale": "Tests use real constructor calls and no constructor-invoking mock builders. The reviewed DTO/engine/context signatures and their test construction agree; the fresh independent Unit run also passes 96/1173. This does not claim a fresh wire suite during assessment.",
+      "evidence": [
+        "Tests/HttpGuard/Unit/Policy/",
+        "Tests/Unit/DiagnosticsServiceTest.php",
+        "delegated unit-coverage-summary.json"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-114",
+      "status": "skip",
+      "rationale": "No third-party interface mocks exist. Real supported SDK tuples are covered by the recorded matrix; no mocked concrete-only interface method was found.",
+      "evidence": [
+        "Tests/ source search",
+        "verification/evidence/extension-matrix/"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-115",
+      "status": "skip",
+      "rationale": "No willReturnCallback usages exist.",
+      "evidence": [
+        "Tests/ source search"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-116",
+      "status": "pass",
+      "rationale": "Reviewed denial and redirect regressions retain exact reason/status plus native and target-counter assertions. They do not trade forbidden-target assertions for a generic invocation count. No mock callback assertions were weakened in this initial implementation.",
+      "evidence": [
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php",
+        "DnsPolicyTransportTest.php",
+        "Tests/Unit/RawRequestFactoryModeTest.php"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    },
+    {
+      "skill": "typo3-testing",
+      "id": "TT-117",
+      "status": "pass",
+      "rationale": "Tests use owned resolver/clock/reporting interfaces and actual SDK clients rather than complex third-party internal mocks. Stable PSR messages are actual request/response objects.",
+      "evidence": [
+        "Tests/HttpGuard/Unit/Policy/",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php"
+      ],
+      "domain": "testing",
+      "severity": "warning",
+      "original_type": "llm_review",
+      "prompt_present": true
+    }
+  ],
+  "missing_decisions": []
+}

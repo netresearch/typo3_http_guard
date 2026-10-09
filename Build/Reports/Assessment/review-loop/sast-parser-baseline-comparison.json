@@ -1,0 +1,315 @@
+{
+  "baseline_source": "83f8105ec50d766b31d860ca979464de3c146c22",
+  "baseline_scope": "Git archive of the 57 affected files; same pinned Opengrep version and live auto rules",
+  "baseline_parser_errors": 57,
+  "current_parser_errors": 57,
+  "same_path_type_token_set": true,
+  "baseline_only": [],
+  "current_only": [],
+  "categories": [
+    {
+      "unsupported_token": "&MockObject",
+      "count": 1
+    },
+    {
+      "unsupported_token": "declare",
+      "count": 1
+    },
+    {
+      "unsupported_token": "readonly",
+      "count": 53
+    },
+    {
+      "unsupported_token": "string",
+      "count": 2
+    }
+  ],
+  "paths": [
+    {
+      "type": "PartialParsing",
+      "path": "Build/phpstan-bootstrap14.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Client/EndpointClientFactory.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Client/PublicFetchClient.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Command/AbstractGuardCommand.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Diagnostics/DiagnosticResult.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Diagnostics/DiagnosticsService.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/EventListener/RegisterGuardListener.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Http/CoreStackProvider.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Http/GuardedRequestFactory14.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Http/MiddlewareRegistry.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Http/RawRequestFactoryRegistration.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Http/RawRequestGuardTrait.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/AddressClassification.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Cidr.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/ClientStackConfiguration.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/GuardedClientBinding.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/GuardedClientFactory.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/MiddlewarePair.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/Psr18Client.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Client/PublicFetchClient.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/ClientScope.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/ConnectionPlan.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/DecisionEvent.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/DecisionReporter.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/DnsAnswer.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/EndpointGrant.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/EndpointProfile.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/GuardConfig.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/PolicyDecision.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/PolicyEngine.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/PolicyException.php",
+      "token": "string"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/PolicyRegistry.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/RequestPolicyContext.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Resolution.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/StaticThenDnsResolver.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Target.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/GuardedTransferFactory.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/OptionSanitizer.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/RequestEnvelope.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/Transport/TransferLease.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/HttpGuard/WireDnsQuery.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Classes/Service/LibraryServiceFactory.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Documentation/Api/_ErpClient.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Documentation/Api/_PublicDocument.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Documentation/Localization.de_DE/Api/_ErpClient.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Documentation/Localization.de_DE/Api/_PublicDocument.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "Tests/Fixtures/RecordingMiddleware.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardTransferTicker.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/OAuth/OAuthTokenManager.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/SecureHttpClientFactory.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/VaultHttpClient.php",
+      "token": "readonly"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+      "token": "string"
+    },
+    {
+      "type": "PartialParsing",
+      "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php",
+      "token": "&MockObject"
+    },
+    {
+      "type": "Syntax error",
+      "path": "integrations/nr-vault/vault-adapter.patch",
+      "token": "declare"
+    }
+  ],
+  "comparison_limit": "Source lines shift after annotations and independent typing changes; equality compares path, scanner error type and unsupported token. This does not certify exhaustive PHP analysis."
+}

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard\Client;
 
@@ -161,7 +165,10 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
             $pair->context
         );
     }
-    /** @return list<array{callable,string}> */
+    /**
+     * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface> $stack
+     * @return list<array{callable(callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface): (callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface),string}>
+     */
     private static function stackEntries(HandlerStack $stack): array
     {
         // This private inventory is version-bound by RuntimeSupport and the G0 probes.
@@ -169,7 +176,7 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
             $stack
         );
     }
-    /** @param list<array{callable,string}> $entries */
+    /** @param list<array{callable(callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface): (callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface),string}> $entries */
     private static function assertPosition(
         array $entries,
         BoundaryMiddleware $boundary,

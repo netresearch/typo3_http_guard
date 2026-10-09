@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "scope": "Public-interface single native handle allocation per lease; no native handler tick or network I/O in targeted tests",
+  "source_base_head": "e69ddadf9812e8d8b76db825bbc35a78df5d4184",
+  "tested_state": "Factory handoff working-tree snapshot during semantic review, before subsequent curated-profile corrections; not present in source_base_head",
+  "php_runtime": "8.5.11",
+  "phpunit_version": "11.5.57",
+  "guards": {
+    "attempt_consumed_before_preparation": true,
+    "second_create_rejected_before_delegate": true,
+    "release_delegated_unchanged": true,
+    "private_retry_counter_removed_after_independent_native_control": true,
+    "fresh_pinning_no_reuse_options_preserved": true
+  },
+  "focused_results": [
+    {
+      "actual_versions": {
+        "guzzlehttp/guzzle": "7.15.3",
+        "guzzlehttp/promises": "2.5.2",
+        "guzzlehttp/psr7": "2.13.0"
+      },
+      "exit_code": 0,
+      "tests": 5,
+      "assertions": 23,
+      "unfenced_native_handle_allocations": 2,
+      "fenced_native_handle_allocations": 1
+    },
+    {
+      "actual_versions": {
+        "guzzlehttp/guzzle": "7.15.5",
+        "guzzlehttp/promises": "2.5.3",
+        "guzzlehttp/psr7": "2.13.1"
+      },
+      "exit_code": 0,
+      "tests": 5,
+      "assertions": 23,
+      "unfenced_native_handle_allocations": 2,
+      "fenced_native_handle_allocations": 1
+    },
+    {
+      "actual_versions": {
+        "guzzlehttp/guzzle": "8.2.0",
+        "guzzlehttp/promises": "3.0.2",
+        "guzzlehttp/psr7": "3.1.0"
+      },
+      "exit_code": 0,
+      "tests": 5,
+      "assertions": 23,
+      "unfenced_native_handle_allocations": 2,
+      "fenced_native_handle_allocations": 1
+    }
+  ],
+  "mutation_results": [
+    {
+      "sdk": "7.15.5",
+      "exit_code": 1,
+      "expected_failure": "The hidden native retry passed the single-attempt fence"
+    },
+    {
+      "sdk": "8.2.0",
+      "exit_code": 1,
+      "expected_failure": "The hidden native retry passed the single-attempt fence"
+    }
+  ],
+  "phpstan": {
+    "version": "2.3.1",
+    "level": 8,
+    "actual_sdk": "8.2.0",
+    "exit_code": 0,
+    "errors": 0,
+    "baseline_or_suppression": false
+  },
+  "tested_file_sha256": {
+    "Classes/HttpGuard/Transport/SingleUseCurlFactory.php": "dee0706a82d70409ee4f726b8d663e74ca9b8371ad465e86095c35f798104e86",
+    "Classes/HttpGuard/Transport/TransferLease.php": "c810dc02ebcb3cb6db726845ca27d0605da9f3b49c55a868919a533165f209a0",
+    "Tests/HttpGuard/Unit/Transport/SingleUseCurlFactoryTest.php": "96bf263c3f490326a3a505b94a629ac3974537bfb87c27b4cfb33050b674213a",
+    "Tests/HttpGuard/Integration/ProductionTransportTest.php": "1442b53f61935d1e45d0b85924694ab1fc3441c0a72124ccf947b8154f313a0c"
+  },
+  "limits": [
+    "Targeted control proves real native handle allocation and public hidden retry behavior, not network contacts.",
+    "Full current minimum/latest Core and transport suites are owned and recorded separately.",
+    "Future-version metadata tests do not constitute execution of an unreleased dependency."
+  ],
+  "source_bindings_scope": "Digests bind the targeted factory handoff. Subsequent TransferLease profile corrections and final combined full suites are recorded separately."
+}

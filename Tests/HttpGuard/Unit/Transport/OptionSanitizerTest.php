@@ -217,4 +217,21 @@ final class OptionSanitizerTest extends TestCase
             }
         }
     }
+    public function testNumericEnvironmentNamesDoNotBreakProxyDetection(): void
+    {
+        $name = '314159';
+        $original = getenv($name, true);
+        try {
+            self::assertTrue(putenv($name . '=synthetic numeric-name witness'));
+            self::assertArrayHasKey(314159, getenv(null, true));
+            self::assertSame([], OptionSanitizer::processProxyNames());
+            self::assertTrue(putenv('hTtP_pRoXy=http://synthetic-proxy:8080'));
+            self::assertSame(
+                ['hTtP_pRoXy'],
+                OptionSanitizer::processProxyNames()
+            );
+        } finally {
+            putenv($original === false ? $name : $name . '=' . $original);
+        }
+    }
 }

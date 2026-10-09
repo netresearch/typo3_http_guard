@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        # Netresearch's maintained reusable workflow contracts follow main.
+        # Third-party actions, including actions/*, remain fully SHA-pinned.
+        'netresearch/.github/.github/workflows/php-ci.yml': ref-pin
+        'netresearch/.github/.github/workflows/lint-workflows.yml': ref-pin
+        'netresearch/.github/.github/workflows/dco.yml': ref-pin
+        'netresearch/.github/.github/workflows/codeql.yml': ref-pin
+        'netresearch/.github/.github/workflows/dependency-review.yml': ref-pin
+        'netresearch/.github/.github/workflows/scorecard.yml': ref-pin
+        'netresearch/.github/.github/workflows/betterleaks.yml': ref-pin
+        'netresearch/.github/.github/workflows/pr-quality.yml': ref-pin
+        'netresearch/typo3-ci-workflows/.github/workflows/docs.yml': ref-pin
+        'netresearch/typo3-ci-workflows/.github/workflows/security.yml': ref-pin
+        '*': hash-pin

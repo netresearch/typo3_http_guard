@@ -1,19 +1,19 @@
-# Prüfungen der einen TYPO3-Extension reproduzieren
+# Reproduce verification of the single TYPO3 extension
 
-Die Produktion besteht aus dem Root-Paket `netresearch/nr-http-guard`.
-`Classes/HttpGuard/` und `Resources/Private/HttpGuard/data/` sind Teil dieser
-Extension. Die minimalen Composer-Projekte in `dependencies/combined-kernel/`
-sind Testfixtures für die drei exakten SDK-Kombinationen und keine separat
-zu installierenden HTTP-Guard-Produkte.
+Production consists of the root package `netresearch/nr-http-guard`.
+`Classes/HttpGuard/` and `Resources/Private/HttpGuard/data/` are part of this
+extension. The minimal Composer projects in `dependencies/combined-kernel/`
+are test fixtures for the three exact SDK combinations, rather than separately
+installable HTTP Guard products.
 
-## Kernelmatrix
+## Kernel matrix
 
-Die tatsächliche Zwölf-Zellen-Matrix ist in
-[evidence/extension-matrix/README.md](evidence/extension-matrix/README.md)
-festgehalten. Jede Kombination aus vier PHP-Versionen und drei exakten SDK-Tupeln
-führt 126 Tests mit 2.180 Assertions ohne übersprungene Fälle aus. Für die
-Reproduktion werden Docker, Composer, Bash, Python, rsync und OpenSSL benötigt.
-Abhängigkeiten werden in einem nativen Linux-Verzeichnis installiert.
+The actual twelve-cell matrix is recorded in
+[evidence/extension-matrix/README.md](evidence/extension-matrix/README.md).
+Each combination of four PHP versions and three exact SDK tuples runs 126 tests
+with 2,180 assertions and no skipped cases. Reproduction requires Docker,
+Composer, Bash, Python, rsync and OpenSSL. Dependencies are installed in a native
+Linux directory.
 
 ```sh
 bash verification/scripts/run-library-matrix.sh \
@@ -22,26 +22,26 @@ bash verification/scripts/run-library-matrix.sh \
   /tmp/nr-http-guard-kernel-evidence
 ```
 
-Der Skriptname ist aus der früheren Paketstruktur erhalten. Das Skript kopiert
-heute den Kern aus der einen Extension, deren Produktionsmanifest und die
-zugehörigen Tests in isolierte Prüfruntimes. Es verändert keine Produktionsquelle.
-Alle PHP-Images sind mit Digest festgehalten. Die Loopback- und IPv6-Prüfungen
-benötigen die dokumentierte native Linux-Netzwerkumgebung.
+The script name is retained from the previous package layout. It now copies the
+core from the single extension, its production manifest and the corresponding
+tests into isolated test runtimes. It changes no production source. All PHP
+images are recorded by digest. The loopback and IPv6 checks require the
+documented native Linux networking environment.
 
-`Tests/HttpGuard/Integration/prepare-wire.sh` betreibt ausschließlich eigene
-synthetische öffentliche/private/IPv6-Testziele. Vor und nach jedem relevanten
-Fall werden native Konstruktion, TCP-Accepts und HTTP-Requests gezählt. Ein
-Fehler allein belegt keine unterbliebene Verbindung. Gleichzeitige Prüfungen
-auf denselben Zählern verfälschen den Nachweis und sind zu vermeiden.
+`Tests/HttpGuard/Integration/prepare-wire.sh` operates only its own synthetic
+public, private and IPv6 test destinations. Native construction, TCP accepts
+and HTTP requests are counted before and after each relevant case. An error
+alone does not prove that no connection occurred. Concurrent tests using the
+same counters invalidate the evidence and must be avoided.
 
-## Gezielte Schutzfehler
+## Targeted protection faults
 
-Alle 18 Mutanten auf dem zusammengeführten Quellstand sind in
-[evidence/extension-mutations/README.md](evidence/extension-mutations/README.md)
-aufgezeichnet. Die sechs Fehler werden für alle drei SDK-Tupel ausschließlich
-in disponiblen Kopien durch das AST-Werkzeug erzeugt. Ein erkannter Mutant muss
-einen fehlgeschlagenen Test sowie einen tatsächlichen zusätzlichen HTTP-Kontakt
-und einen nativen Versuch oder einen umgangenen Leaf-Aufruf nachweisen.
+All 18 mutants against the combined source are recorded in
+[evidence/extension-mutations/README.md](evidence/extension-mutations/README.md).
+The six faults are created for all three SDK tuples exclusively in disposable
+copies using the AST tool. A detected mutant must produce a failing test, an
+actual additional HTTP contact, and either a native attempt or a bypassed leaf
+call.
 
 ```sh
 python3 verification/scripts/run-mutations.py \
@@ -55,21 +55,22 @@ python3 verification/scripts/run-mutations.py \
   --image ghcr.io/typo3/core-testing-php85@sha256:53df750b7e68ccce8da03a03bfe7cb57d732308b932f2ea92b1fd31679626bc6
 ```
 
-## Tatsächliche TYPO3- und Vault-Pfade
+## Actual TYPO3 and Vault paths
 
-`Build/Fixtures/README.md` beschreibt die Composer- und klassischen Core-Fixtures.
-Die klassischen Fixtures verwenden die offiziellen Gesamt-Archive, den echten
-ExtensionManager-Aktivierungsweg und Core-generierte Klassenladeinformationen.
-Sie laden die Sicherheitsklassen aus der entpackten Extension; ein separat
-installiertes HTTP-Guard-Librarypaket ist nicht verfügbar.
+`Build/Fixtures/README.md` describes the Composer and classic Core fixtures.
+The classic fixtures use the official complete archives, the real Extension
+Manager activation path and Core-generated class-loading information. They load
+the security classes from the extracted extension; a separately installed HTTP
+Guard library package is unavailable.
 
-Die optionalen Änderungen unter `integrations/nr-vault/` gehören zum anderen
-Produkt nr-vault. Ihr Patch wird ausschließlich auf dem genannten Ausgangscommit
-nach einer erfolgreichen `git apply --check` angewendet. Seine Adapter-Smokes
-binden die Klassen der zusammengeführten Extension ein; die ausführlichen alten
-Unit/Fuzz/Functional-Nachweise behalten ihren ursprünglichen Quellstand.
+The optional changes under `integrations/nr-vault/` belong to the separate
+nr-vault product. Its patch is applied only to the specified base commit after
+a successful `git apply --check`. Its adapter smoke tests load the classes from
+the combined extension; the detailed older unit, fuzz and functional evidence
+retains its original source revision.
 
-Die originale Acht-Zellen-Matrix und zwölf früheren Mutanten bleiben historische
-Nachweise. `evidence/packaging/source-layout-map.json` im Repository erklärt ihre
-alten Pfade. Der Freigabe-Ledger trennt lokale Ausführung, aktuelle Quellbindung
-und noch ausstehendes menschliches Review, Betreiberpilot und CI-Leistungsabnahme.
+The original eight-cell matrix and twelve earlier mutants remain historical
+evidence. `evidence/packaging/source-layout-map.json` in the repository explains
+their old paths. The acceptance ledger distinguishes local execution, current
+source binding and the outstanding human review, operator pilot and CI
+performance acceptance.

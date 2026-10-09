@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
 declare (strict_types=1);
 namespace Netresearch\HttpGuard;
 
@@ -23,7 +27,7 @@ final class StaticThenDnsResolver implements ResolverInterface
         } catch (PolicyException) {
             throw new PolicyException('resolution_unverified');
         }
-        if (str_contains($host, ':') || preg_match('/^[0-9.]+$/D', $host)) {
+        if (str_contains($host, ':') || preg_match('/^[0-9.]+$/D', $host) === 1) {
             throw new PolicyException('resolution_unverified');
         }
         $settings = $this->config->data['resolver'];
@@ -84,7 +88,7 @@ final class StaticThenDnsResolver implements ResolverInterface
                         } catch (PolicyException) {
                             throw new PolicyException('resolution_unverified');
                         }
-                        if (str_contains($target, ':') || preg_match('/^[0-9.]+$/D', $target)) {
+                        if (str_contains($target, ':') || preg_match('/^[0-9.]+$/D', $target) === 1) {
                             throw new PolicyException('resolution_unverified');
                         }
                         if (isset($aliases[$owner]) && $aliases[$owner]['target'] !== $target) {
@@ -108,7 +112,9 @@ final class StaticThenDnsResolver implements ResolverInterface
                         if (!isset($record[$field]) || !is_string($record[$field])) {
                             throw new PolicyException('resolution_unverified');
                         }
-                        $packed = @inet_pton($record[$field]);
+                        $packed = NativeOperation::attempt(
+                            static fn() => inet_pton($record[$field])
+                        );
                         if ($packed === false || strlen($packed) !== ($record['type'] === 'A' ? 4 : 16)) {
                             throw new PolicyException('resolution_unverified');
                         }

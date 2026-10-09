@@ -1,26 +1,26 @@
 .. _api:
 
-=================
-Clients verwenden
-=================
+=============
+Using clients
+=============
 
-Die öffentlichen Interfaces stehen unter :php:`Netresearch\HttpGuard` und
-werden durch TYPO3-Services bereitgestellt. Anwendungen sollen gebundene
-PSR-18-Clients oder Public Fetch injizieren. Der interne Guzzle-Client und
-sein Fortschritts-/Abbruchtreiber gehören zusammen und bilden keine
-zusätzliche öffentliche Credential-API.
+The public interfaces use the :php:`Netresearch\HttpGuard` namespace and
+are provided through TYPO3 services. Applications should inject bound
+PSR-18 clients or Public Fetch. The internal Guzzle client and its
+progress and cancellation driver belong together; they do not provide
+an additional public credential API.
 
 .. _api-core:
 
-Gewöhnliche Core-Anfragen
-========================
+Ordinary Core requests
+======================
 
-Der registrierte Core-Pfad erhält die öffentliche Standardpolicy. Bereits
-vorhandene unterstützte Core-Middleware und Kontextrestriktionen bleiben
-zusätzlich wirksam. Ein gewöhnlicher Aufruf kann beispielsweise so aussehen:
+The registered Core path uses the public default policy. Existing
+supported Core middleware and context restrictions remain effective
+in addition. An ordinary call can look like this:
 
 .. code-block:: php
-    :caption: Öffentlicher Abruf mit TYPO3 RequestFactory
+    :caption: Public retrieval with TYPO3 RequestFactory
 
     $response = $requestFactory->request(
         'https://www.example.org/document.json',
@@ -28,39 +28,38 @@ zusätzlich wirksam. Ein gewöhnlicher Aufruf kann beispielsweise so aussehen:
         ['timeout' => 10, 'http_errors' => false],
     );
 
-:php:`$requestFactory` ist ein injizierter
-:php:`TYPO3\CMS\Core\Http\RequestFactory`. Für öffentliche Inhalte aus
-unvertrauenswürdigen URLs ist :ref:`api-public-fetch` die engere API.
-RequestFactory-Anfragen übernehmen durch ein konfiguriertes Endpoint-Profil
-keine internen Rechte.
+:php:`$requestFactory` is an injected
+:php:`TYPO3\CMS\Core\Http\RequestFactory`. For public content from
+untrusted URLs, :ref:`api-public-fetch` provides a narrower API.
+Configuring an endpoint profile does not grant internal access to
+RequestFactory requests.
 
 .. _api-endpoint:
 
-Gebundene Integrationsclients
-=============================
+Bound integration clients
+=========================
 
 .. php:class:: Netresearch\HttpGuard\EndpointClientFactoryInterface
 
     .. php:method:: forEndpoint(string $configuredEndpointId)
         :returntype: Psr\Http\Client\ClientInterface
 
-        Erzeugt einen Client mit einem konfigurierten Endpoint-Profil.
-        Unbekannte, fremde oder abgelaufene Bindungen werden abgelehnt.
+        Creates a client bound to a configured endpoint profile.
+        Unknown, foreign or expired bindings are rejected.
 
-Die Profil-ID steht im vertrauenswürdigen Servicecode oder dessen
-Dependency-Injection-Konfiguration. Sie wird nicht aus der jeweiligen
-Benutzeranfrage übernommen. Das folgende Beispiel verwendet das Profil
-aus :ref:`configuration-example`:
+The profile ID belongs in trusted service code or dependency injection
+configuration. It is not taken from the current user request. The
+following example uses the profile from :ref:`configuration-example`:
 
 .. literalinclude:: _ErpClient.php
     :language: php
-    :caption: Classes/Service/ErpClient.php im Sitepackage
+    :caption: Classes/Service/ErpClient.php in a sitepackage
 
-Der Client prüft Origin, Methode und alle aufgelösten Adressen bei jedem
-Versand. PSR-18 :php:`sendRequest()` folgt keinem Redirect und gibt auch
-HTTP-Fehlerantworten wie 404 oder 500 als Response zurück. Netzwerkfehler
-und Policyablehnungen bleiben Exceptions. Ein Policyfehler darf nicht durch
-einen ungeschützten Ersatzclient umgangen werden.
+The client checks the origin, method and all resolved addresses on
+every send. PSR-18 :php:`sendRequest()` does not follow redirects and
+returns HTTP error responses such as 404 or 500 as response objects.
+Network errors and policy denials remain exceptions. Never bypass a
+policy error with an unprotected replacement client.
 
 .. _api-public-fetch:
 
@@ -72,101 +71,102 @@ Public Fetch
     .. php:method:: fetch(Psr\Http\Message\UriInterface $uri, string $method = 'GET')
         :returntype: Psr\Http\Message\ResponseInterface
 
-        Akzeptiert ausschließlich GET oder HEAD und baut einen eigenen
-        öffentlichen Request ohne geerbte Zugangsdaten oder Body auf.
+        Accepts only GET or HEAD and creates its own public request
+        without inherited credentials or a body.
 
-Public Fetch übernimmt keine Authentifizierung, Cookies, Clientzertifikate,
-SSL-Keys, benutzerdefinierte Headers, Bodies oder Query-Defaults eines
-anderen Clients. Seine feste Headerliste besteht aus :literal:`Accept`,
-:literal:`Accept-Encoding` und :literal:`User-Agent`. Die Query einer
-zulässigen Ziel-URI bleibt Bestandteil dieser URI; sie wird nicht geloggt.
-Erlaubte öffentliche Redirects können eine andere Origin erreichen, ohne
-dass Geheimnisse eines ursprünglichen Integrationsrequests mitwandern.
+Public Fetch does not inherit authentication, cookies, client certificates,
+SSL keys, custom headers, bodies or query defaults from another client.
+Its fixed header list consists of :literal:`Accept`,
+:literal:`Accept-Encoding` and :literal:`User-Agent`. The query of an
+accepted target URI remains part of that URI and is not logged.
+Permitted public redirects can reach another origin without forwarding
+the secrets of an original integration request.
 
 .. literalinclude:: _PublicDocument.php
     :language: php
-    :caption: Roh-URL vor Erstellung eines PSR-7-Objekts prüfen
+    :caption: Validate the raw URL before constructing a PSR-7 object
 
-Für einen Benutzerabruf wird keine Endpoint-ID akzeptiert. Private Ziele
-bleiben auch dann gesperrt, wenn das Projekt ein gleichnamiges internes
-Endpoint-Profil besitzt.
+No endpoint ID is accepted for a user-driven fetch. Private targets
+remain blocked even when the project has an internal endpoint profile
+with the same hostname.
 
 .. _api-raw-uri:
 
-Roh-URLs und PSR-7
+Raw URLs and PSR-7
 =================
 
-:php:`TargetNormalizer::assertRawUri(string $uri)` prüft verbotene Syntax,
-solange die unveränderte Zeichenkette vorhanden ist. Fragmente einschließlich
-eines leeren :literal:`#`, Backslashes, Steuerzeichen und ungültige rohe
-Schreibweisen sind vor der URI-Erstellung abzulehnen.
+:php:`TargetNormalizer::assertRawUri(string $uri)` checks forbidden syntax
+while the original string is still available. Reject fragments,
+including an empty :literal:`#`, backslashes, control characters and
+invalid raw forms before constructing a URI object.
 
-Ein PSR-7-URI-Objekt kann ein leeres Fragmentkennzeichen bereits verworfen
-oder Eingaben kodiert haben. Ein späterer PSR-18-Client kann diese Information
-nicht rekonstruieren. Deshalb prüft der TYPO3-RequestFactory-Adapter rohe
-Strings vor Guzzle. Eigene PSR-18-Anwendungen prüfen die ursprüngliche URL
-selbst, wie im Public-Fetch-Beispiel. Diese Grenze gilt auch für rohe
-Vault-Resource-URLs vor Erstellung eines RequestInterface-Objekts.
+A PSR-7 URI object may already have discarded an empty fragment marker
+or encoded input. A later PSR-18 client cannot reconstruct that
+information. The TYPO3 RequestFactory adapter therefore checks raw
+strings before Guzzle. Custom PSR-18 applications validate the original
+URL themselves, as shown in the Public Fetch example. The same boundary
+applies to raw Vault resource URLs before constructing a
+RequestInterface object.
 
 .. _api-errors:
 
-Policyfehler behandeln
-=====================
+Handling policy errors
+======================
 
-:php:`PolicyException` implementiert
-:php:`OutboundPolicyExceptionInterface`. Die Methode :php:`reasonCode()`
-liefert einen stabilen Code aus :ref:`operations-reasons`. Exceptiontexte
-enthalten keine URL, Zugangsdaten oder Request-Bodies. Anwendungen können
-den Code für eine verständliche Fehlermeldung verwenden; Geheimnisse oder
-vollständige Requests gehören nicht in einen ergänzenden Fehlerlog.
+:php:`PolicyException` implements
+:php:`OutboundPolicyExceptionInterface`. Its :php:`reasonCode()` method
+returns a stable code from :ref:`operations-reasons`. Exception messages
+contain no URLs, credentials or request bodies. Applications can use
+the code for an understandable error message; do not include secrets
+or complete requests in supplementary error logs.
 
 .. _api-sdk-options:
 
-SDK-Optionen und Streaming
+SDK options and streaming
 =========================
 
-Im kontrollierten RequestFactory-/SDK-Pfad bleiben reguläre Request-Bodies,
-Headers und unterstützte Authentifizierung wirksam. :literal:`timeout` und
-:literal:`connect_timeout` akzeptieren endliche nicht negative Zahlen,
-einschließlich null. :literal:`verify` akzeptiert Boolean oder ein lesbares
-CA-Bundle, unter Beachtung der TLS-Policy. Lesbare Clientzertifikate und
-SSL-Keys ermöglichen mTLS. :literal:`sink` kann in einen Dateipfad, eine
-Resource oder einen PSR-7-Stream schreiben, ohne eine zweite eigene
-Responsekopie im Guard anzulegen.
+Ordinary request bodies, headers and supported authentication remain
+available in the controlled RequestFactory and SDK path.
+:literal:`timeout` and :literal:`connect_timeout` accept finite,
+non-negative numbers, including zero. :literal:`verify` accepts a
+boolean or a readable CA bundle, subject to the TLS policy. Readable
+client certificates and SSL keys enable mTLS. :literal:`sink` can
+write to a file path, resource or PSR-7 stream without creating an
+additional response copy inside the guard.
 
-Unterstützte Callbacks wie :literal:`on_headers`, :literal:`on_stats` und
-:literal:`progress` bleiben erhalten; ihre Exceptions beenden den
-zugehörigen Transfer. HTTP 1.0, 1.1 und 2 sind qualifiziert, HTTP/3 nicht.
-Die entsprechende IP-Familienoption kann ausschließlich :literal:`v4` oder
-:literal:`v6` wählen und erweitert keine Adressfreigabe.
+Supported callbacks such as :literal:`on_headers`, :literal:`on_stats`
+and :literal:`progress` remain available; exceptions terminate the
+associated transfer. HTTP 1.0, 1.1 and 2 are qualified; HTTP/3 is not.
+The IP-family option can select only :literal:`v4` or :literal:`v6`
+and does not expand address permissions.
 
-Rohe :literal:`curl`-/cURL-multi-Optionen, :literal:`stream_context`,
-Unix-Sockets, Proxy-Routen, eigene Handler, Transport-Sharing,
-verzögerter Transportversand, Debug-Dumps, unbekannte Optionen und
-:literal:`stream=true` werden im geschützten Pfad abgelehnt. Eine
-Response-Sink-Datei ist kein alternativer Stream-HTTP-Handler.
-Guzzle-intern erzeugte und quellgeprüfte Digest-/NTLM-Steuerung unter
-Guzzle 7 ist von beliebigen rohen cURL-Optionen unterschieden.
+Raw :literal:`curl` or cURL-multi options, :literal:`stream_context`,
+Unix sockets, proxy routes, custom handlers, transport sharing,
+delayed transport sends, debug dumps, unknown options and
+:literal:`stream=true` are rejected in the protected path. A response
+sink file does not provide an alternative stream HTTP handler.
+Guzzle-internal Digest and NTLM control options, inspected at source
+level for Guzzle 7, are distinguished from arbitrary raw cURL options.
 
-Abbruch und inkrementelles Streaming benötigen einen Adapter, der den
-zugehörigen internen Fortschrittstreiber verwendet. Der nr-vault-Adapter
-tut dies für seine bestehenden APIs; ein beliebiger zurückgegebener
-Guzzle-Client allein garantiert diese Lebensdauerbindung nicht.
+Cancellation and incremental streaming require an adapter that uses
+the associated internal progress driver. The nr-vault adapter does
+this for its existing APIs. Returning an arbitrary Guzzle client
+alone does not guarantee that lifecycle binding.
 
 .. _api-vault:
 
-Optionale nr-vault-Migration
-===========================
+Optional nr-vault migration
+==========================
 
-Die Extension liest keine Vault-Secrets und übernimmt Vault nicht
-automatisch. Der getrennte Adapterpatch ist für den aufgezeichneten
-nr-vault-Quellstand vorgesehen und muss bewusst integriert werden.
-Resource- und OAuth-Token-Origin benötigen eigene gebundene Clients und
-gegebenenfalls eigene Profile. Eine private Token-Origin erbt weder eine
-öffentliche Resource-Freigabe noch umgekehrt.
+The extension does not read Vault secrets or automatically integrate
+Vault. The separate adapter patch targets the recorded nr-vault
+source revision and must be integrated deliberately. Resource and
+OAuth token origins require their own bound clients and, where
+needed, their own profiles. A private token origin does not inherit
+a public resource permission, or vice versa.
 
-Secret-Abruf, Audit, Maskierung, Größenlimits und Vaults bestehende
-Cancel-/Streaming-Semantik bleiben Aufgaben des Vault-Adapters. Dessen
-konkrete Migration und Patchanwendung stehen im optionalen Quellpaket unter
-:file:`integrations/nr-vault/`. Dies ist keine Voraussetzung für den Betrieb
-des regulären TYPO3-RequestFactory-Schutzes.
+Secret retrieval, auditing, masking, size limits and Vault's existing
+cancellation and streaming semantics remain the adapter's responsibility.
+The migration and patch instructions are in the optional source
+package under :file:`integrations/nr-vault/`. They are not required
+for ordinary TYPO3 RequestFactory protection.

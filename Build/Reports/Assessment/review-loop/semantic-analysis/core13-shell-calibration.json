@@ -1,0 +1,123 @@
+{
+  "analysis_file": "Build/phpstan-bootstrap13.php",
+  "source_digest": "769609e46fa45421bb370ae18d82c1cb91f78467ddcdd7d8a01e13e939d04eec",
+  "scope": "synthetic analysis shell selection and ABI probes; not future upstream qualification",
+  "original_version_gate": [
+    {
+      "version": "13.4.36",
+      "readonly_parent": false,
+      "expected_accept": true,
+      "actual_accept": true,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "version": "13.4.37",
+      "readonly_parent": false,
+      "expected_accept": true,
+      "actual_accept": false,
+      "exit": 255,
+      "verdict": "FAIL"
+    },
+    {
+      "version": "13.5.0",
+      "readonly_parent": false,
+      "expected_accept": true,
+      "actual_accept": false,
+      "exit": 255,
+      "verdict": "FAIL"
+    },
+    {
+      "version": "13.4.35",
+      "readonly_parent": false,
+      "expected_accept": false,
+      "actual_accept": false,
+      "exit": 255,
+      "verdict": "PASS"
+    },
+    {
+      "version": "14.3.8",
+      "readonly_parent": false,
+      "expected_accept": false,
+      "actual_accept": false,
+      "exit": 255,
+      "verdict": "PASS"
+    },
+    {
+      "version": "13.4.37",
+      "readonly_parent": true,
+      "expected_accept": false,
+      "actual_accept": false,
+      "exit": 255,
+      "verdict": "PASS"
+    }
+  ],
+  "intermediate_unvalidated_reference_drift_exit": 139,
+  "final": [
+    {
+      "version": "13.4.36",
+      "parent": "mutable",
+      "expected_accept": true,
+      "actual_accept": true,
+      "controlled_rejection": false,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "version": "13.4.37",
+      "parent": "mutable",
+      "expected_accept": true,
+      "actual_accept": true,
+      "controlled_rejection": false,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "version": "13.5.0",
+      "parent": "mutable",
+      "expected_accept": true,
+      "actual_accept": true,
+      "controlled_rejection": false,
+      "exit": 0,
+      "verdict": "PASS"
+    },
+    {
+      "version": "13.4.35",
+      "parent": "mutable",
+      "expected_accept": false,
+      "actual_accept": false,
+      "controlled_rejection": true,
+      "exit": 42,
+      "verdict": "PASS"
+    },
+    {
+      "version": "14.3.8",
+      "parent": "mutable",
+      "expected_accept": false,
+      "actual_accept": false,
+      "controlled_rejection": true,
+      "exit": 42,
+      "verdict": "PASS"
+    },
+    {
+      "version": "13.4.37",
+      "parent": "readonly",
+      "expected_accept": false,
+      "actual_accept": false,
+      "controlled_rejection": true,
+      "exit": 42,
+      "verdict": "PASS"
+    },
+    {
+      "version": "13.4.37",
+      "parent": "reference",
+      "expected_accept": false,
+      "actual_accept": false,
+      "controlled_rejection": true,
+      "exit": 42,
+      "verdict": "PASS"
+    }
+  ],
+  "uses_canonical_runtime_version_and_abi_guard": true,
+  "packaged_archive_changed": false
+}

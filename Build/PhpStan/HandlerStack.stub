@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ */
+namespace GuzzleHttp;
+
+/**
+ * Supplies the handler template missing from qualified Guzzle 7 metadata.
+ * Method and property contracts continue to come from the installed SDK.
+ *
+ * @template THandler
+ * @final
+ */
+class HandlerStack
+{
+}

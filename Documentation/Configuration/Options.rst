@@ -1,48 +1,48 @@
 .. _configuration-options:
 
-===================
-Allgemeine Optionen
-===================
+===============
+General options
+===============
 
-Alle Werte sind relativ zu :literal:`EXTCONF.nr_http_guard` angegeben.
-Fehlende Felder erhalten die unten genannten Defaults.
+All paths are relative to :literal:`EXTCONF.nr_http_guard`.
+Missing fields use the defaults below.
 
 .. _configuration-mode:
 
-Modus und Adressen
+Mode and addresses
 ==================
 
 .. confval:: schemaVersion
     :type: integer
     :default: 1
 
-    Nur Schema 1 wird akzeptiert.
+    Only schema version 1 is accepted.
 
 .. confval:: mode
     :type: string
     :default: 'enforce'
 
-    :literal:`enforce` kontrolliert den Transport und blockiert Ablehnungen.
-    :literal:`observe` bewertet und protokolliert, blockiert jedoch keine
-    zusätzlichen Anfragen und liefert keine überprüfte Transportbindung.
-    :literal:`disabled` deaktiviert die zusätzliche Kontrolle. Der Modus
-    wechselt bei Fehlern niemals automatisch. Bestehende Core-/Vault-Prüfungen
-    bleiben im jeweiligen Adapter wirksam.
+    :literal:`enforce` controls the transport and blocks denied requests.
+    :literal:`observe` evaluates and reports decisions but does not block
+    additional requests or provide verified transport binding.
+    :literal:`disabled` disables the additional protection. The mode never
+    changes automatically on error. Existing Core or Vault checks remain
+    effective in their respective adapter.
 
 .. confval:: deniedCidrs
     :type: list<string>
     :default: []
 
-    Zusätzliche Betreiber-Sperren für IPv4 oder IPv6. Diese Netze werden auch
-    mit gültigem Endpoint-Profil nicht freigegeben. Ein leerer Wert entfernt
-    keine mitgelieferte Sperre. IPv4-mapped IPv6-CIDRs werden nicht akzeptiert;
-    dafür ist die entsprechende IPv4-CIDR zu konfigurieren.
+    Additional operator restrictions for IPv4 or IPv6. These networks
+    remain denied even with a valid endpoint profile. An empty value does
+    not remove built-in restrictions. IPv4-mapped IPv6 CIDRs are not
+    accepted; configure the corresponding IPv4 CIDR instead.
 
 .. confval:: endpoints
     :type: map<string, array>
     :default: []
 
-    Höchstens 128 benannte Profile. Sämtliche Profilfelder stehen unter
+    At most 128 named profiles. All profile fields are documented in
     :ref:`configuration-endpoints`.
 
 .. _configuration-resolver:
@@ -54,101 +54,101 @@ Resolver
     :type: map<string, list<string>>
     :default: []
 
-    Exakte kanonische Hostnamen mit vollständiger, nicht leerer IP-Liste.
-    Keine Wildcards, IP-Hosts als Schlüssel oder Betriebssystem-Suchdomänen.
-    Statische Antworten passieren dieselbe Adress- und Endpoint-Prüfung wie
-    DNS-Antworten. Ein statischer Eintrag erteilt keine eigene Freigabe.
+    Exact canonical hostnames with complete, non-empty IP lists.
+    Wildcards, IP hosts as keys and operating system search domains are
+    forbidden. Static responses pass the same address and endpoint checks
+    as DNS responses. A static entry grants no permission by itself.
 
 .. confval:: resolver.cacheTtlSeconds
     :type: integer
     :default: 5
 
-    Bereich 0 bis 5 Sekunden. Null deaktiviert den DNS-Memo-Cache. Verwendet
-    wird höchstens die kleinste verbleibende TTL der vollständigen Antwort
-    und CNAME-Kette. Negative oder unvollständige Antworten werden nicht
-    positiv zwischengespeichert.
+    Range: 0 to 5 seconds. Zero disables DNS memoization. Entries never
+    exceed the smallest remaining TTL in the complete response and CNAME
+    chain. Negative or incomplete responses are not cached as positive
+    results.
 
 .. confval:: resolver.cacheMaxHosts
     :type: integer
     :default: 32
 
-    Bereich 1 bis 1024. Obergrenze positiver Hosteinträge je Resolverinstanz.
-    Bei vollem Cache wird der älteste Eintrag entfernt.
+    Range: 1 to 1024. Maximum positive host entries per resolver instance.
+    When the cache is full, its oldest entry is evicted.
 
 .. confval:: resolver.maxAddresses
     :type: integer
     :default: 64
 
-    Bereich 1 bis 64. Eine größere Antwort wird insgesamt abgelehnt und nicht
-    auf die ersten erlaubten Kandidaten gekürzt.
+    Range: 1 to 64. Larger responses are rejected in full rather than
+    truncated to their first permitted candidates.
 
 .. confval:: resolver.maxCnameHops
     :type: integer
     :default: 8
 
-    Bereich 0 bis 8. Zyklen und längere Ketten werden abgelehnt. Null verbietet
-    das Folgen einer CNAME-Weiterleitung.
+    Range: 0 to 8. Cycles and longer chains are rejected. Zero prohibits
+    following a CNAME redirect.
 
 .. _configuration-redirect-tls:
 
-Redirects und TLS
+Redirects and TLS
 =================
 
 .. confval:: redirects.max
     :type: integer
     :default: 5
 
-    Bereich 0 bis 10. Obergrenze für die unterstützten Redirect-Pfade.
-    Endpoint-Profile können Redirects zusätzlich ganz verbieten. PSR-18
-    :php:`sendRequest()` folgt unabhängig davon keinem Redirect.
+    Range: 0 to 10. Upper limit for supported redirect paths. Endpoint
+    profiles may additionally forbid redirects entirely. PSR-18
+    :php:`sendRequest()` never follows redirects, regardless of this value.
 
 .. confval:: tls.requireVerification
     :type: boolean
     :default: false
 
-    Bei :literal:`true` darf der aufrufende Client TLS-Verifikation nicht
-    abschalten. Der Default :literal:`false` schaltet TLS-Verifikation nicht
-    selbst aus: Der Transport verwendet normalerweise :literal:`verify=true`,
-    lässt aber die ausdrücklich konfigurierte SDK-Option
-    :literal:`verify=false` zu. :literal:`doctor` meldet den fehlenden
-    Policy-Zwang als Warnung. Für interne HTTPS-Ziele ein korrektes CA-Bundle
-    und :literal:`requireVerification=true` verwenden.
+    With :literal:`true`, callers cannot disable TLS verification.
+    The default :literal:`false` does not disable verification itself:
+    the transport normally uses :literal:`verify=true`, but permits an
+    explicitly configured :literal:`verify=false` SDK option.
+    :literal:`doctor` warns when policy does not require verification.
+    For internal HTTPS targets, use an appropriate CA bundle and
+    :literal:`requireVerification=true`.
 
 .. _configuration-logging:
 
-Protokollierung
-===============
+Logging
+=======
 
 .. confval:: logging.allowedSampleRate
     :type: integer|float
     :default: 0
 
-    Endliche Zahl zwischen 0 und 1. Anteil protokollierter erlaubter
-    Entscheidungen; null Prozent ist der Default. Ablehnungszähler bleiben
-    auch bei gedrosselten Logereignissen erhalten.
+    A finite number from 0 to 1. Fraction of allowed decisions to log;
+    the default is zero percent. Denial counters remain available even
+    when log events are rate limited.
 
 .. confval:: logging.hostMode
     :type: string
     :default: 'hash'
 
-    :literal:`hash` pseudonymisiert den Host mit dem konfigurierten HMAC-Key.
-    Ohne Key wird der Host weggelassen. :literal:`plain` protokolliert den
-    kanonischen Host im Klartext und ist eine bewusste Betreiberentscheidung.
-    Pfad, Query und vollständige URL werden in beiden Modi nicht protokolliert.
+    :literal:`hash` pseudonymizes the host using the configured HMAC key.
+    Without a key, the host is omitted. :literal:`plain` logs the canonical
+    host in clear text and is an explicit operator choice. Paths, queries
+    and complete URLs are omitted in both modes.
 
 .. confval:: logging.hostHmacKeyEnv
     :type: string|null
     :default: null
 
-    Name einer echten Prozess-Umgebungsvariable, die den HMAC-Key enthält.
-    Der Variablenname besteht aus ASCII-Buchstaben, Ziffern und Unterstrich,
-    beginnt mit Buchstabe oder Unterstrich und hat höchstens 128 Zeichen.
-    Der Key selbst gehört nicht in das Policyarray oder einen Request.
+    Name of a real process environment variable containing the HMAC key.
+    The name uses ASCII letters, digits and underscores, starts with a
+    letter or underscore, and contains at most 128 characters.
+    The key itself must not be part of a policy array or request.
 
 .. confval:: logging.denyRateLimitPerMinute
     :type: integer
     :default: 60
 
-    Bereich 1 bis 10000. Drosselt Ablehnungsereignisse für Logs,
-    nicht die Durchsetzung der Policy. Das Ereignisformat steht unter
+    Range: 1 to 10000. Rate limits denial log events, never policy
+    enforcement. The event format is documented in
     :ref:`operations-logging`.
