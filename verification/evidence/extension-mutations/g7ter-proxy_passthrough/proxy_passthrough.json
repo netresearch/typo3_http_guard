@@ -1,0 +1,43 @@
+{
+    "case": "proxy_passthrough",
+    "outcome": "policy_denied",
+    "reason": "transport_unsupported",
+    "response_label": null,
+    "resolver_calls": 1,
+    "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+    },
+    "leaf_calls": 0,
+    "before": {
+        "public-a": {
+            "tcp": 829,
+            "http": 829
+        },
+        "public-b": {
+            "tcp": 79,
+            "http": 79
+        },
+        "private": {
+            "tcp": 93,
+            "http": 93
+        }
+    },
+    "after": {
+        "public-a": {
+            "tcp": 829,
+            "http": 829
+        },
+        "public-b": {
+            "tcp": 80,
+            "http": 80
+        },
+        "private": {
+            "tcp": 93,
+            "http": 93
+        }
+    }
+}

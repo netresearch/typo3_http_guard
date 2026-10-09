@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
+         bootstrap="../Tests/HttpGuard/bootstrap.php" colors="true"
+         cacheDirectory="../.phpunit-http-guard.cache" failOnWarning="true">
+    <testsuites>
+        <testsuite name="HttpGuard">
+            <directory>../Tests/HttpGuard/Unit</directory>
+            <directory>../Tests/HttpGuard/Integration</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include><directory>../Classes/HttpGuard</directory></include>
+    </source>
+</phpunit>

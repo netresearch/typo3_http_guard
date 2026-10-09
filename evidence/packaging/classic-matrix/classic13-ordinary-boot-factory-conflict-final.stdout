@@ -1,0 +1,9 @@
+{
+    "status": "FAIL",
+    "fixture": "/tmp/http-guard-kan-8VPVrN/packaging/classic13",
+    "class": "Netresearch\\HttpGuard\\PolicyException",
+    "reasonCode": "configuration_invalid",
+    "error": "Outbound HTTP policy: configuration_invalid",
+    "trace": "#0 /tmp/http-guard-kan-8VPVrN/packaging/classic13/typo3conf/ext/nr_http_guard/Classes/Http/MiddlewareRegistry.php(26): Netresearch\\NrHttpGuard\\Http\\RawRequestFactoryRegistration->assertValid()\n#1 /tmp/http-guard-kan-8VPVrN/packaging/classic13/typo3conf/ext/nr_http_guard/Classes/EventListener/RegisterGuardListener.php(19): Netresearch\\NrHttpGuard\\Http\\MiddlewareRegistry->register()\n#2 /tmp/http-guard-kan-8VPVrN/packaging/typo3_src-13.4.35/typo3/sysext/core/Classes/EventDispatcher/EventDispatcher.php(49): Netresearch\\NrHttpGuard\\EventListener\\RegisterGuardListener->__invoke()\n#3 /tmp/http-guard-kan-8VPVrN/packaging/typo3_src-13.4.35/typo3/sysext/adminpanel/Classes/Service/EventDispatcher.php(40): TYPO3\\CMS\\Core\\EventDispatcher\\EventDispatcher->dispatch()\n#4 /tmp/http-guard-kan-8VPVrN/packaging/typo3_src-13.4.35/typo3/sysext/core/Classes/Core/Bootstrap.php(157): TYPO3\\CMS\\Adminpanel\\Service\\EventDispatcher->dispatch()\n#5 /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/Tests/Integration/production-bootstrap.php(81): TYPO3\\CMS\\Core\\Core\\Bootstrap::init()\n#6 {main}",
+    "checks": []
+}

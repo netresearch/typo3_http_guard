@@ -1,0 +1,36 @@
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+
+1 file with changes
+===================
+
+1) Tests/Fixtures/HttpGuardBootstrap.php:13
+
+    ---------- begin diff ----------
+@@ Line 13 @@
+             if (!str_starts_with($class, $prefix)) {
+                 return;
+             }
++
+             $path = $guardExtensionSource . '/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
+             if (is_file($path)) {
+                 require_once $path;
+    ----------- end diff -----------
+
+Applied rules:
+ * NewlineAfterStatementRector
+
+
+ [OK] 1 file would have been changed (dry-run) by Rector                        
+
+
+###########################################################################
+Result of rector
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+FAILURE
+###########################################################################
+

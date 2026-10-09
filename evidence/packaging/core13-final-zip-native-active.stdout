@@ -1,0 +1,90 @@
+{
+    "status": "PASS",
+    "phase": "active",
+    "core": "13.4.35",
+    "composerMode": false,
+    "checks": [
+        {
+            "check": "not_registered_by_core_vendor_composer_Netresearch\\NrHttpGuard\\",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "not_registered_by_core_vendor_composer_Netresearch\\HttpGuard\\",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "actual_classic_environment_without_composer_mode_override",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "actual_core_package_scan_finds_extracted_extension",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "package_is_zip_extraction_without_source_symlink",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "extension_manager_persisted_active_package",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "core_generated_native_autoload_file",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "core_generated_namespace_Netresearch\\NrHttpGuard\\",
+            "status": "PASS",
+            "details": {
+                "paths": [
+                    "/tmp/http-guard-kan-8VPVrN/packaging/classic13/typo3conf/ext/nr_http_guard/Classes"
+                ]
+            }
+        },
+        {
+            "check": "core_generated_namespace_Netresearch\\HttpGuard\\",
+            "status": "PASS",
+            "details": {
+                "paths": [
+                    "/tmp/http-guard-kan-8VPVrN/packaging/classic13/typo3conf/ext/nr_http_guard/Classes/HttpGuard"
+                ]
+            }
+        },
+        {
+            "check": "native_autoloaded_class_from_zip_Netresearch\\NrHttpGuard\\Http\\MiddlewareRegistry",
+            "status": "PASS",
+            "details": {
+                "file": "/tmp/http-guard-kan-8VPVrN/packaging/classic13/typo3conf/ext/nr_http_guard/Classes/Http/MiddlewareRegistry.php"
+            }
+        },
+        {
+            "check": "native_autoloaded_class_from_zip_Netresearch\\HttpGuard\\AddressClassifier",
+            "status": "PASS",
+            "details": {
+                "file": "/tmp/http-guard-kan-8VPVrN/packaging/classic13/typo3conf/ext/nr_http_guard/Classes/HttpGuard/AddressClassifier.php"
+            }
+        },
+        {
+            "check": "one_extension_has_no_private_vendor_or_split_packages",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "official_core_bundled_exact_http_sdk_tuple_supported",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "actual_core_raw_factory_decoration_loaded_natively",
+            "status": "PASS",
+            "details": []
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "reportVersion": 1,
+    "report": "agent",
+    "outcome": "applied",
+    "checks": "none_declared",
+    "checksPassed": null,
+    "checksPassedCount": 0,
+    "checksFailed": [],
+    "verifications": [],
+    "proofExcludes": [
+        "dependencies",
+        "checkToolVersions",
+        "runtime",
+        "environment"
+    ],
+    "files": [
+        {
+            "path": "/tmp/http-guard-kan-8VPVrN/extension-mutations/g8-fallback_enabled/Classes/HttpGuard/Transport/TransferLease.php",
+            "mode": "edit",
+            "changed": true,
+            "editsApplied": 1,
+            "beforeSha256": "6d41ac174436a9366b56b5637507dadcaa94eaaa7ed0701cfc2afef46b9e64ce",
+            "afterSha256": "3396a7d2cfb0d2b71e1c587e072e14140a4ddc7a17e1b583cb2f8a758ed2c2a0",
+            "changedLines": 6,
+            "syntax": "passed",
+            "checks": "none_declared",
+            "checkIds": [],
+            "effects": [
+                {
+                    "replaced": 1,
+                    "operation": "replace_expression"
+                }
+            ],
+            "warnings": [
+                "NOT_CANONICAL: using format-preserving output. Canonical normalization is optional."
+            ],
+            "open": [
+                "NO_CHECKS_DECLARED: this repository declares no verify commands, so nothing tested the result."
+            ]
+        }
+    ]
+}

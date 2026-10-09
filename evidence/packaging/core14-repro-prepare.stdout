@@ -1,0 +1,43 @@
+{
+    "status": "PASS",
+    "phase": "prepare",
+    "core": "14.3.7",
+    "composerMode": false,
+    "checks": [
+        {
+            "check": "not_registered_by_core_vendor_composer_Netresearch\\NrHttpGuard\\",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "not_registered_by_core_vendor_composer_Netresearch\\HttpGuard\\",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "actual_classic_environment_without_composer_mode_override",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "actual_core_package_scan_finds_extracted_extension",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "package_is_zip_extraction_without_source_symlink",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "extension_inactive_before_extension_manager_activation",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "real_core_schema_setup_on_disposable_sqlite",
+            "status": "PASS",
+            "details": []
+        }
+    ]
+}

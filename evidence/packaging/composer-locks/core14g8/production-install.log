@@ -1,0 +1,112 @@
+Composer could not detect the root package (http-guard/production-core14g8) version, defaulting to '1.0.0'. See https://getcomposer.org/root-version
+Loading composer repositories with package information
+Dependency typo3/cms-core is also a root requirement. Package has not been listed as an update argument, so keeping locked at old version. Use --with-all-dependencies (-W) to include root dependencies.
+Dependency guzzlehttp/guzzle is also a root requirement. Package has not been listed as an update argument, so keeping locked at old version. Use --with-all-dependencies (-W) to include root dependencies.
+Updating dependencies
+Lock file operations: 0 installs, 1 update, 1 removal
+  - Removing netresearch/http-guard (dev-main c69f637)
+  - Upgrading netresearch/nr-http-guard (dev-main 1a4aeb0 => dev-main 1b16d9a)
+Writing lock file
+Installing dependencies from lock file (including require-dev)
+Package operations: 88 installs, 0 updates, 0 removals
+    0 [>---------------------------]    0 [->--------------------------]
+  - Installing typo3/cms-composer-installers (v5.0.2): Extracting archive
+  - Installing typo3/class-alias-loader (v2.0.1): Extracting archive
+  - Installing dasprid/enum (1.0.7): Extracting archive
+  - Installing bacon/bacon-qr-code (v3.1.1): Extracting archive
+  - Installing christian-riesen/base32 (2.0.1): Extracting archive
+  - Installing symfony/finder (v7.4.20): Extracting archive
+  - Installing composer/pcre (3.4.0): Extracting archive
+  - Installing composer/class-map-generator (1.8.0): Extracting archive
+  - Installing composer/semver (3.5.1): Extracting archive
+  - Installing doctrine/instantiator (2.1.0): Extracting archive
+  - Installing doctrine/lexer (3.0.3): Extracting archive
+  - Installing enshrined/svg-sanitize (0.22.0): Extracting archive
+  - Installing firebase/php-jwt (v7.2.1): Extracting archive
+  - Installing symfony/polyfill-mbstring (v1.43.0): Extracting archive
+  - Installing lolli42/finediff (1.1.2): Extracting archive
+  - Installing typo3fluid/fluid (5.3.2): Extracting archive
+  - Installing psr/log (3.0.2): Extracting archive
+  - Installing masterminds/html5 (2.11.0): Extracting archive
+  - Installing typo3/html-sanitizer (v2.3.2): Extracting archive
+  - Installing typo3/cms-cli (v3.1.3): Extracting archive
+  - Installing symfony/polyfill-ctype (v1.37.0): Extracting archive
+  - Installing symfony/deprecation-contracts (v3.7.1): Extracting archive
+  - Installing symfony/yaml (v7.4.20): Extracting archive
+  - Installing symfony/polyfill-uuid (v1.43.0): Extracting archive
+  - Installing symfony/uid (v7.4.20): Extracting archive
+  - Installing symfony/translation-contracts (v3.7.1): Extracting archive
+  - Installing symfony/translation (v7.4.17): Extracting archive
+  - Installing symfony/routing (v7.4.20): Extracting archive
+  - Installing symfony/options-resolver (v7.4.8): Extracting archive
+  - Installing symfony/rate-limiter (v7.4.18): Extracting archive
+  - Installing symfony/process (v7.4.19): Extracting archive
+  - Installing symfony/polyfill-php85 (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-php84 (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-php83 (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-intl-normalizer (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-intl-idn (v1.43.0): Extracting archive
+  - Installing symfony/mime (v7.4.19): Extracting archive
+  - Installing psr/clock (1.0.0): Extracting archive
+  - Installing symfony/clock (v8.1.0): Extracting archive
+  - Installing symfony/messenger (v7.4.20): Extracting archive
+  - Installing psr/container (2.0.2): Extracting archive
+  - Installing symfony/service-contracts (v3.7.3): Extracting archive
+  - Installing psr/event-dispatcher (1.0.0): Extracting archive
+  - Installing symfony/event-dispatcher-contracts (v3.7.1): Extracting archive
+  - Installing symfony/event-dispatcher (v8.1.5): Extracting archive
+  - Installing egulias/email-validator (4.0.4): Extracting archive
+  - Installing symfony/mailer (v7.4.19): Extracting archive
+  - Installing symfony/http-foundation (v7.4.20): Extracting archive
+  - Installing symfony/filesystem (v7.4.18): Extracting archive
+  - Installing symfony/polyfill-deepclone (v1.43.1): Extracting archive
+  - Installing symfony/var-exporter (v8.1.6): Extracting archive
+  - Installing psr/cache (3.0.0): Extracting archive
+  - Installing symfony/cache-contracts (v3.7.1): Extracting archive
+  - Installing symfony/cache (v8.1.8): Extracting archive
+  - Installing symfony/expression-language (v7.4.18): Extracting archive
+  - Installing doctrine/deprecations (1.1.6): Extracting archive
+  - Installing doctrine/dbal (4.4.5): Extracting archive
+  - Installing symfony/doctrine-messenger (v7.4.20): Extracting archive
+  - Installing symfony/dependency-injection (v7.4.20): Extracting archive
+  - Installing symfony/polyfill-intl-grapheme (v1.43.0): Extracting archive
+  - Installing symfony/string (v8.1.7): Extracting archive
+  - Installing symfony/console (v7.4.20): Extracting archive
+  - Installing symfony/config (v7.4.17): Extracting archive
+  - Installing psr/http-message (2.0): Extracting archive
+  - Installing psr/http-server-handler (1.0.2): Extracting archive
+  - Installing psr/http-server-middleware (1.0.2): Extracting archive
+  - Installing psr/http-factory (1.1.0): Extracting archive
+  - Installing psr/http-client (1.0.3): Extracting archive
+  - Installing symfony/polyfill-php82 (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-php80 (v1.43.0): Extracting archive
+  - Installing guzzlehttp/psr7 (3.1.0): Extracting archive
+  - Installing guzzlehttp/promises (3.0.2): Extracting archive
+  - Installing guzzlehttp/guzzle (8.2.0): Extracting archive
+  - Installing typo3/cms-core (v14.3.7): Extracting archive
+  - Installing netresearch/nr-http-guard (dev-main 1b16d9a): Symlinking from /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation
+  - Installing webmozart/assert (2.5.0): Extracting archive
+  - Installing phpstan/phpdoc-parser (2.3.6): Extracting archive
+  - Installing phpdocumentor/reflection-common (2.2.1): Extracting archive
+  - Installing phpdocumentor/type-resolver (2.1.0): Extracting archive
+  - Installing phpdocumentor/reflection-docblock (6.0.3): Extracting archive
+  - Installing symfony/type-info (v8.1.8): Extracting archive
+  - Installing symfony/property-info (v7.4.20): Extracting archive
+  - Installing symfony/property-access (v7.4.16): Extracting archive
+  - Installing symfony/validator (v7.4.20): Extracting archive
+  - Installing typo3/cms-backend (v14.3.7): Extracting archive
+  - Installing typo3/cms-extbase (v14.3.7): Extracting archive
+  - Installing typo3/cms-fluid (v14.3.7): Extracting archive
+  - Installing typo3/cms-frontend (v14.3.7): Extracting archive
+  0/85 [>---------------------------]   0%
+ 59/85 [===================>--------]  69%
+ 83/85 [===========================>]  97%
+ 85/85 [============================] 100%
+Generating autoload files
+Generating class alias map file
+Publishing assets from extensions…
+done.
+59 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+Found 3 ignored security vulnerability advisories affecting 1 package.
+Run "composer audit" for a full list of advisories.

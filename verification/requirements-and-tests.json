@@ -13,9 +13,10 @@
     "statuses": "verified_scenarios means listed current observed scenarios; partial/pending rows preserve exact missing evidence, and release gates separately apply.",
     "legacy_baseline": "Vault 534/2132 +28/287 pre-adapter tests preserve old behavior; new adapter-specific functional suite is separately recorded.",
     "raw_uri": "Raw preconstruction seam and already-parsed PSR18 information-loss boundary are distinct; no claim that standard PSR18 reconstructs erased syntax.",
-    "delivery_paths": "All evidence/source references are relative to the delivery root; ::method and :line suffixes are source locators.",
-    "current_policy": "Final portable own policy suite41/1018 on both majors; historical data/security-corpus policy-final41/1014 evidence retains its original test hashes. Full eight-tuple suite122/2167 includes the current portable fixture.",
-    "p0": "All74 P0 scenario rows have verified current component evidence; G5/G6/AP10 and P1T079 remain separate release conditions."
+    "delivery_paths": "Current source locators follow the single-extension layout. Historical immutable runtime manifests retain their original paths and hashes; source-layout-map.json identifies the relocation without rewriting historical evidence.",
+    "current_policy": "Embedded kernel current policy41/1018; twelve PHP/SDK cells126/2180 with zero skips. Original historical manifests keep their actual source snapshots. Production contains one extension, and kernel-only dependency projects are test fixtures.",
+    "p0": "All74 P0 scenario rows have verified current component evidence; G5/G6/AP10 and P1T079 remain separate release conditions.",
+    "current_packaging": "252 current Core matrix processes (168 Composer +84 genuine classic) with210 wire assertions; final ZIP reimports add70 separately.18 targeted mutants on all three SDK tuples; Vault targeted packaging suites19/249+19/250 preserve unchanged production PHP, historic full suites are not presented as reruns."
   },
   "gates": [
     {
@@ -39,7 +40,8 @@
         "verification/evidence/library-matrix/php84g8.results.junit.xml",
         "verification/evidence/library-matrix/php85g7.results.junit.xml",
         "verification/evidence/library-matrix/php85g8.results.junit.xml",
-        "verification/evidence/library-matrix/summary.json"
+        "verification/evidence/library-matrix/summary.json",
+        "verification/evidence/extension-matrix/summary.json"
       ]
     },
     {
@@ -47,7 +49,8 @@
       "status": "passed",
       "evidence": [
         "evidence/transport/mutations/summary.json",
-        "evidence/transport/mutations/production-source-hashes.json"
+        "evidence/transport/mutations/production-source-hashes.json",
+        "verification/evidence/extension-mutations/summary.json"
       ],
       "remaining": "All 12 targeted experiments killed; no surviving mutant."
     },
@@ -56,7 +59,8 @@
       "status": "passed_current_component_integrations",
       "evidence": [
         "evidence/typo3-integration/production-matrix-summary.json",
-        "integrations/nr-vault/EVIDENCE.md"
+        "integrations/nr-vault/EVIDENCE.md",
+        "evidence/packaging/packaging-summary.json"
       ],
       "remaining": "None within recorded actual integration tuples; exact supported/runtime limitations are in their reports."
     },
@@ -64,7 +68,8 @@
       "id": "G4",
       "status": "passed_synthetic_diagnostics",
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "remaining": "Real operator rollout acceptance remains AP-10; all final diagnostic fixture processes pass."
     },
@@ -104,13 +109,14 @@
         "line": 23
       },
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Actual Core bootstrap/RequestFactory in all four Core/Guzzle combinations; registry order, preserved project middleware, late/duplicate/object registry rejection and cumulative Core/origin rewrite failures before wire.",
       "remaining": ""
@@ -129,13 +135,14 @@
         "line": 24
       },
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Actual Core bootstrap/RequestFactory in all four Core/Guzzle combinations; registry order, preserved project middleware, late/duplicate/object registry rejection and cumulative Core/origin rewrite failures before wire.",
       "remaining": ""
@@ -154,13 +161,14 @@
         "line": 25
       },
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Actual Core bootstrap/RequestFactory in all four Core/Guzzle combinations; registry order, preserved project middleware, late/duplicate/object registry rejection and cumulative Core/origin rewrite failures before wire.",
       "remaining": ""
@@ -180,13 +188,14 @@
         "line": 26
       },
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Actual Core bootstrap/RequestFactory in all four Core/Guzzle combinations; registry order, preserved project middleware, late/duplicate/object registry rejection and cumulative Core/origin rewrite failures before wire.",
       "remaining": ""
@@ -207,15 +216,17 @@
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
-        "packages/nr-http-guard/Tests/Unit/ConfigurationLoaderTest.php"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+        "Tests/Unit/ConfigurationLoaderTest.php"
       ],
       "covered": "Enforce/no-grant defaults and strict schema/type/unknown key failures; deployed invalid modes/schema return config error without HTTP.",
       "remaining": ""
@@ -236,15 +247,17 @@
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
-        "packages/nr-http-guard/Tests/Unit/ConfigurationLoaderTest.php"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+        "Tests/Unit/ConfigurationLoaderTest.php"
       ],
       "covered": "Enforce/no-grant defaults and strict schema/type/unknown key failures; deployed invalid modes/schema return config error without HTTP.",
       "remaining": ""
@@ -263,14 +276,15 @@
       },
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
-        "evidence/dns-transport/policy-portable-g8.log"
+        "evidence/dns-transport/policy-portable-g8.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/composer.json",
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php"
+        "composer.json",
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php"
       ],
       "covered": "Framework-free library dependencies and Guzzle7 standalone policy execution without TYPO3/Vault globals.",
       "remaining": ""
@@ -289,13 +303,14 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown"
       ],
       "covered": "Canonical uppercase/root-dot host, exact preserved Host, primary_ip pin, callbacks and one isolated native transfer.",
       "remaining": ""
@@ -315,16 +330,18 @@
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
-        "packages/nr-http-guard/Classes/Http/RawRequestGuardTrait.php",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+        "Classes/Http/RawRequestGuardTrait.php",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Full shared raw-normalization corpus passes before request construction. Actual decorated TYPO3 Core string entries additionally reject empty fragments/backslashes before PSR-7 in all four tuples. Already-parsed PSR18 creator information loss remains explicitly documented; it cannot recover erased syntax.",
       "remaining": ""
@@ -345,16 +362,18 @@
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
-        "packages/nr-http-guard/Classes/Http/RawRequestGuardTrait.php",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+        "Classes/Http/RawRequestGuardTrait.php",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Full shared raw-normalization corpus passes before request construction. Actual decorated TYPO3 Core string entries additionally reject empty fragments/backslashes before PSR-7 in all four tuples. Already-parsed PSR18 creator information loss remains explicitly documented; it cannot recover erased syntax.",
       "remaining": ""
@@ -374,16 +393,18 @@
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
-        "packages/nr-http-guard/Classes/Http/RawRequestGuardTrait.php",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+        "Classes/Http/RawRequestGuardTrait.php",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Full shared raw-normalization corpus passes before request construction. Actual decorated TYPO3 Core string entries additionally reject empty fragments/backslashes before PSR-7 in all four tuples. Already-parsed PSR18 creator information loss remains explicitly documented; it cannot recover erased syntax.",
       "remaining": ""
@@ -403,16 +424,18 @@
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
-        "packages/nr-http-guard/Classes/Http/RawRequestGuardTrait.php",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+        "Classes/Http/RawRequestGuardTrait.php",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Full shared raw-normalization corpus passes before request construction. Actual decorated TYPO3 Core string entries additionally reject empty fragments/backslashes before PSR-7 in all four tuples. Already-parsed PSR18 creator information loss remains explicitly documented; it cannot recover erased syntax.",
       "remaining": ""
@@ -431,13 +454,14 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
       ],
       "covered": "Mismatching Host/port and both public-A/private-AAAA and public-AAAA/private-A vectors deny before native construction and leave every target TCP/HTTP counter unchanged, regardless of family preference.",
       "remaining": ""
@@ -459,15 +483,16 @@
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
       ],
       "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
       "remaining": ""
@@ -489,15 +514,16 @@
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
       ],
       "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
       "remaining": ""
@@ -518,15 +544,16 @@
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
       ],
       "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
       "remaining": ""
@@ -547,15 +574,16 @@
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
       ],
       "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
       "remaining": ""
@@ -576,15 +604,16 @@
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
       ],
       "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
       "remaining": ""
@@ -605,15 +634,16 @@
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
       ],
       "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
       "remaining": ""
@@ -635,15 +665,16 @@
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
-        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+        "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+        "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
       ],
       "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
       "remaining": ""
@@ -663,13 +694,14 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant"
       ],
       "covered": "Operator deny overrides the bound endpoint with unchanged target TCP/HTTP counters.",
       "remaining": ""
@@ -688,13 +720,14 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
       ],
       "covered": "Mismatching Host/port and both public-A/private-AAAA and public-AAAA/private-A vectors deny before native construction and leave every target TCP/HTTP counter unchanged, regardless of family preference.",
       "remaining": ""
@@ -713,13 +746,14 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
       ],
       "covered": "Mismatching Host/port and both public-A/private-AAAA and public-AAAA/private-A vectors deny before native construction and leave every target TCP/HTTP counter unchanged, regardless of family preference.",
       "remaining": ""
@@ -743,7 +777,7 @@
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testInvalidEmptyIncompleteAndNegativeDnsCannotUseEndpointPermission"
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testInvalidEmptyIncompleteAndNegativeDnsCannotUseEndpointPermission"
       ],
       "covered": "Actual registry/resolver/terminal rejects NXDOMAIN/SERVFAIL packet status, empty/incomplete/invalid address and family records even with a matching private endpoint grant; native0/TCP0/HTTP0 per witness.",
       "remaining": ""
@@ -768,7 +802,7 @@
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testInvalidEmptyIncompleteAndNegativeDnsCannotUseEndpointPermission"
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testInvalidEmptyIncompleteAndNegativeDnsCannotUseEndpointPermission"
       ],
       "covered": "Actual registry/resolver/terminal rejects NXDOMAIN/SERVFAIL packet status, empty/incomplete/invalid address and family records even with a matching private endpoint grant; native0/TCP0/HTTP0 per witness.",
       "remaining": ""
@@ -793,7 +827,7 @@
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testNssOnlyPrivateNameWithoutStaticAssignmentNeverFallsBack"
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testNssOnlyPrivateNameWithoutStaticAssignmentNeverFallsBack"
       ],
       "covered": "Docker injects a genuine NSS hosts-only private mapping; gethostbynamel observes it. The complete empty controlled DNS answer is rejected instead of allowing any transport/NSS fallback, native0/TCP0/HTTP0.",
       "remaining": ""
@@ -813,13 +847,14 @@
         "line": 49
       },
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Static private erp.test exact-address endpoint succeeds only through the configured bound factory; global/PublicFetch attempts deny before TCP/HTTP.",
       "remaining": ""
@@ -840,15 +875,16 @@
       "evidence": [
         "evidence/dns-transport/execution-manifest.json",
         "evidence/dns-transport/policy-portable-g7.log",
-        "evidence/dns-transport/policy-portable-g8.log"
+        "evidence/dns-transport/policy-portable-g8.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testCnamePrivateHopCannotCreatePublicTransfer",
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testDnsCycleHopAndAddressLimitsHaveZeroNativeAndWireContact",
-        "packages/http-guard/tests/Unit/Policy/PolicyResolverBoundariesTest.php"
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testCnamePrivateHopCannotCreatePublicTransfer",
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testDnsCycleHopAndAddressLimitsHaveZeroNativeAndWireContact",
+        "Tests/HttpGuard/Unit/Policy/PolicyResolverBoundariesTest.php"
       ],
       "covered": "Private CNAME destination, cycle, ninth hop and 65 addresses reject through the production terminal with zero native handles and unchanged target TCP/HTTP. Unit boundaries include complete eight-hop and 64-address acceptance.",
       "remaining": ""
@@ -867,13 +903,14 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
       ],
       "covered": "First resolution allowed and second private answer never consulted; failed first approved pin raises connection error without DNS fallback or target contact.",
       "remaining": ""
@@ -893,13 +930,14 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
       ],
       "covered": "First resolution allowed and second private answer never consulted; failed first approved pin raises connection error without DNS fallback or target contact.",
       "remaining": ""
@@ -918,14 +956,15 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testNativeIpv6MappedAndCompleteDualStackFallbackPins",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testNativeIpv6MappedAndCompleteDualStackFallbackPins",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
       ],
       "covered": "Actual reachable IPv6, IPv4-mapped public literal and complete dual-stack fallback preserve the origin Host. Unreachable first IPv4/IPv6 candidates fall back only within the single resolver-produced checked set; no second resolver.",
       "remaining": ""
@@ -945,14 +984,15 @@
       "evidence": [
         "evidence/dns-transport/execution-manifest.json",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testCurlOptionSetFailureCannotStartAnUnpinnedTransfer",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testMalformedPlanPinAndHiddenCurlRewindRetryFailClosed"
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testCurlOptionSetFailureCannotStartAnUnpinnedTransfer",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testMalformedPlanPinAndHiddenCurlRewindRetryFailClosed"
       ],
       "covered": "Malformed connection-plan address denies before native contact. An isolated Guzzle curl_setopt shim returns false only for CURLOPT_RESOLVE: failure is observed with one attempted native handle, zero TCP/HTTP and no active lease; the option is never silently ignored.",
       "remaining": ""
@@ -971,13 +1011,14 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls"
       ],
       "covered": "Actual TLS verifies original host/SNI/certificate against custom CA and client certificate while connecting through pin.",
       "remaining": ""
@@ -998,14 +1039,16 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testExactEndpointWorksWithoutGrantingPublicImporter",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOutsideCidrAndLiteralLoopbackGrantsAreExact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testExactEndpointWorksWithoutGrantingPublicImporter",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testOutsideCidrAndLiteralLoopbackGrantsAreExact"
       ],
       "covered": "Endpoint origin/port/method mismatch plus a candidate outside its configured CIDR reject with zero native/wire contact; correctly bound exact endpoint still works.",
       "remaining": ""
@@ -1028,16 +1071,18 @@
         "evidence/transport/wire-g8-release.log",
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testConcurrentEnvelopeOnlySwapAndClosedReplayFail",
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php::testForgedContextWithBorrowedGrantAndScopeIsStillRejected",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testConcurrentEnvelopeOnlySwapAndClosedReplayFail",
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php::testForgedContextWithBorrowedGrantAndScopeIsStillRejected",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "String/header grants, forged/borrowed exact context objects, envelope swap/replay rejected; configured endpoint never grants public importer.",
       "remaining": ""
@@ -1060,16 +1105,18 @@
         "evidence/transport/wire-g8-release.log",
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testConcurrentEnvelopeOnlySwapAndClosedReplayFail",
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php::testForgedContextWithBorrowedGrantAndScopeIsStillRejected",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testConcurrentEnvelopeOnlySwapAndClosedReplayFail",
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php::testForgedContextWithBorrowedGrantAndScopeIsStillRejected",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "String/header grants, forged/borrowed exact context objects, envelope swap/replay rejected; configured endpoint never grants public importer.",
       "remaining": ""
@@ -1090,14 +1137,15 @@
         "evidence/dns-transport/policy-portable-g7.log",
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php::testIpv6NetworkContainingLoopbackRequiresExactHostPrefix",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOutsideCidrAndLiteralLoopbackGrantsAreExact"
+        "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php::testIpv6NetworkContainingLoopbackRequiresExactHostPrefix",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testOutsideCidrAndLiteralLoopbackGrantsAreExact"
       ],
       "covered": "Broad loopback-containing IPv4/IPv6 networks and missing flag reject at config. Actual 127.0.0.1/32 and ::1/128 with explicit flag work only on the bound client; the unbound client has zero native/wire contact.",
       "remaining": ""
@@ -1119,15 +1167,16 @@
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
         "evidence/dns-transport/policy-portable-g7.log",
-        "evidence/dns-transport/policy-portable-g8.log"
+        "evidence/dns-transport/policy-portable-g8.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testQueueExpiryAndPreStartCancellationHaveNoContact",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testExpiryDuringDnsAndBodyPreparationPreventsFirstConnection",
-        "packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php::testMemoHitReauthorizesChangedPolicyAndRejectsOldRevisionContext",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testQueueExpiryAndPreStartCancellationHaveNoContact",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testExpiryDuringDnsAndBodyPreparationPreventsFirstConnection",
+        "Tests/HttpGuard/Unit/Policy/PolicyLifecycleTest.php::testMemoHitReauthorizesChangedPolicyAndRejectsOldRevisionContext",
         "specification/specs/07-delivery-and-operations.md:34"
       ],
       "covered": "Queue, DNS/body preparation and final-start expiry deny before contact; a rebuilt registry with a changed normalized revision rejects old registry contexts and reauthorizes memo hits. Original operations §3 specifies immutable configuration snapshots and controlled worker reconstruction; a retained old client is not silently hot-revoked.",
@@ -1147,14 +1196,15 @@
         "line": 61
       },
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
-        "packages/nr-http-guard/Build/Fixtures/"
+        "Tests/Integration/production-bootstrap.php",
+        "Build/Fixtures/"
       ],
       "covered": "Real Core contextual allowlist remains cumulative. Every actual TYPO3 tuple starts with a flat legacy Vault erp.test allowlist entry, then denies a new public private-origin request with address_forbidden and zero TCP/HTTP; no new grant is inferred.",
       "remaining": ""
@@ -1174,14 +1224,15 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/transport/options-final.log"
+        "evidence/transport/options-final.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
-        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php"
       ],
       "covered": "Guzzle7/8 raw resolve/connect/url/share/Unix/follow/route options, stream/delay/unknown options deny; allowed zero timeouts/callback differences exercised; exact dependency tuples recorded.",
       "remaining": ""
@@ -1202,14 +1253,15 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/transport/options-final.log"
+        "evidence/transport/options-final.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
-        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php"
       ],
       "covered": "Guzzle7/8 raw resolve/connect/url/share/Unix/follow/route options, stream/delay/unknown options deny; allowed zero timeouts/callback differences exercised; exact dependency tuples recorded.",
       "remaining": ""
@@ -1229,15 +1281,16 @@
       "evidence": [
         "evidence/dns-transport/execution-manifest.json",
         "evidence/dns-transport/missing-curl/summary.json",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testMissingMultiCannotUseAnUncheckedStreamTransport",
-        "packages/http-guard/tests/Integration/Fixtures/IsolatedCapabilityProbe.php",
-        "packages/http-guard/tests/Integration/Fixtures/run-missing-curl.py"
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testMissingMultiCannotUseAnUncheckedStreamTransport",
+        "Tests/HttpGuard/Integration/Fixtures/IsolatedCapabilityProbe.php",
+        "Tests/HttpGuard/Integration/Fixtures/run-missing-curl.py"
       ],
       "covered": "Real disabled curl_multi_exec sends reject transport_unsupported before native/wire. Separate host PHP8.5.11 -n with only ctype enabled genuinely lacks curl and curl-multi; both dependency majors reject before native construction and all parent TCP/HTTP counters remain unchanged. Unknown Composer tuple also rejects. Static-curl image setup failures are retained separately.",
       "remaining": ""
@@ -1256,15 +1309,16 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testProxyActivatedDuringPreparationCannotCauseSilentDirectBypass",
-        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testIncomingProxyHeaderDoesNotBecomeProcessConfiguration"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testProxyActivatedDuringPreparationCannotCauseSilentDirectBypass",
+        "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php::testIncomingProxyHeaderDoesNotBecomeProcessConfiguration"
       ],
       "covered": "HTTP/HTTPS/SOCKS proxies and real case/NO_PROXY environment reject before native/TCP/HTTP; incoming $_SERVER HTTP_PROXY is separate; late proxy activation cannot silently bypass direct.",
       "remaining": ""
@@ -1285,15 +1339,17 @@
         "evidence/dns-transport/execution-manifest.json",
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testActualIncomingProxyHeaderIsNotProcessProxyAuthority",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testProxyActivatedDuringPreparationCannotCauseSilentDirectBypass"
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testActualIncomingProxyHeaderIsNotProcessProxyAuthority",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testProxyActivatedDuringPreparationCannotCauseSilentDirectBypass"
       ],
       "covered": "Real case/NO_PROXY and late process environment reject before contact. Owned actual HTTP SAPI receives Proxy through getallheaders; this SAPI strips server HTTP_PROXY, process-local names stay empty, and a guarded send contacts exactly public-a once with no alternate contacts. No synthetic server-variable insertion is presented as inbound proof.",
       "remaining": ""
@@ -1312,14 +1368,15 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
       ],
       "covered": "Actual direct-private-IP and private-DNS redirect destinations are blocked; 307/308 POST body/custom-auth and scheme-relative cross-origin vectors cannot reach a second origin. Same-origin method changes, downgrade, loop and request/operator limits retain explicit behavior.",
       "remaining": ""
@@ -1339,14 +1396,15 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testLateResponseLocationAndSecretCrossOriginCannotFollow"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testLateResponseLocationAndSecretCrossOriginCannotFollow"
       ],
       "covered": "Same-origin redirect makes fresh two transfers; late response middleware Location cannot bypass final boundary; generic cross-origin follow rejected.",
       "remaining": ""
@@ -1365,14 +1423,15 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
       ],
       "covered": "Actual direct-private-IP and private-DNS redirect destinations are blocked; 307/308 POST body/custom-auth and scheme-relative cross-origin vectors cannot reach a second origin. Same-origin method changes, downgrade, loop and request/operator limits retain explicit behavior.",
       "remaining": ""
@@ -1392,14 +1451,15 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testLateResponseLocationAndSecretCrossOriginCannotFollow"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testLateResponseLocationAndSecretCrossOriginCannotFollow"
       ],
       "covered": "Same-origin redirect makes fresh two transfers; late response middleware Location cannot bypass final boundary; generic cross-origin follow rejected.",
       "remaining": ""
@@ -1418,14 +1478,15 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
       ],
       "covered": "Actual direct-private-IP and private-DNS redirect destinations are blocked; 307/308 POST body/custom-auth and scheme-relative cross-origin vectors cannot reach a second origin. Same-origin method changes, downgrade, loop and request/operator limits retain explicit behavior.",
       "remaining": ""
@@ -1445,15 +1506,17 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPublicFetchScrubsInheritedCredentialsAcrossOrigins",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testPublicFetchScrubsInheritedCredentialsAcrossOrigins",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "PublicFetch cross-origin GET scrubs inherited body/auth/cookies/mTLS/header defaults; PSR18 and explicit false return 30x without follow.",
       "remaining": ""
@@ -1473,15 +1536,17 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPublicFetchScrubsInheritedCredentialsAcrossOrigins",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testPublicFetchScrubsInheritedCredentialsAcrossOrigins",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "PublicFetch cross-origin GET scrubs inherited body/auth/cookies/mTLS/header defaults; PSR18 and explicit false return 30x without follow.",
       "remaining": ""
@@ -1500,15 +1565,16 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRealRetryMiddlewareGetsFreshPlanAndKeepsInvocation",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRetryAfterGrantExpiryCannotContactAgain",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRealRetryMiddlewareGetsFreshPlanAndKeepsInvocation",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRetryAfterGrantExpiryCannotContactAgain",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware"
       ],
       "covered": "Real retry gets fresh resolution/plan; expiry prevents another target call; indiscriminate middleware cannot retry policy denial into allow.",
       "remaining": ""
@@ -1528,15 +1594,16 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
       ],
       "covered": "Parallel same-authority different targets and public/internal scopes have independent native transfers and counters; long-lived public use cannot inherit grant; sharing rejected.",
       "remaining": ""
@@ -1556,15 +1623,16 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
       ],
       "covered": "Parallel same-authority different targets and public/internal scopes have independent native transfers and counters; long-lived public use cannot inherit grant; sharing rejected.",
       "remaining": ""
@@ -1583,15 +1651,16 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
       ],
       "covered": "Parallel same-authority different targets and public/internal scopes have independent native transfers and counters; long-lived public use cannot inherit grant; sharing rejected.",
       "remaining": ""
@@ -1611,14 +1680,15 @@
       "evidence": [
         "evidence/dns-transport/execution-manifest.json",
         "evidence/dns-transport/policy-portable-g7.log",
-        "evidence/dns-transport/policy-portable-g8.log"
+        "evidence/dns-transport/policy-portable-g8.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testMemoHitRechecksOperatorDenyAndCannotReuseOldRegistryContext",
-        "packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php::testMemoHitReauthorizesChangedPolicyAndRejectsOldRevisionContext"
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testMemoHitRechecksOperatorDenyAndCannotReuseOldRegistryContext",
+        "Tests/HttpGuard/Unit/Policy/PolicyLifecycleTest.php::testMemoHitReauthorizesChangedPolicyAndRejectsOldRevisionContext"
       ],
       "covered": "A memo hit reuses only addresses: a rebuilt registry with a newly denied /32 reauthorizes and rejects before native/wire without any new DNS calls; an old registry context is grant_invalid. Configuration is an immutable snapshot requiring worker/client reconstruction.",
       "remaining": ""
@@ -1638,15 +1708,16 @@
       },
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
-        "evidence/dns-transport/policy-portable-g8.log"
+        "evidence/dns-transport/policy-portable-g8.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyResolverBoundariesTest.php::testTtlZeroNegativeAndCapacityNeverCreateUnboundedPositiveCache",
-        "packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php::testCompleteCnameChainMinimumTtlAndBoundedPositiveCache",
-        "packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php::testDnsCacheDoesNotExtendTtlByTimeSpentInLaterQueries"
+        "Tests/HttpGuard/Unit/Policy/PolicyResolverBoundariesTest.php::testTtlZeroNegativeAndCapacityNeverCreateUnboundedPositiveCache",
+        "Tests/HttpGuard/Unit/Policy/PolicyLifecycleTest.php::testCompleteCnameChainMinimumTtlAndBoundedPositiveCache",
+        "Tests/HttpGuard/Unit/Policy/PolicyLifecycleTest.php::testDnsCacheDoesNotExtendTtlByTimeSpentInLaterQueries"
       ],
       "covered": "TTL0/negative no-cache, bounded FIFO, min TTL/expiry and elapsed-query TTL age regressions pass.",
       "remaining": ""
@@ -1666,14 +1737,16 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Installed cURL never changes stream=true refusal into a StreamHandler; native and target counters stay zero.",
       "remaining": ""
@@ -1697,7 +1770,8 @@
         "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
         "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
         "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
-        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
@@ -1729,7 +1803,8 @@
         "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
         "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
         "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
-        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
@@ -1764,7 +1839,9 @@
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
         "integrations/nr-vault/evidence/vault-guzzle7-final-unit-frozen.log",
-        "integrations/nr-vault/evidence/vault-guzzle8-final-unit-frozen.log"
+        "integrations/nr-vault/evidence/vault-guzzle8-final-unit-frozen.log",
+        "verification/evidence/extension-matrix/summary.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
@@ -1793,14 +1870,16 @@
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log"
+        "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log",
+        "verification/evidence/extension-matrix/summary.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
+        "Tests/HttpGuard/Unit/Policy/PolicyTelemetryTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
         "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::allAuthenticationPlacementsRetainWireSemanticsAndRedactedAudit"
       ],
       "covered": "Fixed PSR18 client exception/rejected async policy surface, redacted events without request fields/secret paths, HMAC rules and logger failure/rate limit with full counters verified.",
@@ -1823,14 +1902,16 @@
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log"
+        "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log",
+        "verification/evidence/extension-matrix/summary.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
+        "Tests/HttpGuard/Unit/Policy/PolicyTelemetryTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
         "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::allAuthenticationPlacementsRetainWireSemanticsAndRedactedAudit"
       ],
       "covered": "Fixed PSR18 client exception/rejected async policy surface, redacted events without request fields/secret paths, HMAC rules and logger failure/rate limit with full counters verified.",
@@ -1853,14 +1934,16 @@
         "evidence/dns-transport/policy-portable-g8.log",
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log"
+        "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log",
+        "verification/evidence/extension-matrix/summary.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
+        "Tests/HttpGuard/Unit/Policy/PolicyTelemetryTest.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
         "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::allAuthenticationPlacementsRetainWireSemanticsAndRedactedAudit"
       ],
       "covered": "Fixed PSR18 client exception/rejected async policy surface, redacted events without request fields/secret paths, HMAC rules and logger failure/rate limit with full counters verified.",
@@ -1881,15 +1964,17 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testObserveUnsupportedTransportReportsUnverifiableAndDelegates",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testObserveAndDisabledDelegateOriginalRequestAndOptions",
-        "packages/nr-http-guard/Tests/Unit/RawRequestFactoryModeTest.php"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testObserveUnsupportedTransportReportsUnverifiableAndDelegates",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testObserveAndDisabledDelegateOriginalRequestAndOptions",
+        "Tests/Unit/RawRequestFactoryModeTest.php"
       ],
       "covered": "Observe retains its explicitly unprotected leaf behavior. Actual forbidden-target decisions report would_deny; unsupported stream transport reports exactly one unverifiable/option_forbidden event and delegates without a protected native handle. Raw string observe additionally reports before PSR7 erases syntax.",
       "remaining": ""
@@ -1909,13 +1994,15 @@
       },
       "evidence": [
         "evidence/typo3-integration/production-matrix-summary.json",
-        "packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log"
+        "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log",
+        "evidence/packaging/packaging-summary.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Tests/Integration/mode-bootstrap.php",
+        "Tests/Integration/mode-bootstrap.php",
         "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::disabledStillRefusesLegacyPrivateHostAndAddsNoDiagnostics"
       ],
       "covered": "Disabled stays visibly unprotected with original options; no automatic fallback; Vault old private control and allowlist semantics preserved.",
@@ -1935,14 +2022,15 @@
       },
       "evidence": [
         "evidence/typo3-integration/production-matrix-summary.json",
-        "evidence/typo3-integration/final-execution-source-hashes.json"
+        "evidence/typo3-integration/final-execution-source-hashes.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Classes/Command/",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Classes/Command/",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Final source-bound actual CLI matrix runs all diagnostic commands offline across four Core/Guzzle tuples, including invalid stack/config, curl-multi absence, complete proxy-name inventory, overdue reviewAfter, raw rejection and endpoint/no-DNS evaluation. No HTTP capability or target contact is returned.",
       "remaining": ""
@@ -1961,14 +2049,15 @@
       },
       "evidence": [
         "evidence/typo3-integration/production-matrix-summary.json",
-        "evidence/typo3-integration/final-execution-source-hashes.json"
+        "evidence/typo3-integration/final-execution-source-hashes.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Classes/Command/",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+        "Classes/Command/",
+        "Tests/Integration/production-bootstrap.php"
       ],
       "covered": "Final source-bound actual CLI matrix runs all diagnostic commands offline across four Core/Guzzle tuples, including invalid stack/config, curl-multi absence, complete proxy-name inventory, overdue reviewAfter, raw rejection and endpoint/no-DNS evaluation. No HTTP capability or target contact is returned.",
       "remaining": ""
@@ -1986,14 +2075,15 @@
         "line": 91
       },
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Classes/Diagnostics/DiagnosticsService.php",
-        "packages/nr-http-guard/Tests/Unit/LegacyConfigurationInventoryTest.php"
+        "Classes/Diagnostics/DiagnosticsService.php",
+        "Tests/Unit/LegacyConfigurationInventoryTest.php"
       ],
       "covered": "Doctor explicitly says no automatic Vault/rawSDK coverage; flat/nested legacy report counts missing fields and creates zero active grants, without HTTP.",
       "remaining": ""
@@ -2017,7 +2107,8 @@
         "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
         "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
         "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
-        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
@@ -2049,7 +2140,8 @@
         "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
         "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
         "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
-        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
@@ -2078,7 +2170,8 @@
         "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
         "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
         "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
-        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
@@ -2104,14 +2197,15 @@
         "line": 95
       },
       "evidence": [
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/nr-http-guard/Classes/Diagnostics/DiagnosticsService.php",
-        "packages/nr-http-guard/Tests/Unit/LegacyConfigurationInventoryTest.php"
+        "Classes/Diagnostics/DiagnosticsService.php",
+        "Tests/Unit/LegacyConfigurationInventoryTest.php"
       ],
       "covered": "Doctor explicitly says no automatic Vault/rawSDK coverage; flat/nested legacy report counts missing fields and creates zero active grants, without HTTP.",
       "remaining": ""
@@ -2136,7 +2230,7 @@
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/MutationWitnessTest.php",
+        "Tests/HttpGuard/Integration/MutationWitnessTest.php",
         "verification/scripts/run-mutations.py"
       ],
       "covered": "All six targeted mutants killed on both majors (12/12), with native/leaf and actual TCP/HTTP before/after witnesses.",
@@ -2156,14 +2250,15 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant"
       ],
       "covered": "Four parallel same-authority alternating DNS targets and independent public/endpoint scopes remain in their own permitted sets.",
       "remaining": ""
@@ -2192,7 +2287,10 @@
         "evidence/transport/wire-g8-release.log",
         "evidence/typo3-integration/production-matrix-summary.json",
         "integrations/nr-vault/evidence/vault-guzzle7-shared-unbound.json",
-        "integrations/nr-vault/evidence/vault-guzzle8-shared-unbound.json"
+        "integrations/nr-vault/evidence/vault-guzzle8-shared-unbound.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
@@ -2217,15 +2315,16 @@
       },
       "evidence": [
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
         "README.md",
-        "packages/nr-http-guard/README.md",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php"
+        "README.md",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php"
       ],
       "covered": "Foreign SDK/direct curl/request-owned Guzzle handler before any stack entry documented outside scope; protected PSR18 API exposes no handler option. Earlier contrary test failure preserved, corrected current run supersedes it.",
       "remaining": ""
@@ -2244,14 +2343,15 @@
       },
       "evidence": [
         "evidence/dns-transport/policy-portable-g7.log",
-        "evidence/dns-transport/policy-portable-g8.log"
+        "evidence/dns-transport/policy-portable-g8.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Unit/Policy/WireDnsQueryTest.php::testDnsBlackholeHasMeasuredQueryBudgetAndNoNativeFallback",
-        "packages/http-guard/Documentation/Policy.md"
+        "Tests/HttpGuard/Unit/Policy/WireDnsQueryTest.php::testDnsBlackholeHasMeasuredQueryBudgetAndNoNativeFallback",
+        "Documentation/Security/Index.rst"
       ],
       "covered": "Measured injected local UDP deadline; per-query/81-second conservative sequential bound and custom resolver/non-application-deadline limits documented.",
       "remaining": ""
@@ -2269,16 +2369,17 @@
         "line": 101
       },
       "evidence": [
-        "packages/http-guard/data/security-corpus/evidence/policy-benchmark-final.json",
+        "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-final.json",
         "evidence/transport/wire-g7-release.log",
-        "evidence/transport/wire-g8-release.log"
+        "evidence/transport/wire-g8-release.log",
+        "verification/evidence/extension-matrix/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "partial_current_evidence",
       "source_refs": [
-        "packages/http-guard/data/security-corpus/evidence/policy-benchmark-final.json",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testLargeResponseUsesCallerSinkWithoutGuardBodyCopy"
+        "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-final.json",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testLargeResponseUsesCallerSinkWithoutGuardBodyCopy"
       ],
       "covered": "Indexed classification of 64 IPv6 addresses/128 profiles measured p95 1.455ms on current WSL host. Actual 4MiB caller sink transport passes with guard memory growth below response size, no duplicated guard body copy and no active lease.",
       "remaining": "Named CI reference-system benchmark remains external to the current host measurement."
@@ -2307,13 +2408,15 @@
         "verification/evidence/library-matrix/php85g7.results.junit.xml",
         "verification/evidence/library-matrix/php85g8.results.junit.xml",
         "evidence/typo3-integration/production-matrix-summary.json",
-        "integrations/nr-vault/EVIDENCE.md"
+        "integrations/nr-vault/EVIDENCE.md",
+        "evidence/packaging/packaging-summary.json",
+        "integrations/nr-vault/evidence/single-extension/summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testUnknownComposerTupleIsRejectedBeforeNativeOrWireContact",
+        "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php::testUnknownComposerTupleIsRejectedBeforeNativeOrWireContact",
         "verification/scripts/run-library-matrix.sh"
       ],
       "covered": "All eight source-bound library tuples PHP8.2.33/8.3.33/8.4.25/8.5.10 × Guzzle7/8 pass the entire current 122-test/2167-assertion suite without errors/failures/skips. Core four-tuples and frozen Vault two-tuples separately pass. Actual unknown Composer Guzzle metadata9.99.99 rejects before native/wire; dependency updates require these complete matrices rather than Composer resolution alone.",
@@ -2335,18 +2438,20 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
-        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
+        "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
+        "Tests/Integration/production-bootstrap.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
       ],
       "covered": "POST-to-GET method bound again; custom CA/mTLS and verify=false policy; request/response middleware/callback order retained; Alt-Svc/HSTS/HTTP3/raw alternative routes denied before contact.",
       "remaining": ""
@@ -2367,18 +2472,20 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
-        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
+        "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
+        "Tests/Integration/production-bootstrap.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
       ],
       "covered": "POST-to-GET method bound again; custom CA/mTLS and verify=false policy; request/response middleware/callback order retained; Alt-Svc/HSTS/HTTP3/raw alternative routes denied before contact.",
       "remaining": ""
@@ -2399,18 +2506,20 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
-        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
+        "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
+        "Tests/Integration/production-bootstrap.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
       ],
       "covered": "POST-to-GET method bound again; custom CA/mTLS and verify=false policy; request/response middleware/callback order retained; Alt-Svc/HSTS/HTTP3/raw alternative routes denied before contact.",
       "remaining": ""
@@ -2431,18 +2540,20 @@
       "evidence": [
         "evidence/transport/wire-g7-release.log",
         "evidence/transport/wire-g8-release.log",
-        "evidence/typo3-integration/production-matrix-summary.json"
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "verification/evidence/extension-matrix/summary.json",
+        "evidence/packaging/packaging-summary.json"
       ],
       "baseline_implementation_status": "not_implemented",
       "baseline_execution_status": "not_run",
       "status": "verified_scenarios",
       "source_refs": [
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
-        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
-        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
-        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
+        "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
+        "Tests/Integration/production-bootstrap.php",
+        "Tests/HttpGuard/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
       ],
       "covered": "POST-to-GET method bound again; custom CA/mTLS and verify=false policy; request/response middleware/callback order retained; Alt-Svc/HSTS/HTTP3/raw alternative routes denied before contact.",
       "remaining": ""
@@ -4006,10 +4117,10 @@
         "T084"
       ],
       "source_refs": [
-        "packages/http-guard/src/PolicyEngine.php",
-        "packages/http-guard/src/StaticThenDnsResolver.php",
-        "packages/http-guard/src/Transport/GuardedTransferFactory.php",
-        "packages/http-guard/src/Transport/TransferLease.php"
+        "Classes/HttpGuard/PolicyEngine.php",
+        "Classes/HttpGuard/StaticThenDnsResolver.php",
+        "Classes/HttpGuard/Transport/GuardedTransferFactory.php",
+        "Classes/HttpGuard/Transport/TransferLease.php"
       ],
       "test_statuses": [
         {
@@ -4104,10 +4215,10 @@
         "T081"
       ],
       "source_refs": [
-        "packages/http-guard/src/TargetNormalizer.php",
-        "packages/http-guard/src/PolicyRegistry.php",
-        "packages/http-guard/src/PolicyEngine.php",
-        "packages/http-guard/src/Transport/InvocationRegistry.php"
+        "Classes/HttpGuard/TargetNormalizer.php",
+        "Classes/HttpGuard/PolicyRegistry.php",
+        "Classes/HttpGuard/PolicyEngine.php",
+        "Classes/HttpGuard/Transport/InvocationRegistry.php"
       ],
       "test_statuses": [
         {
@@ -4190,11 +4301,11 @@
         "T080"
       ],
       "source_refs": [
-        "packages/http-guard/src/GuardConfig.php",
-        "packages/http-guard/src/WireDnsQuery.php",
-        "packages/http-guard/src/PolicyEngine.php",
-        "packages/http-guard/src/Transport/RuntimeSupport.php",
-        "packages/http-guard/src/Client/GuardedClientFactory.php"
+        "Classes/HttpGuard/GuardConfig.php",
+        "Classes/HttpGuard/WireDnsQuery.php",
+        "Classes/HttpGuard/PolicyEngine.php",
+        "Classes/HttpGuard/Transport/RuntimeSupport.php",
+        "Classes/HttpGuard/Client/GuardedClientFactory.php"
       ],
       "test_statuses": [
         {
@@ -4290,10 +4401,10 @@
         "T076"
       ],
       "source_refs": [
-        "packages/http-guard/src/PolicyRegistry.php",
-        "packages/http-guard/src/EndpointGrant.php",
-        "packages/http-guard/src/PolicyEngine.php",
-        "packages/http-guard/src/Client/GuardedClientFactory.php",
+        "Classes/HttpGuard/PolicyRegistry.php",
+        "Classes/HttpGuard/EndpointGrant.php",
+        "Classes/HttpGuard/PolicyEngine.php",
+        "Classes/HttpGuard/Client/GuardedClientFactory.php",
         "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php"
       ],
       "test_statuses": [
@@ -4362,10 +4473,10 @@
         "T081"
       ],
       "source_refs": [
-        "packages/http-guard/src/Transport/BoundaryMiddleware.php",
-        "packages/http-guard/src/Transport/TerminalGuardMiddleware.php",
-        "packages/http-guard/src/Transport/InvocationRegistry.php",
-        "packages/http-guard/src/PolicyEngine.php"
+        "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+        "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php",
+        "Classes/HttpGuard/Transport/InvocationRegistry.php",
+        "Classes/HttpGuard/PolicyEngine.php"
       ],
       "test_statuses": [
         {
@@ -4434,9 +4545,9 @@
         "T083"
       ],
       "source_refs": [
-        "packages/http-guard/src/AddressClassifier.php",
-        "packages/http-guard/src/PolicyEngine.php",
-        "packages/nr-http-guard/Classes/Http/CoreStackProvider.php"
+        "Classes/HttpGuard/AddressClassifier.php",
+        "Classes/HttpGuard/PolicyEngine.php",
+        "Classes/Http/CoreStackProvider.php"
       ],
       "test_statuses": [
         {
@@ -4494,11 +4605,11 @@
         "T075"
       ],
       "source_refs": [
-        "packages/http-guard/src/PolicyRegistry.php",
-        "packages/http-guard/src/StaticThenDnsResolver.php",
-        "packages/http-guard/src/Transport/InvocationRegistry.php",
-        "packages/http-guard/src/Transport/TransferDriver.php",
-        "packages/http-guard/src/Transport/TransferLease.php"
+        "Classes/HttpGuard/PolicyRegistry.php",
+        "Classes/HttpGuard/StaticThenDnsResolver.php",
+        "Classes/HttpGuard/Transport/InvocationRegistry.php",
+        "Classes/HttpGuard/Transport/TransferDriver.php",
+        "Classes/HttpGuard/Transport/TransferLease.php"
       ],
       "test_statuses": [
         {
@@ -4575,11 +4686,11 @@
         "T077"
       ],
       "source_refs": [
-        "packages/http-guard/src/Transport/TerminalGuardMiddleware.php",
-        "packages/http-guard/src/Transport/RuntimeSupport.php",
-        "packages/nr-http-guard/Classes/Diagnostics/DiagnosticsService.php",
+        "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php",
+        "Classes/HttpGuard/Transport/RuntimeSupport.php",
+        "Classes/Diagnostics/DiagnosticsService.php",
         "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php",
-        "packages/http-guard/Documentation/Policy.md"
+        "Documentation/Security/Index.rst"
       ],
       "test_statuses": [
         {
@@ -4643,9 +4754,19 @@
     ]
   },
   "compatibility_matrix": {
-    "library": "verification/evidence/library-matrix/summary.json",
-    "typo3": "evidence/typo3-integration/production-matrix-summary.json",
-    "vault": "integrations/nr-vault/EVIDENCE.md",
-    "limit": "Exact tested Linux runtime/dependency tuples; not broader dependency patch ranges, all framework/PHP cross-products or Windows/macOS distributions."
+    "library": "verification/evidence/extension-matrix/summary.json",
+    "typo3": "evidence/packaging/packaging-summary.json",
+    "vault": "integrations/nr-vault/evidence/single-extension/summary.json",
+    "limit": "Exact tested Linux runtime/dependency tuples; not broader dependency patch ranges, all framework/PHP cross-products or Windows/macOS distributions.",
+    "classic": "evidence/packaging/final-zip-import.json",
+    "mutations": "verification/evidence/extension-mutations/summary.json"
+  },
+  "packaging_decision": {
+    "date": "2026-10-09",
+    "authority": "Explicit user request: one extension including the safety kernel and documentation; classic TER installation without additional Composer library.",
+    "record": "evidence/packaging/single-package-decision.md",
+    "path_map": "evidence/packaging/source-layout-map.json",
+    "original_specs": "Unchanged historical design inputs; ADR-0002 package split superseded.",
+    "HG006": "Framework independence remains a boundary of the embedded kernel code; an independently installed production library is no longer part of the requested product."
   }
 }

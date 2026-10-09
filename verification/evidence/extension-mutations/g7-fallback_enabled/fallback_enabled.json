@@ -1,0 +1,43 @@
+{
+    "case": "fallback_enabled",
+    "outcome": "response",
+    "reason": null,
+    "response_label": "private",
+    "resolver_calls": 1,
+    "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+    },
+    "leaf_calls": 0,
+    "before": {
+        "public-a": {
+            "tcp": 827,
+            "http": 827
+        },
+        "public-b": {
+            "tcp": 77,
+            "http": 77
+        },
+        "private": {
+            "tcp": 84,
+            "http": 84
+        }
+    },
+    "after": {
+        "public-a": {
+            "tcp": 827,
+            "http": 827
+        },
+        "public-b": {
+            "tcp": 77,
+            "http": 77
+        },
+        "private": {
+            "tcp": 85,
+            "http": 85
+        }
+    }
+}

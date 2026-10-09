@@ -1,0 +1,43 @@
+{
+    "case": "grant_binding_removed",
+    "outcome": "response",
+    "reason": null,
+    "response_label": "private",
+    "resolver_calls": 1,
+    "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+    },
+    "leaf_calls": 0,
+    "before": {
+        "public-a": {
+            "tcp": 828,
+            "http": 828
+        },
+        "public-b": {
+            "tcp": 79,
+            "http": 79
+        },
+        "private": {
+            "tcp": 90,
+            "http": 90
+        }
+    },
+    "after": {
+        "public-a": {
+            "tcp": 828,
+            "http": 828
+        },
+        "public-b": {
+            "tcp": 79,
+            "http": 79
+        },
+        "private": {
+            "tcp": 91,
+            "http": 91
+        }
+    }
+}

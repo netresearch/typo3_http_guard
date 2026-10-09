@@ -1,0 +1,12 @@
+{
+    "sdkVersions": {
+        "guzzlehttp\/guzzle": "7.15.3",
+        "guzzlehttp\/promises": "2.5.2",
+        "guzzlehttp\/psr7": "2.13.0",
+        "typo3\/cms-core": null,
+        "typo3\/cms": "dev-main"
+    },
+    "mode": "qualification-only-runtime-capability-check",
+    "status": "EXPECTED_FAIL_CLOSED",
+    "reasonCode": "transport_unsupported"
+}

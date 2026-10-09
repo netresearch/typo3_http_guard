@@ -9,9 +9,9 @@
 Opt-in HTTP Guard adapter
 ========================
 
-The optional ``netresearch/http-guard`` library supplies policy-bound
-transports for explicitly configured Vault clients. Installing the library or
-the TYPO3 HTTP Guard extension does not select this adapter. The default
+The optional ``netresearch/nr-http-guard`` TYPO3 extension includes the shared
+HTTP Guard kernel and supplies policy-bound transports for explicitly configured
+Vault clients. Installing that extension does not select this Vault adapter. The default
 :php:`SecureHttpClientFactory` continues to use Vault's existing host allowlist,
 SSRF middleware and DNS pinning.
 
@@ -147,11 +147,13 @@ container test wrapper. It tests real wire contacts, separate token and resource
 bindings, pre-secret refusals, authentication placements, audit redaction, expiry,
 token caching, all three modes, streaming and cancellation.
 
-For source-based integration validation, copy the exact shared library source
-and data and :file:`tests/Integration/` to :file:`.Build/http-guard-library/` and retain a file digest manifest.
+For source-based integration validation, copy the combined extension's :file:`Classes/HttpGuard/`,
+:file:`Resources/Private/HttpGuard/data/` and :file:`Tests/HttpGuard/Integration/`
+into the same relative paths under :file:`.Build/nr-http-guard-extension/`. Retain
+a file digest manifest.
 The test bootstrap loads that optional source only when present. A normal Vault
-checkout without the optional library may skip these adapter tests; a run used
-as HTTP Guard acceptance evidence must have the library and network fixture
+checkout without the optional extension may skip these adapter tests; a run used
+as HTTP Guard acceptance evidence must have the extension source and network fixture
 installed and must contain no skipped adapter cases. Run the existing unit,
 fuzz, functional, architecture and static suites as well.
 
@@ -159,13 +161,13 @@ fuzz, functional, architecture and static suites as well.
 runner and attaches only its owned job to two isolated synthetic fixture
 networks. It idempotently prepares the shared target counters and tests the public-resource/private-token pair and its inverse at
 ``203.0.115.150`` and ``10.23.4.150``. These are Docker NICs within the fixture,
-not external services. The script requires the optional library source and integration-fixture copy,
+not external services. The script requires the optional extension source and integration-fixture copy,
 Docker, Bash, OpenSSL and ripgrep. It also consumes the shared
 ``EP-PRIVATE-UNBOUND`` corpus case by ID and SHA-256 and verifies that a legacy
 allowlist entry cannot authorize an unbound private endpoint, before secrets,
 native handles, TCP contact or HTTP contact.
 
 Supported PHP, Guzzle and cURL versions are those accepted by the shared
-library's runtime checks and the recorded execution matrix. Local synthetic
+kernel's runtime checks and the recorded execution matrix. Local synthetic
 tests do not replace an operator's production pilot or independent release
 acceptance. See :ref:`adr-041-opt-in-http-guard-adapter`.

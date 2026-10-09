@@ -1,0 +1,31 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "guzzle7.kernel-manifest.json": "acb9ad145e900b1ecd7fa456fdf6cff59b8c0db1d99af2ae8733021a6c3fe7ed",
+    "guzzle7.runtime.json": "20e3d17b114447ee5cdd4d83b21a57eafd3754cb16feea34e0506b808f23e384",
+    "guzzle7.shared-unbound.json": "2f3be7cbdca3e362282527838861979dc0ecd404f7f1d76bf3b589c4e2b61e5c",
+    "guzzle7.tested-source-manifest.json": "e21d59449bd56f458c4bf7643c7df5a4cdccdac7df019c3ae630741db2fc0aba",
+    "guzzle8.kernel-manifest.json": "acb9ad145e900b1ecd7fa456fdf6cff59b8c0db1d99af2ae8733021a6c3fe7ed",
+    "guzzle8.runtime.json": "7ab5eac113a30b34e58ddeb91f9debe6288bc4f81d32ca22cd3a40132ef1d8b3",
+    "guzzle8.shared-unbound.json": "2f3be7cbdca3e362282527838861979dc0ecd404f7f1d76bf3b589c4e2b61e5c",
+    "guzzle8.tested-source-manifest.json": "5b0e7b127128017cb6e2d7dff4592f36ad45cef3e80e324f1418e76646737f69",
+    "packaging-source-delta.json": "244b1b15365451c85cea0f9b012b5db9541b2d0986d9fa5d4685a1e1202195aa",
+    "summary.json": "58049f6ebcfac120e50910862d6009052364caaa6ba7084cd093add0fc999a66",
+    "vault-single-extension-api-snapshot.log": "ab6daadc14dbc9965a65ae1f9a4655c5a234ec51d6efa989e44a8f36de0e2762",
+    "vault-single-extension-cgl-check.log": "8e876b3bea6449acbaf8ddf2f0a708de80b629d92888a322bf376618b6215efb",
+    "vault-single-extension-cgl-fix.log": "c74db55187a34b74967aaf1443f53aafa37a35caeabb50ef9370b4a9e4d7f122",
+    "vault-single-extension-docs-render.log": "5b17dbc6eca05706363cb7e037c0ae0cdf6176411cdae77ed2c0bdebb40a57cc",
+    "vault-single-extension-g7-adapter-frozen.log": "8ad7c8ea66d9fe77c606cba8a68c45c9983f4dce1a3540957f0e306b97af9cf6",
+    "vault-single-extension-g7-adapter.log": "43d85388c1477005339ea53e24a63fc65baf3e89cfe2d35fc1abbbf236acc93c",
+    "vault-single-extension-g8-adapter-frozen.log": "864cc762c909a668fb103acb944b97ca33ff9f4d34d43c882f8b56978cbc6a4c",
+    "vault-single-extension-g8-adapter.log": "7a7148d6f47d45d8ffdca8c41f1b52c2c8e0a1d000ae7182be41d12f82ec29e7",
+    "vault-single-extension-guard-unit.log": "10efe770e5b7173c5d404a72d8196bd5ba890ae57e2162836642dd0b702b8298",
+    "vault-single-extension-patch-clone.log": "2f2471be14b04b3602f796d03aafeaa4a041713717be09ad9256bc97c0fe07eb",
+    "vault-single-extension-phpstan-frozen.log": "10d5d95e2d6a7a97023c25e72fc51f10d651f3fe570e080fa23cd08e708a2c63",
+    "vault-single-extension-phpstan.log": "9ed4b408048c5029770110733886a139c27dbdc2e969964ab4affc93210caf70",
+    "vault-single-extension-rector-check.log": "5f58b5763fd0d3780acb31004983278224b3b7aee7489024791bea48e56781f6",
+    "vault-single-extension-rector-fix.log": "fba9fbb5346350dd2981b1d466169cdde917d0a7f6f7188515abfac00a638afe",
+    "vault-single-extension-rector.log": "53e2e4ba665b29286ed629e6b5331a5cc466b8ed8778e2b58dd2dbd9639ba16c",
+    "vault-single-extension-repo-checks.log": "472ce8d9cc09a9882fc5ac996d6d4540b0a99fdcebd39f32edb244adf9b022f5"
+  }
+}

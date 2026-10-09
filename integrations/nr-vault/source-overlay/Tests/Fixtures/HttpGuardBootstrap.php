@@ -5,16 +5,16 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 declare(strict_types=1);
-$guardLibrarySource = dirname(__DIR__, 2) . '/.Build/http-guard-library/src';
-if (is_dir($guardLibrarySource)) {
+$guardExtensionSource = dirname(__DIR__, 2) . '/.Build/nr-http-guard-extension/Classes/HttpGuard';
+if (is_dir($guardExtensionSource)) {
     spl_autoload_register(
-        static function (string $class) use ($guardLibrarySource): void {
+        static function (string $class) use ($guardExtensionSource): void {
             $prefix = 'Netresearch\HttpGuard\\';
             if (!str_starts_with($class, $prefix)) {
                 return;
             }
 
-            $path = $guardLibrarySource . '/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
+            $path = $guardExtensionSource . '/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
             if (is_file($path)) {
                 require_once $path;
             }

@@ -6,6 +6,25 @@ The standalone source-bound matrix passes 122 tests / 2167 assertions in each of
 
 All paths below are relative to the delivery root. Detailed behavior, exact source locators and covered limits are in the JSON ledger.
 
+## Aktualisierte Ein-Paket-Lieferung
+
+Die ursprüngliche Paketaufteilung wurde ausdrücklich durch eine Extension mit
+enthaltenem Kern und vollständiger Dokumentation ersetzt. Die aktuellen
+Nachweise ergänzen die unverändert erhaltenen historischen Protokolle:
+
+- Zwölf PHP-/SDK-Zellen: jeweils126/2180, ohne Skips/Fehler/Failures.
+- 18 gezielte Mutanten mit tatsächlichen nativen/HTTP-Zeugen.
+- 252 Core-Matrixprozesse:168 Composer+84 echte klassische Installationen;
+  210 Wire-Assertions. Die finale ZIP-Neuinstallation ergänzt separat70.
+- Vault-Packaging-Smokes19/249+19/250; historische vollständige Suiten
+  behalten ausdrücklich ihren ursprünglichen Quellstand.
+
+Die Quellpfade folgen jetzt dem Root-Extension-Layout. Historische Laufmanifeste
+werden anhand von `evidence/packaging/source-layout-map.json` zugeordnet.
+HG-006 bleibt die Abhängigkeitsgrenze des enthaltenen Kerns; ein eigenständiges
+zweites Produktionspaket ist durch die Nutzerentscheidung ersetzt.
+Aktuelle Gesamtverweise und genaue Provenienz stehen im JSON-Ledger.
+
 ## Tests
 
 | ID | Priority | Status | Exact original scenario | Evidence / remaining gap |
@@ -71,11 +90,11 @@ All paths below are relative to the delivery root. Detailed behavior, exact sour
 | T059 | P0 | verified_scenarios | Vault-sendStreaming mit gültigem Pin | integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log; integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json; integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json; integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log; integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json; integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json  |
 | T060 | P0 | verified_scenarios | Cancellation vor Send und während Transfer | integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log; integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json; integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json; integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log; integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json; integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json  |
 | T061 | P0 | verified_scenarios | Body-close, teilweiser Read, Transferfehler, Exception im Callback | integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log; integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json; integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json; integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log; integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json; integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; integrations/nr-vault/evidence/vault-guzzle7-final-unit-frozen.log; integrations/nr-vault/evidence/vault-guzzle8-final-unit-frozen.log  |
-| T062 | P0 | verified_scenarios | Synchrone und asynchrone Policyfehler, PSR-18 | evidence/dns-transport/policy-portable-g7.log; evidence/dns-transport/policy-portable-g8.log; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log  |
-| T063 | P0 | verified_scenarios | Secrets in Query, Body, Headers, Zertifikatspfaden und Exception | evidence/dns-transport/policy-portable-g7.log; evidence/dns-transport/policy-portable-g8.log; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log  |
-| T064 | P1 | verified_scenarios | Loggerausfall und Denial-Flood | evidence/dns-transport/policy-portable-g7.log; evidence/dns-transport/policy-portable-g8.log; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log  |
+| T062 | P0 | verified_scenarios | Synchrone und asynchrone Policyfehler, PSR-18 | evidence/dns-transport/policy-portable-g7.log; evidence/dns-transport/policy-portable-g8.log; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log  |
+| T063 | P0 | verified_scenarios | Secrets in Query, Body, Headers, Zertifikatspfaden und Exception | evidence/dns-transport/policy-portable-g7.log; evidence/dns-transport/policy-portable-g8.log; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log  |
+| T064 | P1 | verified_scenarios | Loggerausfall und Denial-Flood | evidence/dns-transport/policy-portable-g7.log; evidence/dns-transport/policy-portable-g8.log; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log  |
 | T065 | P0 | verified_scenarios | Observe mit verbotenem Ziel / unsupported Transport | evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; evidence/typo3-integration/production-matrix-summary.json  |
-| T066 | P1 | verified_scenarios | Disabled und bewusster Rollback | evidence/typo3-integration/production-matrix-summary.json; packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log  |
+| T066 | P1 | verified_scenarios | Disabled und bewusster Rollback | evidence/typo3-integration/production-matrix-summary.json; Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log  |
 | T067 | P1 | verified_scenarios | Doctor bei normalem/fehlerhaftem Stack | evidence/typo3-integration/production-matrix-summary.json; evidence/typo3-integration/final-execution-source-hashes.json  |
 | T068 | P1 | verified_scenarios | Policy-check mit und ohne Endpoint | evidence/typo3-integration/production-matrix-summary.json; evidence/typo3-integration/final-execution-source-hashes.json  |
 | T069 | P0 | verified_scenarios | Nur globale Extension installiert, Vault unverändert | evidence/typo3-integration/production-matrix-summary.json  |
@@ -88,7 +107,7 @@ All paths below are relative to the delivery root. Detailed behavior, exact sour
 | T076 | P1 | verified_scenarios | Gemeinsamer Regressionstest in Library, TYPO3 und Vault | integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log; integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json; integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json; integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log; integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json; integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; evidence/typo3-integration/production-matrix-summary.json; integrations/nr-vault/evidence/vault-guzzle7-shared-unbound.json; integrations/nr-vault/evidence/vault-guzzle8-shared-unbound.json  |
 | T077 | P0 | verified_scenarios | Fremder SDK, direkter cURL, requesteigener Handler | evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log  |
 | T078 | P1 | verified_scenarios | DNS-Blackhole / langer Resolvercall | evidence/dns-transport/policy-portable-g7.log; evidence/dns-transport/policy-portable-g8.log  |
-| T079 | P1 | partial_current_evidence | Klassifikation mit 64 Adressen/128 Profilen, große Responses | packages/http-guard/data/security-corpus/evidence/policy-benchmark-final.json; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log Named CI reference-system benchmark remains external to the current host measurement. |
+| T079 | P1 | partial_current_evidence | Klassifikation mit 64 Adressen/128 Profilen, große Responses | Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-final.json; evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log Named CI reference-system benchmark remains external to the current host measurement. |
 | T080 | P0 | verified_scenarios | Abhängigkeitsupdate ändert Handler/Raw-Optionen | evidence/dns-transport/execution-manifest.json; verification/evidence/library-matrix/php82g7.results.junit.xml; verification/evidence/library-matrix/php82g8.results.junit.xml; verification/evidence/library-matrix/php83g7.results.junit.xml; verification/evidence/library-matrix/php83g8.results.junit.xml; verification/evidence/library-matrix/php84g7.results.junit.xml; verification/evidence/library-matrix/php84g8.results.junit.xml; verification/evidence/library-matrix/php85g7.results.junit.xml; verification/evidence/library-matrix/php85g8.results.junit.xml; evidence/typo3-integration/production-matrix-summary.json; integrations/nr-vault/EVIDENCE.md  |
 | T081 | P0 | verified_scenarios | POST->GET Redirect bei eingeschränktem Methodenprofil | evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; evidence/typo3-integration/production-matrix-summary.json  |
 | T082 | P1 | verified_scenarios | TLS mit eigener CA, mTLS, verify=false nach Policy | evidence/transport/wire-g7-release.log; evidence/transport/wire-g8-release.log; evidence/typo3-integration/production-matrix-summary.json  |

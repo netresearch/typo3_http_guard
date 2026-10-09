@@ -1,0 +1,16 @@
+{
+    "status": "PASS",
+    "mode": "observe",
+    "protected": false,
+    "actualCoreLeafReachedPrivateTarget": true,
+    "callerRawOptionsAndCallbacksPreserved": true,
+    "trace": [
+        "A.request",
+        "B.request",
+        "headers",
+        "stats",
+        "B.response",
+        "A.response"
+    ],
+    "rawStringBehaviorPreserved": true
+}

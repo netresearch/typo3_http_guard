@@ -10,9 +10,9 @@ vault_guard_public_network="${VAULT_GUARD_PUBLIC_NETWORK:-http-guard-production-
 vault_guard_private_network="${VAULT_GUARD_PRIVATE_NETWORK:-http-guard-production-private}"
 vault_guard_php="${VAULT_GUARD_PHP:-8.5}"
 cd "$vault_guard_root"
-test -d .Build/http-guard-library/src
+test -d .Build/nr-http-guard-extension/Classes/HttpGuard
 # Install shared zero-contact counters without resetting an existing target.
-bash .Build/http-guard-library/tests/Integration/prepare-wire.sh
+bash .Build/nr-http-guard-extension/Tests/HttpGuard/Integration/prepare-wire.sh
 for vault_guard_pair in "$vault_guard_public_network:203.0.115.0/24" "$vault_guard_private_network:10.23.4.0/24"; do
     vault_guard_network="${vault_guard_pair%%:*}"
     vault_guard_subnet="${vault_guard_pair#*:}"

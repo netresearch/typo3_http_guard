@@ -1,0 +1,10 @@
+{
+    "status": "PASS",
+    "configLoaded": true,
+    "erpProfile": "erp-orders",
+    "erpResponse": 202,
+    "publicResponse": 200,
+    "forbiddenInputsRejected": 4,
+    "httpSent": false,
+    "usesActualPolicyEngine": true
+}

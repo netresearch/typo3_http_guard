@@ -1,0 +1,9 @@
+{
+    "status": "FAIL",
+    "fixture": "/tmp/http-guard-kan-8VPVrN/extension-flat/core14g8",
+    "class": "Netresearch\\HttpGuard\\PolicyException",
+    "reasonCode": "configuration_invalid",
+    "error": "Outbound HTTP policy: configuration_invalid",
+    "trace": "#0 /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/Classes/Http/MiddlewareRegistry.php(26): Netresearch\\NrHttpGuard\\Http\\RawRequestFactoryRegistration->assertValid()\n#1 /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/Classes/EventListener/RegisterGuardListener.php(19): Netresearch\\NrHttpGuard\\Http\\MiddlewareRegistry->register()\n#2 /tmp/http-guard-kan-8VPVrN/extension-flat/core14g8/vendor/typo3/cms-core/Classes/EventDispatcher/EventDispatcher.php(49): Netresearch\\NrHttpGuard\\EventListener\\RegisterGuardListener->__invoke()\n#3 /tmp/http-guard-kan-8VPVrN/extension-flat/core14g8/vendor/typo3/cms-core/Classes/Core/Bootstrap.php(159): TYPO3\\CMS\\Core\\EventDispatcher\\EventDispatcher->dispatch()\n#4 /mnt/c/Users/live/Documents/Codex/2026-10-08/kan/outputs/http-guard-implementation/Tests/Integration/production-bootstrap.php(81): TYPO3\\CMS\\Core\\Core\\Bootstrap::init()\n#5 {main}",
+    "checks": []
+}

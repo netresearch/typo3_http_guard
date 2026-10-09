@@ -1,0 +1,25 @@
+Synthetic targets ready: public-a, public-b, private; ports 8090/8443/8444; admin counters 8091.
+runTests.sh: phpstan config: phpstan.neon is not the standard location (Build/phpstan/phpstan.neon)
+runTests.sh: rector config: rector.php is not the standard location (Build/rector/rector.php)
+runTests.sh: fractor config: fractor.php is not the standard location (Build/fractor/fractor.php)
+runTests.sh: infection config: infection.json5 is not the standard location (infection.json.dist)
+PHPUnit 13.4.1 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/vault-guzzle7/Build/FunctionalTests.xml
+
+...................                                               19 / 19 (100%)
+
+Time: 00:05.567, Memory: 74.00 MB
+
+[30;42mOK (19 tests, 249 assertions)[0m
+
+###########################################################################
+Result of functional
+Container runtime: docker
+Environment: CI
+PHP: 8.5
+DBMS: sqlite
+SUCCESS
+###########################################################################
+

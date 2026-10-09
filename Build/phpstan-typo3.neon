@@ -1,0 +1,9 @@
+parameters:
+    level: 8
+    paths:
+        - ../Classes
+    excludePaths:
+        analyseAndScan:
+            - ../Classes/HttpGuard
+            - ../Classes/Http/GuardedRequestFactory13.php
+    tmpDir: /tmp/nr-http-guard-combined-phpstan-core14

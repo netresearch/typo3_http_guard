@@ -1,0 +1,186 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: Netresearch DTT GmbH
+
+includes:
+    - .Build/vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - .Build/vendor/netresearch/typo3-ci-workflows/config/phpstan/phpstan.neon
+    - Build/phpstan-baseline.neon
+    - phpat.neon
+    # PHPStan extensions (phpstan-phpunit, phpstan-strict-rules,
+    # phpstan-deprecation-rules, saschaegerer/phpstan-typo3, phpat,
+    # ergebnis/phpstan-rules) are auto-registered on CI by
+    # phpstan/extension-installer (pulled via netresearch/typo3-ci-workflows).
+    # Do NOT list their .neon files here - double-load triggers a PHPStan
+    # warning that fails the run.
+    #
+    # The shared typo3-ci-workflows config above curates the ergebnis ruleset
+    # to a TYPO3-compatible subset (allRules: false + opt-ins). See
+    # netresearch/typo3-ci-workflows PR #74 for the rationale.
+    #
+    # For the local `composer install --no-plugins` workflow (documented
+    # in typo3-ci-workflows README for git worktrees), override this
+    # config by creating Build/phpstan.no-plugins.neon that manually
+    # includes the extension files, then run:
+    #   .Build/bin/phpstan analyse --configuration=Build/phpstan.no-plugins.neon
+
+parameters:
+    level: 10
+    paths:
+        # Build-time tooling is listed file-by-file: Build/ holds shell scripts
+        # and bootstrap files that were never in scope, so a blanket `Build/`
+        # entry would import a pile of pre-existing findings.
+        - Build/Scripts/collect-evidence.php
+        - Build/Scripts/collect-evidence-selftest.php
+        # Build/Scripts/merge-coverage.php is deliberately NOT listed. It uses
+        # phpunit/php-code-coverage 14's Serialization\Merger and
+        # Report\Facade::fromSerializedData, while the CI matrix analyses this
+        # config against TYPO3 13.4 with `phpunit/phpunit:<13` — where those
+        # classes do not exist and PHPStan reports them as unknown. The file
+        # only ever runs in the release-evidence workflow, which installs the
+        # default dependency set; it stays in the php-cs-fixer scope, and its
+        # behaviour is exercised by the coverage jobs there.
+        - Classes
+        - Tests
+    excludePaths:
+        analyseAndScan:
+            # Secret model uses raw array handling in fromDatabaseRow/toDatabaseRow
+            # that PHPStan level 10 cannot resolve without extensive generics
+            - Classes/Domain/Model/Secret.php
+            # AdminOnlyWidgetInterface was added in TYPO3 v14 (absent in v13.4).
+            # These empty marker subclasses are only registered in the DI
+            # container when the interface exists (Services.Dashboard.php).
+            - Classes/Widgets/AdminOnlyNumberWithIconWidget.php
+            - Classes/Widgets/AdminOnlyBarChartWidget.php
+    reportUnmatchedIgnoredErrors: false
+
+    # Declares the TYPO3 upgrade-wizard API of the major that is NOT
+    # installed, so both wizard shells are analysed on every matrix leg
+    # instead of being excluded (see the file for details).
+    bootstrapFiles:
+        - Build/phpstan/typo3-upgrade-api.php
+        - Tests/Fixtures/HttpGuardBootstrap.php
+
+    ignoreErrors:
+        # The TYPO3 13 wizard shell implements the EXT:install upgrade API on
+        # purpose. TYPO3 14 still ships that API, deprecated, so the run against
+        # 14 reports it — but Configuration/Services.php never registers this
+        # shell on 14 (it registers the EXT:core one), and it goes away with
+        # TYPO3 13 support.
+        -
+            identifiers:
+                - class.implementsDeprecatedInterface
+                - attribute.deprecated
+                - attribute.deprecatedClass
+            path: Classes/Upgrades/AuditHmacMigrationWizardV13.php
+            reportUnmatched: false
+        # Whether TYPO3 offers the wizard is answered only by core's wizard
+        # registry, which is @internal to TYPO3 (EXT:core on 14, EXT:install
+        # on 13). The registration test and the upgrade acceptance test read it
+        # for exactly that question; no production code does.
+        -
+            identifiers:
+                - method.internalClass
+                - classConstant.internalClass
+            paths:
+                - Tests/Functional/Upgrades/UpgradeWizardRegistrationTest.php
+                - Tests/Functional/Acceptance/UpgradeFromPreviousReleaseTest.php
+            reportUnmatched: false
+        # TcaSchemaFactory, TcaSchema, and FieldTypeInterface are internal in TYPO3 v13
+        # but were made public in v14. Since this extension supports both v13.4 and v14,
+        # we suppress these internal class/interface errors for the affected files.
+        -
+            message: '#internal (class|interface) TYPO3\\CMS\\Core\\Schema\\#'
+            reportUnmatched: false
+
+        # v13.4-only findings in the tests. The baseline is shared across the
+        # whole matrix but can only be generated against one resolved core, so
+        # differences in the v13.4 API surface are handled here instead.
+        #
+        # GroupResolver gained a second constructor argument in v14.
+        -
+            message: '#^Class TYPO3\\CMS\\Core\\Authentication\\GroupResolver constructor invoked with 2 parameters, 1 required\.$#'
+            path: Tests/Unit/Security/TechnicalActorContextTest.php
+            reportUnmatched: false
+        # TCA array shapes are typed more loosely in v13.4 than in v14.
+        -
+            message: '#^Parameter \#2 \$array of function implode expects array<string>, array given\.$#'
+            path: Tests/Functional/Hook/SecretTcaHookTest.php
+            reportUnmatched: false
+
+        # Tests/scripts/* are standalone CLI helpers invoked by the test
+        # tooling, where $argv is always populated by the SAPI. PHP 8.5 is
+        # stricter about proving this than earlier versions, so the finding
+        # appears on that matrix cell only.
+        -
+            message: '#^Variable \$argv might not be defined\.$#'
+            path: Tests/scripts/*.php
+            reportUnmatched: false
+
+        # ModuleInterface::hasSubmoduleOverview() exists on TYPO3 14 and not on
+        # 13.4, which is the whole point of asking method_exists() before
+        # calling it. PHPStan resolves one core per matrix leg, so the check
+        # reads as "always true" on the 14 leg and would read as "always false"
+        # on the 13 one; the guard is load-bearing on exactly the major that
+        # cannot be analysed at the same time. Calling it unguarded produced a
+        # 500 on every 13.4 vault overview page.
+        -
+            identifiers:
+                - function.alreadyNarrowedType
+            paths:
+                - Classes/Middleware/VaultOverviewModuleResolver.php
+                - Tests/Unit/Middleware/VaultOverviewModuleResolverTest.php
+            reportUnmatched: false
+
+        # phpstan-phpunit resolves the stub's methods from the running core's
+        # ModuleInterface, which has no hasSubmoduleOverview() before TYPO3 14.
+        # The test configures it only when the method exists, but that is a
+        # runtime guard and this rule is static, so it fires on the 13.4 leg
+        # alone.
+        -
+            message: '#Trying to mock an undefined method hasSubmoduleOverview\(\)#'
+            path: Tests/Unit/Middleware/VaultOverviewModuleResolverTest.php
+            reportUnmatched: false
+
+        # setShortcutContext() is a v14-only method on DocHeaderComponent.
+        # Code is guarded by method_exists() but PHPStan can't resolve the
+        # named parameters when analysing against v13.
+        -
+            message: '#Unknown parameter .* in call to method .*::setShortcutContext\(\)#'
+            reportUnmatched: false
+
+        # Environment::initialize() carries @internal, but its own docblock reads
+        # "only used within the very early Set up of TYPO3, OR TO BE USED WITHIN
+        # TESTS" — and TYPO3's own testing framework calls it for exactly this
+        # purpose (UnitTestCase::restoreEnvironment()). There is no public
+        # alternative: getVarPath()/getPublicPath() throw a TypeError until the
+        # singleton is initialised, so a unit test covering a path default or the
+        # public-web-root boundary cannot run without it. Scoped to the one test
+        # helper that does this, so no production code can quietly follow suit.
+        -
+            message: '#Call to internal static method TYPO3\\CMS\\Core\\Core\\Environment::initialize\(\) from outside its root namespace TYPO3\.#'
+            path: Tests/Unit/Traits/EnvironmentSandboxTrait.php
+            reportUnmatched: false
+
+    # PHP version targeting
+    phpVersion: 80200
+
+    # Strict rules
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkUninitializedProperties: true
+
+    # TYPO3-specific settings
+    treatPhpDocTypesAsCertain: false
+
+    typo3:
+        # `route` is set by core's backend-routing middleware and read by every
+        # middleware that runs after it (core's own BackendModuleValidator does
+        # the same). Declaring its type here is what phpstan-typo3's
+        # requestAttributeValidation rule asks for.
+        requestGetAttributeMapping:
+            route: TYPO3\CMS\Backend\Routing\Route
+
+    # Type coverage
+    typeAliases:
+        SecretOptions: 'array{owner?: int, groups?: int[], context?: string, description?: string, metadata?: array<string, mixed>, pid?: int, expiresAt?: int|\DateTimeInterface}'
+        EncryptedData: 'array{encrypted_value: string, encrypted_dek: string, dek_nonce: string, value_nonce: string, value_checksum: string}'
+        SecretMetadataArray: 'array{identifier: string, description: string, owner: int, groups: int[], context: string, version: int, createdAt: int, updatedAt: int, expiresAt: int|null, lastRotatedAt: int|null, metadata: array<string, mixed>}'

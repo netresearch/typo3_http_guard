@@ -1,0 +1,13 @@
+{
+  "baseline_candidate_patch": "ba61f09d69f475d708d2307a28c110da0ce042835b7800e6bba6e10a4f7ddbfb",
+  "current_patch": "781c5b3b33b299d3250e12ea0c526fd7aa4554bca82e2e6deebafe4a0b5bef6a",
+  "changed_files": [
+    "Build/Scripts/runGuardAdapterTests.sh",
+    "Documentation/Developer/Adr/ADR-041-OptInHttpGuardAdapter.rst",
+    "Documentation/Developer/HttpGuard.rst",
+    "Tests/Fixtures/HttpGuardBootstrap.php",
+    "Tests/Functional/Http/GuardAdapterTest.php",
+    "composer.json"
+  ],
+  "all_other_delivered_files_match_historical_candidate": true
+}

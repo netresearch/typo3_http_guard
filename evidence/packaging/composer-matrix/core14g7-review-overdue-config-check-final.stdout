@@ -1,0 +1,1 @@
+{"schemaVersion":1,"mode":"enforce","policyRevision":"43fbac636bc0a1de64e68dfdebb5b8543e09efec15eb050524115cb6ab0169e7","endpointCount":2,"warnings":{"overdueEndpointReviews":["erp-orders"],"tlsVerificationPolicyNotRequired":true},"httpSent":false}

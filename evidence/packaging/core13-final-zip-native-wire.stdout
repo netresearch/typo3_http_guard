@@ -1,0 +1,262 @@
+{
+    "status": "PASS",
+    "fixture": "/tmp/http-guard-kan-8VPVrN/packaging/classic13",
+    "php": "8.5.11",
+    "checks": [
+        {
+            "check": "actual_production_bootstrap_and_core_request_factory",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "first_boundary_last_terminal",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "real_core_di_makeinstance_psr17_same_validated_raw_factory",
+            "status": "PASS",
+            "details": {
+                "replacement": "Netresearch\\NrHttpGuard\\Http\\GuardedRequestFactory13",
+                "parentReadonly": false
+            }
+        },
+        {
+            "check": "core_raw_empty_fragment_denied_before_uri_construction",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "invalid_target",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "core_raw_backslash_denied_before_uri_construction",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "invalid_target",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "psr17_relative_request_construction_preserved",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "late_raw_factory_mapping_conflict_denied_before_http",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "configuration_invalid",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "EP-PRIVATE-UNBOUND-shared_corpus_denied",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "address_forbidden",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "shared_normative_case_consumed_with_configured_but_unbound_endpoint",
+            "status": "PASS",
+            "details": {
+                "caseId": "EP-PRIVATE-UNBOUND",
+                "corpusSha256": "4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825",
+                "origin": "https://synthetic-endpoint.test:8443",
+                "method": "POST",
+                "address": "10.23.4.12",
+                "nativeConstructionDelta": 0
+            }
+        },
+        {
+            "check": "global_core_request_pinned_without_changing_host",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "existing_middleware_and_callbacks_preserved",
+            "status": "PASS",
+            "details": {
+                "trace": [
+                    "A.request",
+                    "B.request",
+                    "user.on_headers",
+                    "user.on_stats",
+                    "B.response",
+                    "A.response"
+                ]
+            }
+        },
+        {
+            "check": "configured_endpoint_does_not_grant_global_core_requests",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "address_forbidden",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "flat_legacy_vault_entry_present_without_new_grant",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "flat_legacy_vault_allowlist_does_not_grant_public_core_private_access",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "address_forbidden",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "core_context_allowlist_is_cumulative",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "is not allowed",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "core_allowlist_denial_precedes_custom_middleware",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "custom_origin_rewrite_denied_before_tcp",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "authority_mismatch",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "late_middleware_after_terminal_denied_before_tcp",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "configuration_invalid",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "duplicate_guard_denied_before_tcp",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "configuration_invalid",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "options_denied_before_tcp_stream",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "option_forbidden",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "options_denied_before_tcp_delay",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "option_forbidden",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "options_denied_before_tcp_unknown_transport_option",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "option_forbidden",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "options_denied_before_tcp_curl",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "option_forbidden",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "bound_endpoint_private_wire_and_existing_core_stack",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "bound_endpoint_method_denied_before_tcp",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "endpoint_mismatch",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "bound_endpoint_origin_denied_before_tcp",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "endpoint_mismatch",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "endpoint_factory_preserves_fixed_core_context",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "is not allowed",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "psr18_send_request_does_not_follow_redirect",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "public_fetch_strips_global_auth_cookies_mtls_and_headers",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "public_fetch_keeps_existing_custom_stack",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "public_fetch_cannot_choose_endpoint_grant",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "address_forbidden",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "public_fetch_keeps_fixed_core_context",
+            "status": "PASS",
+            "details": {
+                "reasonCode": "is not allowed",
+                "zeroNewTcpAcceptsAndHttpRequests": true
+            }
+        },
+        {
+            "check": "explicit_public_fetch_can_follow_scrubbed_cross_origin",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "final_response_middleware_rewrite_denied_before_private_follow",
+            "status": "PASS",
+            "details": []
+        },
+        {
+            "check": "actual_core_async_promise_uses_controlled_transport",
+            "status": "PASS",
+            "details": []
+        }
+    ],
+    "versions": {
+        "core": "13.4.35",
+        "guzzle": "7.15.3"
+    }
+}

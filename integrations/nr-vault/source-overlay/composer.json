@@ -52,9 +52,9 @@
     },
     "suggest": {
         "ext-curl": "Enables the CURLOPT_RESOLVE DNS pin and the cancellable outbound send (VaultHttpClient::sendCancellable()); without it both degrade, they do not fail",
-        "netresearch/http-guard": "Enables the explicit resource and separate OAuth token HTTP Guard adapters; install and wire deliberately, no automatic opt-in",
         "typo3/cms-dashboard": "Adds vault secret count and audit activity widgets to the TYPO3 dashboard",
-        "typo3/cms-install": "Offers the audit-log HMAC migration wizard on TYPO3 13, whose upgrade API lives in EXT:install; TYPO3 14 needs nothing, its upgrade API is in EXT:core"
+        "typo3/cms-install": "Offers the audit-log HMAC migration wizard on TYPO3 13, whose upgrade API lives in EXT:install; TYPO3 14 needs nothing, its upgrade API is in EXT:core",
+        "netresearch/nr-http-guard": "Enables the explicit resource and separate OAuth token HTTP Guard adapters; install and wire deliberately, no automatic opt-in"
     },
     "autoload": {
         "psr-4": {

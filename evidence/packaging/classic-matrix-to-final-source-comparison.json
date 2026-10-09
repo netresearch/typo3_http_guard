@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "classic_full_matrix_archive_sha256": "1eea9f57b4fdc79268c197579cfdb64a8615a34417913e8d5166d1813f9ae152",
+  "classic_full_matrix_archive_was_preliminary": true,
+  "final_archive_sha256": "f5e83e6fb4dcc49a6c3b20e12d7d167b08cd0bb0d4f76204f9fb77b495d02853",
+  "production_member_count": 84,
+  "all_final_production_member_bytes_match_classic_matrix_archive": true,
+  "excluded_changes": "documentation and archive inventory filtering only; unneeded corpus evidence omitted from final ZIP"
+}

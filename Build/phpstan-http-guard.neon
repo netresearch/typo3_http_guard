@@ -1,0 +1,5 @@
+parameters:
+    level: 8
+    paths:
+        - ../Classes/HttpGuard
+    tmpDir: ../.phpstan-http-guard-cache

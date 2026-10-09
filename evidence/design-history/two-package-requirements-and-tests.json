@@ -1,0 +1,4651 @@
+{
+  "schema_version": 1,
+  "kind": "consolidated_verification_ledger",
+  "recorded_date": "2026-10-09",
+  "scope": "Original 45 HG requirements, all 84 original scenarios and INV-01–INV-08; current immutable evidence snapshot. Implementation verification is separate from production release acceptance.",
+  "count_expectations": {
+    "requirements": 45,
+    "tests": 84,
+    "p0": 74,
+    "p1": 10
+  },
+  "evidence_interpretation": {
+    "statuses": "verified_scenarios means listed current observed scenarios; partial/pending rows preserve exact missing evidence, and release gates separately apply.",
+    "legacy_baseline": "Vault 534/2132 +28/287 pre-adapter tests preserve old behavior; new adapter-specific functional suite is separately recorded.",
+    "raw_uri": "Raw preconstruction seam and already-parsed PSR18 information-loss boundary are distinct; no claim that standard PSR18 reconstructs erased syntax.",
+    "delivery_paths": "All evidence/source references are relative to the delivery root; ::method and :line suffixes are source locators.",
+    "current_policy": "Final portable own policy suite41/1018 on both majors; historical data/security-corpus policy-final41/1014 evidence retains its original test hashes. Full eight-tuple suite122/2167 includes the current portable fixture.",
+    "p0": "All74 P0 scenario rows have verified current component evidence; G5/G6/AP10 and P1T079 remain separate release conditions."
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "status": "passed_root_confirmed",
+      "evidence": [
+        "evidence/architecture-probe/evidence/G0-summary.json"
+      ],
+      "remaining": "None; initial architecture gate accepted before production implementation."
+    },
+    {
+      "id": "G1",
+      "status": "passed_current_declared_matrix",
+      "remaining": "All 74 P0 scenarios have current component evidence. Execution scope: eight standalone PHP/major tuples, four actual Core/Guzzle tuples on PHP8.5.11, two Vault tuples on PHP8.5.10; this is not every framework/PHP cross-product or broader dependency patch range.",
+      "evidence": [
+        "verification/evidence/library-matrix/php82g7.results.junit.xml",
+        "verification/evidence/library-matrix/php82g8.results.junit.xml",
+        "verification/evidence/library-matrix/php83g7.results.junit.xml",
+        "verification/evidence/library-matrix/php83g8.results.junit.xml",
+        "verification/evidence/library-matrix/php84g7.results.junit.xml",
+        "verification/evidence/library-matrix/php84g8.results.junit.xml",
+        "verification/evidence/library-matrix/php85g7.results.junit.xml",
+        "verification/evidence/library-matrix/php85g8.results.junit.xml",
+        "verification/evidence/library-matrix/summary.json"
+      ]
+    },
+    {
+      "id": "G2",
+      "status": "passed",
+      "evidence": [
+        "evidence/transport/mutations/summary.json",
+        "evidence/transport/mutations/production-source-hashes.json"
+      ],
+      "remaining": "All 12 targeted experiments killed; no surviving mutant."
+    },
+    {
+      "id": "G3",
+      "status": "passed_current_component_integrations",
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "integrations/nr-vault/EVIDENCE.md"
+      ],
+      "remaining": "None within recorded actual integration tuples; exact supported/runtime limitations are in their reports."
+    },
+    {
+      "id": "G4",
+      "status": "passed_synthetic_diagnostics",
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "remaining": "Real operator rollout acceptance remains AP-10; all final diagnostic fixture processes pass."
+    },
+    {
+      "id": "G5",
+      "status": "partial_known_legacy_advisories",
+      "remaining": "Minimal shared-library audits are separate from the existing Vault/historical TYPO3 SVG sanitizer advisories. Functional lower bounds and Ubuntu vendor backports do not establish blanket platform vulnerability freedom; operator dependency/runtime remediation remains required.",
+      "evidence": [
+        "evidence/runtime-security/sources.json",
+        "evidence/runtime-security/ubuntu-USN-8820-1.html",
+        "integrations/nr-vault/EVIDENCE.md"
+      ]
+    },
+    {
+      "id": "G6",
+      "status": "external_acceptance_required",
+      "remaining": "Original spec requires security review by a different person. Cross-agent source review finds/fixes defects but does not establish this human gate."
+    },
+    {
+      "id": "AP-10",
+      "status": "external_acceptance_required",
+      "remaining": "Real operator pilot, reviewed endpoint grants, monitoring and deployment acceptance cannot be substituted by synthetic fixtures."
+    }
+  ],
+  "tests": [
+    {
+      "id": "T001",
+      "priority": "P0",
+      "requirements": [
+        "HG-001",
+        "HG-005"
+      ],
+      "scenario": "Registrierung in echten TYPO3-13.4-/14.3-Instanzen",
+      "expected_evidence": "Standard-RequestFactory ruft Boundary und Terminal genau einmal pro Versuch auf.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 23
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Actual Core bootstrap/RequestFactory in all four Core/Guzzle combinations; registry order, preserved project middleware, late/duplicate/object registry rejection and cumulative Core/origin rewrite failures before wire.",
+      "remaining": ""
+    },
+    {
+      "id": "T002",
+      "priority": "P0",
+      "requirements": [
+        "HG-002",
+        "HG-019"
+      ],
+      "scenario": "Eigene Middleware vor/nach Core-Allowlist",
+      "expected_evidence": "Boundary ist erster, Terminal letzter eigener Eintrag; Core-Allowlist bleibt wirksam.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 24
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Actual Core bootstrap/RequestFactory in all four Core/Guzzle combinations; registry order, preserved project middleware, late/duplicate/object registry rejection and cumulative Core/origin rewrite failures before wire.",
+      "remaining": ""
+    },
+    {
+      "id": "T003",
+      "priority": "P0",
+      "requirements": [
+        "HG-002",
+        "HG-042"
+      ],
+      "scenario": "Middleware nach Terminal / doppelte Registrierung / HandlerStack-Objekt",
+      "expected_evidence": "Konfigurationsfehler vor Zielkontakt; nichts still übersprungen.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 25
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Actual Core bootstrap/RequestFactory in all four Core/Guzzle combinations; registry order, preserved project middleware, late/duplicate/object registry rejection and cumulative Core/origin rewrite failures before wire.",
+      "remaining": ""
+    },
+    {
+      "id": "T004",
+      "priority": "P0",
+      "requirements": [
+        "HG-002",
+        "HG-009",
+        "HG-019"
+      ],
+      "scenario": "Middleware schreibt Origin nach Core-Prüfung um",
+      "expected_evidence": "Authority-/Originfehler vor Versand; Core-Regel kann nicht umgangen werden.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 26
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Actual Core bootstrap/RequestFactory in all four Core/Guzzle combinations; registry order, preserved project middleware, late/duplicate/object registry rejection and cumulative Core/origin rewrite failures before wire.",
+      "remaining": ""
+    },
+    {
+      "id": "T005",
+      "priority": "P0",
+      "requirements": [
+        "HG-003",
+        "HG-004"
+      ],
+      "scenario": "Leere neue Konfiguration",
+      "expected_evidence": "Enforce aktiv, keine internen Ausnahmen.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 27
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
+        "packages/nr-http-guard/Tests/Unit/ConfigurationLoaderTest.php"
+      ],
+      "covered": "Enforce/no-grant defaults and strict schema/type/unknown key failures; deployed invalid modes/schema return config error without HTTP.",
+      "remaining": ""
+    },
+    {
+      "id": "T006",
+      "priority": "P0",
+      "requirements": [
+        "HG-003",
+        "HG-042"
+      ],
+      "scenario": "Falscher Modus / unbekannte Konfigurationsfelder",
+      "expected_evidence": "Fehler, niemals implizites disabled oder allow.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 28
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
+        "packages/nr-http-guard/Tests/Unit/ConfigurationLoaderTest.php"
+      ],
+      "covered": "Enforce/no-grant defaults and strict schema/type/unknown key failures; deployed invalid modes/schema return config error without HTTP.",
+      "remaining": ""
+    },
+    {
+      "id": "T007",
+      "priority": "P1",
+      "requirements": [
+        "HG-006"
+      ],
+      "scenario": "Bibliothek ohne TYPO3 und nr-vault installieren",
+      "expected_evidence": "Komponenten und Tests funktionieren ohne Framework-Globals.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 29
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/composer.json",
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php"
+      ],
+      "covered": "Framework-free library dependencies and Guzzle7 standalone policy execution without TYPO3/Vault globals.",
+      "remaining": ""
+    },
+    {
+      "id": "T008",
+      "priority": "P0",
+      "requirements": [
+        "HG-007"
+      ],
+      "scenario": "Kanonischer öffentlicher Host / Großschreibung / ein Endpunkt",
+      "expected_evidence": "Einheitliche Authority und identischer Pin; zulässiger hermetischer Versand.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 30
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown"
+      ],
+      "covered": "Canonical uppercase/root-dot host, exact preserved Host, primary_ip pin, callbacks and one isolated native transfer.",
+      "remaining": ""
+    },
+    {
+      "id": "T009",
+      "priority": "P0",
+      "requirements": [
+        "HG-008"
+      ],
+      "scenario": "file, gopher, ftp, dict, relative URL, Userinfo, Fragment",
+      "expected_evidence": "Ablehnung ohne Zielverbindung.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 31
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
+        "packages/nr-http-guard/Classes/Http/RawRequestGuardTrait.php",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Full shared raw-normalization corpus passes before request construction. Actual decorated TYPO3 Core string entries additionally reject empty fragments/backslashes before PSR-7 in all four tuples. Already-parsed PSR18 creator information loss remains explicitly documented; it cannot recover erased syntax.",
+      "remaining": ""
+    },
+    {
+      "id": "T010",
+      "priority": "P0",
+      "requirements": [
+        "HG-007",
+        "HG-008"
+      ],
+      "scenario": "Steuerzeichen, Backslash, Prozentkodierung im Host, leere Labels",
+      "expected_evidence": "Ablehnung vor DNS/Transport.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 32
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
+        "packages/nr-http-guard/Classes/Http/RawRequestGuardTrait.php",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Full shared raw-normalization corpus passes before request construction. Actual decorated TYPO3 Core string entries additionally reject empty fragments/backslashes before PSR-7 in all four tuples. Already-parsed PSR18 creator information loss remains explicitly documented; it cannot recover erased syntax.",
+      "remaining": ""
+    },
+    {
+      "id": "T011",
+      "priority": "P0",
+      "requirements": [
+        "HG-008"
+      ],
+      "scenario": "Integer-, Hex-, Oktal- und Kurz-IPv4",
+      "expected_evidence": "Nichtkanonische Form wird abgelehnt; auch keine Allowlistumgehung.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 33
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
+        "packages/nr-http-guard/Classes/Http/RawRequestGuardTrait.php",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Full shared raw-normalization corpus passes before request construction. Actual decorated TYPO3 Core string entries additionally reject empty fragments/backslashes before PSR-7 in all four tuples. Already-parsed PSR18 creator information loss remains explicitly documented; it cannot recover erased syntax.",
+      "remaining": ""
+    },
+    {
+      "id": "T012",
+      "priority": "P0",
+      "requirements": [
+        "HG-008"
+      ],
+      "scenario": "IPv6-Zone-ID und ungültige URI-Klammern",
+      "expected_evidence": "Ablehnung ohne Transport.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 34
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php",
+        "packages/nr-http-guard/Classes/Http/RawRequestGuardTrait.php",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Full shared raw-normalization corpus passes before request construction. Actual decorated TYPO3 Core string entries additionally reject empty fragments/backslashes before PSR-7 in all four tuples. Already-parsed PSR18 creator information loss remains explicitly documented; it cannot recover erased syntax.",
+      "remaining": ""
+    },
+    {
+      "id": "T013",
+      "priority": "P0",
+      "requirements": [
+        "HG-009"
+      ],
+      "scenario": "Abweichender Host-Header oder Port",
+      "expected_evidence": "Kein Zielkontakt; identische normalisierte Authority darf passieren.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 35
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
+      ],
+      "covered": "Mismatching Host/port and both public-A/private-AAAA and public-AAAA/private-A vectors deny before native construction and leave every target TCP/HTTP counter unchanged, regardless of family preference.",
+      "remaining": ""
+    },
+    {
+      "id": "T014",
+      "priority": "P0",
+      "requirements": [
+        "HG-010",
+        "HG-011"
+      ],
+      "scenario": "IPv4 RFC1918 und Loopback direkt",
+      "expected_evidence": "Alle Grenzwerte gesperrt; Transportspy und Zielcounter bleiben null.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 36
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+      ],
+      "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
+      "remaining": ""
+    },
+    {
+      "id": "T015",
+      "priority": "P0",
+      "requirements": [
+        "HG-010",
+        "HG-011"
+      ],
+      "scenario": "IPv6 ULA, Loopback, Link-Local",
+      "expected_evidence": "Gesperrt einschließlich komprimierter Schreibweisen.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 37
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+      ],
+      "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
+      "remaining": ""
+    },
+    {
+      "id": "T016",
+      "priority": "P0",
+      "requirements": [
+        "HG-010"
+      ],
+      "scenario": "IPv4-mapped IPv6 mit interner und öffentlicher eingebetteter IPv4",
+      "expected_evidence": "Gleiche Policy wie für die eingebettete Adresse, kein Familienbypass.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 38
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+      ],
+      "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
+      "remaining": ""
+    },
+    {
+      "id": "T017",
+      "priority": "P0",
+      "requirements": [
+        "HG-011"
+      ],
+      "scenario": "Cloud-Metadaten IPv4/IPv6, Unspecified, Multicast",
+      "expected_evidence": "Keine generische Endpointausnahme möglich.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 39
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+      ],
+      "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
+      "remaining": ""
+    },
+    {
+      "id": "T018",
+      "priority": "P0",
+      "requirements": [
+        "HG-011"
+      ],
+      "scenario": "CGNAT, Dokumentation, Benchmark, Reserved",
+      "expected_evidence": "Konservative Sperrklassen vollständig getestet.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 40
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+      ],
+      "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
+      "remaining": ""
+    },
+    {
+      "id": "T019",
+      "priority": "P0",
+      "requirements": [
+        "HG-011"
+      ],
+      "scenario": "NAT64, 6to4, Teredo, deprecated compatible",
+      "expected_evidence": "v1 blockiert statt Tunnelpfad falsch als public zu klassifizieren.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 41
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+      ],
+      "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
+      "remaining": ""
+    },
+    {
+      "id": "T020",
+      "priority": "P0",
+      "requirements": [
+        "HG-010",
+        "HG-011"
+      ],
+      "scenario": "CIDR-Grenzen aller mitgelieferten Bereiche",
+      "expected_evidence": "Erste/letzte Adresse sowie angrenzende Kandidaten gemäß Korpus.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 42
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyCorpusTest.php",
+        "packages/http-guard/tests/Unit/Policy/BinaryCidrTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testEveryDeniedAddressCorpusBoundaryHasZeroNativeAndWireContact"
+      ],
+      "covered": "All 257 binary classification fixtures; every denied address fixture traverses production guard with zero native construction and unchanged synthetic TCP/HTTP counters. Mapped IPv4 and special-prefix boundaries included.",
+      "remaining": ""
+    },
+    {
+      "id": "T021",
+      "priority": "P0",
+      "requirements": [
+        "HG-012",
+        "HG-019"
+      ],
+      "scenario": "Betreiber-Deny überlappt Endpoint-Freigabe",
+      "expected_evidence": "Deny gewinnt, auch bei gültigem Grant.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 43
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant"
+      ],
+      "covered": "Operator deny overrides the bound endpoint with unchanged target TCP/HTTP counters.",
+      "remaining": ""
+    },
+    {
+      "id": "T022",
+      "priority": "P0",
+      "requirements": [
+        "HG-013"
+      ],
+      "scenario": "DNS liefert public A und private AAAA",
+      "expected_evidence": "Gesamter Versuch blockiert, kein safe-only Wegfiltern.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 44
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
+      ],
+      "covered": "Mismatching Host/port and both public-A/private-AAAA and public-AAAA/private-A vectors deny before native construction and leave every target TCP/HTTP counter unchanged, regardless of family preference.",
+      "remaining": ""
+    },
+    {
+      "id": "T023",
+      "priority": "P0",
+      "requirements": [
+        "HG-013"
+      ],
+      "scenario": "DNS liefert public AAAA und private A",
+      "expected_evidence": "Gleicher Ausgang, unabhängig von Familienpräferenz.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 45
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testHostHeaderMismatchAndBothMixedAddressFamiliesHaveZeroContact"
+      ],
+      "covered": "Mismatching Host/port and both public-A/private-AAAA and public-AAAA/private-A vectors deny before native construction and leave every target TCP/HTTP counter unchanged, regardless of family preference.",
+      "remaining": ""
+    },
+    {
+      "id": "T024",
+      "priority": "P0",
+      "requirements": [
+        "HG-014"
+      ],
+      "scenario": "NXDOMAIN, SERVFAIL, leere Antwort, ungültige Recorddaten",
+      "expected_evidence": "Kein Transportaufruf; kein ungeprüfter Systemresolverfallback.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 46
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testInvalidEmptyIncompleteAndNegativeDnsCannotUseEndpointPermission"
+      ],
+      "covered": "Actual registry/resolver/terminal rejects NXDOMAIN/SERVFAIL packet status, empty/incomplete/invalid address and family records even with a matching private endpoint grant; native0/TCP0/HTTP0 per witness.",
+      "remaining": ""
+    },
+    {
+      "id": "T025",
+      "priority": "P0",
+      "requirements": [
+        "HG-014",
+        "HG-017"
+      ],
+      "scenario": "Freigegebener privater Host ohne verwertbare Auflösung",
+      "expected_evidence": "Trotz Grant ablehnen.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 47
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testInvalidEmptyIncompleteAndNegativeDnsCannotUseEndpointPermission"
+      ],
+      "covered": "Actual registry/resolver/terminal rejects NXDOMAIN/SERVFAIL packet status, empty/incomplete/invalid address and family records even with a matching private endpoint grant; native0/TCP0/HTTP0 per witness.",
+      "remaining": ""
+    },
+    {
+      "id": "T026",
+      "priority": "P0",
+      "requirements": [
+        "HG-014",
+        "HG-015"
+      ],
+      "scenario": "Nur hosts/NSS bekannter Name, keine statische Zuordnung",
+      "expected_evidence": "Kein unkontrollierter Durchgriff auf den Transportresolver.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 48
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testNssOnlyPrivateNameWithoutStaticAssignmentNeverFallsBack"
+      ],
+      "covered": "Docker injects a genuine NSS hosts-only private mapping; gethostbynamel observes it. The complete empty controlled DNS answer is rejected instead of allowing any transport/NSS fallback, native0/TCP0/HTTP0.",
+      "remaining": ""
+    },
+    {
+      "id": "T027",
+      "priority": "P0",
+      "requirements": [
+        "HG-014",
+        "HG-015",
+        "HG-017"
+      ],
+      "scenario": "Statischer Host mit enger interner Freigabe",
+      "expected_evidence": "Exakt gepinnter interner Testendpoint erreichbar; URL-Importer bleibt gesperrt.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 49
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Static private erp.test exact-address endpoint succeeds only through the configured bound factory; global/PublicFetch attempts deny before TCP/HTTP.",
+      "remaining": ""
+    },
+    {
+      "id": "T028",
+      "priority": "P0",
+      "requirements": [
+        "HG-013",
+        "HG-044"
+      ],
+      "scenario": "CNAME zu privat, Schleife, mehr als acht Hops, mehr als 64 Adressen",
+      "expected_evidence": "Ablehnung; keine still abgeschnittene oder unvollständig geprüfte Antwort.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 50
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json",
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testCnamePrivateHopCannotCreatePublicTransfer",
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testDnsCycleHopAndAddressLimitsHaveZeroNativeAndWireContact",
+        "packages/http-guard/tests/Unit/Policy/PolicyResolverBoundariesTest.php"
+      ],
+      "covered": "Private CNAME destination, cycle, ninth hop and 65 addresses reject through the production terminal with zero native handles and unchanged target TCP/HTTP. Unit boundaries include complete eight-hop and 64-address acceptance.",
+      "remaining": ""
+    },
+    {
+      "id": "T029",
+      "priority": "P0",
+      "requirements": [
+        "HG-015"
+      ],
+      "scenario": "Resolver liefert zuerst public, anschließend private",
+      "expected_evidence": "Wire-Test zeigt ausschließlich gepinnte public Testadresse; kein zweiter Zielresolver.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 51
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
+      ],
+      "covered": "First resolution allowed and second private answer never consulted; failed first approved pin raises connection error without DNS fallback or target contact.",
+      "remaining": ""
+    },
+    {
+      "id": "T030",
+      "priority": "P0",
+      "requirements": [
+        "HG-015",
+        "HG-016"
+      ],
+      "scenario": "Pin auf nicht erreichbare Adresse",
+      "expected_evidence": "Verbindungsfehler ohne Fallback auf ungeprüftes DNS.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 52
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
+      ],
+      "covered": "First resolution allowed and second private answer never consulted; failed first approved pin raises connection error without DNS fallback or target contact.",
+      "remaining": ""
+    },
+    {
+      "id": "T031",
+      "priority": "P0",
+      "requirements": [
+        "HG-016"
+      ],
+      "scenario": "Mehrere A/AAAA, erste Adresse unerreichbar",
+      "expected_evidence": "Fallback nur innerhalb geprüfter Menge; ein Multi-Address-Pin bleibt vollständig.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 53
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testNativeIpv6MappedAndCompleteDualStackFallbackPins",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testApprovedMultiAddressPinAndFailedPinNeverUseSecondResolver"
+      ],
+      "covered": "Actual reachable IPv6, IPv4-mapped public literal and complete dual-stack fallback preserve the origin Host. Unreachable first IPv4/IPv6 candidates fall back only within the single resolver-produced checked set; no second resolver.",
+      "remaining": ""
+    },
+    {
+      "id": "T032",
+      "priority": "P0",
+      "requirements": [
+        "HG-016"
+      ],
+      "scenario": "Fehlerhafte Pinzeichenfolge / Optionsetzer schlägt fehl",
+      "expected_evidence": "Vor Zielkontakt fehlschlagen, keine Option ignorieren.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 54
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testCurlOptionSetFailureCannotStartAnUnpinnedTransfer",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testMalformedPlanPinAndHiddenCurlRewindRetryFailClosed"
+      ],
+      "covered": "Malformed connection-plan address denies before native contact. An isolated Guzzle curl_setopt shim returns false only for CURLOPT_RESOLVE: failure is observed with one attempted native handle, zero TCP/HTTP and no active lease; the option is never silently ignored.",
+      "remaining": ""
+    },
+    {
+      "id": "T033",
+      "priority": "P0",
+      "requirements": [
+        "HG-015"
+      ],
+      "scenario": "TLS-SNI, Zertifikatsname und Host bei Pinning",
+      "expected_evidence": "Originhost bleibt erhalten; interne IP wird nicht zum virtuellen Host.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 55
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls"
+      ],
+      "covered": "Actual TLS verifies original host/SNI/certificate against custom CA and client certificate while connecting through pin.",
+      "remaining": ""
+    },
+    {
+      "id": "T034",
+      "priority": "P0",
+      "requirements": [
+        "HG-017",
+        "HG-018"
+      ],
+      "scenario": "ERP-Grant gegen andere Origin, Port, Methode oder CIDR",
+      "expected_evidence": "Jede Abweichung blockiert.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 56
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testExactEndpointWorksWithoutGrantingPublicImporter",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOutsideCidrAndLiteralLoopbackGrantsAreExact"
+      ],
+      "covered": "Endpoint origin/port/method mismatch plus a candidate outside its configured CIDR reject with zero native/wire contact; correctly bound exact endpoint still works.",
+      "remaining": ""
+    },
+    {
+      "id": "T035",
+      "priority": "P0",
+      "requirements": [
+        "HG-017",
+        "HG-018"
+      ],
+      "scenario": "Benutzer setzt Profilstring, Header oder gefälschtes Grantobjekt",
+      "expected_evidence": "Keine interne Freigabe.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 57
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testConcurrentEnvelopeOnlySwapAndClosedReplayFail",
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php::testForgedContextWithBorrowedGrantAndScopeIsStillRejected",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "String/header grants, forged/borrowed exact context objects, envelope swap/replay rejected; configured endpoint never grants public importer.",
+      "remaining": ""
+    },
+    {
+      "id": "T036",
+      "priority": "P0",
+      "requirements": [
+        "HG-017",
+        "HG-018"
+      ],
+      "scenario": "Public-Importer ruft konfigurierten ERP-Host auf",
+      "expected_evidence": "Blockiert; Konfiguration allein erweitert Public-Profil nicht.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 58
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOperatorDenyWinsAndHeadersCannotGrant",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testConcurrentEnvelopeOnlySwapAndClosedReplayFail",
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php::testForgedContextWithBorrowedGrantAndScopeIsStillRejected",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "String/header grants, forged/borrowed exact context objects, envelope swap/replay rejected; configured endpoint never grants public importer.",
+      "remaining": ""
+    },
+    {
+      "id": "T037",
+      "priority": "P0",
+      "requirements": [
+        "HG-017"
+      ],
+      "scenario": "Loopback mit /32 bzw. /128 und explizitem Flag",
+      "expected_evidence": "Nur korrekt gebundener Client erlaubt; Flag oder Präfix allein reichen nicht.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 59
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyStrictInputsTest.php::testIpv6NetworkContainingLoopbackRequiresExactHostPrefix",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testOutsideCidrAndLiteralLoopbackGrantsAreExact"
+      ],
+      "covered": "Broad loopback-containing IPv4/IPv6 networks and missing flag reject at config. Actual 127.0.0.1/32 and ::1/128 with explicit flag work only on the bound client; the unbound client has zero native/wire contact.",
+      "remaining": ""
+    },
+    {
+      "id": "T038",
+      "priority": "P0",
+      "requirements": [
+        "HG-017",
+        "HG-043"
+      ],
+      "scenario": "Ablauf eines Grants, geänderte Policyrevision, verzögert eingeplanter Versuch",
+      "expected_evidence": "Alter Grant/Plan ungültig; neue Requests nutzen neue Regeln.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 60
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testQueueExpiryAndPreStartCancellationHaveNoContact",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testExpiryDuringDnsAndBodyPreparationPreventsFirstConnection",
+        "packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php::testMemoHitReauthorizesChangedPolicyAndRejectsOldRevisionContext",
+        "specification/specs/07-delivery-and-operations.md:34"
+      ],
+      "covered": "Queue, DNS/body preparation and final-start expiry deny before contact; a rebuilt registry with a changed normalized revision rejects old registry contexts and reauthorizes memo hits. Original operations §3 specifies immutable configuration snapshots and controlled worker reconstruction; a retained old client is not silently hot-revoked.",
+      "remaining": ""
+    },
+    {
+      "id": "T039",
+      "priority": "P0",
+      "requirements": [
+        "HG-019",
+        "HG-038"
+      ],
+      "scenario": "Core-Kontextallowlist plus neue Guardpolicy",
+      "expected_evidence": "Beide müssen erlauben; flache Vault-Liste wird nicht übernommen.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 61
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
+        "packages/nr-http-guard/Build/Fixtures/"
+      ],
+      "covered": "Real Core contextual allowlist remains cumulative. Every actual TYPO3 tuple starts with a flat legacy Vault erp.test allowlist entry, then denies a new public private-origin request with address_forbidden and zero TCP/HTTP; no new grant is inferred.",
+      "remaining": ""
+    },
+    {
+      "id": "T040",
+      "priority": "P0",
+      "requirements": [
+        "HG-020"
+      ],
+      "scenario": "Caller liefert RESOLVE, CONNECT_TO, URL, SHARE, Unix-Socket, FOLLOWLOCATION",
+      "expected_evidence": "Alle verbotenen Eingriffe abweisen, bevor der Transfer beginnt.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 62
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/transport/options-final.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php"
+      ],
+      "covered": "Guzzle7/8 raw resolve/connect/url/share/Unix/follow/route options, stream/delay/unknown options deny; allowed zero timeouts/callback differences exercised; exact dependency tuples recorded.",
+      "remaining": ""
+    },
+    {
+      "id": "T041",
+      "priority": "P0",
+      "requirements": [
+        "HG-020",
+        "HG-005"
+      ],
+      "scenario": "Guzzle-7/8-Optionen, verbotener delay und Promise-/PSR-7-Majors",
+      "expected_evidence": "Belegte kompatible Kombinationen verhalten sich gleich; unknown options scheitern sichtbar.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 63
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/transport/options-final.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php"
+      ],
+      "covered": "Guzzle7/8 raw resolve/connect/url/share/Unix/follow/route options, stream/delay/unknown options deny; allowed zero timeouts/callback differences exercised; exact dependency tuples recorded.",
+      "remaining": ""
+    },
+    {
+      "id": "T042",
+      "priority": "P0",
+      "requirements": [
+        "HG-021"
+      ],
+      "scenario": "Kein ext-curl, kein curl-multi, inkompatible Version",
+      "expected_evidence": "Enforce verweigert statt Streams zu verwenden.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 64
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json",
+        "evidence/dns-transport/missing-curl/summary.json",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testMissingMultiCannotUseAnUncheckedStreamTransport",
+        "packages/http-guard/tests/Integration/Fixtures/IsolatedCapabilityProbe.php",
+        "packages/http-guard/tests/Integration/Fixtures/run-missing-curl.py"
+      ],
+      "covered": "Real disabled curl_multi_exec sends reject transport_unsupported before native/wire. Separate host PHP8.5.11 -n with only ctype enabled genuinely lacks curl and curl-multi; both dependency majors reject before native construction and all parent TCP/HTTP counters remain unchanged. Unknown Composer tuple also rejects. Static-curl image setup failures are retained separately.",
+      "remaining": ""
+    },
+    {
+      "id": "T043",
+      "priority": "P0",
+      "requirements": [
+        "HG-022"
+      ],
+      "scenario": "HTTP-/HTTPS-/SOCKS-Proxy explizit",
+      "expected_evidence": "Kein Kontakt zu Proxy oder Ziel; kein stiller Direct-Bypass.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 65
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testProxyActivatedDuringPreparationCannotCauseSilentDirectBypass",
+        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testIncomingProxyHeaderDoesNotBecomeProcessConfiguration"
+      ],
+      "covered": "HTTP/HTTPS/SOCKS proxies and real case/NO_PROXY environment reject before native/TCP/HTTP; incoming $_SERVER HTTP_PROXY is separate; late proxy activation cannot silently bypass direct.",
+      "remaining": ""
+    },
+    {
+      "id": "T044",
+      "priority": "P0",
+      "requirements": [
+        "HG-022"
+      ],
+      "scenario": "Proxy über echte Umgebung inklusive Case-/NO_PROXY-Varianten; eingehender Proxy-Header separat",
+      "expected_evidence": "Echte/mehrdeutige Proxykonfiguration ablehnen; CGI-Header nicht als vertrauenswürdige Prozessumgebung behandeln.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 66
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testActualIncomingProxyHeaderIsNotProcessProxyAuthority",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testProxyActivatedDuringPreparationCannotCauseSilentDirectBypass"
+      ],
+      "covered": "Real case/NO_PROXY and late process environment reject before contact. Owned actual HTTP SAPI receives Proxy through getallheaders; this SAPI strips server HTTP_PROXY, process-local names stay empty, and a guarded send contacts exactly public-a once with no alternate contacts. No synthetic server-variable insertion is presented as inbound proof.",
+      "remaining": ""
+    },
+    {
+      "id": "T045",
+      "priority": "P0",
+      "requirements": [
+        "HG-023"
+      ],
+      "scenario": "Redirect auf private IP und auf private DNS-Adresse",
+      "expected_evidence": "Erster erlaubter Hop möglich, verbotener Folgehop ohne Zielkontakt.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 67
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
+      ],
+      "covered": "Actual direct-private-IP and private-DNS redirect destinations are blocked; 307/308 POST body/custom-auth and scheme-relative cross-origin vectors cannot reach a second origin. Same-origin method changes, downgrade, loop and request/operator limits retain explicit behavior.",
+      "remaining": ""
+    },
+    {
+      "id": "T046",
+      "priority": "P0",
+      "requirements": [
+        "HG-023",
+        "HG-024"
+      ],
+      "scenario": "Same-Origin-Redirect und Cross-Origin-Redirect",
+      "expected_evidence": "Same-Origin erneut prüfen; Cross-Origin im Standardclient verweigern.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 68
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testLateResponseLocationAndSecretCrossOriginCannotFollow"
+      ],
+      "covered": "Same-origin redirect makes fresh two transfers; late response middleware Location cannot bypass final boundary; generic cross-origin follow rejected.",
+      "remaining": ""
+    },
+    {
+      "id": "T047",
+      "priority": "P0",
+      "requirements": [
+        "HG-024"
+      ],
+      "scenario": "307/308 mit Body-Secret oder Custom-Auth-Header zu anderer Origin",
+      "expected_evidence": "Kein Versand an zweite Origin; keine Secret-Erkennung als Voraussetzung.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 69
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
+      ],
+      "covered": "Actual direct-private-IP and private-DNS redirect destinations are blocked; 307/308 POST body/custom-auth and scheme-relative cross-origin vectors cannot reach a second origin. Same-origin method changes, downgrade, loop and request/operator limits retain explicit behavior.",
+      "remaining": ""
+    },
+    {
+      "id": "T048",
+      "priority": "P0",
+      "requirements": [
+        "HG-023",
+        "HG-024"
+      ],
+      "scenario": "Response-Middleware verändert Location nach Terminal",
+      "expected_evidence": "Boundary prüft finalen Response und verhindert verbotenen Folgehop.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 70
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testLateResponseLocationAndSecretCrossOriginCannotFollow"
+      ],
+      "covered": "Same-origin redirect makes fresh two transfers; late response middleware Location cannot bypass final boundary; generic cross-origin follow rejected.",
+      "remaining": ""
+    },
+    {
+      "id": "T049",
+      "priority": "P0",
+      "requirements": [
+        "HG-023"
+      ],
+      "scenario": "Relative/Schema-relative Location, Downgrade, Schleife, Requestlimit oberhalb/unterhalb Betreibergrenze",
+      "expected_evidence": "Korrekte URI-Auflösung; zu großes Followlimit vor erstem Versand ablehnen, kleineres erhalten; kein unwirksames inneres Clamp.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 71
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testBodySecretsCannotFollow307Or308OrSchemeRelativeDifferentOrigin",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound"
+      ],
+      "covered": "Actual direct-private-IP and private-DNS redirect destinations are blocked; 307/308 POST body/custom-auth and scheme-relative cross-origin vectors cannot reach a second origin. Same-origin method changes, downgrade, loop and request/operator limits retain explicit behavior.",
+      "remaining": ""
+    },
+    {
+      "id": "T050",
+      "priority": "P0",
+      "requirements": [
+        "HG-024"
+      ],
+      "scenario": "Public-Fetch über mehrere öffentliche Origins",
+      "expected_evidence": "Nur GET/HEAD ohne Body/Cookie/Secrets; kleiner fester Headersatz.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 72
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPublicFetchScrubsInheritedCredentialsAcrossOrigins",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "PublicFetch cross-origin GET scrubs inherited body/auth/cookies/mTLS/header defaults; PSR18 and explicit false return 30x without follow.",
+      "remaining": ""
+    },
+    {
+      "id": "T051",
+      "priority": "P0",
+      "requirements": [
+        "HG-023"
+      ],
+      "scenario": "allow_redirects=false / PSR-18-Send",
+      "expected_evidence": "30x als Response zurückgeben; kein versehentlicher Follow.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 73
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPublicFetchScrubsInheritedCredentialsAcrossOrigins",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testSameOriginRedirectAndPsr18NoFollow",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "PublicFetch cross-origin GET scrubs inherited body/auth/cookies/mTLS/header defaults; PSR18 and explicit false return 30x without follow.",
+      "remaining": ""
+    },
+    {
+      "id": "T052",
+      "priority": "P0",
+      "requirements": [
+        "HG-025"
+      ],
+      "scenario": "Retrymiddleware wiederholt Request nach Netzwerkfehler",
+      "expected_evidence": "Jeder Versuch neuer Plan; keine automatische Wiederholung von Policyablehnungen.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 74
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRealRetryMiddlewareGetsFreshPlanAndKeepsInvocation",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRetryAfterGrantExpiryCannotContactAgain",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware"
+      ],
+      "covered": "Real retry gets fresh resolution/plan; expiry prevents another target call; indiscriminate middleware cannot retry policy denial into allow.",
+      "remaining": ""
+    },
+    {
+      "id": "T053",
+      "priority": "P0",
+      "requirements": [
+        "HG-026",
+        "HG-040"
+      ],
+      "scenario": "Parallel gleicher Host/Port mit unterschiedlicher Policy und IP",
+      "expected_evidence": "Keine DNS-/Connection-/Grant-Kontamination; Zielcounter getrennt.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 75
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+      ],
+      "covered": "Parallel same-authority different targets and public/internal scopes have independent native transfers and counters; long-lived public use cannot inherit grant; sharing rejected.",
+      "remaining": ""
+    },
+    {
+      "id": "T054",
+      "priority": "P0",
+      "requirements": [
+        "HG-026",
+        "HG-040"
+      ],
+      "scenario": "Langlebiger Worker, erst interne Freigabe dann public Request",
+      "expected_evidence": "Keine wiederverwendete privilegierte Verbindung oder Allow-Entscheidung.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 76
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+      ],
+      "covered": "Parallel same-authority different targets and public/internal scopes have independent native transfers and counters; long-lived public use cannot inherit grant; sharing rejected.",
+      "remaining": ""
+    },
+    {
+      "id": "T055",
+      "priority": "P0",
+      "requirements": [
+        "HG-026"
+      ],
+      "scenario": "Externes/persistentes Transport-Sharing",
+      "expected_evidence": "Ablehnung; interne Handler bleiben isoliert.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 77
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+      ],
+      "covered": "Parallel same-authority different targets and public/internal scopes have independent native transfers and counters; long-lived public use cannot inherit grant; sharing rejected.",
+      "remaining": ""
+    },
+    {
+      "id": "T056",
+      "priority": "P0",
+      "requirements": [
+        "HG-027"
+      ],
+      "scenario": "Memo-Hit bei geänderter Policy",
+      "expected_evidence": "Adressen erneut bewerten; Cache ist keine Freigabe.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 78
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json",
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testMemoHitRechecksOperatorDenyAndCannotReuseOldRegistryContext",
+        "packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php::testMemoHitReauthorizesChangedPolicyAndRejectsOldRevisionContext"
+      ],
+      "covered": "A memo hit reuses only addresses: a rebuilt registry with a newly denied /32 reauthorizes and rejects before native/wire without any new DNS calls; an old registry context is grant_invalid. Configuration is an immutable snapshot requiring worker/client reconstruction.",
+      "remaining": ""
+    },
+    {
+      "id": "T057",
+      "priority": "P1",
+      "requirements": [
+        "HG-027",
+        "HG-044"
+      ],
+      "scenario": "TTL 0, Ablauf, Kapazität, negative Antwort",
+      "expected_evidence": "Kein unbeschränkter Speicher; negative/TTL0-Antwort nicht positiv cachen.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 79
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyResolverBoundariesTest.php::testTtlZeroNegativeAndCapacityNeverCreateUnboundedPositiveCache",
+        "packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php::testCompleteCnameChainMinimumTtlAndBoundedPositiveCache",
+        "packages/http-guard/tests/Unit/Policy/PolicyLifecycleTest.php::testDnsCacheDoesNotExtendTtlByTimeSpentInLaterQueries"
+      ],
+      "covered": "TTL0/negative no-cache, bounded FIFO, min TTL/expiry and elapsed-query TTL age regressions pass.",
+      "remaining": ""
+    },
+    {
+      "id": "T058",
+      "priority": "P0",
+      "requirements": [
+        "HG-028"
+      ],
+      "scenario": "stream=true trotz installiertem cURL",
+      "expected_evidence": "Explizite Ablehnung im globalen Enforcepfad, kein StreamHandler.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 80
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Installed cURL never changes stream=true refusal into a StreamHandler; native and target counters stay zero.",
+      "remaining": ""
+    },
+    {
+      "id": "T059",
+      "priority": "P0",
+      "requirements": [
+        "HG-029",
+        "HG-037"
+      ],
+      "scenario": "Vault-sendStreaming mit gültigem Pin",
+      "expected_evidence": "Erste Bytes vor Transferende, keine stream-Option, identischer Credentialpfad.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 81
+      },
+      "evidence": [
+        "integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::enforcedStreamingCloseStopsTheMatchingTransfer",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::protectedOAuthTokenBindingWorksWithCancellationAndStreamingSends"
+      ],
+      "covered": "Both frozen-source Vault tuples preserve first bytes/partial read before delayed transfer completion and authorization on token/resource streaming paths.",
+      "remaining": ""
+    },
+    {
+      "id": "T060",
+      "priority": "P0",
+      "requirements": [
+        "HG-029",
+        "HG-030",
+        "HG-037"
+      ],
+      "scenario": "Cancellation vor Send und während Transfer",
+      "expected_evidence": "Keine neue Verbindung bzw. aktiver Socket geschlossen; Audit konsistent.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 82
+      },
+      "evidence": [
+        "integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::preCancelledProtectedSendReadsNoSecretAndMakesNoContact",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::enforcedActiveCancellationClosesTheMatchingWireTransfer",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::cancellationDuringProtectedTokenTransferClosesTokenSocketBeforeResourceContact"
+      ],
+      "covered": "Actual pre-send cancellation retrieves no secret and contacts no target; active resource and OAuth-token cancellation closes the owning socket early and prevents resource contact, with consistent audit.",
+      "remaining": ""
+    },
+    {
+      "id": "T061",
+      "priority": "P0",
+      "requirements": [
+        "HG-030"
+      ],
+      "scenario": "Body-close, teilweiser Read, Transferfehler, Exception im Callback",
+      "expected_evidence": "Keine Hintergrundverbindung/Lease-Leaks; unvollständige Antwort nicht als Erfolg.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 83
+      },
+      "evidence": [
+        "integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-unit-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-unit-frozen.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::enforcedStreamingCloseStopsTheMatchingTransfer",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::truncatedProtectedStreamThrowsAndLeavesNoBackgroundTransfer"
+      ],
+      "covered": "Vault partial read/body close and truncated transfer error leave no background transfer; full Unit throwing signal regressions and shared transport actual throwing on_headers callback also release leases. Vault exposes no arbitrary callback options.",
+      "remaining": ""
+    },
+    {
+      "id": "T062",
+      "priority": "P0",
+      "requirements": [
+        "HG-031"
+      ],
+      "scenario": "Synchrone und asynchrone Policyfehler, PSR-18",
+      "expected_evidence": "Stabile Reason-Codes, passende Exceptioninterfaces, abgelehnte Promise.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 84
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::allAuthenticationPlacementsRetainWireSemanticsAndRedactedAudit"
+      ],
+      "covered": "Fixed PSR18 client exception/rejected async policy surface, redacted events without request fields/secret paths, HMAC rules and logger failure/rate limit with full counters verified.",
+      "remaining": ""
+    },
+    {
+      "id": "T063",
+      "priority": "P0",
+      "requirements": [
+        "HG-032"
+      ],
+      "scenario": "Secrets in Query, Body, Headers, Zertifikatspfaden und Exception",
+      "expected_evidence": "Kein Secret in Guardlogs oder Metriklabels.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 85
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::allAuthenticationPlacementsRetainWireSemanticsAndRedactedAudit"
+      ],
+      "covered": "Fixed PSR18 client exception/rejected async policy surface, redacted events without request fields/secret paths, HMAC rules and logger failure/rate limit with full counters verified.",
+      "remaining": ""
+    },
+    {
+      "id": "T064",
+      "priority": "P1",
+      "requirements": [
+        "HG-032"
+      ],
+      "scenario": "Loggerausfall und Denial-Flood",
+      "expected_evidence": "Ablehnung bleibt Ablehnung; Rate-Limit und Zähler funktionieren.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 86
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/PolicyTelemetryTest.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testPolicyFailureCannotBeRetriedEvenByIndiscriminateMiddleware",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::allAuthenticationPlacementsRetainWireSemanticsAndRedactedAudit"
+      ],
+      "covered": "Fixed PSR18 client exception/rejected async policy surface, redacted events without request fields/secret paths, HMAC rules and logger failure/rate limit with full counters verified.",
+      "remaining": ""
+    },
+    {
+      "id": "T065",
+      "priority": "P0",
+      "requirements": [
+        "HG-033"
+      ],
+      "scenario": "Observe mit verbotenem Ziel / unsupported Transport",
+      "expected_evidence": "would_deny bzw. unverifiable, Status nicht protected; Verhalten bleibt explizit ungeschützt.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 87
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testObserveUnsupportedTransportReportsUnverifiableAndDelegates",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testObserveAndDisabledDelegateOriginalRequestAndOptions",
+        "packages/nr-http-guard/Tests/Unit/RawRequestFactoryModeTest.php"
+      ],
+      "covered": "Observe retains its explicitly unprotected leaf behavior. Actual forbidden-target decisions report would_deny; unsupported stream transport reports exactly one unverifiable/option_forbidden event and delegates without a protected native handle. Raw string observe additionally reports before PSR7 erases syntax.",
+      "remaining": ""
+    },
+    {
+      "id": "T066",
+      "priority": "P1",
+      "requirements": [
+        "HG-033",
+        "HG-043"
+      ],
+      "scenario": "Disabled und bewusster Rollback",
+      "expected_evidence": "Status sichtbar reduziert; kein automatischer Moduswechsel.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 88
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "packages/http-guard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Tests/Integration/mode-bootstrap.php",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::disabledStillRefusesLegacyPrivateHostAndAddsNoDiagnostics"
+      ],
+      "covered": "Disabled stays visibly unprotected with original options; no automatic fallback; Vault old private control and allowlist semantics preserved.",
+      "remaining": ""
+    },
+    {
+      "id": "T067",
+      "priority": "P1",
+      "requirements": [
+        "HG-034"
+      ],
+      "scenario": "Doctor bei normalem/fehlerhaftem Stack",
+      "expected_evidence": "Korrekte Capabilities, Modus und Grenzen; kein Probe-HTTP.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 89
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/typo3-integration/final-execution-source-hashes.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Classes/Command/",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Final source-bound actual CLI matrix runs all diagnostic commands offline across four Core/Guzzle tuples, including invalid stack/config, curl-multi absence, complete proxy-name inventory, overdue reviewAfter, raw rejection and endpoint/no-DNS evaluation. No HTTP capability or target contact is returned.",
+      "remaining": ""
+    },
+    {
+      "id": "T068",
+      "priority": "P1",
+      "requirements": [
+        "HG-035"
+      ],
+      "scenario": "Policy-check mit und ohne Endpoint",
+      "expected_evidence": "DNS optional, kein HTTP; Ergebnis kein wiederverwendbares Senderecht.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 90
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "evidence/typo3-integration/final-execution-source-hashes.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Classes/Command/",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php"
+      ],
+      "covered": "Final source-bound actual CLI matrix runs all diagnostic commands offline across four Core/Guzzle tuples, including invalid stack/config, curl-multi absence, complete proxy-name inventory, overdue reviewAfter, raw rejection and endpoint/no-DNS evaluation. No HTTP capability or target contact is returned.",
+      "remaining": ""
+    },
+    {
+      "id": "T069",
+      "priority": "P0",
+      "requirements": [
+        "HG-036"
+      ],
+      "scenario": "Nur globale Extension installiert, Vault unverändert",
+      "expected_evidence": "Diagnose behauptet keine Vault-Abdeckung.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 91
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Classes/Diagnostics/DiagnosticsService.php",
+        "packages/nr-http-guard/Tests/Unit/LegacyConfigurationInventoryTest.php"
+      ],
+      "covered": "Doctor explicitly says no automatic Vault/rawSDK coverage; flat/nested legacy report counts missing fields and creates zero active grants, without HTTP.",
+      "remaining": ""
+    },
+    {
+      "id": "T070",
+      "priority": "P0",
+      "requirements": [
+        "HG-036",
+        "HG-037"
+      ],
+      "scenario": "Vault mit bewusst integriertem Adapter",
+      "expected_evidence": "Normal, Token, Cancellation und Streaming nutzen gemeinsame Policy.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 92
+      },
+      "evidence": [
+        "integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::enforcedResourceUsesItsPinnedProfileAndAuditsOneWireContact",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::oauthUsesSeparateTokenOriginAndKeepsCacheAcrossTimeoutClone",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::expiryAfterPreflightIsRecheckedBeforeWireContact",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::protectedOAuthTokenBindingWorksWithCancellationAndStreamingSends"
+      ],
+      "covered": "Complete explicit adapter paths cover normal resource, cached/separate OAuth, active/pre cancellation, streaming and final-start grant expiry; failures propagate and arbitrary client/token-manager bypasses reject. Factory legacy defaults stay explicit.",
+      "remaining": ""
+    },
+    {
+      "id": "T071",
+      "priority": "P0",
+      "requirements": [
+        "HG-037"
+      ],
+      "scenario": "OAuth-Tokenendpoint intern, Resourceendpoint extern und umgekehrt",
+      "expected_evidence": "Beide Requests getrennt autorisiert/gepinnt; kein Grantübertrag.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 93
+      },
+      "evidence": [
+        "integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::publicResourcePrivateTokenAndInverseStaySeparatelyBound"
+      ],
+      "covered": "Real owned public 203.0.115.150/private10.23.4.150 targets exercise private-token/public-resource and inverse, independent pins and endpoint grants, cache reuse across timeout clones and refusal of resource-origin token authorization.",
+      "remaining": ""
+    },
+    {
+      "id": "T072",
+      "priority": "P0",
+      "requirements": [
+        "HG-037"
+      ],
+      "scenario": "Vault-Authentifizierungsarten und redigiertes Audit",
+      "expected_evidence": "Identische Fachfunktion ohne Credentialexport oder Logging.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 94
+      },
+      "evidence": [
+        "integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::allAuthenticationPlacementsRetainWireSemanticsAndRedactedAudit",
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::oauthUsesSeparateTokenOriginAndKeepsCacheAcrossTimeoutClone"
+      ],
+      "covered": "Bearer/basic/header/API-key/query/body authentication preserves actual wire placement and excludes synthetic credentials from audit; OAuth token/resource tests preserve the separate leg.",
+      "remaining": ""
+    },
+    {
+      "id": "T073",
+      "priority": "P0",
+      "requirements": [
+        "HG-038",
+        "HG-043"
+      ],
+      "scenario": "Legacyreport zu flachen/verschachtelten allowed_hosts",
+      "expected_evidence": "Keine aktiven Regeln automatisch erzeugt; fehlende Angaben sichtbar.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 95
+      },
+      "evidence": [
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/nr-http-guard/Classes/Diagnostics/DiagnosticsService.php",
+        "packages/nr-http-guard/Tests/Unit/LegacyConfigurationInventoryTest.php"
+      ],
+      "covered": "Doctor explicitly says no automatic Vault/rawSDK coverage; flat/nested legacy report counts missing fields and creates zero active grants, without HTTP.",
+      "remaining": ""
+    },
+    {
+      "id": "T074",
+      "priority": "P0",
+      "requirements": [
+        "HG-039",
+        "HG-041"
+      ],
+      "scenario": "Mutation: Prüfung deaktiviert oder Pin entfernt",
+      "expected_evidence": "Kritischer Test wird rot; Spy plus Wire-Nachweis statt nur Exceptions.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 96
+      },
+      "evidence": [
+        "evidence/transport/mutations/summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/MutationWitnessTest.php",
+        "verification/scripts/run-mutations.py"
+      ],
+      "covered": "All six targeted mutants killed on both majors (12/12), with native/leaf and actual TCP/HTTP before/after witnesses.",
+      "remaining": ""
+    },
+    {
+      "id": "T075",
+      "priority": "P0",
+      "requirements": [
+        "HG-040"
+      ],
+      "scenario": "Parallelität mit wechselnden DNS-Antworten und Grants",
+      "expected_evidence": "Verbindung jedes Transfers bleibt in dessen eigener geprüfter Menge.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 97
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelSameAuthorityPlansCannotContaminate",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testParallelScopesAndLongLivedWorkerNeverInheritEndpointGrant"
+      ],
+      "covered": "Four parallel same-authority alternating DNS targets and independent public/endpoint scopes remain in their own permitted sets.",
+      "remaining": ""
+    },
+    {
+      "id": "T076",
+      "priority": "P1",
+      "requirements": [
+        "HG-041",
+        "HG-045"
+      ],
+      "scenario": "Gemeinsamer Regressionstest in Library, TYPO3 und Vault",
+      "expected_evidence": "Gleicher Sicherheitsfall in allen integrierten Pfaden nachweisbar.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 98
+      },
+      "evidence": [
+        "integrations/nr-vault/evidence/vault-guzzle7-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle7-final-frozen-library-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-functional-frozen.log",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-tested-source-manifest.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-final-frozen-library-manifest.json",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "integrations/nr-vault/evidence/vault-guzzle7-shared-unbound.json",
+        "integrations/nr-vault/evidence/vault-guzzle8-shared-unbound.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php::sharedPrivateUnboundCorpusCannotBecomeAGrantThroughLegacyAllowedHosts"
+      ],
+      "covered": "Library, four actual TYPO3 Core tuples and both actual Vault tuples consume normative EP-PRIVATE-UNBOUND by ID and corpus SHA-256 4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825. Configured-but-unbound plus real legacy host entry yields address_forbidden, native0/TCP0/HTTP0 and no Vault secret retrieval.",
+      "remaining": ""
+    },
+    {
+      "id": "T077",
+      "priority": "P0",
+      "requirements": [
+        "HG-042"
+      ],
+      "scenario": "Fremder SDK, direkter cURL, requesteigener Handler",
+      "expected_evidence": "Als außerhalb Scope dokumentiert; keine falsche globale Garantie.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 99
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "README.md",
+        "packages/nr-http-guard/README.md",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php"
+      ],
+      "covered": "Foreign SDK/direct curl/request-owned Guzzle handler before any stack entry documented outside scope; protected PSR18 API exposes no handler option. Earlier contrary test failure preserved, corrected current run supersedes it.",
+      "remaining": ""
+    },
+    {
+      "id": "T078",
+      "priority": "P1",
+      "requirements": [
+        "HG-044"
+      ],
+      "scenario": "DNS-Blackhole / langer Resolvercall",
+      "expected_evidence": "Gemessene Grenze dokumentiert; kein behaupteter unterbrechbarer Timeout ohne Implementierung.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 100
+      },
+      "evidence": [
+        "evidence/dns-transport/policy-portable-g7.log",
+        "evidence/dns-transport/policy-portable-g8.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Unit/Policy/WireDnsQueryTest.php::testDnsBlackholeHasMeasuredQueryBudgetAndNoNativeFallback",
+        "packages/http-guard/Documentation/Policy.md"
+      ],
+      "covered": "Measured injected local UDP deadline; per-query/81-second conservative sequential bound and custom resolver/non-application-deadline limits documented.",
+      "remaining": ""
+    },
+    {
+      "id": "T079",
+      "priority": "P1",
+      "requirements": [
+        "HG-044"
+      ],
+      "scenario": "Klassifikation mit 64 Adressen/128 Profilen, große Responses",
+      "expected_evidence": "p95-Ziel auf Referenzsystem; Body nicht durch Guard dupliziert.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 101
+      },
+      "evidence": [
+        "packages/http-guard/data/security-corpus/evidence/policy-benchmark-final.json",
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "partial_current_evidence",
+      "source_refs": [
+        "packages/http-guard/data/security-corpus/evidence/policy-benchmark-final.json",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testLargeResponseUsesCallerSinkWithoutGuardBodyCopy"
+      ],
+      "covered": "Indexed classification of 64 IPv6 addresses/128 profiles measured p95 1.455ms on current WSL host. Actual 4MiB caller sink transport passes with guard memory growth below response size, no duplicated guard body copy and no active lease.",
+      "remaining": "Named CI reference-system benchmark remains external to the current host measurement."
+    },
+    {
+      "id": "T080",
+      "priority": "P0",
+      "requirements": [
+        "HG-043",
+        "HG-045"
+      ],
+      "scenario": "Abhängigkeitsupdate ändert Handler/Raw-Optionen",
+      "expected_evidence": "Gesamter P0-Korpus läuft; keine Freigabe durch Composer-Auflösung allein.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 102
+      },
+      "evidence": [
+        "evidence/dns-transport/execution-manifest.json",
+        "verification/evidence/library-matrix/php82g7.results.junit.xml",
+        "verification/evidence/library-matrix/php82g8.results.junit.xml",
+        "verification/evidence/library-matrix/php83g7.results.junit.xml",
+        "verification/evidence/library-matrix/php83g8.results.junit.xml",
+        "verification/evidence/library-matrix/php84g7.results.junit.xml",
+        "verification/evidence/library-matrix/php84g8.results.junit.xml",
+        "verification/evidence/library-matrix/php85g7.results.junit.xml",
+        "verification/evidence/library-matrix/php85g8.results.junit.xml",
+        "evidence/typo3-integration/production-matrix-summary.json",
+        "integrations/nr-vault/EVIDENCE.md"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/DnsPolicyTransportTest.php::testUnknownComposerTupleIsRejectedBeforeNativeOrWireContact",
+        "verification/scripts/run-library-matrix.sh"
+      ],
+      "covered": "All eight source-bound library tuples PHP8.2.33/8.3.33/8.4.25/8.5.10 × Guzzle7/8 pass the entire current 122-test/2167-assertion suite without errors/failures/skips. Core four-tuples and frozen Vault two-tuples separately pass. Actual unknown Composer Guzzle metadata9.99.99 rejects before native/wire; dependency updates require these complete matrices rather than Composer resolution alone.",
+      "remaining": ""
+    },
+    {
+      "id": "T081",
+      "priority": "P0",
+      "requirements": [
+        "HG-023",
+        "HG-017"
+      ],
+      "scenario": "POST->GET Redirect bei eingeschränktem Methodenprofil",
+      "expected_evidence": "Neue Methode erneut prüfen; keine still erweiterte Methodenfreigabe.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 103
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
+        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+      ],
+      "covered": "POST-to-GET method bound again; custom CA/mTLS and verify=false policy; request/response middleware/callback order retained; Alt-Svc/HSTS/HTTP3/raw alternative routes denied before contact.",
+      "remaining": ""
+    },
+    {
+      "id": "T082",
+      "priority": "P1",
+      "requirements": [
+        "HG-005",
+        "HG-044"
+      ],
+      "scenario": "TLS mit eigener CA, mTLS, verify=false nach Policy",
+      "expected_evidence": "Konfiguration erhalten bzw. explizit verweigert, niemals still verändert.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 104
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
+        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+      ],
+      "covered": "POST-to-GET method bound again; custom CA/mTLS and verify=false policy; request/response middleware/callback order retained; Alt-Svc/HSTS/HTTP3/raw alternative routes denied before contact.",
+      "remaining": ""
+    },
+    {
+      "id": "T083",
+      "priority": "P0",
+      "requirements": [
+        "HG-002",
+        "HG-019"
+      ],
+      "scenario": "Reihenfolge Request-/Response-Middlewares",
+      "expected_evidence": "Jede bestehende Middleware genau wie vereinbart ausgeführt; keine verdeckt übersprungen.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 105
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
+        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+      ],
+      "covered": "POST-to-GET method bound again; custom CA/mTLS and verify=false policy; request/response middleware/callback order retained; Alt-Svc/HSTS/HTTP3/raw alternative routes denied before contact.",
+      "remaining": ""
+    },
+    {
+      "id": "T084",
+      "priority": "P0",
+      "requirements": [
+        "HG-015",
+        "HG-026"
+      ],
+      "scenario": "cURL-Alt-Svc, HSTS, automatische Protokoll-/Routenwechsel",
+      "expected_evidence": "Kein aktivierbarer ungeprüfter Alternativpfad im isolierten Adapter.",
+      "source": {
+        "path": "specification/specs/06-verification.md",
+        "line": 106
+      },
+      "evidence": [
+        "evidence/transport/wire-g7-release.log",
+        "evidence/transport/wire-g8-release.log",
+        "evidence/typo3-integration/production-matrix-summary.json"
+      ],
+      "baseline_implementation_status": "not_implemented",
+      "baseline_execution_status": "not_run",
+      "status": "verified_scenarios",
+      "source_refs": [
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRedirectMethodsLimitsDowngradeAndNoFollowRemainBound",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testTlsHostSniCustomCaAndMutualTls",
+        "packages/http-guard/tests/Unit/Transport/OptionSanitizerTest.php::testPolicyForbidsDisablingTlsVerification",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testCanonicalPinnedTargetCallbacksAndTeardown",
+        "packages/nr-http-guard/Tests/Integration/production-bootstrap.php",
+        "packages/http-guard/tests/Integration/ProductionTransportTest.php::testRawRoutingSharingProxyAndStreamOptionsFailBeforeContact"
+      ],
+      "covered": "POST-to-GET method bound again; custom CA/mTLS and verify=false policy; request/response middleware/callback order retained; Alt-Svc/HSTS/HTTP3/raw alternative routes denied before contact.",
+      "remaining": ""
+    }
+  ],
+  "requirements": [
+    {
+      "id": "HG-001",
+      "requirement": "Die Extension MUSS den dokumentierten ausgehenden Guzzle-Middleware-Erweiterungspunkt verwenden; keine eingehende PSR-15-Middleware.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 40
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T001"
+      ],
+      "all_matrix_test_ids": [
+        "T001"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T001",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-002",
+      "requirement": "Im geschützten Standardstack MUSS jeder tatsächliche Sendeversuch den Guard unmittelbar vor dem kontrollierten Transport passieren.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 41
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T002",
+        "T003",
+        "T004",
+        "T083"
+      ],
+      "all_matrix_test_ids": [
+        "T002",
+        "T003",
+        "T004",
+        "T083"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T002",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T003",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T004",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T083",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-003",
+      "requirement": "Der Standardmodus MUSS `enforce` sein; fehlende oder ungültige Konfiguration DARF NICHT zu offenem Versand führen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 42
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T005",
+        "T006"
+      ],
+      "all_matrix_test_ids": [
+        "T005",
+        "T006"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T005",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T006",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-004",
+      "requirement": "Neue Installationen MÜSSEN ohne interne Freigaben starten. Bestehende Projektkonfiguration DARF NICHT automatisch in Freigaben umgedeutet werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 43
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T005"
+      ],
+      "all_matrix_test_ids": [
+        "T005"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T005",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-005",
+      "requirement": "Version 1 MUSS TYPO3 13.4 und 14.3 als getrennte Testziele behandeln; konkrete Mindestpatchstände werden durch Composer und CI belegt.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 44
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T001",
+        "T041",
+        "T082"
+      ],
+      "all_matrix_test_ids": [
+        "T001",
+        "T041",
+        "T082"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T001",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T041",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T082",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-006",
+      "requirement": "Die gemeinsame Bibliothek DARF keine TYPO3- oder nr-vault-Abhängigkeit benötigen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 45
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T007"
+      ],
+      "all_matrix_test_ids": [
+        "T007"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T007",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-007",
+      "requirement": "URLs MÜSSEN vor Policy- und DNS-Auswertung einheitlich und strikt normalisiert werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 46
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T008",
+        "T010"
+      ],
+      "all_matrix_test_ids": [
+        "T008",
+        "T010"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T008",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T010",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-008",
+      "requirement": "Nur absolute HTTP-/HTTPS-Ziele mit gültigem Host und Port sind erlaubt. Userinfo, Fragmente, Zone-IDs und uneindeutige numerische IP-Formen MÜSSEN abgelehnt werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 47
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T009",
+        "T010",
+        "T011",
+        "T012"
+      ],
+      "all_matrix_test_ids": [
+        "T009",
+        "T010",
+        "T011",
+        "T012"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T009",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T010",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T011",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T012",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-009",
+      "requirement": "URI-Authority und effektiver HTTP-Host MÜSSEN übereinstimmen; beliebige Host-Header-Umleitungen sind nicht Teil des Standardprodukts.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 48
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T004",
+        "T013"
+      ],
+      "all_matrix_test_ids": [
+        "T004",
+        "T013"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T004",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T013",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-010",
+      "requirement": "IPv4, IPv6 und IPv4-mapped IPv6 MÜSSEN binär und mit derselben Policy klassifiziert werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 49
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T014",
+        "T015",
+        "T016",
+        "T020"
+      ],
+      "all_matrix_test_ids": [
+        "T014",
+        "T015",
+        "T016",
+        "T020"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T014",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T015",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T016",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T020",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-011",
+      "requirement": "Private, lokale, Link-Local-, Multicast-, Dokumentations-, Benchmark- und weitere ausgeschlossene Spezialbereiche MÜSSEN vom Public-Profil gesperrt werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 50
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T014",
+        "T015",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "all_matrix_test_ids": [
+        "T014",
+        "T015",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T014",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T015",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T017",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T018",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T019",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T020",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-012",
+      "requirement": "Zusätzliche Betreiber-Deny-CIDRs MÜSSEN möglich sein und Vorrang vor Freigaben haben.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 51
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T021"
+      ],
+      "all_matrix_test_ids": [
+        "T021"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T021",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-013",
+      "requirement": "Jeder verwendbare A-/AAAA-Kandidat MUSS geprüft werden. Ein verbotener Kandidat in einer Antwort MUSS den gesamten Versuch ablehnen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 52
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T022",
+        "T023",
+        "T028"
+      ],
+      "all_matrix_test_ids": [
+        "T022",
+        "T023",
+        "T028"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T022",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T023",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T028",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-014",
+      "requirement": "Leere, fehlerhafte oder nicht verwertbare Auflösung MUSS geschlossen scheitern; eine Endpoint-Freigabe DARF dies nicht umgehen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 53
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T024",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "all_matrix_test_ids": [
+        "T024",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T024",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T025",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T026",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T027",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-015",
+      "requirement": "Der Transport MUSS ausschließlich den validierten ConnectionPlan verwenden; eine unabhängige Zielauflösung ist verboten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 54
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T026",
+        "T027",
+        "T029",
+        "T030",
+        "T033",
+        "T084"
+      ],
+      "all_matrix_test_ids": [
+        "T026",
+        "T027",
+        "T029",
+        "T030",
+        "T033",
+        "T084"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T026",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T027",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T029",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T030",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T033",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T084",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-016",
+      "requirement": "Mehrere zulässige IPs MÜSSEN in einem gültigen Pin pro Host-Port-Paar erhalten bleiben; Dual-Stack-Fallback bleibt auf diese Menge beschränkt.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 55
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T030",
+        "T031",
+        "T032"
+      ],
+      "all_matrix_test_ids": [
+        "T030",
+        "T031",
+        "T032"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T030",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T031",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T032",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-017",
+      "requirement": "Interne Ausnahmen MÜSSEN Origin, Port, Methoden, erlaubte IP-Mengen und einen explizit gebundenen Client umfassen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 56
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T025",
+        "T027",
+        "T034",
+        "T035",
+        "T036",
+        "T037",
+        "T038",
+        "T081"
+      ],
+      "all_matrix_test_ids": [
+        "T025",
+        "T027",
+        "T034",
+        "T035",
+        "T036",
+        "T037",
+        "T038",
+        "T081"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T025",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T027",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T034",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T035",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T036",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T037",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T038",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T081",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-018",
+      "requirement": "Eine einfache URL, ein frei kopierter Request-Header oder ein vom Benutzer gesetzter Kontextstring DARF keine interne Freigabe aktivieren.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 57
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T034",
+        "T035",
+        "T036"
+      ],
+      "all_matrix_test_ids": [
+        "T034",
+        "T035",
+        "T036"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T034",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T035",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T036",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-019",
+      "requirement": "Core-Allowlist, globale Verbote und Endpoint-Policy MÜSSEN kumulativ gelten. Keine engere Policy darf durch eine breitere ersetzt werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 58
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T002",
+        "T004",
+        "T021",
+        "T039",
+        "T083"
+      ],
+      "all_matrix_test_ids": [
+        "T002",
+        "T004",
+        "T021",
+        "T039",
+        "T083"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T002",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T004",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T021",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T039",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T083",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-020",
+      "requirement": "Sicherheitsrelevante rohe Transportoptionen von Aufrufern MÜSSEN abgelehnt werden; der Guard erzeugt seine Optionen selbst.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 59
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T040",
+        "T041"
+      ],
+      "all_matrix_test_ids": [
+        "T040",
+        "T041"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T040",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T041",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-021",
+      "requirement": "Der geschützte Transport MUSS cURL/curl-multi verwenden. Fehlende Unterstützung oder unbekannte Handler MÜSSEN im Enforce-Modus vor Versand fehlschlagen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 60
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T042"
+      ],
+      "all_matrix_test_ids": [
+        "T042"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T042",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-022",
+      "requirement": "Explizite und über die Umgebung geerbte Proxykonfiguration MUSS erkannt werden. Version 1 darf nicht über einen Proxy senden und darf ihn nicht still umgehen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 61
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T043",
+        "T044"
+      ],
+      "all_matrix_test_ids": [
+        "T043",
+        "T044"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T043",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T044",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-023",
+      "requirement": "Jeder Redirect MUSS erneut vollständig geprüft werden; cURL-eigene, am Stack vorbeilaufende Redirects sind verboten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 62
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T045",
+        "T046",
+        "T048",
+        "T049",
+        "T051",
+        "T081"
+      ],
+      "all_matrix_test_ids": [
+        "T045",
+        "T046",
+        "T048",
+        "T049",
+        "T051",
+        "T081"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T045",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T046",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T048",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T049",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T051",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T081",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-024",
+      "requirement": "Redirects mit Credentials MÜSSEN derselben Origin treu bleiben; bei generischem Standardclient gilt konservativ Same-Origin.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 63
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T046",
+        "T047",
+        "T048",
+        "T050"
+      ],
+      "all_matrix_test_ids": [
+        "T046",
+        "T047",
+        "T048",
+        "T050"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T046",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T047",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T048",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T050",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-025",
+      "requirement": "Jeder Retry MUSS erneut durch die Policy laufen. Policyablehnungen sind nicht retryfähig; Retry-Budgets darf der Guard nicht selbst unbemerkt erhöhen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 64
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T052"
+      ],
+      "all_matrix_test_ids": [
+        "T052"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T052",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-026",
+      "requirement": "Connection- und DNS-Caches MÜSSEN zwischen unabhängigen Transfers isoliert sein. Gemeinsame cURL-Share-Handles sind in Version 1 verboten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 65
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T053",
+        "T054",
+        "T055",
+        "T084"
+      ],
+      "all_matrix_test_ids": [
+        "T053",
+        "T054",
+        "T055",
+        "T084"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T053",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T054",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T055",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T084",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-027",
+      "requirement": "DNS-Memoisierung DARF nur geprüfte Adressen wiederverwenden, MUSS begrenzt sein und MUSS pro Verwendung erneut gegen die aktuelle Policy prüfen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 66
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T056",
+        "T057"
+      ],
+      "all_matrix_test_ids": [
+        "T056",
+        "T057"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T056",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T057",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-028",
+      "requirement": "`stream => true` DARF NICHT auf PHP-Streams ausweichen. In Version 1 des globalen Adapters wird die Option ausdrücklich abgelehnt.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 67
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T058"
+      ],
+      "all_matrix_test_ids": [
+        "T058"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T058",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-029",
+      "requirement": "Ein bewusst integrierter curl-multi-Streamingadapter MUSS denselben Guard und dieselbe Pinning-Invariante verwenden und Cancellation erhalten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 68
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T059",
+        "T060"
+      ],
+      "all_matrix_test_ids": [
+        "T059",
+        "T060"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T059",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T060",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-030",
+      "requirement": "Bei Cancellation oder Fehlern MÜSSEN Handler, Sockets und Response-Buffer freigegeben werden; keine hängenden Hintergrundtransfers.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 69
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T060",
+        "T061"
+      ],
+      "all_matrix_test_ids": [
+        "T060",
+        "T061"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T060",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T061",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-031",
+      "requirement": "Die Guard-API MUSS typisierte, stabile Ablehnungsgründe und eine Promise-/PSR-18-konforme Fehleroberfläche anbieten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 70
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T062"
+      ],
+      "all_matrix_test_ids": [
+        "T062"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T062",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-032",
+      "requirement": "Logs DÜRFEN keine Bodies, Credentials, vollständigen URLs, Querystrings oder rohe Requests enthalten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 71
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T063",
+        "T064"
+      ],
+      "all_matrix_test_ids": [
+        "T063",
+        "T064"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T063",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T064",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-033",
+      "requirement": "Prüfmodus MUSS sichtbar als nicht schützend gekennzeichnet sein. `enforce`, `observe` und `disabled` dürfen nicht verwechselt werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 72
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T065",
+        "T066"
+      ],
+      "all_matrix_test_ids": [
+        "T065",
+        "T066"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T065",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T066",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-034",
+      "requirement": "Ein Diagnosekommando MUSS Konfiguration, Reihenfolge, Laufzeitfähigkeiten, Proxyzustand und Abdeckungsgrenzen ohne Probezugriffe anzeigen.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 73
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T067"
+      ],
+      "all_matrix_test_ids": [
+        "T067"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T067",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-035",
+      "requirement": "Eine URL-Prüfung ohne Versand MUSS möglich sein; sie ist keine später wiederverwendbare Autorisierung.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 74
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T068"
+      ],
+      "all_matrix_test_ids": [
+        "T068"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T068",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-036",
+      "requirement": "nr-vault MUSS über einen eigenen Adapter migriert werden; seine separate Factory DARF NICHT als automatisch global geschützt ausgegeben werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 75
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T069",
+        "T070"
+      ],
+      "all_matrix_test_ids": [
+        "T069",
+        "T070"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T069",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T070",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-037",
+      "requirement": "Vault-Integration MUSS Credential-Injection, Secret-Zugriffskontrolle, Auditing, OAuth-Tokenabruf, Timeout-, Streaming- und Cancellation-Verhalten erhalten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 76
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T059",
+        "T060",
+        "T070",
+        "T071",
+        "T072"
+      ],
+      "all_matrix_test_ids": [
+        "T059",
+        "T060",
+        "T070",
+        "T071",
+        "T072"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T059",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T060",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T070",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T071",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T072",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-038",
+      "requirement": "Bestehende flache Vault-Allowlist-Einträge DÜRFEN nicht automatisch globale oder uneingeschränkte interne Freigaben werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 77
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T039",
+        "T073"
+      ],
+      "all_matrix_test_ids": [
+        "T039",
+        "T073"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T039",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T073",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-039",
+      "requirement": "Sicherheitskritische Ablehnungen MÜSSEN mit einem nachweislich nicht kontaktierten Ziel getestet werden; eine Exception allein ist kein Nachweis.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 78
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T074"
+      ],
+      "all_matrix_test_ids": [
+        "T074"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T074",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-040",
+      "requirement": "Gleichzeitige Requests und langlebige CLI-Prozesse MÜSSEN auf Cross-Request-, Cache- und Policy-Lecks getestet werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 79
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T053",
+        "T054",
+        "T075"
+      ],
+      "all_matrix_test_ids": [
+        "T053",
+        "T054",
+        "T075"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T053",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T054",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T075",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-041",
+      "requirement": "Bibliotheks-, TYPO3- und Vault-Tests MÜSSEN denselben normativen Sicherheitskorpus verwenden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 80
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T074",
+        "T076"
+      ],
+      "all_matrix_test_ids": [
+        "T074",
+        "T076"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T074",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T076",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-042",
+      "requirement": "Unsupported-Konfigurationen MÜSSEN sichtbar fehlschlagen. Die Dokumentation DARF keine weitergehende Abdeckung als die getestete behaupten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 81
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T003",
+        "T006",
+        "T077"
+      ],
+      "all_matrix_test_ids": [
+        "T003",
+        "T006",
+        "T077"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T003",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T006",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T077",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-043",
+      "requirement": "Neue Defaults oder eine Entfernung des Vault-Legacyverhaltens MÜSSEN als Verhaltensänderung migriert und versioniert werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 82
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T038",
+        "T066",
+        "T073",
+        "T080"
+      ],
+      "all_matrix_test_ids": [
+        "T038",
+        "T066",
+        "T073",
+        "T080"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T038",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T066",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T073",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T080",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-044",
+      "requirement": "Ressourcenverbrauch und Zeitverhalten MÜSSEN dokumentierte Grenzen besitzen; synchrone DNS-Auflösung DARF nicht fälschlich als hart deadlinefähig dargestellt werden.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 83
+      },
+      "status": "partial_evidence",
+      "minimum_test_ids": [
+        "T028",
+        "T057",
+        "T078",
+        "T079",
+        "T082"
+      ],
+      "all_matrix_test_ids": [
+        "T028",
+        "T057",
+        "T078",
+        "T079",
+        "T082"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T028",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T057",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T078",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T079",
+          "status": "partial_current_evidence"
+        },
+        {
+          "id": "T082",
+          "status": "verified_scenarios"
+        }
+      ]
+    },
+    {
+      "id": "HG-045",
+      "requirement": "Jeder Security-Fix MUSS eine reproduzierbare Regression und eine Auswirkungsprüfung auf beide Integrationen erhalten.",
+      "source": {
+        "path": "specification/specs/01-product-requirements.md",
+        "line": 84
+      },
+      "status": "scenario_evidence_verified",
+      "minimum_test_ids": [
+        "T076",
+        "T080"
+      ],
+      "all_matrix_test_ids": [
+        "T076",
+        "T080"
+      ],
+      "mapping_discrepancy": [],
+      "baseline_status": "not_verified",
+      "test_statuses": [
+        {
+          "id": "T076",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T080",
+          "status": "verified_scenarios"
+        }
+      ]
+    }
+  ],
+  "invariants": [
+    {
+      "id": "INV-01",
+      "label": "Keine ungeprüfte Adresse",
+      "invariant": "Jeder Verbindungsversuch nutzt ausschließlich Adressen des für genau diesen Versuch validierten Plans.",
+      "source": {
+        "path": "specification/specs/02-security-model.md",
+        "line": 39
+      },
+      "requirements": [
+        "HG-013",
+        "HG-014",
+        "HG-015",
+        "HG-016",
+        "HG-020",
+        "HG-026"
+      ],
+      "test_ids": [
+        "T022",
+        "T023",
+        "T024",
+        "T025",
+        "T026",
+        "T028",
+        "T029",
+        "T030",
+        "T031",
+        "T032",
+        "T033",
+        "T040",
+        "T053",
+        "T055",
+        "T084"
+      ],
+      "source_refs": [
+        "packages/http-guard/src/PolicyEngine.php",
+        "packages/http-guard/src/StaticThenDnsResolver.php",
+        "packages/http-guard/src/Transport/GuardedTransferFactory.php",
+        "packages/http-guard/src/Transport/TransferLease.php"
+      ],
+      "test_statuses": [
+        {
+          "id": "T022",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T023",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T024",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T025",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T026",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T028",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T029",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T030",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T031",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T032",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T033",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T040",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T053",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T055",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T084",
+          "status": "verified_scenarios"
+        }
+      ],
+      "status": "scenario_evidence_verified"
+    },
+    {
+      "id": "INV-02",
+      "label": "Vollständige Zielbindung",
+      "invariant": "Scheme, kanonischer Host, effektiver Port, Methode, Endpoint-Profil und Policyrevision werden gemeinsam bewertet. Ein Wechsel invalidiert den alten Plan.",
+      "source": {
+        "path": "specification/specs/02-security-model.md",
+        "line": 41
+      },
+      "requirements": [
+        "HG-007",
+        "HG-008",
+        "HG-009",
+        "HG-017",
+        "HG-018",
+        "HG-043"
+      ],
+      "test_ids": [
+        "T008",
+        "T009",
+        "T010",
+        "T011",
+        "T012",
+        "T013",
+        "T034",
+        "T035",
+        "T038",
+        "T081"
+      ],
+      "source_refs": [
+        "packages/http-guard/src/TargetNormalizer.php",
+        "packages/http-guard/src/PolicyRegistry.php",
+        "packages/http-guard/src/PolicyEngine.php",
+        "packages/http-guard/src/Transport/InvocationRegistry.php"
+      ],
+      "test_statuses": [
+        {
+          "id": "T008",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T009",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T010",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T011",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T012",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T013",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T034",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T035",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T038",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T081",
+          "status": "verified_scenarios"
+        }
+      ],
+      "status": "scenario_evidence_verified"
+    },
+    {
+      "id": "INV-03",
+      "label": "Fail closed",
+      "invariant": "Fehlerhafte URL, fehlende verwertbare Adressen, nicht unterstützter Transport, Reihenfolgefehler oder ungültige Policy führen im Enforce-Modus vor Zielkontakt zur Ablehnung.",
+      "source": {
+        "path": "specification/specs/02-security-model.md",
+        "line": 43
+      },
+      "requirements": [
+        "HG-002",
+        "HG-003",
+        "HG-008",
+        "HG-014",
+        "HG-020",
+        "HG-021",
+        "HG-022",
+        "HG-042"
+      ],
+      "test_ids": [
+        "T003",
+        "T006",
+        "T009",
+        "T010",
+        "T011",
+        "T012",
+        "T024",
+        "T025",
+        "T026",
+        "T032",
+        "T040",
+        "T041",
+        "T042",
+        "T043",
+        "T044",
+        "T080"
+      ],
+      "source_refs": [
+        "packages/http-guard/src/GuardConfig.php",
+        "packages/http-guard/src/WireDnsQuery.php",
+        "packages/http-guard/src/PolicyEngine.php",
+        "packages/http-guard/src/Transport/RuntimeSupport.php",
+        "packages/http-guard/src/Client/GuardedClientFactory.php"
+      ],
+      "test_statuses": [
+        {
+          "id": "T003",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T006",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T009",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T010",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T011",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T012",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T024",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T025",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T026",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T032",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T040",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T041",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T042",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T043",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T044",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T080",
+          "status": "verified_scenarios"
+        }
+      ],
+      "status": "scenario_evidence_verified"
+    },
+    {
+      "id": "INV-04",
+      "label": "Keine implizite Ausnahme",
+      "invariant": "Interne Freigaben gelten nur für explizit gebundene Aufrufpfade. Eine bloße Übereinstimmung von Zielhostname und globaler Liste reicht nicht.",
+      "source": {
+        "path": "specification/specs/02-security-model.md",
+        "line": 45
+      },
+      "requirements": [
+        "HG-004",
+        "HG-017",
+        "HG-018",
+        "HG-038"
+      ],
+      "test_ids": [
+        "T005",
+        "T027",
+        "T034",
+        "T035",
+        "T036",
+        "T037",
+        "T039",
+        "T073",
+        "T076"
+      ],
+      "source_refs": [
+        "packages/http-guard/src/PolicyRegistry.php",
+        "packages/http-guard/src/EndpointGrant.php",
+        "packages/http-guard/src/PolicyEngine.php",
+        "packages/http-guard/src/Client/GuardedClientFactory.php",
+        "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php"
+      ],
+      "test_statuses": [
+        {
+          "id": "T005",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T027",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T034",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T035",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T036",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T037",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T039",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T073",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T076",
+          "status": "verified_scenarios"
+        }
+      ],
+      "status": "scenario_evidence_verified"
+    },
+    {
+      "id": "INV-05",
+      "label": "Jede Wiederholung ist neu",
+      "invariant": "Redirects und Retries durchlaufen dieselben Invarianten; es gibt keinen einmalig ausgestellten URL-Freibrief.",
+      "source": {
+        "path": "specification/specs/02-security-model.md",
+        "line": 47
+      },
+      "requirements": [
+        "HG-023",
+        "HG-024",
+        "HG-025"
+      ],
+      "test_ids": [
+        "T038",
+        "T045",
+        "T046",
+        "T047",
+        "T048",
+        "T049",
+        "T050",
+        "T051",
+        "T052",
+        "T081"
+      ],
+      "source_refs": [
+        "packages/http-guard/src/Transport/BoundaryMiddleware.php",
+        "packages/http-guard/src/Transport/TerminalGuardMiddleware.php",
+        "packages/http-guard/src/Transport/InvocationRegistry.php",
+        "packages/http-guard/src/PolicyEngine.php"
+      ],
+      "test_statuses": [
+        {
+          "id": "T038",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T045",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T046",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T047",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T048",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T049",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T050",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T051",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T052",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T081",
+          "status": "verified_scenarios"
+        }
+      ],
+      "status": "scenario_evidence_verified"
+    },
+    {
+      "id": "INV-06",
+      "label": "Policykomposition verengt",
+      "invariant": "Zusätzliche Einschränkungen werden geschnitten, nicht ersetzt. Harte Verbote haben Vorrang.",
+      "source": {
+        "path": "specification/specs/02-security-model.md",
+        "line": 49
+      },
+      "requirements": [
+        "HG-011",
+        "HG-012",
+        "HG-017",
+        "HG-019"
+      ],
+      "test_ids": [
+        "T004",
+        "T017",
+        "T021",
+        "T034",
+        "T039",
+        "T083"
+      ],
+      "source_refs": [
+        "packages/http-guard/src/AddressClassifier.php",
+        "packages/http-guard/src/PolicyEngine.php",
+        "packages/nr-http-guard/Classes/Http/CoreStackProvider.php"
+      ],
+      "test_statuses": [
+        {
+          "id": "T004",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T017",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T021",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T034",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T039",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T083",
+          "status": "verified_scenarios"
+        }
+      ],
+      "status": "scenario_evidence_verified"
+    },
+    {
+      "id": "INV-07",
+      "label": "Kein Zustandstransfer",
+      "invariant": "Eine interne Freigabe, ein DNS-Pin oder eine Verbindung darf nicht auf einen anderen Request, anderen Client oder andere Policy übergehen.",
+      "source": {
+        "path": "specification/specs/02-security-model.md",
+        "line": 51
+      },
+      "requirements": [
+        "HG-017",
+        "HG-018",
+        "HG-026",
+        "HG-027",
+        "HG-040"
+      ],
+      "test_ids": [
+        "T035",
+        "T036",
+        "T038",
+        "T053",
+        "T054",
+        "T055",
+        "T056",
+        "T057",
+        "T071",
+        "T075"
+      ],
+      "source_refs": [
+        "packages/http-guard/src/PolicyRegistry.php",
+        "packages/http-guard/src/StaticThenDnsResolver.php",
+        "packages/http-guard/src/Transport/InvocationRegistry.php",
+        "packages/http-guard/src/Transport/TransferDriver.php",
+        "packages/http-guard/src/Transport/TransferLease.php"
+      ],
+      "test_statuses": [
+        {
+          "id": "T035",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T036",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T038",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T053",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T054",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T055",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T056",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T057",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T071",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T075",
+          "status": "verified_scenarios"
+        }
+      ],
+      "status": "scenario_evidence_verified"
+    },
+    {
+      "id": "INV-08",
+      "label": "Ehrliche Abdeckung",
+      "invariant": "Kein geschütztes Label für nicht erfasste Clients, Observe-Modus, deaktivierten Guard oder ungeprüfte Proxy-/Stream-/Custom-Handler-Pfade.",
+      "source": {
+        "path": "specification/specs/02-security-model.md",
+        "line": 53
+      },
+      "requirements": [
+        "HG-021",
+        "HG-022",
+        "HG-028",
+        "HG-033",
+        "HG-034",
+        "HG-036",
+        "HG-042"
+      ],
+      "test_ids": [
+        "T042",
+        "T043",
+        "T044",
+        "T058",
+        "T065",
+        "T066",
+        "T067",
+        "T068",
+        "T069",
+        "T070",
+        "T077"
+      ],
+      "source_refs": [
+        "packages/http-guard/src/Transport/TerminalGuardMiddleware.php",
+        "packages/http-guard/src/Transport/RuntimeSupport.php",
+        "packages/nr-http-guard/Classes/Diagnostics/DiagnosticsService.php",
+        "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php",
+        "packages/http-guard/Documentation/Policy.md"
+      ],
+      "test_statuses": [
+        {
+          "id": "T042",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T043",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T044",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T058",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T065",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T066",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T067",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T068",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T069",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T070",
+          "status": "verified_scenarios"
+        },
+        {
+          "id": "T077",
+          "status": "verified_scenarios"
+        }
+      ],
+      "status": "scenario_evidence_verified"
+    }
+  ],
+  "coverage_summary": {
+    "requirements": 45,
+    "tests": 84,
+    "invariants": 8,
+    "p0": 74,
+    "p0_verified": 74,
+    "p1": 10,
+    "p1_verified": 9,
+    "partial_test_ids": [
+      "T079"
+    ]
+  },
+  "compatibility_matrix": {
+    "library": "verification/evidence/library-matrix/summary.json",
+    "typo3": "evidence/typo3-integration/production-matrix-summary.json",
+    "vault": "integrations/nr-vault/EVIDENCE.md",
+    "limit": "Exact tested Linux runtime/dependency tuples; not broader dependency patch ranges, all framework/PHP cross-products or Windows/macOS distributions."
+  }
+}

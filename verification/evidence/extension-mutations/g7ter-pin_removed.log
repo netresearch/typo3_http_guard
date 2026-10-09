@@ -1,0 +1,23 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /guard/Build/phpunit-http-guard.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.057, Memory: 14.00 MB
+
+There was 1 failure:
+
+1) Netresearch\HttpGuard\Tests\Integration\MutationWitnessTest::testCriticalMutationHasNativeAndWireWitness with data set "pin_removed" ('pin_removed')
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'response'
++'policy_denied'
+
+/guard/Tests/HttpGuard/Integration/MutationWitnessTest.php:176
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.

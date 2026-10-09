@@ -1,0 +1,140 @@
+{
+    "name": "netresearch/nr-vault",
+    "type": "typo3-cms-extension",
+    "description": "Secrets Vault - Central, secure storage for API keys, credentials and other secrets with envelope encryption, access control, audit logging and a secure HTTP client.",
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "TYPO3",
+        "secrets",
+        "vault",
+        "encryption",
+        "security",
+        "api-keys",
+        "credentials",
+        "secrets-management",
+        "key-rotation",
+        "audit-log",
+        "envelope-encryption",
+        "oauth",
+        "libsodium"
+    ],
+    "authors": [
+        {
+            "name": "Netresearch DTT GmbH",
+            "email": "info@netresearch.de",
+            "homepage": "https://www.netresearch.de",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/netresearch/t3x-nr-vault",
+    "support": {
+        "issues": "https://github.com/netresearch/t3x-nr-vault/issues",
+        "source": "https://github.com/netresearch/t3x-nr-vault"
+    },
+    "require": {
+        "php": "^8.2",
+        "ext-sodium": "*",
+        "ext-json": "*",
+        "typo3/cms-core": "^13.4 || ^14.3",
+        "typo3/cms-backend": "^13.4 || ^14.3",
+        "guzzlehttp/guzzle": "^7.10 || ^8.0",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "require-dev": {
+        "mikey179/vfsstream": "^1.6.11",
+        "netresearch/typo3-ci-workflows": "^1.3",
+        "roave/security-advisories": "dev-latest",
+        "typo3/cms-dashboard": "^13.4 || ^14.3",
+        "typo3/cms-install": "^13.4 || ^14.3",
+        "typo3/cms-scheduler": "^13.4 || ^14.3",
+        "typo3/testing-framework": ">=9.1 <11"
+    },
+    "suggest": {
+        "ext-curl": "Enables the CURLOPT_RESOLVE DNS pin and the cancellable outbound send (VaultHttpClient::sendCancellable()); without it both degrade, they do not fail",
+        "netresearch/http-guard": "Enables the explicit resource and separate OAuth token HTTP Guard adapters; install and wire deliberately, no automatic opt-in",
+        "typo3/cms-dashboard": "Adds vault secret count and audit activity widgets to the TYPO3 dashboard",
+        "typo3/cms-install": "Offers the audit-log HMAC migration wizard on TYPO3 13, whose upgrade API lives in EXT:install; TYPO3 14 needs nothing, its upgrade API is in EXT:core"
+    },
+    "autoload": {
+        "psr-4": {
+            "Netresearch\\NrVault\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Netresearch\\NrVault\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin",
+        "allow-plugins": {
+            "a9f/fractor-extension-installer": true,
+            "captainhook/hook-installer": true,
+            "dg/bypass-finals": true,
+            "infection/extension-installer": true,
+            "phpstan/extension-installer": true,
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "Package": {
+                "providesPackages": {}
+            },
+            "extension-key": "nr_vault",
+            "version": "1.1.0",
+            "web-dir": ".Build/web"
+        },
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        }
+    },
+    "scripts": {
+        "ci": [
+            "@ci:test:php:unit",
+            "@ci:test:php:fuzz",
+            "@ci:test:php:phpstan",
+            "@ci:test:php:arch",
+            "@ci:test:php:doc-cli",
+            "@ci:test:php:doc-cli:self-test",
+            "@ci:test:evidence",
+            "@ci:test:php:cgl"
+        ],
+        "ci:audit": "@composer audit --locked --format=plain --abandoned=fail",
+        "ci:evidence": "@php Build/Scripts/collect-evidence.php",
+        "ci:test:repo": [
+            "@ci:test:php:arch",
+            "@ci:test:php:doc-cli",
+            "@ci:test:php:doc-cli:self-test",
+            "@ci:test:evidence"
+        ],
+        "ci:test:evidence": "@php Build/Scripts/collect-evidence.php --self-test",
+        "ci:test:php:arch": "@php Tests/scripts/check-test-base-class.php",
+        "ci:test:php:doc-cli": "@php Tests/scripts/check-cli-docs.php",
+        "ci:test:php:doc-cli:self-test": "@php Tests/scripts/check-cli-docs.php --self-test",
+        "ci:cgl": "php-cs-fixer fix",
+        "ci:test:php:cgl": "php-cs-fixer fix --dry-run --diff",
+        "ci:test:php:coverage": "@php -d pcov.enabled=0 -d xdebug.mode=coverage .Build/bin/phpunit -c Build/phpunit.xml --testsuite Unit --path-coverage --coverage-clover=.Build/coverage/clover.xml --coverage-html=.Build/coverage/html --coverage-text",
+        "ci:test:php:coverage:functional": "@php -d pcov.enabled=0 -d xdebug.mode=coverage .Build/bin/phpunit -c Build/FunctionalTests.xml --path-coverage --coverage-clover=.Build/coverage/clover-functional.xml --coverage-html=.Build/coverage/html-functional",
+        "ci:test:php:functional": "phpunit -c Build/FunctionalTests.xml",
+        "ci:test:php:fuzz": "phpunit -c Build/phpunit.xml --testsuite Fuzz",
+        "ci:test:php:mutation": "infection --configuration=infection.json5 --threads=4",
+        "ci:test:php:mutation:security": "infection --configuration=infection-security.json5 --threads=max --no-progress",
+        "ci:test:php:phpstan": "phpstan analyse",
+        "ci:test:php:rector": "rector process --dry-run",
+        "ci:test:php:unit": "phpunit -c Build/phpunit.xml --testsuite Unit",
+        "rector": "rector process",
+        "test": "Build/Scripts/runTests.sh -s unit",
+        "test:all": [
+            "@test",
+            "@ci:test:php:functional"
+        ],
+        "test:functional": "Build/Scripts/runTests.sh -s functional",
+        "test:mutation": "Build/Scripts/runTests.sh -s mutation",
+        "test:unit": "Build/Scripts/runTests.sh -s unit"
+    }
+}

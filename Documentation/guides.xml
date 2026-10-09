@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guides xmlns="https://www.phpdoc.org/guides" links-are-relative="true"
+        default-code-language="php">
+    <extension class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+               typo3-core-preferred="14"
+               interlink-shortcode="nr_http_guard"/>
+    <project title="HTTP Guard" version="0.1" release="0.1.0"
+             copyright="2026 by Netresearch DTT GmbH"/>
+</guides>

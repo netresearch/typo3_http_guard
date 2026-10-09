@@ -1,0 +1,72 @@
+{
+  "guzzlehttp/guzzle/src/Client.php": {
+    "classicSha256": "5e747d1023e3ff323e76fbd34f249e1d3ddbf8b7edd9deafc871247220d770a9",
+    "qualifiedSha256": "5e747d1023e3ff323e76fbd34f249e1d3ddbf8b7edd9deafc871247220d770a9",
+    "identical": true
+  },
+  "guzzlehttp/guzzle/src/HandlerStack.php": {
+    "classicSha256": "116cc27057db5cc7c0b4c094d00f354d6ec706bf037de520fc02ba530a6a6572",
+    "qualifiedSha256": "b4205a2d981e5f5b44ef08bb9cd9d6de79bb5fcaf329f44e448c69b85116d529",
+    "identical": false
+  },
+  "guzzlehttp/guzzle/src/Middleware.php": {
+    "classicSha256": "a7cd8ca6d9ec5d6a422bd7253bad93dcf7887e22951220e296259276581553c2",
+    "qualifiedSha256": "a7cd8ca6d9ec5d6a422bd7253bad93dcf7887e22951220e296259276581553c2",
+    "identical": true
+  },
+  "guzzlehttp/guzzle/src/RedirectMiddleware.php": {
+    "classicSha256": "cfab00b6e646cf2e580ec20fb2b986107f71dd6764c503355cea5ef976d4fcb2",
+    "qualifiedSha256": "cfab00b6e646cf2e580ec20fb2b986107f71dd6764c503355cea5ef976d4fcb2",
+    "identical": true
+  },
+  "guzzlehttp/guzzle/src/RetryMiddleware.php": {
+    "classicSha256": "04c037401c8c91026d7c922f06135d0f3fa14c04514a31198305b3e92eaaa487",
+    "qualifiedSha256": "04c037401c8c91026d7c922f06135d0f3fa14c04514a31198305b3e92eaaa487",
+    "identical": true
+  },
+  "guzzlehttp/guzzle/src/PrepareBodyMiddleware.php": {
+    "classicSha256": "2229220e55231048bcaaf3b26353e05457fb3d0e7069f56b5f4ca840b05d933e",
+    "qualifiedSha256": "2229220e55231048bcaaf3b26353e05457fb3d0e7069f56b5f4ca840b05d933e",
+    "identical": true
+  },
+  "guzzlehttp/guzzle/src/Handler/CurlFactory.php": {
+    "classicSha256": "904fb3b5cb938bafa2137971251b65680ba5bc155d743cebb4757975896c4345",
+    "qualifiedSha256": "904fb3b5cb938bafa2137971251b65680ba5bc155d743cebb4757975896c4345",
+    "identical": true
+  },
+  "guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php": {
+    "classicSha256": "37cb9c403e0b550e38c98d3fcb7321fd778b838afb7635794e58a336aeee9503",
+    "qualifiedSha256": "37cb9c403e0b550e38c98d3fcb7321fd778b838afb7635794e58a336aeee9503",
+    "identical": true
+  },
+  "guzzlehttp/guzzle/src/Handler/CurlHandler.php": {
+    "classicSha256": "af232aec959729ccb46e3bc279d1d20e019aaf5f40de2d4d00ed525e99fa6c79",
+    "qualifiedSha256": "af232aec959729ccb46e3bc279d1d20e019aaf5f40de2d4d00ed525e99fa6c79",
+    "identical": true
+  },
+  "guzzlehttp/guzzle/src/Handler/EasyHandle.php": {
+    "classicSha256": "18c745262598ce341dbb376a2f34cb41477af0be4dfe7f4e2140398c0fba021b",
+    "qualifiedSha256": "18c745262598ce341dbb376a2f34cb41477af0be4dfe7f4e2140398c0fba021b",
+    "identical": true
+  },
+  "guzzlehttp/promises/src/Promise.php": {
+    "classicSha256": "746d9abd0505878d0d5d10125363691fa2e48986f40cb70128679ef43075ebb0",
+    "qualifiedSha256": "746d9abd0505878d0d5d10125363691fa2e48986f40cb70128679ef43075ebb0",
+    "identical": true
+  },
+  "guzzlehttp/promises/src/TaskQueue.php": {
+    "classicSha256": "eef98edc8a5818c0e2810d6c953c24a5ed3d905836d67c5593793ae8a30193a9",
+    "qualifiedSha256": "eef98edc8a5818c0e2810d6c953c24a5ed3d905836d67c5593793ae8a30193a9",
+    "identical": true
+  },
+  "guzzlehttp/psr7/src/Uri.php": {
+    "classicSha256": "0ea2ea4edb63326ba0dd5cf98e426b01e0abf6ebd65029739423c3a1ba5ae084",
+    "qualifiedSha256": "0ea2ea4edb63326ba0dd5cf98e426b01e0abf6ebd65029739423c3a1ba5ae084",
+    "identical": true
+  },
+  "guzzlehttp/psr7/src/Request.php": {
+    "classicSha256": "8d4b89bb2050624e052f7e8d6cc6eb27df5d1f57280d87adccc20a8937cbbe7a",
+    "qualifiedSha256": "8d4b89bb2050624e052f7e8d6cc6eb27df5d1f57280d87adccc20a8937cbbe7a",
+    "identical": true
+  }
+}

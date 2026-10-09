@@ -23,7 +23,7 @@ Context
 
 Vault already owns authentication, OAuth token caching, auditing, cancellation
 and streaming. Its default secure factory owns an allowlist, SSRF middleware and
-DNS pinning. The shared HTTP Guard library adds policy-bound terminal transports
+DNS pinning. The kernel included in the HTTP Guard TYPO3 extension adds policy-bound terminal transports
 with explicit internal endpoint profiles. Opting a resource client into that
 transport must not grant its OAuth token leg the resource's authority or silently
 replace defaults for unrelated Vault consumers.
@@ -35,7 +35,7 @@ Decision
 
 Add a trailing optional adapter to :php:`SecureHttpClientFactory`. Its default
 is null and service discovery excludes the optional concrete adapter classes.
-The adapter is an internal integration seam and the shared library remains a
+The adapter is an internal integration seam and the single ``netresearch/nr-http-guard`` extension remains a
 Composer suggestion. Applications select named resource and token factories.
 
 Enforce mode constructs both the client and its ticker from one guarded binding.
@@ -60,7 +60,7 @@ The default Vault client and its public calling interfaces keep their behavior.
 The API snapshot adds the internal adapter seam and the types referenced by it;
 existing frozen signatures are unchanged. Integrators must bind each protected
 resource and token endpoint deliberately and inventory audit webhook factories
-separately. Tests use the real shared transport and owned synthetic wire servers,
+separately. Tests use the real shared kernel transport and owned synthetic wire servers,
 with source digests and dependency versions recorded. Operator pilot evidence
 and independent human acceptance remain required for production release.
 

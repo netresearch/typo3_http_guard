@@ -1,0 +1,43 @@
+{
+    "case": "stream_passthrough",
+    "outcome": "response",
+    "reason": null,
+    "response_label": "private",
+    "resolver_calls": 0,
+    "transport": {
+        "created": 0,
+        "released": 0,
+        "active": 0,
+        "peak": 0,
+        "nativeConstructed": 0
+    },
+    "leaf_calls": 1,
+    "before": {
+        "public-a": {
+            "tcp": 828,
+            "http": 828
+        },
+        "public-b": {
+            "tcp": 79,
+            "http": 79
+        },
+        "private": {
+            "tcp": 89,
+            "http": 89
+        }
+    },
+    "after": {
+        "public-a": {
+            "tcp": 828,
+            "http": 828
+        },
+        "public-b": {
+            "tcp": 79,
+            "http": 79
+        },
+        "private": {
+            "tcp": 90,
+            "http": 90
+        }
+    }
+}

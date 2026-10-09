@@ -74,7 +74,7 @@ final class GuardAdapterTest extends FunctionalTestCase
         parent::setUpBeforeClass();
         if (!class_exists(GuardedClientFactory::class)) {
             self::markTestSkipped(
-                'Optional HTTP Guard library is not installed',
+                'Optional nr-http-guard extension source is not installed',
             );
         }
 
@@ -1063,7 +1063,7 @@ final class GuardAdapterTest extends FunctionalTestCase
     #[Test]
     public function sharedPrivateUnboundCorpusCannotBecomeAGrantThroughLegacyAllowedHosts(): void
     {
-        $corpusPath = __DIR__ . '/../../../.Build/http-guard-library/data/security-corpus/endpoint-cases.json';
+        $corpusPath = __DIR__ . '/../../../.Build/nr-http-guard-extension/Resources/Private/HttpGuard/data/security-corpus/endpoint-cases.json';
         $corpusHash = '4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825';
         self::assertSame($corpusHash, hash_file('sha256', $corpusPath));
         $raw = file_get_contents($corpusPath);

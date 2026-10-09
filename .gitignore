@@ -7,3 +7,10 @@ vendor/
 **/vendor/
 __pycache__/
 *.pyc
+
+.phpunit-http-guard.cache/
+Documentation-GENERATED/
+Documentation/_build/
+
+.phpstan-http-guard-cache/
+**/.phpunit.result.cache

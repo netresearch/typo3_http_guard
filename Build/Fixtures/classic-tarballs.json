@@ -1,0 +1,12 @@
+{
+  "13.4.35": {
+    "url": "https://get.typo3.org/13.4.35/tar.gz",
+    "sha256": "dd2d79db211cb8954a5f3a1f0cf2eb27a4a9057387e012fdd0bf779901f983e3",
+    "checksum_source": "https://get.typo3.org/release-notes/13.4.35"
+  },
+  "14.3.7": {
+    "url": "https://get.typo3.org/14.3.7/tar.gz",
+    "sha256": "1c91921b56615fb961ef37840abb9013e90e95a42f2ba83b61455732be0a353f",
+    "checksum_source": "https://get.typo3.org/release-notes/14.3.7"
+  }
+}

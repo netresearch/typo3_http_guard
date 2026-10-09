@@ -474,17 +474,19 @@ index bdd934e..07e362a 100644
  
  // TYPO3 v13+ defines the TYPO3 constant automatically via testing-framework bootstrap
 diff --git a/composer.json b/composer.json
-index 54a4115..c761f08 100644
+index 54a4115..9f0669d 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -52,6 +52,7 @@
-     },
+@@ -53,7 +53,8 @@
      "suggest": {
          "ext-curl": "Enables the CURLOPT_RESOLVE DNS pin and the cancellable outbound send (VaultHttpClient::sendCancellable()); without it both degrade, they do not fail",
-+        "netresearch/http-guard": "Enables the explicit resource and separate OAuth token HTTP Guard adapters; install and wire deliberately, no automatic opt-in",
          "typo3/cms-dashboard": "Adds vault secret count and audit activity widgets to the TYPO3 dashboard",
-         "typo3/cms-install": "Offers the audit-log HMAC migration wizard on TYPO3 13, whose upgrade API lives in EXT:install; TYPO3 14 needs nothing, its upgrade API is in EXT:core"
+-        "typo3/cms-install": "Offers the audit-log HMAC migration wizard on TYPO3 13, whose upgrade API lives in EXT:install; TYPO3 14 needs nothing, its upgrade API is in EXT:core"
++        "typo3/cms-install": "Offers the audit-log HMAC migration wizard on TYPO3 13, whose upgrade API lives in EXT:install; TYPO3 14 needs nothing, its upgrade API is in EXT:core",
++        "netresearch/nr-http-guard": "Enables the explicit resource and separate OAuth token HTTP Guard adapters; install and wire deliberately, no automatic opt-in"
      },
+     "autoload": {
+         "psr-4": {
 diff --git a/phpstan.neon b/phpstan.neon
 index ef32d0c..39bea94 100644
 --- a/phpstan.neon
@@ -511,7 +513,7 @@ index 1c98ad0..72e9727 100644
  };
 diff --git a/Build/Scripts/runGuardAdapterTests.sh b/Build/Scripts/runGuardAdapterTests.sh
 new file mode 100755
-index 0000000..6ecaaab
+index 0000000..30dd7c3
 --- /dev/null
 +++ b/Build/Scripts/runGuardAdapterTests.sh
 @@ -0,0 +1,63 @@
@@ -527,9 +529,9 @@ index 0000000..6ecaaab
 +vault_guard_private_network="${VAULT_GUARD_PRIVATE_NETWORK:-http-guard-production-private}"
 +vault_guard_php="${VAULT_GUARD_PHP:-8.5}"
 +cd "$vault_guard_root"
-+test -d .Build/http-guard-library/src
++test -d .Build/nr-http-guard-extension/Classes/HttpGuard
 +# Install shared zero-contact counters without resetting an existing target.
-+bash .Build/http-guard-library/tests/Integration/prepare-wire.sh
++bash .Build/nr-http-guard-extension/Tests/HttpGuard/Integration/prepare-wire.sh
 +for vault_guard_pair in "$vault_guard_public_network:203.0.115.0/24" "$vault_guard_private_network:10.23.4.0/24"; do
 +    vault_guard_network="${vault_guard_pair%%:*}"
 +    vault_guard_subnet="${vault_guard_pair#*:}"
@@ -881,7 +883,7 @@ index 0000000..3ab3616
 +}
 diff --git a/Documentation/Developer/Adr/ADR-041-OptInHttpGuardAdapter.rst b/Documentation/Developer/Adr/ADR-041-OptInHttpGuardAdapter.rst
 new file mode 100644
-index 0000000..04e9f11
+index 0000000..fca8300
 --- /dev/null
 +++ b/Documentation/Developer/Adr/ADR-041-OptInHttpGuardAdapter.rst
 @@ -0,0 +1,67 @@
@@ -910,7 +912,7 @@ index 0000000..04e9f11
 +
 +Vault already owns authentication, OAuth token caching, auditing, cancellation
 +and streaming. Its default secure factory owns an allowlist, SSRF middleware and
-+DNS pinning. The shared HTTP Guard library adds policy-bound terminal transports
++DNS pinning. The kernel included in the HTTP Guard TYPO3 extension adds policy-bound terminal transports
 +with explicit internal endpoint profiles. Opting a resource client into that
 +transport must not grant its OAuth token leg the resource's authority or silently
 +replace defaults for unrelated Vault consumers.
@@ -922,7 +924,7 @@ index 0000000..04e9f11
 +
 +Add a trailing optional adapter to :php:`SecureHttpClientFactory`. Its default
 +is null and service discovery excludes the optional concrete adapter classes.
-+The adapter is an internal integration seam and the shared library remains a
++The adapter is an internal integration seam and the single ``netresearch/nr-http-guard`` extension remains a
 +Composer suggestion. Applications select named resource and token factories.
 +
 +Enforce mode constructs both the client and its ticker from one guarded binding.
@@ -947,17 +949,17 @@ index 0000000..04e9f11
 +The API snapshot adds the internal adapter seam and the types referenced by it;
 +existing frozen signatures are unchanged. Integrators must bind each protected
 +resource and token endpoint deliberately and inventory audit webhook factories
-+separately. Tests use the real shared transport and owned synthetic wire servers,
++separately. Tests use the real shared kernel transport and owned synthetic wire servers,
 +with source digests and dependency versions recorded. Operator pilot evidence
 +and independent human acceptance remain required for production release.
 +
 +Configuration and mode details: :ref:`developer-http-guard`.
 diff --git a/Documentation/Developer/HttpGuard.rst b/Documentation/Developer/HttpGuard.rst
 new file mode 100644
-index 0000000..5d28641
+index 0000000..bba65bb
 --- /dev/null
 +++ b/Documentation/Developer/HttpGuard.rst
-@@ -0,0 +1,171 @@
+@@ -0,0 +1,173 @@
 +.. SPDX-License-Identifier: GPL-2.0-or-later
 +.. SPDX-FileCopyrightText: Netresearch DTT GmbH
 +
@@ -969,9 +971,9 @@ index 0000000..5d28641
 +Opt-in HTTP Guard adapter
 +========================
 +
-+The optional ``netresearch/http-guard`` library supplies policy-bound
-+transports for explicitly configured Vault clients. Installing the library or
-+the TYPO3 HTTP Guard extension does not select this adapter. The default
++The optional ``netresearch/nr-http-guard`` TYPO3 extension includes the shared
++HTTP Guard kernel and supplies policy-bound transports for explicitly configured
++Vault clients. Installing that extension does not select this Vault adapter. The default
 +:php:`SecureHttpClientFactory` continues to use Vault's existing host allowlist,
 +SSRF middleware and DNS pinning.
 +
@@ -1107,11 +1109,13 @@ index 0000000..5d28641
 +bindings, pre-secret refusals, authentication placements, audit redaction, expiry,
 +token caching, all three modes, streaming and cancellation.
 +
-+For source-based integration validation, copy the exact shared library source
-+and data and :file:`tests/Integration/` to :file:`.Build/http-guard-library/` and retain a file digest manifest.
++For source-based integration validation, copy the combined extension's :file:`Classes/HttpGuard/`,
++:file:`Resources/Private/HttpGuard/data/` and :file:`Tests/HttpGuard/Integration/`
++into the same relative paths under :file:`.Build/nr-http-guard-extension/`. Retain
++a file digest manifest.
 +The test bootstrap loads that optional source only when present. A normal Vault
-+checkout without the optional library may skip these adapter tests; a run used
-+as HTTP Guard acceptance evidence must have the library and network fixture
++checkout without the optional extension may skip these adapter tests; a run used
++as HTTP Guard acceptance evidence must have the extension source and network fixture
 +installed and must contain no skipped adapter cases. Run the existing unit,
 +fuzz, functional, architecture and static suites as well.
 +
@@ -1119,19 +1123,19 @@ index 0000000..5d28641
 +runner and attaches only its owned job to two isolated synthetic fixture
 +networks. It idempotently prepares the shared target counters and tests the public-resource/private-token pair and its inverse at
 +``203.0.115.150`` and ``10.23.4.150``. These are Docker NICs within the fixture,
-+not external services. The script requires the optional library source and integration-fixture copy,
++not external services. The script requires the optional extension source and integration-fixture copy,
 +Docker, Bash, OpenSSL and ripgrep. It also consumes the shared
 +``EP-PRIVATE-UNBOUND`` corpus case by ID and SHA-256 and verifies that a legacy
 +allowlist entry cannot authorize an unbound private endpoint, before secrets,
 +native handles, TCP contact or HTTP contact.
 +
 +Supported PHP, Guzzle and cURL versions are those accepted by the shared
-+library's runtime checks and the recorded execution matrix. Local synthetic
++kernel's runtime checks and the recorded execution matrix. Local synthetic
 +tests do not replace an operator's production pilot or independent release
 +acceptance. See :ref:`adr-041-opt-in-http-guard-adapter`.
 diff --git a/Tests/Fixtures/HttpGuardBootstrap.php b/Tests/Fixtures/HttpGuardBootstrap.php
 new file mode 100644
-index 0000000..8de4b33
+index 0000000..ff2cf59
 --- /dev/null
 +++ b/Tests/Fixtures/HttpGuardBootstrap.php
 @@ -0,0 +1,23 @@
@@ -1142,16 +1146,16 @@ index 0000000..8de4b33
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +declare(strict_types=1);
-+$guardLibrarySource = dirname(__DIR__, 2) . '/.Build/http-guard-library/src';
-+if (is_dir($guardLibrarySource)) {
++$guardExtensionSource = dirname(__DIR__, 2) . '/.Build/nr-http-guard-extension/Classes/HttpGuard';
++if (is_dir($guardExtensionSource)) {
 +    spl_autoload_register(
-+        static function (string $class) use ($guardLibrarySource): void {
++        static function (string $class) use ($guardExtensionSource): void {
 +            $prefix = 'Netresearch\HttpGuard\\';
 +            if (!str_starts_with($class, $prefix)) {
 +                return;
 +            }
 +
-+            $path = $guardLibrarySource . '/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
++            $path = $guardExtensionSource . '/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
 +            if (is_file($path)) {
 +                require_once $path;
 +            }
@@ -1270,7 +1274,7 @@ index 0000000..0f5f132
 +echo '{"ok":true}';
 diff --git a/Tests/Functional/Http/GuardAdapterTest.php b/Tests/Functional/Http/GuardAdapterTest.php
 new file mode 100644
-index 0000000..fa11ac0
+index 0000000..752b1eb
 --- /dev/null
 +++ b/Tests/Functional/Http/GuardAdapterTest.php
 @@ -0,0 +1,1434 @@
@@ -1350,7 +1354,7 @@ index 0000000..fa11ac0
 +        parent::setUpBeforeClass();
 +        if (!class_exists(GuardedClientFactory::class)) {
 +            self::markTestSkipped(
-+                'Optional HTTP Guard library is not installed',
++                'Optional nr-http-guard extension source is not installed',
 +            );
 +        }
 +
@@ -2339,7 +2343,7 @@ index 0000000..fa11ac0
 +    #[Test]
 +    public function sharedPrivateUnboundCorpusCannotBecomeAGrantThroughLegacyAllowedHosts(): void
 +    {
-+        $corpusPath = __DIR__ . '/../../../.Build/http-guard-library/data/security-corpus/endpoint-cases.json';
++        $corpusPath = __DIR__ . '/../../../.Build/nr-http-guard-extension/Resources/Private/HttpGuard/data/security-corpus/endpoint-cases.json';
 +        $corpusHash = '4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825';
 +        self::assertSame($corpusHash, hash_file('sha256', $corpusPath));
 +        $raw = file_get_contents($corpusPath);

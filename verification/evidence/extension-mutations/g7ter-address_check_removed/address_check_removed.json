@@ -1,0 +1,43 @@
+{
+    "case": "address_check_removed",
+    "outcome": "response",
+    "reason": null,
+    "response_label": "public-a",
+    "resolver_calls": 1,
+    "transport": {
+        "created": 1,
+        "released": 1,
+        "active": 0,
+        "peak": 1,
+        "nativeConstructed": 1
+    },
+    "leaf_calls": 0,
+    "before": {
+        "public-a": {
+            "tcp": 828,
+            "http": 828
+        },
+        "public-b": {
+            "tcp": 79,
+            "http": 79
+        },
+        "private": {
+            "tcp": 91,
+            "http": 91
+        }
+    },
+    "after": {
+        "public-a": {
+            "tcp": 829,
+            "http": 829
+        },
+        "public-b": {
+            "tcp": 79,
+            "http": 79
+        },
+        "private": {
+            "tcp": 91,
+            "http": 91
+        }
+    }
+}

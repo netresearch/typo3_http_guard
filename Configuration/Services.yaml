@@ -1,0 +1,94 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Netresearch\NrHttpGuard\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/HttpGuard/'
+      - '../Classes/Diagnostics/DiagnosticResult.php'
+      - '../Classes/Http/GuardedRequestFactory13.php'
+      - '../Classes/Http/GuardedRequestFactory14.php'
+
+  Netresearch\HttpGuard\GuardConfig:
+    factory: ['@Netresearch\NrHttpGuard\Configuration\ConfigurationLoader', 'load']
+
+  Netresearch\HttpGuard\SystemClock: ~
+  Netresearch\HttpGuard\ClockInterface:
+    alias: Netresearch\HttpGuard\SystemClock
+
+  Netresearch\HttpGuard\DecisionReporterInterface:
+    class: Netresearch\HttpGuard\DecisionReporter
+    factory: ['@Netresearch\NrHttpGuard\Service\LibraryServiceFactory', 'reporter']
+
+  Netresearch\HttpGuard\ResolverInterface:
+    class: Netresearch\HttpGuard\StaticThenDnsResolver
+    factory: ['@Netresearch\NrHttpGuard\Service\LibraryServiceFactory', 'resolver']
+
+  Netresearch\HttpGuard\PolicyRegistry:
+    factory: ['@Netresearch\NrHttpGuard\Service\LibraryServiceFactory', 'registry']
+
+  Netresearch\HttpGuard\PolicyEngine:
+    factory: ['@Netresearch\NrHttpGuard\Service\LibraryServiceFactory', 'engine']
+
+  nr_http_guard.global_factory:
+    class: Netresearch\HttpGuard\Client\GuardedClientFactory
+    factory: ['@Netresearch\NrHttpGuard\Service\LibraryServiceFactory', 'globalFactory']
+    arguments:
+      $engine: '@Netresearch\HttpGuard\PolicyEngine'
+      $config: '@Netresearch\HttpGuard\GuardConfig'
+      $registry: '@Netresearch\HttpGuard\PolicyRegistry'
+
+  nr_http_guard.context_factory:
+    class: Netresearch\HttpGuard\Client\GuardedClientFactory
+    factory: ['@Netresearch\NrHttpGuard\Service\LibraryServiceFactory', 'contextFactory']
+    arguments:
+      $engine: '@Netresearch\HttpGuard\PolicyEngine'
+      $config: '@Netresearch\HttpGuard\GuardConfig'
+      $registry: '@Netresearch\HttpGuard\PolicyRegistry'
+      $provider: '@Netresearch\NrHttpGuard\Http\CoreStackProvider'
+
+  Netresearch\HttpGuard\Client\GuardedClientFactory:
+    alias: nr_http_guard.context_factory
+
+  Netresearch\NrHttpGuard\Http\MiddlewareRegistry:
+    arguments:
+      $globalFactory: '@nr_http_guard.global_factory'
+
+  Netresearch\NrHttpGuard\Http\CoreStackProvider:
+    arguments:
+      $context: 'nr_http_guard'
+
+  Netresearch\NrHttpGuard\Http\RawRequestFactoryRegistration:
+    arguments:
+      $factory: !service_closure '@TYPO3\CMS\Core\Http\RequestFactory'
+      $psrFactory: !service_closure '@Psr\Http\Message\RequestFactoryInterface'
+
+  Netresearch\NrHttpGuard\EventListener\RegisterGuardListener:
+    arguments:
+      $registry: !service_closure '@Netresearch\NrHttpGuard\Http\MiddlewareRegistry'
+    tags:
+      - name: event.listener
+        identifier: nr-http-guard/register
+
+  Netresearch\NrHttpGuard\Diagnostics\DiagnosticsService:
+    arguments:
+      $registry: !service_closure '@Netresearch\NrHttpGuard\Http\MiddlewareRegistry'
+      $engine: !service_closure '@Netresearch\HttpGuard\PolicyEngine'
+      $policyRegistry: !service_closure '@Netresearch\HttpGuard\PolicyRegistry'
+
+  Netresearch\NrHttpGuard\Client\EndpointClientFactory:
+    public: true
+
+  Netresearch\HttpGuard\EndpointClientFactoryInterface:
+    alias: Netresearch\NrHttpGuard\Client\EndpointClientFactory
+    public: true
+
+  Netresearch\NrHttpGuard\Client\PublicFetchClient:
+    public: true
+
+  Netresearch\HttpGuard\PublicFetchClientInterface:
+    alias: Netresearch\NrHttpGuard\Client\PublicFetchClient
+    public: true
