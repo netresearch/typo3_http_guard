@@ -12,16 +12,18 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Throwable;
 
+/**
+ * @phpstan-type EndpointConfiguration array{origin:string, allowedCidrs:list<string>, methods:list<string>, redirects:'none'|'same-origin', allowLoopback:bool, purpose:string, owner:string, reviewAfter:?string, expiresAt:?string}
+ * @phpstan-type ResolverConfiguration array{staticHosts:array<string,list<string>>, cacheTtlSeconds:int, cacheMaxHosts:int, maxAddresses:int, maxCnameHops:int}
+ * @phpstan-type LoggingConfiguration array{allowedSampleRate:int|float, hostMode:'hash'|'plain', hostHmacKeyEnv:?string, denyRateLimitPerMinute:int}
+ * @phpstan-type ValidatedConfiguration array{schemaVersion:1, mode:'enforce'|'observe'|'disabled', deniedCidrs:list<string>, endpoints:array<string,EndpointConfiguration>, resolver:ResolverConfiguration, redirects:array{max:int}, tls:array{requireVerification:bool}, logging:LoggingConfiguration}
+ */
 final readonly class GuardConfig
 {
-    /**
-     * @param array<string,mixed> $data
-     */
+    /** @param ValidatedConfiguration $data */
     private function __construct(public string $mode, public string $revision, public array $data) {}
 
-    /**
-     * @param array<array-key,mixed> $data
-     */
+    /** @param array<array-key,mixed> $data */
     public static function fromArray(array $data): self
     {
         self::keys(
@@ -60,10 +62,14 @@ final readonly class GuardConfig
             self::invalid();
         }
         $result['deniedCidrs'] = self::cidrs($result['deniedCidrs'], false, false);
-        $r                     = $result['resolver'];
-        foreach (['cacheTtlSeconds' => [0, 5], 'cacheMaxHosts' => [1, 1024], 'maxAddresses' => [1, 64], 'maxCnameHops' => [0, 8]] as $key => $limits) {
-            self::integer($r[$key], $limits[0], $limits[1]);
+        if (!is_array($result['resolver']) || !is_array($result['redirects']) || !is_array($result['tls']) || !is_array($result['logging'])) {
+            self::invalid();
         }
+        $r                    = $result['resolver'];
+        $r['cacheTtlSeconds'] = self::integer($r['cacheTtlSeconds'], 0, 5);
+        $r['cacheMaxHosts']   = self::integer($r['cacheMaxHosts'], 1, 1024);
+        $r['maxAddresses']    = self::integer($r['maxAddresses'], 1, 64);
+        $r['maxCnameHops']    = self::integer($r['maxCnameHops'], 0, 8);
         if (!is_array($r['staticHosts'])) {
             self::invalid();
         }
@@ -95,8 +101,9 @@ final readonly class GuardConfig
             sort($hosts[$canonical], SORT_STRING);
         }
         ksort($hosts, SORT_STRING);
-        $result['resolver']['staticHosts'] = $hosts;
-        self::integer($result['redirects']['max'], 0, 10);
+        $r['staticHosts']           = $hosts;
+        $result['resolver']         = $r;
+        $result['redirects']['max'] = self::integer($result['redirects']['max'], 0, 10);
         if (!is_bool($result['tls']['requireVerification'])) {
             self::invalid();
         }
@@ -104,16 +111,17 @@ final readonly class GuardConfig
         if (!is_int($logging['allowedSampleRate']) && !is_float($logging['allowedSampleRate']) || !is_finite((float) $logging['allowedSampleRate']) || $logging['allowedSampleRate'] < 0 || $logging['allowedSampleRate'] > 1 || !in_array($logging['hostMode'], ['hash', 'plain'], true)) {
             self::invalid();
         }
-        if ($logging['hostHmacKeyEnv'] !== null && (!is_string($logging['hostHmacKeyEnv']) || !(preg_match('/^[A-Za-z_][A-Za-z0-9_]{0,127}$/D', $logging['hostHmacKeyEnv']) === 1))) {
+        if ($logging['hostHmacKeyEnv'] !== null && (!is_string($logging['hostHmacKeyEnv']) || preg_match('/^[A-Za-z_][A-Za-z0-9_]{0,127}$/D', $logging['hostHmacKeyEnv']) !== 1)) {
             self::invalid();
         }
-        self::integer($logging['denyRateLimitPerMinute'], 1, 10000);
+        $logging['denyRateLimitPerMinute'] = self::integer($logging['denyRateLimitPerMinute'], 1, 10000);
+        $result['logging']                 = $logging;
         if (!is_array($result['endpoints']) || count($result['endpoints']) > 128) {
             self::invalid();
         }
         $profiles = [];
         foreach ($result['endpoints'] as $id => $endpoint) {
-            if (!is_string($id) || !(preg_match('/^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$/D', $id) === 1) || !is_array($endpoint)) {
+            if (!is_string($id) || preg_match('/^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$/D', $id) !== 1 || !is_array($endpoint)) {
                 self::invalid();
             }
             self::keys(
@@ -142,7 +150,7 @@ final readonly class GuardConfig
             if (!is_bool($endpoint['allowLoopback']) || !in_array($endpoint['redirects'], ['none', 'same-origin'], true)) {
                 self::invalid();
             }
-            if (!is_string($endpoint['origin']) || !(preg_match('~^https?://(?:\[[0-9a-fA-F:.]+\]|[A-Za-z0-9.-]+)(?::[1-9][0-9]{0,4})?$~iD', $endpoint['origin']) === 1)) {
+            if (!is_string($endpoint['origin']) || preg_match('~^https?://(?:\[[0-9a-fA-F:.]+\]|[A-Za-z0-9.-]+)(?::[1-9][0-9]{0,4})?$~iD', $endpoint['origin']) !== 1) {
                 self::invalid();
             }
             try {
@@ -155,26 +163,38 @@ final readonly class GuardConfig
             if (!is_array($endpoint['methods']) || !array_is_list($endpoint['methods']) || $endpoint['methods'] === []) {
                 self::invalid();
             }
+            $methods = [];
             foreach ($endpoint['methods'] as $method) {
-                if (!is_string($method) || strlen($method) > 64 || !(preg_match("/^[!#\$%&'*+.^_`|~0-9A-Za-z-]+\$/D", $method) === 1) || strtoupper($method) === 'CONNECT') {
+                if (!is_string($method) || strlen($method) > 64 || preg_match("/^[!#\$%&'*+.^_`|~0-9A-Za-z-]+\$/D", $method) !== 1 || strtoupper($method) === 'CONNECT') {
                     self::invalid();
                 }
+                $methods[] = $method;
             }
-            $endpoint['methods'] = array_values(array_unique($endpoint['methods']));
+            $endpoint['methods'] = array_values(array_unique($methods));
             sort($endpoint['methods'], SORT_STRING);
-            self::text($endpoint['purpose'], 200);
-            self::text($endpoint['owner'], 120);
+            $endpoint['purpose'] = self::text($endpoint['purpose'], 200);
+            $endpoint['owner']   = self::text($endpoint['owner'], 120);
             if ($endpoint['reviewAfter'] !== null) {
-                self::date($endpoint['reviewAfter'], false);
+                $endpoint['reviewAfter'] = self::date($endpoint['reviewAfter'], false);
             }
             if ($endpoint['expiresAt'] !== null) {
-                self::date($endpoint['expiresAt'], true);
+                $endpoint['expiresAt'] = self::date($endpoint['expiresAt'], true);
             }
             $profiles[$id] = $endpoint;
         }
         ksort($profiles, SORT_STRING);
         $result['endpoints'] = $profiles;
-        $revision            = self::revision($result);
+        $result              = [
+            'schemaVersion' => 1,
+            'mode'          => $result['mode'],
+            'deniedCidrs'   => $result['deniedCidrs'],
+            'endpoints'     => $profiles,
+            'resolver'      => $r,
+            'redirects'     => ['max' => $result['redirects']['max']],
+            'tls'           => ['requireVerification' => $result['tls']['requireVerification']],
+            'logging'       => $logging,
+        ];
+        $revision = self::revision($result);
 
         return new self($result['mode'], $revision, $result);
     }
@@ -182,6 +202,8 @@ final readonly class GuardConfig
     /**
      * @param array<array-key,mixed> $value
      * @param list<string>           $allowed
+     *
+     * @phpstan-assert array<string,mixed> $value
      */
     private static function keys(array $value, array $allowed): void
     {
@@ -192,27 +214,31 @@ final readonly class GuardConfig
         }
     }
 
-    private static function integer(mixed $value, int $min, int $max): void
+    private static function integer(mixed $value, int $min, int $max): int
     {
         if (!is_int($value) || $value < $min || $value > $max) {
             self::invalid();
         }
+
+        return $value;
     }
 
-    private static function text(mixed $value, int $max): void
+    private static function text(mixed $value, int $max): string
     {
-        if (!is_string($value) || trim($value) === '' || !(preg_match('//u', $value) === 1) || preg_match('/[\x00-\x1f\x7f]/', $value) === 1 || preg_match_all('/./us', $value) > $max) {
+        if (!is_string($value) || trim($value) === '' || preg_match('//u', $value) !== 1 || preg_match('/[\x00-\x1f\x7f]/', $value) === 1 || preg_match_all('/./us', $value) > $max) {
             self::invalid();
         }
+
+        return $value;
     }
 
-    private static function date(mixed $value, bool $instant): void
+    private static function date(mixed $value, bool $instant): string
     {
         if (!is_string($value)) {
             self::invalid();
         }
         $pattern = $instant ? '~^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(?:\.[0-9]{1,6})?(Z|[+-][0-9]{2}:[0-9]{2})$~D' : '~^([0-9]{4})-([0-9]{2})-([0-9]{2})$~D';
-        if (!(preg_match($pattern, $value, $m) === 1) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1])) {
+        if (preg_match($pattern, $value, $m) !== 1 || !checkdate((int) $m[2], (int) $m[3], (int) $m[1])) {
             self::invalid();
         }
         if ($instant) {
@@ -229,11 +255,11 @@ final readonly class GuardConfig
         } catch (Throwable) {
             self::invalid();
         }
+
+        return $value;
     }
 
-    /**
-     * @return list<string>
-     */
+    /** @return list<string> */
     private static function cidrs(mixed $values, bool $endpoint, bool $loopback): array
     {
         if (!is_array($values) || !array_is_list($values) || $endpoint && $values === []) {
@@ -245,7 +271,10 @@ final readonly class GuardConfig
                 self::invalid();
             }
             $literal = explode('/', $value)[0];
-            $raw     = NativeOperation::attempt(static fn () => inet_pton($literal));
+            if (preg_match('/[^0-9a-fA-F:.]/D', $literal) === 1) {
+                self::invalid();
+            }
+            $raw = NativeOperation::attempt(static fn () => inet_pton($literal));
             if ($raw !== false && strlen($raw) === 16 && substr($raw, 0, 12) === str_repeat(chr(0), 10) . chr(255) . chr(255)) {
                 self::invalid();
             }

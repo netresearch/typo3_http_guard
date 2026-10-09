@@ -98,7 +98,7 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
         try {
             $profile   = $this->registry->validateContext($context);
             $canonical = TargetNormalizer::host($host);
-            if ($profile !== null) {
+            if ($profile instanceof EndpointProfile) {
                 $origin = new \GuzzleHttp\Psr7\Uri($profile->origin);
                 if (TargetNormalizer::host($origin->getHost()) !== $canonical) {
                     return false;
@@ -158,7 +158,7 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
         if (strtoupper($method) === 'CONNECT') {
             throw new PolicyException('invalid_target');
         }
-        if ($profile !== null && ($profile->origin !== $target->origin || !in_array($method, $profile->methods, true))) {
+        if ($profile instanceof EndpointProfile && ($profile->origin !== $target->origin || !in_array($method, $profile->methods, true))) {
             throw new PolicyException('endpoint_mismatch');
         }
         $resolution = $target->literalIp !== null ? new Resolution([$target->literalIp], 'literal', null, 'literal') : $this->resolver->resolve($target->host);
@@ -213,7 +213,7 @@ final class PolicyEngine implements OutboundPolicyEvaluatorInterface
             if ($classification->hardDenied) {
                 throw new PolicyException('address_forbidden');
             }
-            if ($profile === null) {
+            if (!$profile instanceof EndpointProfile) {
                 if (!$classification->public) {
                     throw new PolicyException('address_forbidden');
                 }

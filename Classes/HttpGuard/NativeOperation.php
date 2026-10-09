@@ -9,8 +9,9 @@ declare(strict_types=1);
 namespace Netresearch\HttpGuard;
 
 use ErrorException;
+use Throwable;
 
-/** @internal Converts a native warning into a fixed failure without leaking its text. */
+/** @internal Converts native warnings/notices into a fixed failure without leaking their text. */
 final class NativeOperation
 {
     /**
@@ -23,10 +24,10 @@ final class NativeOperation
     public static function attempt(callable $operation): mixed
     {
         $warning = new ErrorException('Native operation failed', 0, E_WARNING);
-        /** @var (callable(int, string, string, int): bool)|null $previous */
+        /** @var (callable(int, string, string, int): mixed)|null $previous */
         $previous = null;
         $handler  = static function (int $severity, string $message, string $file, int $line) use ($warning, &$previous): bool {
-            if ($severity === E_WARNING) {
+            if ($severity === E_WARNING || $severity === E_NOTICE) {
                 throw $warning;
             }
 
@@ -35,8 +36,8 @@ final class NativeOperation
         $previous = set_error_handler($handler);
         try {
             return $operation();
-        } catch (ErrorException $failure) {
-            if ($failure !== $warning) {
+        } catch (Throwable $failure) {
+            if ($failure !== $warning && $failure->getPrevious() !== $warning) {
                 throw $failure;
             }
 

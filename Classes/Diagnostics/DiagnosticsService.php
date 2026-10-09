@@ -67,7 +67,7 @@ final readonly class DiagnosticsService
             $config = $this->configuration();
             ($this->registry)()->assertValid();
             $protected = $config->mode === 'enforce';
-            $httpProxy = $GLOBALS['TYPO3_CONF_VARS']['HTTP']['proxy'] ?? null;
+            $httpProxy = $this->httpConfiguration()['proxy'] ?? null;
             $hasProxy  = $variables !== [] || !in_array($httpProxy, [null, '', false, []], true);
             $supported = true;
             try {
@@ -120,13 +120,16 @@ final readonly class DiagnosticsService
 
     public function legacyReport(): DiagnosticResult
     {
-        $http   = $GLOBALS['TYPO3_CONF_VARS']['HTTP'] ?? [];
-        $report = $this->legacy->inspect(is_array($http) ? $http : []);
+        try {
+            $report = $this->legacy->inspect($this->httpConfiguration());
 
-        return new DiagnosticResult(
-            $report + ['httpSent' => false, 'reasonCode' => $this->boot->failureReason],
-            $this->boot->failureReason === null ? 0 : 3,
-        );
+            return new DiagnosticResult(
+                $report + ['httpSent' => false, 'reasonCode' => $this->boot->failureReason],
+                $this->boot->failureReason === null ? 0 : 3,
+            );
+        } catch (PolicyException $exception) {
+            return $this->failure($exception);
+        }
     }
 
     public function policyCheck(string $url, ?string $endpointId = null, bool $noDns = false): DiagnosticResult
@@ -149,7 +152,7 @@ final readonly class DiagnosticsService
             $code     = match ($decision->reasonCode) {
                 'configuration_invalid', 'transport_unsupported', 'proxy_unsupported' => 3,
                 'resolution_unverified'                                               => 4,
-                default                                                               => in_array($decision->decision, ['allow'], true) ? 0 : 2,
+                default                                                               => $decision->decision === 'allow' ? 0 : 2,
             };
 
             return new DiagnosticResult(
@@ -212,5 +215,27 @@ final readonly class DiagnosticsService
             'overdueEndpointReviews'           => $overdue,
             'tlsVerificationPolicyNotRequired' => $config->data['tls']['requireVerification'] === false,
         ];
+    }
+
+    /** @return array<string, mixed> */
+    private function httpConfiguration(): array
+    {
+        $configuration = $GLOBALS['TYPO3_CONF_VARS'] ?? [];
+        if (!is_array($configuration)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $http = $configuration['HTTP'] ?? [];
+        if (!is_array($http)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $validated = [];
+        foreach ($http as $key => $value) {
+            if (!is_string($key)) {
+                throw new PolicyException('configuration_invalid');
+            }
+            $validated[$key] = $value;
+        }
+
+        return $validated;
     }
 }

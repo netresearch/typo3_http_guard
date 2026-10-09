@@ -30,8 +30,8 @@ final class MiddlewareRegistry
     public function register(): void
     {
         $this->rawFactory->assertValid();
-        $registry = $GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'] ?? [];
-        if ($this->pair !== null || !is_array($registry) || array_key_exists(self::BOUNDARY, $registry) || array_key_exists(self::TERMINAL, $registry)) {
+        $registry = $this->httpConfiguration()['handler'] ?? [];
+        if ($this->pair instanceof MiddlewarePair || !is_array($registry) || array_key_exists(self::BOUNDARY, $registry) || array_key_exists(self::TERMINAL, $registry)) {
             throw new PolicyException('configuration_invalid');
         }
         foreach ($registry as $middleware) {
@@ -43,8 +43,8 @@ final class MiddlewareRegistry
         $assertion = fn (): null => $this->assertRegistry();
         $pair->boundary->setRegistryAssertion($assertion);
         $pair->terminal->setRegistryAssertion($assertion);
-        $this->pair                                    = $pair;
-        $GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'] = [self::BOUNDARY => $pair->boundary] + $registry + [self::TERMINAL => $pair->terminal];
+        $this->pair = $pair;
+        $this->storeRegistry([self::BOUNDARY => $pair->boundary] + $registry + [self::TERMINAL => $pair->terminal]);
         $this->assertValid();
     }
 
@@ -58,8 +58,8 @@ final class MiddlewareRegistry
     public function assertValid(): void
     {
         $this->rawFactory->assertValid();
-        $registry = $GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'] ?? null;
-        if ($this->pair === null || !is_array($registry) || $registry === []) {
+        $registry = $this->httpConfiguration()['handler'] ?? null;
+        if (!$this->pair instanceof MiddlewarePair || !is_array($registry) || $registry === []) {
             throw new PolicyException('configuration_invalid');
         }
         $keys = array_keys($registry);
@@ -92,8 +92,49 @@ final class MiddlewareRegistry
 
     private function createPair(): MiddlewarePair
     {
-        $GLOBALS['TYPO3_CONF_VARS']['HTTP'] = $this->defaults->apply($GLOBALS['TYPO3_CONF_VARS']['HTTP'], $this->config);
+        $this->storeHttpConfiguration($this->defaults->apply($this->httpConfiguration(), $this->config));
 
         return $this->globalFactory->middlewarePair();
+    }
+
+    /** @return array<string, mixed> */
+    private function httpConfiguration(): array
+    {
+        $configuration = $GLOBALS['TYPO3_CONF_VARS'] ?? null;
+        if (!is_array($configuration)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $http = $configuration['HTTP'] ?? null;
+        if (!is_array($http)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $validated = [];
+        foreach ($http as $key => $value) {
+            if (!is_string($key)) {
+                throw new PolicyException('configuration_invalid');
+            }
+            $validated[$key] = $value;
+        }
+
+        return $validated;
+    }
+
+    /** @param array<string, mixed> $http */
+    private function storeHttpConfiguration(array $http): void
+    {
+        $configuration = $GLOBALS['TYPO3_CONF_VARS'] ?? null;
+        if (!is_array($configuration)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $configuration['HTTP']      = $http;
+        $GLOBALS['TYPO3_CONF_VARS'] = $configuration;
+    }
+
+    /** @param array<array-key, mixed> $registry */
+    private function storeRegistry(array $registry): void
+    {
+        $http            = $this->httpConfiguration();
+        $http['handler'] = $registry;
+        $this->storeHttpConfiguration($http);
     }
 }

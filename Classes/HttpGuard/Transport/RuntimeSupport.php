@@ -91,7 +91,7 @@ final class RuntimeSupport
             throw new PolicyException('transport_unsupported');
         }
 
-        return (int) constant($constant);
+        return constant($constant);
     }
 
     /** Reject an incompatible public factory interface before the decorator autoloads. */

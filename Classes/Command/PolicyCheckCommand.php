@@ -26,13 +26,15 @@ final class PolicyCheckCommand extends AbstractGuardCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        return $this->result(
-            $this->diagnostics->policyCheck(
-                (string) $input->getArgument('url'),
-                $input->getOption('endpoint'),
-                (bool) $input->getOption('no-dns'),
-            ),
-            $output,
-        );
+        $url      = $input->getArgument('url');
+        $endpoint = $input->getOption('endpoint');
+        $noDns    = $input->getOption('no-dns');
+        if (!is_string($url) || $endpoint !== null && !is_string($endpoint) || !is_bool($noDns)) {
+            throw new \Symfony\Component\Console\Exception\InvalidArgumentException(
+                'The URL and endpoint must be strings and --no-dns must be a boolean.',
+            );
+        }
+
+        return $this->result($this->diagnostics->policyCheck($url, $endpoint, $noDns), $output);
     }
 }

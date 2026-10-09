@@ -25,7 +25,8 @@ final readonly class RegisterGuardListener
         try {
             ($this->registry)()->register();
         } catch (\Netresearch\HttpGuard\PolicyException $exception) {
-            if (!$this->boot->isDiagnosticInvocation($_SERVER['argv'] ?? []) || !in_array(
+            $argv = $_SERVER['argv'] ?? [];
+            if (!is_array($argv) || !$this->boot->isDiagnosticInvocation($argv) || !in_array(
                 $exception->reasonCode(),
                 ['configuration_invalid', 'transport_unsupported', 'proxy_unsupported'],
                 true,

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
+ */
 declare(strict_types=1);
 
 namespace Netresearch\HttpGuard\Tests\Unit\Policy;
@@ -181,5 +185,30 @@ final class PolicyStrictInputsTest extends TestCase
             ['::1/128'],
             GuardConfig::fromArray(['endpoints' => ['fixture' => $endpoint]])->data['endpoints']['fixture']['allowedCidrs'],
         );
+    }
+
+    public function testNulCidrConfigurationFailsWithFixedPolicyReason(): void
+    {
+        foreach ([
+            ['deniedCidrs' => ["10.0.0.0\x00/8"]],
+            [
+                'endpoints' => [
+                    'private' => [
+                        'origin'       => 'https://api.example',
+                        'allowedCidrs' => ["10.0.0.0\x00/24"],
+                        'methods'      => ['GET'],
+                        'purpose'      => 'Synthetic NUL regression',
+                        'owner'        => 'test',
+                    ],
+                ],
+            ],
+        ] as $config) {
+            try {
+                GuardConfig::fromArray($config);
+                self::fail('NUL CIDR accepted');
+            } catch (PolicyException $failure) {
+                self::assertSame('configuration_invalid', $failure->reasonCode());
+            }
+        }
     }
 }

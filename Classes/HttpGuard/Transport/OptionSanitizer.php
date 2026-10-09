@@ -94,21 +94,17 @@ final readonly class OptionSanitizer
         array $options = [],
         ?HandlerStack $expectedHandler = null,
     ): array {
-        foreach (array_keys($options) as $key) {
-            if (!is_string($key) || !in_array($key, self::KNOWN, true)) {
-                throw new PolicyException('option_forbidden');
-            }
-        }
-        if (array_key_exists('handler', $options) && ($expectedHandler === null || $options['handler'] !== $expectedHandler)) {
+        $this->assertKnownOptions($options);
+        if (array_key_exists('handler', $options) && (!$expectedHandler instanceof HandlerStack || $options['handler'] !== $expectedHandler)) {
             throw new PolicyException('option_forbidden');
         }
-        if ($expectedHandler !== null && ($options['handler'] ?? null) !== $expectedHandler) {
+        if ($expectedHandler instanceof HandlerStack && ($options['handler'] ?? null) !== $expectedHandler) {
             throw new PolicyException('option_forbidden');
         }
-        self::assertNoProxy($options);
+        $this->assertNoProxy($options);
         $this->assertRedirects($options['allow_redirects'] ?? false);
         foreach (['timeout', 'connect_timeout'] as $key) {
-            if (array_key_exists($key, $options) && !self::nonnegativeNumber($options[$key])) {
+            if (array_key_exists($key, $options) && !$this->nonnegativeNumber($options[$key])) {
                 throw new PolicyException('option_forbidden');
             }
         }
@@ -154,7 +150,7 @@ final readonly class OptionSanitizer
         if (isset($options['decode_content']) && !is_bool($options['decode_content']) && !is_string($options['decode_content'])) {
             throw new PolicyException('option_forbidden');
         }
-        if (isset($options['expect']) && !is_bool($options['expect']) && !self::nonnegativeNumber($options['expect'])) {
+        if (isset($options['expect']) && !is_bool($options['expect']) && !$this->nonnegativeNumber($options['expect'])) {
             throw new PolicyException('option_forbidden');
         }
         if (isset($options['force_ip_resolve']) && !in_array($options['force_ip_resolve'], ['v4', 'v6'], true)) {
@@ -168,7 +164,7 @@ final readonly class OptionSanitizer
             throw new PolicyException('option_forbidden');
         }
         if (isset($options['protocols'])) {
-            if (!self::webProtocols($options['protocols'])) {
+            if (!$this->webProtocols($options['protocols'])) {
                 throw new PolicyException('option_forbidden');
             }
         }
@@ -226,7 +222,7 @@ final readonly class OptionSanitizer
         if (isset($settings['on_redirect']) && !is_callable($settings['on_redirect'])) {
             throw new PolicyException('redirect_forbidden');
         }
-        if (isset($settings['protocols']) && !self::webProtocols($settings['protocols'])) {
+        if (isset($settings['protocols']) && !$this->webProtocols($settings['protocols'])) {
             throw new PolicyException('redirect_forbidden');
         }
     }
@@ -247,7 +243,7 @@ final readonly class OptionSanitizer
     }
 
     /** @param array<string,mixed> $options */
-    private static function assertNoProxy(array $options): void
+    private function assertNoProxy(array $options): void
     {
         if (self::processProxyNames() !== []) {
             throw new PolicyException('proxy_unsupported');
@@ -257,7 +253,7 @@ final readonly class OptionSanitizer
         }
     }
 
-    private static function nonnegativeNumber(mixed $value): bool
+    private function nonnegativeNumber(mixed $value): bool
     {
         return (is_int($value) || is_float($value)) && is_finite((float) $value) && $value >= 0;
     }
@@ -277,9 +273,14 @@ final readonly class OptionSanitizer
         if (RuntimeSupport::major() !== 7 || !is_array($auth) || !isset($auth[2]) || !in_array($auth[2], ['digest', 'ntlm'], true)) {
             throw new PolicyException('option_forbidden');
         }
+        $username = $auth[0] ?? null;
+        $password = $auth[1] ?? null;
+        if (!is_string($username) || !is_string($password)) {
+            throw new PolicyException('option_forbidden');
+        }
         $expected = [
             CURLOPT_HTTPAUTH => $auth[2] === 'digest' ? CURLAUTH_DIGEST : CURLAUTH_NTLM,
-            CURLOPT_USERPWD  => $auth[0] . ':' . $auth[1],
+            CURLOPT_USERPWD  => $username . ':' . $password,
         ];
         $raw = $options['curl'];
         if (!is_array($raw) || count($raw) !== 2 || ($raw[CURLOPT_HTTPAUTH] ?? null) !== $expected[CURLOPT_HTTPAUTH] || ($raw[CURLOPT_USERPWD] ?? null) !== $expected[CURLOPT_USERPWD]) {
@@ -290,7 +291,7 @@ final readonly class OptionSanitizer
         return $expected;
     }
 
-    private static function webProtocols(mixed $protocols): bool
+    private function webProtocols(mixed $protocols): bool
     {
         if (!is_array($protocols) || !array_is_list($protocols) || $protocols === []) {
             return false;
@@ -312,5 +313,19 @@ final readonly class OptionSanitizer
     private static function processEnvironment(): array
     {
         return getenv(null, true);
+    }
+
+    /**
+     * @param array<array-key,mixed> $options
+     *
+     * @phpstan-assert array<string,mixed> $options
+     */
+    private function assertKnownOptions(array $options): void
+    {
+        foreach (array_keys($options) as $key) {
+            if (!is_string($key) || !in_array($key, self::KNOWN, true)) {
+                throw new PolicyException('option_forbidden');
+            }
+        }
     }
 }

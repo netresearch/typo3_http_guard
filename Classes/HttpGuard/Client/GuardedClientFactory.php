@@ -135,7 +135,7 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
             $defaults['headers'] = [];
         }
         if ($this->config->mode === 'enforce' && !array_key_exists('allow_redirects', $defaults)) {
-            $defaults['allow_redirects'] = $profile !== null && $profile->redirects === 'none' ? false : ['max' => $this->config->data['redirects']['max'], 'strict' => false, 'protocols' => ['http', 'https']];
+            $defaults['allow_redirects'] = $profile instanceof \Netresearch\HttpGuard\EndpointProfile && $profile->redirects === 'none' ? false : ['max' => $this->config->data['redirects']['max'], 'strict' => false, 'protocols' => ['http', 'https']];
         }
         if ($this->config->mode === 'enforce') {
             $defaults['idn_conversion'] = false;
@@ -149,15 +149,27 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
     /**
      * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface> $stack
      *
-     * @return list<array{callable(callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface): (callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface),string}>
+     * @return list<array{callable(mixed...):mixed,string|null}>
      */
     private static function stackEntries(HandlerStack $stack): array
     {
         // This private inventory is version-bound by RuntimeSupport and the G0 probes.
-        return (new ReflectionProperty(HandlerStack::class, 'stack'))->getValue($stack);
+        $entries = (new ReflectionProperty(HandlerStack::class, 'stack'))->getValue($stack);
+        if (!is_array($entries) || !array_is_list($entries)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $inventory = [];
+        foreach ($entries as $entry) {
+            if (!is_array($entry) || !array_is_list($entry) || count($entry) !== 2 || !is_callable($entry[0]) || $entry[1] !== null && !is_string($entry[1])) {
+                throw new PolicyException('configuration_invalid');
+            }
+            $inventory[] = [$entry[0], $entry[1]];
+        }
+
+        return $inventory;
     }
 
-    /** @param list<array{callable(callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface): (callable(\Psr\Http\Message\RequestInterface, array<array-key,mixed>): \GuzzleHttp\Promise\PromiseInterface),string}> $entries */
+    /** @param list<array{callable(mixed...):mixed,string|null}> $entries */
     private static function assertPosition(
         array $entries,
         BoundaryMiddleware $boundary,
@@ -186,14 +198,16 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
         }
         $defaults = self::stackEntries(
             HandlerStack::create(
-                static fn () => \GuzzleHttp\Promise\Create::rejectionFor(new PolicyException('configuration_invalid')),
+                static function (): never {
+                    throw new PolicyException('configuration_invalid');
+                },
             ),
         );
         $prefix = array_slice($entries, 0, $boundaryIndex);
         // The supported Core wrapper remains cumulative before our boundary.
         if (count($prefix) === count($defaults) + 1) {
             $last = $prefix[array_key_last($prefix)];
-            if ($last[1] !== 'typo3_allowed_hosts' || !is_object($last[0]) || strcmp(get_class($last[0]), 'TYPO3\CMS\Core\Http\Client\AllowedHostsMiddleware') !== 0) {
+            if ($last[1] !== 'typo3_allowed_hosts' || !is_object($last[0]) || strcmp($last[0]::class, 'TYPO3\CMS\Core\Http\Client\AllowedHostsMiddleware') !== 0) {
                 throw new PolicyException('configuration_invalid');
             }
             array_pop($prefix);

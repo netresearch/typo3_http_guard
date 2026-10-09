@@ -24,7 +24,7 @@ final readonly class RawRequestFactoryRegistration
     {
         RequestFactoryCompatibility::assertSupported();
         $expected = RequestFactoryCompatibility::replacementClass();
-        $mapping  = $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][RequestFactory::class] ?? null;
+        $mapping  = $this->objectMapping(RequestFactory::class);
         if (!is_array($mapping) || ($mapping['className'] ?? null) !== $expected) {
             throw new PolicyException('configuration_invalid');
         }
@@ -32,5 +32,23 @@ final readonly class RawRequestFactoryRegistration
         if (!is_object($factory) || $factory::class !== $expected || ($this->psrFactory)() !== $factory) {
             throw new PolicyException('configuration_invalid');
         }
+    }
+
+    private function objectMapping(string $class): mixed
+    {
+        $configuration = $GLOBALS['TYPO3_CONF_VARS'] ?? null;
+        if (!is_array($configuration)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $system = $configuration['SYS'] ?? null;
+        if (!is_array($system)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $objects = $system['Objects'] ?? null;
+        if (!is_array($objects)) {
+            throw new PolicyException('configuration_invalid');
+        }
+
+        return $objects[$class] ?? null;
     }
 }

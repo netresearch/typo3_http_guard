@@ -21,7 +21,7 @@ final class TargetNormalizer
         if (!in_array($scheme, ['http', 'https'], true)) {
             throw new PolicyException('scheme_forbidden');
         }
-        if (!(preg_match("/^[!#\$%&'*+.^_`|~0-9A-Za-z-]+\$/D", $request->getMethod()) === 1)) {
+        if (preg_match("/^[!#\$%&'*+.^_`|~0-9A-Za-z-]+\$/D", $request->getMethod()) !== 1) {
             throw new PolicyException('invalid_target');
         }
         $host = self::host($uri->getHost());
@@ -35,7 +35,7 @@ final class TargetNormalizer
         }
         if ($headers !== []) {
             $authority = $headers[0];
-            if (!(preg_match('/^(\[[0-9a-fA-F:.]+\]|[^:]+)(?::([0-9]+))?$/D', $authority, $m) === 1)) {
+            if (preg_match('/^(\[[0-9a-fA-F:.]+\]|[^:]+)(?::([0-9]+))?$/D', $authority, $m) !== 1) {
                 throw new PolicyException('authority_mismatch');
             }
             try {
@@ -92,7 +92,7 @@ final class TargetNormalizer
             return Cidr::address($host);
         }
         foreach (explode('.', $host) as $label) {
-            if (!(preg_match('/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/D', $label) === 1)) {
+            if (preg_match('/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/D', $label) !== 1) {
                 throw new PolicyException('invalid_target');
             }
         }
@@ -105,16 +105,16 @@ final class TargetNormalizer
         if (strlen($rawUri) > 8192 || preg_match('/[\x00-\x20\x7f\\\\]/', $rawUri) === 1 || str_contains($rawUri, '#')) {
             throw new PolicyException('invalid_target');
         }
-        if (!(preg_match('~^([A-Za-z][A-Za-z0-9+.-]*):~D', $rawUri, $scheme) === 1)) {
+        if (preg_match('~^([A-Za-z][A-Za-z0-9+.-]*):~D', $rawUri, $scheme) !== 1) {
             throw new PolicyException('invalid_target');
         }
         if (!in_array(strtolower($scheme[1]), ['http', 'https'], true)) {
             throw new PolicyException('scheme_forbidden');
         }
-        if (!(preg_match('~^https?://([^/?#]*)~iD', $rawUri, $match) === 1) || $match[1] === '' || str_contains($match[1], '@')) {
+        if (preg_match('~^https?://([^/?#]*)~iD', $rawUri, $match) !== 1 || $match[1] === '' || str_contains($match[1], '@')) {
             throw new PolicyException('invalid_target');
         }
-        if (!(preg_match('/^(\[[0-9a-fA-F:.]+\]|[^:]+)(?::([1-9][0-9]{0,4}))?$/D', $match[1], $authority) === 1)) {
+        if (preg_match('/^(\[[0-9a-fA-F:.]+\]|[^:]+)(?::([1-9][0-9]{0,4}))?$/D', $match[1], $authority) !== 1) {
             throw new PolicyException('invalid_target');
         }
         self::host($authority[1]);

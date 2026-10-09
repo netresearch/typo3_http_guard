@@ -83,7 +83,7 @@ final class TerminalGuardMiddleware
                     throw new PolicyException('authority_mismatch');
                 }
                 if ($envelope->publicFetch && (!in_array($request->getMethod(), ['GET', 'HEAD'], true) || $request->getBody()->getSize() !== 0 || array_diff(
-                    array_map('strtolower', array_keys($request->getHeaders())),
+                    array_map(strtolower(...), array_keys($request->getHeaders())),
                     ['host', 'accept', 'accept-encoding', 'user-agent'],
                 ) !== [])) {
                     throw new PolicyException('option_forbidden');
@@ -105,7 +105,6 @@ final class TerminalGuardMiddleware
                         },
                     );
             } catch (PolicyException $error) {
-
                 if (($envelope ?? null) instanceof RequestEnvelope) {
                     $this->invocations->close($envelope);
                 }

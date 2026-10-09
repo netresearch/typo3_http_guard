@@ -24,12 +24,16 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
-/** A lazy, single-attempt owner. No multi handle is shared with another lease. */
+/**
+ * A lazy, single-attempt owner. No multi handle is shared with another lease.
+ *
+ * @phpstan-type NativeOptions array{curl:array<array-key,mixed>, on_headers:(callable(mixed...):mixed)|null, on_stats:(callable(TransferStats):mixed)|null, ...}
+ */
 final class TransferLease
 {
     private ?CurlMultiHandler $handler = null;
     private ?PromiseInterface $inner   = null;
-    private PromiseInterface $outer;
+    private readonly PromiseInterface $outer;
     private ?ConnectionPlan $plan = null;
     private bool $done            = false;
     private bool $executing       = false;
@@ -43,9 +47,10 @@ final class TransferLease
         private readonly PolicyEngine $engine,
         private readonly RequestPolicyContext $context,
         private ?RequestInterface $request,
-        private array $options,
+        array $options,
     ) {
-        $this->outer = new Promise(
+        $this->options = self::nativeOptions($options);
+        $this->outer   = new Promise(
             fn () => $this->driver->waitFor($this),
             function (): void {
                 $this->cancelled = true;
@@ -73,15 +78,14 @@ final class TransferLease
         }
         $this->executing = true;
         try {
-            if ($this->inner === null) {
+            if (!$this->inner instanceof PromiseInterface) {
                 $this->prepare();
             }
             if ($this->stopCancelled() || $this->releasePending) {
                 return;
             }
             if (!$this->startedNetwork) {
-
-                if ($this->plan === null) {
+                if (!$this->plan instanceof ConnectionPlan) {
                     throw new PolicyException('transport_unsupported');
                 }
                 $this->engine->assertCurrent($this->plan, $this->context);
@@ -94,11 +98,9 @@ final class TransferLease
                     throw new PolicyException('proxy_unsupported');
                 }
                 $this->startedNetwork = true;
-
             }
             $this->handler?->tick();
         } catch (Throwable $error) {
-
             if ($error instanceof PolicyException && !$this->policyFailureReported) {
                 $this->engine->reportDiagnostic($this->context, 'deny', $error->reasonCode());
                 $this->policyFailureReported = true;
@@ -121,7 +123,7 @@ final class TransferLease
     {
         RuntimeSupport::assertSupported();
         $request = $this->request;
-        if ($request === null || $this->stopCancelled()) {
+        if (!$request instanceof RequestInterface || $this->stopCancelled()) {
             $this->release();
 
             return;
@@ -213,13 +215,10 @@ final class TransferLease
             return;
         }
         $this->done = true;
-        if ($this->handler !== null) {
-
+        if ($this->handler instanceof CurlMultiHandler) {
             $method = RuntimeSupport::major() === 8 ? 'close' : '__destruct';
 
             self::nativeCleanupCallback($this->handler, $method)();
-
-
         }
         $this->handler = null;
         $this->inner   = null;
@@ -229,7 +228,7 @@ final class TransferLease
         $this->driver->release($this);
     }
 
-    /** @return Closure(): void */
+    /** @return Closure():void */
     private static function nativeCleanupCallback(CurlMultiHandler $handler, string $method): Closure
     {
         $callback = [$handler, $method];
@@ -237,7 +236,9 @@ final class TransferLease
             throw new LogicException('Unsupported native cleanup');
         }
 
-        return Closure::fromCallable($callback);
+        return static function () use ($callback): void {
+            $callback();
+        };
     }
 
     private static function pin(ConnectionPlan $plan): string
@@ -300,5 +301,24 @@ final class TransferLease
             $this->policyFailureReported = true;
             throw $error;
         }
+    }
+    /** @var NativeOptions|array{} */
+    private array $options;
+
+    /**
+     * @param array<string,mixed> $options
+     *
+     * @return NativeOptions
+     */
+    private static function nativeOptions(array $options): array
+    {
+        $curl    = $options['curl'] ?? [];
+        $headers = $options['on_headers'] ?? null;
+        $stats   = $options['on_stats'] ?? null;
+        if (!is_array($curl) || $headers !== null && !is_callable($headers) || $stats !== null && !is_callable($stats)) {
+            throw new PolicyException('option_forbidden');
+        }
+
+        return array_replace($options, ['curl' => $curl, 'on_headers' => $headers, 'on_stats' => $stats]);
     }
 }

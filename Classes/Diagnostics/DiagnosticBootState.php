@@ -17,11 +17,16 @@ final class DiagnosticBootState
 {
     public ?string $failureReason = null;
 
-    /** @param list<string> $argv */
+    /** @param array<array-key, mixed> $argv */
     public function isDiagnosticInvocation(array $argv): bool
     {
-        if (PHP_SAPI !== 'cli') {
+        if (PHP_SAPI !== 'cli' || !array_is_list($argv)) {
             return false;
+        }
+        foreach ($argv as $argument) {
+            if (!is_string($argument)) {
+                return false;
+            }
         }
         $command = (new ArgvInput($argv))->getFirstArgument();
 
@@ -34,13 +39,23 @@ final class DiagnosticBootState
 
     public function recordAndBlock(string $reason): void
     {
-        $this->failureReason                           = $reason;
-        $GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'] = [
-            'nr/http-guard-diagnostic-denial' => static function (callable $next) use ($reason): callable {
-                return static function (RequestInterface $request, array $options) use ($reason): PromiseInterface {
-                    throw new PolicyException($reason);
-                };
+        $this->failureReason = $reason;
+        $configuration       = $GLOBALS['TYPO3_CONF_VARS'] ?? [];
+        if (!is_array($configuration)) {
+            $configuration = [];
+        }
+        $http = $configuration['HTTP'] ?? [];
+        if (!is_array($http)) {
+            $http = [];
+        }
+        $http['handler'] = [
+            'nr/http-guard-diagnostic-denial' => static fn (
+                callable $next,
+            ): callable => static function (RequestInterface $request, array $options) use ($reason): PromiseInterface {
+                throw new PolicyException($reason);
             },
         ];
+        $configuration['HTTP']      = $http;
+        $GLOBALS['TYPO3_CONF_VARS'] = $configuration;
     }
 }

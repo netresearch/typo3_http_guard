@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
+ */
 declare(strict_types=1);
 
 namespace Netresearch\HttpGuard\Tests\Unit\Policy;
@@ -136,5 +140,202 @@ final class PolicyTelemetryTest extends TestCase
         self::assertSame('private_ipv4', $reporter->events[0]->addressClass);
         self::assertSame('10.23.4.12', $reporter->events[0]->host);
         self::assertStringNotContainsString('credential', json_encode($reporter->events[0], JSON_THROW_ON_ERROR));
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('boundedFields')]
+    public function testTelemetryKeepsOnlyValidatedBoundedFields(
+        ?string $addressClass,
+        ?string $scheme,
+        ?int $port,
+        ?string $source,
+        string $correlation,
+        ?string $expectedClass,
+        ?string $expectedScheme,
+        ?int $expectedPort,
+        ?string $expectedSource,
+        ?string $expectedCorrelation,
+    ): void {
+        $clock  = new TelemetryTestClock();
+        $rows   = [];
+        $config = GuardConfig::fromArray(
+            [
+                'logging'   => ['allowedSampleRate' => 1],
+                'endpoints' => [
+                    'trusted' => [
+                        'origin'       => 'https://api.example',
+                        'allowedCidrs' => ['10.0.0.0/24'],
+                        'methods'      => ['GET'],
+                        'purpose'      => 'telemetry fixture',
+                        'owner'        => 'test maintainers',
+                    ],
+                ],
+            ],
+        );
+        $reporter = new DecisionReporter(
+            $config,
+            $clock,
+            static function (array $row) use (&$rows): void {
+                $rows[] = $row;
+            },
+        );
+        $reporter->report(
+            new DecisionEvent(
+                999,
+                'untrusted time',
+                'observe',
+                'would_deny',
+                'address_forbidden',
+                'trusted',
+                'untrusted revision',
+                $addressClass,
+                $scheme,
+                $port,
+                $source,
+                $correlation,
+                null,
+            ),
+        );
+        self::assertSame(
+            [
+                [
+                    'version'        => 1,
+                    'time'           => '2026-10-08T00:00:00.000+00:00',
+                    'mode'           => 'observe',
+                    'decision'       => 'would_deny',
+                    'reasonCode'     => 'address_forbidden',
+                    'profileId'      => 'trusted',
+                    'policyRevision' => $config->revision,
+                    'addressClass'   => $expectedClass,
+                    'scheme'         => $expectedScheme,
+                    'port'           => $expectedPort,
+                    'resolverSource' => $expectedSource,
+                    'correlationId'  => $expectedCorrelation,
+                ],
+            ],
+            $rows,
+        );
+        self::assertSame(
+            [
+                [
+                    'labels' => [
+                        'mode'       => 'observe',
+                        'decision'   => 'would_deny',
+                        'reasonCode' => 'address_forbidden',
+                        'profileId'  => 'trusted',
+                    ],
+                    'count' => 1,
+                ],
+            ],
+            $reporter->metrics(),
+        );
+    }
+
+    /** @return iterable<string,array{?string,?string,?int,?string,string,?string,?string,?int,?string,?string}> */
+    public static function boundedFields(): iterable
+    {
+        $short = str_repeat('a', 24);
+        $long  = str_repeat('b', 64);
+        yield 'minimums' => ['a', 'http', 1, 'd', $short, 'a', 'http', 1, 'd', $short];
+        yield 'maximums' => [
+            str_repeat('x', 64),
+            'https',
+            65535,
+            str_repeat('r', 64),
+            $long,
+            str_repeat('x', 64),
+            'https',
+            65535,
+            str_repeat('r', 64),
+            $long,
+        ];
+        yield 'optional fields absent' => [null, null, null, null, $short, null, null, null, null, $short];
+        yield 'empty labels' => ['', 'ftp', 0, '', '', null, null, null, null, null];
+        yield 'above maximums' => [str_repeat('x', 65), 'HTTPS', 65536, str_repeat('r', 65), str_repeat('a', 65), null, null, null, null, null];
+        yield 'below correlation minimum' => ['private_ipv4', 'https', 443, 'dns', str_repeat('a', 23), 'private_ipv4', 'https', 443, 'dns', null];
+        yield 'newline suffixes' => ["private_ipv4\n", 'https', 443, "dns\n", $short . "\n", null, 'https', 443, null, null];
+        yield 'newline prefixes' => ["\nprivate_ipv4", 'https', 443, "\ndns", "\n" . $short, null, 'https', 443, null, null];
+        yield 'invalid characters' => ['private/ipv4', 'file', -1, 'dns/secret', str_repeat('A', 24), null, null, null, null, null];
+        yield 'permitted punctuation' => ['A_+1-', 'https', 443, 'D_+2-', $short, 'A_+1-', 'https', 443, 'D_+2-', $short];
+    }
+
+    public function testUnknownLabelsHaveOneFiniteFallbackMetricSeries(): void
+    {
+        $config   = GuardConfig::fromArray([]);
+        $clock    = new TelemetryTestClock();
+        $rows     = [];
+        $reporter = new DecisionReporter(
+            $config,
+            $clock,
+            static function (array $row) use (&$rows): void {
+                $rows[] = $row;
+            },
+        );
+        for ($i = 0; $i < 10; ++$i) {
+            $reporter->report(
+                new DecisionEvent(
+                    1,
+                    'ignored',
+                    'unknown-mode-' . $i,
+                    'unknown-decision-' . $i,
+                    'unknown-reason-' . $i,
+                    'unknown-profile-' . $i,
+                    'ignored',
+                    null,
+                    null,
+                    null,
+                    null,
+                    str_repeat('a', 24),
+                    null,
+                ),
+            );
+        }
+        self::assertSame(
+            [
+                [
+                    'labels' => [
+                        'mode'       => 'enforce',
+                        'decision'   => 'unverifiable',
+                        'reasonCode' => 'configuration_invalid',
+                        'profileId'  => null,
+                    ],
+                    'count' => 10,
+                ],
+            ],
+            $reporter->metrics(),
+        );
+        self::assertCount(10, $rows);
+        foreach ($rows as $row) {
+            self::assertSame('enforce', $row['mode']);
+            self::assertSame('unverifiable', $row['decision']);
+            self::assertSame('configuration_invalid', $row['reasonCode']);
+            self::assertNull($row['profileId']);
+        }
+    }
+
+    public function testDenyWindowStartsAtCurrentClockAndResetsExactlyAtSixtySeconds(): void
+    {
+        $clock          = new TelemetryTestClock();
+        $clock->seconds = 100;
+        $rows           = [];
+        $reporter       = new DecisionReporter(
+            GuardConfig::fromArray(['logging' => ['denyRateLimitPerMinute' => 2]]),
+            $clock,
+            static function (array $row) use (&$rows): void {
+                $rows[] = $row;
+            },
+        );
+        $reporter->report($this->event());
+        $reporter->report($this->event());
+        $reporter->report($this->event());
+        self::assertCount(2, $rows);
+        $clock->seconds = 159.999;
+        $reporter->report($this->event());
+        self::assertCount(2, $rows);
+        $clock->seconds = 160;
+        $reporter->report($this->event());
+        $reporter->report($this->event());
+        $reporter->report($this->event());
+        self::assertCount(4, $rows);
+        self::assertSame(7, array_sum(array_column($reporter->metrics(), 'count')));
     }
 }

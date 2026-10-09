@@ -18,7 +18,7 @@ final readonly class Cidr
         if ($address === '' || preg_match('/[^0-9a-fA-F:.]/D', $address) === 1) {
             throw new PolicyException('invalid_target');
         }
-        if (!str_contains($address, ':') && !(preg_match('/^(0|[1-9][0-9]{0,2})(\.(0|[1-9][0-9]{0,2})){3}$/D', $address) === 1)) {
+        if (!str_contains($address, ':') && preg_match('/^(0|[1-9][0-9]{0,2})(\.(0|[1-9][0-9]{0,2})){3}$/D', $address) !== 1) {
             throw new PolicyException('invalid_target');
         }
         $packed = NativeOperation::attempt(static fn () => inet_pton($address));
@@ -35,7 +35,7 @@ final readonly class Cidr
 
     public static function parse(string $value, bool $strict = true): self
     {
-        if (!(preg_match('~^([^/]+)/(0|[1-9][0-9]{0,2})$~D', $value, $parts) === 1)) {
+        if (preg_match('~^([0-9a-fA-F:.]+)/(0|[1-9][0-9]{0,2})$~D', $value, $parts) !== 1) {
             throw new PolicyException('configuration_invalid');
         }
         $raw = NativeOperation::attempt(static fn () => inet_pton($parts[1]));
@@ -56,7 +56,7 @@ final readonly class Cidr
             $prefix -= 96;
         }
 
-        return new self((string) inet_ntop($raw) . '/' . $prefix, $raw, $prefix, strlen($raw) === 4 ? 4 : 6);
+        return new self(inet_ntop($raw) . '/' . $prefix, $raw, $prefix, strlen($raw) === 4 ? 4 : 6);
     }
 
     public function contains(string $address): bool
@@ -107,7 +107,7 @@ final readonly class Cidr
                 $bestLength = $length;
             }
         }
-        $hex = array_map(static fn (int $word): string => dechex($word), $words);
+        $hex = array_map(dechex(...), $words);
         if ($bestLength < 2) {
             return implode(':', $hex);
         }
@@ -135,11 +135,18 @@ final readonly class Cidr
     /** @return list<int> */
     private static function words(string $packed): array
     {
-        $words = unpack('n8', $packed);
-        if ($words === false) {
+        $unpacked = unpack('n8', $packed);
+        if ($unpacked === false) {
             throw new PolicyException('invalid_target');
         }
+        $words = [];
+        foreach ($unpacked as $word) {
+            if (!is_int($word)) {
+                throw new PolicyException('invalid_target');
+            }
+            $words[] = $word;
+        }
 
-        return array_values($words);
+        return $words;
     }
 }

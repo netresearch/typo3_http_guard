@@ -47,9 +47,9 @@ final class BoundaryMiddleware
     }
 
     /**
-     * @param callable(RequestInterface, array<array-key, mixed>): PromiseInterface $next
+     * @param callable(RequestInterface,array<array-key,mixed>):PromiseInterface $next
      *
-     * @return callable(RequestInterface, array<array-key, mixed>): PromiseInterface
+     * @return callable(RequestInterface,array<array-key,mixed>):PromiseInterface
      */
     public function __invoke(callable $next): callable
     {
@@ -85,20 +85,20 @@ final class BoundaryMiddleware
                     $this->invocations->close($envelope);
                     throw $error;
                 }
-                $finish = function (ResponseInterface $response) use ($target, $options, $envelope): ResponseInterface {
-                    return $this->validateResponse($response, $target->canonicalRequest, $options, $envelope);
-                };
+                $finish = fn (
+                    mixed $response,
+                ): ResponseInterface => $this->validateResponse($response, $target->canonicalRequest, $options, $envelope);
                 $outer = null;
                 $outer = new Promise(
                     function () use ($inner, $finish, $envelope, &$outer): void {
                         try {
                             $response = $inner->wait();
-                            if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                                self::published($outer)->resolve($finish($response));
+                            if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                                $this->published($outer)->resolve($finish($response));
                             }
                         } catch (Throwable $error) {
-                            if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                                self::published($outer)->reject($error);
+                            if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                                $this->published($outer)->reject($error);
                             }
                         } finally {
                             $this->invocations->close($envelope);
@@ -110,14 +110,14 @@ final class BoundaryMiddleware
                     },
                 );
                 $inner->then(
-                    function (ResponseInterface $response) use ($finish, $envelope, &$outer): void {
+                    function (mixed $response) use ($finish, $envelope, &$outer): void {
                         try {
-                            if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                                self::published($outer)->resolve($finish($response));
+                            if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                                $this->published($outer)->resolve($finish($response));
                             }
                         } catch (Throwable $error) {
-                            if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                                self::published($outer)->reject($error);
+                            if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                                $this->published($outer)->reject($error);
                             }
                         } finally {
                             $this->invocations->close($envelope);
@@ -125,8 +125,8 @@ final class BoundaryMiddleware
                     },
                     function ($reason) use ($envelope, &$outer): void {
                         $this->invocations->close($envelope);
-                        if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                            self::published($outer)->reject($reason);
+                        if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                            $this->published($outer)->reject($reason);
                         }
                     },
                 );
@@ -140,19 +140,22 @@ final class BoundaryMiddleware
         };
     }
 
-    /** @param array<string,mixed> $options */
+    /** @param array<array-key,mixed> $options */
     private function validateResponse(
-        ResponseInterface $response,
+        mixed $response,
         RequestInterface $request,
         array $options,
         RequestEnvelope $envelope,
     ): ResponseInterface {
         try {
+            if (!$response instanceof ResponseInterface) {
+                throw new PolicyException('transport_unsupported');
+            }
             if (in_array($options['allow_redirects'] ?? false, [false, []], true) || !$response->hasHeader('Location') || !in_array($response->getStatusCode(), [301, 302, 303, 307, 308], true)) {
                 return $response;
             }
             $profile = $this->policyRegistry->validateContext($this->context);
-            if ($profile !== null && $profile->redirects === 'none') {
+            if ($profile instanceof \Netresearch\HttpGuard\EndpointProfile && $profile->redirects === 'none') {
                 throw new PolicyException('redirect_forbidden');
             }
             $locations = $response->getHeader('Location');
@@ -176,9 +179,9 @@ final class BoundaryMiddleware
         }
     }
 
-    private static function published(?Promise $promise): Promise
+    private function published(?Promise $promise): Promise
     {
-        if ($promise === null) {
+        if (!$promise instanceof Promise) {
             throw new LogicException('Promise not published');
         }
 

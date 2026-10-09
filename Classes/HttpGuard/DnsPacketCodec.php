@@ -26,7 +26,7 @@ final class DnsPacketCodec
         }
         $name = '';
         foreach (explode('.', $host) as $label) {
-            $name .= self::labelLength($label) . $label;
+            $name .= $this->labelLength($label) . $label;
         }
         $name .= chr(0);
 
@@ -40,19 +40,19 @@ final class DnsPacketCodec
     {
         $length = strlen($packet);
         if ($length < 12 || $length > 65535) {
-            self::fail();
+            $this->fail();
         }
-        $header = self::numbers('nid/nflags/nqd/nan/nns/nar', substr($packet, 0, 12));
+        $header = $this->numbers('nid/nflags/nqd/nan/nns/nar', substr($packet, 0, 12));
         if ($header['id'] !== $id || ($header['flags'] & 0x8000) === 0 || ($header['flags'] & 0x7800) !== 0 || ($header['flags'] & 0xF) !== 0 || $header['qd'] !== 1) {
-            self::fail();
+            $this->fail();
         }
         $offset = 12;
         $name   = $this->name($packet, $offset);
-        self::bounds($packet, $offset, 4);
-        $question = self::numbers('ntype/nclass', substr($packet, $offset, 4));
+        $this->bounds($packet, $offset, 4);
+        $question = $this->numbers('ntype/nclass', substr($packet, $offset, 4));
         $offset += 4;
         if ($name !== strtolower(substr($absoluteFqdn, 0, -1)) || $question['type'] !== $qtype || $question['class'] !== 1) {
-            self::fail();
+            $this->fail();
         }
         if (($header['flags'] & 0x200) !== 0) {
             return ['records' => [], 'truncated' => true];
@@ -64,15 +64,15 @@ final class DnsPacketCodec
         foreach (['an', 'ns', 'ar'] as $section) {
             for ($i = 0; $i < $header[$section]; ++$i) {
                 $owner = $this->name($packet, $offset);
-                self::bounds($packet, $offset, 10);
-                $rr = self::numbers('ntype/nclass/Nttl/nlength', substr($packet, $offset, 10));
+                $this->bounds($packet, $offset, 10);
+                $rr = $this->numbers('ntype/nclass/Nttl/nlength', substr($packet, $offset, 10));
                 $offset += 10;
                 $end = $offset + $rr['length'];
-                self::bounds($packet, $offset, $rr['length']);
+                $this->bounds($packet, $offset, $rr['length']);
                 $record = null;
                 if (in_array($rr['type'], [1, 28, 5], true)) {
                     if ($rr['class'] !== 1) {
-                        self::fail();
+                        $this->fail();
                     }
                     $record = [
                         'host' => $owner,
@@ -83,18 +83,18 @@ final class DnsPacketCodec
                         $cursor           = $offset;
                         $record['target'] = $this->name($packet, $cursor);
                         if ($cursor !== $end) {
-                            self::fail();
+                            $this->fail();
                         }
                     } else {
                         $expected = $rr['type'] === 1 ? 4 : 16;
                         if ($rr['length'] !== $expected) {
-                            self::fail();
+                            $this->fail();
                         }
                         $record[$rr['type'] === 1 ? 'ip' : 'ipv6'] = (string) inet_ntop(substr($packet, $offset, $expected));
                     }
                 }
                 if ($section === 'an' && $rr['type'] === 39) {
-                    self::fail();
+                    $this->fail();
                 }
                 if ($section === 'an' && $record !== null) {
                     $records[] = $record;
@@ -103,7 +103,7 @@ final class DnsPacketCodec
             }
         }
         if ($offset !== $length) {
-            self::fail();
+            $this->fail();
         }
 
         return ['records' => $records, 'truncated' => false];
@@ -118,23 +118,23 @@ final class DnsPacketCodec
         $expanded = 1;
         while (true) {
             if (isset($visited[$position]) || count($visited) > 128) {
-                self::fail();
+                $this->fail();
             }
             $visited[$position] = true;
-            self::bounds($packet, $position, 1);
+            $this->bounds($packet, $position, 1);
             $byte = ord($packet[$position]);
             if (($byte & 0xC0) === 0xC0) {
-                self::bounds($packet, $position, 2);
+                $this->bounds($packet, $position, 2);
                 $pointer = ($byte & 0x3F) << 8 | ord($packet[$position + 1]);
                 if ($pointer < 12 || $pointer >= $position) {
-                    self::fail();
+                    $this->fail();
                 }
                 $consumed ??= $position + 2;
                 $position = $pointer;
                 continue;
             }
             if (($byte & 0xC0) !== 0 || $byte > 63) {
-                self::fail();
+                $this->fail();
             }
             ++$position;
             if ($byte === 0) {
@@ -142,48 +142,55 @@ final class DnsPacketCodec
 
                 return strtolower(implode('.', $labels));
             }
-            self::bounds($packet, $position, $byte);
+            $this->bounds($packet, $position, $byte);
             $label = substr($packet, $position, $byte);
             if (preg_match('/[^A-Za-z0-9_-]/D', $label) === 1) {
-                self::fail();
+                $this->fail();
             }
             $expanded += $byte + 1;
             if ($expanded > 255) {
-                self::fail();
+                $this->fail();
             }
             $labels[] = $label;
             $position += $byte;
         }
     }
 
-    private static function bounds(string $packet, int $offset, int $count): void
+    private function bounds(string $packet, int $offset, int $count): void
     {
         if ($offset < 0 || $count < 0 || $offset > strlen($packet) - $count) {
-            self::fail();
+            $this->fail();
         }
     }
 
-    private static function fail(): never
+    private function fail(): never
     {
         throw new PolicyException('resolution_unverified');
     }
 
-    private static function labelLength(string $label): string
+    private function labelLength(string $label): string
     {
         $length = strlen($label);
         if ($length < 1 || $length > 63) {
-            self::fail();
+            $this->fail();
         }
 
         return chr($length);
     }
 
     /** @return array<string,int> */
-    private static function numbers(string $format, string $data): array
+    private function numbers(string $format, string $data): array
     {
-        $result = unpack($format, $data);
-        if ($result === false) {
-            self::fail();
+        $unpacked = unpack($format, $data);
+        if ($unpacked === false) {
+            $this->fail();
+        }
+        $result = [];
+        foreach ($unpacked as $name => $value) {
+            if (!is_string($name) || !is_int($value)) {
+                $this->fail();
+            }
+            $result[$name] = $value;
         }
 
         return $result;

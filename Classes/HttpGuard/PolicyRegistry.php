@@ -54,7 +54,7 @@ final class PolicyRegistry
             );
         }
         $scope                    = ($this->scopeIssuer)();
-        $grant                    = $profile === null ? null : ($this->grantIssuer)();
+        $grant                    = $profile instanceof EndpointProfile ? ($this->grantIssuer)() : null;
         $context                  = new RequestPolicyContext($this->config->mode, $this->config->revision, $scope, $grant);
         $this->contexts[$context] = ['scope' => $scope, 'grant' => $grant, 'profile' => $profile];
 

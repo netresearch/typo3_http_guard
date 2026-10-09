@@ -17,10 +17,18 @@ final class ConfigurationLoader
 
     public function load(): GuardConfig
     {
-        if ($this->loaded !== null) {
+        if ($this->loaded instanceof GuardConfig) {
             return $this->loaded;
         }
-        $data = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['nr_http_guard'] ?? [];
+        $configuration = $GLOBALS['TYPO3_CONF_VARS'] ?? [];
+        if (!is_array($configuration)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $extensions = $configuration['EXTCONF'] ?? [];
+        if (!is_array($extensions)) {
+            throw new PolicyException('configuration_invalid');
+        }
+        $data = $extensions['nr_http_guard'] ?? [];
         if (!is_array($data)) {
             throw new PolicyException('configuration_invalid');
         }
