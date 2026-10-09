@@ -29,6 +29,13 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Set up isolated Python build tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/http-guard-python"
+          "$RUNNER_TEMP/http-guard-python/bin/python" -m pip install --disable-pip-version-check --requirement Build/requirements.txt
+          printf '%s\n' "$RUNNER_TEMP/http-guard-python/bin" >> "$GITHUB_PATH"
       - name: Set up PHP
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
@@ -133,6 +140,13 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Set up isolated Python build tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/http-guard-python"
+          "$RUNNER_TEMP/http-guard-python/bin/python" -m pip install --disable-pip-version-check --requirement Build/requirements.txt
+          printf '%s\n' "$RUNNER_TEMP/http-guard-python/bin" >> "$GITHUB_PATH"
       - name: Set up PHP and coverage
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:

@@ -5,7 +5,8 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
-from xml.etree import ElementTree
+from defusedxml import ElementTree
+from defusedxml.common import DefusedXmlException
 
 SPEC = importlib.util.spec_from_file_location(
     'normalize_clover', Path(__file__).resolve().parents[2] / 'Build/Scripts/normalize-clover.py'
@@ -49,6 +50,16 @@ class CoveragePathsTest(unittest.TestCase):
             report.write_text('<coverage/>')
             with self.assertRaises(ValueError):
                 MODULE.normalize(report, root)
+
+    def test_document_type_is_rejected_before_report_changes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            report = root / 'clover.xml'
+            report.write_text('<!DOCTYPE coverage><coverage/>')
+            before = report.read_bytes()
+            with self.assertRaises(DefusedXmlException):
+                MODULE.normalize(report, root)
+            self.assertEqual(before, report.read_bytes())
 
 
 if __name__ == '__main__':

@@ -4,11 +4,12 @@
 """Make measured Clover paths portable and reject reports outside Classes/."""
 import argparse
 from pathlib import Path
-from xml.etree import ElementTree
+from defusedxml import ElementTree
+from defusedxml.common import DefusedXmlException
 
 
 def normalize(report: Path, root: Path) -> int:
-    tree = ElementTree.parse(report)
+    tree = ElementTree.parse(report, forbid_dtd=True)
     files = tree.findall('.//file')
     if not files:
         raise ValueError('Coverage report contains no source files.')
@@ -39,6 +40,6 @@ if __name__ == '__main__':
     arguments = parser.parse_args()
     try:
         count = normalize(arguments.report, arguments.root)
-    except (ValueError, OSError, ElementTree.ParseError) as error:
+    except (ValueError, OSError, ElementTree.ParseError, DefusedXmlException) as error:
         raise SystemExit(f'Invalid measured coverage report: {error}') from error
     print(f'Normalized {count} measured production paths without changing coverage counts.')
