@@ -1,5 +1,9 @@
 # Live secret scanning and SAST triage
 
+This is the preserved first-run assessment record. Subsequent fixes and precise
+scanner policies are recorded in [the review loop](../review-loop/); the cookie
+remediation is [documented separately](../review-loop/cookie-remediation.md).
+
 The first completed Security run scanned seven Git commits and returned **376 Betterleaks findings**: 373 generic matches and three private keys. Every original Git blob, matched source line and fingerprint was reviewed locally without displaying the matched material.
 
 - 348 findings are 64-hex source/artifact SHA256 metadata or explicitly tagged Docker/install digests. JSON values and their source/checksum contexts were parsed and verified individually.

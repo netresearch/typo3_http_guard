@@ -218,11 +218,7 @@ final class TransferLease
             {
                 $method = RuntimeSupport::major() === 8 ? "close" : "__destruct";
                 {
-                    $callback = [$this->handler, $method];
-                    if (!is_callable($callback)) {
-                        throw new \LogicException("Unsupported native cleanup");
-                    }
-                    \Closure::fromCallable($callback)();
+                    self::nativeCleanupCallback($this->handler, $method)();
                 }
             }
         }
@@ -232,6 +228,17 @@ final class TransferLease
         $this->request = null;
         $this->options = [];
         $this->driver->release($this);
+    }
+    private static function nativeCleanupCallback(
+        CurlMultiHandler $handler,
+        string $method
+    ): \Closure
+    {
+        $callback = [$handler, $method];
+        if (!is_callable($callback)) {
+            throw new \LogicException("Unsupported native cleanup");
+        }
+        return \Closure::fromCallable($callback);
     }
     private static function pin(ConnectionPlan $plan): string
     {

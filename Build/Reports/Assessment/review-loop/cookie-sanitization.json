@@ -1,0 +1,8 @@
+{
+  "file": "Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.headers.txt",
+  "before_sha256": "cee1be3ca3f619ae4cdfeea382f8a3514389e654a64c2edd0927d4ad488b1148",
+  "after_sha256": "7ab563ec1c52e4d62bbc16cb93df30926e12c34180421543f692a630844a68ba",
+  "change": "All Set-Cookie values replaced with [REDACTED]; cookie names and attributes retained.",
+  "original_values_saved": false,
+  "git_history_rewritten": false
+}

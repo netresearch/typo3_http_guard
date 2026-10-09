@@ -14,6 +14,64 @@ Verification report
     does not claim another execution against subsequent repository changes.
     See :ref:`development-assessment` for the separate repository assessment.
 
+.. _verification-current-core:
+
+Patched Core requalification
+============================
+
+The current exact Core targets are **13.4.36 and 14.3.8**. Both patched
+Core releases resolve SVG sanitizer 1.0.0 without advisory exceptions.
+RequestFactory and GuzzleClientFactory sources are byte-identical to their
+previous patch revisions. The runtime keeps its exact Core, parent ABI and
+complete SDK-combination checks.
+
+Fresh genuine Composer installations with Guzzle 7.15.5 / Promises 2.5.3 /
+PSR7 2.13.1 and Guzzle 8.2.0 / Promises 3.0.2 / PSR7 3.1.0 pass the
+four-cell matrix: **168 processes, 140 wire assertions and 156 offline
+TCP/HTTP no-contact witnesses**. These results exercise actual Core
+bootstrap, dependency injection, RequestFactory, mode changes and CLI paths.
+
+Both current official classic archives pass their separate two-cell matrix:
+**84 processes, 70 wire assertions and 78 offline TCP/HTTP no-contact
+witnesses**. Both fixtures begin with the extension inactive. Real Core
+activation persists its exact installation path in PackageStates and
+generates the class-loading cache through PackageManager; the persisted
+files remain byte-identical after the full matrix. The extension
+classes are loaded from the ZIP extraction; no Composer command or source
+symlink installs the extension into those sites.
+
+The refreshed combined Unit/native suite passes **145 tests and 2,253
+assertions for each of all three exact SDK tuples** on PHP 8.5.10 with
+PHPUnit 11.5.57. The Guzzle 7.15.3 / Promises 2.5.2 / PSR7 2.13.0 tuple
+remains additional kernel qualification; current classic archives use the
+Guzzle 8 tuple. These test counts are separate from the genuine Core process
+matrices. They do not assign historical coverage or mutation measurements
+to the new source.
+
+Fresh PHPStan 2.3.1 level 8 analysis passes for all four genuine Core/SDK
+integration configurations and all three kernel SDK configurations, with
+zero errors. The Guzzle 7 template stub supplies only missing class-level
+metadata; runtime SDK methods and properties keep their real signatures.
+No diagnostic suppression or baseline is used.
+
+The CI preflight checks the committed constraints against the qualified
+Core/SDK matrix before installing a cell. The separate security workflow
+also checks the actually resolved production runtime before auditing and
+generating each Core target's SBOM. These committed guards do not establish
+that fresh remote GitHub jobs have already passed.
+
+Current source bindings, runtime summaries and review corrections are kept
+in the source repository's
+`review-loop evidence
+<https://github.com/netresearch/typo3_http_guard/tree/main/Build/Reports/Assessment/review-loop>`_.
+These optional reports are excluded from the installable ZIP. The historical
+counts below retain their original source, dependencies and archive revisions.
+
+.. _verification-original-report:
+
+Original combined-source report
+===============================
+
 The recorded delivery is **one** TYPO3 extension,
 :literal:`netresearch/nr-http-guard`, with its embedded security core and
 complete manual. No additional HTTP Guard library package is required. The

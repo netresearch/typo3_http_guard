@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "python_semantic_ast_unchanged": true,
+  "valid_guard_exit": 0,
+  "negative_checks": [
+    {
+      "case": "changed ca.key",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "changed client.key",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "changed server.key",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "changed ca.crt",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "changed client.crt",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "changed server.crt",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "additional key",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "additional PEM",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "symlinked fixed key",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    },
+    {
+      "case": "missing certificate",
+      "exit_code": 1,
+      "no_value_disclosure": true
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "tool": {
+    "name": "Opengrep",
+    "version": "1.19.0",
+    "binary_sha256": "1d69a41beb88e8e7917f26cc6a16c1edf298f31402807e6d1afbb5d8684c3590"
+  },
+  "baseline_control": {
+    "findings": 13,
+    "exit_code": 1,
+    "findings_metadata": [
+      {
+        "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+        "path": "Build/Fixtures/prepare-classic.py",
+        "line": 44
+      },
+      {
+        "rule": "trailofbits.python.tarfile-extractall-traversal.tarfile-extractall-traversal",
+        "path": "Build/Fixtures/prepare-classic.py",
+        "line": 49
+      },
+      {
+        "rule": "php.lang.security.exec-use.exec-use",
+        "path": "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php",
+        "line": 415
+      },
+      {
+        "rule": "php.lang.security.exec-use.exec-use",
+        "path": "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php",
+        "line": 470
+      },
+      {
+        "rule": "php.lang.security.exec-use.exec-use",
+        "path": "Tests/HttpGuard/Unit/Policy/WireDnsQueryTest.php",
+        "line": 12
+      },
+      {
+        "rule": "php.lang.security.injection.tainted-filename.tainted-filename",
+        "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+        "line": 41
+      },
+      {
+        "rule": "php.lang.security.injection.tainted-filename.tainted-filename",
+        "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+        "line": 63
+      },
+      {
+        "rule": "php.lang.security.injection.tainted-filename.tainted-filename",
+        "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+        "line": 92
+      },
+      {
+        "rule": "php.lang.security.exec-use.exec-use",
+        "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+        "line": 95
+      },
+      {
+        "rule": "php.lang.security.unlink-use.unlink-use",
+        "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+        "line": 155
+      },
+      {
+        "rule": "generic.secrets.security.detected-private-key.detected-private-key",
+        "path": "Tests/HttpGuard/Integration/certificates/ca.key",
+        "line": 1
+      },
+      {
+        "rule": "generic.secrets.security.detected-private-key.detected-private-key",
+        "path": "Tests/HttpGuard/Integration/certificates/client.key",
+        "line": 1
+      },
+      {
+        "rule": "generic.secrets.security.detected-private-key.detected-private-key",
+        "path": "Tests/HttpGuard/Integration/certificates/server.key",
+        "line": 1
+      }
+    ]
+  },
+  "after": {
+    "findings": 0,
+    "exit_code": 0,
+    "rules_run": 357,
+    "scanned_files": 416,
+    "guard_script_scanned": 1,
+    "parsing_errors": 57,
+    "parsing_error_types": [
+      {
+        "type": "PartialParsing",
+        "count": 56
+      },
+      {
+        "type": "Syntax error",
+        "count": 1
+      }
+    ]
+  },
+  "php_semantic_ast": {
+    "status": "PASS",
+    "files": [
+      {
+        "path": "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php",
+        "semantic_ast_unchanged": true,
+        "before_sha256": "a43ab3db7d79a2119893c8a9542dbcc3a7fddbf83c3aadcd19572e8c7b671ce2",
+        "after_sha256": "1f0071703bee2ffbac0778b162549a742e05d46dfeae9f6801315c7e13dbeb73"
+      },
+      {
+        "path": "Tests/HttpGuard/Unit/Policy/WireDnsQueryTest.php",
+        "semantic_ast_unchanged": true,
+        "before_sha256": "da0c1edac898d9afb27415d8f1b223625a30aac6295f31552585ad852a80b956",
+        "after_sha256": "cafd86951fdc96f2d951eecdce6749083422be84586f8061eea004a105a49394"
+      },
+      {
+        "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+        "semantic_ast_unchanged": true,
+        "before_sha256": "882bf310872f01988246c3d83cfcd320ac9738a7c1028c942ce4d7168081733b",
+        "after_sha256": "cadd1441f8a78a496142158c875352ee60ce71f7cbdd07cf7ff7e7d5fab9a02e"
+      },
+      {
+        "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+        "semantic_ast_unchanged": true,
+        "before_sha256": "71c66dcee2eca5003ea3adde47b352cef40de94bf9dc7eb359171327ce23c473",
+        "after_sha256": "619c44bd1ff3951e101d1c1f64a2f5e89748d93d2c2755a2b64eb51e1a2cc26d"
+      }
+    ]
+  },
+  "guard_tests": {
+    "status": "PASS",
+    "valid_guard_exit": 0,
+    "negative_checks": [
+      {
+        "case": "changed ca.key",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed client.key",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed server.key",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed ca.crt",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed client.crt",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "changed server.crt",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional key",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "additional PEM",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "symlinked fixed key",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      },
+      {
+        "case": "missing certificate",
+        "exit_code": 1,
+        "no_value_disclosure": true
+      }
+    ],
+    "python_semantic_ast_unchanged_at_comment_only_stage": true
+  },
+  "inline_annotations": 10,
+  "key_exclusions": [
+    "Tests/HttpGuard/Integration/certificates/ca.key",
+    "Tests/HttpGuard/Integration/certificates/client.key",
+    "Tests/HttpGuard/Integration/certificates/server.key"
+  ],
+  "keys_and_certificates_unchanged": true,
+  "broad_new_exclusions": false,
+  "rules_disabled": false,
+  "scan_scope": "Current working tree during review-loop remediation; PHP parsing coverage remains partial",
+  "evidence_stage": "Exact-rule annotation stage and synthetic-fixture guard verification; subsequent native classic lifecycle source changes are bound by sast-classic-lifecycle-follow-up.json"
+}

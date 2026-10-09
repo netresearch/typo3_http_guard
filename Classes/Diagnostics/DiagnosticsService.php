@@ -67,7 +67,7 @@ final readonly class DiagnosticsService
                 true
             ) && in_array(
                 $versions['typo3/cms-core'],
-                ['v13.4.35', 'v14.3.7', '13.4.35', '14.3.7'],
+                ['v13.4.36', 'v14.3.8', '13.4.36', '14.3.8'],
                 true
             );
             try {

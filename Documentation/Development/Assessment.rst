@@ -100,15 +100,16 @@ prose use English. Repository labels and topics follow the corresponding
 Netresearch TYPO3 extension conventions. Source headers retain the existing
 GPL-2.0-or-later extension and MIT embedded-kernel licensing.
 
-Supported PHP metadata is limited to PHP 8.2 through 8.5. Exact qualified
-TYPO3 and SDK combinations continue to fail closed; the assessment does
-not broaden runtime support.
+Supported PHP metadata is limited to PHP 8.2 through 8.5. Exact TYPO3 and
+SDK combinations continue to fail closed. The review loop replaces the
+previous Core targets with the patched 13.4.36 and 14.3.8 releases and
+repeats the relevant runtime qualification; it does not widen the Core range.
 
 GitHub enforces signed commits and the existing required review also applies
 to administrators. New CI workflows require actual execution before their
 presence can be treated as operational evidence.
 
-Level 8 static analysis now also runs against genuine TYPO3 13.4.35 vendors
+The initial level 8 analysis also ran against genuine TYPO3 13.4.35 vendors
 for each of the three qualified SDK tuples. The inactive Core 14 declaration
 has an explicitly marked analysis shell in ``Build/``; production never
 loads that shell. Core 14 and kernel checks have separate configurations.
@@ -117,11 +118,46 @@ The kernel PHPUnit configuration now treats risky tests as failures. The
 container used for controlled wire fixtures is pinned by its image digest.
 
 Development tools are pinned to the actually executed PHPUnit 11.5.57 and
-PHPStan 2.3.1. Fresh Guzzle 8 kernel analysis with PHPStan 2.3.1
+PHPStan 2.3.1. The initial Guzzle 8 kernel analysis with PHPStan 2.3.1
 reports five missing ``HandlerStack`` generic annotations and one redundant
-native-cleanup callable-check diagnostic. Those six findings remain open;
-the corresponding CI check reports a failure. These findings do not justify
-removing runtime capability checks during a documentation correction.
+native-cleanup callable-check diagnostic. Those six findings were open at
+that recorded snapshot. The subsequent review loop adds precise generic
+annotations and preserves the native-cleanup capability check. The
+analysis-only :file:`Build/PhpStan/HandlerStack.stub` supplies
+Guzzle 7's missing class-level template and preserves its final contract;
+method and property signatures remain those of the installed SDK. It is
+excluded from the extension ZIP and never substitutes a runtime handler.
+Fresh kernel PHPStan 2.3.1 level 8 checks pass for all three SDK tuples
+without suppressions or a baseline. Regression results are recorded
+separately from the initial assessment.
+
+The refreshed analyses against Core 13.4.36 and 14.3.8 pass all four
+integration configurations and all three kernel SDK configurations with
+PHPStan 2.3.1 at level 8 and zero errors. These are new executions; the
+earlier six-diagnostic result remains in the frozen assessment records.
+
+.. _assessment-review-loop:
+
+Current review corrections
+==========================
+
+The patched Core 13.4.36 and 14.3.8 dependency graphs select SVG sanitizer
+1.0.0 and report zero vulnerability advisories across four exact full Core
+and SDK combinations. Active fixture preparation and CI no longer contain
+advisory exceptions. Core 13's upstream abandoned annotations warning
+remains visible under the explicit reporting policy described in
+:ref:`dependency-report-current`.
+
+All four current Composer fixtures pass their actual bootstrap, mode, CLI
+and wire matrix: 168 processes, 140 wire assertions and 156 offline
+TCP/HTTP no-contact witnesses. Both current classic archives separately
+pass 84 processes, 70 wire assertions and 78 offline witnesses. Real Core
+activation persists the extension's PackageStates and generates its
+class-loading cache. All three exact SDK tuples pass the refreshed combined
+Unit/native suite with 145 tests and 2,253 assertions each. See
+:ref:`verification-current-core` for the separate source-bound records.
+Historical coverage figures and checkpoint totals are not assigned to
+these new runs.
 
 .. _assessment-open-work:
 
@@ -129,19 +165,13 @@ Remaining qualification work
 ============================
 
 An independent human security review and representative operator pilot
-remain release prerequisites. Historical fixture locks contain known
-``enshrined/svg-sanitize`` advisories; disposable fixture installation
-exceptions are not production audit exceptions. A clean release must use
-audited dependency resolutions and complete the release qualification.
-
-The fresh dependency resolution under the unchanged qualified Core and SDK
-constraints still selects ``enshrined/svg-sanitize`` 0.22.0. Its strict audit
-fails on the three recorded advisory IDs. The security gate retains this
-failure rather than reporting the graph as clean.
-
-GitHub lists 36 medium alerts for the same three advisory IDs repeated in
-twelve historical fixture lockfiles. These alerts and the three findings in
-the fresh production dependency graph have different counting scopes.
+remain release prerequisites. The original Core resolutions selected
+``enshrined/svg-sanitize`` 0.22.0 and failed on three advisory IDs. The
+initial GitHub inventory counted 36 medium alerts for those same IDs
+repeated in twelve historical fixture lock files. The records now remain
+inside explicit archives with byte-preserving mappings. Current patched
+Core resolution is reported separately above; an archived alert count is
+not the current production dependency audit.
 
 The 18 killed targeted security mutants are historical qualification
 evidence. They do not establish a project-wide Infection mutation score.

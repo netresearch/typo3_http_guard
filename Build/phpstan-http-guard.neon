@@ -2,4 +2,6 @@ parameters:
     level: 8
     paths:
         - ../Classes/HttpGuard
+    stubFiles:
+        - PhpStan/HandlerStack.stub
     tmpDir: ../.phpstan-http-guard-cache

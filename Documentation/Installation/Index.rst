@@ -9,10 +9,13 @@ Installation
 Requirements
 ============
 
-This alpha version is restricted to TYPO3 **13.4.35** and **14.3.7**.
+This alpha version is restricted to TYPO3 **13.4.36** and **14.3.8**.
 PHP must meet the requirements of the selected TYPO3 Core. This extension
-permits PHP 8.2 through 8.5. PHP 8.2, 8.3, 8.4 and 8.5 have
-been qualified with these complete SDK combinations:
+permits PHP 8.2 through 8.5. The historical kernel matrix covered PHP 8.2,
+8.3, 8.4 and 8.5; the refreshed combined Unit/native suite uses PHP 8.5.10.
+Kernel and framework matrices have separate scope. Current executions are
+recorded in :ref:`verification-current-core`. The controlled transport accepts
+these complete SDK combinations:
 
 .. list-table:: Exact dependencies of the controlled transport
     :header-rows: 1
@@ -24,7 +27,7 @@ been qualified with these complete SDK combinations:
     * - 7.15.3
       - 2.5.2
       - 2.13.0
-      - Official classic Core archives 13.4.35 and 14.3.7
+      - Additional kernel qualification tuple
     * - 7.15.5
       - 2.5.3
       - 2.13.1
@@ -32,7 +35,7 @@ been qualified with these complete SDK combinations:
     * - 8.2.0
       - 3.0.2
       - 3.1.0
-      - Qualified Composer installation
+      - Composer and official classic Core archives 13.4.36 and 14.3.8
 
 Composer constraints list the individual permitted versions. At runtime,
 HTTP Guard also checks the **complete combination**. Mixing entries from
@@ -104,7 +107,7 @@ vendor directory. The official TYPO3 installation supplies Guzzle,
 PSR components and Symfony.
 
 1. Prepare a supported classic TYPO3 installation. The official Core
-   archives contain the SDK combination in the first table row.
+   archives contain the Guzzle 8 combination in the table.
 2. Import the extension ZIP using the Extension Manager's upload function.
    If the hosting environment does not offer that route, extract the
    complete archive into :file:`typo3conf/ext/nr_http_guard/` and activate

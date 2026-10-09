@@ -9,10 +9,13 @@ Installation
 Voraussetzungen
 ===============
 
-Diese Alpha-Version ist auf TYPO3 **13.4.35** und **14.3.7** begrenzt.
+Diese Alpha-Version ist auf TYPO3 **13.4.36** und **14.3.8** begrenzt.
 PHP muss die Anforderungen des eingesetzten TYPO3-Core erfüllen; diese
-Extension erlaubt PHP 8.2 bis 8.5. Qualifiziert
-werden PHP 8.2, 8.3, 8.4 und 8.5 mit diesen vollständigen SDK-Kombinationen:
+Extension erlaubt PHP 8.2 bis 8.5. Die historische Kernmatrix prüfte PHP
+8.2, 8.3, 8.4 und 8.5; die aktuelle Unit-/Wire-Suite verwendet PHP 8.5.10.
+Kern- und Frameworkmatrix haben einen getrennten Prüfumfang. Die aktuellen
+Ergebnisse sind unter :ref:`development-unit` dokumentiert. Der kontrollierte
+Transport akzeptiert diese vollständigen SDK-Kombinationen:
 
 .. list-table:: Exakte Abhängigkeiten des kontrollierten Transports
     :header-rows: 1
@@ -24,7 +27,7 @@ werden PHP 8.2, 8.3, 8.4 und 8.5 mit diesen vollständigen SDK-Kombinationen:
     * - 7.15.3
       - 2.5.2
       - 2.13.0
-      - Offizielle klassische Core-Archive 13.4.35 und 14.3.7
+      - Zusätzlich qualifizierte SDK-Kombination des Sicherheitskerns
     * - 7.15.5
       - 2.5.3
       - 2.13.1
@@ -32,7 +35,7 @@ werden PHP 8.2, 8.3, 8.4 und 8.5 mit diesen vollständigen SDK-Kombinationen:
     * - 8.2.0
       - 3.0.2
       - 3.1.0
-      - Qualifizierte Composer-Installation
+      - Composer und offizielle klassische Core-Archive 13.4.36 und 14.3.8
 
 Die Composer-Constraints nennen die einzelnen zulässigen Versionen. Zur
 Laufzeit prüft HTTP Guard zusätzlich die **vollständige Kombination**.
@@ -105,7 +108,7 @@ Projektordner noch ein zusätzliches Vendor-Verzeichnis. Die offizielle
 TYPO3-Installation stellt Guzzle, PSR-Komponenten und Symfony bereit.
 
 1. Eine unterstützte klassische TYPO3-Version installieren oder bereitstellen.
-   Die offiziellen Core-Archive enthalten die erste SDK-Zeile der Tabelle.
+   Die offiziellen Core-Archive enthalten die Guzzle-8-Kombination der Tabelle.
 2. Das lokale ZIP im Extension Manager über die Upload-Funktion importieren.
    Wenn die Hosting-Umgebung diesen Weg nicht anbietet, das Archiv vollständig
    nach :file:`typo3conf/ext/nr_http_guard/` entpacken und die Extension im

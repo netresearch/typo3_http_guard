@@ -92,6 +92,8 @@ final class GuardAdapterTest extends FunctionalTestCase
         fclose($socket);
         self::$directory = sys_get_temp_dir() . '/vault-guard-wire-' . bin2hex(random_bytes(8));
         mkdir(self::$directory, 0o700);
+        // Trusted PHP binary and committed router argv; no shell interpolation.
+        // nosemgrep: php.lang.security.exec-use.exec-use
         $server = proc_open(
             [
                 PHP_BINARY,
@@ -106,7 +108,7 @@ final class GuardAdapterTest extends FunctionalTestCase
             ],
             $pipes,
             null,
-            ['VAULT_GUARD_HITS' => self::$directory],
+            ['VAULT_GUARD_HITS' => self::$directory]
         );
         if (!\is_resource($server)) {
             throw new RuntimeException('Cannot start fixture server', 6200227403);
@@ -152,6 +154,8 @@ final class GuardAdapterTest extends FunctionalTestCase
 
         if (isset(self::$directory)) {
             foreach (self::fixtureFiles(self::$directory . '/*') as $file) {
+                // Only this test-owned random 0700 directory is removed after its server stops.
+                // nosemgrep: php.lang.security.unlink-use.unlink-use
                 unlink($file);
             }
 

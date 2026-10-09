@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "manifest_cases": [
+    {
+      "case": "new_core_patch",
+      "exit": 1,
+      "expected": 1
+    },
+    {
+      "case": "new_sdk_patch",
+      "exit": 1,
+      "expected": 1
+    },
+    {
+      "case": "widened_sdk_range",
+      "exit": 1,
+      "expected": 1
+    },
+    {
+      "case": "qualified_core_sdk",
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "case": "old_forced_core",
+      "exit": 1,
+      "expected": 1
+    },
+    {
+      "case": "mixed_sdk_components",
+      "exit": 1,
+      "expected": 1
+    },
+    {
+      "case": "classic_metadata_drift",
+      "exit": 1,
+      "expected": 1
+    }
+  ],
+  "actual_graphs": [
+    {
+      "cell": "core13g7",
+      "exit": 0
+    },
+    {
+      "cell": "core13g8",
+      "exit": 0
+    },
+    {
+      "cell": "core14g7",
+      "exit": 0
+    },
+    {
+      "cell": "core14g8",
+      "exit": 0
+    }
+  ],
+  "incapable_actual_graph": {
+    "exit": 255,
+    "reason": "transport_unsupported"
+  },
+  "purpose": "Unknown root versions cannot be hidden by hardcoded CI matrix overrides."
+}

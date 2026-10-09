@@ -18,7 +18,10 @@ final class InvocationRegistry
     {
         $this->live = new \WeakMap();
     }
-    /** @return array{RequestEnvelope,InvocationToken} */
+    /**
+     * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key, mixed>): \GuzzleHttp\Promise\PromiseInterface>|null $handler
+     * @return array{RequestEnvelope,InvocationToken}
+     */
     public function open(
         RequestPolicyContext $context,
         string $origin,

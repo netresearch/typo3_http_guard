@@ -5,14 +5,15 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import tarfile
 import urllib.request
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 RELEASES = {
-    '13': ('13.4.35', 'dd2d79db211cb8954a5f3a1f0cf2eb27a4a9057387e012fdd0bf779901f983e3'),
-    '14': ('14.3.7', '1c91921b56615fb961ef37840abb9013e90e95a42f2ba83b61455732be0a353f'),
+    '13': ('13.4.36', '49aed89d1d90e2919c4fcc05d6fea95b8b693d3481589d74ed5215084c3fce3b'),
+    '14': ('14.3.8', '55f26416c4d6b988d7a7b25aa5eb49d060044ba6dec98761ba9ec2fe9fd6caac'),
 }
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--runtime', type=Path, required=True)
@@ -41,11 +42,15 @@ with zipfile.ZipFile(archive) as extension:
             raise SystemExit('Use a fresh disposable site directory: ' + str(site))
         tarball = runtime / ('typo3_src-' + version + '.tar.gz')
         if not tarball.exists():
+            # Only the fixed HTTPS release origin and pinned versions above; verified before extraction.
+            # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
             urllib.request.urlretrieve('https://get.typo3.org/' + version + '/tar.gz', tarball)
         if hashlib.sha256(tarball.read_bytes()).hexdigest() != checksum:
             raise SystemExit('Official Core tarball SHA256 mismatch: ' + version)
         source = runtime / ('typo3_src-' + version)
         if not source.exists():
+            # The exact official archive passed SHA-256 verification; extraction rejects unsafe members.
+            # nosemgrep: trailofbits.python.tarfile-extractall-traversal.tarfile-extractall-traversal
             with tarfile.open(tarball) as core:
                 core.extractall(runtime, filter='data')
         site.mkdir()
@@ -58,6 +63,15 @@ with zipfile.ZipFile(archive) as extension:
         extension.extractall(target)
         (site / 'support').mkdir()
         shutil.copyfile(ROOT / 'Tests/Fixtures/RecordingMiddleware.php', site / 'support/RecordingMiddleware.php')
+        # Use TYPO3's actual package activation and metadata-based class loading.
+        activation = subprocess.run(
+            ['php', str(ROOT / 'Build/Fixtures/initialize-classic.php'), str(site)],
+            check=True, capture_output=True, text=True,
+        )
+        activation_report = json.loads(activation.stdout)
+        if activation_report.get('status') != 'PASS':
+            raise SystemExit('Native classic extension activation did not pass')
         print(json.dumps({'fixture': str(site), 'core': version, 'core_archive_sha256': checksum,
                           'extension_archive_sha256': manifest['archive_sha256'],
-                          'extension_installed_from_zip': True, 'composer_run': False}), flush=True)
+                          'extension_installed_from_zip': True, 'composer_run': False,
+                          'native_activation': activation_report}), flush=True)

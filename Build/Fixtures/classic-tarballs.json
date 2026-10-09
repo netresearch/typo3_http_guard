@@ -1,12 +1,12 @@
 {
-  "13.4.35": {
-    "url": "https://get.typo3.org/13.4.35/tar.gz",
-    "sha256": "dd2d79db211cb8954a5f3a1f0cf2eb27a4a9057387e012fdd0bf779901f983e3",
-    "checksum_source": "https://get.typo3.org/release-notes/13.4.35"
+  "13.4.36": {
+    "url": "https://get.typo3.org/13.4.36/tar.gz",
+    "sha256": "49aed89d1d90e2919c4fcc05d6fea95b8b693d3481589d74ed5215084c3fce3b",
+    "checksum_source": "https://get.typo3.org/release-notes/13.4.36"
   },
-  "14.3.7": {
-    "url": "https://get.typo3.org/14.3.7/tar.gz",
-    "sha256": "1c91921b56615fb961ef37840abb9013e90e95a42f2ba83b61455732be0a353f",
-    "checksum_source": "https://get.typo3.org/release-notes/14.3.7"
+  "14.3.8": {
+    "url": "https://get.typo3.org/14.3.8/tar.gz",
+    "sha256": "55f26416c4d6b988d7a7b25aa5eb49d060044ba6dec98761ba9ec2fe9fd6caac",
+    "checksum_source": "https://get.typo3.org/release-notes/14.3.8"
   }
 }

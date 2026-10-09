@@ -30,6 +30,12 @@ jobs:
         --exclude evidence --exclude verification/evidence
         --exclude specification/originals
         --exclude Resources/Private/HttpGuard/data/security-corpus/sources
+        --exclude Tests/HttpGuard/Integration/certificates/ca.key
+        --exclude Tests/HttpGuard/Integration/certificates/client.key
+        --exclude Tests/HttpGuard/Integration/certificates/server.key
+    # Exclude only fixed synthetic keys after verifying bytes, certificates and trust.
+    needs:
+      - fixture-integrity
 
   secret-scanning:
     uses: netresearch/.github/.github/workflows/betterleaks.yml@main
@@ -38,7 +44,7 @@ jobs:
       security-events: write
 
   dependency-audit-and-sbom:
-    name: Strict dependency audit and SBOM
+    name: Strict dependency audit and SBOM (TYPO3 ${{ matrix.core }})
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -63,14 +69,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          python3 Build/Scripts/check-composer-qualification.py --core "$AUDIT_CORE"
           mkdir -p "$RUNNER_TEMP/runtime-sbom"
           cp composer.json "$RUNNER_TEMP/runtime-sbom/composer.json"
           cd "$RUNNER_TEMP/runtime-sbom"
-          # Resolve known qualified upstream code for evidence, then remove these
-          # assembly-only exceptions before the strict audit. This does not bless it.
-          composer config --json audit.ignore '["PKSA-8j6w-3kr7-s9xk","PKSA-6j95-1jtb-x6wc","PKSA-cbx2-m9db-bmzd"]'
+          composer require --no-update --no-plugins --no-scripts "typo3/cms-core:$AUDIT_CORE"
           composer update --no-dev --no-plugins --no-scripts --prefer-dist --no-progress --no-interaction
-          composer config --unset audit.ignore
+          php "$GITHUB_WORKSPACE/Build/Scripts/check-installed-runtime.php" "$RUNNER_TEMP/runtime-sbom/vendor/autoload.php"
+        env:
+          AUDIT_CORE: ${{ matrix.core }}
       - name: Generate dependency SBOM
         uses: anchore/sbom-action@66cbf4bc1f1c0d2edc94016e65bc221b6bb0ad6c # v0.24.3
         with:
@@ -86,12 +93,14 @@ jobs:
         run: |
           set -euo pipefail
           cd "$RUNNER_TEMP/runtime-sbom"
-          composer audit --no-dev --locked --no-plugins --format=json > composer-audit.json
+          # Core 13 still requires abandoned doctrine/annotations; report that upstream
+          # maintenance warning while failing on every vulnerability or unavailable audit.
+          composer audit --no-dev --locked --no-plugins --abandoned=report --format=json > composer-audit.json
       - name: Preserve dependency evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: production-dependency-evidence
+          name: production-dependency-evidence-${{ matrix.core }}
           path: |
             ${{ runner.temp }}/runtime-sbom.cdx.json
             ${{ runner.temp }}/runtime-sbom/composer.json
@@ -99,3 +108,27 @@ jobs:
             ${{ runner.temp }}/runtime-sbom/composer-audit.json
           if-no-files-found: error
           retention-days: 14
+    strategy:
+      fail-fast: false
+      matrix:
+        core:
+          - 13.4.36
+          - 14.3.8
+
+  fixture-integrity:
+    name: Fixture and research integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+        with:
+          egress-policy: audit
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Verify synthetic TLS fixtures and sanitized research headers
+        run: |
+          python3 Build/Scripts/check-synthetic-fixtures.py
+          python3 Build/Scripts/check-research-headers.py

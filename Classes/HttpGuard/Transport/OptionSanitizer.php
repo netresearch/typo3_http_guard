@@ -89,7 +89,9 @@ final readonly class OptionSanitizer
     {
     }
 
-    /** @param array<array-key,mixed> $options
+    /**
+     * @param array<array-key,mixed> $options
+     * @param HandlerStack<covariant callable(RequestInterface, array<array-key, mixed>): \GuzzleHttp\Promise\PromiseInterface>|null $expectedHandler
      * @return array<string,mixed>
      */
     public function sanitize(

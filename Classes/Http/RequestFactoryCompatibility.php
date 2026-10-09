@@ -24,7 +24,7 @@ final class RequestFactoryCompatibility
     {
         $parent = new \ReflectionClass(RequestFactory::class);
         $version = ltrim((new Typo3Version())->getVersion(), 'v');
-        if (!in_array($version, ['13.4.35', '14.3.7'], true) || $parent->isFinal() || $parent->isReadOnly() !== str_starts_with($version, '14.')) {
+        if (!in_array($version, ['13.4.36', '14.3.8'], true) || $parent->isFinal() || $parent->isReadOnly() !== str_starts_with($version, '14.')) {
             throw new PolicyException('transport_unsupported');
         }
         $method = $parent->getMethod('request');

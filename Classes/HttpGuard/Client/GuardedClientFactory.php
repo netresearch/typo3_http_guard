@@ -165,7 +165,10 @@ final readonly class GuardedClientFactory implements EndpointClientFactoryInterf
             $pair->context
         );
     }
-    /** @return list<array{callable,string}> */
+    /**
+     * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key, mixed>): \GuzzleHttp\Promise\PromiseInterface> $stack
+     * @return list<array{callable,string}>
+     */
     private static function stackEntries(HandlerStack $stack): array
     {
         // This private inventory is version-bound by RuntimeSupport and the G0 probes.

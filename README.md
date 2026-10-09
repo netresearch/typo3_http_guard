@@ -16,8 +16,8 @@
 
 <p align="center">
   <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/status-0.1.0%20alpha-orange.svg" alt="Status: 0.1.0 alpha"></a>
-  <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/TYPO3-13.4.35%20%7C%2014.3.7-orange.svg?logo=typo3" alt="Qualified TYPO3 versions: 13.4.35 and 14.3.7"></a>
-  <a href="Documentation/Development/Index.rst"><img src="https://img.shields.io/badge/kernel%20PHP-8.2%E2%80%938.5-blue.svg?logo=php" alt="Kernel tested on PHP 8.2 to 8.5"></a>
+  <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/TYPO3-13.4.36%20%7C%2014.3.8-orange.svg?logo=typo3" alt="Qualified TYPO3 versions: 13.4.36 and 14.3.8"></a>
+  <a href="Documentation/Development/Index.rst"><img src="https://img.shields.io/badge/kernel%20PHP-8.2%E2%80%938.5-blue.svg?logo=php" alt="Kernel PHP range: 8.2 to 8.5"></a>
   <a href="LICENSE.txt"><img src="https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg" alt="License: GPL-2.0-or-later"></a>
 </p>
 
@@ -53,17 +53,22 @@ in this one extension.
 
 ## Requirements
 
-This alpha qualifies **TYPO3 13.4.35 and 14.3.7**. Other Core patch versions
+This alpha qualifies **TYPO3 13.4.36 and 14.3.8**. Fresh Composer and classic
+bootstrap, CLI and wire tests pass on these exact patched releases; see
+the [verification report](Documentation/Development/Verification.rst).
+Other Core patch versions
 require qualification before use. PHP must meet the requirements of the chosen
-TYPO3 version; the embedded core has been tested on PHP 8.2, 8.3, 8.4 and 8.5.
+TYPO3 version, within the extension's PHP 8.2–8.5 range. The historical kernel
+matrix covered those four PHP versions; the refreshed combined Unit/native
+suite uses PHP 8.5.10. The verification report records each execution's scope.
 
 The protected transport accepts these complete dependency combinations:
 
 | Guzzle | Promises | PSR-7 | Installation |
 |---|---|---|---|
-| 7.15.3 | 2.5.2 | 2.13.0 | Official classic TYPO3 archives |
+| 7.15.3 | 2.5.2 | 2.13.0 | Additional kernel qualification tuple |
 | 7.15.5 | 2.5.3 | 2.13.1 | Qualified Composer installation |
-| 8.2.0 | 3.0.2 | 3.1.0 | Qualified Composer installation |
+| 8.2.0 | 3.0.2 | 3.1.0 | Composer and official classic Core archives |
 
 Mixed combinations are rejected. The host also needs `ext-curl`,
 `curl_multi_exec`, a supported libcurl and access to controlled DNS servers or

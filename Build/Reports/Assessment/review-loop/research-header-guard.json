@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "redacted",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "values_not_printed": true
+    },
+    {
+      "case": "new_capture",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "values_not_printed": true
+    },
+    {
+      "case": "partial_redaction",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "values_not_printed": true
+    },
+    {
+      "case": "mixed",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "values_not_printed": true
+    }
+  ]
+}

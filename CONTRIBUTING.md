@@ -20,4 +20,6 @@ Preserve explicit endpoint binding, immutable policy snapshots, fail-closed capa
 
 Do not weaken tests or introduce transport fallbacks to make a check pass. Preserve historical evidence as historical; record fresh runs against the current source. Report tests, coverage, targeted security mutants and broader mutation scores as different measurements. Never represent an unmeasured case as passing.
 
-Dependency update PRs remain subject to human review and qualification. Automated merging of runtime Core/SDK changes is intentionally disabled. A release additionally requires independent human security review, the operator pilot and the documented supply-chain gates. Contributions do not authorize publication or deployment.
+Renovate owns Composer and GitHub Actions version updates and security update PRs. GitHub dependency alerts remain enabled; a separate Dependabot version-update configuration is not used. Frozen evidence, optional source overlays and qualification fixtures are excluded from update discovery. Core/SDK updates of every type require dashboard approval, whole-tuple qualification and review; automated merging is disabled, including for vulnerability updates.
+
+A release additionally requires independent human security review, the operator pilot and the documented supply-chain gates. Contributions do not authorize publication or deployment.

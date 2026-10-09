@@ -1,0 +1,67 @@
+{
+  "url": "https://www.alibabacloud.com/help/en/ecs/user-guide/view-instance-metadata",
+  "captured_header_sha256_before_sanitization": "cee1be3ca3f619ae4cdfeea382f8a3514389e654a64c2edd0927d4ad488b1148",
+  "captured_cookie_metadata_only": [
+    {
+      "name": "help_csrf",
+      "domain": "alibabacloud.com",
+      "path": "/",
+      "has_expiry": false
+    },
+    {
+      "name": "cr_token",
+      "domain": "alibabacloud.com",
+      "path": "/",
+      "has_expiry": false
+    }
+  ],
+  "fresh_anonymous_requests": [
+    {
+      "attempt": 1,
+      "status": 200,
+      "final_url": "https://www.alibabacloud.com/help/en/ecs/user-guide/view-instance-metadata",
+      "request_cookie": false,
+      "request_authorization": false,
+      "response_cookie_metadata_only": [
+        {
+          "name": "help_csrf",
+          "domain": "alibabacloud.com",
+          "path": "/",
+          "has_expiry": false
+        },
+        {
+          "name": "cr_token",
+          "domain": "alibabacloud.com",
+          "path": "/",
+          "has_expiry": false
+        }
+      ],
+      "body_sha256": "157c53b6ba49241621b94d34bb6e64d8c80c6e3f0699ec3ae9cbb9c466beaaf3",
+      "body_contains_documented_metadata_address": true
+    },
+    {
+      "attempt": 2,
+      "status": 200,
+      "final_url": "https://www.alibabacloud.com/help/en/ecs/user-guide/view-instance-metadata",
+      "request_cookie": false,
+      "request_authorization": false,
+      "response_cookie_metadata_only": [
+        {
+          "name": "help_csrf",
+          "domain": "alibabacloud.com",
+          "path": "/",
+          "has_expiry": false
+        },
+        {
+          "name": "cr_token",
+          "domain": "alibabacloud.com",
+          "path": "/",
+          "has_expiry": false
+        }
+      ],
+      "body_sha256": "d71cd54f87d0cd47c27f461e533db45d45b3bd1e64594893e9bfe60ccc275cf5",
+      "body_contains_documented_metadata_address": true
+    }
+  ],
+  "external_cookie_validity": "not tested; no captured value sent anywhere"
+}

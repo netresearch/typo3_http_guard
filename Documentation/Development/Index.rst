@@ -47,6 +47,14 @@ unit test directories:
 The qualified development tools are PHPUnit 11.5.57 and PHPStan 2.3.1.
 Tool updates require a separate review and rerun of the checks.
 
+Current framework fixtures use the exact patched Core releases 13.4.36 and
+14.3.8 with explicit manifests under :file:`Build/Fixtures/`. Their four
+Composer bootstrap and wire cells, both classic installations, and the
+complete Unit/native suite with all three SDK tuples pass. Measured results
+are separated from historical reports in :ref:`verification-current-core`.
+The patched dependency audits and Core 13 maintenance warning are documented
+in :ref:`dependency-report-current`.
+
 .. code-block:: bash
     :caption: Check the extension and its embedded core
 
@@ -54,7 +62,10 @@ Tool updates require a separate review and rerun of the checks.
     vendor/bin/phpstan analyse --configuration Build/phpstan-http-guard.neon --no-progress
 
 This PHPStan configuration checks only the embedded security core under
-:file:`Classes/HttpGuard/` at level 8.
+:file:`Classes/HttpGuard/` at level 8. Its analysis-only HandlerStack stub
+supplies the class-level template omitted by Guzzle 7; all methods and
+properties retain their installed SDK signatures. The stub is excluded
+from the extension ZIP and is never loaded during production execution.
 
 Wire tests require controlled fixtures and destination counters. They are
 not run as ordinary offline unit tests. For an isolated policy check with
@@ -126,13 +137,13 @@ The sources under :file:`Documentation/` use the current phpDocumentor
 Guides configuration. :file:`Settings.cfg` is not required. The official
 TYPO3 documentation describes the
 `rendering container
-<https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/RenderingDocs/Index.html>`_.
+<https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/Howto/RenderingDocs/Index.html>`_.
 
 .. code-block:: bash
     :caption: Official renderer in the extension directory
 
     docker run --rm -v "$PWD":/project \
-        ghcr.io/typo3-documentation/render-guides:latest \
+        ghcr.io/typo3-documentation/render-guides@sha256:fcf1ea87377ac401ce595b8c320c03b2b1bf2505ec0109561ca2fe56d7d71fc1 \
         --config=Documentation --no-progress --fail-on-log
 
 The generated HTML is written to :file:`Documentation-GENERATED-temp/`.
@@ -140,6 +151,10 @@ If you provide an :literal:`--output` option, the destination must be inside
 the mounted directory so that the files are retained. Run the renderer
 with an option that treats warnings as failures. The exit code from an
 unchecked default invocation does not prove that references are valid.
+
+This digest identifies the renderer used for the recorded warning-free
+English and German build. Updating it requires rendering both languages
+again before recording another successful build.
 
 .. toctree::
     :maxdepth: 1

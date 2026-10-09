@@ -10,7 +10,10 @@ namespace Netresearch\HttpGuard\Client;
 use GuzzleHttp\HandlerStack;
 final readonly class ClientStackConfiguration
 {
-    /** @param array<string,mixed> $defaultOptions */
+    /**
+     * @param HandlerStack<covariant callable(\Psr\Http\Message\RequestInterface, array<array-key, mixed>): \GuzzleHttp\Promise\PromiseInterface> $stack
+     * @param array<string,mixed> $defaultOptions
+     */
     public function __construct(
         public HandlerStack $stack,
         public array $defaultOptions = [],

@@ -412,6 +412,8 @@ final class DnsPolicyTransportTest extends TestCase
         }
         $command[] = __DIR__ . '/Fixtures/IsolatedCapabilityProbe.php';
         $command[] = $mode;
+        // Trusted PHP binary and committed fixture argv; no shell or request-controlled command.
+        // nosemgrep: php.lang.security.exec-use.exec-use
         $process = proc_open(
             $command,
             [['pipe', 'r'], ['pipe', 'w'], ['pipe', 'w']],
@@ -467,6 +469,8 @@ final class DnsPolicyTransportTest extends TestCase
         $address = stream_socket_get_name($listener, false);
         fclose($listener);
         self::assertIsString($address);
+        // Owned loopback listener and committed PHP fixture argv; no shell command string.
+        // nosemgrep: php.lang.security.exec-use.exec-use
         $process = proc_open(
             [
                 PHP_BINARY,

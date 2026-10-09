@@ -23,5 +23,5 @@ expires: Thu, 08 Oct 2026 21:31:19 GMT
 date: Thu, 08 Oct 2026 21:21:54 GMT
 akamai-cache-status: Miss from child, Hit from parent
 strict-transport-security: max-age=31536000; includeSubDomains; preload
-set-cookie: MSAKBC=58429e8fa23341369f2b8153ccb949a3; path=/; domain=.learn.microsoft.com; Secure
+set-cookie: MSAKBC=[REDACTED]; path=/; domain=.learn.microsoft.com; Secure
 

@@ -1,20 +1,16 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
 name: Verification
-
 on:
   pull_request:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
-
 concurrency:
   group: verification-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
   package:
     name: Source lint and installable package
@@ -67,7 +63,6 @@ jobs:
             ${{ runner.temp }}/nr_http_guard_0.1.0.zip.manifest.json
           if-no-files-found: error
           retention-days: 14
-
   native-transport:
     name: Native transport (Guzzle ${{ matrix.guzzle }})
     runs-on: ubuntu-latest
@@ -111,12 +106,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          composer require --no-update typo3/cms-core:14.3.7 \
+          composer require --no-update typo3/cms-core:14.3.8 \
             "guzzlehttp/guzzle:$TEST_GUZZLE" "guzzlehttp/promises:$TEST_PROMISES" \
             "guzzlehttp/psr7:$TEST_PSR7"
-          composer require --dev --no-update phpunit/phpunit:11.5.57 phpstan/phpstan:2.3.1
-          # Fixture-only exceptions; the separate strict production audit has none.
-          composer config --json audit.ignore '["PKSA-8j6w-3kr7-s9xk","PKSA-6j95-1jtb-x6wc","PKSA-cbx2-m9db-bmzd"]'
           composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
           composer config --no-plugins allow-plugins.typo3/class-alias-loader true
           composer install --prefer-dist --no-progress --no-interaction
@@ -164,7 +156,6 @@ jobs:
           docker network rm http-guard-production-public http-guard-production-private \
             http-guard-production-v6 || true
           rm -rf Tests/HttpGuard/Integration/certificates
-
   coverage-upload:
     name: Coverage upload
     needs: native-transport

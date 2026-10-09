@@ -1,0 +1,12 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.10
+Configuration: /tmp/http-guard-kan-8VPVrN/review-qualification/source/phpunit.xml
+
+...............................................................  63 / 145 ( 43%)
+............................................................... 126 / 145 ( 86%)
+...................                                             145 / 145 (100%)
+
+Time: 00:02.640, Memory: 20.00 MB
+
+OK (145 tests, 2253 assertions)

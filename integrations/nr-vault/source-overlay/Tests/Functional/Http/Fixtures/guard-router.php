@@ -38,6 +38,8 @@ $entry = [
     'body_secret' => is_array($body) && isset($body['api_key']),
 ];
 $file = $directory . '/' . $case . '-' . bin2hex(random_bytes(8)) . '.json';
+// Case passed the anchored ASCII regex above; the parent owns this random 0700 directory.
+// nosemgrep: php.lang.security.injection.tainted-filename.tainted-filename
 file_put_contents($file, json_encode($entry, JSON_THROW_ON_ERROR));
 if ($path === '/token') {
     header('Content-Type: application/json');
@@ -60,6 +62,8 @@ if ($path === '/token-chunks') {
         echo 'x';
         flush();
         $entry['chunks'] = $i;
+        // Reuse the validated case file in the owned 0700 fixture directory.
+        // nosemgrep: php.lang.security.injection.tainted-filename.tainted-filename
         file_put_contents($file, json_encode($entry, JSON_THROW_ON_ERROR));
         if (connection_aborted() !== 0) {
             break;
@@ -89,6 +93,8 @@ if ($path === '/chunks') {
         echo 'chunk ' . $i . "\n";
         flush();
         $entry['chunks'] = $i;
+        // Reuse the validated case file in the owned 0700 fixture directory.
+        // nosemgrep: php.lang.security.injection.tainted-filename.tainted-filename
         file_put_contents($file, json_encode($entry, JSON_THROW_ON_ERROR));
         if (connection_aborted() !== 0) {
             break;

@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "reviewer": "fresh_review",
+  "cases": [
+    {
+      "case": "all_current_headers",
+      "exit": 0
+    },
+    {
+      "case": "unredacted_alibaba-imds",
+      "exit": 1,
+      "no_value_disclosed": true
+    },
+    {
+      "case": "unredacted_azure-platform",
+      "exit": 1,
+      "no_value_disclosed": true
+    },
+    {
+      "case": "unredacted_rfc1112",
+      "exit": 1,
+      "no_value_disclosed": true
+    },
+    {
+      "case": "unredacted_rfc4291",
+      "exit": 1,
+      "no_value_disclosed": true
+    },
+    {
+      "case": "new_cookie_capture",
+      "exit": 1,
+      "no_value_disclosed": true
+    },
+    {
+      "case": "case_insensitive_header",
+      "exit": 1,
+      "no_value_disclosed": true
+    },
+    {
+      "case": "partial_redaction",
+      "exit": 1,
+      "no_value_disclosed": true
+    },
+    {
+      "case": "second_unredacted_cookie",
+      "exit": 1,
+      "no_value_disclosed": true
+    }
+  ]
+}

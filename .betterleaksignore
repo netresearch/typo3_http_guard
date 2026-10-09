@@ -1,8 +1,10 @@
 # Individually verified immutable history fingerprints only.
 # Reviewed source/artifact SHA256 metadata, public image signing fingerprints,
-# and three isolated synthetic test keys; no path, commit-wide or rule exclusions.
-# The historical anonymous cr_token response cookie remains visible for review.
+# three isolated synthetic test keys, and retired anonymous public-document state.
+# No path, commit-wide, cookie-name or rule exclusions.
 # Evidence: Build/Reports/Assessment/current/betterleaks-classification.json
+# Cookie remediation: Build/Reports/Assessment/review-loop/cookie-remediation.md
+1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc:packages/http-guard/data/security-corpus/sources/alibaba-imds.headers.txt:generic-api-key:10
 1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc:delivery-manifest.json:generic-api-key:12
 1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc:delivery-manifest.json:generic-api-key:598
 1b16d9acaa4ddae691e06b48a4cd6fef16ec84dc:delivery-manifest.json:generic-api-key:602
