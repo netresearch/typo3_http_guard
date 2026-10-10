@@ -52,7 +52,7 @@ See [the single-package decision](Documentation/Decisions/SingleExtension.rst) a
 | Kernel policy and transport | [Classes/HttpGuard/](Classes/HttpGuard/) |
 | Services and registry | [Configuration/Services.yaml](Configuration/Services.yaml) |
 | English manual and German localization | [Documentation/](Documentation/) |
-| Source-bound qualification | [verification/README.md](verification/README.md) |
+| Source-bound qualification | [Documentation/Development/Verification.rst](Documentation/Development/Verification.rst) |
 | Scoped PHP instructions | [.github/instructions/php.instructions.md](.github/instructions/php.instructions.md) |
 | Scoped test instructions | [.github/instructions/tests.instructions.md](.github/instructions/tests.instructions.md) |
 

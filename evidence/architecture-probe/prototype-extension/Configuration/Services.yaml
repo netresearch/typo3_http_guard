@@ -1,9 +1,0 @@
-services:
-  _defaults:
-    autowire: true
-    autoconfigure: true
-    public: false
-  HttpGuardProbe\BootstrapListener:
-    tags:
-      - name: event.listener
-        identifier: http-guard-probe/register

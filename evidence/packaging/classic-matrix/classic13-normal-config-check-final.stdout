@@ -1,1 +1,0 @@
-{"schemaVersion":1,"mode":"enforce","policyRevision":"907c3717614f1210eecd6e5e8a340afece031818ecf1e6354b5813e084e7095e","endpointCount":2,"warnings":{"overdueEndpointReviews":[],"tlsVerificationPolicyNotRequired":true},"httpSent":false}

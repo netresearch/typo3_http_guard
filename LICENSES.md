@@ -13,10 +13,8 @@ copyright Netresearch DTT GmbH and licensed under
 [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 Its source license and attribution notices are retained in the SVG.
 
-The additional patch under `integrations/nr-vault/` belongs to the existing
-GPL-2.0-or-later nr-vault project. The receiving project's license applies.
-
-Unchanged original specifications and recorded third-party material retain
-their respective rights and license notices. Third-party runtime libraries and
+Recorded third-party research material under
+`Resources/Private/HttpGuard/data/security-corpus/` retains its respective
+rights and license notices. Third-party runtime libraries and
 vendor directories are not bundled in this extension; the supported TYPO3
 installation provides these components.

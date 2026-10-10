@@ -80,7 +80,7 @@ is rejected. CI also runs the broader history scanner.
 
 See [Development](Documentation/Development/Index.rst),
 [genuine Core fixtures](Build/Fixtures/README.md) and
-[kernel verification](verification/README.md) for inputs and actual reproduction.
+[source-bound verification](Documentation/Development/Verification.rst) for inputs and actual reproduction.
 A command's existence is not an execution result. Keep tests, coverage,
 architecture controls, targeted security mutants, Infection scores and
 performance measurements separate.
