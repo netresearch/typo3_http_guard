@@ -36,6 +36,12 @@ def run_commands(workflow):
     return commands
 
 
+def composer_commands(document):
+    """Read closed inline commands without overlapping regex repetitions."""
+    snippets = re.findall(r'`composer ([a-zA-Z0-9:_-][^`]*)`', document)
+    return [re.match(r'[a-zA-Z0-9:_-]+', snippet).group() for snippet in snippets]
+
+
 def check():
     agents = ROOT / 'AGENTS.md'
     require(agents.is_file(), 'AGENTS.md missing')
@@ -53,7 +59,7 @@ def check():
             require(target.is_relative_to(ROOT.resolve()) and target.exists(), f'Broken agent pointer: {relative}')
     manifest = json.loads((ROOT / 'composer.json').read_text())
     scripts = manifest.get('scripts', {})
-    for command in re.findall(r'`composer ([a-zA-Z0-9:_-]+)(?:[^`]*)`', text):
+    for command in composer_commands(text):
         require(command in {'install'} or command in scripts, f'Undeclared Composer command: {command}')
     expected = {
         'check:harness': 'python3 Build/Scripts/verify-harness.py',

@@ -5,7 +5,7 @@ set -euo pipefail
 package_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
 cd -- "$package_dir"
 autoload="${HTTP_GUARD_TEST_AUTOLOAD:-$package_dir/.Build/vendor/autoload.php}"
-test -f "$autoload" || { printf 'Install the development dependencies first.\n' >&2; exit 2; }
+[[ -f "$autoload" ]] || { printf 'Install the development dependencies first.\n' >&2; exit 2; }
 export HTTP_GUARD_TEST_AUTOLOAD="$autoload"
 core=$(php -r 'require $argv[1]; echo (new TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion();' "$autoload")
 case "$core" in

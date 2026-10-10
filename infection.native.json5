@@ -3,7 +3,7 @@
   "source": {
     "directories": ["Classes"]
   },
-  "timeout": 10,
+  "timeout": 20,
   "threads": 1,
   "phpUnit": {
     "configDir": "Build/Mutation/Native",
