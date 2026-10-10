@@ -1,0 +1,127 @@
+{
+  "status": "PASS; released for independent review",
+  "recorded_at_utc": "2026-10-09T22:50:48.030696+00:00",
+  "source": "/tmp/http-guard-functional-current.IgpsTM/source",
+  "root_head_context": "3f929ae8794ca04ab3dd25627e94d601a2db23e0",
+  "source_state": "Current Root working-tree production source after Resolver NUL guard and TransferLease missing-request fix; later Unit-only three comment lines are explicitly classified. No Root writes or Git mutations.",
+  "package": {
+    "members": 141,
+    "archive_sha256": "8ce6faef0a54ce020b86945a9608bb64d144a7355bf0346dc1eff1926629a2ac",
+    "single_extension": true,
+    "composer_required_to_build": false,
+    "fresh_classic_extractions": 4,
+    "all_members_match": true,
+    "native_activation_initially_inactive": true,
+    "native_package_states_persisted": true,
+    "package_states_unchanged_after_tests": true
+  },
+  "actual_versions": {
+    "host_php": "8.5.11",
+    "selected_container_php": "8.5.10",
+    "core": [
+      "13.4.36",
+      "14.3.8"
+    ],
+    "composer_g7": {
+      "guzzle": "7.15.5",
+      "promises": "2.5.3",
+      "psr7": "2.13.1"
+    },
+    "composer_g8_and_both_classic": {
+      "guzzle": "8.2.0",
+      "promises": "3.0.2",
+      "psr7": "3.1.0"
+    }
+  },
+  "results": {
+    "genuine_routes": {
+      "initial_pass": {
+        "host": 20,
+        "selected_container": 20,
+        "total": 40,
+        "status": "PASS",
+        "exit_code": 0
+      },
+      "stable_repeat": {
+        "host": 20,
+        "selected_container": 20,
+        "total": 40,
+        "status": "PASS",
+        "exit_code": 0
+      }
+    },
+    "core_diagnostic_matrices": {
+      "composer": {
+        "status": "PASS",
+        "processes": 168,
+        "offline_tcp_http_no_contact_witnesses": 156,
+        "production_bootstrap_checks": 140,
+        "exit_code": 0,
+        "raw": "composer-matrix/production-matrix-summary.json"
+      },
+      "classic": {
+        "status": "PASS",
+        "processes": 84,
+        "offline_tcp_http_no_contact_witnesses": 78,
+        "production_bootstrap_checks": 70,
+        "exit_code": 0,
+        "raw": "classic-matrix/production-matrix-summary.json"
+      }
+    },
+    "ordinary_offline_routing_controls": {
+      "tests": 27,
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "wrong_core_wrong_php_actual_container_controls": {
+      "controls": 2,
+      "expected_exit_code": 2,
+      "zero_new_target_tcp_and_http": true
+    },
+    "actual_runtime_source_proofs": {
+      "installations": 8,
+      "correct_loaded_graphs": true,
+      "reflection_sources": "actual-runtime-source-proofs.json"
+    }
+  },
+  "source_binding": {
+    "copied_root_inputs": 498,
+    "all75_production_php_current_root_equal": true,
+    "initial_capture_inputs": 10455,
+    "initial_unchanged": 10451,
+    "four_native_settings_outputs": "native-settings-deltas.json",
+    "original_http_policy_sys_db_leaf_values_types_list_indices_preserved": true,
+    "stable_repeat_inputs": 10455,
+    "stable_repeat_changed": [],
+    "start": "repeat-effective-inputs-start.json",
+    "end": "repeat-effective-inputs-end.json",
+    "root_later_delta": "root-source-end-deltas.json",
+    "root_later_delta_scope": "Unit-only Opengrep rationale comments; not executed by Functional routes. Parent verified comment-free AST equality."
+  },
+  "cleanup": {
+    "status": "PASS",
+    "removed_container_ids": [
+      "08d926fd56c2651bb6835391264fb79f7dcaa145bafcb99e9ce1953f76ba7fbc",
+      "543f03904640ff46af9afe9c02c8cc92f5af4d675647f8c65d5487fad54a79f5"
+    ],
+    "immutable_identity_mount_image_network_labels_reverified": true,
+    "functional_hook_container_ids_remaining": [],
+    "preserved_network_ids": [
+      "05d227d8246b3d413c984552653a8cfc967b0824108bafa5dffabbae5fe992e7",
+      "f1439c35685c5d79c4f6cf6127d417c2cd2038fb632006228b24928e03a9e713"
+    ],
+    "foreign_g0_containers_and_networks_unchanged": true,
+    "networks_removed": 0,
+    "foreign_or_native_resources_changed": false,
+    "native_subnets_or_ports_used": false,
+    "final_counters": "core-wire-final-counters.json"
+  },
+  "limitations": [
+    "140/70 matrix checks are production-bootstrap assertions, including negative guard assertions; they are not all independent positive wire checks.",
+    "Initial ordinary Core boot generated default EXTENSIONS configuration and sorted per-site settings keys. The exact final40-route repeat has zero deltas across10455 declared inputs.",
+    "Selected containers emitted three upstream shared-runner convention notices about custom PHPStan/Rector/Infection config locations; actual routes succeeded. Logs retain the notices.",
+    "Dependencies were reused from six prepared genuine graphs and hash-verified official Core tarballs; no new dependency resolution or new supported-version claim.",
+    "Root Native/Infection qualification runs independently against distinct targets. This Functional proof does not establish global MSI, native suite scores, remote CI, future compatibility, or human acceptance.",
+    "Metadata formatter executable symlink points to existing installed dev tool; no dependency vendor source was changed."
+  ]
+}

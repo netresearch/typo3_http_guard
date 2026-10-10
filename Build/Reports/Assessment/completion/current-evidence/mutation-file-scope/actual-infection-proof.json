@@ -1,0 +1,115 @@
+{
+  "kind": "actual_local_Infection_whole_file_routing_control",
+  "runtime": {
+    "php": "8.5.11",
+    "phpunit": "11.5.57",
+    "infection": "0.35.6",
+    "comment_cases_coverage": "PCOV1.0.12",
+    "exact_candidate_step_single_line_coverage": "Xdebug3.5.3"
+  },
+  "thresholds": {
+    "minMsi": 90,
+    "minCoveredMsi": 90
+  },
+  "default_mutators": true,
+  "source_excludes": [],
+  "ignored_mutants": 0,
+  "comment_only": {
+    "old_git_diff": {
+      "exit_code": 1,
+      "stats": {
+        "totalMutantsCount": 0,
+        "killedCount": 0,
+        "notCoveredCount": 0,
+        "escapedCount": 0,
+        "errorCount": 0,
+        "syntaxErrorCount": 0,
+        "skippedCount": 0,
+        "ignoredCount": 0,
+        "timeOutCount": 0,
+        "msi": 0,
+        "mutationCodeCoverage": 0,
+        "coveredCodeMsi": 0
+      }
+    },
+    "positional_files": {
+      "exit_code": 0,
+      "stats": {
+        "totalMutantsCount": 8,
+        "killedCount": 8,
+        "notCoveredCount": 0,
+        "escapedCount": 0,
+        "errorCount": 0,
+        "syntaxErrorCount": 0,
+        "skippedCount": 0,
+        "ignoredCount": 0,
+        "timeOutCount": 0,
+        "msi": 100,
+        "mutationCodeCoverage": 100,
+        "coveredCodeMsi": 100
+      }
+    }
+  },
+  "single_line_change": {
+    "old_git_diff": {
+      "exit_code": 0,
+      "stats": {
+        "totalMutantsCount": 4,
+        "killedCount": 4,
+        "notCoveredCount": 0,
+        "escapedCount": 0,
+        "errorCount": 0,
+        "syntaxErrorCount": 0,
+        "skippedCount": 0,
+        "ignoredCount": 0,
+        "timeOutCount": 0,
+        "msi": 100,
+        "mutationCodeCoverage": 100,
+        "coveredCodeMsi": 100
+      }
+    },
+    "exact_candidate_positional_step": {
+      "exit_code": 0,
+      "stats": {
+        "totalMutantsCount": 8,
+        "killedCount": 8,
+        "notCoveredCount": 0,
+        "escapedCount": 0,
+        "errorCount": 0,
+        "syntaxErrorCount": 0,
+        "skippedCount": 0,
+        "ignoredCount": 0,
+        "timeOutCount": 0,
+        "msi": 100,
+        "mutationCodeCoverage": 100,
+        "coveredCodeMsi": 100
+      }
+    },
+    "unchanged_function_test_kills": 4
+  },
+  "limitations": [
+    "Tiny deterministic local QA fixture only; no project-wide MSI or native transport claim.",
+    "Recording Git controls verify argv/routing rather than actual mutation scores.",
+    "Old GitDiff command still meets90 on a smaller single-line denominator; that does not establish whole-file coverage."
+  ],
+  "exact_candidate_repeat": {
+    "exit_code": 0,
+    "stats": {
+      "totalMutantsCount": 8,
+      "killedCount": 8,
+      "notCoveredCount": 0,
+      "escapedCount": 0,
+      "errorCount": 0,
+      "syntaxErrorCount": 0,
+      "skippedCount": 0,
+      "ignoredCount": 0,
+      "timeOutCount": 0,
+      "msi": 100,
+      "mutationCodeCoverage": 100,
+      "coveredCodeMsi": 100
+    },
+    "source_start": "repeat-source-start.sha256",
+    "source_end": "repeat-source-end.log",
+    "five_effective_inputs_unchanged": true
+  }
+}

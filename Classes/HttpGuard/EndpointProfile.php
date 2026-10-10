@@ -1,11 +1,15 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
+
+use DateTimeImmutable;
 
 final readonly class EndpointProfile
 {
@@ -22,9 +26,7 @@ final readonly class EndpointProfile
         public bool $allowLoopback,
         public string $purpose,
         public string $owner,
-        public ?\DateTimeImmutable $reviewAfter,
-        public ?\DateTimeImmutable $expiresAt
-    )
-    {
-    }
+        public ?DateTimeImmutable $reviewAfter,
+        public ?DateTimeImmutable $expiresAt,
+    ) {}
 }

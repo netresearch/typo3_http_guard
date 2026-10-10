@@ -26,173 +26,148 @@ Eine Extension, zwei interne Namespaces
       - Vollständiges Handbuch und wiederverwendbare Beispiele.
     * - :file:`Tests/Unit/`
       - Unit-Tests des TYPO3-Adapters.
+    * - :file:`Tests/Functional/`
+      - Echte Core-Dekoration, klassische Aktivierung und Modus-Bootstraps.
     * - :file:`Tests/HttpGuard/`
       - Policy-, Transport- und echte Wire-Tests des enthaltenen Kerns.
 
-Der Kern liest keine TYPO3-Globals und keine Vault-Secrets. Der
-TYPO3-Adapter liefert Konfiguration, Registry, Resolver, Uhr und Reporter.
-Die bestehende Trennung im Code ermöglicht isolierte Kernprüfungen; sie
-erfordert keine zweite installierbare Library. Die Verpackungsentscheidung
-steht unter :ref:`decision-single-extension`.
+Der Adapter liefert Konfiguration, Registry, Resolver, Uhr und Reporter.
+Der unabhängige eingebettete Kern ermöglicht isolierte Tests innerhalb
+dieser einen installierbaren Extension; siehe :ref:`decision-single-extension`.
 
 .. _development-unit:
 
 Lokale Prüfungen
 ================
 
-Für die Entwicklung werden die in :file:`composer.json` genannten
-Dev-Werkzeuge installiert. Sie gehören nicht zur klassischen Runtime.
-Der gemeinsame PHPUnit-Einstieg verwendet beide Unit-Verzeichnisse:
+Die Entwicklungswerkzeuge werden mit :literal:`composer install` unter
+:file:`.Build/vendor/` installiert. PHPUnit :literal:`^11.5`, PHPStan
+:literal:`^2.3` und :literal:`netresearch/typo3-ci-workflows:^1.12` stellen
+die gemeinsam gepflegten Werkzeuge bereit. Sie gehören nicht zur
+klassischen Extension-Runtime.
 
-Die Entwicklungsconstraints erlauben PHPUnit :literal:`^11.5`, PHPStan
-:literal:`^2.3` und das CI-Metapaket :literal:`^1.12`. Frühere dokumentierte
-Läufe nutzten PHPUnit 11.5.57 und PHPStan 2.3.1. Für die Entwicklung wird
-ein aktueller kompatibler Graph aufgelöst und mit den betroffenen Prüfungen
-getestet.
+.. code-block:: bash
+    :caption: Werkzeuge installieren und lokale Prüfungen ausführen
 
-Die festen Framework-Fixtures verwenden Core 13.4.36 und 14.3.8.
-Die folgenden Zahlen gehören zum früheren Prüfstand :literal:`e69ddad`
-vor der Umstellung auf semantische Bereiche. Alle vier Composer-Zellen
-haben ihren echten Bootstrap-,
-Modus-, CLI- und Wire-Testlauf bestanden: 168 Prozesse, 140 Wire-Assertions
-und 156 Offline-Nachweise ohne neue TCP- oder HTTP-Kontakte. Die beiden
-aktuellen klassischen Archive bestehen separat 84 Prozesse, 70
-Wire-Assertions und 78 Offline-Nachweise. Die echte Core-Aktivierung
-persistiert den Extension-Eintrag in PackageStates und erzeugt den
-Class-Loading-Cache. Die damalige Unit-/Wire-Suite besteht je SDK-Kombination
-145 Tests mit 2.253 Assertions unter PHP 8.5.10 und PHPUnit 11.5.57.
-Historische Coverage-, Mutations- und Assessmentzahlen werden diesen
-neuen Läufen nicht zugerechnet.
+    composer install
+    composer check:harness
+    composer check:secrets
+    composer check:local
 
-Die Produktionsconstraints erlauben PHP :literal:`^8.2`, Core
-:literal:`^13.4.36 || ^14.3.8` sowie die SDK-Bereiche aus
-:ref:`installation-requirements`. Kompatible Patch- und Minor-Updates
-benötigen keine neue Extension-Version. Die Laufzeitprüfungen kontrollieren
-die echte Core-Elternklasse vor dem Laden der Ersatzklasse sowie die
-öffentlichen SDK-Methoden und die Middleware-Struktur. Zusätzliche optionale
-Konstruktorargumente bleiben kompatibel. Künftige PHP-Versionen sind damit
-zulässig, aber noch nicht als tatsächlich geprüft ausgewiesen.
+CaptainHook installiert Commit- und Pre-Commit-Prüfungen. Secrets im Index
+werden vor Qualität geprüft; fehlende Werkzeuge und fehlgeschlagene Checks
+führen zum Fehler. Installation allein belegt keinen bestandenen Lauf.
+CI bleibt Mergeinstanz; :file:`CONTRIBUTING.md` beschreibt isolierte Checkouts.
 
-Die Factory über das öffentliche :literal:`CurlFactoryInterface` begrenzt
-jede Lease auf ein natives Handle. Ein zweiter Aufruf wird vor der
-Handle-Erzeugung durch die innere Factory abgelehnt. Die Sperre gilt auch
-bei erneuter Ausführung während der Body-Vorbereitung und hängt nicht von
-privaten SDK-Wiederholungszählern ab. Reguläre Middleware-Retries und
-Redirects erzeugen jeweils eine neue Lease.
-
-Der abschließend geprüfte ausführbare Quellstand besteht fünf vollständige
-Unit-/Wire-Läufe mit jeweils **201 Tests und 2.405 Assertions** im per Digest
-fixierten PHP-8.5.10-Image mit PHPUnit 11.5.57. Jeder Lauf umfasst 152
-Unit-Tests mit 1.329 Assertions und 49 Integrationstests mit 1.076
-Assertions, ohne Fehler oder übersprungene Tests. Die Hashes aller 108
-gebundenen Produktions-, Test- und PHPUnit-Konfigurationsdateien bleiben
-zwischen Beginn und Ende der Läufe identisch.
-
-.. list-table:: Tatsächlich ausgeführte Core- und SDK-Versionen
+.. list-table:: Qualitätsprüfungen über Composer
     :header-rows: 1
 
-    * - Lauf
-      - Core
-      - Guzzle / Promises / PSR-7
-    * - Guzzle-7-Untergrenze
-      - 13.4.36
-      - 7.15.2 / 2.5.1 / 2.13.0
-    * - Historischer Guzzle-7-Archivstand
-      - 14.3.8
-      - 7.15.3 / 2.5.2 / 2.13.0
-    * - Fester Guzzle-7-Teststand
-      - 14.3.8
-      - 7.15.5 / 2.5.3 / 2.13.1
-    * - Fester Guzzle-8-Teststand
-      - 14.3.8
-      - 8.2.0 / 3.0.2 / 3.1.0
-    * - Separat aufgelöste Guzzle-8-Untergrenze
-      - 14.3.8
-      - 8.2.0 / 3.0.2 / 3.1.0
+    * - Kommando
+      - Umfang
+    * - :literal:`ci:test:php:cgl`
+      - PHP-Stilprüfung ohne Änderungen.
+    * - :literal:`ci:test:php:rector`
+      - Modernisierung für die PHP-8.2-Untergrenze, ohne Änderungen.
+    * - :literal:`ci:test:php:phpstan`
+      - Kuratierte Kern- und echte Core-Profile, konfiguriert auf Level 10.
+    * - :literal:`ci:test:php:unit`
+      - Offline-Unit-Tests für Adapter und Kern.
+    * - :literal:`ci:test:php:functional`
+      - Native Tests gegen kontrollierte Ziele.
+    * - :literal:`ci:test:php:architecture`
+      - Dokumentierte Architekturgrenzen.
+    * - :literal:`ci:test:php:mutation`
+      - Infection über alle Quellen, einschließlich nicht abgedeckter Mutanten.
+    * - :literal:`ci:test:php:fuzz`
+      - Deterministische Eingabe- und Eigenschaftsprüfungen.
+    * - :literal:`ci:test:php:performance`
+      - Benchmark für Normalisierung, Klassifizierung und Policy.
 
-Die fünf Ausführungen prüfen vier unterschiedliche SDK-Versionstupel.
-Die separate Guzzle-8-Auflösung an der Untergrenze wählt dieselben
-SDK-Versionen wie der feste Guzzle-8-Teststand. Künftige kompatible
-Versionen werden damit nicht als bereits ausgeführt ausgewiesen.
-Die separat wiederholte Composer-Core-Matrix besteht nach der Korrektur
-der Elternklassen-ABI **168 Prozesse, 140 Wire-Assertions und 156
-Offline-Nachweise ohne neue TCP- oder HTTP-Kontakte**. Die gemeinsamen
-kuratierten PHPStan-Profile für Core 13 und 14 melden keine Fehler.
-Der Regressionstest für Referenzparameter der Elternklasse besteht 19 Tests
-mit 31 Assertions. Mutationen der Sicherheitsuntergrenze, der Annahme
-künftiger Minor-Versionen und der Wiederherstellung des Warning-Handlers
-scheitern an ihren vorgesehenen Kontrollen. Die Nachweise der klassischen
-Installation stehen separat in
-:file:`Build/Reports/Assessment/review-loop/semantic-qualification/summary.json`;
-die früheren klassischen Ergebnisse behalten ihre historische Quellbindung.
-Die aktuellen Berichte und Quellbindungen liegen
-im
-`Nachweisverzeichnis
-<https://github.com/netresearch/typo3_http_guard/tree/main/Build/Reports/Assessment/review-loop/semantic-runtime>`_.
+Die kuratierten Statikregeln verwenden keine Baseline oder pauschale
+Unterdrückung. Reine HandlerStack-/Client-Analysestubs erhalten echte
+SDK-Methoden und Storage, ergänzen Guzzles fehlendes Template und die offenen
+Konstruktor-/:literal:`getConfig`-Verträge. Native Kontrollen erhalten
+Aufruferdefaults; die Stubs laufen nie in Produktion.
 
-Bei der früheren Factory-Modulübergabe laufen auf den echten Guzzle-Versionen
-7.15.3, 7.15.5 und 8.2.0 jeweils
-fünf Factory-Tests mit 23 Assertions unter PHP 8.5.11 und PHPUnit 11.5.57
-durch. Die Kontrolle über den öffentlichen Finish-Pfad erzeugt
-ohne Sperre ein zweites natives Handle; mit Sperre erfolgt die Ablehnung
-vor dessen Erzeugung. Diese Tests führen keinen nativen Tick und kein
-Netzwerk-I/O aus. Nach Entfernen der Sperre schlägt der gezielte Nachweis
-auf beiden aktuellen Guzzle-Hauptversionen fehl. Diese Zahlen gehören
-nicht zu den vollständigen Core- und Wire-Testläufen.
+Die integrierte Offline-Suite besteht je **1.535 Unit-Tests mit 7.199
+Assertions** auf echten Core-13-/Guzzle-7- und Core-14-/Guzzle-8-Graphen unter
+PHP 8.5.11. Level 10 für Kern/Core 13/14, Architektur und Rector sind sauber.
+Die aufgezeichnete Stilprüfung meldet keine Änderungen in 196 Dateien der
+GPL-Extension-/Test-/Tool- und MIT-Kernbereiche. Die Gesamtmessung mit
+263 Eingaben erreicht 90,43 %/91,54 % ohne übersprungene/ignorierte Mutanten;
+gezielte Ergebnisse behalten eigene Bindungen. Vollständige Qualitätsbelege
+und die unveränderten Ziele stehen unter :ref:`verification-integrated-local`.
 
-Drei historische SDK-Teststände und 14 feste CI-Zellen bleiben erhalten.
-Die native Verifikation ergänzt einen Guzzle-7-Lauf an der Untergrenze und
-vier frei aufgelöste Zellen, insgesamt acht native Zellen. Die vier Zellen
-für Core 13/14 und Guzzle 7/8 lösen
-bei Pull Requests und wöchentlichen CI-Läufen die neuesten kompatiblen
-Graphen auf. Ihre Ergebnisse werden getrennt von historischen Zählern
-dokumentiert. Lokale Prüfungen bestätigen keinen späteren Remote-Lauf
-gegen einen anderen Commit.
+Wire-Tests benötigen eigene Ziele und TCP-/HTTP-Zähler. Läufe mit denselben
+Zählern müssen nacheinander ausgeführt werden. Die gewöhnlichen Unit-Tests
+bleiben offline und benötigen keine Datenbank. Feste Fixtures bewahren
+exakte Quellstände; vier frei aufgelöste Core-13/14- und Guzzle-7/8-Zellen
+prüfen kompatible Updates bei Pull Requests und wöchentlich. Die acht
+nativen Zellen und 14 festen PHP-CI-Zellen sind getrennte Matrizen.
 
-Die vier vollständigen Dependency-Auflösungen des früheren Prüfstands
-verwenden SVG-Sanitizer 1.0.0 und enthalten keine bekannten Sicherheitsmeldungen. Der Composer-
-Sicherheitsblock bleibt aktiv. Core 13 benötigt weiterhin das aufgegebene
-Upstream-Paket :literal:`doctrine/annotations`; die explizite Option
-:literal:`--abandoned=report` erhält diesen Wartungshinweis und lässt den
-Audit bei jeder Sicherheitsmeldung fehlschlagen. Core 14 besteht auch den
-Standardaudit mit Exitcode 0. Historische Manifeste und Locks bleiben
-bytegetreu in gekennzeichneten ZIP-Archiven erhalten und sind keine
-Installationsquellen.
+Ausgeführte Versionen und historische Mengen stehen unter
+:ref:`verification-report`. Die aktuellen Maßnahmen und ihre Nachweise
+stehen unter :ref:`assessment-reconciliation`.
+
+.. _development-functional-routes:
+
+Functional-Routen mit echten Fixtures
+=====================================
+
+Die drei ausgeführten Core-Einstiegspunkte liegen unter
+:file:`Tests/Functional/`. Die Fixture muss bereits mit echten Paketen
+installiert sein; auch die kontrollierten Wire-Ziele werden separat vorbereitet.
 
 .. code-block:: bash
-    :caption: Extension und enthaltenen Kern prüfen
+    :caption: Core-Routen auf dem Host und im ausgewählten Container
 
-    vendor/bin/phpunit --configuration phpunit.xml --testsuite Unit
-    vendor/bin/phpstan analyse --configuration Build/phpstan-http-guard.neon --no-progress
+    bash Build/Scripts/runTests.sh -s integration -f .Build/fixtures/core14g8
+    bash Build/Scripts/runTests.sh -s classic -f .Build/classic-sites/classic14 -- active
+    bash Build/Scripts/runTests.sh -s mode -f .Build/fixtures/core14g8 -- observe
+    bash Build/Scripts/runTests.sh -s integration -f .Build/fixtures/core14g8 -p 8.5 -t 14
 
-Diese PHPStan-Konfiguration prüft ausschließlich den enthaltenen
-Sicherheitskern unter :file:`Classes/HttpGuard/` auf Level 8. Der reine
-Analyse-Stub für HandlerStack ergänzt die in Guzzle 7 fehlende
-Template-Deklaration; Methoden und Eigenschaften behalten ihre
-SDK-Signaturen. Der Stub ist nicht im Extension-ZIP enthalten und wird
-im Produktivbetrieb nicht geladen. Die Kernanalyse des früheren Prüfstands
-mit PHPStan 2.3.1 besteht für alle drei SDK-Kombinationen ohne Fehlerunterdrückung und
-ohne Baseline.
-Auch die vier echten Core-/SDK-Integrationskonfigurationen bestehen die
-damalige PHPStan-Prüfung auf Level 8 ohne Fehler.
+Ohne Laufzeitauswahl verwendet der Wrapper das Host-PHP. Ausgewählte Container
+laufen über den offiziellen :literal:`suite_http_guard_functional`-Hook mit
+dem per Digest festgelegten Image. Kurzlebige Container verwenden das
+Host-Netzwerk, um die vorbereiteten Zeugen dieser Einstiegspunkte zu erreichen.
+Sie mounten das physisch geprüfte Projekt und reichen Fixture-Argumente
+unverändert weiter. Vor dem Test prüft der Runner den tatsächlichen PHP-/Core-
+Graphen der Fixture. Externe Fixtures und herausführende Autoloader-Symlinks
+werden vor der Übergabe abgelehnt. Der Fixture-Graph bleibt unverändert;
+die übrigen Suites behalten ihre bisherigen gemeinsamen Routen.
 
-Die Wire-Tests benötigen kontrollierte Fixtures und Zielzähler und werden
-nicht als gewöhnliche Offline-Unit-Tests ausgeführt. Für eine isolierte
-Policyprüfung mit einem minimalen qualifizierten SDK-Vendor kann der
-separate Kernel-Bootstrap verwendet werden:
+Container laufen als Aufrufer ohne Capabilities und mit schreibgeschütztem
+Root-Dateisystem. Bereinigung entfernt eigene erfasste IDs; Fehler werden
+weitergegeben. Fehlt :literal:`composer/semver` in Core 13, lädt der Prüfer
+nur dessen Namespace aus Entwicklungswerkzeugen, mit dem Core-/SDK-Graphen
+der Fixture.
 
-.. code-block:: bash
-    :caption: Isolierte Policytests ohne TYPO3-Abhängigkeit
+Die 27 Offline-Kontrollen prüfen Argumente, Pfadgrenzen, Ressourcenbesitz und
+Fehlerweitergabe. Separat bestanden je 20 echte Functional-Routen auf dem Host
+mit PHP 8.5.11 und im Container mit PHP 8.5.10. Die Nachweise sind an die
+ausgeführten Quellen und Graphen gebunden. Einzelheiten stehen unter
+:file:`Build/Fixtures/README.md`.
 
-    HTTP_GUARD_TEST_AUTOLOAD=/absolute/sdk/vendor/autoload.php \
-        /absolute/sdk/vendor/bin/phpunit \
-        --configuration Build/phpunit-http-guard.xml \
-        Tests/HttpGuard/Unit/Policy
+.. _development-mutation-scope:
 
-Der Kernel-Bootstrap lädt ausschließlich die gewählten Dependencies und
-die Produktions-/Test-Namespaces dieses Pakets. Die zusätzliche
-:file:`Build/phpstan-http-guard.neon` prüft
-:file:`Classes/HttpGuard/` auf PHPStan-Level 8.
+Mutationsumfang in CI
+====================
+
+Bei Pull Requests werden seit dem validierten Basiscommit hinzugefügte,
+geänderte oder umbenannte produktive PHP-Dateien ausgewählt. Die mit NUL
+getrennte Git-Dateiliste wird geprüft und als positionale Pfade an Infection
+übergeben. Die vollständigen Dateien einschließlich unveränderter Funktionen
+werden mutiert, direkt unter :file:`Classes/` und in Unterverzeichnissen.
+MSI und Covered MSI behalten jeweils 90 %; Standardmutatoren, nicht
+abgedeckte Mutanten und gemessene Fehler bleiben im Prüfumfang.
+
+Ohne hinzugefügte, geänderte oder umbenannte produktive PHP-Dateien wird die
+Mutationsmessung ausdrücklich als übersprungen dokumentiert. Unit-Tests und
+native Verhaltensprüfungen laufen weiterhin; daraus ergibt sich kein
+Mutationswert. Zeitgesteuerte Läufe, Pushes auf :literal:`main` und manuelle
+Aufrufe prüfen alle :file:`Classes/` ohne Auswahl geänderter Dateien. Die vollständige
+Alpha-Qualifikation erhält einen separaten Quellenbezug und den tatsächlich
+gemessenen Wert. Eine konfigurierte Grenze belegt keinen bestandenen Lauf.
 
 .. _development-evidence:
 
@@ -205,13 +180,12 @@ Ein Mock-Handler allein bestätigt kein Pinning. Die Wire-Fixtures verwenden
 eigene synthetische Adressen und DNS-Antworten; fremde Produktivziele sind
 keine Testvoraussetzung.
 
-Die vollständigen Reproduktionsrunner, Dependency-Locks, Containerstände,
-Laufzeitdaten, Quellenhashes, JUnit-Ausgaben und die Zuordnung der originalen
-45 Anforderungen zu 84 Tests liegen im **optionalen Quell-/Nachweispaket**
-unter :file:`verification/` und :file:`evidence/`. Sie sind keine
-Runtime-Abhängigkeit des TER-ZIP. Die dortige Datei
-:file:`verification/requirements-and-tests.md` erklärt je Anforderung den
-tatsächlich geprüften Umfang und offene Freigabeschritte.
+Gepflegte Runner und Fixtures liegen unter :file:`Tests/` und :file:`Build/`,
+quellgebundene Berichte unter :file:`Build/Reports/Assessment/`.
+:ref:`development-requirements` ordnet die originalen 45 Anforderungen,
+84 Szenarien und acht Invarianten heutigen Tests und unveränderter Historie
+zu. :ref:`verification-report` trennt aktuelle Läufe von alten Messungen;
+diese Entwicklungsnachweise sind keine Runtime-Abhängigkeiten des TER-ZIP.
 
 Die Prüfungen umfassen insbesondere:
 
@@ -234,11 +208,8 @@ Untergrenzen, Handlern, Protokollen oder erlaubten Optionen benötigen
 Quellenvergleich und die einschlägigen Policy-, Wire-, Integrations- und
 Mutationstests.
 
-Die historische Mikrobenchmark läuft auf dem aufgezeichneten lokalen Host;
-sie erfüllt nicht die noch offene Messung auf der im Plan verlangten
-benannten CI-Referenz. Ein vollständiger technischer Testlauf ersetzt
-weder die unabhängige menschliche Sicherheitsprüfung noch den konkreten
-Betreiberpilot.
+Die benannte Policy-Benchmark und historische Messungen behalten ihre
+Quell-/Laufzeitgrenzen unter :ref:`assessment-reconciliation`.
 
 .. _development-docs:
 
@@ -258,18 +229,19 @@ Die offizielle TYPO3-Dokumentation beschreibt den
         ghcr.io/typo3-documentation/render-guides@sha256:fcf1ea87377ac401ce595b8c320c03b2b1bf2505ec0109561ca2fe56d7d71fc1 \
         --config=Documentation --no-progress --fail-on-log
 
-Die HTML-Ausgabe wird unter :file:`Documentation-GENERATED-temp/` erzeugt.
-Bei einer eigenen :literal:`--output`-Option muss der Zielpfad innerhalb des
-gemounteten Verzeichnisses liegen, damit die Dateien erhalten bleiben.
-Der Renderer muss mit einer Warnungen berücksichtigenden Option ausgeführt
-werden; ein bloßer Exitcode einer ungeprüften Standardausführung ist kein
-Nachweis fehlerfreier Verweise.
-
-Der Digest bezeichnet den Renderer des dokumentierten warnungsfreien
-englischen und deutschen Builds. Nach einer Aktualisierung müssen beide
-Sprachen erneut gerendert werden.
+HTML liegt unter :file:`Documentation-GENERATED-temp/`; ein eigenes Ziel
+muss im gemounteten Verzeichnis bleiben. :literal:`--fail-on-log` behandelt
+Warnungen als Fehler; ein Standard-Exitcode belegt keine gültigen Verweise.
+Dieser Digest bezeichnet den aufgezeichneten Renderer. Ein Update benötigt
+frisches englisches und deutsches Rendering vor einer neuen Erfolgsangabe.
 
 .. toctree::
     :maxdepth: 1
 
     Licenses
+    Requirements
+    Verification
+    Dependencies
+    Assessment
+    Reconciliation
+    ReleaseProvenance

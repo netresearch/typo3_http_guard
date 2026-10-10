@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
+         bootstrap="../../Tests/bootstrap.php"
+         cacheDirectory="../../.Build/cache/phpunit-mutation"
+         failOnWarning="true" failOnRisky="true">
+  <testsuites>
+    <testsuite name="Unit"><directory>../../Tests/Unit</directory><directory>../../Tests/HttpGuard/Unit</directory></testsuite>
+      <testsuite name="OfflineFuzz"><file>../../Tests/Fuzz/OfflineInputsTest.php</file></testsuite>
+  </testsuites>
+  <source><include><directory>../../Classes</directory></include></source>
+</phpunit>

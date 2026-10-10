@@ -1,0 +1,11 @@
+{
+  "source_head": "e2e125f97546d17975f8bbc13f096e302e07c320",
+  "tracked_files": 2171,
+  "hashed_regular_files": 2171,
+  "manifest_sha256": "c0e413d6f6160585e5989a16419b199444703fc602d2f0fa7fc41ff361a51fed",
+  "snapshot_status_after": "",
+  "native_security_head": "e2e125f97546d17975f8bbc13f096e302e07c320",
+  "native_security_status_after": "",
+  "native_security_tracked_bytes_match": true,
+  "no_actual_repository_or_github_mutations": true
+}

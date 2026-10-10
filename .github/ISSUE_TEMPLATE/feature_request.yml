@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose a change to HTTP Guard.
+title: "[Feature]: "
+labels: [enhancement, typo3]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and use case
+      description: Explain which HTTP client behavior or integration needs to change.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the expected defaults and any effect on existing endpoint policies.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Acceptance examples
+      description: Give synthetic examples of requests that should succeed or be denied.

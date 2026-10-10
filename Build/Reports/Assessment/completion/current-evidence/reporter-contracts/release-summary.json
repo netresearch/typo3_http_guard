@@ -1,0 +1,126 @@
+{
+  "released_at_utc": "2026-10-09T22:10:46.195663+00:00",
+  "isolated_source_root": "/tmp/http-guard-reporter-contracts",
+  "owned_files": {
+    "Tests/HttpGuard/Unit/Policy/Fixtures/ReporterFunctions.php": "449dde3f0164971c735828eded3c56e23b489a73461bc60ea86157ba49b6432b",
+    "Tests/HttpGuard/Unit/Policy/DecisionReporterContractTest.php": "725556352be1df6d71ee11529abd0d2c459f77a2d363d1cf5ca173da84117c3b",
+    "Tests/HttpGuard/Unit/Policy/PolicyRegistryContractTest.php": "ed9a6bd201bf74aa15ff069a6c94038d4ae6499ed1044c9d86a4fb3b9174b8bf"
+  },
+  "production_changes": [],
+  "source_binding": {
+    "start": "release-source-start.json",
+    "end": "release-source-end.json",
+    "compared_files": 173,
+    "unchanged": true,
+    "scope": "170 original active PHP/runtime/unit/tool inputs plus 3 new test/fixture files. No full Root repository identity claim."
+  },
+  "unit": {
+    "own_contracts": {
+      "tests": 30,
+      "assertions": 180,
+      "exit_code": 0,
+      "log": "unit-final-target.log"
+    },
+    "actual_core13_guzzle7": {
+      "tests": 1355,
+      "assertions": 5933,
+      "exit_code": 0,
+      "log": "unit-core13-final.log",
+      "runtime": "runtime-core13.json"
+    },
+    "actual_core14_guzzle8": {
+      "tests": 1355,
+      "assertions": 5933,
+      "exit_code": 0,
+      "log": "unit-core14-final.log",
+      "runtime": "runtime-core14.json"
+    },
+    "php_floor": "PHP 8.2 source parsing passed through guarded AST; actual execution is PHP 8.5.11."
+  },
+  "style": {
+    "owned_files": 3,
+    "cgl_exit_code": 0,
+    "log": "cgl-final.log",
+    "configured_production_rector_exit_code": 0,
+    "rector_log": "rector-production-scope.log"
+  },
+  "mutation": {
+    "scope": [
+      "Classes/HttpGuard/DecisionReporter.php",
+      "Classes/HttpGuard/PolicyRegistry.php"
+    ],
+    "config_source_directories": [
+      "Classes"
+    ],
+    "config_mutators": {
+      "@default": true
+    },
+    "thresholds": {
+      "minMsi": 90,
+      "minCoveredMsi": 90
+    },
+    "actual_exit_code": 0,
+    "stats": {
+      "totalMutantsCount": 153,
+      "killedCount": 148,
+      "killedByStaticAnalysisCount": 0,
+      "notCoveredCount": 1,
+      "escapedCount": 4,
+      "errorCount": 0,
+      "syntaxErrorCount": 0,
+      "skippedCount": 0,
+      "ignoredCount": 0,
+      "timeOutCount": 0,
+      "msi": 96.73,
+      "mutationCodeCoverage": 99.35,
+      "coveredCodeMsi": 97.37
+    },
+    "specific_new_test_kill_witnesses": 31,
+    "log": "infection-release-bound.log",
+    "raw": "final-infection.json",
+    "remaining": "remaining-mutants.json",
+    "scope_qualification": "Explicit affected-path measurement, not a new all-source Native MSI. No threshold/source/mutator exclusions changed.",
+    "actual_raw_original_source_binding": {
+      "Classes/HttpGuard/DecisionReporter.php": {
+        "raw_original_source_sha256": "5677fc279e7e64feb5efb131b476544c0f6ffb4248b2fe64991067a5c625a9d6",
+        "measurement_input_sha256": "5677fc279e7e64feb5efb131b476544c0f6ffb4248b2fe64991067a5c625a9d6",
+        "equal": true
+      },
+      "Classes/HttpGuard/PolicyRegistry.php": {
+        "raw_original_source_sha256": "d7dfc7512740bdeed82341259d82abc6f4f4c3338a0c2131da6c70b9a07be808",
+        "measurement_input_sha256": "d7dfc7512740bdeed82341259d82abc6f4f4c3338a0c2131da6c70b9a07be808",
+        "equal": true
+      }
+    }
+  },
+  "review": {
+    "report": "review.json",
+    "two_self_review_passes_required_findings": 0,
+    "independent_or_human_review_claimed": false,
+    "independent_review": {
+      "reviewer": "fresh_review",
+      "passes": 2,
+      "required_findings": 0,
+      "new_execution_claimed": false,
+      "report": "independent-review-fresh.md",
+      "report_sha256": "9e69d6c8308a5ee4715524ed2d726d752e459fbdd3fac0331d8a319e2c28c076"
+    }
+  },
+  "integration": "Parent must guarded-AST import these three exact new files and reverify the actual combined Root test roster. Root repository was not edited by this release.",
+  "evidence_sha256": {
+    "release-source-start.json": "ae792e8ef7603a35391205c7ea9b56682af7bf426c162006a5a53d078a57f742",
+    "release-source-end.json": "74cad9ab95cfad93301e7a301db9da356304cb674cdc1e377e0081ebe58fa1e2",
+    "runtime-core13.json": "1eed680ab1ca04b041d6b0d39c91513d2d43b2107ec54f8665558601795d748b",
+    "runtime-core14.json": "de7beb122432f3028d6e8dc4281bb17767efff4dbd192a059979f48ab07e8db6",
+    "unit-final-target.log": "6014ff7b428c4a46725acd0da26907b38157941cc045b168856f831cb48aa5ff",
+    "unit-core13-final.log": "87b80a86b1c00cf7ea020f98effd43d291a6f3274393f0bd52de5787e4d4246a",
+    "unit-core14-final.log": "de658f4ab92ff01a59b8298a1e24482a4417f24f3b2c233ea75eb8ae39bd8b9a",
+    "cgl-final.log": "d285ffc9032d8de4c047dbff3c6d11b61ac8fdb939b78bea72d4819ff0ef368b",
+    "rector-production-scope.log": "98029139679fe607129980a302da92fb5e3461fa97a43f54ca9d7cd9a15dd998",
+    "infection-release-bound.log": "c3a9bd60dae4b8291ab8c9d1c073b1269a2b340a61c814d9cb59109162d6f469",
+    "final-infection.json": "1f7d1273f6f0eec9ab3e05edd7d2b77acd59aae498050b3e0166545872f1a3bc",
+    "new-test-kill-witnesses.json": "ae28867c2dcb4e7987656b054affee7f7ff5fd314172152dc50cea79185a51d3",
+    "remaining-mutants.json": "c281ee257e39fcee653889a6f3dafd7f034d070c9bb6767e4ee94dfefff93fcf",
+    "review.json": "5387795270d5f89276262931b138f1cacb6cc75dfe56c3813e1c6e3885b9334e"
+  }
+}

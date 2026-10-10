@@ -1,0 +1,43 @@
+{
+  "kind": "post_snapshot_adr_actual_checks",
+  "schema_version": 1,
+  "source_binding": "source-binding.json",
+  "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132",
+  "source_before_after_identical": true,
+  "root_writes": false,
+  "actual_checks": [
+    {
+      "name": "td-49",
+      "argv": [
+        "bash",
+        "/home/cybot/.agents/skills/typo3-docs/scripts/check-adr-coverage.sh"
+      ],
+      "started_at_utc": "2026-10-10T08:23:37.849703+00:00",
+      "ended_at_utc": "2026-10-10T08:23:37.862995+00:00",
+      "exit_code": 0,
+      "log": "td-49.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "harness",
+      "argv": [
+        "python3",
+        "Build/Scripts/verify-harness.py"
+      ],
+      "started_at_utc": "2026-10-10T08:23:37.863031+00:00",
+      "ended_at_utc": "2026-10-10T08:23:37.909065+00:00",
+      "exit_code": 0,
+      "log": "harness.log",
+      "log_sha256": "eee1f56516c18d205b7b9d8f9e7723dad4ef59c50a74ce67aaba60342a968614"
+    }
+  ],
+  "historical_755_raw_counts_unchanged": {
+    "pass": 690,
+    "fail": 55,
+    "skip": 10
+  },
+  "official_checker_claim": "TD-49 directory coverage only; content, rendering and package qualification are separate",
+  "actual_harness_claim": "The current agent pointers and local/CI harness routing are consistent",
+  "new_full_mechanical_or_runtime_execution_claimed": false,
+  "producer_sha256": "4af05c34020bcc2e6818661317679a6f69b618b6ca39e8ca3bf3654df0f63831"
+}

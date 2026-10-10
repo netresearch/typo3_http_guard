@@ -74,7 +74,7 @@ Handbuch
     Operations/Index
     Security/Index
     Development/Index
-    Decisions/Index
+    Adr/Index
 
 .. _http-guard-scope:
 
@@ -89,7 +89,6 @@ Socketverbindungen benötigen eine separate Integration. Die vollständige
 Abgrenzung steht unter :ref:`security-coverage`.
 
 Die optionale nr-vault-Anpassung gehört zu einer gesonderten Migration;
-die globale Extension schützt Vault nicht automatisch. Der erforderliche
-Adapter und seine Nachweise werden im zusätzlichen Quell- und Nachweispaket
-geliefert. Für die Installation und den Betrieb der Extension genügt dieses
-Handbuch.
+die globale Extension schützt Vault nicht automatisch. Das API-Kapitel
+verlinkt den aufgezeichneten Referenzpatch und seine historischen Nachweise
+unter :ref:`api-vault`. Für Installation und Betrieb genügt dieses Handbuch.

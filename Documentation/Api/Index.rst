@@ -149,8 +149,8 @@ Guzzle-internal Digest and NTLM control options, inspected at source
 level for Guzzle 7, are distinguished from arbitrary raw cURL options.
 
 Cancellation and incremental streaming require an adapter that uses
-the associated internal progress driver. The nr-vault adapter does
-this for its existing APIs. Returning an arbitrary Guzzle client
+the associated internal progress driver. The recorded nr-vault reference
+adapter does this for its existing APIs. Returning an arbitrary Guzzle client
 alone does not guarantee that lifecycle binding.
 
 .. _api-vault:
@@ -159,14 +159,16 @@ Optional nr-vault migration
 ==========================
 
 The extension does not read Vault secrets or automatically integrate
-Vault. The separate adapter patch targets the recorded nr-vault
-source revision and must be integrated deliberately. Resource and
+Vault. The historical reference patch targets its recorded nr-vault
+source revision and requires deliberate integration in that project. Resource and
 OAuth token origins require their own bound clients and, where
 needed, their own profiles. A private token origin does not inherit
 a public resource permission, or vice versa.
 
 Secret retrieval, auditing, masking, size limits and Vault's existing
 cancellation and streaming semantics remain the adapter's responsibility.
-The migration and patch instructions are in the optional source
-package under :file:`integrations/nr-vault/`. They are not required
-for ordinary TYPO3 RequestFactory protection.
+The `reference migration and recorded evidence
+<https://github.com/netresearch/typo3_http_guard/blob/3f929ae8794ca04ab3dd25627e94d601a2db23e0/integrations/nr-vault/EVIDENCE.md>`_
+remain attached to that historical revision. This extension ships no Vault
+overlay and does not deploy or freshly qualify nr-vault. Ordinary TYPO3
+RequestFactory protection requires no Vault migration.

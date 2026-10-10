@@ -1,39 +1,38 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
+
+use Closure;
+use DateTimeImmutable;
+use DateTimeZone;
+use WeakMap;
 
 final class PolicyRegistry
 {
     /**
-     * @var \WeakMap<RequestPolicyContext,array{scope:ClientScope,grant:?EndpointGrant,profile:?EndpointProfile}>
+     * @var WeakMap<RequestPolicyContext,array{scope:ClientScope,grant:?EndpointGrant,profile:?EndpointProfile}>
      */
-    private \WeakMap $contexts;
-    public function __construct(
-        private readonly GuardConfig $config,
-        private readonly ClockInterface $clock
-    )
+    private WeakMap $contexts;
+
+    public function __construct(private readonly GuardConfig $config, private readonly ClockInterface $clock)
     {
-        $this->contexts = new \WeakMap();
-        $this->scopeIssuer = \Closure::bind(
-            static fn(): ClientScope => new ClientScope(),
-            null,
-            ClientScope::class
-        );
-        $this->grantIssuer = \Closure::bind(
-            static fn(): EndpointGrant => new EndpointGrant(),
-            null,
-            EndpointGrant::class
-        );
+        $this->contexts    = new WeakMap();
+        $this->scopeIssuer = Closure::bind(static fn (): ClientScope => new ClientScope(), null, ClientScope::class);
+        $this->grantIssuer = Closure::bind(static fn (): EndpointGrant => new EndpointGrant(), null, EndpointGrant::class);
     }
+
     public function configuration(): GuardConfig
     {
         return $this->config;
     }
+
     public function newContext(?string $endpointId = null): RequestPolicyContext
     {
         $profile = null;
@@ -51,27 +50,19 @@ final class PolicyRegistry
                 $entry['allowLoopback'],
                 $entry['purpose'],
                 $entry['owner'],
-                $entry['reviewAfter'] === null ? null : new \DateTimeImmutable(
-                    $entry['reviewAfter'],
-                    new \DateTimeZone('UTC')
-                ),
-                $entry['expiresAt'] === null ? null : new \DateTimeImmutable($entry['expiresAt'])
+                $entry['reviewAfter'] === null ? null : new DateTimeImmutable($entry['reviewAfter'], new DateTimeZone('UTC')),
+                $entry['expiresAt'] === null ? null : new DateTimeImmutable($entry['expiresAt']),
             );
         }
-        $scope = ($this->scopeIssuer)();
-        $grant = $profile === null ? null : ($this->grantIssuer)();
-        $context = new RequestPolicyContext(
-            $this->config->mode,
-            $this->config->revision,
-            $scope,
-            $grant
-        );
+        $scope                    = ($this->scopeIssuer)();
+        $grant                    = $profile instanceof EndpointProfile ? ($this->grantIssuer)() : null;
+        $context                  = new RequestPolicyContext($this->config->mode, $this->config->revision, $scope, $grant);
         $this->contexts[$context] = ['scope' => $scope, 'grant' => $grant, 'profile' => $profile];
+
         return $context;
     }
-    public function validateContext(
-        RequestPolicyContext $context
-    ): ?EndpointProfile
+
+    public function validateContext(RequestPolicyContext $context): ?EndpointProfile
     {
         if (!isset($this->contexts[$context]) || $context->policyRevision !== $this->config->revision || $context->mode !== $this->config->mode) {
             throw new PolicyException('grant_invalid');
@@ -84,14 +75,15 @@ final class PolicyRegistry
         if ($profile !== null && $profile->expiresAt !== null && $this->clock->now() >= $profile->expiresAt) {
             throw new PolicyException('grant_invalid');
         }
+
         return $profile;
     }
     /**
-     * @var \Closure():ClientScope
+     * @var Closure():ClientScope
      */
-    private readonly \Closure $scopeIssuer;
+    private readonly Closure $scopeIssuer;
     /**
-     * @var \Closure():EndpointGrant
+     * @var Closure():EndpointGrant
      */
-    private readonly \Closure $grantIssuer;
+    private readonly Closure $grantIssuer;
 }

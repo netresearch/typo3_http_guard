@@ -55,10 +55,10 @@ def run(fixture, case, command, expected, label, offline=False):
 fixtures = ('classic13', 'classic14') if arguments.classic else ('core13g7', 'core13g8', 'core14g7', 'core14g8')
 for fixture in fixtures:
     classic_argument = ['classic'] if arguments.classic else []
-    run(fixture, 'normal', ['php', str(package / 'Tests/Integration/production-bootstrap.php'), str(runtime / fixture)] + classic_argument, 0, 'wire-final')
+    run(fixture, 'normal', ['php', str(package / 'Tests/Functional/production-bootstrap.php'), str(runtime / fixture)] + classic_argument, 0, 'wire-final')
     for mode in ('observe', 'disabled'):
-        run(fixture, mode, ['php', str(package / 'Tests/Integration/mode-bootstrap.php'), str(runtime / fixture), mode] + classic_argument, 0, mode + '-wire-final')
-    run(fixture, 'factory-conflict', ['php', str(package / 'Tests/Integration/production-bootstrap.php'), str(runtime / fixture)] + classic_argument, 1, 'ordinary-boot-factory-conflict-final', offline=True)
+        run(fixture, mode, ['php', str(package / 'Tests/Functional/mode-bootstrap.php'), str(runtime / fixture), mode] + classic_argument, 0, mode + '-wire-final')
+    run(fixture, 'factory-conflict', ['php', str(package / 'Tests/Functional/production-bootstrap.php'), str(runtime / fixture)] + classic_argument, 1, 'ordinary-boot-factory-conflict-final', offline=True)
     cli = ['php', str(runtime / fixture / ('typo3/sysext/core/bin/typo3' if arguments.classic else 'vendor/bin/typo3'))]
     for case in ('normal', 'invalid-mode', 'invalid-schema', 'object', 'factory-conflict', 'observe', 'disabled'):
         for command in ('doctor', 'config-check', 'legacy-report', 'policy-check'):

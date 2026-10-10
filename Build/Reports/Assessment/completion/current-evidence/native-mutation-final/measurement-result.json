@@ -1,0 +1,54 @@
+{
+  "actual_graph": {
+    "php": "8.5.10",
+    "core": "14.3.8",
+    "guzzle": "8.2.0",
+    "promises": "3.0.2",
+    "psr7": "3.1.0",
+    "xdebug": "3.5.3",
+    "phpunit": "11.5.57",
+    "infection": "0.35.6"
+  },
+  "source_snapshot_files": 420,
+  "source_start_end_identical": true,
+  "threads": 1,
+  "elapsed": "25m20s",
+  "exit_code": 1,
+  "scope": "all Classes; default mutators; Unit+HttpGuardIntegration; no source excludes",
+  "skipped": 0,
+  "ignored": 0,
+  "thresholds": {
+    "msi": 90,
+    "covered_msi": 90,
+    "passed": false
+  },
+  "raw_stats": {
+    "totalMutantsCount": 3790,
+    "killedCount": 2497,
+    "killedByStaticAnalysisCount": 0,
+    "notCoveredCount": 382,
+    "escapedCount": 881,
+    "errorCount": 3,
+    "syntaxErrorCount": 4,
+    "skippedCount": 0,
+    "ignoredCount": 0,
+    "timeOutCount": 23,
+    "msi": 66.07,
+    "mutationCodeCoverage": 89.92,
+    "coveredCodeMsi": 73.47
+  },
+  "score_semantics": {
+    "timeouts_as_escaped": true,
+    "reason": "Infection0.35.6 RunCommandHelper.getTimeoutsAsEscaped reads --with-timeouts",
+    "tool_msi_numerator": 2504,
+    "tool_msi_denominator": 3790,
+    "killed_by_test_framework": 2497,
+    "test_kill_only_ratio_percent": 65.88,
+    "interpretation": "The test-kill-only ratio is a separate diagnostic, not a replacement or renormalized MSI. The official MSI includes7 error/syntax cases, excludes23 timeout cases."
+  },
+  "cleanup": "cleanup.json",
+  "manifest_start": "source-mutation-start.json",
+  "manifest_end": "source-mutation-end.json",
+  "method_review": "method-review.md",
+  "current_root_limitation": "Root subsequently changes headers/risky-formatting rules and Functional routing; this is the previous frozen420-file executable snapshot, not a claim of current-root byte equality."
+}

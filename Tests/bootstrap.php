@@ -1,16 +1,21 @@
 <?php
 
-declare (strict_types=1);
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+ */
 
-$autoload = getenv('HTTP_GUARD_TEST_AUTOLOAD') ?: dirname(__DIR__) . '/vendor/autoload.php';
+declare(strict_types=1);
+
+$autoload = getenv('HTTP_GUARD_TEST_AUTOLOAD') ?: dirname(__DIR__) . '/.Build/vendor/autoload.php';
 require $autoload;
 spl_autoload_register(
     static function (string $class): void {
         $roots = [
             'Netresearch\NrHttpGuard\Tests\\' => __DIR__ . '/',
-            'Netresearch\HttpGuard\Tests\\' => __DIR__ . '/HttpGuard/',
-            'Netresearch\NrHttpGuard\\' => dirname(__DIR__) . '/Classes/',
-            'Netresearch\HttpGuard\\' => dirname(__DIR__) . '/Classes/HttpGuard/',
+            'Netresearch\HttpGuard\Tests\\'   => __DIR__ . '/HttpGuard/',
+            'Netresearch\NrHttpGuard\\'       => dirname(__DIR__) . '/Classes/',
+            'Netresearch\HttpGuard\\'         => dirname(__DIR__) . '/Classes/HttpGuard/',
         ];
         foreach ($roots as $prefix => $root) {
             if (str_starts_with($class, $prefix)) {
@@ -18,9 +23,10 @@ spl_autoload_register(
                 if (is_file($path)) {
                     require $path;
                 }
+
                 return;
             }
         }
     },
-    prepend: true
+    prepend: true,
 );

@@ -1,0 +1,14 @@
+[
+  {
+    "case": "staged_secret",
+    "exit": 1,
+    "quality_called": false,
+    "secret_output_redacted": true
+  },
+  {
+    "case": "ordinary_staged_blob",
+    "exit": 0,
+    "quality_called": true,
+    "control_quality_action": "touch marker; hook-dispatch control only"
+  }
+]

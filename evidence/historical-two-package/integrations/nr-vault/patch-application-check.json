@@ -1,7 +1,0 @@
-{
-  "status": "PASS",
-  "baseline_commit": "5a070c396a614e5b05f63d79fa564c3748cf21eb",
-  "patch_sha256": "ba61f09d69f475d708d2307a28c110da0ce042835b7800e6bba6e10a4f7ddbfb",
-  "files_matching_overlay_and_applied_tree": 25,
-  "check_method": "Clean checkout; git archive export-ignore deliberately does not provide test/build files"
-}

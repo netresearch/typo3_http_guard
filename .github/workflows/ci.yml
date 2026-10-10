@@ -38,18 +38,9 @@ jobs:
           "guzzlehttp/psr7:$MATRIX_PSR7"
         composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
         composer config --no-plugins allow-plugins.typo3/class-alias-loader true
-      phpstan-cmd: |
-        set -euo pipefail
-        vendor/bin/phpstan analyse --configuration Build/phpstan-http-guard.neon --no-progress
-        if [ "$MATRIX_CORE" = "13.4.36" ]; then
-          HTTP_GUARD_TEST_AUTOLOAD="$PWD/vendor/autoload.php" vendor/bin/phpstan analyse \
-            --configuration Build/phpstan-typo3-core13.neon --no-progress
-        else
-          HTTP_GUARD_TEST_AUTOLOAD="$PWD/vendor/autoload.php" vendor/bin/phpstan analyse \
-            --configuration Build/phpstan-typo3.neon \
-            --autoload-file Build/phpstan-bootstrap14.php --no-progress
-        fi
-      phpunit-cmd: vendor/bin/phpunit --configuration phpunit.xml --testsuite Unit
+      phpstan-cmd: |-
+        composer ci:test:php:phpstan
+      phpunit-cmd: composer ci:test:php:unit
       run-composer-audit: false
       # Full transport coverage is captured separately with dedicated wire fixtures.
       upload-coverage-codecov: false
@@ -75,6 +66,7 @@ jobs:
       - documentation
       - workflow-lint
       - dco
+      - quality
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -92,8 +84,9 @@ jobs:
         run: |
           set -euo pipefail
           jq -e --arg event "$EVENT_NAME" '
-            keys == ["dco", "documentation", "php", "workflow-lint"]
+            keys == ["dco", "documentation", "php", "quality", "workflow-lint"]
             and .php.result == "success"
+            and .quality.result == "success"
             and .documentation.result == "success"
             and .["workflow-lint"].result == "success"
             and .dco.result == (
@@ -103,3 +96,68 @@ jobs:
               end
             )
           ' <<< "$RESULTS"
+  quality:
+    name: Development quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    env:
+      CAPTAINHOOK_DISABLE: "true"
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25
+        with:
+          egress-policy: audit
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Set up isolated Python build tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/http-guard-python"
+          "$RUNNER_TEMP/http-guard-python/bin/python" -m pip install --disable-pip-version-check --requirement Build/requirements.txt
+          printf '%s\n' "$RUNNER_TEMP/http-guard-python/bin" >> "$GITHUB_PATH"
+      - name: Set up reference PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962
+        with:
+          php-version: "8.5"
+          extensions: curl, dom, intl, mbstring, pdo_sqlite, sodium, xml
+          coverage: none
+          tools: composer:v2
+      - name: Resolve Composer cache
+        id: composer-cache
+        run: echo "path=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+      - name: Cache downloaded packages
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ steps.composer-cache.outputs.path }}
+          key: ${{ runner.os }}-quality-php85-${{ hashFiles('composer.json') }}
+          restore-keys: ${{ runner.os }}-quality-php85-
+      - name: Install development dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+      - name: Enforce agent guidance and local hook contracts
+        run: |
+          composer check:harness
+          python3 -m unittest discover -s Tests/Build -p 'test_*.py' -v
+      - name: Run shared style and deterministic quality controls
+        run: composer check:local
+      - name: Check safe modernization proposals
+        run: composer ci:test:php:rector
+      - name: Check architecture boundaries
+        run: composer ci:test:php:architecture
+      - name: Run seeded fuzz properties
+        run: composer ci:test:php:fuzz
+      - name: Measure policy overhead on the CI reference
+        run: composer ci:test:php:performance
+        env:
+          HTTP_GUARD_PERFORMANCE_REFERENCE: github-actions ubuntu-24.04 / PHP 8.5
+      - name: Preserve reference measurements
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: policy-performance-reference
+          path: .Build/reports/policy-performance.json
+          if-no-files-found: error
+          retention-days: 14

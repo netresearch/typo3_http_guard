@@ -1,0 +1,19 @@
+test_absent_native_json_runner_wire_and_corpus_inputs_are_rejected (test_reconciliation_binding.CompletedBindingTests.test_absent_native_json_runner_wire_and_corpus_inputs_are_rejected) ... ok
+test_absent_native_xml_configuration_is_rejected_by_actual_presence_guard (test_reconciliation_binding.CompletedBindingTests.test_absent_native_xml_configuration_is_rejected_by_actual_presence_guard) ... ok
+test_added_or_missing_end_input_is_rejected (test_reconciliation_binding.CompletedBindingTests.test_added_or_missing_end_input_is_rejected) ... ok
+test_changed_effective_end_input_is_rejected (test_reconciliation_binding.CompletedBindingTests.test_changed_effective_end_input_is_rejected) ... ok
+test_identical_complete_effective_inputs_are_accepted (test_reconciliation_binding.CompletedBindingTests.test_identical_complete_effective_inputs_are_accepted) ... ok
+test_inequal_or_unconfirmed_executable_ast_is_rejected (test_reconciliation_binding.CompletedBindingTests.test_inequal_or_unconfirmed_executable_ast_is_rejected) ... ok
+test_known_comment_filename_cannot_authorize_another_byte_delta (test_reconciliation_binding.CompletedBindingTests.test_known_comment_filename_cannot_authorize_another_byte_delta) ... ok
+test_missing_current_php_input_is_rejected (test_reconciliation_binding.CompletedBindingTests.test_missing_current_php_input_is_rejected) ... ok
+test_missing_discarded_mutant_counts_cannot_authorize_completed_gate (test_reconciliation_binding.CompletedBindingTests.test_missing_discarded_mutant_counts_cannot_authorize_completed_gate) ... ok
+test_missing_end_receipt_is_rejected (test_reconciliation_binding.CompletedBindingTests.test_missing_end_receipt_is_rejected) ... ok
+test_only_exact_known_hash_bound_ast_equal_comment_delta_is_accepted (test_reconciliation_binding.CompletedBindingTests.test_only_exact_known_hash_bound_ast_equal_comment_delta_is_accepted) ... ok
+test_tool_90_success_cannot_hide_skipped_or_ignored_mutants (test_reconciliation_binding.CompletedBindingTests.test_tool_90_success_cannot_hide_skipped_or_ignored_mutants) ... ok
+test_unclassified_present_test_or_config_or_runner_difference_is_rejected (test_reconciliation_binding.CompletedBindingTests.test_unclassified_present_test_or_config_or_runner_difference_is_rejected) ... ok
+test_unrelated_documentation_and_archived_evidence_are_not_required (test_reconciliation_binding.CompletedBindingTests.test_unrelated_documentation_and_archived_evidence_are_not_required) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.014s
+
+OK

@@ -1,0 +1,5 @@
+Classes/WholeFileFixture.php: OK
+Tests/WholeFileFixtureTest.php: OK
+Tests/bootstrap.php: OK
+phpunit.xml: OK
+infection.native.json5: OK

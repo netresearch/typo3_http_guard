@@ -1,10 +1,12 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
 
 final readonly class PolicyDecision
@@ -14,8 +16,6 @@ final readonly class PolicyDecision
         public string $decision,
         public ?string $reasonCode,
         public ?string $profileId,
-        public string $policyRevision
-    )
-    {
-    }
+        public string $policyRevision,
+    ) {}
 }

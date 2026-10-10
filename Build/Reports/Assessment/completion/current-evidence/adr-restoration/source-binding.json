@@ -1,0 +1,1819 @@
+{
+  "kind": "post_snapshot_adr_source_binding",
+  "schema_version": 1,
+  "started_at_utc": "2026-10-10T08:23:37.296190+00:00",
+  "ended_at_utc": "2026-10-10T08:23:49.108928+00:00",
+  "source_head": "45273b9b8dd3a3ffc84b11fbd4628c0e602c809f",
+  "root_writes": false,
+  "source_before_after_identical": true,
+  "scope": "ADR restoration, current manual sections, agent/harness dependencies and current architecture source; not a whole-repository quality rerun",
+  "excluded_planned_manual_corrections": [
+    "Documentation/Development/Reconciliation.rst",
+    "Documentation/Localization.de_DE/Development/Reconciliation.rst"
+  ],
+  "source_file_count": 355,
+  "unchanged_production_php_file_count": 75,
+  "english_adr_count": 18,
+  "german_adr_count": 18,
+  "files": [
+    {
+      "path": ".github/CODEOWNERS",
+      "sha256": "36236df19d9848e5866fa42bfaeadec5f5fa2db2d2205dc8a3f70a9326c74bf6",
+      "bytes": 265
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "sha256": "7bcd225f22808d4fa0fc39723c8406202f9c3ec356d0f279d7217eb66110e6c1",
+      "bytes": 466
+    },
+    {
+      "path": ".github/instructions/php.instructions.md",
+      "sha256": "d453816f34fc83dbf75bad4195a4fa1693e02d5787486ea28d6b54376b4a1f97",
+      "bytes": 886
+    },
+    {
+      "path": ".github/instructions/tests.instructions.md",
+      "sha256": "2702953e70a9f4403a54100e534dcece40ccd24f332b43a3266c9cd2114b926c",
+      "bytes": 878
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "1e0910d89663b1c842c31baf859bd837d84419effb769ce4898a88c192100591",
+      "bytes": 6580
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "c805c4a95aa508dfe3ed2ff7e39e9430e2515cca6740c627513a24b2035e4e83",
+      "bytes": 6320
+    },
+    {
+      "path": "Build/Scripts/verify-harness.py",
+      "sha256": "29dca1a00d1729414e32fd024707947e68e8d91fc511d819da1e53cc62f93c8d",
+      "bytes": 5654
+    },
+    {
+      "path": "Build/captainhook.json",
+      "sha256": "918be1a9d6eeeb2e19d7057c0797d7d2a974920255e4234ba25dffe6b13cdf5a",
+      "bytes": 1115
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "98da66f67dd05031313a137a058add5ab7ae1a27e0a1ec450c0f1603631dc3e5",
+      "bytes": 6632
+    },
+    {
+      "path": "Classes/Client/EndpointClientFactory.php",
+      "sha256": "6e852e2d667c1fd1f7166aed471add2dd2097fa8d14c4408f7f583b90e23d3a6",
+      "bytes": 655
+    },
+    {
+      "path": "Classes/Client/PublicFetchClient.php",
+      "sha256": "a0b585bab00308e89baf9e9acf518e6b06a2a3adeb361f4d7336a05e959dd815",
+      "bytes": 790
+    },
+    {
+      "path": "Classes/Command/AbstractGuardCommand.php",
+      "sha256": "e44fd1bb185402835f05c37b76198ec3075795f000d5df011178ea2616b72227",
+      "bytes": 823
+    },
+    {
+      "path": "Classes/Command/ConfigCheckCommand.php",
+      "sha256": "0771a4810d9075db1bddbd24171d47444973b57f7af8f6cf1bb6bda936c1216a",
+      "bytes": 668
+    },
+    {
+      "path": "Classes/Command/DoctorCommand.php",
+      "sha256": "df7428e14dc69b004949ef86877a6dccbf480f5965d74d72abcfbb29513cb286",
+      "bytes": 664
+    },
+    {
+      "path": "Classes/Command/LegacyReportCommand.php",
+      "sha256": "53589d8f6ee20759dea55dc46e3033473c4dda70372d3ffa02184d444ee592b2",
+      "bytes": 682
+    },
+    {
+      "path": "Classes/Command/PolicyCheckCommand.php",
+      "sha256": "1b2e2137bbf9a75c2f9ada9e3016a992972f1633ff999e0e6c641704cfd97b6d",
+      "bytes": 1500
+    },
+    {
+      "path": "Classes/Configuration/ConfigurationLoader.php",
+      "sha256": "fee3b9932df8c155091ff7689bf71e3bca9163903cadbd8388d3d57e41df9557",
+      "bytes": 1061
+    },
+    {
+      "path": "Classes/Configuration/GlobalHttpDefaults.php",
+      "sha256": "18cdf2d06efc19b59ee24cf6177b5e3c4968cc1f333e4aa175fe672efebc49d0",
+      "bytes": 936
+    },
+    {
+      "path": "Classes/Diagnostics/DiagnosticBootState.php",
+      "sha256": "b3cde852b47418200e40443ea12e79b1fb8149cf0caa2c6557cfe00cbbf022c8",
+      "bytes": 1837
+    },
+    {
+      "path": "Classes/Diagnostics/DiagnosticResult.php",
+      "sha256": "23eec30330826dab8b2482ebef9bf895d392d5e91134647b2afd0fefe7338070",
+      "bytes": 357
+    },
+    {
+      "path": "Classes/Diagnostics/DiagnosticsService.php",
+      "sha256": "ffe3e3c1254c53f47fde8f527d6d1c6fdf25f52c5a19fbb01a835381b2ba0afa",
+      "bytes": 9664
+    },
+    {
+      "path": "Classes/Diagnostics/LegacyConfigurationInventory.php",
+      "sha256": "297fdc7e346885a2fe1ffb37560654064dee0f79af0f7f33d9b51dade99cbe99",
+      "bytes": 1906
+    },
+    {
+      "path": "Classes/EventListener/RegisterGuardListener.php",
+      "sha256": "e2b04d133fab0459f74d0c9fa82d7ff0549b60e8b56d81a904c4ca8fd78f0006",
+      "bytes": 1205
+    },
+    {
+      "path": "Classes/Http/CoreStackProvider.php",
+      "sha256": "b8de6908b85b14019713e28641e46d2df42a29bfd46fc6ce9b332b5decef24af",
+      "bytes": 2076
+    },
+    {
+      "path": "Classes/Http/GuardedRequestFactory13.php",
+      "sha256": "fcd3b8e6da27e5aafdea782027c0d56134c2a68a48faeb902edea334e014e6ad",
+      "bytes": 294
+    },
+    {
+      "path": "Classes/Http/GuardedRequestFactory14.php",
+      "sha256": "1465c4023fe2926804bc7bddbd33b38f2f9548c54a891abd7dd2a633e98c51ff",
+      "bytes": 303
+    },
+    {
+      "path": "Classes/Http/MiddlewareRegistry.php",
+      "sha256": "e3774ffa0961db21bf8c1d6b7c24367477debc15a2543ca9c3be707fdd251987",
+      "bytes": 5163
+    },
+    {
+      "path": "Classes/Http/RawRequestFactoryRegistration.php",
+      "sha256": "a5e8d93da21556edca1fe2a6e3837fbced389fa063a73621b923d0793f67f288",
+      "bytes": 1744
+    },
+    {
+      "path": "Classes/Http/RawRequestGuardTrait.php",
+      "sha256": "eb2f5e212c3cb6e98857b33a21de9869a7132eb9f64caa7b6487c2d86ad8ddf3",
+      "bytes": 2131
+    },
+    {
+      "path": "Classes/Http/RequestFactoryCompatibility.php",
+      "sha256": "502b1e7a09a80df6340b7e50df6d1c9582e26cdf5a5b9c819fd514fd8b4010e8",
+      "bytes": 3361
+    },
+    {
+      "path": "Classes/HttpGuard/AddressClassification.php",
+      "sha256": "52b89deb18b7618b394e5c0ddd841485dfcf9568ea7a4e7bd0c4518117f231c8",
+      "bytes": 425
+    },
+    {
+      "path": "Classes/HttpGuard/AddressClassifier.php",
+      "sha256": "acb22ffd3c1d325e424a9b9c011b975532c03c0db4b26d8ba4df6769d151aa7d",
+      "bytes": 6488
+    },
+    {
+      "path": "Classes/HttpGuard/Cidr.php",
+      "sha256": "5a12b2ec47c27f4e2daccc7c48ef05a91dc5f4c0417eb231c13d4e3dae4b09fc",
+      "bytes": 5306
+    },
+    {
+      "path": "Classes/HttpGuard/Client/ClientStackConfiguration.php",
+      "sha256": "8a41852a9aec2b2a8f07938d7577971dba279dd4ebe525a3f5484cb51950e9e8",
+      "bytes": 928
+    },
+    {
+      "path": "Classes/HttpGuard/Client/ClientStackProviderInterface.php",
+      "sha256": "6c651ca59f61c09f90809ef47841c7eae0ff3ae842bd31015ed1d68fef384a7c",
+      "bytes": 447
+    },
+    {
+      "path": "Classes/HttpGuard/Client/DefaultStackProvider.php",
+      "sha256": "049ff4dfc7ec157a5565850272426ac6185b085ccfa38e15fda3fb502e97539d",
+      "bytes": 734
+    },
+    {
+      "path": "Classes/HttpGuard/Client/GuardedClientBinding.php",
+      "sha256": "6e822020f71b0e41b5753dbe3429e295154d842796f0e813e23d9c50703ee7ae",
+      "bytes": 582
+    },
+    {
+      "path": "Classes/HttpGuard/Client/GuardedClientFactory.php",
+      "sha256": "48b68769b037acfd45617f0a9ae412e7f50456ef7f676fdcdc54bc6b38b17aab",
+      "bytes": 9458
+    },
+    {
+      "path": "Classes/HttpGuard/Client/MiddlewarePair.php",
+      "sha256": "75731c5dceed3921ff3890f95d4c92b413087876f204336cd7ab878f56520886",
+      "bytes": 665
+    },
+    {
+      "path": "Classes/HttpGuard/Client/Psr18Client.php",
+      "sha256": "e82a86b86ff18f85412df83a4c885a67afdc69c7c80ecc3eb5bac245b56f1e1b",
+      "bytes": 575
+    },
+    {
+      "path": "Classes/HttpGuard/Client/PublicFetchClient.php",
+      "sha256": "29e79275547a56af5386b83eb655576fd76df4af6ee242aad7f9e2ec5ff37f2b",
+      "bytes": 1270
+    },
+    {
+      "path": "Classes/HttpGuard/ClientScope.php",
+      "sha256": "90e14253e96889a175b3ee5b96a7388ea557e8ed43b37c4278409a14a93cb949",
+      "bytes": 635
+    },
+    {
+      "path": "Classes/HttpGuard/ClockInterface.php",
+      "sha256": "9f583ebf1f904b09411454c8bcd5f5516a13486f9f2525f024f84b073961c96f",
+      "bytes": 300
+    },
+    {
+      "path": "Classes/HttpGuard/ConnectionPlan.php",
+      "sha256": "7ad5f0a49caab156bd138a4b35fa2f04daaf08278663f54538fd813fb3716662",
+      "bytes": 576
+    },
+    {
+      "path": "Classes/HttpGuard/DecisionEvent.php",
+      "sha256": "311ccd9dc46e7bf20d4257d66122ddb5cfd7a176f8fe6f2124e8b7ba79bc3089",
+      "bytes": 683
+    },
+    {
+      "path": "Classes/HttpGuard/DecisionReporter.php",
+      "sha256": "5677fc279e7e64feb5efb131b476544c0f6ffb4248b2fe64991067a5c625a9d6",
+      "bytes": 5741
+    },
+    {
+      "path": "Classes/HttpGuard/DecisionReporterInterface.php",
+      "sha256": "744feeedfbdc3a88a4c0b794c71ae3382dbc5d7ce1e2cdc5dc08e7b5705726f8",
+      "bytes": 256
+    },
+    {
+      "path": "Classes/HttpGuard/DnsAnswer.php",
+      "sha256": "b6233f3dd1b4fb373ad926ae8717f2801f20e365a23efd2e5b0e350468e51cc7",
+      "bytes": 427
+    },
+    {
+      "path": "Classes/HttpGuard/DnsPacketCodec.php",
+      "sha256": "551fcb64eb8cce4589a491d89e38560a7aeaa1e5eb0b48c25201f4440639c7e0",
+      "bytes": 7037
+    },
+    {
+      "path": "Classes/HttpGuard/DnsQueryInterface.php",
+      "sha256": "c3a023c13461c330443a7f196f37dd7e7d09f826a99581eea1be8dd1e9567612",
+      "bytes": 264
+    },
+    {
+      "path": "Classes/HttpGuard/EndpointClientFactoryInterface.php",
+      "sha256": "d73aa45ea8bd03024caa7e5903a05a412fde0dbae203a36346f6f7d603e2a8d6",
+      "bytes": 302
+    },
+    {
+      "path": "Classes/HttpGuard/EndpointGrant.php",
+      "sha256": "4baf59b2170e3fef5b4f4e23a4c81bf130fef8161c2d49479193612ccf8b5a67",
+      "bytes": 637
+    },
+    {
+      "path": "Classes/HttpGuard/EndpointProfile.php",
+      "sha256": "3b1f2da6400f4ae6cb333728d654ac1c77fd96ef25a1870648bb3f2fd5e4256f",
+      "bytes": 711
+    },
+    {
+      "path": "Classes/HttpGuard/GuardConfig.php",
+      "sha256": "1999524509ab3682b41a5d274409b4a36e5136bdb10dcbd182ab396241bed81e",
+      "bytes": 14360
+    },
+    {
+      "path": "Classes/HttpGuard/NativeOperation.php",
+      "sha256": "831740da0e860dd519744370d808687cd3f9d10319a41c665e34dd8ce90fb765",
+      "bytes": 1414
+    },
+    {
+      "path": "Classes/HttpGuard/NullDecisionReporter.php",
+      "sha256": "3840b50022494cd1e5670ab841af020d27dc310242d9a6098a51912c8b3301ab",
+      "bytes": 292
+    },
+    {
+      "path": "Classes/HttpGuard/OutboundPolicyEvaluatorInterface.php",
+      "sha256": "3495c5b5fd04aea0ad9647e7522b38911ceaad92802686eb260f742de2220ca2",
+      "bytes": 352
+    },
+    {
+      "path": "Classes/HttpGuard/OutboundPolicyExceptionInterface.php",
+      "sha256": "88fc047bba63e8e892b655449404ae6e36229364b3afff94a1866ad94c98571a",
+      "bytes": 299
+    },
+    {
+      "path": "Classes/HttpGuard/PolicyDecision.php",
+      "sha256": "30830d84834c4117838fe76bc828913b5f87ec07d23d92dc89aa18f1780143fc",
+      "bytes": 414
+    },
+    {
+      "path": "Classes/HttpGuard/PolicyEngine.php",
+      "sha256": "f492730646920a39fa2133daf8cc4ebc7d9f22847d40374cb52b4b8d7ed38b52",
+      "bytes": 9962
+    },
+    {
+      "path": "Classes/HttpGuard/PolicyException.php",
+      "sha256": "aaa881043e63aaa5b8105b4dffa1e0822a4eecd7d0a132e0895f6e99eaee30cf",
+      "bytes": 1096
+    },
+    {
+      "path": "Classes/HttpGuard/PolicyRegistry.php",
+      "sha256": "d7dfc7512740bdeed82341259d82abc6f4f4c3338a0c2131da6c70b9a07be808",
+      "bytes": 3206
+    },
+    {
+      "path": "Classes/HttpGuard/PublicFetchClientInterface.php",
+      "sha256": "12083122d2b0ff45cb711d0efff5fcd7921ba3d2e111ebcfb40f04a7a20bb7fc",
+      "bytes": 349
+    },
+    {
+      "path": "Classes/HttpGuard/RequestPolicyContext.php",
+      "sha256": "2ef219f6b4d50b29aa89f909e0aeae7a9cf31e17969077c446c9285f7e795fe3",
+      "bytes": 403
+    },
+    {
+      "path": "Classes/HttpGuard/Resolution.php",
+      "sha256": "c7ee1297e612fdc67ef0b8151531717cc2cfdb3a5ad808fbba27cc4f05586383",
+      "bytes": 502
+    },
+    {
+      "path": "Classes/HttpGuard/ResolverInterface.php",
+      "sha256": "cf18504b5a8e734bf68b87a4934e264fed8ed2683078e3b1b117e7839846472e",
+      "bytes": 256
+    },
+    {
+      "path": "Classes/HttpGuard/StaticThenDnsResolver.php",
+      "sha256": "e2aa47f5828a9baeb12096980d4f2d815e3d9d7742454bde3efed1c70b4bd676",
+      "bytes": 7973
+    },
+    {
+      "path": "Classes/HttpGuard/SystemClock.php",
+      "sha256": "a4efbccd86987f661dff58b7fdb268d5cf1232b85a5798fdc92735a8f8486941",
+      "bytes": 479
+    },
+    {
+      "path": "Classes/HttpGuard/Target.php",
+      "sha256": "3def0c0f78a43d68b0cb1590aa3b51509fb550d197d0fb671636247cea82d5fa",
+      "bytes": 455
+    },
+    {
+      "path": "Classes/HttpGuard/TargetNormalizer.php",
+      "sha256": "ec127d26fd05d1260600d1f69979968cd4c6b6bb57ec34946450d068fdfcc8f8",
+      "bytes": 5648
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+      "sha256": "c1e33df4e62f8f5209b4d5972cf664cf22ea5166f75c08538f091e3b8bb31d48",
+      "bytes": 8350
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/GuardedTransferFactory.php",
+      "sha256": "5d3d53d2c6218a8ddcdc01c0630af003738adf083a859bd99c51af5d82cf82c2",
+      "bytes": 825
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/InvocationRegistry.php",
+      "sha256": "a35a8dcc4da127660ad4383221f4c8246edc64d70d7cadf287153c21266171db",
+      "bytes": 1964
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/InvocationToken.php",
+      "sha256": "8d6680d98fb0dd7112defa3789ebf00bc9c9dc0764d3459d1d46a634571c4bf8",
+      "bytes": 563
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/OptionSanitizer.php",
+      "sha256": "305c35d35d2fc1f24ecc2433119bf7ff848133efc028bc1d0b38e7a0d2a6e772",
+      "bytes": 13221
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/RequestEnvelope.php",
+      "sha256": "9dd73a9185b97a5cd2081b128e80cecc5c2695c5f1a747c352c0d2691d5d63dd",
+      "bytes": 967
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/RuntimeSupport.php",
+      "sha256": "b2ab91e97b9dc68b970df77fea3b7dd3d90b972de97dfd19e049201b7108db1e",
+      "bytes": 5689
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/SingleUseCurlFactory.php",
+      "sha256": "746294f0e06e2c8cfc1ab70c24bde8b7f7f1b0cd55742663a0dc93c8ee1df5b3",
+      "bytes": 1142
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php",
+      "sha256": "8c0123c7539ade04e3ed665509a00f5dff34fd47758c9bc805d4366e13971948",
+      "bytes": 4957
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TransferDriver.php",
+      "sha256": "d2fa49c2f962d9958e183112ecbc7f75d548cf0561943a3397486d9bf11c7303",
+      "bytes": 1795
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TransferDriverInterface.php",
+      "sha256": "c5ac2cc86570161c920e63e358fb873355d2a62dae10f81ca57c10485a061636",
+      "bytes": 242
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TransferLease.php",
+      "sha256": "1b2f6d48ea6dd4c25767863b516a8c8c63bade4b2a84c4e89cef2da632f98d78",
+      "bytes": 10903
+    },
+    {
+      "path": "Classes/HttpGuard/WireDnsQuery.php",
+      "sha256": "e2953340fd31516415fe6f49a6d4ecc96d222bc945597087a49b9d8f071b5ed9",
+      "bytes": 8189
+    },
+    {
+      "path": "Classes/Service/LibraryServiceFactory.php",
+      "sha256": "df00637db1927e72f83a63b2410f29d91145f34786b142c8519e02f7d68194f6",
+      "bytes": 2858
+    },
+    {
+      "path": "Configuration/Services.php",
+      "sha256": "7716a69166605357af4f23c19bf2d010836ad922882cd3057334ae7bf07fe695",
+      "bytes": 966
+    },
+    {
+      "path": "Configuration/Services.yaml",
+      "sha256": "84a996ce172b6373b8f9016f4a073dc7cb6e24d6d08b24abe89d99b473890130",
+      "bytes": 3510
+    },
+    {
+      "path": "Documentation/.editorconfig",
+      "sha256": "0f0a49d306d429cda955ca90ecd9196e981c58641e772b0d410473790d9aed42",
+      "bytes": 148
+    },
+    {
+      "path": "Documentation/Adr/ADR-0001-ScopeAndTrustBoundaries.rst",
+      "sha256": "bc42e51da15d9c5f243fe1e9420f1c61300276c0e39acceb682b119721eed8f3",
+      "bytes": 4833
+    },
+    {
+      "path": "Documentation/Adr/ADR-0002-LibraryAndIntegrations.rst",
+      "sha256": "577e38466d2bff901a497f3d3ae572fe06fa625eb47731d0b2f2f858aef6e199",
+      "bytes": 5036
+    },
+    {
+      "path": "Documentation/Adr/ADR-0003-MiddlewareAndControlledTransport.rst",
+      "sha256": "e1f4c5576aaf2de6f1de04e02ecc5a44a36c7485c223ef2682e6e7cd4895797b",
+      "bytes": 5300
+    },
+    {
+      "path": "Documentation/Adr/ADR-0004-FailClosedAndModes.rst",
+      "sha256": "9b5bc183b79a17e500c8524b43a597a76b9ce2d5d5fe9a893268e69e0bc968fb",
+      "bytes": 4837
+    },
+    {
+      "path": "Documentation/Adr/ADR-0005-DnsAndConnectionPlan.rst",
+      "sha256": "ae16542d14280b1a5f9335d56d54bdd49ec01410fbf69c1c2e218e72b2319b72",
+      "bytes": 5208
+    },
+    {
+      "path": "Documentation/Adr/ADR-0006-ClientBoundEndpointGrants.rst",
+      "sha256": "1d54aa2c3c1353a96ca69097d1824ca4738a2a30f83efe3170c3d2f6f650df68",
+      "bytes": 4973
+    },
+    {
+      "path": "Documentation/Adr/ADR-0007-SupportedTransports.rst",
+      "sha256": "4773c3d56560a5e30276141f3c899e6fd6c73551f65c05f3bef9f1300c082cf1",
+      "bytes": 4809
+    },
+    {
+      "path": "Documentation/Adr/ADR-0008-RedirectsAndCredentials.rst",
+      "sha256": "ef705b549f486920a2b0c396a02626042802416421682f5d088952c61df7aac3",
+      "bytes": 5167
+    },
+    {
+      "path": "Documentation/Adr/ADR-0009-NormalizationAndAddressClasses.rst",
+      "sha256": "8dec6bd09b5061968b53f8f612a8ff50a322076dcac75d2fc2f6bc17a88c497b",
+      "bytes": 5162
+    },
+    {
+      "path": "Documentation/Adr/ADR-0010-CacheIsolationAndConcurrency.rst",
+      "sha256": "142391e365454f597341b442be7d0460361a1a0c5a1fd772f4a5280229fe1410",
+      "bytes": 4976
+    },
+    {
+      "path": "Documentation/Adr/ADR-0011-VaultStreamingAndCancellation.rst",
+      "sha256": "b0ff2c330bca7b15f20a4353360f9347f2791690207054fb2ebd70ba519c608e",
+      "bytes": 5246
+    },
+    {
+      "path": "Documentation/Adr/ADR-0012-ErrorsAndObservability.rst",
+      "sha256": "1df841395b144095535f84da7e249b2a6896694d8709d13601868d8239cef24d",
+      "bytes": 4836
+    },
+    {
+      "path": "Documentation/Adr/ADR-0013-CompatibilityAndMigration.rst",
+      "sha256": "4c3ae9a41489f3158d7007e3b32acb60bfcd5b32c480134c2e5f38cd13e24b49",
+      "bytes": 5109
+    },
+    {
+      "path": "Documentation/Adr/ADR-0014-SecurityEvidenceAndReleaseGates.rst",
+      "sha256": "c888025ebae975102f0d112c8b0fbf99f1e1a8cf631b64ee67116eecc31809e0",
+      "bytes": 5040
+    },
+    {
+      "path": "Documentation/Adr/ADR-0015-SingleExtension.rst",
+      "sha256": "45ca618bac0cc2e5140c63eb3434ddcc94572b0b303f7890b46a7e954534421b",
+      "bytes": 4118
+    },
+    {
+      "path": "Documentation/Adr/ADR-0016-PublicRequestFactoryBoundary.rst",
+      "sha256": "526c63a7ce0124464232eb8b9c68c6a2a1d942ed46ce431d547741aed1e7a245",
+      "bytes": 4564
+    },
+    {
+      "path": "Documentation/Adr/ADR-0017-ControlledDnsWireResolution.rst",
+      "sha256": "3dc60712a6d2f34fc05789023c4e4249b9343be7530d67023f78f1f811bd8949",
+      "bytes": 5097
+    },
+    {
+      "path": "Documentation/Adr/ADR-0018-SingleUseCurlFactory.rst",
+      "sha256": "cbe4c22d6eb43534cfe77c92d28e21b340efa609284d6a58d4a0d6df1dc39777",
+      "bytes": 5580
+    },
+    {
+      "path": "Documentation/Adr/Index.rst",
+      "sha256": "40f178215dcd71f1b7274cd304901c169f1bee89d3082703797ace95791d9a98",
+      "bytes": 3324
+    },
+    {
+      "path": "Documentation/Api/Index.rst",
+      "sha256": "99a69945ca99cbe2e9654e3a942c9e91d68e9e50ffd634b82ca86271da124a98",
+      "bytes": 7084
+    },
+    {
+      "path": "Documentation/Api/_ErpClient.php",
+      "sha256": "c7d6142831b07346ed062ad2bf9db959237137d8ebedfbb4a96dc22d9a873633",
+      "bytes": 819
+    },
+    {
+      "path": "Documentation/Api/_PublicDocument.php",
+      "sha256": "eb49744313d56f2528b201e26b8c0a5586514cbcb40d53b592f711c657cfadc2",
+      "bytes": 548
+    },
+    {
+      "path": "Documentation/Configuration/Endpoints.rst",
+      "sha256": "e14aa3dab6cd5ba14769bd9d65411959abc32b85a03c7e700dc6b73f2860ec9c",
+      "bytes": 4201
+    },
+    {
+      "path": "Documentation/Configuration/Index.rst",
+      "sha256": "b83bb9ce7906132f01fc2802fa912136c1e0a4c59760b32076c0f9d0e91aae5e",
+      "bytes": 2029
+    },
+    {
+      "path": "Documentation/Configuration/Options.rst",
+      "sha256": "6eee2ad3d6b6b9e2ed98a329dff321bd16f54c11db27a4fd93706da3a29356af",
+      "bytes": 4731
+    },
+    {
+      "path": "Documentation/Configuration/_Policy.php",
+      "sha256": "e6beca6838602421e43b2c67f00fba02bebec5a4180ef8a9f298940e6adc7f71",
+      "bytes": 842
+    },
+    {
+      "path": "Documentation/Development/Assessment.rst",
+      "sha256": "6544dc168bed63552889fe97f5a82a4b961a4fce2af72326d84a4db37bfa1eb0",
+      "bytes": 13108
+    },
+    {
+      "path": "Documentation/Development/Dependencies.rst",
+      "sha256": "fb3cd7879aa46e53cca0f951cdac19e7ab971808556b5621dd561a2a6fa1e2b7",
+      "bytes": 9497
+    },
+    {
+      "path": "Documentation/Development/Index.rst",
+      "sha256": "f95bd78a4fb1788b0121362c3a789dad17ed895dc2aab1eaab0de43da6545456",
+      "bytes": 11009
+    },
+    {
+      "path": "Documentation/Development/Licenses.rst",
+      "sha256": "e2629eca045d89d4c93ad9aba096ec1dbc5dacbb7c3539b35389814492937a75",
+      "bytes": 2571
+    },
+    {
+      "path": "Documentation/Development/ReleaseProvenance.rst",
+      "sha256": "ae3198b0039741a76ca4e2b443aca5014f3b0fcb6836cba560f4cbea0583cead",
+      "bytes": 4465
+    },
+    {
+      "path": "Documentation/Development/Requirements.rst",
+      "sha256": "5c39de28a184db057a40d69c888f1f477aee518e877e293c004d5d3af08fa1c9",
+      "bytes": 9002
+    },
+    {
+      "path": "Documentation/Development/Verification.rst",
+      "sha256": "b28313fb1400722f3f78f346c5d290c0bb8aeb7e335d90c5fbf3b7e314b4d9e4",
+      "bytes": 9894
+    },
+    {
+      "path": "Documentation/Development/VerificationHistory.rst",
+      "sha256": "44e419030888415f6a02917a1a457e8293e6106c6e467fd65d94d97797fba1a5",
+      "bytes": 4656
+    },
+    {
+      "path": "Documentation/Development/VerificationSnapshots.rst",
+      "sha256": "de1222fcb8028f4ba29f5b0ba710756a50df69fe82c38eb95695039f637e8174",
+      "bytes": 9438
+    },
+    {
+      "path": "Documentation/Index.rst",
+      "sha256": "fc8c03a50ccb11aaedce542d3d121fb79dab00516fb3bcd4645bb161ef50bb34",
+      "bytes": 3083
+    },
+    {
+      "path": "Documentation/Installation/Index.rst",
+      "sha256": "804efafdf38dde8ef96279b68d432a43c1fe5a161fa8d7947d46a15362e60773",
+      "bytes": 7537
+    },
+    {
+      "path": "Documentation/Localization.de_DE/.editorconfig",
+      "sha256": "0f0a49d306d429cda955ca90ecd9196e981c58641e772b0d410473790d9aed42",
+      "bytes": 148
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0001-ScopeAndTrustBoundaries.rst",
+      "sha256": "0ece0dd61d80ddbe1efdf3b1e52f8d3e03260dab9f1ad1d9ce0e7a2c9b4fae23",
+      "bytes": 4589
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0002-LibraryAndIntegrations.rst",
+      "sha256": "437e30053dd17c7d8e7ffceb227360e307fba54e4aac57d84aa0af75b76175c6",
+      "bytes": 4759
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0003-MiddlewareAndControlledTransport.rst",
+      "sha256": "3088c7b78a5f9b2a6084d36511d32d5a8251e521913fe73ab559bc6818dfa1c1",
+      "bytes": 5070
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0004-FailClosedAndModes.rst",
+      "sha256": "406f5bf8594bc847c6ae7e75fce080d2fb494d4fd957bbe412fb1b48c0479d87",
+      "bytes": 4609
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0005-DnsAndConnectionPlan.rst",
+      "sha256": "a58acc23ec8bb1fd6eca5fcea7dc9d4ffb8b1dc4895dc75d977497438974706b",
+      "bytes": 5002
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0006-ClientBoundEndpointGrants.rst",
+      "sha256": "c591ae8dc0cbff7d3f433b04a18a7f7b69e19125b4780c8a8b84d1095c65bc05",
+      "bytes": 4594
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0007-SupportedTransports.rst",
+      "sha256": "ddd05978c0f3aed435640f60c19cfb0949cc72e250217e98f9e3fcda04470156",
+      "bytes": 4615
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0008-RedirectsAndCredentials.rst",
+      "sha256": "cd0eaa56bb05aa7eacb08e82fdbc03521618073b3063f924971463c2b8c2c6fb",
+      "bytes": 4883
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0009-NormalizationAndAddressClasses.rst",
+      "sha256": "89662ae230808db281dbca0993793a54914253db9e6dd07a9958cbff756247ca",
+      "bytes": 4919
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0010-CacheIsolationAndConcurrency.rst",
+      "sha256": "6992367fae872a625c67f1a68cd9f054497aad3c9293590032e72c4a09eb857b",
+      "bytes": 4834
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0011-VaultStreamingAndCancellation.rst",
+      "sha256": "84aeac5f9ba141d7658c2681486153315fd928d8362c61d05546d73ec4e597e1",
+      "bytes": 4938
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0012-ErrorsAndObservability.rst",
+      "sha256": "c04d99573a07522819dae7622779dd5fdc72771f178241a865cd458b9f22ad70",
+      "bytes": 4623
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0013-CompatibilityAndMigration.rst",
+      "sha256": "84ac9c603829b82f48eaf351b889cb635c15e956aa44a2d814c3ad73ad52653c",
+      "bytes": 4781
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0014-SecurityEvidenceAndReleaseGates.rst",
+      "sha256": "64110f3c699d1efeb57ebb6c42cfc94a6f0186a39001b6dca89113ad558f5c5b",
+      "bytes": 4750
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0015-SingleExtension.rst",
+      "sha256": "fb1cf1cf4707b4eab772b87a9fae3ea4bc2598a6eed5b4f39d3aaba22c79c70e",
+      "bytes": 4473
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0016-PublicRequestFactoryBoundary.rst",
+      "sha256": "59e3906de7d6ed06b1c7508ac483c4e00db9117c78ccb47002b8e943bb5fb3d1",
+      "bytes": 4495
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0017-ControlledDnsWireResolution.rst",
+      "sha256": "f3a6bca499e2c7b846770f9d8e1c779f825d54bcf76545d5482129429cd3bf38",
+      "bytes": 5503
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/ADR-0018-SingleUseCurlFactory.rst",
+      "sha256": "2540e746116480fa0545cccbede9fdc2d955a6e48ac54c332c9c244de7bd8ad5",
+      "bytes": 5986
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Adr/Index.rst",
+      "sha256": "dacb3c49a1ec0e71f6bd0b245a300217e194580d4cb0191669f81a0d9799683a",
+      "bytes": 3581
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Api/Index.rst",
+      "sha256": "82259083b0124ba5e84bb90d6c6d316cd097806ebe87156662c3de79530084f7",
+      "bytes": 7612
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Api/_ErpClient.php",
+      "sha256": "c7d6142831b07346ed062ad2bf9db959237137d8ebedfbb4a96dc22d9a873633",
+      "bytes": 819
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Api/_PublicDocument.php",
+      "sha256": "eb49744313d56f2528b201e26b8c0a5586514cbcb40d53b592f711c657cfadc2",
+      "bytes": 548
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Configuration/Endpoints.rst",
+      "sha256": "14f538ae73a1bcc192eb14391279454f51d04c9c0512b237caefe26431a46239",
+      "bytes": 4504
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Configuration/Index.rst",
+      "sha256": "3fb6cea13dff7cb9cf8748547a9f3ee0ad25998381186732922c1f52de11c0e1",
+      "bytes": 2222
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Configuration/Options.rst",
+      "sha256": "3c1270dab9f101044583107f345358768da47ca598cd3581ae0b659285802814",
+      "bytes": 5067
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Configuration/_Policy.php",
+      "sha256": "e6beca6838602421e43b2c67f00fba02bebec5a4180ef8a9f298940e6adc7f71",
+      "bytes": 842
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Development/Assessment.rst",
+      "sha256": "926b4c7771b479a31798e3d3e18594480ae7ec4e2de0b8b7c06b926707ee2d65",
+      "bytes": 6547
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Development/Dependencies.rst",
+      "sha256": "e7f0591ecbdfb241108dfdf18f86250403dab15ba3ed7fc399815448ac03ef48",
+      "bytes": 4209
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Development/Index.rst",
+      "sha256": "85d7381966d03741674684fc5a7cb0b663cd593e8cb2812e6f4ae1534bdaa5ed",
+      "bytes": 11329
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Development/Licenses.rst",
+      "sha256": "4979ebdb7de01c20b181267c11e416b1a5fe549fe790d3419849a388c149f854",
+      "bytes": 2741
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Development/ReleaseProvenance.rst",
+      "sha256": "4d9fb9a9598001113b3cd12f6edb636f05403d79df1c52d90f311319416c9dcf",
+      "bytes": 4456
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Development/Requirements.rst",
+      "sha256": "192bbaf87c00b1fc7e117fe4a0d409c90a51bbc46428938ab73bdee897ac7210",
+      "bytes": 9502
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Development/Verification.rst",
+      "sha256": "a6ff5109427f5f31da8433f6b4c9737e49a9d5460a28fa6fa0e04414ab6e3087",
+      "bytes": 11003
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Development/VerificationHistory.rst",
+      "sha256": "d2e3868b69deef88b0eb50b218fad4276036b360d825b2569104d746f38b998a",
+      "bytes": 3136
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Index.rst",
+      "sha256": "0e040cd5ff3a0d4023456a9662454fda407d5fc7952af9cfb2a2fe1b8d95e97d",
+      "bytes": 3408
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Installation/Index.rst",
+      "sha256": "007f0f16f3107277086fe131f6b73237304ad68e478297058ab9faf2b8bba1fc",
+      "bytes": 8371
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Operations/Index.rst",
+      "sha256": "3cda87e14a7b8084c0b548769c55ccae1a68e1bfb78ada96f36094f3793697f8",
+      "bytes": 6929
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Operations/Reasons.rst",
+      "sha256": "97eb15147152385cf96a3b7b22e00e199e6a09c395fe9c517c3aab52f6df94fd",
+      "bytes": 3022
+    },
+    {
+      "path": "Documentation/Localization.de_DE/Security/Index.rst",
+      "sha256": "ca8c69900b80f8a1a272dbe28a2e7b4afebe540ffcbf50cf7d03b9fadeff4186",
+      "bytes": 7667
+    },
+    {
+      "path": "Documentation/Localization.de_DE/guides.xml",
+      "sha256": "f8b5a484464a88f9d24f3f209edbe5950b5edbacceb6d33ae6990863a957fc21",
+      "bytes": 1006
+    },
+    {
+      "path": "Documentation/Operations/Index.rst",
+      "sha256": "fab3de0e96c7caf18805231c6efb6a3320824f748e72b5c1a14bea1250c76306",
+      "bytes": 6418
+    },
+    {
+      "path": "Documentation/Operations/Reasons.rst",
+      "sha256": "dc933125633b30a7c973fd28bbdcd10ae373bab788a0c637ae732179a31e93d5",
+      "bytes": 2859
+    },
+    {
+      "path": "Documentation/Security/Index.rst",
+      "sha256": "b8e245a304f835739b8587fe07e482cc30a6e1c4eb3f6969fedf1d26cb618382",
+      "bytes": 7123
+    },
+    {
+      "path": "Documentation/guides.xml",
+      "sha256": "8a2761907f2302ddb8fb1ccc5f0420b3a59403d8313c86b436f93a08660516c1",
+      "bytes": 987
+    },
+    {
+      "path": "Makefile",
+      "sha256": "9243d4d7be98cdd81ca9611ef7fb3e4135d158862a3f1f905bb7a75d6abc0f35",
+      "bytes": 1048
+    },
+    {
+      "path": "README.md",
+      "sha256": "1c1d9b291e2f4efc7651062b58d7259e00679144d03a95ec360e1a5c6114d38b",
+      "bytes": 16116
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/README.md",
+      "sha256": "9be5f9dcd17e1571d3416239fac0f91534855cc2ccc69cfcf4b5d910e294af3f",
+      "bytes": 5156
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/address-cases.json",
+      "sha256": "0cc1f00d95aae1bfbfa68f4261b81e9c966af0aae8072220b8905e2b1978a452",
+      "bytes": 163409
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/address-rules.json",
+      "sha256": "902487802ef2f9edc3c0b1ecbcd343bb4cadf216ffddb6ebb64d2d7e9f5c585c",
+      "bytes": 26483
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/checksums.sha256",
+      "sha256": "f08af7adac986ea3f67bb513ba34c15885e624b976844e2199cdcef40fc0d946",
+      "bytes": 1673
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/derived-hashes.json",
+      "sha256": "e8dbb03909ac2fa07809439d35d4799655728510c5999c06caaf63c358ae0b9e",
+      "bytes": 750
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/endpoint-cases.json",
+      "sha256": "4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825",
+      "bytes": 14276
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/library-matrix-guzzle7-install.log",
+      "sha256": "7e8e9d54cddacee6059260b0fdd20d25d86f8b8b887b9e1a93c7eae0cdba1e3a",
+      "bytes": 7140
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/library-matrix-guzzle8-install.log",
+      "sha256": "8978ba3e4d84294f8c62b08e20de6a7b9ed5542df6c097fec3d89b0dd0faa9fb",
+      "bytes": 7086
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-benchmark.json",
+      "sha256": "cddaa71717529d515edfe08da012a546adeb22a0d56538bcda57573f5363157d",
+      "bytes": 973
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-performance.json",
+      "sha256": "5b41053622b0d7801baf8835ab6d26a75a8c0c2c67b7bb3a3dd044874356851d",
+      "bytes": 3692
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-performance2.json",
+      "sha256": "2590ec472e76ede4f2f15a8735ac49a583c9496d2060124c6a19ee57a3bd55d0",
+      "bytes": 2091
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-prefix-index.json",
+      "sha256": "4e6313660e7a9d8463bada4410d00ad406432815538d2f3a5756b92a23f3ca1b",
+      "bytes": 1950
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-cache-revision-test.json",
+      "sha256": "63acc5f31faccbf1b1968ef60fad78d27e5aba170f0d12eee887daa1c41f95ab",
+      "bytes": 3303
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-canonical-v6.json",
+      "sha256": "0db8d018defcc820d9f4fe7bd91150b9e8e0c4ffc4127b6c0d9d0e5fde78ef67",
+      "bytes": 1386
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-config.json",
+      "sha256": "792bf8c21aef6621c9ca08b73f3810fa1f3398cc0c3f3ed81b0426098a749a5c",
+      "bytes": 1022
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-corpus-red.json",
+      "sha256": "edeaf705f932d50cce5131448ae3068779bce3404c3427d23fd4d7e98dcf34a2",
+      "bytes": 1041
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-data-revision.json",
+      "sha256": "236118d2da3e2604b69fcca8d30c61f2dd490d93d2f1e38c8f5976654cb1aa2f",
+      "bytes": 1389
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-codec.json",
+      "sha256": "679591f2d455824c1609a534e79f3015ae47886476d491d11571eb8bcb4f6805",
+      "bytes": 1025
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-red.json",
+      "sha256": "326d3cb7cd816df76528910cc9f9ed25c3215bebe006c4f763d19fbf3c26b336",
+      "bytes": 1042
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-transport-tests.json",
+      "sha256": "fd8e939fa0b2a9ac377a9183e4c0a67ffa8534ffdf0aa89322e70c0af81cac93",
+      "bytes": 801
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-wire-red.json",
+      "sha256": "6b7259077df5429ab56947e991e2b6132c31f839b36d002302fba24f081e2d56",
+      "bytes": 1041
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-wire.json",
+      "sha256": "aceac0587cd207aef8ff155fad230b0d0dda69fbd2c6492acf153ea2a54c2158",
+      "bytes": 1023
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-internal-metadata.json",
+      "sha256": "e0f6a4adce303c6ddba6b562c11181b2e546cb13a2f8ccefaec9077e846fc2ba",
+      "bytes": 1225
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-isolated-capability-probe.json",
+      "sha256": "76b110193e2df32c863bf5b5ea57dfd5714e7c919e8d8e8cc2b1e5a15968a81a",
+      "bytes": 811
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-isolated-capability-tests.json",
+      "sha256": "64fd9bb02e9fb03980d79c42adbc582b3d80c3b56821dd8f24ad34d69b5c4343",
+      "bytes": 2725
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-helper.json",
+      "sha256": "4d9b38d400febc42385e10d0faebbcf71214eb4cee1627cb462620e583a56bdc",
+      "bytes": 1869
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-test.json",
+      "sha256": "ab77ff1c341808b3d349ef4b234df9321f4b93504ca706f6d5fe0bea8e5e7857",
+      "bytes": 1823
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-types.json",
+      "sha256": "409b5241dfda3bc9298dd5c0e456ddd6b41af3947496514f7c12ff587cd664e4",
+      "bytes": 1289
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns.json",
+      "sha256": "7a806309752444ff2b16524e8c04f03536cd33bc3b8a147fdd9a7045d0f4b1a4",
+      "bytes": 3471
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lifecycle-red.json",
+      "sha256": "572b28aa252489b64f7174f0cfd3987c3effaf158cee3a78242099ccae037f16",
+      "bytes": 1044
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-normalizer-classifier.json",
+      "sha256": "b697419a10d75de56cdc0ce234cf4df3f4ab699a1bb9632a6ea1257b3d93c96c",
+      "bytes": 1699
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-observe-event.json",
+      "sha256": "34867588c943008861c7ac7cdb47125d47b863ac4b03da547c36bce2a4b318a6",
+      "bytes": 1225
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-observe-red.json",
+      "sha256": "90df2a90ae244c7feee82c063682b32f82f160fffb81529b0585a9ba46f36bbb",
+      "bytes": 1246
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-private-grants.json",
+      "sha256": "4729c48595e339e538889a89ea2caa2f82e216555252b725a57d48d3976bfb4f",
+      "bytes": 3266
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-public-interfaces.json",
+      "sha256": "54d8e3431e1994b698e8d3d2083107a8861e817e90fa6e0e3edf2173ff205cc1",
+      "bytes": 1721
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-raw-target.json",
+      "sha256": "3d36a5ba83f92bc21361197c709e6e7b656d99185c51b261fd9eef3a30260c7d",
+      "bytes": 1399
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-registry-engine.json",
+      "sha256": "5a1863019a746beb82704ef942217b7d729f476dcbec344bf5e4641808ab177f",
+      "bytes": 1692
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-reporter.json",
+      "sha256": "c8cd8326dbcf608d24fceb333918d2c3dd7cb6740b98bdbd2b24207f2634b8ae",
+      "bytes": 1027
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-resolver-boundaries.json",
+      "sha256": "9486f7c2a4eba89c47619486477b81c346f4529aa51b435c812e7d7bd0bde24a",
+      "bytes": 807
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-resolver.json",
+      "sha256": "db2ad64b1d1f56cb6f1917635ea068c4a75a9d39a8d0eb9a62322bf4ebf36123",
+      "bytes": 1032
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-static-final.json",
+      "sha256": "3763600ed747e7615afe63fb6652270c3a06dc2bcf06ce8df3888a60d6d8fdd7",
+      "bytes": 1389
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-static-validation.json",
+      "sha256": "88a63501ab3544e47e61269ffa1d0aa0e7476eeb11d6a86af1017236c23d92d0",
+      "bytes": 7832
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-strict-red.json",
+      "sha256": "c84f557cb6220a1d8864f4bd2a94631fca5f4af48fddc98ab085bc4b9810f36c",
+      "bytes": 1047
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-telemetry-red.json",
+      "sha256": "77230a9b7a6d09521bc87e1bb70f5803ebb04129e33428b21e53ae11b02aa7f4",
+      "bytes": 1044
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-ttl-age-red.json",
+      "sha256": "048252a3cb8f819c5616338a1279ead59c0cec496ad9618693016b2de6924a47",
+      "bytes": 1246
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-ttl-age.json",
+      "sha256": "c0370ae06b9e8c74cfe6b797fd92ae32136476073c6be59a54c1472efb388c75",
+      "bytes": 2274
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-type-contracts.json",
+      "sha256": "5d37424381e5102216fb1b62eb878113698c4f5726b5d3baa3e47eec790d7ca6",
+      "bytes": 11973
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-v6-loopback-fix.json",
+      "sha256": "0d41d4dae47787a9789068226e87b8bf422971040585986885ee217795f5e92e",
+      "bytes": 1452
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-v6-loopback-test.json",
+      "sha256": "80cecf76cad139e70cdcfc575c840695eb973c8a73edcc9b614aaed98fb2e55b",
+      "bytes": 2098
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-after.json",
+      "sha256": "5da8bfbe674159c06d07a1982de837775402b4c0d744a8698a4d3b88857d7147",
+      "bytes": 265
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-after2.json",
+      "sha256": "4530479bd49c79932157b64dc9e4d8f9f9de2ce856c19fca510af4747faf260d",
+      "bytes": 266
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-before.json",
+      "sha256": "c3f1559b28cf74d5b45a01070330768fb1b11920359680830643c132f127fd29",
+      "bytes": 269
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-final.json",
+      "sha256": "4c9a19ea5ce5fad71c1072634bf64d578132e3be1fbc4fe0723225610db2aa43",
+      "bytes": 264
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-indexed.json",
+      "sha256": "d2194bf26c98fbc002c81b53db25ec71e2b2906c85bfea657bb807400d524700",
+      "bytes": 265
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-execution-manifest.json",
+      "sha256": "a254838e4d272e030a773c065db7d0a75d3ec0168abe93012b19c991a0925ada",
+      "bytes": 9792
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-g7.log",
+      "sha256": "fb08b0536f098732b4f7d958be8836ec48e45e992d75d16e937f0833a8359142",
+      "bytes": 362
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-g8.log",
+      "sha256": "fe8152d460de64f565466c73775e042a317ec191f010d1382f2f2c37e58ef417",
+      "bytes": 362
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-phpstan-8.log",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-phpstan-8.log",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-binary.log",
+      "sha256": "34fa52bb2fced422a2821cbc656388fc405d6ca45db0fd00d3f070fe69f76200",
+      "bytes": 1146
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-corpus.log",
+      "sha256": "339652ebee74863ed58dc9eff69954c23f43c1496e26bd137bb17888a930ac58",
+      "bytes": 2707
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-dns-packets.log",
+      "sha256": "53e3e46dd45bae15cb92b10ff9717c6652dc4e7b13bd57b9e031050320f7de6b",
+      "bytes": 2046
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-dns-wire.log",
+      "sha256": "bb54ea0aa720bcef148e172c54a976aa1d54a6ed3f5e6d26ade02fe1274b28da",
+      "bytes": 1367
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-lazy-dns.log",
+      "sha256": "ed65cc13d9a3df7f4776dddb89cc5bfe576f6f9c4ec978175c7bdb3f17fe7d1b",
+      "bytes": 1005
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-lifecycle.log",
+      "sha256": "6b8e99071973e0725b00665fde1fe0ab6768e7f5cae272200705a56eb450eb40",
+      "bytes": 4681
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-observe-event.log",
+      "sha256": "f824e433a346ece85d53363017698b39e205cdcb95408c9bb061e779de9de56b",
+      "bytes": 728
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-strict-inputs.log",
+      "sha256": "88be46dcddb7ef6d3e33c79f86bc177536da81c7bf06b74db67b5b48e08b5cb8",
+      "bytes": 754
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-telemetry.log",
+      "sha256": "f9df33355848beb3658ab020f690ad07b91975e1445c1f88916bb2345fc4f9ce",
+      "bytes": 1079
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-ttl-age.log",
+      "sha256": "54767216c2a248c6aabb8f020ab2189fb1ee020bd6ec9cfec9ae127dd659eb51",
+      "bytes": 713
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-v6-loopback-prefix.log",
+      "sha256": "18e6f398869b6d0d5b613caa8ca7ae1aad451f1288228651d36a17205b8129ed",
+      "bytes": 731
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-runtime-g7.json",
+      "sha256": "7108c44fd9b57bc36bfdcb7c8a814a442ebd19f88da4804e495d708d66c70f71",
+      "bytes": 2424
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-runtime-g8.json",
+      "sha256": "f9ef8a9e8baaeb5e2948b85eefe9bcb5deeced922793132545871fb665657de8",
+      "bytes": 2422
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-source-sha256.txt",
+      "sha256": "598690dd275dd08af96baa5c68de43487b93d25c80eb99cc370031db16b4ad33",
+      "bytes": 3786
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-baseline-summary.json",
+      "sha256": "278c3f01021d151ee8b309bc837066b05ecde07a994de07442eb634c0a6328c3",
+      "bytes": 2244
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-dependency-retry.log",
+      "sha256": "6c5f76701d52f8442a02b8e05324e2eb31f89a099bcfdf3218364fb65795ec75",
+      "bytes": 412
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-analyze.log",
+      "sha256": "c63ae88a3c97499d8ae161c02424e55e63e5849a09aefbebb192d8e4719af5a9",
+      "bytes": 797
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-extract.log",
+      "sha256": "68629462a6d2a39bbd99409f174c8f236ba1341374df436d1a7b1d5a660e25e8",
+      "bytes": 18356
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-render-final.log",
+      "sha256": "53ed6f285d44fca0ed9faaa449f915e1dfea9d450add0f48d39bf46d5a65b4a3",
+      "bytes": 67576
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-render.log",
+      "sha256": "f5925ae78309c330c93c1a46d086554553d66f4d983f433955a1e579b661c19f",
+      "bytes": 67813
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-validate.log",
+      "sha256": "1a003436678f47fb2c216a4b2cfaf738f6e1f30e9515a9d20bb8f9729bb6121b",
+      "bytes": 4676
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-auth.log",
+      "sha256": "6a8739b48912159e0a864d014d2e362a0539556d1b25d1a35b6b03bc5745e3ed",
+      "bytes": 952
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log",
+      "sha256": "f3a8bd24c083d1afd97cc6e70ebf1ce5edd6e7ce32e09028b752c691c313d35d",
+      "bytes": 953
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-expanded.log",
+      "sha256": "c56e974e61f420dae4e1bc3ad61e54ae5d20e88d4e90daaa64505ea7abf0a226",
+      "bytes": 953
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-first.log",
+      "sha256": "8ac986b623991187033080df3c1cdf13b1bed66767453f290f142c1c2e896113",
+      "bytes": 2679
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-green.log",
+      "sha256": "036290b398c8453014315a08c2ebbb9d92f84ffaf306961f9637c28c73849389",
+      "bytes": 951
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-second.log",
+      "sha256": "4cd7e2af609433453e9b7749133f512db497fe32c356784775445b6ffdb5c1c9",
+      "bytes": 2679
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-api-regenerate.log",
+      "sha256": "709afb0405a5a994b3f026f517761c0ec2e280468f7d963c6462d2feeefd6105",
+      "bytes": 1436
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-clean.log",
+      "sha256": "5e81a2b37864551a9c9b3411a60e6bd3109d17b7ab56c918426f212c6e7819fa",
+      "bytes": 1797
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-final-fix.log",
+      "sha256": "aa573fa8d843a78f5edeed2bd92c16f838cece50f4ee92d6fc3145fc0c122dd5",
+      "bytes": 2370
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-first.log",
+      "sha256": "7092e2a5dd1348a90698d631c396b248a238acfda452b128e74cf99e7158739b",
+      "bytes": 72459
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-fix.log",
+      "sha256": "1700da163381cd895c861a2a24b8be6cb9e80c4e03f13aff20f4dc43709b83e6",
+      "bytes": 4130
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-last-fix.log",
+      "sha256": "38bee5e219fd3fc7958b185c6fedf1ef67cd4c1b4af3589f015f0fcbe906cab6",
+      "bytes": 2368
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-rector.log",
+      "sha256": "fb04497bd40349d8b53df19691a7dce3dc1d4f98d5ce86a7b38df15b9236665f",
+      "bytes": 2230
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-delegation-green.log",
+      "sha256": "ab01169014a4c8ca61ef810975a5f876757daea15cee69af43e62404e7f14358",
+      "bytes": 1065
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-delegation-red.log",
+      "sha256": "3ae1c74335f127588e5869cb0cc5bc9a09441af17293f1a3f6c2e54da44babbc",
+      "bytes": 2374
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-functional.log",
+      "sha256": "72bfe43eaeb109e7d6f690802fda03007aa77993c9c8fe45fde39092fd8974e6",
+      "bytes": 1523
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-fuzz.log",
+      "sha256": "bf067419cbae64d3717bcfbf0d3c68b01a30627ec3e5782b318769d71af39276",
+      "bytes": 3061
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-unit-final.log",
+      "sha256": "3e3ee75affe620b4268f4f7bd06593c3e10b2bdb4a4f1dee5dd698d20637bf6c",
+      "bytes": 6221
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-unit.log",
+      "sha256": "58fd44aeaeb7c6253d9598837e758c40beb6fa8996a74ecb2ebcb85b200d78f1",
+      "bytes": 10183
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-functional.log",
+      "sha256": "521289deeaf7c7dd5a30b430e77a3f909edde4849d0c1910c65d910c9fd2ee45",
+      "bytes": 953
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-unit-final.log",
+      "sha256": "e9d1a619f34096e560985fcd6cfc854a77df88b9a912ee96c16ad8fb96223f13",
+      "bytes": 1602
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-unit.log",
+      "sha256": "8d39c8d2c915e5387938db507fdf4a32c32610ba9dc8b56c57a445d685fe2f42",
+      "bytes": 1602
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-lint-validate-final.log",
+      "sha256": "cd6cc3a35f8bb3af45c9effd8ed1c9ab801146e36a9b29f791376c2a6914e955",
+      "bytes": 44981
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-lint-validate.log",
+      "sha256": "a75689e4c1ce0895ccff61374852de08504d6d85afad553e27eba45bdaa95468",
+      "bytes": 838
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-oauth-green.log",
+      "sha256": "28008ddd85e453da49fde8ffc8a8c41e43d98cc50558378cb8493f54be729118",
+      "bytes": 950
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-oauth-red.log",
+      "sha256": "f4855af324909dd3e7130f769280693f97c8fe66407d1b3da5eac7276e01fcaf",
+      "bytes": 4276
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-binding.log",
+      "sha256": "60dd789b52d09f871bd716ea20b82637f5cc3112878d14e5d11c09df7f0ca880",
+      "bytes": 3388
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-clean.log",
+      "sha256": "1f7d7a97fd56cf12766ed4cdd9d3ae94cc65e8074751063968e7234c0d73d744",
+      "bytes": 1894
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-complete.log",
+      "sha256": "e5d7a476fc895ce1624407afa3cae39576fb699be2c2499e11321bce4d2d0496",
+      "bytes": 2347
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-final.log",
+      "sha256": "97e8215e0b720d18af4da000c39aac3bac57a793e1866f595c5fddf53c0fc944",
+      "bytes": 3388
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-first.log",
+      "sha256": "0cfb6a431d41c8542a7339989f2528d0bf112af1908c3475dda027b2e616aa32",
+      "bytes": 754
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-second.log",
+      "sha256": "3fcca15303606f8b728fbebf8ec2b451fe00a7fd0c7cbf6af48604beab4de33d",
+      "bytes": 7265
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-third.log",
+      "sha256": "378402d73f3a1f6a74e948dc2c8efaf9d2980fa6c19c1348764e751638ffe00d",
+      "bytes": 2513
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan.log",
+      "sha256": "6942d570a0ad8ad70fc48af3364b7b754abe1eee9f8d740eff2e40fa8fd4e749",
+      "bytes": 11561
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-clean.log",
+      "sha256": "5f58b5763fd0d3780acb31004983278224b3b7aee7489024791bea48e56781f6",
+      "bytes": 703
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-complete.log",
+      "sha256": "8b4d46487119521a287f1daf24689123430537043bd6aa3442182dc87c94b8b8",
+      "bytes": 3446
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-first.log",
+      "sha256": "3958ad840df4843dc901ea9058045261f7d7dfcb29b14007c0a063cbd3b66c02",
+      "bytes": 17102
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-fix.log",
+      "sha256": "8dc0a4c506b1cc1c72c79e48f6b0d36d87fd6927f403799a12d9e92afccbe2af",
+      "bytes": 16212
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-new-fix.log",
+      "sha256": "32b2d1bc756d5172b07c63aa1bb27d73dbc53572648114e696e99492f83c12ff",
+      "bytes": 3078
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-red.log",
+      "sha256": "e941010b975229a0de8ba5301decfa24de4e1130316622ee9db0128ee1788bc6",
+      "bytes": 2645
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-repo-checks.log",
+      "sha256": "472ce8d9cc09a9882fc5ac996d6d4540b0a99fdcebd39f32edb244adf9b022f5",
+      "bytes": 3077
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-bootstrap-regenerate.log",
+      "sha256": "40dd5315ac00b0118c7a97256c9601be4d26b6edf89cd1d19f6994b670b0e9f7",
+      "bytes": 126
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-composer-audit.err",
+      "sha256": "bcdc6d3b5745e92d0138cfafb75635dd175a338e01ff30e5339de5bc4e25983f",
+      "bytes": 202
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-composer-audit.json",
+      "sha256": "b216d5fffa5e7ee99e11d96ed53efcdaccb6facd77f04654a5b97a3ef9765030",
+      "bytes": 2315
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-functional-final.log",
+      "sha256": "ee441455e2dc375d0581531fbef7b6882b7a15ecad92888c7bfbde2ef518f31e",
+      "bytes": 1531
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-functional.log",
+      "sha256": "89fd44bbcfdcf48deefe36b39118f2ced534cfe726bac682d679fb95c1154a24",
+      "bytes": 770
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-unit.log",
+      "sha256": "78b2bcf963ab976ba3e34cbee15282ff992be1c69baf5d3e6c555fcd9beb0c50",
+      "bytes": 6229
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan-clean.log",
+      "sha256": "105de9070b068af90c8163b7d0f7c26e3db3b43fd4446436c96278de193b97ca",
+      "bytes": 1894
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan-final.log",
+      "sha256": "0cfb6a431d41c8542a7339989f2528d0bf112af1908c3475dda027b2e616aa32",
+      "bytes": 754
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan.log",
+      "sha256": "c92d70013c404caf67f01d604c4577649f391dbed32045ffd0236437d4b504ba",
+      "bytes": 2833
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-runtime-install.log",
+      "sha256": "49f763090c0a9f0f4d0c9d73fa938f7022f6794f984171459abd77cbae142189",
+      "bytes": 2328
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-tested-library-manifest.json",
+      "sha256": "696e7e9d499a5cdec8949b4b9a5d1ff98f8989f0f5ca5a088a9e5b11cd314404",
+      "bytes": 14823
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-adapter-final.log",
+      "sha256": "a6a9737e665e29e23368fb946663c6c7dc1ff7076430324c5bdae006d27c83c7",
+      "bytes": 441
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-adapter-source-final.log",
+      "sha256": "1fde6c1555526ab1285a28d67cf272e925177ff173c96b8242ca79faaa7b7c57",
+      "bytes": 953
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-cgl-helper.log",
+      "sha256": "0dae17382d407352db2f7b5c84dcec4943eb450ff5d7945e9ac58ee6b699ccd2",
+      "bytes": 1998
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-phpstan-final.log",
+      "sha256": "0b0dc83b1547ae95f71ae01b77752c21fc12bf1f371ef1d51ca56108214da8fb",
+      "bytes": 1894
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-tested-library-manifest.json",
+      "sha256": "c5395a17737f169281be50a57dc9a237c8b3e4d9530e2f1d2db544833abb0e39",
+      "bytes": 14815
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-baseline-status.json",
+      "sha256": "ff23bf6e41ef1dc2aaf8bc90eee9b9bc1b7638b1afaee8e73679cec31b76e386",
+      "bytes": 191
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-baseline.log",
+      "sha256": "da5b5a6035af5e78115c342e75e5714355b74ef0adaa7671837f58de0c635963",
+      "bytes": 23076
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-retry-status.json",
+      "sha256": "1295309c1c6022b778687671466f92bfe142795b34ec806d089d25524c641058",
+      "bytes": 86
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-dependency.log",
+      "sha256": "205f9838dda5fbb80354043ade7474085067fd07844a4d7b4714a607ee791c1e",
+      "bytes": 15417
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-functional-status.json",
+      "sha256": "a105f42778339c2dfd76f038ae3c14a6f5b9cdcd77a93e3c0fdb8482e5d06138",
+      "bytes": 434
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-http-baseline.log",
+      "sha256": "c06451f5205348a38f10def785fdfea7cca93591299ad93967823c885f03a85c",
+      "bytes": 1602
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-http-functional.log",
+      "sha256": "0a07e2bbe7bf226be873bfd03206d1329e703c9f90acc4594f9a05caea2fe5e4",
+      "bytes": 953
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-runtime-manifest.json",
+      "sha256": "8ee0ee176a9401ab6918a034e5b52e5bdd3fdd7e7ea57632ee2ed628672111f3",
+      "bytes": 620
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-source-verification.json",
+      "sha256": "577c885481a55210fedc09645966cadada1077beb7b95d63a56e0b21a255b841",
+      "bytes": 509
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-status.json",
+      "sha256": "0525e4df6e7190b573359c9b24523f6373e26c5ea22cbcd06d11d7ab51149d97",
+      "bytes": 558
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-resolved-dependencies.json",
+      "sha256": "e5a61b5fc7f7383376dd6d1b70a5ed9a58422b03099a337cc941a45e6dce4261",
+      "bytes": 391
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-run-checksums.sha256",
+      "sha256": "d3c22faaf084903c3a0f0ad5fe0f98745cc208218ebd7ba5866f504a87c78236",
+      "bytes": 332
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/policy-coverage.json",
+      "sha256": "5ccc2ca1eac6474e27362603c499182c9f4ac2c818d707a12dda6db3cfcecf64",
+      "bytes": 49254
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/requirements-tests.json",
+      "sha256": "246fc8caa23fed311aa35e4c38990dc127aeea041bbbcf2f352e7d1fa1222124",
+      "bytes": 66776
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/requirements-tests.md",
+      "sha256": "580f9e10e9bbc6cb61d01f2e34a514dbe2bf173ac351f7142b619217fee0d118",
+      "bytes": 10066
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/scenario-cases.json",
+      "sha256": "505451cd873a2b025c63416cf3ab4110eeb2f023553adb2bf2cf440482da9e66",
+      "bytes": 23070
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/scripts/derive-address-rules.jq",
+      "sha256": "7ca3fc45efbcff02b510381913fa8d690d3c944bdd2b5c0a7919b79bd29d43a2",
+      "bytes": 4393
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/scripts/extract-ledger.py",
+      "sha256": "507b2caa108fc9dd1de879fac7f00cc7c24e362139c5d13c0f8616261ab336cf",
+      "bytes": 4424
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/scripts/generate-corpus.py",
+      "sha256": "183acd8fdd59d5f934dee0b68c40cc0ef19aff7f2c675d472ea8165101b36c99",
+      "bytes": 10486
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/scripts/verify-native-copy.py",
+      "sha256": "870d8399363c5c35c0e845fe4c51a3cda8575b2d53cb0e656c145d3aa75e5013",
+      "bytes": 1650
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources.json",
+      "sha256": "f9fcf849ec1c8dd2586b7b0a6a5238e7e84714d1b78bbdec8b633ee10b08e33e",
+      "bytes": 6094
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.headers.txt",
+      "sha256": "7ab563ec1c52e4d62bbc16cb93df30926e12c34180421543f692a630844a68ba",
+      "bytes": 799
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.html",
+      "sha256": "23079e8cff48ad597f5ce75125d21d13c0bbc63f125fc59025d0b36b89b1614c",
+      "bytes": 71071
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/aws-imds.headers.txt",
+      "sha256": "d380e3854a545d3b8574b6b8e876425949d368c66a3c06d33fecd90db2c6a269",
+      "bytes": 1117
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/aws-imds.html",
+      "sha256": "545d26dd98e3fd43e2adc285227bc7af4d09852982460f2ac542f945c7877b2b",
+      "bytes": 40355
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/azure-platform.headers.txt",
+      "sha256": "d1e2303a4fbe7bbf2846e084c38dd6837f44f188b6ef53d5198bafd7a0443818",
+      "bytes": 2789
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/azure-platform.html",
+      "sha256": "953d013137c693d5cd9dfccdc62e363b4ca6f622688990ce57c8c5dd509eb70b",
+      "bytes": 56155
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv4-special-registry.json",
+      "sha256": "93e0467aecc194a5303bb89941ce1fd02d8c8affef04ac0574a3059ca4431a88",
+      "bytes": 16633
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv4-special-registry.xml",
+      "sha256": "cf24e11f41b7d42c68debe2d18b97cac815084ec413ebb3b244f704028a16f20",
+      "bytes": 13459
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv6-special-registry.json",
+      "sha256": "165896300556132f72fa1c4f80110d62f172ece28432eed97e40df1b5ddc1bbf",
+      "bytes": 16985
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv6-special-registry.xml",
+      "sha256": "c17f4380ba84fb2160dae82ebfd8bd155a5853cfab624ed3a9fd251638a8be02",
+      "bytes": 13431
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv6-unicast-address-assignments.json",
+      "sha256": "677ecbfc8de538e048aafc67938b0b3f611716c8e834722f1d3ef879af49a50a",
+      "bytes": 18661
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv6-unicast-address-assignments.xml",
+      "sha256": "22f9a545e020ea6b9adea9ea0276f3157e32c838682459a45bfe7760de0aefc3",
+      "bytes": 16013
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/ipv4.headers.txt",
+      "sha256": "0c422a88f4c1db078c78f79f05915964a084f83904ebfc4d1cde1e026ace68a7",
+      "bytes": 1164
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/ipv6-unicast.headers.txt",
+      "sha256": "2f9183f5185cc5e3176af5083ccd275730e6878097cb83fd7d1546dd07b2e7d1",
+      "bytes": 1164
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/ipv6.headers.txt",
+      "sha256": "407cafbd3e5c6e9becf388c8e2dc03bef221a006aa12ac3ca39518e9d0f30fee",
+      "bytes": 1164
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/php-8.2.31-dns.c.txt",
+      "sha256": "0b651c7afed0f8a2070d13622ee787c611b19e5a4bb9c2e5b66025b8a884d5bb",
+      "bytes": 27957
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/php-8.2.31-php_dns.h.txt",
+      "sha256": "87d428ea1f1c062cd7828118f0fbdd22eb9d9060c5b9e73e32b0e5202dc79efb",
+      "bytes": 3653
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/rfc1112.headers.txt",
+      "sha256": "e9330ff3c87690cbc22c8f034ef508ff9fdb6ce5d7e9661383e603abef87754a",
+      "bytes": 505
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/rfc1112.txt",
+      "sha256": "677f3163f4f495f2cacc95aaf718d465e897b38a6aaf8774bf4f618e04b940f8",
+      "bytes": 38950
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/rfc4291.headers.txt",
+      "sha256": "086808d0f4d7645e651d2ad2dbe4655db79d2dba9088b25c92ffe95e5f149050",
+      "bytes": 505
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/sources/rfc4291.txt",
+      "sha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "bytes": 52897
+    },
+    {
+      "path": "Resources/Private/HttpGuard/data/security-corpus/uri-cases.json",
+      "sha256": "ad2f381db880524e45449272e48dd364c15abad9bb2c9ee3db69e354f8773cab",
+      "bytes": 14840
+    },
+    {
+      "path": "Resources/Public/Icons/Extension.svg",
+      "sha256": "ca88779a6d008b4606bbe8d45f4640d6967f82b66b302d95b9153dcf2cfb9e29",
+      "bytes": 1022
+    },
+    {
+      "path": "composer.json",
+      "sha256": "b388e94112b9497cd0b75ce9a89f077a3fc11021d9d7d7fd31a4e2ea61a33077",
+      "bytes": 3332
+    },
+    {
+      "path": "ext_emconf.php",
+      "sha256": "b831fea2e698ddbf5d61f10493c2028d54c163999b838146f4ea288fc82c5224",
+      "bytes": 833
+    },
+    {
+      "path": "ext_localconf.php",
+      "sha256": "dff94165dad096c69e5b02fae97b1836ad95ac715f43df420e0518eba49955b1",
+      "bytes": 558
+    }
+  ],
+  "external_method_inputs": [
+    {
+      "path": "/home/cybot/.agents/skills/typo3-docs/scripts/check-adr-coverage.sh",
+      "sha256": "fb389db74549610598d0fefe95351242af8dd3ebeaac410469cd7a1bba235aeb"
+    },
+    {
+      "path": "/home/cybot/.agents/skills/typo3-docs/checkpoints.yaml",
+      "sha256": "4be940717f0f2022263863fa44b8ab9b28855c16c585e663d54c34f740835f4c"
+    },
+    {
+      "path": "/home/cybot/.agents/skills/agent-harness/checkpoints.yaml",
+      "sha256": "6adf55dd6a85a2ec56e7f98710898eb606ca219e35c3d1c5de1f3ff5b65bbda4"
+    },
+    {
+      "path": "/home/cybot/.agents/skills/enterprise-readiness/checkpoints.yaml",
+      "sha256": "74c97e4becaf524ba45f83e38bb11c3ed8d448ac3084fcd1fed86d197673c33b"
+    }
+  ],
+  "preserved_public_receipt_count": 151,
+  "preserved_raw_original_count": 14,
+  "previous_355_adr_correction_release_sha256": "b4a14ca2d6ba9d84623e8d26251952c46fa9beca0cd6cf325a065e924037c28a",
+  "previous_355_source_capture_retained_sha256": "4fa66b058632d40ae7f14712de48f6b687723d4502d6f31ab03646c67d1b5fc8",
+  "original_850_source_binding_sha256": "e1f807bf08abf8174c8d42fd58fe7cc74bd03f14474fed79b980257641440348",
+  "existing_native_and_unit_measurements_rerun": false
+}
