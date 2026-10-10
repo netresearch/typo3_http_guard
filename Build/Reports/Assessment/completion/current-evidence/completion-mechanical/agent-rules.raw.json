@@ -1,0 +1,21 @@
+{
+  "checkpoint_file": "/home/cybot/.agents/skills/agent-rules/checkpoints.yaml",
+  "project_root": "/tmp/http-guard-completion-mechanical-source",
+  "skill_id": "agents",
+  "fix_command": "/agent-rules",
+  "schema_version": 1,
+  "summary": {
+    "total": 25,
+    "pass": 24,
+    "fail": 1,
+    "skip": 0,
+    "blocked": 0,
+    "preconditions_declared": 0,
+    "preconditions_ignored": false,
+    "gated_out": 0
+  },
+  "gated_out_ids": [],
+  "checkpoints": [
+    {"id":"AG-01","status":"pass","severity":"error","evidence":"Found: AGENTS.md","fix_skill":"agents"},{"id":"AG-02","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-03","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-04","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-05","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-06","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-07","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-08","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-09","status":"pass","severity":"error","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-10","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-11","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-13","status":"pass","severity":"warning","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-14","status":"pass","severity":"info","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-15","status":"pass","severity":"info","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-16","status":"pass","severity":"info","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-17","status":"pass","severity":"info","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-18","status":"pass","severity":"info","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-19","status":"pass","severity":"error","evidence":"Pattern correctly absent from 1 matched file(s) for target: AGENTS.md","fix_skill":"agents"},{"id":"AG-20","status":"pass","severity":"error","evidence":"Pattern correctly absent from 1 matched file(s) for target: AGENTS.md","fix_skill":"agents"},{"id":"AG-12","status":"pass","severity":"info","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-26","status":"fail","severity":"info","evidence":"Pattern not found in AGENTS.md","fix_skill":"agents"},{"id":"AG-27","status":"pass","severity":"error","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"},{"id":"AG-29","status":"pass","severity":"warning","evidence":"Command succeeded","fix_skill":"agents"},{"id":"AG-31","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"agents"},{"id":"AG-28","status":"pass","severity":"info","evidence":"Pattern found in AGENTS.md","fix_skill":"agents"}
+  ]
+}

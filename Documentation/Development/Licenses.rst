@@ -52,9 +52,10 @@ and the
 
 Additional metadata denials are justified in the same source metadata. The
 respective source licenses and rights to recorded third-party material
-remain in effect. Original specifications and ADRs are preserved unchanged
-in the optional evidence package. This manual does not retrospectively
-alter their original statements.
+remain in effect. `Original specifications and ADRs
+<https://github.com/netresearch/typo3_http_guard/blob/3f929ae8794ca04ab3dd25627e94d601a2db23e0/specification/README.md>`_
+are preserved unchanged in Git history and the external source archive.
+This manual does not retrospectively alter their original statements.
 
 Address data is versioned with the extension. A rule update requires a new
 approval with corpus, CIDR and actual wire checks, and replacement of the

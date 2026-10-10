@@ -1,0 +1,5115 @@
+{
+  "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
+  "source_root": "/mnt/c/users/live/documents/codex/2026-10-08/kan/outputs/http-guard-implementation",
+  "snapshot_root": "/home/cybot/projects/http-guard-mechanical-layout-final",
+  "source_head": "c823234e75ae65dabfe1a70861c2ff60e506f9a3",
+  "source_status_porcelain_z": " M Documentation/Api/Index.rst\u0000 M Documentation/Decisions/Index.rst\u0000 M Documentation/Decisions/SingleExtension.rst\u0000 M Documentation/Development/Assessment.rst\u0000 M Documentation/Development/Dependencies.rst\u0000 M Documentation/Development/Index.rst\u0000 M Documentation/Development/Licenses.rst\u0000 M Documentation/Development/Verification.rst\u0000 M Documentation/Index.rst\u0000 M Documentation/Localization.de_DE/Api/Index.rst\u0000 M Documentation/Localization.de_DE/Decisions/Index.rst\u0000 M Documentation/Localization.de_DE/Decisions/SingleExtension.rst\u0000 M Documentation/Localization.de_DE/Development/Index.rst\u0000 M Documentation/Localization.de_DE/Development/Licenses.rst\u0000 M Documentation/Localization.de_DE/Index.rst\u0000 M Documentation/Localization.de_DE/Security/Index.rst\u0000 M Documentation/Security/Index.rst\u0000 M README.md\u0000 M SECURITY.md\u0000?? Build/Reports/Assessment/completion/\u0000?? Documentation/Development/Reconciliation.rst\u0000?? Documentation/Development/ReleaseProvenance.rst\u0000?? Documentation/Development/Requirements.rst\u0000?? Documentation/Development/VerificationHistory.rst\u0000?? Documentation/Development/VerificationSnapshots.rst\u0000?? Documentation/Localization.de_DE/Development/Assessment.rst\u0000?? Documentation/Localization.de_DE/Development/Dependencies.rst\u0000?? Documentation/Localization.de_DE/Development/Reconciliation.rst\u0000?? Documentation/Localization.de_DE/Development/ReleaseProvenance.rst\u0000?? Documentation/Localization.de_DE/Development/Requirements.rst\u0000?? Documentation/Localization.de_DE/Development/Verification.rst\u0000?? Documentation/Localization.de_DE/Development/VerificationHistory.rst\u0000",
+  "origin": "git@github.com:netresearch/typo3_http_guard.git",
+  "files": {
+    ".betterleaksignore": {
+      "kind": "file",
+      "sha256": "9b975249ee74d77b40c7b9072a31fa6e5686bdd4d2b27907e384e92b54e27826",
+      "bytes": 49395,
+      "mode": 511
+    },
+    ".editorconfig": {
+      "kind": "file",
+      "sha256": "65ab4ae3fb9267ba541e9805625579fad5c68019b68adf6399d71a86dc2ae7e8",
+      "bytes": 277,
+      "mode": 511
+    },
+    ".gitattributes": {
+      "kind": "file",
+      "sha256": "c13a8d64169546b1f7f3a344d6fb080ad469cc917daf0a13ec439ba2cdad6913",
+      "bytes": 1839,
+      "mode": 511
+    },
+    ".github/CODEOWNERS": {
+      "kind": "file",
+      "sha256": "36236df19d9848e5866fa42bfaeadec5f5fa2db2d2205dc8a3f70a9326c74bf6",
+      "bytes": 265,
+      "mode": 511
+    },
+    ".github/ISSUE_TEMPLATE/bug_report.yml": {
+      "kind": "file",
+      "sha256": "5311c885bb6f728460395b10d4c01b33fc4efa266b3af9f8b9c649b0461aafb1",
+      "bytes": 1188,
+      "mode": 511
+    },
+    ".github/ISSUE_TEMPLATE/config.yml": {
+      "kind": "file",
+      "sha256": "1bdb517bceb55c1530cd203dc87da14c9dcc39cc5ae808ad88e2330aa7aa3ba1",
+      "bytes": 421,
+      "mode": 511
+    },
+    ".github/ISSUE_TEMPLATE/feature_request.yml": {
+      "kind": "file",
+      "sha256": "51be8f0ec2a00fea675780ac59b28660bfbf431a1b97a2ae0277bc959a5d8c96",
+      "bytes": 725,
+      "mode": 511
+    },
+    ".github/copilot-instructions.md": {
+      "kind": "file",
+      "sha256": "7bcd225f22808d4fa0fc39723c8406202f9c3ec356d0f279d7217eb66110e6c1",
+      "bytes": 466,
+      "mode": 511
+    },
+    ".github/instructions/php.instructions.md": {
+      "kind": "file",
+      "sha256": "d453816f34fc83dbf75bad4195a4fa1693e02d5787486ea28d6b54376b4a1f97",
+      "bytes": 886,
+      "mode": 511
+    },
+    ".github/instructions/tests.instructions.md": {
+      "kind": "file",
+      "sha256": "2702953e70a9f4403a54100e534dcece40ccd24f332b43a3266c9cd2114b926c",
+      "bytes": 878,
+      "mode": 511
+    },
+    ".github/pull_request_template.md": {
+      "kind": "file",
+      "sha256": "1eaff0f66aef3e7956c37a8be785ba8888eae6ed43be101a287525ac78fc6cc6",
+      "bytes": 1190,
+      "mode": 511
+    },
+    ".github/workflows/ci.yml": {
+      "kind": "file",
+      "sha256": "1e0910d89663b1c842c31baf859bd837d84419effb769ce4898a88c192100591",
+      "bytes": 6580,
+      "mode": 511
+    },
+    ".github/workflows/codeql.yml": {
+      "kind": "file",
+      "sha256": "b5f5a1745f266ad9a7f142655b9223f9177939edc7f56afffad3a903ae5c23bd",
+      "bytes": 549,
+      "mode": 511
+    },
+    ".github/workflows/dependency-review.yml": {
+      "kind": "file",
+      "sha256": "713cf63d1f6fe190ec9b7acebcd9f35f771f5a0fe60428b0cd3cbc6b85ae60db",
+      "bytes": 379,
+      "mode": 511
+    },
+    ".github/workflows/release.yml": {
+      "kind": "file",
+      "sha256": "69378db9e18686a4e762b529616a71f9bdea48dc22ca6715da396d3d79a34ce7",
+      "bytes": 14014,
+      "mode": 511
+    },
+    ".github/workflows/scorecard.yml": {
+      "kind": "file",
+      "sha256": "953c06862856bf6d4db56ac88cef6bcce6bd3ce092c8cfeb692e66df51976a6a",
+      "bytes": 438,
+      "mode": 511
+    },
+    ".github/workflows/security.yml": {
+      "kind": "file",
+      "sha256": "5e407165148243417d8192a2d31af40b0724f3518e525ac5c5ea05a2ffa478a2",
+      "bytes": 7090,
+      "mode": 511
+    },
+    ".github/workflows/ter-publish.yml": {
+      "kind": "file",
+      "sha256": "13e783f06717b99d31c67c40237dd1395f99ef3df0291fb1d76dd6c99835e8ed",
+      "bytes": 2953,
+      "mode": 511
+    },
+    ".github/workflows/verification.yml": {
+      "kind": "file",
+      "sha256": "2ae7dae8b67f8069ea3542550f960ada6979453decd373f3271c042c06fb069e",
+      "bytes": 13668,
+      "mode": 511
+    },
+    ".github/zizmor.yml": {
+      "kind": "file",
+      "sha256": "f9cc6d4549686c7e93b7ff92f8fe4d30de49213c00ae53a82263d871ad8548a2",
+      "bytes": 1321,
+      "mode": 511
+    },
+    ".gitignore": {
+      "kind": "file",
+      "sha256": "02900e6a6c1cf229d0e433537faa5662e68e5d1e2453bb2c6a72bb55c83911af",
+      "bytes": 390,
+      "mode": 511
+    },
+    ".php-ast-edit.json": {
+      "kind": "file",
+      "sha256": "f46ca6c82c9975e124f2a2aa475fbd37c720b69cb21f14a87fc8fce321c1acf0",
+      "bytes": 375,
+      "mode": 511
+    },
+    ".php-cs-fixer.dist.php": {
+      "kind": "file",
+      "sha256": "5f255e5b5ec5b5b586e9280231fe3e0edd765de566b4305907aade7ce4bd1a8c",
+      "bytes": 1829,
+      "mode": 511
+    },
+    ".sonarcloud.properties": {
+      "kind": "file",
+      "sha256": "ef930cbac498877a7c3b4344b888d1e1c614b80e4242e4e1b5544829c6479cfc",
+      "bytes": 932,
+      "mode": 511
+    },
+    "AGENTS.md": {
+      "kind": "file",
+      "sha256": "36b3fc598addb25a0b1d3f67e7678d1d17ac336fa757e68dca3ab4d532e1449e",
+      "bytes": 6263,
+      "mode": 511
+    },
+    "Build/ExcludeFromPackaging.php": {
+      "kind": "file",
+      "sha256": "53e3b58ed6ee667f859d57b840efeb192b1113dccd80eb7f2a743488f610db97",
+      "bytes": 1589,
+      "mode": 511
+    },
+    "Build/Fixtures/HistoricalSdk/guzzle7ter.json": {
+      "kind": "file",
+      "sha256": "d7e38ed2097dc9ab38b3d8a747b867bae2f3f00649754b9560fa20366563d15f",
+      "bytes": 529,
+      "mode": 511
+    },
+    "Build/Fixtures/README.md": {
+      "kind": "file",
+      "sha256": "98acb1d294808eb7a4b22d3f1b61bbea363807d21027d8cb4ad366393d749d87",
+      "bytes": 13070,
+      "mode": 511
+    },
+    "Build/Fixtures/classic-tarballs.json": {
+      "kind": "file",
+      "sha256": "974c5e2551c2619191f716ca8860d41c94b015d60bafe877f4bf0c4bbc036415",
+      "bytes": 444,
+      "mode": 511
+    },
+    "Build/Fixtures/classic13/typo3conf/PackageStates.php": {
+      "kind": "file",
+      "sha256": "8e8d143f3ff2d555056f9577d0de73d6d066a632663be2da2b4a3d5f23b96459",
+      "bytes": 2977,
+      "mode": 511
+    },
+    "Build/Fixtures/classic13/typo3conf/system/additional.php": {
+      "kind": "file",
+      "sha256": "516b70535307a3452964ec44e8e815efe0460657beb18172c00b223152f90482",
+      "bytes": 1433,
+      "mode": 511
+    },
+    "Build/Fixtures/classic13/typo3conf/system/settings.php": {
+      "kind": "file",
+      "sha256": "49cdaebfacb5c90d5dc72d1a4ad4c68f46553a47d2313604eb0a1aa59126701d",
+      "bytes": 2921,
+      "mode": 511
+    },
+    "Build/Fixtures/classic14/typo3conf/PackageStates.php": {
+      "kind": "file",
+      "sha256": "026df1d20f671b5096be4ca40bab5ba527519c6597c6e2dcb8aaa5dfca7df948",
+      "bytes": 2984,
+      "mode": 511
+    },
+    "Build/Fixtures/classic14/typo3conf/system/additional.php": {
+      "kind": "file",
+      "sha256": "516b70535307a3452964ec44e8e815efe0460657beb18172c00b223152f90482",
+      "bytes": 1433,
+      "mode": 511
+    },
+    "Build/Fixtures/classic14/typo3conf/system/settings.php": {
+      "kind": "file",
+      "sha256": "49cdaebfacb5c90d5dc72d1a4ad4c68f46553a47d2313604eb0a1aa59126701d",
+      "bytes": 2921,
+      "mode": 511
+    },
+    "Build/Fixtures/core13g7/composer.json": {
+      "kind": "file",
+      "sha256": "4bf63804b765cdeb96c3021c918a22079eb583651e2d97048e59dfe7d67d2c91",
+      "bytes": 647,
+      "mode": 511
+    },
+    "Build/Fixtures/core13g7/config/system/additional.php": {
+      "kind": "file",
+      "sha256": "0b491b553735e36370cc4f0183a64e5b69772f2698995e13777f4ce5a6414e83",
+      "bytes": 1132,
+      "mode": 511
+    },
+    "Build/Fixtures/core13g7/config/system/settings.php": {
+      "kind": "file",
+      "sha256": "23274739d95c9ace9c2a3d5ddc3c51aadd6daad5583b9c7067db21af73c1c59e",
+      "bytes": 3072,
+      "mode": 511
+    },
+    "Build/Fixtures/core13g8/composer.json": {
+      "kind": "file",
+      "sha256": "9c08918e8aa67ee034f0aaf19d7b29aa8ac61f59ae08a54bb22110cc0d981508",
+      "bytes": 645,
+      "mode": 511
+    },
+    "Build/Fixtures/core13g8/config/system/additional.php": {
+      "kind": "file",
+      "sha256": "0b491b553735e36370cc4f0183a64e5b69772f2698995e13777f4ce5a6414e83",
+      "bytes": 1132,
+      "mode": 511
+    },
+    "Build/Fixtures/core13g8/config/system/settings.php": {
+      "kind": "file",
+      "sha256": "23274739d95c9ace9c2a3d5ddc3c51aadd6daad5583b9c7067db21af73c1c59e",
+      "bytes": 3072,
+      "mode": 511
+    },
+    "Build/Fixtures/core14g7/composer.json": {
+      "kind": "file",
+      "sha256": "deb1d45e0fdba5c93a1ef042af0cd069a32befafd0af54242cbcaaba305a969a",
+      "bytes": 643,
+      "mode": 511
+    },
+    "Build/Fixtures/core14g7/config/system/additional.php": {
+      "kind": "file",
+      "sha256": "0b491b553735e36370cc4f0183a64e5b69772f2698995e13777f4ce5a6414e83",
+      "bytes": 1132,
+      "mode": 511
+    },
+    "Build/Fixtures/core14g7/config/system/settings.php": {
+      "kind": "file",
+      "sha256": "23274739d95c9ace9c2a3d5ddc3c51aadd6daad5583b9c7067db21af73c1c59e",
+      "bytes": 3072,
+      "mode": 511
+    },
+    "Build/Fixtures/core14g8/composer.json": {
+      "kind": "file",
+      "sha256": "9006535f3e1ad976cd2eecc840a738f0ec299b66eacd681efe506ffee00e1a48",
+      "bytes": 641,
+      "mode": 511
+    },
+    "Build/Fixtures/core14g8/config/system/additional.php": {
+      "kind": "file",
+      "sha256": "0b491b553735e36370cc4f0183a64e5b69772f2698995e13777f4ce5a6414e83",
+      "bytes": 1132,
+      "mode": 511
+    },
+    "Build/Fixtures/core14g8/config/system/settings.php": {
+      "kind": "file",
+      "sha256": "23274739d95c9ace9c2a3d5ddc3c51aadd6daad5583b9c7067db21af73c1c59e",
+      "bytes": 3072,
+      "mode": 511
+    },
+    "Build/Fixtures/initialize-classic.php": {
+      "kind": "file",
+      "sha256": "f7fb793d44ee6bd08889f6aea1ca77cb3b159078707c92c69f17f9c9e84eb082",
+      "bytes": 2745,
+      "mode": 511
+    },
+    "Build/Fixtures/prepare-classic.py": {
+      "kind": "file",
+      "sha256": "71cc456d63c4dbed99b2f6d26f0c7b12a63b43542c02391439c3467a5af98da6",
+      "bytes": 4431,
+      "mode": 511
+    },
+    "Build/Fixtures/prepare-wire.sh": {
+      "kind": "file",
+      "sha256": "e9e70378e2aa04eefd6c638ad8ea39417f6b7ee77297ee044c329f0043beb705",
+      "bytes": 1881,
+      "mode": 511
+    },
+    "Build/Fixtures/prepare.py": {
+      "kind": "file",
+      "sha256": "d9ecf0e8e4cd52e2dc1dfadee8c5445e615099f8f196cd071ba84cddcabb5d7a",
+      "bytes": 1907,
+      "mode": 511
+    },
+    "Build/Fixtures/run-matrix.py": {
+      "kind": "file",
+      "sha256": "766b3162e0cd0711418b7810b21db4eb6e0a7e89b4dce55359f00b0b86adbab4",
+      "bytes": 5951,
+      "mode": 511
+    },
+    "Build/Fixtures/wire_server.py": {
+      "kind": "file",
+      "sha256": "bcabda63076ce10e72cc669500e6d128315edc9866d2b71ec6e448fc3c0bbfee",
+      "bytes": 1979,
+      "mode": 511
+    },
+    "Build/Mutation/Native/phpunit.xml": {
+      "kind": "file",
+      "sha256": "556dd888783f7cf1324fe51830de1b2d9736a1748d6f0109121782968de76b17",
+      "bytes": 758,
+      "mode": 511
+    },
+    "Build/Mutation/bootstrap.php": {
+      "kind": "file",
+      "sha256": "75bba2aa2f16610a57710b720a427816b4cc6b087acae205c7f9ed167447b6df",
+      "bytes": 1084,
+      "mode": 511
+    },
+    "Build/Mutation/phpunit.xml": {
+      "kind": "file",
+      "sha256": "d36d2eb33b81f1926478dc6399555bf9894bed79e68d106a8a630740342553b0",
+      "bytes": 690,
+      "mode": 511
+    },
+    "Build/PhpStan/Client.stub": {
+      "kind": "file",
+      "sha256": "548a854ed4fac7d9f3c5b7ab25912f660ec002b048537bd170a7103a1bf59d2b",
+      "bytes": 873,
+      "mode": 511
+    },
+    "Build/PhpStan/HandlerStack.stub": {
+      "kind": "file",
+      "sha256": "865769065c3093c5723dd9a9d7bd769afed179689ce876676750695e45094385",
+      "bytes": 333,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/README.md": {
+      "kind": "file",
+      "sha256": "f9d9d54a534ab0c450d2aad9c03f9e88418646b4e75f2ba2c3c7e3052b92359b",
+      "bytes": 2061,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/agent-harness.raw.json": {
+      "kind": "file",
+      "sha256": "6daeec194b04ca6d6addf2d77e7844739c95165846cdc74dae96db021fddf367",
+      "bytes": 2767,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/agent-rules.raw.json": {
+      "kind": "file",
+      "sha256": "fc387146b23ee2b31e7d01c462d22c2f78273a6d40fc415977bc1d4ddba68b66",
+      "bytes": 3501,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/baseline-mechanical-aggregate.json": {
+      "kind": "file",
+      "sha256": "a0f04b96d5a0a2dfb4b2650aba4fd122b10b1ecd3f9289f20a5ce5453094de6c",
+      "bytes": 5561,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/baseline-model-review-aggregate.json": {
+      "kind": "file",
+      "sha256": "67bd6b98a744fbc32b01c0c0206d6e70cfd1203e0449efde7240b4e3e8278bb3",
+      "bytes": 703,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/baseline-review.md": {
+      "kind": "file",
+      "sha256": "4eb07acd4aa769c47f6b051be61b61cb3aeb70fb00577d06bf751d4840566925",
+      "bytes": 3884,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/composer-validate.log": {
+      "kind": "file",
+      "sha256": "43add299dc97ecbd90ec2dc456ef5a0bd824bb9abdae2a3d7cdb520e21f8e86d",
+      "bytes": 25,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/discovery.json": {
+      "kind": "file",
+      "sha256": "0cea5c8d7e6a70e82c4dd7e3f7ea7a2bbebb1c9e43ffe6b49a01fff06f285dd4",
+      "bytes": 16302,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/enterprise-readiness-llm-review.json": {
+      "kind": "file",
+      "sha256": "1c7e2ff2c90ef3a89a918c9eb45d6a0e9f5256c2c7f4e08900c2f98d69c179d4",
+      "bytes": 13349,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/enterprise-readiness-mechanical.json": {
+      "kind": "file",
+      "sha256": "444a4a51eb13a8832e14b9f900a0460e7c80b1bdc06a85454c161226242c9e64",
+      "bytes": 5784,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/full-coverage-summary.json": {
+      "kind": "file",
+      "sha256": "323ce5d7b6cca56ab94fd2722258c10230a13331c04dd9a8fc8ee89c6a292213",
+      "bytes": 589,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/full-coverage.log": {
+      "kind": "file",
+      "sha256": "96ce33244aca9e7f01995d13f18b7aacb97a015c828e69cee7066b4c7e8dbf00",
+      "bytes": 522,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/git-workflow.raw.json": {
+      "kind": "file",
+      "sha256": "12b0aacc9faf64cf98a5a1382cb2552bfc9ed283c2eb57b6a5b728ab9632776f",
+      "bytes": 2479,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/github-project.raw.json": {
+      "kind": "file",
+      "sha256": "c8de61ede3498b1a88ac3bd1bea78e51b674d30f62b36668a4af5694a1317abe",
+      "bytes": 5571,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/llm-review-results.json": {
+      "kind": "file",
+      "sha256": "e6f9cd8a383ba46b9ef2d5104e000966b42444eb06a6312aa0ec8c5b2748decc",
+      "bytes": 69972,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/mechanical-calibration.json": {
+      "kind": "file",
+      "sha256": "750e8f4112a620e2752d10e3cc12686941445bdab187266874a857e6ad355545",
+      "bytes": 7281,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/mechanical-triage.json": {
+      "kind": "file",
+      "sha256": "cd2824235e3d0c190d8a706922fa8223a4ef00c80f06060459b451858c88488f",
+      "bytes": 153269,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/metadata.json": {
+      "kind": "file",
+      "sha256": "5d85cceb75d5a6401a5e296bff02e2d3565925c3ca964e4867318ad52590dabb",
+      "bytes": 529,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/netresearch-branding.raw.json": {
+      "kind": "file",
+      "sha256": "a47ebee261956a2deca9a1b3f804f8197f2e1dcaee50c31a0eb448393bcc4c9a",
+      "bytes": 3377,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/php-file-metadata.json": {
+      "kind": "file",
+      "sha256": "f9700bebc82efa7b2cd37b2c5bb4a85958ce6c4ef7e05e021fa4337060aec58f",
+      "bytes": 15207,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/php-modernization.raw.json": {
+      "kind": "file",
+      "sha256": "eb2cabcac1e976534402f47264ba539aa273f9f4d7a3cee2cbf02eacbd4bd01a",
+      "bytes": 5289,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/phpstan-core14g8-baseline.log": {
+      "kind": "file",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/security-audit.raw.json": {
+      "kind": "file",
+      "sha256": "63926740d0b0dbccb5a3931ed85c3c116a0e8fa4beb2f0c08d3294b8740576fd",
+      "bytes": 64640,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/snapshot-head.log": {
+      "kind": "file",
+      "sha256": "2cb0871e5c1f4e3db9040ad0f9c8e1bf834adc715b3a7910b03fb9255e036c7d",
+      "bytes": 41,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/snapshot-manifest.json": {
+      "kind": "file",
+      "sha256": "14c6af657bc40c75c033c64935b530581a78f2900701e15a1f7e6bd07cd140de",
+      "bytes": 275517,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/snapshot-origin.log": {
+      "kind": "file",
+      "sha256": "01fd6c236e83fdb16866d0e41bbdf9a95eda5ff51f3804f501c805138a77e087",
+      "bytes": 48,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/snapshot-status-after.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/snapshot-status-before.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/specific-mechanical-triage.json": {
+      "kind": "file",
+      "sha256": "cf0cd952d53923e25dd5d0c312a1095afaade49a5943ddbb324e16756398687e",
+      "bytes": 19708,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/typo3-conformance-llm-review.json": {
+      "kind": "file",
+      "sha256": "4beeffbe0564a7fce2c86c61979afd737d57d7a6f3ffc97fc1f7764bd1aaa992",
+      "bytes": 19571,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/typo3-conformance-mechanical.json": {
+      "kind": "file",
+      "sha256": "aaf30c955a1747b1b475cd223fdc106231f056a02ec5714c616b83c1c3871da9",
+      "bytes": 14213,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/typo3-docs.raw.json": {
+      "kind": "file",
+      "sha256": "d1e9928d04744107503450a0b264b5afc2a5cfa1efc47010d14b4dc99f9151c2",
+      "bytes": 4482,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/typo3-testing.raw.json": {
+      "kind": "file",
+      "sha256": "81303ab099e8e196c57c5b67fff50adfc13bbdc841775761f2be35085a146acf",
+      "bytes": 10912,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/baseline/unit-coverage-summary.json": {
+      "kind": "file",
+      "sha256": "241b7e240c85bc9bf8e4c8a4dd794e923f704d66a0ed45408e6769cf5c407ca4",
+      "bytes": 16888,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/catalog-bindings.json": {
+      "kind": "file",
+      "sha256": "f77d37e1b2a8cab40ef47975ec6cf221dac3277ce47c9ceed152d16762ab4908",
+      "bytes": 3930,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/ci-performance-pr12/policy-performance.json": {
+      "kind": "file",
+      "sha256": "09ba10f1c25fdf9aff5a12a2d4c0fae9cecf7ee9bc5a4cbf6ffb84a99c5a7ac2",
+      "bytes": 1183,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/codecov-main-after-pr11.json": {
+      "kind": "file",
+      "sha256": "b3780bee41744b6f975b8ae18a226e1bad291fdee230fce6b85adcb87bec9987",
+      "bytes": 5689,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/combined-build-controls.log": {
+      "kind": "file",
+      "sha256": "f5ecb82729f3882e1860a47d01692cc16c2d5b166d0e13de8d89d1202a50529b",
+      "bytes": 4906,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/active-source-review.json": {
+      "kind": "file",
+      "sha256": "67034cd69f1fc24050609d1cf36ed176a95ac4dd21d0c237ba82e1277658dcd3",
+      "bytes": 31545,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/agent-harness.raw.json": {
+      "kind": "file",
+      "sha256": "ce2b93493db367784790fcbaa23233ccfa52ad10ffbe09b67817100d9a3cedc4",
+      "bytes": 2561,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/agent-rules.raw.json": {
+      "kind": "file",
+      "sha256": "2de459f554a5c77fa08d3d1886dd3bac386e92b7bb085693145c9d8c4cdab5b5",
+      "bytes": 3321,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/codeowner-current.json": {
+      "kind": "file",
+      "sha256": "b55cfbbde6d406d67942a180f3a54bc021964c95c852f1d37691caf0edb110bb",
+      "bytes": 60,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/enterprise-readiness.raw.json": {
+      "kind": "file",
+      "sha256": "42ac270c1806a9553ae0afda3edad770fdf88daab60d58750d04be09ddc981db",
+      "bytes": 5493,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/git-workflow.raw.json": {
+      "kind": "file",
+      "sha256": "0e032fd985daf65a45c0c11b2399567a8fc4a73e923c4f93061026758c8367d3",
+      "bytes": 2279,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/github-project.raw.json": {
+      "kind": "file",
+      "sha256": "d29c6bd45ee17fac52521ae207f2f209478ce3e3a6a2aa0926d24db40a85aeac",
+      "bytes": 4458,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/github-repository-current.json": {
+      "kind": "file",
+      "sha256": "f556465afb8c18f7fbebbe956037aeabedd1757bc9838d0c088ac334a54ed112",
+      "bytes": 339,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/hosted-manual-current.json": {
+      "kind": "file",
+      "sha256": "2cb80e7f4d016be0ff6de73cd9403ef815b92e4b7a199894a4c9f59740ec8377",
+      "bytes": 207,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/netresearch-branding.raw.json": {
+      "kind": "file",
+      "sha256": "a8ea489a5e2c4587307d90aed352795a4bc23a97739b02f5a34ee54aa90179e0",
+      "bytes": 3356,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/openssf-exact-project-current.json": {
+      "kind": "file",
+      "sha256": "a66814416bab232e3470671634fe0c5b904874b7faeb9f2d735bbe2ff5c3e2eb",
+      "bytes": 271,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/php-modernization.raw.json": {
+      "kind": "file",
+      "sha256": "a08819e81bd6ab2eb7a023eddc140c8d06992851d8a8b9f0b94e4a8c42ad7e8b",
+      "bytes": 4313,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/security-audit.raw.json": {
+      "kind": "file",
+      "sha256": "d1417bb26d2e0b28f977f4714e2326d1735aef2c7e359257e7f37121f627163f",
+      "bytes": 64527,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/typo3-conformance.raw.json": {
+      "kind": "file",
+      "sha256": "5120b53bbce236dff393078942d09672529df129b70f2c317135251c8b99307d",
+      "bytes": 14047,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/typo3-docs.raw.json": {
+      "kind": "file",
+      "sha256": "57678adb6c474c00c483612649ebc4b4aa08a83988ed7eea5123e3bec18927a1",
+      "bytes": 4442,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/completion-mechanical/typo3-testing.raw.json": {
+      "kind": "file",
+      "sha256": "7cf01f1be924b0fd3d1385e25e0371fdfaa8b8f8d99a7ddf8501333f4aa6dad2",
+      "bytes": 10205,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/derived-public/README.md": {
+      "kind": "file",
+      "sha256": "298dc4c3b94956ab892882007aa6acfc2be0df9dc351f51ff32687cc1e63729a",
+      "bytes": 2130,
+      "mode": 420
+    },
+    "Build/Reports/Assessment/completion/current-evidence/derived-public/derived_public_receipts.py": {
+      "kind": "file",
+      "sha256": "16b55753eec11f5be5f48627a213a28b8f626a373bc8b08320c6424db315c9bd",
+      "bytes": 15868,
+      "mode": 420
+    },
+    "Build/Reports/Assessment/completion/current-evidence/derived-public/local-runner-proof/native-controls.derived.json": {
+      "kind": "file",
+      "sha256": "12eb717db7f19431f0327385007e51aa75de55defbc6f054b18305c6339fe9f2",
+      "bytes": 9157,
+      "mode": 420
+    },
+    "Build/Reports/Assessment/completion/current-evidence/derived-public/native-assessment-complete-20/source-end.derived.json": {
+      "kind": "file",
+      "sha256": "55dcd367202bcd0d13552076f73888828a2e811fb10da567a677a45c52b3e995",
+      "bytes": 4101247,
+      "mode": 420
+    },
+    "Build/Reports/Assessment/completion/current-evidence/derived-public/native-assessment-complete-20/source-start.derived.json": {
+      "kind": "file",
+      "sha256": "41483534d29ca423b9a00aa485af62db4f29f16a01f255f5175bdc119d42e474",
+      "bytes": 4101037,
+      "mode": 420
+    },
+    "Build/Reports/Assessment/completion/current-evidence/derived-public/native-assessment-complete-263/source-start.derived.json": {
+      "kind": "file",
+      "sha256": "7a07da83b1249e98dff991c2767182540a4e063fc6cb4a4b6d3e20d4749f1c02",
+      "bytes": 4101359,
+      "mode": 420
+    },
+    "Build/Reports/Assessment/completion/current-evidence/derived-public/native-mutation-final/source-mutation-start.derived.json": {
+      "kind": "file",
+      "sha256": "f04d59ba8995c40af62221a92a55e205c429df687a814de020bb33d4fe6d6036",
+      "bytes": 61878,
+      "mode": 420
+    },
+    "Build/Reports/Assessment/completion/current-evidence/derived-public/phase2-review/summary.derived.json": {
+      "kind": "file",
+      "sha256": "cb72c1ae93faa1ef7174f25230e3313160f2cd5ed78cee13c91edfe78bc043f5",
+      "bytes": 27977,
+      "mode": 420
+    },
+    "Build/Reports/Assessment/completion/current-evidence/docs-render-verification.json": {
+      "kind": "file",
+      "sha256": "db4bc036f0555a6e92193807ea2ce713c3a668ff66a6c233d6edadac64aaa72a",
+      "bytes": 6354,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/harness-hook-message-controls.json": {
+      "kind": "file",
+      "sha256": "75171ff264e6d45262e4c9530216ba8153cd20cd7e7ed003c7b59f205fba3b2c",
+      "bytes": 574,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/native-mutation-final/infection-native-summary.json": {
+      "kind": "file",
+      "sha256": "b8092846da577b5214df3e954c7b5c88b382f7a3795b063ac228153f06c907ed",
+      "bytes": 248,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/native-mutation-final/measurement-result.json": {
+      "kind": "file",
+      "sha256": "e4a0849447f00611eb64f0d382afca6bf87e1a310160cbadbf04a51f8e68205d",
+      "bytes": 1779,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/native-mutation-final/random-baseline-stability.json": {
+      "kind": "file",
+      "sha256": "6b57e4ec344d9d7d6dae50a69ea08abe2467f84692956d84124f40715ad1af78",
+      "bytes": 2589,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/quality-tests/quality-evidence/config-mutation-summary.json": {
+      "kind": "file",
+      "sha256": "07e47550222ca58e613ebc36933d880e6f9f391b1298d07952b5d9018571e776",
+      "bytes": 246,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/root-architecture-before-native-snapshot.log": {
+      "kind": "file",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/root-build-controls-current.log": {
+      "kind": "file",
+      "sha256": "0f883ef0de02a366ccc10abc440d6f35106bbfaed309ca5dd4a2ffa478f93a3d",
+      "bytes": 5709,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/root-final-unit-snapshot.log": {
+      "kind": "file",
+      "sha256": "6cbac7716d973e7fc1e405344a8ab6bb96b18b435cd246d7a70f54f4a23135a7",
+      "bytes": 748,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/root-local-quality-final-snapshot.log": {
+      "kind": "file",
+      "sha256": "f6b123e3a3728626f8066d892fb0b44e01c912ea1493851bbe47b742f718f38f",
+      "bytes": 2883,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-evidence/runtime-phase2-delivery.json": {
+      "kind": "file",
+      "sha256": "c715c35a45540c5bff92c7e135ba6f868423cebc2c998b1e1cdf31753cde811c",
+      "bytes": 3975,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/agent-harness.raw.json": {
+      "kind": "file",
+      "sha256": "f84ddb2a814ef694254697886197747e706a8b9861d0e124ab14d14ff6b200c5",
+      "bytes": 2769,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/agent-rules.raw.json": {
+      "kind": "file",
+      "sha256": "2003f880822428d58b0d751e057239386e70b10e534c14076af7723f57465571",
+      "bytes": 3503,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/enterprise-readiness.raw.json": {
+      "kind": "file",
+      "sha256": "1d86a1ba04f8af71649dc298671f1d3cfcb35a1b420880bb3c9f5f6952a8249b",
+      "bytes": 5541,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/git-workflow.raw.json": {
+      "kind": "file",
+      "sha256": "7c4dfc01bf7ee4ecd844dff6f95e7864d69d2e46b6c0036b122c7f3bdf5fc6ba",
+      "bytes": 2478,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/github-project.raw.json": {
+      "kind": "file",
+      "sha256": "b0d0e8cc55392ee6eee775c20465394628e03584bc8f8b08b4bd1478efb583e0",
+      "bytes": 5115,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/netresearch-branding.raw.json": {
+      "kind": "file",
+      "sha256": "4b44a7257d2fd7c4c0842e83482d2a9a79d1726a614e364ac4640fac0bac217a",
+      "bytes": 3401,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/php-modernization.raw.json": {
+      "kind": "file",
+      "sha256": "d35c78ad5db024017dbd4d918026fe1debca11faa47d4eab4576017c84c85892",
+      "bytes": 5294,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/security-audit.native.raw.json": {
+      "kind": "file",
+      "sha256": "3899797751a33dc854f0b3316f1dc388ac18112dd17ba005d5a9016ebc311a00",
+      "bytes": 64502,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/security-audit.raw.json": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/typo3-conformance.raw.json": {
+      "kind": "file",
+      "sha256": "7e7c353d45c97b95c095a8f62d7d8593c9f89b6b7561437bc90ff689c3ed6e48",
+      "bytes": 14193,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/typo3-docs.raw.json": {
+      "kind": "file",
+      "sha256": "35d7d8bafd6886a8d5daa5d7de96067d59f56d4ac373a96713e1a2850c03f0c9",
+      "bytes": 4484,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-mechanical/typo3-testing.raw.json": {
+      "kind": "file",
+      "sha256": "9365339637fbbe60c7ed672572d1b5393bf760e6b84bfe96c25c7870bd3ac69f",
+      "bytes": 10615,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/current-source-binding.json": {
+      "kind": "file",
+      "sha256": "867b6b224cb60b63f8b40182866165af5fecc3d14a4d43ce9ae077949c19e301",
+      "bytes": 519398,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/agent-harness.raw.json": {
+      "kind": "file",
+      "sha256": "ce2b93493db367784790fcbaa23233ccfa52ad10ffbe09b67817100d9a3cedc4",
+      "bytes": 2561,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/agent-harness.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/agent-rules.raw.json": {
+      "kind": "file",
+      "sha256": "2de459f554a5c77fa08d3d1886dd3bac386e92b7bb085693145c9d8c4cdab5b5",
+      "bytes": 3321,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/agent-rules.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/enterprise-readiness.raw.json": {
+      "kind": "file",
+      "sha256": "42ac270c1806a9553ae0afda3edad770fdf88daab60d58750d04be09ddc981db",
+      "bytes": 5493,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/enterprise-readiness.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/execution-summary.json": {
+      "kind": "file",
+      "sha256": "3102c072afab2db0f426d3e61cd61c8de18354af4e2f3105e6bf1f0d841cf4d6",
+      "bytes": 12617,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/git-workflow.raw.json": {
+      "kind": "file",
+      "sha256": "0e032fd985daf65a45c0c11b2399567a8fc4a73e923c4f93061026758c8367d3",
+      "bytes": 2279,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/git-workflow.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/github-project.raw.json": {
+      "kind": "file",
+      "sha256": "d29c6bd45ee17fac52521ae207f2f209478ce3e3a6a2aa0926d24db40a85aeac",
+      "bytes": 4458,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/github-project.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/netresearch-branding.raw.json": {
+      "kind": "file",
+      "sha256": "a8ea489a5e2c4587307d90aed352795a4bc23a97739b02f5a34ee54aa90179e0",
+      "bytes": 3356,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/netresearch-branding.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/php-modernization.raw.json": {
+      "kind": "file",
+      "sha256": "a08819e81bd6ab2eb7a023eddc140c8d06992851d8a8b9f0b94e4a8c42ad7e8b",
+      "bytes": 4313,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/php-modernization.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/security-audit.raw.json": {
+      "kind": "file",
+      "sha256": "d1417bb26d2e0b28f977f4714e2326d1735aef2c7e359257e7f37121f627163f",
+      "bytes": 64527,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/security-audit.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/typo3-conformance.raw.json": {
+      "kind": "file",
+      "sha256": "5120b53bbce236dff393078942d09672529df129b70f2c317135251c8b99307d",
+      "bytes": 14047,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/typo3-conformance.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/typo3-docs.raw.json": {
+      "kind": "file",
+      "sha256": "57678adb6c474c00c483612649ebc4b4aa08a83988ed7eea5123e3bec18927a1",
+      "bytes": 4442,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/typo3-docs.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/typo3-testing.raw.json": {
+      "kind": "file",
+      "sha256": "7cf01f1be924b0fd3d1385e25e0371fdfaa8b8f8d99a7ddf8501333f4aa6dad2",
+      "bytes": 10205,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/final-mechanical/typo3-testing.stderr.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/inventory.json": {
+      "kind": "file",
+      "sha256": "fd2b0df7c7b532269929804a39441b55dfeb5272a40231e8b06ef7d613e9f767",
+      "bytes": 1731575,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/inventory.md": {
+      "kind": "file",
+      "sha256": "7894246164dfd03a33d02934663fe4c2156ea24dee67bdd2239292be964477bf",
+      "bytes": 317349,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/reconciliation.json": {
+      "kind": "file",
+      "sha256": "0f1f5f6fbda7bd333c26b207c9dad2b8a3b0d2b1cfe07d4b5f855fba67e27282",
+      "bytes": 2841413,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/reconciliation.md": {
+      "kind": "file",
+      "sha256": "9ce0873e0117d8e3362945eab8d57d751e989aff86b6a22fbb927f151b531645",
+      "bytes": 217763,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/completion/source-binding.json": {
+      "kind": "file",
+      "sha256": "f6aa5c79a293c134da49c26c32673c7b9a87b9ceeeef7dadb90c988d921cc6c3",
+      "bytes": 448,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/core13-static/README.md": {
+      "kind": "file",
+      "sha256": "609d0ec949707e2dc282600f0170b41c6f74f9ae29682d5005ed273c980ebfed",
+      "bytes": 3157,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/core13-static/manual-structural-comparison.json": {
+      "kind": "file",
+      "sha256": "d091ba5f1c524e7833c1ea1765d399d8c8a6ee43bcd1c06b0eb9e6c299868c97",
+      "bytes": 6025,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/core13-static/summary.json": {
+      "kind": "file",
+      "sha256": "4eb592bc537339b8fbda5351a79e9a8bbf389ac84e4bfade042665c816631bc4",
+      "bytes": 20575,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current-tree-review.md": {
+      "kind": "file",
+      "sha256": "4ec4aeb4827da07873886603dfdac19b37b274f42ffd00756f3a17918ec048e5",
+      "bytes": 6106,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/README.md": {
+      "kind": "file",
+      "sha256": "06da1ed2c283989cf694eb718099d573668ece68aaee561fa57b2cf1ea4af84d",
+      "bytes": 4017,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/betterleaks-after-fingerprints.exit": {
+      "kind": "file",
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "bytes": 2,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/betterleaks-after-fingerprints.log": {
+      "kind": "file",
+      "sha256": "d3105d1d0332161555335215b95acdfe8fdb628021bbcfe0060e691ca96fb5f2",
+      "bytes": 160,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/betterleaks-classification.json": {
+      "kind": "file",
+      "sha256": "8a9fc30a1936b73a03edb085613fa7e6ff35576726e8679552000ef429970086",
+      "bytes": 243607,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/betterleaks-remaining-redacted-metadata.json": {
+      "kind": "file",
+      "sha256": "98786533ed020d416f59c3715f60c6697c39986562bc4ea2222aca230410f513",
+      "bytes": 368,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-actionlint.exit": {
+      "kind": "file",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-actionlint.log": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-current-audit.json": {
+      "kind": "file",
+      "sha256": "0e0cf04874b378c35cefa138c12726387151ac18f00b13b160f41585f677e436",
+      "bytes": 2256,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-current-core14-phpstan.exit": {
+      "kind": "file",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-current-core14-phpstan.log": {
+      "kind": "file",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-current-g7-core13-phpstan.log": {
+      "kind": "file",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-current-g7-kernel-phpstan.log": {
+      "kind": "file",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-current-g7-unit.log": {
+      "kind": "file",
+      "sha256": "a1ab273fc0e516c770e52d507e9c30f76d828fd8568863ef6504b69d2087d772",
+      "bytes": 378,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-current-tests.log": {
+      "kind": "file",
+      "sha256": "75f7a736bd62149d6b66b5ca6e53bed9e1d53617035139fa06df511bb366dba4",
+      "bytes": 522,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-summary.json": {
+      "kind": "file",
+      "sha256": "865550bd00aecf1f059941fd851f518297942bf699e983dc0fd6e38f9416012f",
+      "bytes": 3803,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-zizmor.exit": {
+      "kind": "file",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/ci-zizmor.json": {
+      "kind": "file",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/coverage-converted.json": {
+      "kind": "file",
+      "sha256": "74463ef2ca519dd3dbd6d08b650c29f302c03cc0dc3c50f1c52ad8dada77ecab",
+      "bytes": 722346,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/current-full-coverage-summary.json": {
+      "kind": "file",
+      "sha256": "d1bf93a8c4627874420afc29f87f8acace47c1353fd356c380d3b00ea7c4e523",
+      "bytes": 176,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/current-full-coverage.txt": {
+      "kind": "file",
+      "sha256": "81b0f9060ef94ac5fe3ba873179aa29b1c70ed5169a54e8a4f39651c0f780685",
+      "bytes": 5077,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/final-extension-archive-manifest.json": {
+      "kind": "file",
+      "sha256": "6cf8213e8594b6fab026c115eb4e7c4c03be011de0f167495cd9dd5096330eeb",
+      "bytes": 15319,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/github-dependabot-alert-summary.json": {
+      "kind": "file",
+      "sha256": "0fb018fc53a1cbfda4ee7c5f5eb27c6fd5a17185ad54d6cce7fbfb8544d01cfa",
+      "bytes": 1070,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/github-main-protection.json": {
+      "kind": "file",
+      "sha256": "550a9546792cab063333772a92c7ce2b700dc16b53f9a0daee7864f40be0f884",
+      "bytes": 129,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/kernel-g8-phpstan-2.3.1-diagnostics.log": {
+      "kind": "file",
+      "sha256": "5cad1c20b6d14ab81581bc9fce1450a1acaabf7c7233cb7da1fac1b91f6f03ad",
+      "bytes": 4971,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/opengrep-applicability.json": {
+      "kind": "file",
+      "sha256": "9a49239cf769458e4d953e9178247cd148decf02f5c197cdf29af074233af38b",
+      "bytes": 7917,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/runtime-source-hash-comparison.exit": {
+      "kind": "file",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/secret-and-sast-triage-summary.json": {
+      "kind": "file",
+      "sha256": "0777e8513b53303c9e0092163e43f53750683a5b888d89089b822383d40484db",
+      "bytes": 9711,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/secret-and-sast-triage.md": {
+      "kind": "file",
+      "sha256": "c7110a9fbb696e32a31ee39e71c131f744349314ac929f8d3d42da9faf6ba7bb",
+      "bytes": 3437,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/secret-scan-calibration.json": {
+      "kind": "file",
+      "sha256": "228a9e74885c237a5cad2e1520777c8b028527546788a85d320b6f9b94b9e87c",
+      "bytes": 4836,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/current/source-hashes.json": {
+      "kind": "file",
+      "sha256": "6bfbd13599d61349e6cc33f14159ae5dd4517a881e80257524171bf92fa021fc",
+      "bytes": 14892,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/documentation/docs-de.log": {
+      "kind": "file",
+      "sha256": "8586f833393f865c4f1d167a65e1414f6d019fb413dccaa7a7ffc22d10b504aa",
+      "bytes": 183,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/documentation/docs-en.log": {
+      "kind": "file",
+      "sha256": "b0e0ffcf661b1667d66ae15a3d97c185cce243065cd3ac795f406785f1163904",
+      "bytes": 760,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/documentation/docs-validation.log": {
+      "kind": "file",
+      "sha256": "c9fc1ffc3298231fa7b29957c8ae72dd2cac148da7f7b97172f30fa3c6d9cb68",
+      "bytes": 1523,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/header-edits/additional-result.json": {
+      "kind": "file",
+      "sha256": "a966d299b5b5233d91dc4d20c9e44251221a6fb9f2a196f3a299e7ee74607de0",
+      "bytes": 1902,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/header-edits/additional-semantic-equivalence.json": {
+      "kind": "file",
+      "sha256": "cc6432daa9ceaf5482afb36aec246131874f046fb2e2eac9697fc9dee70ea883",
+      "bytes": 1236,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/header-edits/semantic-equivalence.json": {
+      "kind": "file",
+      "sha256": "581c994d0ca2c80a7dfe441613a0713384de456230506b700137db64f8593d78",
+      "bytes": 24090,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/README.md": {
+      "kind": "file",
+      "sha256": "d8aced42bb210d6deb5c5d74bf1247cc1fe8ff883a2868e0824f09486d6a109d",
+      "bytes": 9044,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/enterprise-readiness.raw.json": {
+      "kind": "file",
+      "sha256": "5d50417042b483ed5050a2ee897c577df98161e529cb7b5f045b5c41598e1d3a",
+      "bytes": 5494,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/followup/snapshot.json": {
+      "kind": "file",
+      "sha256": "d0f45d8f71a08daf4f0e3835e674b9a657092e15e19d0865c6ac74a26347001d",
+      "bytes": 1368,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/followup/tc187.raw.json": {
+      "kind": "file",
+      "sha256": "d22a69b397510fa54996b2ce325978f843a3f465c6ee41e578e94f7c588b20a6",
+      "bytes": 648,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/snapshot-manifest.json": {
+      "kind": "file",
+      "sha256": "3555f34b5807fd06c20f7f69e3117df61bc77856d4867cc671bf3e2c9447814a",
+      "bytes": 284186,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/source-binding.json": {
+      "kind": "file",
+      "sha256": "108c07076b3d533e9788fd917a88d7ddcdad8ad5b3fbc1161183e7df8017ec73",
+      "bytes": 2013,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/strict-types-token-check.json": {
+      "kind": "file",
+      "sha256": "fdd387d29dff1b04520697d34410a2389a481c3fa0e018d1b394c2e040404ae0",
+      "bytes": 200,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/summary.json": {
+      "kind": "file",
+      "sha256": "2758418f13191167794df680eb444ffcfbf59d6e666950d05b99a6a26b67e034",
+      "bytes": 2791,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/triage.json": {
+      "kind": "file",
+      "sha256": "af52c104c3bfa968030a86b39bc1e150c084d7126a639cf39badf02d9009b4a0",
+      "bytes": 13511,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/post/typo3-conformance.raw.json": {
+      "kind": "file",
+      "sha256": "4c2fa44ddbd1f04b056122e7a9c7c523de8382c2935f83f1270baf6eb1fdd381",
+      "bytes": 14157,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/README.md": {
+      "kind": "file",
+      "sha256": "c5bd4786d980561da38359069519b95e3311b313fcc7f46a628f1ce3a33bc302",
+      "bytes": 2977,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/ci-failure-propagation.json": {
+      "kind": "file",
+      "sha256": "48f1334da426d417731a500352fb342a940a48c4b87b472ed9bc11b6e8399664",
+      "bytes": 1028,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/codeql-default-setup.json": {
+      "kind": "file",
+      "sha256": "9179edc14cce212de6ba9933e426821e87f3f969b21bf04708f4133067b0bfde",
+      "bytes": 177,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/codeql-run.json": {
+      "kind": "file",
+      "sha256": "cae5505a3596769f022d9f84a800967fcd62cb10e0d13f7c896eded07fd5a20b",
+      "bytes": 6313,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/dependency-review-run.json": {
+      "kind": "file",
+      "sha256": "60cfe2004b989566e29571857ac33cf89c5ca33d8f1fe8a02c91acd5f10a2287",
+      "bytes": 1735,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/phpstan-command-after.exit": {
+      "kind": "file",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/phpstan-command-after.log": {
+      "kind": "file",
+      "sha256": "5cad1c20b6d14ab81581bc9fce1450a1acaabf7c7233cb7da1fac1b91f6f03ad",
+      "bytes": 4971,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/phpstan-command-after.sh": {
+      "kind": "file",
+      "sha256": "b9ceadee5a6fa0833f27bfd04ba2623e9ed535fecf7111278495386012db852a",
+      "bytes": 496,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/reviewdog-actionlint-verification.json": {
+      "kind": "file",
+      "sha256": "59b3c69a6183c53fc4c0484fef3b710552f9567e37db455e7541ad541047a591",
+      "bytes": 160,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/second-startup-diagnosis.json": {
+      "kind": "file",
+      "sha256": "5a25fd9993e5acc849e2bcddcd4d1f8e415725218b56e92813ac18a4c9d91df4",
+      "bytes": 772,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/security-37909245786-audit-redacted-metadata.json": {
+      "kind": "file",
+      "sha256": "fd46908406bdd1b31e540747bb60c50b3ba4e8625948dce90075ba53610d5c82",
+      "bytes": 719,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/security-37909245786-betterleaks-redacted-metadata.json": {
+      "kind": "file",
+      "sha256": "e193156534f0044ef74e2e179550ebfe07e861083b9e414182778d906dadd637",
+      "bytes": 519,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/security-37909245786-final-jobs.json": {
+      "kind": "file",
+      "sha256": "781ef23058c294e8a5a18354ccf6dd9fb5884c1dbb9b3301ff57c1c648fb25d6",
+      "bytes": 793,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/security-37909245786-final-run.json": {
+      "kind": "file",
+      "sha256": "a0c3f92dffccff0903b8aa7a25450438990ce8288221014913ef151a1a48b1be",
+      "bytes": 344,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/security-37909245786-opengrep-comparison.json": {
+      "kind": "file",
+      "sha256": "4c9d231d68afe2a9c16da7f3a2f3785609089122a5efbe7bf72f459868fd3bbc",
+      "bytes": 106,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/security-37909245786-opengrep-redacted-metadata.json": {
+      "kind": "file",
+      "sha256": "1d9e13d4795aa2813dadba7d66313b24680e711fb2168281ed91b9685caff050",
+      "bytes": 4055,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/security-37909245786-summary.json": {
+      "kind": "file",
+      "sha256": "dda8e5e6559471b0f925a2c6c38c9a4771ad824097f1f5e951c87c9bf1852a05",
+      "bytes": 3246,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/security-37909245786-summary.md": {
+      "kind": "file",
+      "sha256": "d4606638c78cf7724ad0513412e2e6a4276dd8e76dcd06687e7c4375570891ea",
+      "bytes": 2466,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/selected-actions.json": {
+      "kind": "file",
+      "sha256": "26d2e2c53832377e205e9fa1fd8b3c93f578e4b02dff135bbf3a4fff70738fd7",
+      "bytes": 293,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/setup-php-2.37.2-verification.json": {
+      "kind": "file",
+      "sha256": "32f024028d6d8ad655c1dc6f2e6da419017d639bc9a96b81290d5283d3b23b63",
+      "bytes": 197,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/startup-diagnosis.json": {
+      "kind": "file",
+      "sha256": "32f84c73073a8cdd928128332fff7bf15356642dbe0aa0589ff37f491ca3bbd3",
+      "bytes": 988,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/verification-run.json": {
+      "kind": "file",
+      "sha256": "ac43f1f671572b851c8dbc6c3b5af9094a37655e1b8448565f2667f52aa50c06",
+      "bytes": 9868,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/remote/workflow-permissions.json": {
+      "kind": "file",
+      "sha256": "d1ab1b8b5b33f79820b6785fbeb02d8dd94af1a01aec2adc1b3b91962e4311cc",
+      "bytes": 182,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/README.md": {
+      "kind": "file",
+      "sha256": "72f8735e9a0aed16d97f2701e0e087bc7de1df1daacbc088e7b51c3d38b483b0",
+      "bytes": 2250,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/additional-header-sanitization.json": {
+      "kind": "file",
+      "sha256": "3a4e6f31b232c191d8db01799dcea07813e1d36397cf5d5333db118adc524293",
+      "bytes": 1036,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/anonymous-cookie-provenance.json": {
+      "kind": "file",
+      "sha256": "3b935dbe38e4e9e690f3fda0c31bec555607655e61498615fd2ebf849a1f5fc3",
+      "bytes": 2007,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/cookie-independent-review.md": {
+      "kind": "file",
+      "sha256": "0755dfb54b0be0856e068985e24288f351add102b9ad57cf5a2106d069247828",
+      "bytes": 2543,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/cookie-remediation.md": {
+      "kind": "file",
+      "sha256": "a35857d57f3868602e7eff01c56260514c9a329b95a5eb0462393db81cbc465c",
+      "bytes": 1901,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/cookie-sanitization.json": {
+      "kind": "file",
+      "sha256": "1cfffd8ca8487431e2b60d9fe5d5f632df2d2875688ce239bf56fd3e5ba7c1fc",
+      "bytes": 440,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/final-extension-archive-manifest.json": {
+      "kind": "file",
+      "sha256": "44343359d0e508111e5572c66dfc35ec299ec8ceed109380bb4d4e2beeca2424",
+      "bytes": 15319,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/final-sast-parser-limitations.json": {
+      "kind": "file",
+      "sha256": "daf3381ee0722ab9b9a9c15416277c1eb06be3d840fac5fdfc8d60ff768892d6",
+      "bytes": 25320,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/final-static-summary.json": {
+      "kind": "file",
+      "sha256": "b09260d454023e1491b225b900a367d7da9b866bf71f171dca4cf745b8cd3720",
+      "bytes": 5074,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/fixture-digest-classification.json": {
+      "kind": "file",
+      "sha256": "fbdc3d34efb35141ffa359cee468ab58c84bfb0bef052aaf3bff6791c0648283",
+      "bytes": 1099,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/package-digest-classification.json": {
+      "kind": "file",
+      "sha256": "0778cc582c6f2e97f4cfa30aca50ef25661f8f7e86f2d70e444e6d0963f2a0ea",
+      "bytes": 599,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification-guards.json": {
+      "kind": "file",
+      "sha256": "2eaaa8b586198a2af28bba840772219c78cbb11e4d78088381c1799fb9308fa9",
+      "bytes": 1068,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/README.md": {
+      "kind": "file",
+      "sha256": "f8dce05965e0fade5ca6301ffa162f6140b3b4a9be6e01eeeac334a36b41eaca",
+      "bytes": 1011,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/classic-current-manifest-archive-hashes.sha256": {
+      "kind": "file",
+      "sha256": "215562c31895ac28477b5e7c334cb57fba4b525cddc33c7cfb9bfd9a7231f0a9",
+      "bytes": 319,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/classic-matrix-round2/production-matrix-summary.json": {
+      "kind": "file",
+      "sha256": "ef8ce0c840edb1466bd661b29551d1b579a2dca8fe3ac41d2ac917a6fdd74b72",
+      "bytes": 38117,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/classic-round2-persisted-package-states.sha256": {
+      "kind": "file",
+      "sha256": "daca601d197a24019a6f5b6bd0d6927431fa734e733e359b56fd4f121fcd46db",
+      "bytes": 346,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/composer-matrix/production-matrix-summary.json": {
+      "kind": "file",
+      "sha256": "20f7fb684810309cfba31f090c4542dda22397bd7292bbcf9d49719cf5e58908",
+      "bytes": 76027,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/core13g7-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/core13g8-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/core14g7-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/core14g8-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/current-runtime-test-source-hashes.sha256": {
+      "kind": "file",
+      "sha256": "cea5137af4f99ce4e3ae3f89f608249d52962891a257d4197d9a10acbeca5c6d",
+      "bytes": 30488,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/executable-input-hashes-before-classic-fixes.sha256": {
+      "kind": "file",
+      "sha256": "4a1f506886690367102e69e5dbdc25bf416e0005ebcedbba40f303d688060203",
+      "bytes": 26901,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/executable-input-hashes-round1.sha256": {
+      "kind": "file",
+      "sha256": "abc3102d454102da75ee31f9d556e05eb874736b1f7c6dc0e24a696ad256f1ab",
+      "bytes": 27060,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/executable-input-hashes.sha256": {
+      "kind": "file",
+      "sha256": "7b217ce59a5b48d0f1529e4742966e34d3de11cc1a115e3366d43f2a35b7f0a5",
+      "bytes": 27060,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/full-g7-phpunit.log": {
+      "kind": "file",
+      "sha256": "4956a4bd0dbd20ae57dc3ca6f0d0a0022d21103f69fd016327e354749b1f3b0c",
+      "bytes": 477,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/full-g7.junit.xml": {
+      "kind": "file",
+      "sha256": "dfed80574b4de7c1a7567e055254782709b0b81a2f78a4730cd322a74ae777f7",
+      "bytes": 62724,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/full-g7ter-phpunit.log": {
+      "kind": "file",
+      "sha256": "fcf6007c7e1674e14d27aa8df460d291cd78722b0bdcf0db52c7ea850204e9d6",
+      "bytes": 477,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/full-g7ter.junit.xml": {
+      "kind": "file",
+      "sha256": "5bf65f836bc5b0845d20cfc97be7d517b60c2d52fb69df1d1626e753b6fb8fbf",
+      "bytes": 62724,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/full-g8-phpunit.log": {
+      "kind": "file",
+      "sha256": "7ced25a633bf8e8a5e6af8819b3c83a63549870a8ef5e4e4b86e8642d3f0d29f",
+      "bytes": 477,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/full-g8.junit.xml": {
+      "kind": "file",
+      "sha256": "c907df853f207fd728004272ad35ab4d0e415dc3d32a1feef0e6f0d79d0c2f4b",
+      "bytes": 62724,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/installed-fixture-input-hashes.sha256": {
+      "kind": "file",
+      "sha256": "46b261e38f7cfe0b658d9f1ae8b463deb29ff73cbe99beaddd0239270ef5fd4a",
+      "bytes": 1831,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/kernelg7-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/kernelg7ter-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/kernelg8-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/resolved-production-packages.json": {
+      "kind": "file",
+      "sha256": "768286a2a2eb514f4df2c57e07c8c680c852a236922d60b213d5cacce4e00d1a",
+      "bytes": 3027,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/runtime-test-source-hashes-round1.sha256": {
+      "kind": "file",
+      "sha256": "a0b191216f6746c54ca6df8d1aad09708ebaadb4ce8aabb238ddd0166f94f5c2",
+      "bytes": 26064,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/runtime-test-source-hashes.sha256": {
+      "kind": "file",
+      "sha256": "660bf5caafc08d3d63fdd8a41cd530ffd3b53c338386a74a58df878131ac178a",
+      "bytes": 26064,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/static-configuration-hashes.sha256": {
+      "kind": "file",
+      "sha256": "453a7c0abb66826671ba9f6cf0134e9f2ab517ff83f7388855790e6bfe68d599",
+      "bytes": 861,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/summary.json": {
+      "kind": "file",
+      "sha256": "905c055f5faaf7ffe6980df42b3f0dc3c17aa9b62a56aecb4922c97821402c30",
+      "bytes": 10503,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/qualification/tested-current-source-binding.json": {
+      "kind": "file",
+      "sha256": "4eb0426e0d7f95e959c42c2cf772482ebd7495351ed06203ae46280088174434",
+      "bytes": 68851,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/renovate-policy-verification.json": {
+      "kind": "file",
+      "sha256": "bcf98508e371dc44d81192d52e8ecba19006398325e80fea93f09986678f62b1",
+      "bytes": 17668,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/renovate-validation-repository.log": {
+      "kind": "file",
+      "sha256": "8d713bf5164a9413fcfbb50ce16bdc24dae33015774a82f2141b588739f3d7bc",
+      "bytes": 102,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/research-header-guard.json": {
+      "kind": "file",
+      "sha256": "d4f149537c5753c036ffde1a48e40bc9b73fac296d2e226fe1baede16588a338",
+      "bytes": 537,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/research-header-independent-mutations.json": {
+      "kind": "file",
+      "sha256": "6d21320165dfe6acefc8f2f78123928306354d57dd0f40a835225c3390cc9650",
+      "bytes": 950,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/sast-classic-lifecycle-follow-up.json": {
+      "kind": "file",
+      "sha256": "ee71e2656a2514580f3838475ece9d3e78fa27648c87a5ad4dce76ade3d6b27d",
+      "bytes": 1023,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/sast-parser-baseline-comparison.json": {
+      "kind": "file",
+      "sha256": "099012083d9c9fd903d6470a129c8d0b31c93e95121c10d9721994d4add9f303",
+      "bytes": 8468,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/sast-parser-limitations.json": {
+      "kind": "file",
+      "sha256": "3c54ced1230da940d77691bcaaa776d3ca856b77cacdbfddba0cfd7d6e23c899",
+      "bytes": 19728,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/sast-php-semantic-ast.json": {
+      "kind": "file",
+      "sha256": "f58c78cab9716f184e19e6db0232d492bd556790cbe1d55e7c842ddab1800fd6",
+      "bytes": 1455,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/sast-remediation.json": {
+      "kind": "file",
+      "sha256": "80a683e068ef7a21bbce31a678236b42748673b5d0c348ddac325ef8c1e7410a",
+      "bytes": 6398,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/sast-remediation.md": {
+      "kind": "file",
+      "sha256": "252e443b7dcd7ca45263c990a0de82f5af45b065262782a040b82179b952565e",
+      "bytes": 6947,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/bootstrap-static-summary.json": {
+      "kind": "file",
+      "sha256": "657da3723d8f4e99b4518ed954cf939f57ae054b387f95364c99002d8b898c03",
+      "bytes": 1133,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-core13-g7-green.json": {
+      "kind": "file",
+      "sha256": "3053909660c666d701172b83b70af73128e635f66a8ddf3f545cb2e958286e84",
+      "bytes": 450,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-core13-g7-red.json": {
+      "kind": "file",
+      "sha256": "83fb1b3c667281b6854d24b983464a2728c8dc1da6da2a059d28cb891c7f1c98",
+      "bytes": 848,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-core13-g8-green.json": {
+      "kind": "file",
+      "sha256": "bc3ecaaac3eef6214509e1d7efa31ddb051a2b558f21012538c4aaa54cc6da4b",
+      "bytes": 448,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-core14-g7-green.json": {
+      "kind": "file",
+      "sha256": "7a36f9e88897363f03245bcbf09b625b1ad476fd85efdc99f2f3fd02b1e3b73c",
+      "bytes": 449,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-core14-g7-red.json": {
+      "kind": "file",
+      "sha256": "2af6fff4bc0f810641a56f795318081042da43efb7e764007c687a4ac333bc30",
+      "bytes": 847,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-core14-g8-green.json": {
+      "kind": "file",
+      "sha256": "b903bc5f857c54800d3a536c7baaa35706a9db7d80b09625d2f611dd57e2c9dd",
+      "bytes": 447,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-interface-deprecation-control.json": {
+      "kind": "file",
+      "sha256": "ccbf475024882ce95d248e8e6695aa61ac6b4ef5c2c80df7ab80201881eb26dc",
+      "bytes": 873,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-kernel-g7-green.json": {
+      "kind": "file",
+      "sha256": "37ff2658ec7920bc745657deeee8a326ef28227c5c1b051e6bf4a04e2048371f",
+      "bytes": 449,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-kernel-g8-green.json": {
+      "kind": "file",
+      "sha256": "838adb50a384ad95f40a402adb8dfd129d3fcbaf446d4424b62b0b5afb1d0cac",
+      "bytes": 447,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-removed-tag-mutation.json": {
+      "kind": "file",
+      "sha256": "bba87e4f5ea221579b76d66dc51a9df529726d65282997f700b75c0ded2c1d81",
+      "bytes": 855,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/client-stub-summary.json": {
+      "kind": "file",
+      "sha256": "423d5f9068f9882ec67d4d4297f50d96a7d259b3a63fb9e3636e06d91bc1574c",
+      "bytes": 11143,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/core13-shell-calibration.json": {
+      "kind": "file",
+      "sha256": "d5207df1b98db4b5425d1ff5b264a7e12979e9a999aa7c80d71113d309b417f2",
+      "bytes": 2950,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/core14-shell-calibration.json": {
+      "kind": "file",
+      "sha256": "69fd061b5b0188f851a04ead6c296532964e51b35fb9371e8ea19e7f030684bd",
+      "bytes": 2025,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-analysis/range-selection-controls.json": {
+      "kind": "file",
+      "sha256": "c9886087852c04ff7b237338d7fa2f12f7edaa7c71c0d3ed212b5664459cc861",
+      "bytes": 1827,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-documentation-summary.json": {
+      "kind": "file",
+      "sha256": "41973aab3c4764cc17d72b09eb2206281c934e02a0d0d65c24a9a353fbceaa15",
+      "bytes": 4284,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-final-review.json": {
+      "kind": "file",
+      "sha256": "99de8c2d90e98001ee4317fa724009e35af5fd7452172f93c5daae012f4efba7",
+      "bytes": 4011,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-metadata-digest-classification.json": {
+      "kind": "file",
+      "sha256": "5638da6174f847c771a9e85412757f67528a44f6adf8ea21586769cb4d4c5b53",
+      "bytes": 3298,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/classic-production-matrix-summary.json": {
+      "kind": "file",
+      "sha256": "902facc19cde62a00274f07c7af889b1ee1264315e0d3cf9ef2522bd712ac447",
+      "bytes": 38117,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/composer-production-matrix-summary.json": {
+      "kind": "file",
+      "sha256": "5adf90b1bf5b924afeeb1c06e2b1880e894684aab90660f488c1a676cc2d70cf",
+      "bytes": 76027,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/core13-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/core13g7-audit.json": {
+      "kind": "file",
+      "sha256": "096d61fd1218b9103cdef9fdfebb6192d6052d1d2d5e53d226de79caff42c1a4",
+      "bytes": 106,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/core13g8-audit.json": {
+      "kind": "file",
+      "sha256": "096d61fd1218b9103cdef9fdfebb6192d6052d1d2d5e53d226de79caff42c1a4",
+      "bytes": 106,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/core14-phpstan.json": {
+      "kind": "file",
+      "sha256": "54e6eb194ee0b354574ec566f17799b533a8be4c7d81b0e9a532389caf087687",
+      "bytes": 62,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/core14g7-audit.json": {
+      "kind": "file",
+      "sha256": "3d68c4566587606c21e4bcd82b55d322ddb79158f657d9fb90bf0d24ab5bccdf",
+      "bytes": 64,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/core14g8-audit.json": {
+      "kind": "file",
+      "sha256": "3d68c4566587606c21e4bcd82b55d322ddb79158f657d9fb90bf0d24ab5bccdf",
+      "bytes": 64,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/executable-input-hashes.json": {
+      "kind": "file",
+      "sha256": "fedb8ef9e88fdeb6beba1c98b42dc4195d0cef6cc02241788a5fc26a955394c4",
+      "bytes": 24296,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/final-extension-archive-manifest.json": {
+      "kind": "file",
+      "sha256": "689352fd7cecab97608f13958daca4f7201f6a176ac609bdd259bdfa2dc1dcf1",
+      "bytes": 15560,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/range-preflight-tests.json": {
+      "kind": "file",
+      "sha256": "5f8949781b3e78ff1c9ba70467b89a7a9b739a51573c325ec7288592aa5e5db0",
+      "bytes": 2130,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-qualification/summary.json": {
+      "kind": "file",
+      "sha256": "c62acad0ab374b1f014a3ba647a8f07b39fb776f295d32b88d6bfc6002fe07ea",
+      "bytes": 3364,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/annotation-focused-revalidation.log": {
+      "kind": "file",
+      "sha256": "04ec9fc667e087cd7072480f6b5ad2368f1800b4cb7ba9fe354e592be4e8123e",
+      "bytes": 258,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g7-current-full.log": {
+      "kind": "file",
+      "sha256": "779ef647ea54cf74790aa5eb91d514ab0db60fc1781d1e9edd1c1707b1381d02",
+      "bytes": 503,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g7-current-junit.xml": {
+      "kind": "file",
+      "sha256": "a2a137116cad89c1885d0199f730d8e2895dc74cc81752d6992410ea7ef56689",
+      "bytes": 76840,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g7-ter-full.log": {
+      "kind": "file",
+      "sha256": "f359e8a414c2ffdc6080bf02aeb7087296fecdbeb22eb6719621a28c9c684d8c",
+      "bytes": 503,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g7-ter-junit.xml": {
+      "kind": "file",
+      "sha256": "935f6ebd3879b31d7d134e684723d8d11eb959857dfe740a0f9194d72bb409c6",
+      "bytes": 76840,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g8-full.log": {
+      "kind": "file",
+      "sha256": "d73ef0b1523818cf40134165185243093c609340a97016d632ac97b5a61450c1",
+      "bytes": 503,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/fixed-g8-junit.xml": {
+      "kind": "file",
+      "sha256": "a2a78b03f6d54b132a5c8320ae17078a390acfe822b3cb45e22bbcbe14f7e38d",
+      "bytes": 76840,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/minimum-g7-full.log": {
+      "kind": "file",
+      "sha256": "21fcf66e13e8d4bd6facd2e10a41ae25d855c469fb60192b8475677a431aba18",
+      "bytes": 503,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/minimum-g7-junit.xml": {
+      "kind": "file",
+      "sha256": "2350ad33ddb12b639d3bf570fff552f7377b8f78bff32777c4309376970a7e00",
+      "bytes": 76841,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/minimum-g8-full.log": {
+      "kind": "file",
+      "sha256": "88e87f9b8805de934191a8798e3e1ac3c471d096bb95e8f2d07e9a0bea768c74",
+      "bytes": 503,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/minimum-g8-junit.xml": {
+      "kind": "file",
+      "sha256": "58e9e28649ea1826e1a7d58a0fc4b2a3169ad6481c9cbfbb09c1f033dcfd8a75",
+      "bytes": 76841,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/source-binding.json": {
+      "kind": "file",
+      "sha256": "7cd6e31054c52b9c28d66f8ed70546aa5ca420cb3ca36146e9227a3e59068cbd",
+      "bytes": 344,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/source-end.json": {
+      "kind": "file",
+      "sha256": "5a95e2a7aa049ea418f938193bb029ea2a2e11b405b500fbd9109284b38be627",
+      "bytes": 12656,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/source-start.json": {
+      "kind": "file",
+      "sha256": "5a95e2a7aa049ea418f938193bb029ea2a2e11b405b500fbd9109284b38be627",
+      "bytes": 12656,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-runtime/summary.json": {
+      "kind": "file",
+      "sha256": "4ad1c56ef84925357d59fe9a3147561821a70213d86b21223c17d67bd291fafd",
+      "bytes": 6757,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/README.md": {
+      "kind": "file",
+      "sha256": "fe9d6f55df14934ca22199d7b5cdf460ce7c626586989c365c2e08af13e38bb9",
+      "bytes": 1989,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/inventory-delta.json": {
+      "kind": "file",
+      "sha256": "91b1ba5912b9d041d36d77f8203eda51c669491a4d6cead84b133a61a101bc2c",
+      "bytes": 5669,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/parser-limitations.json": {
+      "kind": "file",
+      "sha256": "e44ea287cdc06fee76213517991c3ca3630c744fb51ffc65421a49905e0b2145",
+      "bytes": 6673,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/round1-findings.json": {
+      "kind": "file",
+      "sha256": "1472995e88ad8455654f6c144a2c248a62ce0219a675dc668c0252ed05809df4",
+      "bytes": 608,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/source-bindings-end.json": {
+      "kind": "file",
+      "sha256": "25d542b36bb6e0bff8e9d2b338c4cce163aad5ec6d35a654e3f7fc2135c45054",
+      "bytes": 119267,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/source-bindings-start.json": {
+      "kind": "file",
+      "sha256": "e01cb7a506a79a5c5235c117a96af2e2798cf109809a3f34639bbd4005e05dd4",
+      "bytes": 116086,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/summary.json": {
+      "kind": "file",
+      "sha256": "faf55ac377477020ae478afe910ab2f74bde7f512f87395b23080effc9d6820f",
+      "bytes": 3421,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/synthetic-fixture-check.json": {
+      "kind": "file",
+      "sha256": "27fe3c8b9f59b03cea1b7bc307ce260d38723ed881fda1fc1bc0ee425240345a",
+      "bytes": 225,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/semantic-static/synthetic-guard-controls.json": {
+      "kind": "file",
+      "sha256": "ae392eb2805dbeda0804a5b18ab8c2902fd1f5468ab63e3463d894e8d378b0e1",
+      "bytes": 2462,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/single-use-native-attempt-proof.json": {
+      "kind": "file",
+      "sha256": "d11e0e2b6cf04ed43429e96c77757953e5a308ce66b1bf0885b4e0a974ec511a",
+      "bytes": 3228,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/single-use-native-attempt-proof.md": {
+      "kind": "file",
+      "sha256": "2d50df75ef04fdf2aff01616206cc5de597523e5f9e34aa986fa25b39e3f6eab",
+      "bytes": 3152,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/single-use-sast-summary.json": {
+      "kind": "file",
+      "sha256": "f4e6c306db52ede93e87ff4ba998c50a7abb794d07ca1654b6eea8d1050123af",
+      "bytes": 1550,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/synthetic-exclusion-scope.json": {
+      "kind": "file",
+      "sha256": "c70c7e02bd992035ed0778ec0012cb488e43203382bd7af8778fad451234c699",
+      "bytes": 4346,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/synthetic-exclusion-scope.md": {
+      "kind": "file",
+      "sha256": "cd43a583ca6491e9d69ff48f46c7a3975fa877fae129e975b621e2de52b58230",
+      "bytes": 1941,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/synthetic-fixture-integrity.json": {
+      "kind": "file",
+      "sha256": "27fe3c8b9f59b03cea1b7bc307ce260d38723ed881fda1fc1bc0ee425240345a",
+      "bytes": 225,
+      "mode": 511
+    },
+    "Build/Reports/Assessment/review-loop/synthetic-fixture-mutations.json": {
+      "kind": "file",
+      "sha256": "fbaa8f760f8302247fa634f3ef4c9257ae815cbf5d67e684f30217082aae2a3a",
+      "bytes": 1152,
+      "mode": 511
+    },
+    "Build/Scripts/assert-test-runtime.php": {
+      "kind": "file",
+      "sha256": "03386e2005108f6345f756f43b36ddbaad891f2dc48b9a2fd89e72c9651312c9",
+      "bytes": 1688,
+      "mode": 511
+    },
+    "Build/Scripts/benchmark-policy.php": {
+      "kind": "file",
+      "sha256": "6e31197902e7a6c46ec5521d27d82d75be20c193fd62aee777c51a90fb915c65",
+      "bytes": 5670,
+      "mode": 511
+    },
+    "Build/Scripts/build-extension.py": {
+      "kind": "file",
+      "sha256": "a69dbc44f3d466450126df47cf0cf31c311dec3e92be60c537101b046efc6322",
+      "bytes": 6111,
+      "mode": 511
+    },
+    "Build/Scripts/check-composer-qualification.py": {
+      "kind": "file",
+      "sha256": "c12505e8fbedc763b0ecbbf7bd5e04dc061ab5e5d1ce6f5067b5acd067787391",
+      "bytes": 6294,
+      "mode": 511
+    },
+    "Build/Scripts/check-installed-runtime.php": {
+      "kind": "file",
+      "sha256": "3b8752ab26ad9ad8c77dea331857c1bd949d4af2af266b6d5b6d8b64ef11e59f",
+      "bytes": 970,
+      "mode": 511
+    },
+    "Build/Scripts/check-local-quality.sh": {
+      "kind": "file",
+      "sha256": "7008c6d22a126db9362f69666a122d8d450aa864818cd9f1a4d6b752232d4079",
+      "bytes": 830,
+      "mode": 511
+    },
+    "Build/Scripts/check-research-headers.py": {
+      "kind": "file",
+      "sha256": "13a1d898bfefa85bd4988630016ed95b3cc304c4684711662ffdcc4620c9ea14",
+      "bytes": 924,
+      "mode": 511
+    },
+    "Build/Scripts/check-staged-secrets.py": {
+      "kind": "file",
+      "sha256": "8810ffaf4d8153643573ad13ff026e4449dc6b3c1c600141f56569c17237029d",
+      "bytes": 3600,
+      "mode": 511
+    },
+    "Build/Scripts/check-static-analysis.sh": {
+      "kind": "file",
+      "sha256": "d0dd6ca02450e994602eb690ae870e3ed959efea1748e3a9ee17e5367d758120",
+      "bytes": 1150,
+      "mode": 511
+    },
+    "Build/Scripts/check-synthetic-fixtures.py": {
+      "kind": "file",
+      "sha256": "2d8714bb9495011c26c372fb82a315a42bcd18f5e368a76dbd81388b028894e2",
+      "bytes": 6178,
+      "mode": 511
+    },
+    "Build/Scripts/detect-staged-secret.php": {
+      "kind": "file",
+      "sha256": "18ef505e1bc0a7edf211129b696a2213118c3df5b29ed25cbdc3b954a3f8faa4",
+      "bytes": 1743,
+      "mode": 511
+    },
+    "Build/Scripts/fuzz-evidence.php": {
+      "kind": "file",
+      "sha256": "d42b25d98e2ac6d1249726841f760afa922bd5c2109b40372957163f2e5c3305",
+      "bytes": 2484,
+      "mode": 511
+    },
+    "Build/Scripts/lint-php.sh": {
+      "kind": "file",
+      "sha256": "b25b969c6242cc0cef11c56431188c3ad766f3f28c2d1589bc75ab5c772d6d97",
+      "bytes": 498,
+      "mode": 511
+    },
+    "Build/Scripts/normalize-clover.py": {
+      "kind": "file",
+      "sha256": "8c385da48825094061a172473d622ddb4c34a08aec4029848ca4b74e16aeb0af",
+      "bytes": 1966,
+      "mode": 511
+    },
+    "Build/Scripts/php-style.sh": {
+      "kind": "file",
+      "sha256": "15a0578246bf08cf665edfc6906d7a217f296ca770c8074e68e0c73ff98fbf7b",
+      "bytes": 755,
+      "mode": 511
+    },
+    "Build/Scripts/run-native-tests.sh": {
+      "kind": "file",
+      "sha256": "ba314f7f32c3d1173ae922d5b0061a6ae50d2a00a39223e29fbc0142c4cac3f0",
+      "bytes": 9647,
+      "mode": 511
+    },
+    "Build/Scripts/run-offline-fuzz.sh": {
+      "kind": "file",
+      "sha256": "e48323881d8a17ed4cb43ac046153b1061c3951b30cd583f02ca6075f0b5b720",
+      "bytes": 1442,
+      "mode": 511
+    },
+    "Build/Scripts/runTests.conf": {
+      "kind": "file",
+      "sha256": "ba0b53e5fecda6bc1a99565c58a661e3a4a441f50c50b3fae2a248c05fa68165",
+      "bytes": 5882,
+      "mode": 511
+    },
+    "Build/Scripts/runTests.sh": {
+      "kind": "file",
+      "sha256": "a0d5afaf70ac8a882d1c382d82a7b05d50f93a2a5f18974de3c2009469789a52",
+      "bytes": 8564,
+      "mode": 511
+    },
+    "Build/Scripts/verify-harness.py": {
+      "kind": "file",
+      "sha256": "8c3687ff2bb75ec61ebb2d0577c73cca96af9b32f48ecd81e05e021e929cef23",
+      "bytes": 5651,
+      "mode": 511
+    },
+    "Build/captainhook.json": {
+      "kind": "file",
+      "sha256": "918be1a9d6eeeb2e19d7057c0797d7d2a974920255e4234ba25dffe6b13cdf5a",
+      "bytes": 1115,
+      "mode": 511
+    },
+    "Build/phpstan-architecture.neon": {
+      "kind": "file",
+      "sha256": "21974a5c8e35db61d21fb38adcad4b7ebc3b6f4c4b28d8b1d1c745b771a7855d",
+      "bytes": 579,
+      "mode": 511
+    },
+    "Build/phpstan-bootstrap13.php": {
+      "kind": "file",
+      "sha256": "e6750c271439dff2d269eb0ad135169e79dc585d43e48b6a0b993808489ae565",
+      "bytes": 781,
+      "mode": 511
+    },
+    "Build/phpstan-bootstrap14.php": {
+      "kind": "file",
+      "sha256": "0c54f4336cf0364fc8b1a715f339d1101eb72948e5a494388580a214be8278b1",
+      "bytes": 802,
+      "mode": 511
+    },
+    "Build/phpstan-http-guard.neon": {
+      "kind": "file",
+      "sha256": "da70d63642d638ebf04e68ef8a65dd96930e4305b754e5023ad872ebb333d2cf",
+      "bytes": 260,
+      "mode": 511
+    },
+    "Build/phpstan-typo3-core13.neon": {
+      "kind": "file",
+      "sha256": "274783e5774e663c8266d86b68133e999b1c09fae529f8e090e61cd27da336db",
+      "bytes": 440,
+      "mode": 511
+    },
+    "Build/phpstan-typo3.neon": {
+      "kind": "file",
+      "sha256": "b041667f1299648bdefe5787b61d8d0a9bf008c4efebe0c178ccd3bf09b19c15",
+      "bytes": 386,
+      "mode": 511
+    },
+    "Build/phpstan.neon": {
+      "kind": "file",
+      "sha256": "327ea626a849a62b918ad1a5e95aec687c692cfb726d1260e33f6db4fef8b5d3",
+      "bytes": 200,
+      "mode": 511
+    },
+    "Build/phpunit-http-guard.xml": {
+      "kind": "file",
+      "sha256": "d3ca7da019618e0935a92e9edd31ac128cabd6fd89a5bd067339f1d75422e417",
+      "bytes": 677,
+      "mode": 511
+    },
+    "Build/requirements.txt": {
+      "kind": "file",
+      "sha256": "87d4e9133c90894842e2a5aaf63c09cf714899f3ff3c2af704fff964e5f7970d",
+      "bytes": 196,
+      "mode": 511
+    },
+    "CHANGELOG.md": {
+      "kind": "file",
+      "sha256": "449c0ec192cd3aa4741bbafae148d3747448fd855a5e0a84baa23739dff29a4c",
+      "bytes": 2818,
+      "mode": 511
+    },
+    "CONTRIBUTING.md": {
+      "kind": "file",
+      "sha256": "98da66f67dd05031313a137a058add5ab7ae1a27e0a1ec450c0f1603631dc3e5",
+      "bytes": 6632,
+      "mode": 511
+    },
+    "Classes/Client/EndpointClientFactory.php": {
+      "kind": "file",
+      "sha256": "6e852e2d667c1fd1f7166aed471add2dd2097fa8d14c4408f7f583b90e23d3a6",
+      "bytes": 655,
+      "mode": 511
+    },
+    "Classes/Client/PublicFetchClient.php": {
+      "kind": "file",
+      "sha256": "a0b585bab00308e89baf9e9acf518e6b06a2a3adeb361f4d7336a05e959dd815",
+      "bytes": 790,
+      "mode": 511
+    },
+    "Classes/Command/AbstractGuardCommand.php": {
+      "kind": "file",
+      "sha256": "e44fd1bb185402835f05c37b76198ec3075795f000d5df011178ea2616b72227",
+      "bytes": 823,
+      "mode": 511
+    },
+    "Classes/Command/ConfigCheckCommand.php": {
+      "kind": "file",
+      "sha256": "0771a4810d9075db1bddbd24171d47444973b57f7af8f6cf1bb6bda936c1216a",
+      "bytes": 668,
+      "mode": 511
+    },
+    "Classes/Command/DoctorCommand.php": {
+      "kind": "file",
+      "sha256": "df7428e14dc69b004949ef86877a6dccbf480f5965d74d72abcfbb29513cb286",
+      "bytes": 664,
+      "mode": 511
+    },
+    "Classes/Command/LegacyReportCommand.php": {
+      "kind": "file",
+      "sha256": "53589d8f6ee20759dea55dc46e3033473c4dda70372d3ffa02184d444ee592b2",
+      "bytes": 682,
+      "mode": 511
+    },
+    "Classes/Command/PolicyCheckCommand.php": {
+      "kind": "file",
+      "sha256": "1b2e2137bbf9a75c2f9ada9e3016a992972f1633ff999e0e6c641704cfd97b6d",
+      "bytes": 1500,
+      "mode": 511
+    },
+    "Classes/Configuration/ConfigurationLoader.php": {
+      "kind": "file",
+      "sha256": "fee3b9932df8c155091ff7689bf71e3bca9163903cadbd8388d3d57e41df9557",
+      "bytes": 1061,
+      "mode": 511
+    },
+    "Classes/Configuration/GlobalHttpDefaults.php": {
+      "kind": "file",
+      "sha256": "18cdf2d06efc19b59ee24cf6177b5e3c4968cc1f333e4aa175fe672efebc49d0",
+      "bytes": 936,
+      "mode": 511
+    },
+    "Classes/Diagnostics/DiagnosticBootState.php": {
+      "kind": "file",
+      "sha256": "b3cde852b47418200e40443ea12e79b1fb8149cf0caa2c6557cfe00cbbf022c8",
+      "bytes": 1837,
+      "mode": 511
+    },
+    "Classes/Diagnostics/DiagnosticResult.php": {
+      "kind": "file",
+      "sha256": "23eec30330826dab8b2482ebef9bf895d392d5e91134647b2afd0fefe7338070",
+      "bytes": 357,
+      "mode": 511
+    },
+    "Classes/Diagnostics/DiagnosticsService.php": {
+      "kind": "file",
+      "sha256": "ffe3e3c1254c53f47fde8f527d6d1c6fdf25f52c5a19fbb01a835381b2ba0afa",
+      "bytes": 9664,
+      "mode": 511
+    },
+    "Classes/Diagnostics/LegacyConfigurationInventory.php": {
+      "kind": "file",
+      "sha256": "297fdc7e346885a2fe1ffb37560654064dee0f79af0f7f33d9b51dade99cbe99",
+      "bytes": 1906,
+      "mode": 511
+    },
+    "Classes/EventListener/RegisterGuardListener.php": {
+      "kind": "file",
+      "sha256": "e2b04d133fab0459f74d0c9fa82d7ff0549b60e8b56d81a904c4ca8fd78f0006",
+      "bytes": 1205,
+      "mode": 511
+    },
+    "Classes/Http/CoreStackProvider.php": {
+      "kind": "file",
+      "sha256": "b8de6908b85b14019713e28641e46d2df42a29bfd46fc6ce9b332b5decef24af",
+      "bytes": 2076,
+      "mode": 511
+    },
+    "Classes/Http/GuardedRequestFactory13.php": {
+      "kind": "file",
+      "sha256": "fcd3b8e6da27e5aafdea782027c0d56134c2a68a48faeb902edea334e014e6ad",
+      "bytes": 294,
+      "mode": 511
+    },
+    "Classes/Http/GuardedRequestFactory14.php": {
+      "kind": "file",
+      "sha256": "1465c4023fe2926804bc7bddbd33b38f2f9548c54a891abd7dd2a633e98c51ff",
+      "bytes": 303,
+      "mode": 511
+    },
+    "Classes/Http/MiddlewareRegistry.php": {
+      "kind": "file",
+      "sha256": "e3774ffa0961db21bf8c1d6b7c24367477debc15a2543ca9c3be707fdd251987",
+      "bytes": 5163,
+      "mode": 511
+    },
+    "Classes/Http/RawRequestFactoryRegistration.php": {
+      "kind": "file",
+      "sha256": "a5e8d93da21556edca1fe2a6e3837fbced389fa063a73621b923d0793f67f288",
+      "bytes": 1744,
+      "mode": 511
+    },
+    "Classes/Http/RawRequestGuardTrait.php": {
+      "kind": "file",
+      "sha256": "eb2f5e212c3cb6e98857b33a21de9869a7132eb9f64caa7b6487c2d86ad8ddf3",
+      "bytes": 2131,
+      "mode": 511
+    },
+    "Classes/Http/RequestFactoryCompatibility.php": {
+      "kind": "file",
+      "sha256": "502b1e7a09a80df6340b7e50df6d1c9582e26cdf5a5b9c819fd514fd8b4010e8",
+      "bytes": 3361,
+      "mode": 511
+    },
+    "Classes/HttpGuard/AddressClassification.php": {
+      "kind": "file",
+      "sha256": "52b89deb18b7618b394e5c0ddd841485dfcf9568ea7a4e7bd0c4518117f231c8",
+      "bytes": 425,
+      "mode": 511
+    },
+    "Classes/HttpGuard/AddressClassifier.php": {
+      "kind": "file",
+      "sha256": "acb22ffd3c1d325e424a9b9c011b975532c03c0db4b26d8ba4df6769d151aa7d",
+      "bytes": 6488,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Cidr.php": {
+      "kind": "file",
+      "sha256": "5a12b2ec47c27f4e2daccc7c48ef05a91dc5f4c0417eb231c13d4e3dae4b09fc",
+      "bytes": 5306,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Client/ClientStackConfiguration.php": {
+      "kind": "file",
+      "sha256": "8a41852a9aec2b2a8f07938d7577971dba279dd4ebe525a3f5484cb51950e9e8",
+      "bytes": 928,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Client/ClientStackProviderInterface.php": {
+      "kind": "file",
+      "sha256": "6c651ca59f61c09f90809ef47841c7eae0ff3ae842bd31015ed1d68fef384a7c",
+      "bytes": 447,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Client/DefaultStackProvider.php": {
+      "kind": "file",
+      "sha256": "049ff4dfc7ec157a5565850272426ac6185b085ccfa38e15fda3fb502e97539d",
+      "bytes": 734,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Client/GuardedClientBinding.php": {
+      "kind": "file",
+      "sha256": "6e822020f71b0e41b5753dbe3429e295154d842796f0e813e23d9c50703ee7ae",
+      "bytes": 582,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Client/GuardedClientFactory.php": {
+      "kind": "file",
+      "sha256": "48b68769b037acfd45617f0a9ae412e7f50456ef7f676fdcdc54bc6b38b17aab",
+      "bytes": 9458,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Client/MiddlewarePair.php": {
+      "kind": "file",
+      "sha256": "75731c5dceed3921ff3890f95d4c92b413087876f204336cd7ab878f56520886",
+      "bytes": 665,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Client/Psr18Client.php": {
+      "kind": "file",
+      "sha256": "e82a86b86ff18f85412df83a4c885a67afdc69c7c80ecc3eb5bac245b56f1e1b",
+      "bytes": 575,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Client/PublicFetchClient.php": {
+      "kind": "file",
+      "sha256": "29e79275547a56af5386b83eb655576fd76df4af6ee242aad7f9e2ec5ff37f2b",
+      "bytes": 1270,
+      "mode": 511
+    },
+    "Classes/HttpGuard/ClientScope.php": {
+      "kind": "file",
+      "sha256": "90e14253e96889a175b3ee5b96a7388ea557e8ed43b37c4278409a14a93cb949",
+      "bytes": 635,
+      "mode": 511
+    },
+    "Classes/HttpGuard/ClockInterface.php": {
+      "kind": "file",
+      "sha256": "9f583ebf1f904b09411454c8bcd5f5516a13486f9f2525f024f84b073961c96f",
+      "bytes": 300,
+      "mode": 511
+    },
+    "Classes/HttpGuard/ConnectionPlan.php": {
+      "kind": "file",
+      "sha256": "7ad5f0a49caab156bd138a4b35fa2f04daaf08278663f54538fd813fb3716662",
+      "bytes": 576,
+      "mode": 511
+    },
+    "Classes/HttpGuard/DecisionEvent.php": {
+      "kind": "file",
+      "sha256": "311ccd9dc46e7bf20d4257d66122ddb5cfd7a176f8fe6f2124e8b7ba79bc3089",
+      "bytes": 683,
+      "mode": 511
+    },
+    "Classes/HttpGuard/DecisionReporter.php": {
+      "kind": "file",
+      "sha256": "5677fc279e7e64feb5efb131b476544c0f6ffb4248b2fe64991067a5c625a9d6",
+      "bytes": 5741,
+      "mode": 511
+    },
+    "Classes/HttpGuard/DecisionReporterInterface.php": {
+      "kind": "file",
+      "sha256": "744feeedfbdc3a88a4c0b794c71ae3382dbc5d7ce1e2cdc5dc08e7b5705726f8",
+      "bytes": 256,
+      "mode": 511
+    },
+    "Classes/HttpGuard/DnsAnswer.php": {
+      "kind": "file",
+      "sha256": "b6233f3dd1b4fb373ad926ae8717f2801f20e365a23efd2e5b0e350468e51cc7",
+      "bytes": 427,
+      "mode": 511
+    },
+    "Classes/HttpGuard/DnsPacketCodec.php": {
+      "kind": "file",
+      "sha256": "551fcb64eb8cce4589a491d89e38560a7aeaa1e5eb0b48c25201f4440639c7e0",
+      "bytes": 7037,
+      "mode": 511
+    },
+    "Classes/HttpGuard/DnsQueryInterface.php": {
+      "kind": "file",
+      "sha256": "c3a023c13461c330443a7f196f37dd7e7d09f826a99581eea1be8dd1e9567612",
+      "bytes": 264,
+      "mode": 511
+    },
+    "Classes/HttpGuard/EndpointClientFactoryInterface.php": {
+      "kind": "file",
+      "sha256": "d73aa45ea8bd03024caa7e5903a05a412fde0dbae203a36346f6f7d603e2a8d6",
+      "bytes": 302,
+      "mode": 511
+    },
+    "Classes/HttpGuard/EndpointGrant.php": {
+      "kind": "file",
+      "sha256": "4baf59b2170e3fef5b4f4e23a4c81bf130fef8161c2d49479193612ccf8b5a67",
+      "bytes": 637,
+      "mode": 511
+    },
+    "Classes/HttpGuard/EndpointProfile.php": {
+      "kind": "file",
+      "sha256": "3b1f2da6400f4ae6cb333728d654ac1c77fd96ef25a1870648bb3f2fd5e4256f",
+      "bytes": 711,
+      "mode": 511
+    },
+    "Classes/HttpGuard/GuardConfig.php": {
+      "kind": "file",
+      "sha256": "1999524509ab3682b41a5d274409b4a36e5136bdb10dcbd182ab396241bed81e",
+      "bytes": 14360,
+      "mode": 511
+    },
+    "Classes/HttpGuard/NativeOperation.php": {
+      "kind": "file",
+      "sha256": "831740da0e860dd519744370d808687cd3f9d10319a41c665e34dd8ce90fb765",
+      "bytes": 1414,
+      "mode": 511
+    },
+    "Classes/HttpGuard/NullDecisionReporter.php": {
+      "kind": "file",
+      "sha256": "3840b50022494cd1e5670ab841af020d27dc310242d9a6098a51912c8b3301ab",
+      "bytes": 292,
+      "mode": 511
+    },
+    "Classes/HttpGuard/OutboundPolicyEvaluatorInterface.php": {
+      "kind": "file",
+      "sha256": "3495c5b5fd04aea0ad9647e7522b38911ceaad92802686eb260f742de2220ca2",
+      "bytes": 352,
+      "mode": 511
+    },
+    "Classes/HttpGuard/OutboundPolicyExceptionInterface.php": {
+      "kind": "file",
+      "sha256": "88fc047bba63e8e892b655449404ae6e36229364b3afff94a1866ad94c98571a",
+      "bytes": 299,
+      "mode": 511
+    },
+    "Classes/HttpGuard/PolicyDecision.php": {
+      "kind": "file",
+      "sha256": "30830d84834c4117838fe76bc828913b5f87ec07d23d92dc89aa18f1780143fc",
+      "bytes": 414,
+      "mode": 511
+    },
+    "Classes/HttpGuard/PolicyEngine.php": {
+      "kind": "file",
+      "sha256": "f492730646920a39fa2133daf8cc4ebc7d9f22847d40374cb52b4b8d7ed38b52",
+      "bytes": 9962,
+      "mode": 511
+    },
+    "Classes/HttpGuard/PolicyException.php": {
+      "kind": "file",
+      "sha256": "aaa881043e63aaa5b8105b4dffa1e0822a4eecd7d0a132e0895f6e99eaee30cf",
+      "bytes": 1096,
+      "mode": 511
+    },
+    "Classes/HttpGuard/PolicyRegistry.php": {
+      "kind": "file",
+      "sha256": "d7dfc7512740bdeed82341259d82abc6f4f4c3338a0c2131da6c70b9a07be808",
+      "bytes": 3206,
+      "mode": 511
+    },
+    "Classes/HttpGuard/PublicFetchClientInterface.php": {
+      "kind": "file",
+      "sha256": "12083122d2b0ff45cb711d0efff5fcd7921ba3d2e111ebcfb40f04a7a20bb7fc",
+      "bytes": 349,
+      "mode": 511
+    },
+    "Classes/HttpGuard/RequestPolicyContext.php": {
+      "kind": "file",
+      "sha256": "2ef219f6b4d50b29aa89f909e0aeae7a9cf31e17969077c446c9285f7e795fe3",
+      "bytes": 403,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Resolution.php": {
+      "kind": "file",
+      "sha256": "c7ee1297e612fdc67ef0b8151531717cc2cfdb3a5ad808fbba27cc4f05586383",
+      "bytes": 502,
+      "mode": 511
+    },
+    "Classes/HttpGuard/ResolverInterface.php": {
+      "kind": "file",
+      "sha256": "cf18504b5a8e734bf68b87a4934e264fed8ed2683078e3b1b117e7839846472e",
+      "bytes": 256,
+      "mode": 511
+    },
+    "Classes/HttpGuard/StaticThenDnsResolver.php": {
+      "kind": "file",
+      "sha256": "e2aa47f5828a9baeb12096980d4f2d815e3d9d7742454bde3efed1c70b4bd676",
+      "bytes": 7973,
+      "mode": 511
+    },
+    "Classes/HttpGuard/SystemClock.php": {
+      "kind": "file",
+      "sha256": "a4efbccd86987f661dff58b7fdb268d5cf1232b85a5798fdc92735a8f8486941",
+      "bytes": 479,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Target.php": {
+      "kind": "file",
+      "sha256": "3def0c0f78a43d68b0cb1590aa3b51509fb550d197d0fb671636247cea82d5fa",
+      "bytes": 455,
+      "mode": 511
+    },
+    "Classes/HttpGuard/TargetNormalizer.php": {
+      "kind": "file",
+      "sha256": "ec127d26fd05d1260600d1f69979968cd4c6b6bb57ec34946450d068fdfcc8f8",
+      "bytes": 5648,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/BoundaryMiddleware.php": {
+      "kind": "file",
+      "sha256": "c1e33df4e62f8f5209b4d5972cf664cf22ea5166f75c08538f091e3b8bb31d48",
+      "bytes": 8350,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/GuardedTransferFactory.php": {
+      "kind": "file",
+      "sha256": "5d3d53d2c6218a8ddcdc01c0630af003738adf083a859bd99c51af5d82cf82c2",
+      "bytes": 825,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/InvocationRegistry.php": {
+      "kind": "file",
+      "sha256": "a35a8dcc4da127660ad4383221f4c8246edc64d70d7cadf287153c21266171db",
+      "bytes": 1964,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/InvocationToken.php": {
+      "kind": "file",
+      "sha256": "8d6680d98fb0dd7112defa3789ebf00bc9c9dc0764d3459d1d46a634571c4bf8",
+      "bytes": 563,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/OptionSanitizer.php": {
+      "kind": "file",
+      "sha256": "305c35d35d2fc1f24ecc2433119bf7ff848133efc028bc1d0b38e7a0d2a6e772",
+      "bytes": 13221,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/RequestEnvelope.php": {
+      "kind": "file",
+      "sha256": "9dd73a9185b97a5cd2081b128e80cecc5c2695c5f1a747c352c0d2691d5d63dd",
+      "bytes": 967,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/RuntimeSupport.php": {
+      "kind": "file",
+      "sha256": "b2ab91e97b9dc68b970df77fea3b7dd3d90b972de97dfd19e049201b7108db1e",
+      "bytes": 5689,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/SingleUseCurlFactory.php": {
+      "kind": "file",
+      "sha256": "746294f0e06e2c8cfc1ab70c24bde8b7f7f1b0cd55742663a0dc93c8ee1df5b3",
+      "bytes": 1142,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php": {
+      "kind": "file",
+      "sha256": "8c0123c7539ade04e3ed665509a00f5dff34fd47758c9bc805d4366e13971948",
+      "bytes": 4957,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/TransferDriver.php": {
+      "kind": "file",
+      "sha256": "d2fa49c2f962d9958e183112ecbc7f75d548cf0561943a3397486d9bf11c7303",
+      "bytes": 1795,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/TransferDriverInterface.php": {
+      "kind": "file",
+      "sha256": "c5ac2cc86570161c920e63e358fb873355d2a62dae10f81ca57c10485a061636",
+      "bytes": 242,
+      "mode": 511
+    },
+    "Classes/HttpGuard/Transport/TransferLease.php": {
+      "kind": "file",
+      "sha256": "1b2f6d48ea6dd4c25767863b516a8c8c63bade4b2a84c4e89cef2da632f98d78",
+      "bytes": 10903,
+      "mode": 511
+    },
+    "Classes/HttpGuard/WireDnsQuery.php": {
+      "kind": "file",
+      "sha256": "e2953340fd31516415fe6f49a6d4ecc96d222bc945597087a49b9d8f071b5ed9",
+      "bytes": 8189,
+      "mode": 511
+    },
+    "Classes/Service/LibraryServiceFactory.php": {
+      "kind": "file",
+      "sha256": "df00637db1927e72f83a63b2410f29d91145f34786b142c8519e02f7d68194f6",
+      "bytes": 2858,
+      "mode": 511
+    },
+    "Configuration/Services.php": {
+      "kind": "file",
+      "sha256": "7716a69166605357af4f23c19bf2d010836ad922882cd3057334ae7bf07fe695",
+      "bytes": 966,
+      "mode": 511
+    },
+    "Configuration/Services.yaml": {
+      "kind": "file",
+      "sha256": "84a996ce172b6373b8f9016f4a073dc7cb6e24d6d08b24abe89d99b473890130",
+      "bytes": 3510,
+      "mode": 511
+    },
+    "Documentation/.editorconfig": {
+      "kind": "file",
+      "sha256": "0f0a49d306d429cda955ca90ecd9196e981c58641e772b0d410473790d9aed42",
+      "bytes": 148,
+      "mode": 511
+    },
+    "Documentation/Api/Index.rst": {
+      "kind": "file",
+      "sha256": "99a69945ca99cbe2e9654e3a942c9e91d68e9e50ffd634b82ca86271da124a98",
+      "bytes": 7084,
+      "mode": 511
+    },
+    "Documentation/Api/_ErpClient.php": {
+      "kind": "file",
+      "sha256": "c7d6142831b07346ed062ad2bf9db959237137d8ebedfbb4a96dc22d9a873633",
+      "bytes": 819,
+      "mode": 511
+    },
+    "Documentation/Api/_PublicDocument.php": {
+      "kind": "file",
+      "sha256": "eb49744313d56f2528b201e26b8c0a5586514cbcb40d53b592f711c657cfadc2",
+      "bytes": 548,
+      "mode": 511
+    },
+    "Documentation/Configuration/Endpoints.rst": {
+      "kind": "file",
+      "sha256": "e14aa3dab6cd5ba14769bd9d65411959abc32b85a03c7e700dc6b73f2860ec9c",
+      "bytes": 4201,
+      "mode": 511
+    },
+    "Documentation/Configuration/Index.rst": {
+      "kind": "file",
+      "sha256": "b83bb9ce7906132f01fc2802fa912136c1e0a4c59760b32076c0f9d0e91aae5e",
+      "bytes": 2029,
+      "mode": 511
+    },
+    "Documentation/Configuration/Options.rst": {
+      "kind": "file",
+      "sha256": "6eee2ad3d6b6b9e2ed98a329dff321bd16f54c11db27a4fd93706da3a29356af",
+      "bytes": 4731,
+      "mode": 511
+    },
+    "Documentation/Configuration/_Policy.php": {
+      "kind": "file",
+      "sha256": "e6beca6838602421e43b2c67f00fba02bebec5a4180ef8a9f298940e6adc7f71",
+      "bytes": 842,
+      "mode": 511
+    },
+    "Documentation/Decisions/Index.rst": {
+      "kind": "file",
+      "sha256": "8b7beb4f44459c2365ee6ecb9414b9667c132a6b17d7def65ef834eb2048910d",
+      "bytes": 599,
+      "mode": 511
+    },
+    "Documentation/Decisions/SingleExtension.rst": {
+      "kind": "file",
+      "sha256": "3d7d5629b8ee9c930444410ac39b10c12955d605b16d9ed1f6e87cd6a0fbbb88",
+      "bytes": 3320,
+      "mode": 511
+    },
+    "Documentation/Development/Assessment.rst": {
+      "kind": "file",
+      "sha256": "62cbf0c77b24f3af95f0d4532a0cf966ece60280bb74c43eac034d78e6267039",
+      "bytes": 13010,
+      "mode": 511
+    },
+    "Documentation/Development/Dependencies.rst": {
+      "kind": "file",
+      "sha256": "fb3cd7879aa46e53cca0f951cdac19e7ab971808556b5621dd561a2a6fa1e2b7",
+      "bytes": 9497,
+      "mode": 511
+    },
+    "Documentation/Development/Index.rst": {
+      "kind": "file",
+      "sha256": "83443ed6102cb34edd4910411e48c5a0461a84500fa2164312044b145f449dff",
+      "bytes": 10947,
+      "mode": 511
+    },
+    "Documentation/Development/Licenses.rst": {
+      "kind": "file",
+      "sha256": "e2629eca045d89d4c93ad9aba096ec1dbc5dacbb7c3539b35389814492937a75",
+      "bytes": 2571,
+      "mode": 511
+    },
+    "Documentation/Development/Reconciliation.rst": {
+      "kind": "file",
+      "sha256": "574188302c7ac2e7e63e428c83b2f6f9aa0d5181a7734e56011ef5e60cf2c334",
+      "bytes": 12121,
+      "mode": 511
+    },
+    "Documentation/Development/ReleaseProvenance.rst": {
+      "kind": "file",
+      "sha256": "ae3198b0039741a76ca4e2b443aca5014f3b0fcb6836cba560f4cbea0583cead",
+      "bytes": 4465,
+      "mode": 511
+    },
+    "Documentation/Development/Requirements.rst": {
+      "kind": "file",
+      "sha256": "5c39de28a184db057a40d69c888f1f477aee518e877e293c004d5d3af08fa1c9",
+      "bytes": 9002,
+      "mode": 511
+    },
+    "Documentation/Development/Verification.rst": {
+      "kind": "file",
+      "sha256": "9316702b2fc53d9af4378427b828288e650b698712a82ff3ffe0334cd0c24c3d",
+      "bytes": 8130,
+      "mode": 511
+    },
+    "Documentation/Development/VerificationHistory.rst": {
+      "kind": "file",
+      "sha256": "44e419030888415f6a02917a1a457e8293e6106c6e467fd65d94d97797fba1a5",
+      "bytes": 4656,
+      "mode": 511
+    },
+    "Documentation/Development/VerificationSnapshots.rst": {
+      "kind": "file",
+      "sha256": "de1222fcb8028f4ba29f5b0ba710756a50df69fe82c38eb95695039f637e8174",
+      "bytes": 9438,
+      "mode": 511
+    },
+    "Documentation/Index.rst": {
+      "kind": "file",
+      "sha256": "3f8ebbc8a5abd5692177618159af812740d4f65578be8e59ae3e212853b8c094",
+      "bytes": 3089,
+      "mode": 511
+    },
+    "Documentation/Installation/Index.rst": {
+      "kind": "file",
+      "sha256": "804efafdf38dde8ef96279b68d432a43c1fe5a161fa8d7947d46a15362e60773",
+      "bytes": 7537,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/.editorconfig": {
+      "kind": "file",
+      "sha256": "0f0a49d306d429cda955ca90ecd9196e981c58641e772b0d410473790d9aed42",
+      "bytes": 148,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Api/Index.rst": {
+      "kind": "file",
+      "sha256": "82259083b0124ba5e84bb90d6c6d316cd097806ebe87156662c3de79530084f7",
+      "bytes": 7612,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Api/_ErpClient.php": {
+      "kind": "file",
+      "sha256": "c7d6142831b07346ed062ad2bf9db959237137d8ebedfbb4a96dc22d9a873633",
+      "bytes": 819,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Api/_PublicDocument.php": {
+      "kind": "file",
+      "sha256": "eb49744313d56f2528b201e26b8c0a5586514cbcb40d53b592f711c657cfadc2",
+      "bytes": 548,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Configuration/Endpoints.rst": {
+      "kind": "file",
+      "sha256": "14f538ae73a1bcc192eb14391279454f51d04c9c0512b237caefe26431a46239",
+      "bytes": 4504,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Configuration/Index.rst": {
+      "kind": "file",
+      "sha256": "3fb6cea13dff7cb9cf8748547a9f3ee0ad25998381186732922c1f52de11c0e1",
+      "bytes": 2222,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Configuration/Options.rst": {
+      "kind": "file",
+      "sha256": "3c1270dab9f101044583107f345358768da47ca598cd3581ae0b659285802814",
+      "bytes": 5067,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Configuration/_Policy.php": {
+      "kind": "file",
+      "sha256": "e6beca6838602421e43b2c67f00fba02bebec5a4180ef8a9f298940e6adc7f71",
+      "bytes": 842,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Decisions/Index.rst": {
+      "kind": "file",
+      "sha256": "93110d0f915ae1d2742a99e09c13f1da0cd04fb5cc6f1dce3b07d8dcd64eb522",
+      "bytes": 667,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Decisions/SingleExtension.rst": {
+      "kind": "file",
+      "sha256": "43587f3a3073f2fb7cfe6c0b1d7b9ed1e698f62d88a99de9bbbb69be013e944c",
+      "bytes": 3600,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/Assessment.rst": {
+      "kind": "file",
+      "sha256": "c7f05030a4fd1e261f272677c2f0af174c3faa6871ecc0666e059af77de6c841",
+      "bytes": 6244,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/Dependencies.rst": {
+      "kind": "file",
+      "sha256": "e7f0591ecbdfb241108dfdf18f86250403dab15ba3ed7fc399815448ac03ef48",
+      "bytes": 4209,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/Index.rst": {
+      "kind": "file",
+      "sha256": "b77a799cc731a24d25e558f16203f3fcf479b22a8740d8bbb11869988dd708ba",
+      "bytes": 11240,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/Licenses.rst": {
+      "kind": "file",
+      "sha256": "4979ebdb7de01c20b181267c11e416b1a5fe549fe790d3419849a388c149f854",
+      "bytes": 2741,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/Reconciliation.rst": {
+      "kind": "file",
+      "sha256": "92271a37a16da6f33d7cd0d33ec5deb0d36867ab2d8fb4c4a8da742b5bea9ed6",
+      "bytes": 11991,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/ReleaseProvenance.rst": {
+      "kind": "file",
+      "sha256": "4d9fb9a9598001113b3cd12f6edb636f05403d79df1c52d90f311319416c9dcf",
+      "bytes": 4456,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/Requirements.rst": {
+      "kind": "file",
+      "sha256": "192bbaf87c00b1fc7e117fe4a0d409c90a51bbc46428938ab73bdee897ac7210",
+      "bytes": 9502,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/Verification.rst": {
+      "kind": "file",
+      "sha256": "d75f6e1bc0bfdd197663cfdb63ad970afb051a97dd02974d9046649bcf84c18c",
+      "bytes": 8966,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Development/VerificationHistory.rst": {
+      "kind": "file",
+      "sha256": "d2e3868b69deef88b0eb50b218fad4276036b360d825b2569104d746f38b998a",
+      "bytes": 3136,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Index.rst": {
+      "kind": "file",
+      "sha256": "95e3787be11a850bd5e8f81bd485fdc3db06f42771f796bbacf3065459da51f1",
+      "bytes": 3414,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Installation/Index.rst": {
+      "kind": "file",
+      "sha256": "007f0f16f3107277086fe131f6b73237304ad68e478297058ab9faf2b8bba1fc",
+      "bytes": 8371,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Operations/Index.rst": {
+      "kind": "file",
+      "sha256": "3cda87e14a7b8084c0b548769c55ccae1a68e1bfb78ada96f36094f3793697f8",
+      "bytes": 6929,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Operations/Reasons.rst": {
+      "kind": "file",
+      "sha256": "97eb15147152385cf96a3b7b22e00e199e6a09c395fe9c517c3aab52f6df94fd",
+      "bytes": 3022,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/Security/Index.rst": {
+      "kind": "file",
+      "sha256": "ca8c69900b80f8a1a272dbe28a2e7b4afebe540ffcbf50cf7d03b9fadeff4186",
+      "bytes": 7667,
+      "mode": 511
+    },
+    "Documentation/Localization.de_DE/guides.xml": {
+      "kind": "file",
+      "sha256": "f8b5a484464a88f9d24f3f209edbe5950b5edbacceb6d33ae6990863a957fc21",
+      "bytes": 1006,
+      "mode": 511
+    },
+    "Documentation/Operations/Index.rst": {
+      "kind": "file",
+      "sha256": "fab3de0e96c7caf18805231c6efb6a3320824f748e72b5c1a14bea1250c76306",
+      "bytes": 6418,
+      "mode": 511
+    },
+    "Documentation/Operations/Reasons.rst": {
+      "kind": "file",
+      "sha256": "dc933125633b30a7c973fd28bbdcd10ae373bab788a0c637ae732179a31e93d5",
+      "bytes": 2859,
+      "mode": 511
+    },
+    "Documentation/Security/Index.rst": {
+      "kind": "file",
+      "sha256": "b8e245a304f835739b8587fe07e482cc30a6e1c4eb3f6969fedf1d26cb618382",
+      "bytes": 7123,
+      "mode": 511
+    },
+    "Documentation/guides.xml": {
+      "kind": "file",
+      "sha256": "8a2761907f2302ddb8fb1ccc5f0420b3a59403d8313c86b436f93a08660516c1",
+      "bytes": 987,
+      "mode": 511
+    },
+    "LICENSE-HttpGuard.txt": {
+      "kind": "file",
+      "sha256": "f06cd293d145a24239c84dcbd7221011a2e5bc1158afa02fe72e4158ada10879",
+      "bytes": 1068,
+      "mode": 511
+    },
+    "LICENSE.txt": {
+      "kind": "file",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "bytes": 18092,
+      "mode": 511
+    },
+    "LICENSES.md": {
+      "kind": "file",
+      "sha256": "b0f96d82927d351cbc689bd6c010af8425095b36327c1fb330c19a0e57eaa303",
+      "bytes": 939,
+      "mode": 511
+    },
+    "Makefile": {
+      "kind": "file",
+      "sha256": "9243d4d7be98cdd81ca9611ef7fb3e4135d158862a3f1f905bb7a75d6abc0f35",
+      "bytes": 1048,
+      "mode": 511
+    },
+    "README.md": {
+      "kind": "file",
+      "sha256": "beb98d8ec76197836e7a58c1f37d112225e68c392312a675a5e45fedffd666c5",
+      "bytes": 15795,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/README.md": {
+      "kind": "file",
+      "sha256": "9be5f9dcd17e1571d3416239fac0f91534855cc2ccc69cfcf4b5d910e294af3f",
+      "bytes": 5156,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/address-cases.json": {
+      "kind": "file",
+      "sha256": "0cc1f00d95aae1bfbfa68f4261b81e9c966af0aae8072220b8905e2b1978a452",
+      "bytes": 163409,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/address-rules.json": {
+      "kind": "file",
+      "sha256": "902487802ef2f9edc3c0b1ecbcd343bb4cadf216ffddb6ebb64d2d7e9f5c585c",
+      "bytes": 26483,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/checksums.sha256": {
+      "kind": "file",
+      "sha256": "f08af7adac986ea3f67bb513ba34c15885e624b976844e2199cdcef40fc0d946",
+      "bytes": 1673,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/derived-hashes.json": {
+      "kind": "file",
+      "sha256": "e8dbb03909ac2fa07809439d35d4799655728510c5999c06caaf63c358ae0b9e",
+      "bytes": 750,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/endpoint-cases.json": {
+      "kind": "file",
+      "sha256": "4a61da4e50ee6efd5be31c5da97eb1f1eba3ed4bf6fc04376711d19417994825",
+      "bytes": 14276,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/library-matrix-guzzle7-install.log": {
+      "kind": "file",
+      "sha256": "7e8e9d54cddacee6059260b0fdd20d25d86f8b8b887b9e1a93c7eae0cdba1e3a",
+      "bytes": 7140,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/library-matrix-guzzle8-install.log": {
+      "kind": "file",
+      "sha256": "8978ba3e4d84294f8c62b08e20de6a7b9ed5542df6c097fec3d89b0dd0faa9fb",
+      "bytes": 7086,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-benchmark.json": {
+      "kind": "file",
+      "sha256": "cddaa71717529d515edfe08da012a546adeb22a0d56538bcda57573f5363157d",
+      "bytes": 973,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-performance.json": {
+      "kind": "file",
+      "sha256": "5b41053622b0d7801baf8835ab6d26a75a8c0c2c67b7bb3a3dd044874356851d",
+      "bytes": 3692,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-performance2.json": {
+      "kind": "file",
+      "sha256": "2590ec472e76ede4f2f15a8735ac49a583c9496d2060124c6a19ee57a3bd55d0",
+      "bytes": 2091,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-binary-prefix-index.json": {
+      "kind": "file",
+      "sha256": "4e6313660e7a9d8463bada4410d00ad406432815538d2f3a5756b92a23f3ca1b",
+      "bytes": 1950,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-cache-revision-test.json": {
+      "kind": "file",
+      "sha256": "63acc5f31faccbf1b1968ef60fad78d27e5aba170f0d12eee887daa1c41f95ab",
+      "bytes": 3303,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-canonical-v6.json": {
+      "kind": "file",
+      "sha256": "0db8d018defcc820d9f4fe7bd91150b9e8e0c4ffc4127b6c0d9d0e5fde78ef67",
+      "bytes": 1386,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-config.json": {
+      "kind": "file",
+      "sha256": "792bf8c21aef6621c9ca08b73f3810fa1f3398cc0c3f3ed81b0426098a749a5c",
+      "bytes": 1022,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-corpus-red.json": {
+      "kind": "file",
+      "sha256": "edeaf705f932d50cce5131448ae3068779bce3404c3427d23fd4d7e98dcf34a2",
+      "bytes": 1041,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-data-revision.json": {
+      "kind": "file",
+      "sha256": "236118d2da3e2604b69fcca8d30c61f2dd490d93d2f1e38c8f5976654cb1aa2f",
+      "bytes": 1389,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-codec.json": {
+      "kind": "file",
+      "sha256": "679591f2d455824c1609a534e79f3015ae47886476d491d11571eb8bcb4f6805",
+      "bytes": 1025,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-red.json": {
+      "kind": "file",
+      "sha256": "326d3cb7cd816df76528910cc9f9ed25c3215bebe006c4f763d19fbf3c26b336",
+      "bytes": 1042,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-transport-tests.json": {
+      "kind": "file",
+      "sha256": "fd8e939fa0b2a9ac377a9183e4c0a67ffa8534ffdf0aa89322e70c0af81cac93",
+      "bytes": 801,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-wire-red.json": {
+      "kind": "file",
+      "sha256": "6b7259077df5429ab56947e991e2b6132c31f839b36d002302fba24f081e2d56",
+      "bytes": 1041,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-dns-wire.json": {
+      "kind": "file",
+      "sha256": "aceac0587cd207aef8ff155fad230b0d0dda69fbd2c6492acf153ea2a54c2158",
+      "bytes": 1023,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-internal-metadata.json": {
+      "kind": "file",
+      "sha256": "e0f6a4adce303c6ddba6b562c11181b2e546cb13a2f8ccefaec9077e846fc2ba",
+      "bytes": 1225,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-isolated-capability-probe.json": {
+      "kind": "file",
+      "sha256": "76b110193e2df32c863bf5b5ea57dfd5714e7c919e8d8e8cc2b1e5a15968a81a",
+      "bytes": 811,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-isolated-capability-tests.json": {
+      "kind": "file",
+      "sha256": "64fd9bb02e9fb03980d79c42adbc582b3d80c3b56821dd8f24ad34d69b5c4343",
+      "bytes": 2725,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-helper.json": {
+      "kind": "file",
+      "sha256": "4d9b38d400febc42385e10d0faebbcf71214eb4cee1627cb462620e583a56bdc",
+      "bytes": 1869,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-test.json": {
+      "kind": "file",
+      "sha256": "ab77ff1c341808b3d349ef4b234df9321f4b93504ca706f6d5fe0bea8e5e7857",
+      "bytes": 1823,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns-types.json": {
+      "kind": "file",
+      "sha256": "409b5241dfda3bc9298dd5c0e456ddd6b41af3947496514f7c12ff587cd664e4",
+      "bytes": 1289,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lazy-dns.json": {
+      "kind": "file",
+      "sha256": "7a806309752444ff2b16524e8c04f03536cd33bc3b8a147fdd9a7045d0f4b1a4",
+      "bytes": 3471,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-lifecycle-red.json": {
+      "kind": "file",
+      "sha256": "572b28aa252489b64f7174f0cfd3987c3effaf158cee3a78242099ccae037f16",
+      "bytes": 1044,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-normalizer-classifier.json": {
+      "kind": "file",
+      "sha256": "b697419a10d75de56cdc0ce234cf4df3f4ab699a1bb9632a6ea1257b3d93c96c",
+      "bytes": 1699,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-observe-event.json": {
+      "kind": "file",
+      "sha256": "34867588c943008861c7ac7cdb47125d47b863ac4b03da547c36bce2a4b318a6",
+      "bytes": 1225,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-observe-red.json": {
+      "kind": "file",
+      "sha256": "90df2a90ae244c7feee82c063682b32f82f160fffb81529b0585a9ba46f36bbb",
+      "bytes": 1246,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-private-grants.json": {
+      "kind": "file",
+      "sha256": "4729c48595e339e538889a89ea2caa2f82e216555252b725a57d48d3976bfb4f",
+      "bytes": 3266,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-public-interfaces.json": {
+      "kind": "file",
+      "sha256": "54d8e3431e1994b698e8d3d2083107a8861e817e90fa6e0e3edf2173ff205cc1",
+      "bytes": 1721,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-raw-target.json": {
+      "kind": "file",
+      "sha256": "3d36a5ba83f92bc21361197c709e6e7b656d99185c51b261fd9eef3a30260c7d",
+      "bytes": 1399,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-registry-engine.json": {
+      "kind": "file",
+      "sha256": "5a1863019a746beb82704ef942217b7d729f476dcbec344bf5e4641808ab177f",
+      "bytes": 1692,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-reporter.json": {
+      "kind": "file",
+      "sha256": "c8cd8326dbcf608d24fceb333918d2c3dd7cb6740b98bdbd2b24207f2634b8ae",
+      "bytes": 1027,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-resolver-boundaries.json": {
+      "kind": "file",
+      "sha256": "9486f7c2a4eba89c47619486477b81c346f4529aa51b435c812e7d7bd0bde24a",
+      "bytes": 807,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-resolver.json": {
+      "kind": "file",
+      "sha256": "db2ad64b1d1f56cb6f1917635ea068c4a75a9d39a8d0eb9a62322bf4ebf36123",
+      "bytes": 1032,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-static-final.json": {
+      "kind": "file",
+      "sha256": "3763600ed747e7615afe63fb6652270c3a06dc2bcf06ce8df3888a60d6d8fdd7",
+      "bytes": 1389,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-static-validation.json": {
+      "kind": "file",
+      "sha256": "88a63501ab3544e47e61269ffa1d0aa0e7476eeb11d6a86af1017236c23d92d0",
+      "bytes": 7832,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-strict-red.json": {
+      "kind": "file",
+      "sha256": "c84f557cb6220a1d8864f4bd2a94631fca5f4af48fddc98ab085bc4b9810f36c",
+      "bytes": 1047,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-telemetry-red.json": {
+      "kind": "file",
+      "sha256": "77230a9b7a6d09521bc87e1bb70f5803ebb04129e33428b21e53ae11b02aa7f4",
+      "bytes": 1044,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-ttl-age-red.json": {
+      "kind": "file",
+      "sha256": "048252a3cb8f819c5616338a1279ead59c0cec496ad9618693016b2de6924a47",
+      "bytes": 1246,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-ttl-age.json": {
+      "kind": "file",
+      "sha256": "c0370ae06b9e8c74cfe6b797fd92ae32136476073c6be59a54c1472efb388c75",
+      "bytes": 2274,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-type-contracts.json": {
+      "kind": "file",
+      "sha256": "5d37424381e5102216fb1b62eb878113698c4f5726b5d3baa3e47eec790d7ca6",
+      "bytes": 11973,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-v6-loopback-fix.json": {
+      "kind": "file",
+      "sha256": "0d41d4dae47787a9789068226e87b8bf422971040585986885ee217795f5e92e",
+      "bytes": 1452,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-ast-v6-loopback-test.json": {
+      "kind": "file",
+      "sha256": "80cecf76cad139e70cdcfc575c840695eb973c8a73edcc9b614aaed98fb2e55b",
+      "bytes": 2098,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-after.json": {
+      "kind": "file",
+      "sha256": "5da8bfbe674159c06d07a1982de837775402b4c0d744a8698a4d3b88857d7147",
+      "bytes": 265,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-after2.json": {
+      "kind": "file",
+      "sha256": "4530479bd49c79932157b64dc9e4d8f9f9de2ce856c19fca510af4747faf260d",
+      "bytes": 266,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-before.json": {
+      "kind": "file",
+      "sha256": "c3f1559b28cf74d5b45a01070330768fb1b11920359680830643c132f127fd29",
+      "bytes": 269,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-final.json": {
+      "kind": "file",
+      "sha256": "4c9a19ea5ce5fad71c1072634bf64d578132e3be1fbc4fe0723225610db2aa43",
+      "bytes": 264,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-benchmark-indexed.json": {
+      "kind": "file",
+      "sha256": "d2194bf26c98fbc002c81b53db25ec71e2b2906c85bfea657bb807400d524700",
+      "bytes": 265,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-execution-manifest.json": {
+      "kind": "file",
+      "sha256": "a254838e4d272e030a773c065db7d0a75d3ec0168abe93012b19c991a0925ada",
+      "bytes": 9792,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-g7.log": {
+      "kind": "file",
+      "sha256": "fb08b0536f098732b4f7d958be8836ec48e45e992d75d16e937f0833a8359142",
+      "bytes": 362,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-g8.log": {
+      "kind": "file",
+      "sha256": "fe8152d460de64f565466c73775e042a317ec191f010d1382f2f2c37e58ef417",
+      "bytes": 362,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-final-phpstan-8.log": {
+      "kind": "file",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-phpstan-8.log": {
+      "kind": "file",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "bytes": 83,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-binary.log": {
+      "kind": "file",
+      "sha256": "34fa52bb2fced422a2821cbc656388fc405d6ca45db0fd00d3f070fe69f76200",
+      "bytes": 1146,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-corpus.log": {
+      "kind": "file",
+      "sha256": "339652ebee74863ed58dc9eff69954c23f43c1496e26bd137bb17888a930ac58",
+      "bytes": 2707,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-dns-packets.log": {
+      "kind": "file",
+      "sha256": "53e3e46dd45bae15cb92b10ff9717c6652dc4e7b13bd57b9e031050320f7de6b",
+      "bytes": 2046,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-dns-wire.log": {
+      "kind": "file",
+      "sha256": "bb54ea0aa720bcef148e172c54a976aa1d54a6ed3f5e6d26ade02fe1274b28da",
+      "bytes": 1367,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-lazy-dns.log": {
+      "kind": "file",
+      "sha256": "ed65cc13d9a3df7f4776dddb89cc5bfe576f6f9c4ec978175c7bdb3f17fe7d1b",
+      "bytes": 1005,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-lifecycle.log": {
+      "kind": "file",
+      "sha256": "6b8e99071973e0725b00665fde1fe0ab6768e7f5cae272200705a56eb450eb40",
+      "bytes": 4681,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-observe-event.log": {
+      "kind": "file",
+      "sha256": "f824e433a346ece85d53363017698b39e205cdcb95408c9bb061e779de9de56b",
+      "bytes": 728,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-strict-inputs.log": {
+      "kind": "file",
+      "sha256": "88be46dcddb7ef6d3e33c79f86bc177536da81c7bf06b74db67b5b48e08b5cb8",
+      "bytes": 754,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-telemetry.log": {
+      "kind": "file",
+      "sha256": "f9df33355848beb3658ab020f690ad07b91975e1445c1f88916bb2345fc4f9ce",
+      "bytes": 1079,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-ttl-age.log": {
+      "kind": "file",
+      "sha256": "54767216c2a248c6aabb8f020ab2189fb1ee020bd6ec9cfec9ae127dd659eb51",
+      "bytes": 713,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-red-v6-loopback-prefix.log": {
+      "kind": "file",
+      "sha256": "18e6f398869b6d0d5b613caa8ca7ae1aad451f1288228651d36a17205b8129ed",
+      "bytes": 731,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-runtime-g7.json": {
+      "kind": "file",
+      "sha256": "7108c44fd9b57bc36bfdcb7c8a814a442ebd19f88da4804e495d708d66c70f71",
+      "bytes": 2424,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-runtime-g8.json": {
+      "kind": "file",
+      "sha256": "f9ef8a9e8baaeb5e2948b85eefe9bcb5deeced922793132545871fb665657de8",
+      "bytes": 2422,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/policy-source-sha256.txt": {
+      "kind": "file",
+      "sha256": "598690dd275dd08af96baa5c68de43487b93d25c80eb99cc370031db16b4ad33",
+      "bytes": 3786,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-baseline-summary.json": {
+      "kind": "file",
+      "sha256": "278c3f01021d151ee8b309bc837066b05ecde07a994de07442eb634c0a6328c3",
+      "bytes": 2244,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-dependency-retry.log": {
+      "kind": "file",
+      "sha256": "6c5f76701d52f8442a02b8e05324e2eb31f89a099bcfdf3218364fb65795ec75",
+      "bytes": 412,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-analyze.log": {
+      "kind": "file",
+      "sha256": "c63ae88a3c97499d8ae161c02424e55e63e5849a09aefbebb192d8e4719af5a9",
+      "bytes": 797,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-extract.log": {
+      "kind": "file",
+      "sha256": "68629462a6d2a39bbd99409f174c8f236ba1341374df436d1a7b1d5a660e25e8",
+      "bytes": 18356,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-render-final.log": {
+      "kind": "file",
+      "sha256": "53ed6f285d44fca0ed9faaa449f915e1dfea9d450add0f48d39bf46d5a65b4a3",
+      "bytes": 67576,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-render.log": {
+      "kind": "file",
+      "sha256": "f5925ae78309c330c93c1a46d086554553d66f4d983f433955a1e579b661c19f",
+      "bytes": 67813,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-docs-validate.log": {
+      "kind": "file",
+      "sha256": "1a003436678f47fb2c216a4b2cfaf738f6e1f30e9515a9d20bb8f9729bb6121b",
+      "bytes": 4676,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-auth.log": {
+      "kind": "file",
+      "sha256": "6a8739b48912159e0a864d014d2e362a0539556d1b25d1a35b6b03bc5745e3ed",
+      "bytes": 952,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-complete.log": {
+      "kind": "file",
+      "sha256": "f3a8bd24c083d1afd97cc6e70ebf1ce5edd6e7ce32e09028b752c691c313d35d",
+      "bytes": 953,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-expanded.log": {
+      "kind": "file",
+      "sha256": "c56e974e61f420dae4e1bc3ad61e54ae5d20e88d4e90daaa64505ea7abf0a226",
+      "bytes": 953,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-first.log": {
+      "kind": "file",
+      "sha256": "8ac986b623991187033080df3c1cdf13b1bed66767453f290f142c1c2e896113",
+      "bytes": 2679,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-green.log": {
+      "kind": "file",
+      "sha256": "036290b398c8453014315a08c2ebbb9d92f84ffaf306961f9637c28c73849389",
+      "bytes": 951,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-adapter-wire-second.log": {
+      "kind": "file",
+      "sha256": "4cd7e2af609433453e9b7749133f512db497fe32c356784775445b6ffdb5c1c9",
+      "bytes": 2679,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-api-regenerate.log": {
+      "kind": "file",
+      "sha256": "709afb0405a5a994b3f026f517761c0ec2e280468f7d963c6462d2feeefd6105",
+      "bytes": 1436,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-clean.log": {
+      "kind": "file",
+      "sha256": "5e81a2b37864551a9c9b3411a60e6bd3109d17b7ab56c918426f212c6e7819fa",
+      "bytes": 1797,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-final-fix.log": {
+      "kind": "file",
+      "sha256": "aa573fa8d843a78f5edeed2bd92c16f838cece50f4ee92d6fc3145fc0c122dd5",
+      "bytes": 2370,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-first.log": {
+      "kind": "file",
+      "sha256": "7092e2a5dd1348a90698d631c396b248a238acfda452b128e74cf99e7158739b",
+      "bytes": 72459,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-fix.log": {
+      "kind": "file",
+      "sha256": "1700da163381cd895c861a2a24b8be6cb9e80c4e03f13aff20f4dc43709b83e6",
+      "bytes": 4130,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-last-fix.log": {
+      "kind": "file",
+      "sha256": "38bee5e219fd3fc7958b185c6fedf1ef67cd4c1b4af3589f015f0fcbe906cab6",
+      "bytes": 2368,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-cgl-rector.log": {
+      "kind": "file",
+      "sha256": "fb04497bd40349d8b53df19691a7dce3dc1d4f98d5ce86a7b38df15b9236665f",
+      "bytes": 2230,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-delegation-green.log": {
+      "kind": "file",
+      "sha256": "ab01169014a4c8ca61ef810975a5f876757daea15cee69af43e62404e7f14358",
+      "bytes": 1065,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-delegation-red.log": {
+      "kind": "file",
+      "sha256": "3ae1c74335f127588e5869cb0cc5bc9a09441af17293f1a3f6c2e54da44babbc",
+      "bytes": 2374,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-functional.log": {
+      "kind": "file",
+      "sha256": "72bfe43eaeb109e7d6f690802fda03007aa77993c9c8fe45fde39092fd8974e6",
+      "bytes": 1523,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-fuzz.log": {
+      "kind": "file",
+      "sha256": "bf067419cbae64d3717bcfbf0d3c68b01a30627ec3e5782b318769d71af39276",
+      "bytes": 3061,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-unit-final.log": {
+      "kind": "file",
+      "sha256": "3e3ee75affe620b4268f4f7bd06593c3e10b2bdb4a4f1dee5dd698d20637bf6c",
+      "bytes": 6221,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-full-unit.log": {
+      "kind": "file",
+      "sha256": "58fd44aeaeb7c6253d9598837e758c40beb6fa8996a74ecb2ebcb85b200d78f1",
+      "bytes": 10183,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-functional.log": {
+      "kind": "file",
+      "sha256": "521289deeaf7c7dd5a30b430e77a3f909edde4849d0c1910c65d910c9fd2ee45",
+      "bytes": 953,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-unit-final.log": {
+      "kind": "file",
+      "sha256": "e9d1a619f34096e560985fcd6cfc854a77df88b9a912ee96c16ad8fb96223f13",
+      "bytes": 1602,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-http-unit.log": {
+      "kind": "file",
+      "sha256": "8d39c8d2c915e5387938db507fdf4a32c32610ba9dc8b56c57a445d685fe2f42",
+      "bytes": 1602,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-lint-validate-final.log": {
+      "kind": "file",
+      "sha256": "cd6cc3a35f8bb3af45c9effd8ed1c9ab801146e36a9b29f791376c2a6914e955",
+      "bytes": 44981,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-lint-validate.log": {
+      "kind": "file",
+      "sha256": "a75689e4c1ce0895ccff61374852de08504d6d85afad553e27eba45bdaa95468",
+      "bytes": 838,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-oauth-green.log": {
+      "kind": "file",
+      "sha256": "28008ddd85e453da49fde8ffc8a8c41e43d98cc50558378cb8493f54be729118",
+      "bytes": 950,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-oauth-red.log": {
+      "kind": "file",
+      "sha256": "f4855af324909dd3e7130f769280693f97c8fe66407d1b3da5eac7276e01fcaf",
+      "bytes": 4276,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-binding.log": {
+      "kind": "file",
+      "sha256": "60dd789b52d09f871bd716ea20b82637f5cc3112878d14e5d11c09df7f0ca880",
+      "bytes": 3388,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-clean.log": {
+      "kind": "file",
+      "sha256": "1f7d7a97fd56cf12766ed4cdd9d3ae94cc65e8074751063968e7234c0d73d744",
+      "bytes": 1894,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-complete.log": {
+      "kind": "file",
+      "sha256": "e5d7a476fc895ce1624407afa3cae39576fb699be2c2499e11321bce4d2d0496",
+      "bytes": 2347,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-final.log": {
+      "kind": "file",
+      "sha256": "97e8215e0b720d18af4da000c39aac3bac57a793e1866f595c5fddf53c0fc944",
+      "bytes": 3388,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-first.log": {
+      "kind": "file",
+      "sha256": "0cfb6a431d41c8542a7339989f2528d0bf112af1908c3475dda027b2e616aa32",
+      "bytes": 754,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-second.log": {
+      "kind": "file",
+      "sha256": "3fcca15303606f8b728fbebf8ec2b451fe00a7fd0c7cbf6af48604beab4de33d",
+      "bytes": 7265,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan-third.log": {
+      "kind": "file",
+      "sha256": "378402d73f3a1f6a74e948dc2c8efaf9d2980fa6c19c1348764e751638ffe00d",
+      "bytes": 2513,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-phpstan.log": {
+      "kind": "file",
+      "sha256": "6942d570a0ad8ad70fc48af3364b7b754abe1eee9f8d740eff2e40fa8fd4e749",
+      "bytes": 11561,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-clean.log": {
+      "kind": "file",
+      "sha256": "5f58b5763fd0d3780acb31004983278224b3b7aee7489024791bea48e56781f6",
+      "bytes": 703,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-complete.log": {
+      "kind": "file",
+      "sha256": "8b4d46487119521a287f1daf24689123430537043bd6aa3442182dc87c94b8b8",
+      "bytes": 3446,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-first.log": {
+      "kind": "file",
+      "sha256": "3958ad840df4843dc901ea9058045261f7d7dfcb29b14007c0a063cbd3b66c02",
+      "bytes": 17102,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-fix.log": {
+      "kind": "file",
+      "sha256": "8dc0a4c506b1cc1c72c79e48f6b0d36d87fd6927f403799a12d9e92afccbe2af",
+      "bytes": 16212,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-rector-new-fix.log": {
+      "kind": "file",
+      "sha256": "32b2d1bc756d5172b07c63aa1bb27d73dbc53572648114e696e99492f83c12ff",
+      "bytes": 3078,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-red.log": {
+      "kind": "file",
+      "sha256": "e941010b975229a0de8ba5301decfa24de4e1130316622ee9db0128ee1788bc6",
+      "bytes": 2645,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guard-repo-checks.log": {
+      "kind": "file",
+      "sha256": "472ce8d9cc09a9882fc5ac996d6d4540b0a99fdcebd39f32edb244adf9b022f5",
+      "bytes": 3077,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-bootstrap-regenerate.log": {
+      "kind": "file",
+      "sha256": "40dd5315ac00b0118c7a97256c9601be4d26b6edf89cd1d19f6994b670b0e9f7",
+      "bytes": 126,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-composer-audit.err": {
+      "kind": "file",
+      "sha256": "bcdc6d3b5745e92d0138cfafb75635dd175a338e01ff30e5339de5bc4e25983f",
+      "bytes": 202,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-composer-audit.json": {
+      "kind": "file",
+      "sha256": "b216d5fffa5e7ee99e11d96ed53efcdaccb6facd77f04654a5b97a3ef9765030",
+      "bytes": 2315,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-functional-final.log": {
+      "kind": "file",
+      "sha256": "ee441455e2dc375d0581531fbef7b6882b7a15ecad92888c7bfbde2ef518f31e",
+      "bytes": 1531,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-functional.log": {
+      "kind": "file",
+      "sha256": "89fd44bbcfdcf48deefe36b39118f2ced534cfe726bac682d679fb95c1154a24",
+      "bytes": 770,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-full-unit.log": {
+      "kind": "file",
+      "sha256": "78b2bcf963ab976ba3e34cbee15282ff992be1c69baf5d3e6c555fcd9beb0c50",
+      "bytes": 6229,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan-clean.log": {
+      "kind": "file",
+      "sha256": "105de9070b068af90c8163b7d0f7c26e3db3b43fd4446436c96278de193b97ca",
+      "bytes": 1894,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan-final.log": {
+      "kind": "file",
+      "sha256": "0cfb6a431d41c8542a7339989f2528d0bf112af1908c3475dda027b2e616aa32",
+      "bytes": 754,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-phpstan.log": {
+      "kind": "file",
+      "sha256": "c92d70013c404caf67f01d604c4577649f391dbed32045ffd0236437d4b504ba",
+      "bytes": 2833,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-runtime-install.log": {
+      "kind": "file",
+      "sha256": "49f763090c0a9f0f4d0c9d73fa938f7022f6794f984171459abd77cbae142189",
+      "bytes": 2328,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle7-tested-library-manifest.json": {
+      "kind": "file",
+      "sha256": "696e7e9d499a5cdec8949b4b9a5d1ff98f8989f0f5ca5a088a9e5b11cd314404",
+      "bytes": 14823,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-adapter-final.log": {
+      "kind": "file",
+      "sha256": "a6a9737e665e29e23368fb946663c6c7dc1ff7076430324c5bdae006d27c83c7",
+      "bytes": 441,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-adapter-source-final.log": {
+      "kind": "file",
+      "sha256": "1fde6c1555526ab1285a28d67cf272e925177ff173c96b8242ca79faaa7b7c57",
+      "bytes": 953,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-cgl-helper.log": {
+      "kind": "file",
+      "sha256": "0dae17382d407352db2f7b5c84dcec4943eb450ff5d7945e9ac58ee6b699ccd2",
+      "bytes": 1998,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-phpstan-final.log": {
+      "kind": "file",
+      "sha256": "0b0dc83b1547ae95f71ae01b77752c21fc12bf1f371ef1d51ca56108214da8fb",
+      "bytes": 1894,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-guzzle8-tested-library-manifest.json": {
+      "kind": "file",
+      "sha256": "c5395a17737f169281be50a57dc9a237c8b3e4d9530e2f1d2db544833abb0e39",
+      "bytes": 14815,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-baseline-status.json": {
+      "kind": "file",
+      "sha256": "ff23bf6e41ef1dc2aaf8bc90eee9b9bc1b7638b1afaee8e73679cec31b76e386",
+      "bytes": 191,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-baseline.log": {
+      "kind": "file",
+      "sha256": "da5b5a6035af5e78115c342e75e5714355b74ef0adaa7671837f58de0c635963",
+      "bytes": 23076,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-http-retry-status.json": {
+      "kind": "file",
+      "sha256": "1295309c1c6022b778687671466f92bfe142795b34ec806d089d25524c641058",
+      "bytes": 86,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-dependency.log": {
+      "kind": "file",
+      "sha256": "205f9838dda5fbb80354043ade7474085067fd07844a4d7b4714a607ee791c1e",
+      "bytes": 15417,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-functional-status.json": {
+      "kind": "file",
+      "sha256": "a105f42778339c2dfd76f038ae3c14a6f5b9cdcd77a93e3c0fdb8482e5d06138",
+      "bytes": 434,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-http-baseline.log": {
+      "kind": "file",
+      "sha256": "c06451f5205348a38f10def785fdfea7cca93591299ad93967823c885f03a85c",
+      "bytes": 1602,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-http-functional.log": {
+      "kind": "file",
+      "sha256": "0a07e2bbe7bf226be873bfd03206d1329e703c9f90acc4594f9a05caea2fe5e4",
+      "bytes": 953,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-runtime-manifest.json": {
+      "kind": "file",
+      "sha256": "8ee0ee176a9401ab6918a034e5b52e5bdd3fdd7e7ea57632ee2ed628672111f3",
+      "bytes": 620,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-source-verification.json": {
+      "kind": "file",
+      "sha256": "577c885481a55210fedc09645966cadada1077beb7b95d63a56e0b21a255b841",
+      "bytes": 509,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-native-status.json": {
+      "kind": "file",
+      "sha256": "0525e4df6e7190b573359c9b24523f6373e26c5ea22cbcd06d11d7ab51149d97",
+      "bytes": 558,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-resolved-dependencies.json": {
+      "kind": "file",
+      "sha256": "e5a61b5fc7f7383376dd6d1b70a5ed9a58422b03099a337cc941a45e6dce4261",
+      "bytes": 391,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/evidence/vault-run-checksums.sha256": {
+      "kind": "file",
+      "sha256": "d3c22faaf084903c3a0f0ad5fe0f98745cc208218ebd7ba5866f504a87c78236",
+      "bytes": 332,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/policy-coverage.json": {
+      "kind": "file",
+      "sha256": "5ccc2ca1eac6474e27362603c499182c9f4ac2c818d707a12dda6db3cfcecf64",
+      "bytes": 49254,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/requirements-tests.json": {
+      "kind": "file",
+      "sha256": "246fc8caa23fed311aa35e4c38990dc127aeea041bbbcf2f352e7d1fa1222124",
+      "bytes": 66776,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/requirements-tests.md": {
+      "kind": "file",
+      "sha256": "580f9e10e9bbc6cb61d01f2e34a514dbe2bf173ac351f7142b619217fee0d118",
+      "bytes": 10066,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/scenario-cases.json": {
+      "kind": "file",
+      "sha256": "505451cd873a2b025c63416cf3ab4110eeb2f023553adb2bf2cf440482da9e66",
+      "bytes": 23070,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/scripts/derive-address-rules.jq": {
+      "kind": "file",
+      "sha256": "7ca3fc45efbcff02b510381913fa8d690d3c944bdd2b5c0a7919b79bd29d43a2",
+      "bytes": 4393,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/scripts/extract-ledger.py": {
+      "kind": "file",
+      "sha256": "507b2caa108fc9dd1de879fac7f00cc7c24e362139c5d13c0f8616261ab336cf",
+      "bytes": 4424,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/scripts/generate-corpus.py": {
+      "kind": "file",
+      "sha256": "183acd8fdd59d5f934dee0b68c40cc0ef19aff7f2c675d472ea8165101b36c99",
+      "bytes": 10486,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/scripts/verify-native-copy.py": {
+      "kind": "file",
+      "sha256": "870d8399363c5c35c0e845fe4c51a3cda8575b2d53cb0e656c145d3aa75e5013",
+      "bytes": 1650,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources.json": {
+      "kind": "file",
+      "sha256": "f9fcf849ec1c8dd2586b7b0a6a5238e7e84714d1b78bbdec8b633ee10b08e33e",
+      "bytes": 6094,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.headers.txt": {
+      "kind": "file",
+      "sha256": "7ab563ec1c52e4d62bbc16cb93df30926e12c34180421543f692a630844a68ba",
+      "bytes": 799,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/alibaba-imds.html": {
+      "kind": "file",
+      "sha256": "23079e8cff48ad597f5ce75125d21d13c0bbc63f125fc59025d0b36b89b1614c",
+      "bytes": 71071,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/aws-imds.headers.txt": {
+      "kind": "file",
+      "sha256": "d380e3854a545d3b8574b6b8e876425949d368c66a3c06d33fecd90db2c6a269",
+      "bytes": 1117,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/aws-imds.html": {
+      "kind": "file",
+      "sha256": "545d26dd98e3fd43e2adc285227bc7af4d09852982460f2ac542f945c7877b2b",
+      "bytes": 40355,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/azure-platform.headers.txt": {
+      "kind": "file",
+      "sha256": "d1e2303a4fbe7bbf2846e084c38dd6837f44f188b6ef53d5198bafd7a0443818",
+      "bytes": 2789,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/azure-platform.html": {
+      "kind": "file",
+      "sha256": "953d013137c693d5cd9dfccdc62e363b4ca6f622688990ce57c8c5dd509eb70b",
+      "bytes": 56155,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv4-special-registry.json": {
+      "kind": "file",
+      "sha256": "93e0467aecc194a5303bb89941ce1fd02d8c8affef04ac0574a3059ca4431a88",
+      "bytes": 16633,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv4-special-registry.xml": {
+      "kind": "file",
+      "sha256": "cf24e11f41b7d42c68debe2d18b97cac815084ec413ebb3b244f704028a16f20",
+      "bytes": 13459,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv6-special-registry.json": {
+      "kind": "file",
+      "sha256": "165896300556132f72fa1c4f80110d62f172ece28432eed97e40df1b5ddc1bbf",
+      "bytes": 16985,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv6-special-registry.xml": {
+      "kind": "file",
+      "sha256": "c17f4380ba84fb2160dae82ebfd8bd155a5853cfab624ed3a9fd251638a8be02",
+      "bytes": 13431,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv6-unicast-address-assignments.json": {
+      "kind": "file",
+      "sha256": "677ecbfc8de538e048aafc67938b0b3f611716c8e834722f1d3ef879af49a50a",
+      "bytes": 18661,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/iana-ipv6-unicast-address-assignments.xml": {
+      "kind": "file",
+      "sha256": "22f9a545e020ea6b9adea9ea0276f3157e32c838682459a45bfe7760de0aefc3",
+      "bytes": 16013,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/ipv4.headers.txt": {
+      "kind": "file",
+      "sha256": "0c422a88f4c1db078c78f79f05915964a084f83904ebfc4d1cde1e026ace68a7",
+      "bytes": 1164,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/ipv6-unicast.headers.txt": {
+      "kind": "file",
+      "sha256": "2f9183f5185cc5e3176af5083ccd275730e6878097cb83fd7d1546dd07b2e7d1",
+      "bytes": 1164,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/ipv6.headers.txt": {
+      "kind": "file",
+      "sha256": "407cafbd3e5c6e9becf388c8e2dc03bef221a006aa12ac3ca39518e9d0f30fee",
+      "bytes": 1164,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/php-8.2.31-dns.c.txt": {
+      "kind": "file",
+      "sha256": "0b651c7afed0f8a2070d13622ee787c611b19e5a4bb9c2e5b66025b8a884d5bb",
+      "bytes": 27957,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/php-8.2.31-php_dns.h.txt": {
+      "kind": "file",
+      "sha256": "87d428ea1f1c062cd7828118f0fbdd22eb9d9060c5b9e73e32b0e5202dc79efb",
+      "bytes": 3653,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/rfc1112.headers.txt": {
+      "kind": "file",
+      "sha256": "e9330ff3c87690cbc22c8f034ef508ff9fdb6ce5d7e9661383e603abef87754a",
+      "bytes": 505,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/rfc1112.txt": {
+      "kind": "file",
+      "sha256": "677f3163f4f495f2cacc95aaf718d465e897b38a6aaf8774bf4f618e04b940f8",
+      "bytes": 38950,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/rfc4291.headers.txt": {
+      "kind": "file",
+      "sha256": "086808d0f4d7645e651d2ad2dbe4655db79d2dba9088b25c92ffe95e5f149050",
+      "bytes": 505,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/sources/rfc4291.txt": {
+      "kind": "file",
+      "sha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "bytes": 52897,
+      "mode": 511
+    },
+    "Resources/Private/HttpGuard/data/security-corpus/uri-cases.json": {
+      "kind": "file",
+      "sha256": "ad2f381db880524e45449272e48dd364c15abad9bb2c9ee3db69e354f8773cab",
+      "bytes": 14840,
+      "mode": 511
+    },
+    "Resources/Public/Icons/Extension.svg": {
+      "kind": "file",
+      "sha256": "ca88779a6d008b4606bbe8d45f4640d6967f82b66b302d95b9153dcf2cfb9e29",
+      "bytes": 1022,
+      "mode": 511
+    },
+    "SECURITY.md": {
+      "kind": "file",
+      "sha256": "17468a038b1c77470eb038cf56bf77c39215f839c5de1808acecd6a470997295",
+      "bytes": 5037,
+      "mode": 511
+    },
+    "Tests/Architecture/DependencyRules.php": {
+      "kind": "file",
+      "sha256": "1336423bf7d528ca5f6c0138d43f8f08b32a5ffc16dd9f1d7085ae041900faf6",
+      "bytes": 2048,
+      "mode": 511
+    },
+    "Tests/Architecture/bootstrap.php": {
+      "kind": "file",
+      "sha256": "c8b6b0393c06bfe3bac47fda51e25d1ac092f6e3488036c0ee10837d8c53bc41",
+      "bytes": 1029,
+      "mode": 511
+    },
+    "Tests/Build/test_build_extension.py": {
+      "kind": "file",
+      "sha256": "45056d3f6ed10e66e7c8cb94e1059aca4e2cecdfcf010664023497ae2a0a82fe",
+      "bytes": 7088,
+      "mode": 511
+    },
+    "Tests/Build/test_coverage_paths.py": {
+      "kind": "file",
+      "sha256": "cbc5f2958cdbec5919c345ef33eb0f10f8300d1721469125386d56ec0f5e6d10",
+      "bytes": 3014,
+      "mode": 511
+    },
+    "Tests/Build/test_fixture_diagnostics.py": {
+      "kind": "file",
+      "sha256": "fa75e9513bfd2a13a4aaa3459ba698d966263ce3c32f37112c3384c808361027",
+      "bytes": 5837,
+      "mode": 511
+    },
+    "Tests/Build/test_fixture_source_staging.py": {
+      "kind": "file",
+      "sha256": "819dfbc435b17c37144659679c5347b15b3981c1a9675c30da0a1cd3a03a18fa",
+      "bytes": 2011,
+      "mode": 511
+    },
+    "Tests/Build/test_functional_routing.py": {
+      "kind": "file",
+      "sha256": "26354dd2e0bce60ce1987f77284825bf0e2f565971c6d909c123d1dbfe4d7680",
+      "bytes": 18891,
+      "mode": 511
+    },
+    "Tests/Build/test_fuzz_evidence.py": {
+      "kind": "file",
+      "sha256": "24eb22430064eea5f563a5e8f1204e1bc80be6c9c2edea9dae414b3893868b4d",
+      "bytes": 3167,
+      "mode": 511
+    },
+    "Tests/Build/test_harness_command_parsing.py": {
+      "kind": "file",
+      "sha256": "57edb4582300e4dcbbd1e6eec3f544ef24f3cea0f663acdcbe4f3f7623d0d4ce",
+      "bytes": 3097,
+      "mode": 511
+    },
+    "Tests/Build/test_local_guards.py": {
+      "kind": "file",
+      "sha256": "35f43d68cc533843e275a34f7675f392c1667eb9ea20d23fa4654c812831e45b",
+      "bytes": 11368,
+      "mode": 511
+    },
+    "Tests/Build/test_mutation_routing.py": {
+      "kind": "file",
+      "sha256": "4be36be81446ae8aff38f8f5a55ab053b64468b34b2e0b5575fdf53f7b1c97e2",
+      "bytes": 11228,
+      "mode": 511
+    },
+    "Tests/Build/test_native_cleanup.py": {
+      "kind": "file",
+      "sha256": "06dd420885bc6b6c15b08cba3ae2a10762a34b77f2170a149b434cde633a7553",
+      "bytes": 3584,
+      "mode": 511
+    },
+    "Tests/Build/test_wire_lifecycle.py": {
+      "kind": "file",
+      "sha256": "0191434f9006893bf3c083101d152e17ccf428dab1f677779e1e7db17b488382",
+      "bytes": 4035,
+      "mode": 511
+    },
+    "Tests/Fixtures/AdapterRuntimeFixture.php": {
+      "kind": "file",
+      "sha256": "d2c5cd04b93a01b17076c7ff558b84f6d5936097821319178240ae1a170ac59b",
+      "bytes": 7587,
+      "mode": 511
+    },
+    "Tests/Fixtures/RecordingMiddleware.php": {
+      "kind": "file",
+      "sha256": "e7babe6ffbe678bde4eb43ad8929a107498288e7199a6fc49316df9bdd56d9de",
+      "bytes": 1385,
+      "mode": 511
+    },
+    "Tests/Fixtures/RequestFactoryAbiShapes.php": {
+      "kind": "file",
+      "sha256": "c377e0dad06307b9f933d13409317022e89fc62602b597bc1d405a745072957f",
+      "bytes": 11277,
+      "mode": 511
+    },
+    "Tests/Fixtures/RequestFactoryReferenceShape.php": {
+      "kind": "file",
+      "sha256": "25dbb517b6bca885f7fb582546197e1ac081a5b902f6885713a28ae3c1b2db14",
+      "bytes": 2737,
+      "mode": 511
+    },
+    "Tests/Functional/classic-package-bootstrap.php": {
+      "kind": "file",
+      "sha256": "b75cd9037718be503ee968ef7a3f2b63b5a2ea0ebdaf7ef0fbd77d7e16b3335e",
+      "bytes": 4868,
+      "mode": 511
+    },
+    "Tests/Functional/mode-bootstrap.php": {
+      "kind": "file",
+      "sha256": "16058436758dd30885fd1bd715bfc65fa6f084b4d176118d373d100fd8b09885",
+      "bytes": 3523,
+      "mode": 511
+    },
+    "Tests/Functional/production-bootstrap.php": {
+      "kind": "file",
+      "sha256": "abdbd04838fde947d2b2a352a192374271a97dbdb474cbc575d0946bb88ee30f",
+      "bytes": 17176,
+      "mode": 511
+    },
+    "Tests/Fuzz/OfflineInputsTest.php": {
+      "kind": "file",
+      "sha256": "01087e8663d39905d2e84d1374f6186f72a5248f4790f6b2a449229014b50bbc",
+      "bytes": 1879,
+      "mode": 511
+    },
+    "Tests/Fuzz/OfflineProperties.php": {
+      "kind": "file",
+      "sha256": "fbe14ae10b4f3612713b4dee9b22f82da61c71510f7ad77c36fd7aab58b5c4cd",
+      "bytes": 8613,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/cidr-nonnetwork": {
+      "kind": "file",
+      "sha256": "fde787f22fc46e20a66c4b322b6e7373b473709e25496723c7e22a31e24870ed",
+      "bytes": 11,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/cidr-nul-regression": {
+      "kind": "file",
+      "sha256": "b4b17accffa1ce1fa548177b2981de3f09e052479c08a1b3a6bf88f2611005da",
+      "bytes": 9,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/cidr-v4": {
+      "kind": "file",
+      "sha256": "06c2f2b78b03b06da91883d5184e788bd7d232c00304adb282159fb5a052bf18",
+      "bytes": 11,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/cidr-v6": {
+      "kind": "file",
+      "sha256": "980178932e1eff46a3b6a56ee96edc524d22736b04ac96888795c419c923900e",
+      "bytes": 15,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/dns-forward-pointer": {
+      "kind": "file",
+      "sha256": "1faf79cc017cd1a403c312e911c00aae2c56d7ef1f640b62ed72ab6b776a28ad",
+      "bytes": 19,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/dns-round-trip": {
+      "kind": "file",
+      "sha256": "14eb43dc2e050c3a51b5c69cf2ed99697513283a4eb18389eb573b1b5118c944",
+      "bytes": 6,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/dns-zero": {
+      "kind": "file",
+      "sha256": "f99bf80562ac8104e5a7c0b0d63d9348f57d12be0c577eb9281780cf5311793e",
+      "bytes": 13,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/host-ascii": {
+      "kind": "file",
+      "sha256": "1b47c317f51cdd6d231c9355d94e219823ed04a979ecabc19221d7388bb106ab",
+      "bytes": 13,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/host-idn": {
+      "kind": "file",
+      "sha256": "cfbbbd479ff4db9835f1992864b475f6495c1aa9775c27963dc146f55bee47df",
+      "bytes": 13,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/host-invalid-numeric": {
+      "kind": "file",
+      "sha256": "d13fd68c65da4c9443ab8cc8448e6f8ee8ab2605eadcf460306e517af61db24a",
+      "bytes": 6,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/ip-mapped-private": {
+      "kind": "file",
+      "sha256": "524226328d6d89cff19f748c964fcd8d0f4faeed4ef8d50a9f427e0fde10cc01",
+      "bytes": 18,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/ip-v4-global": {
+      "kind": "file",
+      "sha256": "a9eb4540925a33da6a7324e9a34f89d2b8ccab47c30dd8cb16d3b6bfd2d7a062",
+      "bytes": 6,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/ip-v6-loopback": {
+      "kind": "file",
+      "sha256": "59deee659f6220c873684a96c915b10c832f3f1000def03e9f840e2fe0c92ef0",
+      "bytes": 18,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/uri-control": {
+      "kind": "file",
+      "sha256": "99c93115321ccfa1159640d1edc859054655cbd2d6b2cb9f176908ad7967ea7c",
+      "bytes": 22,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/uri-fragment": {
+      "kind": "file",
+      "sha256": "eccbe403fdfe6677107bc21fd7c984e3090e6f40af829a7e3022dfc4826f3e4b",
+      "bytes": 23,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/uri-public": {
+      "kind": "file",
+      "sha256": "3166500213597b52bdf1c36c31000a63ecbd8f5f15519344b807b7612abf6f13",
+      "bytes": 33,
+      "mode": 511
+    },
+    "Tests/Fuzz/corpus/uri-userinfo": {
+      "kind": "file",
+      "sha256": "9b19a8847b1c315b8e1074c34b38c89f696240fe1f1189872d01ef8edca8d3ba",
+      "bytes": 25,
+      "mode": 511
+    },
+    "Tests/Fuzz/fuzz-target.php": {
+      "kind": "file",
+      "sha256": "59b7670f0955975f042dd6fa95f1c3123ce3dd497883b03afd1d7255983f01ce",
+      "bytes": 808,
+      "mode": 511
+    },
+    "Tests/Fuzz/phpunit.xml": {
+      "kind": "file",
+      "sha256": "507674f0b15f1550fbec6809824bc7c1c03c5e8b196a07c6ea174bca5fe793c5",
+      "bytes": 486,
+      "mode": 511
+    },
+    "Tests/Fuzz/seeds.json": {
+      "kind": "file",
+      "sha256": "7de92a403000b0fb4965e5c9dd681c98b8e4386017b0a4763ea1e074f5470033",
+      "bytes": 156,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php": {
+      "kind": "file",
+      "sha256": "029e53eaa7b590feb60f01cf017665aa6784467dd083b93591a721dfc3a59963",
+      "bytes": 19222,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/Fixtures/IncomingProxyHeader.php": {
+      "kind": "file",
+      "sha256": "50fd5c7c41ef72986dcfd9443040c61e956c3fde8ee7b60be8c04d9221e39822",
+      "bytes": 2816,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/Fixtures/IsolatedCapabilityProbe.php": {
+      "kind": "file",
+      "sha256": "475f3d0ed4ac2b2faac919b5813b18c38ac42cb48bf9981dcf78ce648b6f3e7f",
+      "bytes": 6077,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/Fixtures/run-missing-curl.py": {
+      "kind": "file",
+      "sha256": "9ada4c4fb94dd1fb4a235f3348ffe7313214eb43384eb1b65f999bb8cb903bc3",
+      "bytes": 3853,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/MutationWitnessTest.php": {
+      "kind": "file",
+      "sha256": "e45fdaa7dcea23252b836ff40895f199ca007ca89f55c76d149e9daa317182b6",
+      "bytes": 7099,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/ProductionTransportTest.php": {
+      "kind": "file",
+      "sha256": "68117d7bab1811a24390b207a8d8499920eceb64bb0e315f2e9d41cd1e3c8dcf",
+      "bytes": 57239,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/ca.crt": {
+      "kind": "file",
+      "sha256": "af8f3c497f04692454e65ca6ec85ed9714acf1bbaa3d77ea046527a0c61d1506",
+      "bytes": 1164,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/ca.key": {
+      "kind": "file",
+      "sha256": "352c03de1c19e4a8eb803db73713d38d9c23cd658862db07529ba6f233eee592",
+      "bytes": 1704,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/ca.srl": {
+      "kind": "file",
+      "sha256": "1e8a0487c9812f521591ff3146dc2afad4ed21363decbe61f6b83ca26874b1a0",
+      "bytes": 41,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/client.crt": {
+      "kind": "file",
+      "sha256": "8068b4b85387837623d44a79df8fb89359a82d727828fcea33031dfa8821d80e",
+      "bytes": 1176,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/client.csr": {
+      "kind": "file",
+      "sha256": "f9ee8bceaabbf099c75e2e8e7e80e6834effca16dfdf84cd17a55c4fd5a8be93",
+      "bytes": 924,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/client.ext": {
+      "kind": "file",
+      "sha256": "b332f2257d9f16c3c30d86527ca1b26ecb75bab6c60903c606b391b49d054453",
+      "bytes": 28,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/client.key": {
+      "kind": "file",
+      "sha256": "e1a150875e3ef0e3117a9ef5c7969b64448c279b6d1cfd7a0f044478fa3c9e06",
+      "bytes": 1708,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/server.crt": {
+      "kind": "file",
+      "sha256": "8192115901730d167db25b0b1f7c4eb54adbe3ba585e1be055ee14de8ebe0b35",
+      "bytes": 1208,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/server.csr": {
+      "kind": "file",
+      "sha256": "d866e2031e7a7d7cd7c6321dc778d44d7c2e23b44ebd693db4ef8ccf79c152c1",
+      "bytes": 891,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/server.ext": {
+      "kind": "file",
+      "sha256": "d4efd98edafd065d0330909dccca4bee2556baae2575f8a45817054f2d044d16",
+      "bytes": 86,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/certificates/server.key": {
+      "kind": "file",
+      "sha256": "ae691852afc79c13ba926ab28cd31c26b3aaeded2be5fa657ff624629ac74269",
+      "bytes": 1704,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/prepare-wire.sh": {
+      "kind": "file",
+      "sha256": "487aade7702f05f8e8caaba67d57235580d0bec39c8f7a0b00cf5590b9186807",
+      "bytes": 3737,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Integration/wire_server.py": {
+      "kind": "file",
+      "sha256": "6e4d2ecdc268a1555a29efc2250376a494bb93629392ecedd37b9fb8ae443a66",
+      "bytes": 8526,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Client/ClientFacadeTest.php": {
+      "kind": "file",
+      "sha256": "698a4e84205b01eb9557dc52996cc3e2161b40adaca2266894fc7e52ee9253b2",
+      "bytes": 4301,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/AddressRulesBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "e1bb420095c527dd64ba630963f9b5ff75debe6f5ab4b37f6a8c79095f6f65f7",
+      "bytes": 6855,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php": {
+      "kind": "file",
+      "sha256": "4eee9b6fc74b4217d74bae4e3d1f1b892d26e3db95d698087c089dc1c5c0eff8",
+      "bytes": 1087,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/CidrMalformedInputsTest.php": {
+      "kind": "file",
+      "sha256": "e96fa51f817abad46d8a62706b69a473a09c2fdc273a2663cfb17904cf1d708b",
+      "bytes": 1312,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/CidrMembershipBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "09d53de86c724280e19d7a407a9331f28d0eb8fb0bc6038ed1e6602cce005291",
+      "bytes": 41672,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/CidrNativeFormatContractTest.php": {
+      "kind": "file",
+      "sha256": "46aae21e0c7580cee6c74027b90da6349304c970636d5e61219c65839395dc15",
+      "bytes": 6240,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/CidrNetworkContractTest.php": {
+      "kind": "file",
+      "sha256": "9272396337cc1912415b7242b919f958d5c6952a8362ee6136ac3415673d726e",
+      "bytes": 4857,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/DecisionReporterContractTest.php": {
+      "kind": "file",
+      "sha256": "725556352be1df6d71ee11529abd0d2c459f77a2d363d1cf5ca173da84117c3b",
+      "bytes": 11241,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/DecisionReporterSecretTest.php": {
+      "kind": "file",
+      "sha256": "f3c03970b6eb596ff4df3361d8fdb9466487385b32d08fd26995bfb6adcc80a7",
+      "bytes": 3817,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/DnsPacketCodecTest.php": {
+      "kind": "file",
+      "sha256": "423f2925b0ae2707705deb15091b04d1059d26f92a939cfa4343ecf2bb88a63e",
+      "bytes": 3037,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/DnsQueryEncodingTest.php": {
+      "kind": "file",
+      "sha256": "aca2b59b991bffd5be31589d79cf1f3192977ebc9ea985e078c916e4ad3de48d",
+      "bytes": 1376,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/DnsRecordDecodingTest.php": {
+      "kind": "file",
+      "sha256": "f58683811c561af284442e843fd91d682dadd0270ce04c862861543eb0ea379a",
+      "bytes": 2567,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/DnsResidualWireContractTest.php": {
+      "kind": "file",
+      "sha256": "845b4d4ec94b64e61f17c0e9ac107d1b361ba9eac905ea77280269132e330056",
+      "bytes": 3084,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/DnsWireBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "bf2ddc55014c16cf971a00953d70cc271cb25211a2b5806112fef6316a405eba",
+      "bytes": 9988,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/Fixtures/AddressRulesBoundaryShim.php": {
+      "kind": "file",
+      "sha256": "eda6e35476086dca43245d50252ba73e204762253124e1e0e6a547fe1a7e0054",
+      "bytes": 966,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/Fixtures/CidrNativeFormatProbe.php": {
+      "kind": "file",
+      "sha256": "8870fde6f8cfc0b93a0d7b8788e3c38cf0eea24f670714ff940c664550ac5cb6",
+      "bytes": 759,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/Fixtures/DnsTruncationResponder.php": {
+      "kind": "file",
+      "sha256": "3d97d8ce100b79f4d481df50cac2e0260f72b0c671b474588468a5b6f7800b9b",
+      "bytes": 1968,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/Fixtures/ReporterFunctions.php": {
+      "kind": "file",
+      "sha256": "449dde3f0164971c735828eded3c56e23b489a73461bc60ea86157ba49b6432b",
+      "bytes": 1114,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/Fixtures/TrustedBundleFailure.php": {
+      "kind": "file",
+      "sha256": "b6cf60f054c53c750d6a65c064a3dd5bcf133b63069d25bbbd78d40406c442fb",
+      "bytes": 5360,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/Fixtures/WireIoBoundaryShim.php": {
+      "kind": "file",
+      "sha256": "1df0cc5751ee2c8d4a7cf78d4b2ad221a2043d623ddfe409040e1f4a6163e233",
+      "bytes": 4728,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/GuardConfigProfileContractTest.php": {
+      "kind": "file",
+      "sha256": "835bfbe1e6096eb822fd156b5bdc6cc97ffe4eb20e0b3df3e684068575a2e90b",
+      "bytes": 11040,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/GuardConfigResidualContractTest.php": {
+      "kind": "file",
+      "sha256": "d04d0f43a5b010f0d797c56d0503780426fa836ad09ac0070e71a607c730e73f",
+      "bytes": 2034,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/GuardConfigurationBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "bb084a9b11445036b32417a163fdf15498f5b3c81c52b44312f902a201586b1f",
+      "bytes": 9091,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/NativeOperationTest.php": {
+      "kind": "file",
+      "sha256": "664c9ae7e61addfdca0f45c6786b44c3c3360e327d03332efcf50a8b47815dd7",
+      "bytes": 8982,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php": {
+      "kind": "file",
+      "sha256": "15759c356086620cac9f275af3fa4bb8758dd4b9c0db4abceca1f77c17970d2f",
+      "bytes": 3224,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/PolicyLifecycleTest.php": {
+      "kind": "file",
+      "sha256": "712af2ce5a303c43b35e4296997a7fe0862a34ff94e4ec297b17479053e6c85c",
+      "bytes": 13285,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/PolicyPlanBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "74d6483af3050d7e438b9986a7d6fa4ade5198a5d8bfc3cd780d9f31540f684d",
+      "bytes": 8243,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/PolicyRegistryContractTest.php": {
+      "kind": "file",
+      "sha256": "ed9a6bd201bf74aa15ff069a6c94038d4ae6499ed1044c9d86a4fb3b9174b8bf",
+      "bytes": 7067,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/PolicyResolverBoundariesTest.php": {
+      "kind": "file",
+      "sha256": "2dbfb3c80ddb67828b1628abe1b4c0d0ee7a09366eda1e064fa5f33d6a892f20",
+      "bytes": 5827,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php": {
+      "kind": "file",
+      "sha256": "209fed11980fe8bda09d7f28550fec915700774fe518fb8a2123eda99ab3e09e",
+      "bytes": 8856,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/PolicyTelemetryTest.php": {
+      "kind": "file",
+      "sha256": "66bfcc3460ce727d7e059a246b5a72777c3f9f6e342e2c983b70c22b276e4df7",
+      "bytes": 12547,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/ResolverAnswerBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "2690d190aa11d0093c7e3b907f59643eff979206996542568830ffbeb49daf9f",
+      "bytes": 10640,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/ResolverResidualCacheContractTest.php": {
+      "kind": "file",
+      "sha256": "6a32db72fa6335f79ac27ef360759ea8aaebd950529fd47cd223303e1ad17894",
+      "bytes": 7809,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/TargetAuthorityBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "be50cc3afae8a5cb4ee5ef60d1619a81aa65ee35880a06588186d0897f2846e3",
+      "bytes": 7832,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/TrustedBundleFailureTest.php": {
+      "kind": "file",
+      "sha256": "67b12ca56d91b49d4b8bb781259c5fa7a762f84c5514e3f30da3dd447bb5b7a2",
+      "bytes": 2271,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/WireDnsQueryTest.php": {
+      "kind": "file",
+      "sha256": "31da558330bb39a16a32e99fb1eee3b13078e1a97a7c37921563fe6b636d829b",
+      "bytes": 4161,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Policy/WireIoBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "e7d555bbec7b1d9254d8f673c05e28d8d0cc825b6e96fc20b76449a010fda198",
+      "bytes": 12028,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/BoundaryPromiseLifecycleTest.php": {
+      "kind": "file",
+      "sha256": "65183a810fad6f970b9e4c1685291670ba260c4f4fdc0346c6d3350feb063224",
+      "bytes": 8910,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/BoundaryResponseContractTest.php": {
+      "kind": "file",
+      "sha256": "815cf1b0d56054ee0c5b2b68f3e49bb0dbd73c4c09a291fe015bb2083467b188",
+      "bytes": 25195,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/BoundaryResponseTest.php": {
+      "kind": "file",
+      "sha256": "4594a5a98f6cd350675e7c7214e2f66bd610bb530b8b5155193e5944b5dd7b1d",
+      "bytes": 2959,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/ClientFactoryContractTest.php": {
+      "kind": "file",
+      "sha256": "e4aae79def18de5f018555735e147890f6a0f3d393681614d5c0eb5b31db6310",
+      "bytes": 15420,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/Fixtures/RuntimeCapabilities.php": {
+      "kind": "file",
+      "sha256": "f1dc5bb99829346094632b08480f0c935e2bc1262172d26d94c0ba3a0d71e142",
+      "bytes": 1524,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/Fixtures/RuntimeContractShapes.php": {
+      "kind": "file",
+      "sha256": "684d078d363222f7e069a1127b2a99565bcc51d8d8b89d51fadb715d49b74dbc",
+      "bytes": 7645,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/Fixtures/TransferLifecycleHarness.php": {
+      "kind": "file",
+      "sha256": "ac6052069309c4637061813894861e66c278147279f9c83f5b4ae879113a10a9",
+      "bytes": 6983,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/IdleTransferLeaseTest.php": {
+      "kind": "file",
+      "sha256": "6eb5f3ced92f4da1211f8c4bc4bb4bd27bfe1f5958a26aa84584f1ecfe366a2a",
+      "bytes": 4630,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/InvocationLifecycleTest.php": {
+      "kind": "file",
+      "sha256": "dc4103216e8adda523b1f4dad6fb51497d95a0893e9d73fb98ebf60b5fe2457a",
+      "bytes": 3201,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/ManagedAuthenticationContractTest.php": {
+      "kind": "file",
+      "sha256": "2316dc7e3caed881106a6373b6b9551c5f57bd80d97944cb13507b376d748a63",
+      "bytes": 5019,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/NativeClientDefaultsTest.php": {
+      "kind": "file",
+      "sha256": "d1a7e9acb49a716b2c2da090e6145a14add60c49255dece394206c5765348c6e",
+      "bytes": 3969,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/OptionSanitizerContractTest.php": {
+      "kind": "file",
+      "sha256": "074d9a790f582bb38da18d0a56ccec0aabad28f82eef021f1d63b5bbf8111eb3",
+      "bytes": 14454,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php": {
+      "kind": "file",
+      "sha256": "fdabd615d43f0a196becc16c74f626c94c60a7bd3c877d5e579d7e15e625d315",
+      "bytes": 7593,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/RuntimeCapabilityContractTest.php": {
+      "kind": "file",
+      "sha256": "9d94acdb9a816daed89305446775c39a52b380b1bdd0b97fcc455f92514b7644",
+      "bytes": 4532,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/RuntimeContractIsolationTest.php": {
+      "kind": "file",
+      "sha256": "7627fc44f055835e690053edea53a7e4223df2d6c0230770569f0c3722ffbb97",
+      "bytes": 5174,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/RuntimeSupportTest.php": {
+      "kind": "file",
+      "sha256": "da4a8ba653eca7c1d0e50d446cdb385842ae9d9e713cee4fa85224bd3fa9c7bf",
+      "bytes": 9996,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/SingleUseCurlFactoryTest.php": {
+      "kind": "file",
+      "sha256": "be89e99aa05b45aa84553fc2e5c6c021479828de93d47dc79908cb204d4f8409",
+      "bytes": 5980,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/TransferLeaseInputTest.php": {
+      "kind": "file",
+      "sha256": "7d27f0efe4b777f545045f9821afdff114789c9a0b520266f46c619b6e89bf71",
+      "bytes": 2881,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/TransferLeaseLifecycleContractTest.php": {
+      "kind": "file",
+      "sha256": "c496f26e23c6b40c7c7f556d9f88f409503bcf8ccf1b4126f8f7fa1ca3ecb869",
+      "bytes": 21829,
+      "mode": 511
+    },
+    "Tests/HttpGuard/Unit/Transport/TransferLeaseRuntimeBoundaryContractTest.php": {
+      "kind": "file",
+      "sha256": "0105251599fa507fbd60ffbc38b895c609785a43e778a38b871f8b35190dc0a6",
+      "bytes": 3387,
+      "mode": 511
+    },
+    "Tests/HttpGuard/bootstrap.php": {
+      "kind": "file",
+      "sha256": "63bba2810abe94ef25b1749eabd9d22e4caad64cbcc4461ef3a90161054026cc",
+      "bytes": 939,
+      "mode": 511
+    },
+    "Tests/Unit/AdapterClientContractTest.php": {
+      "kind": "file",
+      "sha256": "3bd6a381a3103e6bfa20d734dc9e5b0d4968af9aec25de330f6ad0b386501241",
+      "bytes": 4767,
+      "mode": 511
+    },
+    "Tests/Unit/AdapterInputShapeTest.php": {
+      "kind": "file",
+      "sha256": "7c4866b415d3308b90ea4cf31ad4ef4f8d274a4ec3eab1ffa3e0c0403edcd5b3",
+      "bytes": 6824,
+      "mode": 511
+    },
+    "Tests/Unit/CommandContractTest.php": {
+      "kind": "file",
+      "sha256": "252581f3d173050f2fc3d5c06e297256d5ffb78590c42aff8ee6f72edb3c7d8b",
+      "bytes": 6617,
+      "mode": 511
+    },
+    "Tests/Unit/ConfigurationLoaderTest.php": {
+      "kind": "file",
+      "sha256": "459f609ce51587e52ce5531d7fa1e0a26a1ec16c54eb4ebdc313d2db578441bb",
+      "bytes": 1925,
+      "mode": 511
+    },
+    "Tests/Unit/CoreConfigurationShapeTest.php": {
+      "kind": "file",
+      "sha256": "4501474f1b4b76126a9bd84d5e177c2e41431ffbaf5b7fb849980f670c1155ba",
+      "bytes": 5744,
+      "mode": 511
+    },
+    "Tests/Unit/CoreStackProviderContractTest.php": {
+      "kind": "file",
+      "sha256": "81b3dccffa74abe0ad1d94f3015b00208a8d03aa5d84a30b869eef7065f9dab3",
+      "bytes": 6882,
+      "mode": 511
+    },
+    "Tests/Unit/DiagnosticBootStateTest.php": {
+      "kind": "file",
+      "sha256": "db19d14e2ec9d39cb83fefd78d88c3e5178ec63bb4edb9fc7fda5cc759411f13",
+      "bytes": 3613,
+      "mode": 511
+    },
+    "Tests/Unit/DiagnosticsContractTest.php": {
+      "kind": "file",
+      "sha256": "d38f53c87fc0f8d44bc71dd503b8ca8545f210ae2ab32f3d2e27c1fe405c4c10",
+      "bytes": 17286,
+      "mode": 511
+    },
+    "Tests/Unit/DiagnosticsServiceTest.php": {
+      "kind": "file",
+      "sha256": "ee658c8b385e9badca8c0eb98cf73a819ab85b4cf0a21c651cca553ad063c35c",
+      "bytes": 5494,
+      "mode": 511
+    },
+    "Tests/Unit/DoctorVersionContractTest.php": {
+      "kind": "file",
+      "sha256": "9ff2e5ca87a9e67046143607768beabf9235392a619436d75ae806b118a9b947",
+      "bytes": 3231,
+      "mode": 511
+    },
+    "Tests/Unit/GlobalHttpDefaultsTest.php": {
+      "kind": "file",
+      "sha256": "06e7ac36405366fdbee58557c746f41ad70ddbad2b3f4afa72d037e529a1a07e",
+      "bytes": 2176,
+      "mode": 511
+    },
+    "Tests/Unit/LegacyConfigurationInventoryTest.php": {
+      "kind": "file",
+      "sha256": "7459eff7525deabfa5f7e485be794cfb5b46bc509632d9dbb70cb173bebfda80",
+      "bytes": 1345,
+      "mode": 511
+    },
+    "Tests/Unit/MiddlewareRegistryContractTest.php": {
+      "kind": "file",
+      "sha256": "bb6e1e3096f8cbf54b9c5b6420ba77ed160306a61a7c6e74399239b410b11c69",
+      "bytes": 9515,
+      "mode": 511
+    },
+    "Tests/Unit/RawRequestFactoryModeTest.php": {
+      "kind": "file",
+      "sha256": "24eef29acf6b390272123dcd59c145e8430296342d7b24a098ba4f4c9d7c0838",
+      "bytes": 5232,
+      "mode": 511
+    },
+    "Tests/Unit/RequestFactoryAbiContractTest.php": {
+      "kind": "file",
+      "sha256": "e4b2937e5736694f11ecdc4bb109d2d224c4f21e4606884d822bda9e0bc035f0",
+      "bytes": 5634,
+      "mode": 511
+    },
+    "Tests/Unit/RequestFactoryCompatibilityTest.php": {
+      "kind": "file",
+      "sha256": "c42a6ceaaeabc0167155400c1e17da04b872675fa494e04ced389fd98cca921d",
+      "bytes": 3354,
+      "mode": 511
+    },
+    "Tests/Unit/Service/LibraryServiceFactoryTest.php": {
+      "kind": "file",
+      "sha256": "8eee9ffd4636cec328c22a05224577f0f57d48283970479e972fdbe200921507",
+      "bytes": 7713,
+      "mode": 511
+    },
+    "Tests/bootstrap.php": {
+      "kind": "file",
+      "sha256": "c174fa6ee257cc01950cb58c0ce5a283ae2ce43b0f81472af4d94bacfc211954",
+      "bytes": 1031,
+      "mode": 511
+    },
+    "codecov.yml": {
+      "kind": "file",
+      "sha256": "6c5eeeb96f3c054e54c42378b6e2e4a399579fae70e261bd002ccc342799d796",
+      "bytes": 491,
+      "mode": 511
+    },
+    "composer.json": {
+      "kind": "file",
+      "sha256": "b388e94112b9497cd0b75ce9a89f077a3fc11021d9d7d7fd31a4e2ea61a33077",
+      "bytes": 3332,
+      "mode": 511
+    },
+    "ext_emconf.php": {
+      "kind": "file",
+      "sha256": "b831fea2e698ddbf5d61f10493c2028d54c163999b838146f4ea288fc82c5224",
+      "bytes": 833,
+      "mode": 511
+    },
+    "ext_localconf.php": {
+      "kind": "file",
+      "sha256": "dff94165dad096c69e5b02fae97b1836ad95ac715f43df420e0518eba49955b1",
+      "bytes": 558,
+      "mode": 511
+    },
+    "infection.json5": {
+      "kind": "file",
+      "sha256": "3ef5b9c7f8e5c68180a1b9adb845edfffd2d95be78c0a00c9622e11a81779d02",
+      "bytes": 602,
+      "mode": 511
+    },
+    "infection.native.json5": {
+      "kind": "file",
+      "sha256": "a33ab444c6aa17df4b624e8da9c69cfa89f8951932600edef7aa0cff3aa19ada",
+      "bytes": 617,
+      "mode": 511
+    },
+    "phpunit.xml": {
+      "kind": "file",
+      "sha256": "71ed1f0988171a0a8a413851ea54fb133b76f8c38e358bb2e9e8b93f228f4872",
+      "bytes": 741,
+      "mode": 511
+    },
+    "rector.php": {
+      "kind": "file",
+      "sha256": "f1d65a021a85ae4c5c3a783b11c9e7d3803c7f5fd3e4be2ba4c5f5772d87a5d8",
+      "bytes": 1164,
+      "mode": 511
+    },
+    "renovate.json": {
+      "kind": "file",
+      "sha256": "082e9643c3088dc1f162c974d39552342f5f273efad5de199bcc1cca66c8a0ea",
+      "bytes": 1203,
+      "mode": 511
+    }
+  },
+  "files_count": 850,
+  "working_source_before_after_equal": true,
+  "snapshot_equal_to_source": true,
+  "capture_scope": "all tracked plus all non-ignored working files; no vendor/build cache",
+  "git_metadata_is_separate_from_dirty_file_content": true
+}

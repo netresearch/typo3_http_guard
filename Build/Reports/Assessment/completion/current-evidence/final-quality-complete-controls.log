@@ -1,0 +1,19 @@
+test_actual_pinned_full_binding_is_accepted (__main__.CompleteQualityTests.test_actual_pinned_full_binding_is_accepted) ... ok
+test_changed_copilot_input_is_rejected (__main__.CompleteQualityTests.test_changed_copilot_input_is_rejected) ... ok
+test_changed_quality_original_bytes_rejected (__main__.CompleteQualityTests.test_changed_quality_original_bytes_rejected) ... ok
+test_changed_research_header_input_is_rejected (__main__.CompleteQualityTests.test_changed_research_header_input_is_rejected) ... ok
+test_changed_root_input_is_rejected (__main__.CompleteQualityTests.test_changed_root_input_is_rejected) ... ok
+test_changed_start_original_bytes_rejected (__main__.CompleteQualityTests.test_changed_start_original_bytes_rejected) ... ok
+test_failed_or_changed_completion_is_rejected (__main__.CompleteQualityTests.test_failed_or_changed_completion_is_rejected) ... ok
+test_malformed_vendor_digest_is_rejected (__main__.CompleteQualityTests.test_malformed_vendor_digest_is_rejected) ... ok
+test_missing_agent_harness_input_is_rejected (__main__.CompleteQualityTests.test_missing_agent_harness_input_is_rejected) ... ok
+test_missing_root_input_is_rejected (__main__.CompleteQualityTests.test_missing_root_input_is_rejected) ... ok
+test_missing_vendor_input_is_rejected (__main__.CompleteQualityTests.test_missing_vendor_input_is_rejected) ... ok
+test_partial280_original_route_is_rejected (__main__.CompleteQualityTests.test_partial280_original_route_is_rejected) ... ok
+test_unbound_before_capture_is_rejected (__main__.CompleteQualityTests.test_unbound_before_capture_is_rejected) ... ok
+test_wrong_declared850_count_is_rejected (__main__.CompleteQualityTests.test_wrong_declared850_count_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.672s
+
+OK

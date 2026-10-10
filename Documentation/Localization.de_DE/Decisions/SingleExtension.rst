@@ -42,11 +42,13 @@ einen nativen Versuch, unabhängig von privaten SDK-Wiederholungszählern.
 Feste Core-/SDK-Fixtures bleiben reproduzierbare Teststände. Die aktuell
 geprüften offiziellen Core-Archive liefern den Guzzle-8-Graph.
 
-Das Handbuch, Installationswege, Konfigurationsfelder, APIs und
-Betriebsgrenzen liegen vollständig unter :file:`Documentation/`. Zusätzliche
-Spezifikationen, ausführliche Ausführungsnachweise und der optionale
-Vault-Patch bleiben ein getrenntes Quell-/Nachweispaket und werden nicht als
-Runtime-Voraussetzung installiert.
+Das vollständige Handbuch, die Anforderungsübersicht und angenommenen
+Entscheidungen liegen unter :file:`Documentation/`; gepflegte Tests und
+Build-Werkzeuge unter :file:`Tests/` und :file:`Build/`. Originalentwürfe,
+Rohprotokolle und das optionale fremde Vault-Overlay bleiben in unveränderter
+Git-Historie und einem geprüften externen Archiv erhalten. Sie bilden kein
+weiteres installierbares Paket. Original-IDs und heutige Zuordnung stehen
+unter :ref:`development-requirements`.
 
 .. _decision-single-extension-consequences:
 
@@ -65,6 +67,9 @@ Dependency-Lock zugeordnet.
 Das Paket gilt als GPL-2.0-or-later-Extension mit erhaltenen MIT-Hinweisen
 des eingebetteten Kerns. Der interne frameworkunabhängige Aufbau erlaubt
 separate Kernprüfungen, ist jedoch kein Versprechen eines zweiten
-veröffentlichten Composerprodukts. Die Alpha-Version wird lokal als
-importierbares ZIP geliefert; TER-Veröffentlichung und Betreiberfreigabe
-bleiben gesonderte Aktionen.
+veröffentlichten Composerprodukts. Alpha-Version **0.1.1 ist auf TER und
+Packagist veröffentlicht**, mit einem importierbaren Extension-ZIP. Dies
+belegt weder einen Betreiberpilot noch die Bereitstellung des historischen
+nr-vault-Referenzpatches. Der Nutzer hat die Alpha-Arbeit und Merges nach
+wiederholter unabhängiger Prüfung und grünen einschlägigen Checks ohne
+zusätzliche menschliche Freigabe autorisiert.

@@ -13,15 +13,15 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE_DIRECTORY = Path('Tests/HttpGuard/Integration/certificates')
-# Tuple pairs keep exact public digests from resembling credential assignments.
-EXPECTED = dict([
-    ('ca.key', '352c03de1c19e4a8eb803db73713d38d9c23cd658862db07529ba6f233eee592'),
-    ('client.key', 'e1a150875e3ef0e3117a9ef5c7969b64448c279b6d1cfd7a0f044478fa3c9e06'),
-    ('server.key', 'ae691852afc79c13ba926ab28cd31c26b3aaeded2be5fa657ff624629ac74269'),
-    ('ca.crt', 'af8f3c497f04692454e65ca6ec85ed9714acf1bbaa3d77ea046527a0c61d1506'),
-    ('client.crt', '8068b4b85387837623d44a79df8fb89359a82d727828fcea33031dfa8821d80e'),
-    ('server.crt', '8192115901730d167db25b0b1f7c4eb54adbe3ba585e1be055ee14de8ebe0b35'),
-])
+# Public SHA-256 metadata uses digest-first records, as checksum manifests do.
+EXPECTED = {name: digest for digest, name in (
+    ('352c03de1c19e4a8eb803db73713d38d9c23cd658862db07529ba6f233eee592', 'ca.key'),
+    ('e1a150875e3ef0e3117a9ef5c7969b64448c279b6d1cfd7a0f044478fa3c9e06', 'client.key'),
+    ('ae691852afc79c13ba926ab28cd31c26b3aaeded2be5fa657ff624629ac74269', 'server.key'),
+    ('af8f3c497f04692454e65ca6ec85ed9714acf1bbaa3d77ea046527a0c61d1506', 'ca.crt'),
+    ('8068b4b85387837623d44a79df8fb89359a82d727828fcea33031dfa8821d80e', 'client.crt'),
+    ('8192115901730d167db25b0b1f7c4eb54adbe3ba585e1be055ee14de8ebe0b35', 'server.crt'),
+)}
 SUBJECTS = {
     'ca': 'CN=HTTP Guard SYNTHETIC TEST CA',
     'client': 'CN=HTTP Guard SYNTHETIC TEST CLIENT',

@@ -1,0 +1,80 @@
+{
+  "original_infection_initial_baseline_failed": true,
+  "original_failure_non_deterministic_on_unchanged_repeat": true,
+  "original_failure_preserved": "infection-native.log",
+  "initial_random_order_preserved": "initial-random-native-order.json",
+  "production_bug_ruled_out": false,
+  "no_test_order_weakening": true,
+  "controls": "Five ordinary offline lifecycle tests; all live TCP identities retained including TLS handshake acceptance. Closed history bounded to256 only.",
+  "serial_full_runs": [
+    {
+      "phase": "after-1",
+      "tests": 389,
+      "assertions": 3255,
+      "exit": 0,
+      "random_seed": 1791577989,
+      "coverage": "Xdebug3.5.3",
+      "exact_root_test_bytes": false,
+      "closed_attempt_witnesses": {
+        "17": {
+          "path": "/slow/cancellation-1a9c9ef3881b6263",
+          "requests": 1
+        },
+        "18": {
+          "path": "/echo/callback-d20063f9ad33465b",
+          "requests": 1
+        }
+      },
+      "all_four_active_connections_at_cleanup": 0,
+      "all_four_active_connections_after_1_second": 0,
+      "run": "/tmp/http-guard-native-mutation-final/.Build/runtime/native.kDOrKSQ3",
+      "own_private_keys_removed": true
+    },
+    {
+      "phase": "after-2",
+      "tests": 389,
+      "assertions": 3255,
+      "exit": 0,
+      "random_seed": 1791577989,
+      "coverage": "Xdebug3.5.3",
+      "exact_root_test_bytes": false,
+      "closed_attempt_witnesses": {
+        "17": {
+          "path": "/slow/cancellation-d778b1b6cf7eda6c",
+          "requests": 1
+        },
+        "18": {
+          "path": "/echo/callback-d99294ef8847fbc8",
+          "requests": 1
+        }
+      },
+      "all_four_active_connections_at_cleanup": 0,
+      "all_four_active_connections_after_1_second": 0,
+      "run": "/tmp/http-guard-native-mutation-final/.Build/runtime/native.PfavY0te",
+      "own_private_keys_removed": true
+    },
+    {
+      "phase": "root-final",
+      "tests": 389,
+      "assertions": 3255,
+      "exit": 0,
+      "random_seed": 1791577989,
+      "coverage": "Xdebug3.5.3",
+      "exact_root_test_bytes": true,
+      "closed_attempt_witnesses": {
+        "17": {
+          "path": "/slow/cancellation-6e942608164fde2b",
+          "requests": 1
+        },
+        "18": {
+          "path": "/echo/callback-cc8d0024f9136c88",
+          "requests": 1
+        }
+      },
+      "all_four_active_connections_at_cleanup": 0,
+      "all_four_active_connections_after_1_second": 0,
+      "run": "/tmp/http-guard-native-mutation-final/.Build/runtime/native.48nufuz4",
+      "own_private_keys_removed": true
+    }
+  ]
+}

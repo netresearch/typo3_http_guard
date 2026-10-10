@@ -41,11 +41,12 @@ enforces one native attempt per lease independently of private SDK retry
 counters. Fixed Core/SDK fixtures remain reproducible test snapshots; the
 currently tested official Core archives supply the Guzzle 8 graph.
 
-The manual, installation paths, configuration fields, APIs and operational
-limits are fully documented under :file:`Documentation/`. Additional
-specifications, detailed execution evidence and the optional Vault patch
-remain a separate source and evidence package. They are not installed as
-runtime prerequisites.
+The complete manual, requirements overview and accepted decisions are under
+:file:`Documentation/`; maintained tests and build tools are under
+:file:`Tests/` and :file:`Build/`. Original draft specifications, raw runs and
+the optional foreign Vault overlay are preserved in immutable Git history
+and a verified external archive, rather than another installable package.
+See :ref:`development-requirements` for the original IDs and current mapping.
 
 .. _decision-single-extension-consequences:
 
@@ -63,5 +64,8 @@ each recorded execution remains bound to its own source and dependency lock.
 The package is a GPL-2.0-or-later extension that preserves the MIT notices
 of its embedded core. Its internal framework-independent structure allows
 separate core tests, but does not promise a second published Composer
-product. The alpha version is supplied locally as an importable ZIP. TER
-publication and operator acceptance remain separate actions.
+product. Alpha version **0.1.1 is published on TER and Packagist**, with an
+importable extension ZIP. Publication does not establish an operator pilot
+or deployment of the historical nr-vault reference patch. The user has
+authorized alpha development and merging after repeated independent reviews
+and green applicable checks without an additional human acceptance gate.

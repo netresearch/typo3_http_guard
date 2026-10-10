@@ -26,74 +26,151 @@ One extension, two internal namespaces
       - Complete manual and reusable examples.
     * - :file:`Tests/Unit/`
       - Unit tests for the TYPO3 adapter.
+    * - :file:`Tests/Functional/`
+      - Genuine Core decoration, classic activation and mode bootstraps.
     * - :file:`Tests/HttpGuard/`
       - Policy, transport and real wire tests for the embedded core.
 
-The core reads neither TYPO3 globals nor Vault secrets. The TYPO3 adapter
-provides the configuration, registry, resolver, clock and reporter. The
-separation in the code allows isolated core tests; it does not require a
-second installable library. See :ref:`decision-single-extension` for the
-packaging decision.
+The adapter supplies immutable configuration, registry, resolver, clock and
+reporter. The independent embedded core allows isolated tests within this
+one installable extension; see :ref:`decision-single-extension`.
 
 .. _development-unit:
 
 Local checks
 ============
 
-Development uses the tools listed in :file:`composer.json`. These are not
-part of the classic runtime. The combined PHPUnit entry point uses both
-unit test directories:
-
-Development constraints allow PHPUnit :literal:`^11.5`, PHPStan
-:literal:`^2.3` and the CI meta-package :literal:`^1.12`. Earlier recorded
-runs used PHPUnit 11.5.57 and PHPStan 2.3.1. Resolve a current compatible
-development graph and run the applicable checks.
-
-Fixed framework fixtures use Core 13.4.36 and 14.3.8 with explicit manifests
-under :file:`Build/Fixtures/`. Their three historical SDK snapshots and the
-14 fixed CI cells preserve reproducible evidence. Native verification adds
-one Guzzle 7 minimum row and four floating rows, for eight rows in total.
-The four floating native
-Core 13/14 and Guzzle 7/8 rows resolve the latest compatible graphs on pull
-requests and weekly schedules. Semantic support and current source-bound
-results are recorded in :ref:`verification-semantic-support`; earlier
-snapshot counts remain in :ref:`verification-current-core`.
-The final reviewed source passes five complete Unit/native executions with
-201 tests and 2,405 assertions each on PHP 8.5.10 and PHPUnit 11.5.57,
-covering four distinct SDK version tuples. The genuine Composer Core matrix
-separately passes 168 processes, 140 wire assertions and 156 no-contact
-witnesses. See the source bindings and actual versions in the current proof.
-The patched dependency audits and Core 13 maintenance warning are documented
-in :ref:`dependency-report-current`.
+Development dependencies come from :file:`composer.json` and install under
+:file:`.Build/vendor/`. PHPUnit :literal:`^11.5`, PHPStan :literal:`^2.3`
+and :literal:`netresearch/typo3-ci-workflows:^1.12` provide the shared tools.
+The development directory and tool configurations are excluded from the
+classic extension package.
 
 .. code-block:: bash
-    :caption: Check the extension and its embedded core
+    :caption: Install tools and run deterministic local checks
 
-    vendor/bin/phpunit --configuration phpunit.xml --testsuite Unit
-    vendor/bin/phpstan analyse --configuration Build/phpstan-http-guard.neon --no-progress
+    composer install
+    composer check:harness
+    composer check:secrets
+    composer check:local
 
-This PHPStan configuration checks only the embedded security core under
-:file:`Classes/HttpGuard/` at level 8. Its analysis-only HandlerStack stub
-supplies the class-level template omitted by Guzzle 7; all methods and
-properties retain their installed SDK signatures. The stub is excluded
-from the extension ZIP and is never loaded during production execution.
+CaptainHook installs commit-message and pre-commit checks. Staged secrets
+are checked before quality; missing tools and failed checks must fail.
+Installation alone proves no passing run. CI remains the merge authority;
+see :file:`CONTRIBUTING.md` for hook scope and isolated checkouts.
 
-Wire tests require controlled fixtures and destination counters. They are
-not run as ordinary offline unit tests. For an isolated policy check with
-a minimal qualified SDK vendor, use the separate kernel bootstrap:
+.. list-table:: Project quality entry points
+    :header-rows: 1
+
+    * - Composer command
+      - Scope
+    * - :literal:`ci:test:php:cgl`
+      - Shared PHP style, dry run.
+    * - :literal:`ci:test:php:rector`
+      - PHP 8.2-compatible modernization, dry run.
+    * - :literal:`ci:test:php:phpstan`
+      - Curated kernel and actual Core profiles; configured level 10.
+    * - :literal:`ci:test:php:unit`
+      - Offline adapter and kernel Unit tests.
+    * - :literal:`ci:test:php:functional`
+      - Controlled native transport tests.
+    * - :literal:`ci:test:php:architecture`
+      - Documented architecture boundaries.
+    * - :literal:`ci:test:php:mutation`
+      - All-source Infection analysis, including uncovered mutants.
+    * - :literal:`ci:test:php:fuzz`
+      - Deterministic input/property checks.
+    * - :literal:`ci:test:php:performance`
+      - Normalization/classification/policy benchmark.
+
+Commands, configuration and execution are separate evidence. Curated static
+rules use no baseline or broad suppression. Analysis-only HandlerStack/Client
+stubs retain actual SDK methods/storage and document Guzzle 7's missing
+template plus both majors' open constructor/:literal:`getConfig` contracts.
+Native controls preserve caller defaults; neither stub runs in production.
+
+The integrated offline suite passes **1,535 Unit tests and 7,199 assertions**
+on each genuine Core 13/Guzzle 7 and Core 14/Guzzle 8 graph on PHP 8.5.11.
+Kernel/Core 13/14 level 10, architecture and Rector are clean. Recorded style
+has zero changes in 196 files across the GPL extension/test/tool and MIT
+kernel scopes. The final 263-input full-source run passes 90.43%/91.54%
+with no skipped/ignored mutants; focused results retain separate bindings.
+See :ref:`verification-integrated-local` for complete 850 quality evidence
+and the unchanged 90%/90% targets.
+
+Wire tests require dedicated targets and counters; serialize runs that
+share them. Ordinary Unit tests remain offline. A minimal SDK installation
+can run policy tests with the separate bootstrap:
 
 .. code-block:: bash
-    :caption: Isolated policy tests without a TYPO3 dependency
+    :caption: Isolated policy tests with an explicitly selected SDK loader
 
     HTTP_GUARD_TEST_AUTOLOAD=/absolute/sdk/vendor/autoload.php \
         /absolute/sdk/vendor/bin/phpunit \
         --configuration Build/phpunit-http-guard.xml \
         Tests/HttpGuard/Unit/Policy
 
-The kernel bootstrap loads only the selected dependencies and this
-package's production and test namespaces. The additional configuration
-:file:`Build/phpstan-http-guard.neon` checks :file:`Classes/HttpGuard/` at
-PHPStan level 8.
+Fixed fixtures preserve exact Core and SDK snapshots. Four floating native
+Core 13/14 and Guzzle 7/8 rows resolve compatible updates on pull requests
+and weekly schedules; eight native rows and 14 fixed PHP CI cells remain
+separate matrices. See :ref:`verification-semantic-support` for recorded
+versions and :ref:`assessment-reconciliation` for current remediation.
+
+.. _development-functional-routes:
+
+Functional fixture routes
+=========================
+
+The three executed Core entrypoints live in :file:`Tests/Functional/`.
+Select an already prepared genuine fixture and controlled wire targets:
+
+.. code-block:: bash
+    :caption: Host and selected-container Core routes
+
+    bash Build/Scripts/runTests.sh -s integration -f .Build/fixtures/core14g8
+    bash Build/Scripts/runTests.sh -s classic -f .Build/classic-sites/classic14 -- active
+    bash Build/Scripts/runTests.sh -s mode -f .Build/fixtures/core14g8 -- observe
+    bash Build/Scripts/runTests.sh -s integration -f .Build/fixtures/core14g8 -p 8.5 -t 14
+
+Without runtime flags the wrapper uses host PHP. Selected-container routes
+use the official :literal:`suite_http_guard_functional` hook and the selected
+digest-pinned image. Ephemeral host-network containers reach the
+separately prepared witness destinations used by these entries. They mount
+the physically validated project, preserve literal fixture arguments, and
+probe the actual fixture PHP/Core graph before running the entrypoint.
+External fixtures and escaping loader symlinks fail before delegation.
+The fixture graph is unchanged; generic suites retain their shared routes.
+
+Containers run as the caller without capabilities and with a read-only
+root filesystem. Cleanup removes captured owned IDs; failures propagate.
+Core 13 fixtures may omit :literal:`composer/semver`: the probe loads only
+that namespace from development tools, retaining the fixture's Core/SDK.
+
+The 27 offline routing controls establish argument, path, ownership and
+failure behavior. Separate real qualification passed 20 host and 20
+selected-container routes on PHP 8.5.11 and 8.5.10 respectively. Those records
+are bound to their tested sources and graphs. See :file:`Build/Fixtures/README.md`
+for fixture preparation and routing details.
+
+.. _development-mutation-scope:
+
+Mutation scope in CI
+====================
+
+Pull-request verification selects production PHP files added, modified or
+renamed relative to the validated base commit. A NUL-separated Git file list
+is validated and passed as positional paths to Infection, which mutates
+the complete selected files, including unchanged functions. Direct and
+nested :file:`Classes/` files are included. MSI and Covered MSI both retain
+90% thresholds, default mutators, uncovered mutants and measured failures.
+
+When no production PHP was added, modified or renamed, the workflow records
+an explicit skipped mutation measurement. Unit and native behavior still
+run; that skip establishes no mutation score. Scheduled runs, pushes to
+:literal:`main` and manual dispatch retain the complete :file:`Classes/`
+scope without changed-file selection. Full alpha qualification is recorded
+separately with its actual measured score and source binding; configuring
+the threshold does not establish that it passed.
 
 .. _development-evidence:
 
@@ -106,13 +183,12 @@ does not prove pinning. The wire fixtures use their own synthetic addresses
 and DNS responses; third-party production destinations are not required
 for the tests.
 
-The complete reproduction runners, dependency locks, container versions,
-runtime data, source hashes, JUnit outputs and mapping of the original
-45 requirements to 84 tests are in the **optional source and evidence
-package** under :file:`verification/` and :file:`evidence/`. They are not
-runtime dependencies of the TER ZIP. Its file
-:file:`verification/requirements-and-tests.md` explains the actual verified
-scope and outstanding acceptance steps for each requirement.
+Maintained runners and fixtures live under :file:`Tests/` and :file:`Build/`;
+source-bound summaries live under :file:`Build/Reports/Assessment/`.
+:ref:`development-requirements` maps the original 45 requirements, 84
+scenarios and eight invariants to current tests and immutable history.
+:ref:`verification-report` distinguishes completed runs from archived
+measurements; these development records are not TER runtime dependencies.
 
 The checks cover in particular:
 
@@ -135,10 +211,8 @@ installable within the supported ranges. Changes to supported majors,
 minima, handlers, protocols or permitted options require source comparison
 and the relevant policy, wire, integration and mutation tests.
 
-The historical microbenchmark ran on the recorded local host. It does not
-satisfy the outstanding measurement on the named CI reference required by
-the plan. A complete technical test run replaces neither an independent
-human security review nor the pilot on an actual operator instance.
+The named policy benchmark and historical measurements retain their own
+source/runtime boundaries under :ref:`assessment-reconciliation`.
 
 .. _development-docs:
 
@@ -158,20 +232,19 @@ TYPO3 documentation describes the
         ghcr.io/typo3-documentation/render-guides@sha256:fcf1ea87377ac401ce595b8c320c03b2b1bf2505ec0109561ca2fe56d7d71fc1 \
         --config=Documentation --no-progress --fail-on-log
 
-The generated HTML is written to :file:`Documentation-GENERATED-temp/`.
-If you provide an :literal:`--output` option, the destination must be inside
-the mounted directory so that the files are retained. Run the renderer
-with an option that treats warnings as failures. The exit code from an
-unchecked default invocation does not prove that references are valid.
-
-This digest identifies the renderer used for the recorded warning-free
-English and German build. Updating it requires rendering both languages
-again before recording another successful build.
+HTML is written to :file:`Documentation-GENERATED-temp/`. A custom output
+must stay inside the mounted directory. Use :literal:`--fail-on-log` so that
+warnings fail the build; a default exit code alone proves no valid references.
+This digest identifies the recorded renderer. Updating it requires fresh
+English and German rendering before claiming another successful build.
 
 .. toctree::
     :maxdepth: 1
 
     Licenses
+    Requirements
     Verification
     Dependencies
     Assessment
+    Reconciliation
+    ReleaseProvenance

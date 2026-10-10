@@ -85,6 +85,6 @@ SDK clients, direct cURL calls and custom socket connections require
 separate integration. See :ref:`security-coverage` for the complete scope.
 
 The optional nr-vault adaptation is a separate migration. The global
-extension does not protect Vault automatically. The required adapter and
-its evidence are provided in the additional source and evidence package.
+extension does not protect Vault automatically. The API chapter links the
+recorded reference patch and its historical evidence under :ref:`api-vault`.
 This manual is sufficient to install and operate the extension.

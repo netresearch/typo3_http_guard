@@ -151,3 +151,15 @@ Raw URI information may be lost before PSR-18; see
 Policy snapshots do not update automatically in existing workers;
 see :ref:`operations-changes`. Observe mode, offline diagnostics and
 agent review do not substitute for enforcement at the actual transport.
+
+.. _security-alpha:
+
+Alpha acceptance
+================
+
+Version 0.1.1 is a published alpha for evaluation. The user-authorized alpha
+scope requires independent agent review, resolved findings and green
+applicable checks; it adds no separate human approval or operator-pilot gate.
+Neither activity is claimed completed. Both remain recommendations when
+assessing production use. See :ref:`assessment-reconciliation` for exact
+assessment dispositions and external publication limits.

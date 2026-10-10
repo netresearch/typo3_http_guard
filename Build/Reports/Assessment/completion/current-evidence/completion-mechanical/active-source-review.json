@@ -1,0 +1,770 @@
+{
+  "active_php_files": 174,
+  "files": [
+    {
+      "path": ".php-cs-fixer.dist.php",
+      "sha256": "9ee0c9936f96674e10624deda53f34c505f3d378c9768361ac7e834b6dd78189"
+    },
+    {
+      "path": "Build/ExcludeFromPackaging.php",
+      "sha256": "6e71c059e75741819094ae9a3be0c34887dd316afdad47bc9847b6b7585a869f"
+    },
+    {
+      "path": "Build/Fixtures/classic13/typo3conf/PackageStates.php",
+      "sha256": "9b26069c156f68c0ea980612130f02b17acf1f94ab96cd14b966dd64e7f4de77"
+    },
+    {
+      "path": "Build/Fixtures/classic13/typo3conf/system/additional.php",
+      "sha256": "7b84a2a102967ac7f4f6485e736b7fd02c910496e87f0ee8e1f9885da43568ec"
+    },
+    {
+      "path": "Build/Fixtures/classic13/typo3conf/system/settings.php",
+      "sha256": "600223fcffce8fb3ce413455b7d19b3f8dbf19eb8198bb7790ebe8e83a66f2e9"
+    },
+    {
+      "path": "Build/Fixtures/classic14/typo3conf/PackageStates.php",
+      "sha256": "26021bb2ac662a23edc693a0a7ada64877f25d234f92e257191e454a00832245"
+    },
+    {
+      "path": "Build/Fixtures/classic14/typo3conf/system/additional.php",
+      "sha256": "7b84a2a102967ac7f4f6485e736b7fd02c910496e87f0ee8e1f9885da43568ec"
+    },
+    {
+      "path": "Build/Fixtures/classic14/typo3conf/system/settings.php",
+      "sha256": "600223fcffce8fb3ce413455b7d19b3f8dbf19eb8198bb7790ebe8e83a66f2e9"
+    },
+    {
+      "path": "Build/Fixtures/core13g7/config/system/additional.php",
+      "sha256": "2a8a71b0a217b5215aa9b42feb7592ff1f66e26cb3cb32daab85355798292da3"
+    },
+    {
+      "path": "Build/Fixtures/core13g7/config/system/settings.php",
+      "sha256": "bcf6c867fcad4b983e69795094665e07d3387ecbe8daa97f34eae543c222daa8"
+    },
+    {
+      "path": "Build/Fixtures/core13g8/config/system/additional.php",
+      "sha256": "2a8a71b0a217b5215aa9b42feb7592ff1f66e26cb3cb32daab85355798292da3"
+    },
+    {
+      "path": "Build/Fixtures/core13g8/config/system/settings.php",
+      "sha256": "bcf6c867fcad4b983e69795094665e07d3387ecbe8daa97f34eae543c222daa8"
+    },
+    {
+      "path": "Build/Fixtures/core14g7/config/system/additional.php",
+      "sha256": "2a8a71b0a217b5215aa9b42feb7592ff1f66e26cb3cb32daab85355798292da3"
+    },
+    {
+      "path": "Build/Fixtures/core14g7/config/system/settings.php",
+      "sha256": "bcf6c867fcad4b983e69795094665e07d3387ecbe8daa97f34eae543c222daa8"
+    },
+    {
+      "path": "Build/Fixtures/core14g8/config/system/additional.php",
+      "sha256": "2a8a71b0a217b5215aa9b42feb7592ff1f66e26cb3cb32daab85355798292da3"
+    },
+    {
+      "path": "Build/Fixtures/core14g8/config/system/settings.php",
+      "sha256": "bcf6c867fcad4b983e69795094665e07d3387ecbe8daa97f34eae543c222daa8"
+    },
+    {
+      "path": "Build/Fixtures/initialize-classic.php",
+      "sha256": "03d3c0ee464bddae233c21cdabdd25c94f865216b23e2bc3c2ea727126064478"
+    },
+    {
+      "path": "Build/Mutation/bootstrap.php",
+      "sha256": "87c4fcb6b10a32ea5f39b3fa29f5b5f6f3d054cc5554e8209c8b95991e41d69a"
+    },
+    {
+      "path": "Build/Scripts/assert-test-runtime.php",
+      "sha256": "760e2b1c49eaf3f1bc5a412bef9999de1e768ac1edcd38bb6ad45d7cba46404b"
+    },
+    {
+      "path": "Build/Scripts/benchmark-policy.php",
+      "sha256": "4172e0693fe85d509c8ecfe78c975d3c2a89ac709bd15c294ee0a2d3e35350f8"
+    },
+    {
+      "path": "Build/Scripts/check-installed-runtime.php",
+      "sha256": "cf4e0e8183d6f9f454997f40eb9693784c840f7f204418b21984ad8eb1ed7828"
+    },
+    {
+      "path": "Build/Scripts/detect-staged-secret.php",
+      "sha256": "f89cf8d15350dec5944bcc3f5d042083b12033d8064fcac86cdc83f30dfe6659"
+    },
+    {
+      "path": "Build/Scripts/fuzz-evidence.php",
+      "sha256": "3cc03fd9aea8e6586fe6445f55860f64573e9690dc701631c00ff0e9c19a8b24"
+    },
+    {
+      "path": "Build/phpstan-bootstrap13.php",
+      "sha256": "437981e89c5e3b6b81b530e64bfa98ff9e07196397390c0befd200551f41c7b5"
+    },
+    {
+      "path": "Build/phpstan-bootstrap14.php",
+      "sha256": "46ee1aa691ed03fc8269b0449b4b1975ffcb8251b4a661236c4a39e59306b7dc"
+    },
+    {
+      "path": "Classes/Client/EndpointClientFactory.php",
+      "sha256": "8fe39608c32e147bf0c222f50b9064f350d2d63b40639625f6963c188fd14a5f"
+    },
+    {
+      "path": "Classes/Client/PublicFetchClient.php",
+      "sha256": "8e6d91a4d945ed5a891daa9b1d7309827319cb188dbcc54162e4cf6c70f87c8b"
+    },
+    {
+      "path": "Classes/Command/AbstractGuardCommand.php",
+      "sha256": "b6041eb8a3c60221ae4c5fa4c56e6c42a89ed9bdd4a1358ff25907bfa6a4f389"
+    },
+    {
+      "path": "Classes/Command/ConfigCheckCommand.php",
+      "sha256": "ccc068f658b70579ee6b886d13a0dda2e895679f328b8203a53659fb6073e340"
+    },
+    {
+      "path": "Classes/Command/DoctorCommand.php",
+      "sha256": "62c4f7022669d3c874ac18cd1a23119aac1804dd38bae7b721fbaa4601a354e6"
+    },
+    {
+      "path": "Classes/Command/LegacyReportCommand.php",
+      "sha256": "64ba9285648fab791fd158621cb87da675ed5c266cb07a2cd31817f3dc50c1a9"
+    },
+    {
+      "path": "Classes/Command/PolicyCheckCommand.php",
+      "sha256": "1cbedb4e58d3b1edb1aa2b2c85ffd1c715076833c787d05717dafd4162c57733"
+    },
+    {
+      "path": "Classes/Configuration/ConfigurationLoader.php",
+      "sha256": "7ba4b0088394da327773440f8f8e113f1cac6064327873f8855c5e257977c56d"
+    },
+    {
+      "path": "Classes/Configuration/GlobalHttpDefaults.php",
+      "sha256": "dbd5f54017391bfd743c418584a5ff32e9f705fedc06b9efe4d069b79543e1f9"
+    },
+    {
+      "path": "Classes/Diagnostics/DiagnosticBootState.php",
+      "sha256": "c326bae49fd11ebecc7722f3c4741fe9797ac0ff36735f2d054c3ca806041af5"
+    },
+    {
+      "path": "Classes/Diagnostics/DiagnosticResult.php",
+      "sha256": "94b42cd1d844ccd9406703e63aa22e4f8391b1fdb8b1208c0edf43f074aa2f1f"
+    },
+    {
+      "path": "Classes/Diagnostics/DiagnosticsService.php",
+      "sha256": "cb9cc34f9617b94a597b5d41ea23228231c09885469e44fa249c133fbe6d8340"
+    },
+    {
+      "path": "Classes/Diagnostics/LegacyConfigurationInventory.php",
+      "sha256": "1aacc08d820c9bff59f4047d237e5bbb5f83d2a94db212884659bb64a85b9a87"
+    },
+    {
+      "path": "Classes/EventListener/RegisterGuardListener.php",
+      "sha256": "0ff528cb19fb3acb14c3ac20187ff8e76e1d3dc921cf1a6e7504ec4bde8a0106"
+    },
+    {
+      "path": "Classes/Http/CoreStackProvider.php",
+      "sha256": "bb192842a350deacdd2ac8451f8dcd5cac16671629542f44a4aad5ac3b6230ae"
+    },
+    {
+      "path": "Classes/Http/GuardedRequestFactory13.php",
+      "sha256": "ba8bbb9617fe046e956bfbcf0463ecbd70d20db722ed4f7952f8543d0c6ce706"
+    },
+    {
+      "path": "Classes/Http/GuardedRequestFactory14.php",
+      "sha256": "12f20ec98db607cb3f04f5503824bd69719b905cf6aee9a034af88b6c3a18e59"
+    },
+    {
+      "path": "Classes/Http/MiddlewareRegistry.php",
+      "sha256": "4c1a2479768acf1cb39c09cf66ba5421a04f4f69648058e2fd6db95444e8eb95"
+    },
+    {
+      "path": "Classes/Http/RawRequestFactoryRegistration.php",
+      "sha256": "b541139899af2ed784719eccbf92279a7bfa9b25c53d8be8f4a1415504420482"
+    },
+    {
+      "path": "Classes/Http/RawRequestGuardTrait.php",
+      "sha256": "c03ac2e09cdc4975308efb082928772f7126aa9399ab8c1072fd306b7d4b909c"
+    },
+    {
+      "path": "Classes/Http/RequestFactoryCompatibility.php",
+      "sha256": "91c5245b3e18b4281ada39947c3d95fcd2df1cb85e56421fd1cb09370490c07d"
+    },
+    {
+      "path": "Classes/HttpGuard/AddressClassification.php",
+      "sha256": "b3544e3504d2dcc0e9cdd4c7d3be8ba85b24e1e0eeb073eee4030d232ee99f81"
+    },
+    {
+      "path": "Classes/HttpGuard/AddressClassifier.php",
+      "sha256": "bafa446269f97fade2090a5d6263732f430c426680e0062fd8162aca651e72c0"
+    },
+    {
+      "path": "Classes/HttpGuard/Cidr.php",
+      "sha256": "708a792c82a647f12973a84d87acb425e1f319bdce28a9822d6253cb9dd7ea38"
+    },
+    {
+      "path": "Classes/HttpGuard/Client/ClientStackConfiguration.php",
+      "sha256": "f406f8c21988e2bb795367c78a114b9c13ac3038880b609c61fd803634a4163c"
+    },
+    {
+      "path": "Classes/HttpGuard/Client/ClientStackProviderInterface.php",
+      "sha256": "d47b5917651e56948add0ab2c42ec1aaf9b9fbae74c35104e17246838e4a3da0"
+    },
+    {
+      "path": "Classes/HttpGuard/Client/DefaultStackProvider.php",
+      "sha256": "eb1573fc53945a3ef878f27448ab3094d16cb0fa480350986c09e85762fbf147"
+    },
+    {
+      "path": "Classes/HttpGuard/Client/GuardedClientBinding.php",
+      "sha256": "308ea3b5f32cb72f74d8e521de014e3a6d1648f4b120a788b49cefe9f4d28a67"
+    },
+    {
+      "path": "Classes/HttpGuard/Client/GuardedClientFactory.php",
+      "sha256": "c2798c977042130a5ab2068a122c05ffe27b090ad25c97f81986b40012f0f3fe"
+    },
+    {
+      "path": "Classes/HttpGuard/Client/MiddlewarePair.php",
+      "sha256": "fde2fae4e9b1031907c1619edce43b5f6806b547b3cedd45a40c88eec0d5b400"
+    },
+    {
+      "path": "Classes/HttpGuard/Client/Psr18Client.php",
+      "sha256": "a54f74b998109851ddcda762093eecd9b7a2fb58aaef8fa86775e8d1f74e061c"
+    },
+    {
+      "path": "Classes/HttpGuard/Client/PublicFetchClient.php",
+      "sha256": "82ba4f56dfb75b2ddf79d8b74256b5b3ee60c43b5ab121c4c35b7c3bf9dd7f12"
+    },
+    {
+      "path": "Classes/HttpGuard/ClientScope.php",
+      "sha256": "167da5dc19bfb1614209a4af05e4e8cb1c25e1fdc4d3d25085fd02cb4acb82f8"
+    },
+    {
+      "path": "Classes/HttpGuard/ClockInterface.php",
+      "sha256": "d34843fc96a889c103383367c7306cc8c2fc9580c96e7120cb4870543de5da38"
+    },
+    {
+      "path": "Classes/HttpGuard/ConnectionPlan.php",
+      "sha256": "dc8a9af61b229184801a580904cc61b4fc41094cbbb0aae32004bbb7bbe2a2be"
+    },
+    {
+      "path": "Classes/HttpGuard/DecisionEvent.php",
+      "sha256": "7fd6836edf619f3b87c0347edf43acfdc59a7d3b5fc970d9b608d745fb19b412"
+    },
+    {
+      "path": "Classes/HttpGuard/DecisionReporter.php",
+      "sha256": "46cdde5f7091c65dc57b52cd90727fc9dd25a99988115755f3d7931acd719574"
+    },
+    {
+      "path": "Classes/HttpGuard/DecisionReporterInterface.php",
+      "sha256": "b73ed2cd93fdaadd8c44d8a1d5edded7c3129438d7e07d769e1b5d6753083c68"
+    },
+    {
+      "path": "Classes/HttpGuard/DnsAnswer.php",
+      "sha256": "05b1afdd88534776fa4a01f0d392e3b56009a0be7c46bac0884e7df2a1868399"
+    },
+    {
+      "path": "Classes/HttpGuard/DnsPacketCodec.php",
+      "sha256": "f9b843494f1632e850bc77772bab263bd3f7a3d7f2d38c1355b594d91a57842f"
+    },
+    {
+      "path": "Classes/HttpGuard/DnsQueryInterface.php",
+      "sha256": "50e25b50759eb60b3866b268498130894ae39ddcee89e4caec026999c2c0f141"
+    },
+    {
+      "path": "Classes/HttpGuard/EndpointClientFactoryInterface.php",
+      "sha256": "f2ffcfa7ee560d3e4d7b3144e7dde8f9b274d806277fa51fd96c81393ef39e78"
+    },
+    {
+      "path": "Classes/HttpGuard/EndpointGrant.php",
+      "sha256": "7d903e6b325b321cb4a399f1a7ed16d81b33f90442b5a4024c4e6077711eaea9"
+    },
+    {
+      "path": "Classes/HttpGuard/EndpointProfile.php",
+      "sha256": "6a52352d0d5822d46c6dbb1897742beda9243aaec94797fa19fe12dd6d7d6fdf"
+    },
+    {
+      "path": "Classes/HttpGuard/GuardConfig.php",
+      "sha256": "4b34c251996f6c050343f520163af8987338310c8051503a3f0cceff748460de"
+    },
+    {
+      "path": "Classes/HttpGuard/NativeOperation.php",
+      "sha256": "41e3061d592b9ccfea258531c00a5d25fac61f2880e7244e81a7eb8471a0fff7"
+    },
+    {
+      "path": "Classes/HttpGuard/NullDecisionReporter.php",
+      "sha256": "73a35fc1e493255dce7c06456212dc0f91a34161ca5b1c661213419321cff09c"
+    },
+    {
+      "path": "Classes/HttpGuard/OutboundPolicyEvaluatorInterface.php",
+      "sha256": "b5746495bec24677db1ac6ae85e741f8de7e1b7e02b2f1f1868dbce6f587bc29"
+    },
+    {
+      "path": "Classes/HttpGuard/OutboundPolicyExceptionInterface.php",
+      "sha256": "2be5b33c03676f981d2003b34507cdf169bf0540c460f62d0effb5715f8d5e7c"
+    },
+    {
+      "path": "Classes/HttpGuard/PolicyDecision.php",
+      "sha256": "c3a95747cd6c656bc01cb7443f553edca3aed2408a7ff8eea356c71921f745c9"
+    },
+    {
+      "path": "Classes/HttpGuard/PolicyEngine.php",
+      "sha256": "a3220c4fa36ac2c344a200a34b93e2c3685598d93a5670d9a8314b32e44cde10"
+    },
+    {
+      "path": "Classes/HttpGuard/PolicyException.php",
+      "sha256": "3b3b83f283d6af4bfd9c84e7eb0aac6c6c77d2a5624a23b3e849d3506e5b8b73"
+    },
+    {
+      "path": "Classes/HttpGuard/PolicyRegistry.php",
+      "sha256": "3907983415b35ee3d5494c3134edd906749a7a4adcdb9f8d7b9a6f1f0298e6af"
+    },
+    {
+      "path": "Classes/HttpGuard/PublicFetchClientInterface.php",
+      "sha256": "4ef1c37bfaea227f1d1eaadb96edb36fffbfad282980b6a2bf310bc6c85d2411"
+    },
+    {
+      "path": "Classes/HttpGuard/RequestPolicyContext.php",
+      "sha256": "c479be4128e92b9c795fc0a1968649586e549fccefccb3ecff1f9c7eaee8feac"
+    },
+    {
+      "path": "Classes/HttpGuard/Resolution.php",
+      "sha256": "003642a5eff7308d0ec3c5785e57e40a737ef5f6417c123f32b65c86a12582ea"
+    },
+    {
+      "path": "Classes/HttpGuard/ResolverInterface.php",
+      "sha256": "b59068ae0096bc8ce3cca45af40c780fe5952dbb8966ab0c93f99ed4eb22321f"
+    },
+    {
+      "path": "Classes/HttpGuard/StaticThenDnsResolver.php",
+      "sha256": "0e39dcb34ee32e176d55e56ac2fb1300ff3c8db5c379282860813e6ff32cde71"
+    },
+    {
+      "path": "Classes/HttpGuard/SystemClock.php",
+      "sha256": "482ae17ce9e3fab1dcea2c28163e79f99eeadd7e04234be4edefe841a450076b"
+    },
+    {
+      "path": "Classes/HttpGuard/Target.php",
+      "sha256": "aebdb8a8d144d244d8a6d6e27aea9e569cb3b2d55f18f602e56f47321ad5e0c4"
+    },
+    {
+      "path": "Classes/HttpGuard/TargetNormalizer.php",
+      "sha256": "0c32d59ca9182c4f1edf4b859e09806294d2819bac16cdcf0e91ed37acfdb99c"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+      "sha256": "e11effa140362042960bcef71eb1a57d3e8dee1e53c326d36b30e8059b0a5cc7"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/GuardedTransferFactory.php",
+      "sha256": "54d000e3add01ab27f503b3083b9cbc615845e8e8ff0b38891d15e6834046e8a"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/InvocationRegistry.php",
+      "sha256": "74058cff60248198e543919ba77747fffc39bf7617dfb0f2a3387be8f4c11745"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/InvocationToken.php",
+      "sha256": "c33d012518eadb6032684cd340dc4f8820ea69aeaca4935856aa50aca2ff558a"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/OptionSanitizer.php",
+      "sha256": "2670fc346021894dd1a24c4b5338795c279127c9ae357d36a11e6f3c30428e13"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/RequestEnvelope.php",
+      "sha256": "0b56b4bf6ace10a112abd766d23d50b8378bb79325054b9782edf455c14f58e9"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/RuntimeSupport.php",
+      "sha256": "32d92ddbdc0572f1efc894f17a024e9a64d070f526f3f5b795944f7a59633167"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/SingleUseCurlFactory.php",
+      "sha256": "ff0672caa8267a98524ba2f96e15e8e8d72902f24fc41cf9e07d58a0e119b5ca"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TerminalGuardMiddleware.php",
+      "sha256": "45985d24b32a74cd00c7233d2fbb2669aa15eaefeff2d28746c2cfe2c351acd6"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TransferDriver.php",
+      "sha256": "cf5858e7ad68dae6612aa7a73b31d829196ec7d51dee1d68313437fb4b6b51f5"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TransferDriverInterface.php",
+      "sha256": "83686f9fe1eb907a00d708d4608ab6af70026fb7dc5025e49b96816c9ad5ebeb"
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TransferLease.php",
+      "sha256": "01b2d2f6212639da125e5421e81a24ecec4e96e664c708900f8cccc65b733d72"
+    },
+    {
+      "path": "Classes/HttpGuard/WireDnsQuery.php",
+      "sha256": "812881f901e3a839fea7d333f41c9717f93ba4521a7a33bce8baef0ded54bd51"
+    },
+    {
+      "path": "Classes/Service/LibraryServiceFactory.php",
+      "sha256": "eff300f6514be5705fc2353b93b77c2f7656585406773bb7cf5cbcad115c6fa4"
+    },
+    {
+      "path": "Configuration/Services.php",
+      "sha256": "f48d3d54e1c71f9d1178396e81a86a0c9d528fc10aef604288248b1bb7b3fe65"
+    },
+    {
+      "path": "Tests/Architecture/DependencyRules.php",
+      "sha256": "9fc2ae84ef7fb93c96191194ff68af643b628e5524df9872999e2c5f1a1dc9fb"
+    },
+    {
+      "path": "Tests/Architecture/bootstrap.php",
+      "sha256": "fb693ffebddcc93c531ba5f5b7fb7dcd9dec9be151c54a216d316e91ccc9ffab"
+    },
+    {
+      "path": "Tests/Fixtures/RecordingMiddleware.php",
+      "sha256": "e660f6720d892784ac8fd0d0a175b10cd48df614b103751aad790728db1e4624"
+    },
+    {
+      "path": "Tests/Fixtures/RequestFactoryReferenceShape.php",
+      "sha256": "04e3a038c01f1d87862f9963ade5cfe28a529e0b7f3f17e87361fb30aad10642"
+    },
+    {
+      "path": "Tests/Fuzz/OfflineInputsTest.php",
+      "sha256": "dbde3b32f990b81ac810cb39754146cdfc687282e6fcc1a4b98b9a5e65d8096f"
+    },
+    {
+      "path": "Tests/Fuzz/OfflineProperties.php",
+      "sha256": "9f9ca27eae6514c17d988142579ecea5e74b4c32b31da74aad73a66e7923cdbe"
+    },
+    {
+      "path": "Tests/Fuzz/fuzz-target.php",
+      "sha256": "e914705cd872ba7d65071ed640d1743e6fffbca9c4ded7672bb8c592ec12fb9a"
+    },
+    {
+      "path": "Tests/HttpGuard/Integration/DnsPolicyTransportTest.php",
+      "sha256": "868f67a578977681d931af5ff7a944c370b50ac82e3bcc75263b0a5a7ed5136f"
+    },
+    {
+      "path": "Tests/HttpGuard/Integration/Fixtures/IncomingProxyHeader.php",
+      "sha256": "77047b88ea71d57e2399c88b760abf50dc2f4b07b2885043c74cf32544d7ddb7"
+    },
+    {
+      "path": "Tests/HttpGuard/Integration/Fixtures/IsolatedCapabilityProbe.php",
+      "sha256": "aa02000fe7070565c7368b417b6f0d2b29d7124a74406f0b5c2bf5b152213027"
+    },
+    {
+      "path": "Tests/HttpGuard/Integration/MutationWitnessTest.php",
+      "sha256": "e4c15c655b5c99607c06e5cb4e92a4b04160c535afb0adc13f490dcdd1ae7296"
+    },
+    {
+      "path": "Tests/HttpGuard/Integration/ProductionTransportTest.php",
+      "sha256": "a30724f070e3c1ca2070e8d4472a1d067794b66b737b3bb8322fc08c780b709f"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Client/ClientFacadeTest.php",
+      "sha256": "51cc45896c113a5b1503529f3f6a6ac9d686713f827c954c4580ba75e3fe4b7a"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/BinaryCidrTest.php",
+      "sha256": "19e37ff0d2ee30caf932450094dcf882c3abd91ff6dd9cb7392d18d46b314faa"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/CidrMalformedInputsTest.php",
+      "sha256": "c005f01a0ba5eed85f434a79467e97edf3784a5e42914aa359ab2cbca8310be2"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/CidrNetworkContractTest.php",
+      "sha256": "caef04ec4e3d641a47fce0321373d81731de7d1e362f06f741fe253a790efab5"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/DecisionReporterSecretTest.php",
+      "sha256": "dabd22144a4a5746d2a191632198c495c366a96109e55bddb9fae84f9a72dca9"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/DnsPacketCodecTest.php",
+      "sha256": "c27fcfdc10cd70fef3eb2e959572a06f98697ec69bda6cc970306181545e1f9c"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/DnsQueryEncodingTest.php",
+      "sha256": "e7a3538b69710ff25c231bc98b900bbae31e00097e0b75549a9a748b2642f363"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/DnsRecordDecodingTest.php",
+      "sha256": "91a7b0394aaa393bfe109ec5253e462d1acb644d15bcdf02d2c19a5dfea02fdb"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/Fixtures/DnsTruncationResponder.php",
+      "sha256": "92887da4d9be1c7f923eef4c9404b3d3f53c38e1ba9392929e90f3206df3502a"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/Fixtures/TrustedBundleFailure.php",
+      "sha256": "f6528e2540f3c13df2189000fb625d647bc18bc681740d97dc7f6a23c4b41320"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/GuardConfigProfileContractTest.php",
+      "sha256": "62e32b8abef7b08d4b6b479f83b16b28f8b3fcf0c3f996d26203d0e33dcd4ac7"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/NativeOperationTest.php",
+      "sha256": "6b13da6f224029659b3fb5afa96057ccf5ca15e6beced0c7ff8d5d0e8324c0df"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/PolicyCorpusTest.php",
+      "sha256": "9a9cbfe870d3b812b71daef7f6871ff6d371e6914e8ff556a39fddd7949a601a"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/PolicyLifecycleTest.php",
+      "sha256": "9c3ff9a768e5ac4e49819bd6b5a741132cff3d429eaee0858c5c7fedb4270660"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/PolicyResolverBoundariesTest.php",
+      "sha256": "384a51ec856c468676284748600aad04ac7e8a5fae96b6cac90bc08063adede1"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+      "sha256": "fe83f31f4505ff28a38300c6a33b75f63dc258b782817f9f0d1428f6dd7ace99"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/PolicyTelemetryTest.php",
+      "sha256": "a389f8c69459869b43874ff74662cda6224437b0f8671f53e2be81d8f6a672f5"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/TrustedBundleFailureTest.php",
+      "sha256": "1d79321ae139d4fa6d4355017aea060f8c51237b7da733fe4b7483f86953c557"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/WireDnsQueryTest.php",
+      "sha256": "4639015f4df9c8e91f88a7cddc05013e5f4b1c5a1f8a310f6aecc27a6ffd4c79"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/BoundaryPromiseLifecycleTest.php",
+      "sha256": "d9358ee0877a0d00d0f8abda6b79a6ab959482cff875987cbc0f1453c31b4bdb"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/BoundaryResponseTest.php",
+      "sha256": "b167d73aa4e98d3cd9daa4da07a1775c6a2dd20a7375c95d6063972cd765b4f3"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/IdleTransferLeaseTest.php",
+      "sha256": "64ee2900c3783b29484a78344bd659988c9754a80ed906a991f81439c5e68d00"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/InvocationLifecycleTest.php",
+      "sha256": "60559e2e4a28180ab8b0ef1a15e4649720ad1506fd2173eb1b800b6fbb3c5d4f"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/NativeClientDefaultsTest.php",
+      "sha256": "592e3b675e94925ebb7793fa80c862bd2c4a27102951fd684895104b261a3d67"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/OptionSanitizerTest.php",
+      "sha256": "dc2587bfe55870e47ccff1a89e7d025748fefdad777d5c70964bca2ee0692533"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/RuntimeSupportTest.php",
+      "sha256": "117e442cd28e273d7a383636cb352e31247b847b2458ab7f37ad043c94e9a0e8"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/SingleUseCurlFactoryTest.php",
+      "sha256": "ce5d99278c244e12b018274f225c22a485a6342e15c1f6dd96fbd4bdbed0c294"
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/TransferLeaseInputTest.php",
+      "sha256": "83cb7bb20b525f73350dfe009c1dcf9037d43da2e86dff868750c8e3c3ab7474"
+    },
+    {
+      "path": "Tests/HttpGuard/bootstrap.php",
+      "sha256": "a27ca667c648a3e9131dbf868316e4f9ca38932003f89e0b724db4b471543eb0"
+    },
+    {
+      "path": "Tests/Integration/classic-package-bootstrap.php",
+      "sha256": "f26d3e50194b324f4897b24bf766024046d8fbf0fa583d202a7af05668d497ec"
+    },
+    {
+      "path": "Tests/Integration/mode-bootstrap.php",
+      "sha256": "0853da4d87db675104e891c48521b52f79ea01dfb68a320ac62b89c23ce1d3b5"
+    },
+    {
+      "path": "Tests/Integration/production-bootstrap.php",
+      "sha256": "208423f0feaa7093b02c6b5750049fdb573fd7cd4f7a33dc7f353f2cc9d8e4d3"
+    },
+    {
+      "path": "Tests/Unit/AdapterInputShapeTest.php",
+      "sha256": "9ebd792b5ec582f6916b849e26555cc453d0d1e755a442ebc21c7740678cfd7e"
+    },
+    {
+      "path": "Tests/Unit/ConfigurationLoaderTest.php",
+      "sha256": "8bca8dee1af5177dd46b889fe165332f5edd1b436d53ea5b032cdb8f1898c9dd"
+    },
+    {
+      "path": "Tests/Unit/CoreConfigurationShapeTest.php",
+      "sha256": "e5805ccfb56d20b7934f17fe6c233763c2f22912ad82f0e458848f22bfda47df"
+    },
+    {
+      "path": "Tests/Unit/DiagnosticBootStateTest.php",
+      "sha256": "8bb0fd74b6637675198c9410ee86802455eaeb98ec3b9f3f61be2365d29b609e"
+    },
+    {
+      "path": "Tests/Unit/DiagnosticsServiceTest.php",
+      "sha256": "ed27051e0fe14c5d1e09389c42143717a89585b9a281d5ea1aa9980478c3e6cf"
+    },
+    {
+      "path": "Tests/Unit/GlobalHttpDefaultsTest.php",
+      "sha256": "b6ece53143c9bf265bf854ea4e2825eaba7595d65eef6157d6e6f13bf04f06c2"
+    },
+    {
+      "path": "Tests/Unit/LegacyConfigurationInventoryTest.php",
+      "sha256": "8a0aa224802e61eb02197739fc53eec47b760a0cebd92bd98cb3993f11d10bee"
+    },
+    {
+      "path": "Tests/Unit/RawRequestFactoryModeTest.php",
+      "sha256": "010aaaa7005232b6e35b4f4da13905e4681e055736a54d328eaa938be39c44ce"
+    },
+    {
+      "path": "Tests/Unit/RequestFactoryCompatibilityTest.php",
+      "sha256": "0164215807dd72ea6895edb1b722163d087313db51fd76faf860f7ba7f7039d8"
+    },
+    {
+      "path": "Tests/Unit/Service/LibraryServiceFactoryTest.php",
+      "sha256": "ac029c0f7d5f80b41f7987d1e40f7706899db4c36e42ec361aa49821a6f12ad0"
+    },
+    {
+      "path": "Tests/bootstrap.php",
+      "sha256": "4e62785f046f0300d0d9a1f65dae879bf2f86ce43ee41b7e40dd32014c92b834"
+    },
+    {
+      "path": "ext_emconf.php",
+      "sha256": "b831fea2e698ddbf5d61f10493c2028d54c163999b838146f4ea288fc82c5224"
+    },
+    {
+      "path": "ext_localconf.php",
+      "sha256": "17a772d66c8011c58660ced2fe910f8e6c5ee5566590f5236807adaef7adc5c2"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Build/FunctionalTestsBootstrap.php",
+      "sha256": "746034771a0aa47d5774ed3cfe0b45f8c525c08fde744ad5c70ff5489a9152da"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardOAuthManagerState.php",
+      "sha256": "b5fde7b07fa2f49728dde7338cdb2a2e3e6a3d527122749b50aa075364671820"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardTransferTicker.php",
+      "sha256": "0cab2f0b003144cb9e8e9c6c79a6716c8a734d90e44a897b3307869a0b5acbef"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php",
+      "sha256": "610ed50dd27ed118395886cf27b6faaa120913f922468972842aebab555bc78c"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapterInterface.php",
+      "sha256": "c2393f2cf3aac80ada3cd95b495c08b3c914e7560cd9b4e47152f7c0bc2a895e"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/OAuth/OAuthTokenManager.php",
+      "sha256": "e32416214749903aea62f0686b4ccdfaffbb1b774e8f149dbe66a57aaf0bf5df"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/SecureHttpClientFactory.php",
+      "sha256": "d7ec1e9856448004e32fdaca089716cf2af56b2cee742f44c5058a6e28fdd2a4"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/VaultHttpClient.php",
+      "sha256": "45a68b1c2c89c362eff449b1bc93a3931f7ee5ba955e12fbb70268a88cd66209"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Fixtures/HttpGuardBootstrap.php",
+      "sha256": "4de1502783d79a9c87ed0d1ee22322c03689283ed07930a36972412de47aca5a"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+      "sha256": "cadd1441f8a78a496142158c875352ee60ce71f7cbdd07cf7ff7e7d5fab9a02e"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+      "sha256": "619c44bd1ff3951e101d1c1f64a2f5e89748d93d2c2755a2b64eb51e1a2cc26d"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php",
+      "sha256": "687ea25b13548da38bcac549354fe3370ea71703fd250f95122bacd100cde33c"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php",
+      "sha256": "713a1710144ed8029d383a50875bd8c49cb03306c35713708452eb42fce81c5a"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/bootstrap.php",
+      "sha256": "95ee69ee3fa9fdd21cc128fb8394ddbf277fa1fb3201c215865e6614e08c520f"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/rector.php",
+      "sha256": "0a9bea6c40f818933a88c25bcf5420613792de2a4bea7a45b319fe8e321afbf0"
+    },
+    {
+      "path": "rector.php",
+      "sha256": "b697771b3a1a15bf641106b93493116dc18865b89e413dcde4839e4f204f41b3"
+    }
+  ],
+  "productionTreeSha256": "17ffdffdabd675258e4decc04558fa10e05dab72ee1db74781e8883163d59148",
+  "benchmarkProductionMatches": true,
+  "scope": "158 owned extension/kernel/test/fixture/tool PHP inputs excluding TER ext_emconf.php;15 optional nr-vault overlay PHP inputs are foreign immutable evidence, not current owned source.",
+  "owned_php_files": 158,
+  "foreign_overlay_php_files": 15,
+  "strict_spdx_metadata_absent": [
+    {
+      "path": "integrations/nr-vault/source-overlay/rector.php",
+      "sha256": "0a9bea6c40f818933a88c25bcf5420613792de2a4bea7a45b319fe8e321afbf0"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Build/FunctionalTestsBootstrap.php",
+      "sha256": "746034771a0aa47d5774ed3cfe0b45f8c525c08fde744ad5c70ff5489a9152da"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/bootstrap.php",
+      "sha256": "95ee69ee3fa9fdd21cc128fb8394ddbf277fa1fb3201c215865e6614e08c520f"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/VaultHttpClient.php",
+      "sha256": "45a68b1c2c89c362eff449b1bc93a3931f7ee5ba955e12fbb70268a88cd66209"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/SecureHttpClientFactory.php",
+      "sha256": "d7ec1e9856448004e32fdaca089716cf2af56b2cee742f44c5058a6e28fdd2a4"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardOAuthManagerState.php",
+      "sha256": "b5fde7b07fa2f49728dde7338cdb2a2e3e6a3d527122749b50aa075364671820"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapterInterface.php",
+      "sha256": "c2393f2cf3aac80ada3cd95b495c08b3c914e7560cd9b4e47152f7c0bc2a895e"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/VaultGuardAdapter.php",
+      "sha256": "610ed50dd27ed118395886cf27b6faaa120913f922468972842aebab555bc78c"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/Guard/GuardTransferTicker.php",
+      "sha256": "0cab2f0b003144cb9e8e9c6c79a6716c8a734d90e44a897b3307869a0b5acbef"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Classes/Http/OAuth/OAuthTokenManager.php",
+      "sha256": "e32416214749903aea62f0686b4ccdfaffbb1b774e8f149dbe66a57aaf0bf5df"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Fixtures/HttpGuardBootstrap.php",
+      "sha256": "4de1502783d79a9c87ed0d1ee22322c03689283ed07930a36972412de47aca5a"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/GuardAdapterTest.php",
+      "sha256": "619c44bd1ff3951e101d1c1f64a2f5e89748d93d2c2755a2b64eb51e1a2cc26d"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Functional/Http/Fixtures/guard-router.php",
+      "sha256": "cadd1441f8a78a496142158c875352ee60ce71f7cbdd07cf7ff7e7d5fab9a02e"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/SecureHttpClientFactoryGuardTest.php",
+      "sha256": "687ea25b13548da38bcac549354fe3370ea71703fd250f95122bacd100cde33c"
+    },
+    {
+      "path": "integrations/nr-vault/source-overlay/Tests/Unit/Http/Guard/VaultHttpClientGuardTest.php",
+      "sha256": "713a1710144ed8029d383a50875bd8c49cb03306c35713708452eb42fce81c5a"
+    }
+  ],
+  "owned_header_missing": [],
+  "qualification": "The strict SPDX probe does not accept legacy (c) copyright comments. Its15 missing-SPDX rows belong only to the foreign nr-vault overlay and are not15 current TYPO3 HTTP Guard header findings. ext_emconf.php retains its constrained TER metadata header."
+}

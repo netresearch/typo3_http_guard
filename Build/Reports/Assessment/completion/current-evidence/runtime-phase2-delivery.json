@@ -1,0 +1,107 @@
+{
+  "root": "/mnt/c/users/live/documents/codex/2026-10-08/kan/work/assessment-completion/runtime",
+  "base": "475ef55907257a0f5be20033b3b13035598b9b05",
+  "files": [
+    {
+      "path": "Classes/HttpGuard/GuardConfig.php",
+      "sha256": "663b34d9710a96fee0cddf153d259e57a47bf5b7e3eabe142199d4a72c580ac7",
+      "lines": 365
+    },
+    {
+      "path": "Classes/HttpGuard/Cidr.php",
+      "sha256": "52484fc9ea2c6744e39e2f1077852c34d437062a481512b00ac5929352b0248f",
+      "lines": 150
+    },
+    {
+      "path": "Classes/HttpGuard/DnsPacketCodec.php",
+      "sha256": "8daafddbe2d04033ffee807a7dd7121ff08964e454ef981f9c5ded4f74615e8c",
+      "lines": 198
+    },
+    {
+      "path": "Classes/HttpGuard/WireDnsQuery.php",
+      "sha256": "71aa683527f2d183a4d846ba51796098cb521dbac14e3b8102e5b770b92efa35",
+      "lines": 231
+    },
+    {
+      "path": "Classes/HttpGuard/Client/GuardedClientFactory.php",
+      "sha256": "22ad623ca562badf609c972dea68398b80fb571678614225cb4a9c65473bf480",
+      "lines": 252
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/OptionSanitizer.php",
+      "sha256": "ebf80f442b9f377b07233730c56408eefa5c48181945b0523bdd214562699efe",
+      "lines": 351
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/BoundaryMiddleware.php",
+      "sha256": "5932a508200460faaf09a699dab2b2d02e783b1f0e7d087aefb6bcb71329ffa1",
+      "lines": 221
+    },
+    {
+      "path": "Classes/HttpGuard/Transport/TransferLease.php",
+      "sha256": "5a9b163e914d39f8a0fc0e604d6ef49801e9b6bd9048d6344043df6191afccfb",
+      "lines": 315
+    },
+    {
+      "path": "Classes/HttpGuard/NativeOperation.php",
+      "sha256": "455d102ad780e41b9c8baf1a6a424216cc3af3b52e0c94f3d7e03d56751d8cd8",
+      "lines": 47
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/NativeOperationTest.php",
+      "sha256": "bb08067c2f5c5e7253a44b8d97530468ffb125cf8bf805b9cc3b354e010acad9",
+      "lines": 283
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/PolicyStrictInputsTest.php",
+      "sha256": "f32694ad93af076b3fc12088c7b4d4abc0086101058ff6fffa569d8d43f7f747",
+      "lines": 261
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/PolicyTelemetryTest.php",
+      "sha256": "063ecc8df9949d29043511db4fd7fb0533f0f768f45a9c1964cc6fbf173aa02d",
+      "lines": 421
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/DecisionReporterSecretTest.php",
+      "sha256": "259bb22923a9dea481f7c995f3ff68dc0fc84fbc6908ce34f9d60f7f37d40065",
+      "lines": 139
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/TrustedBundleFailureTest.php",
+      "sha256": "965cd257de779db005b149f636c22c9b89d43dc921b05b389cff9ad3ebe325ed",
+      "lines": 68
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Policy/Fixtures/TrustedBundleFailure.php",
+      "sha256": "69cb3f18c8705077963e2eb15efa4bba9eb644acd89c710f94873b593be7cf80",
+      "lines": 146
+    },
+    {
+      "path": "Tests/Unit/Service/LibraryServiceFactoryTest.php",
+      "sha256": "b10e4041ff022b3dceb5275787b789623b680f3d6d350434dd3c09e89fb9c547",
+      "lines": 222
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/TransferLeaseInputTest.php",
+      "sha256": "2b0140d8f79a41eaed6c1b47116736b9a6bef158033375c4c4664a7b5f502e83",
+      "lines": 86
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/BoundaryResponseTest.php",
+      "sha256": "d7ca343ce243a89d5c61c595b23dd2efd585ebad6b8091b36ceb6ca3bf7f56dc",
+      "lines": 93
+    },
+    {
+      "path": "Tests/HttpGuard/Unit/Transport/NativeClientDefaultsTest.php",
+      "sha256": "0f435fda78008614cb6ac1537a8727949449c865c0569552d9f88a2f8a6ea2f8",
+      "lines": 113
+    },
+    {
+      "path": "Build/PhpStan/Client.stub",
+      "sha256": "548a854ed4fac7d9f3c5b7ab25912f660ec002b048537bd170a7103a1bf59d2b",
+      "lines": 32
+    }
+  ],
+  "integration": "Capture destination hashes before AST create/replace; source payload is a proposal, not a blind shared-root write. Root owns metadata-profile inclusion and canonical formatting."
+}

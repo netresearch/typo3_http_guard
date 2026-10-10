@@ -394,3 +394,8 @@ ab230a3f33b20aedce264dce8af32a2d5be14a73:Build/Reports/Assessment/review-loop/fi
 32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-qualification/final-extension-archive-manifest.json:generic-api-key:73
 32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-runtime/source-end.json:generic-api-key:66
 32e3d3bf7edc5f0b64cc32f2448695174c2ad255:Build/Reports/Assessment/review-loop/semantic-runtime/source-start.json:generic-api-key:66
+# Evidence: Build/Reports/Assessment/completion/current-evidence/security-scan-c823-classification.json
+# Exact c823 public fixture checksum records, verified against synthetic TLS files.
+c823234e75ae65dabfe1a70861c2ff60e506f9a3:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:18
+c823234e75ae65dabfe1a70861c2ff60e506f9a3:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:19
+c823234e75ae65dabfe1a70861c2ff60e506f9a3:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:20

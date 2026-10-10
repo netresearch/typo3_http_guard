@@ -1,0 +1,26 @@
+{
+  "source_files": 75,
+  "root_production_tree_sha256": "36eafea456ddf1115b56b1e059b3e8d8992b1fabc5d9fc8a49f6244b48c6d866",
+  "current_root_production_equal_to_actual_CI": true,
+  "measured_github_virtual_merge": "de0807b2979360bfc5f0993a66904674214cc44d",
+  "head": "3f929ae8794ca04ab3dd25627e94d601a2db23e0",
+  "workflow_run": 38000922527,
+  "p95_ms": 0.604912,
+  "target_ms": 2,
+  "target_met": true,
+  "samples": 500,
+  "runtime": {
+    "php": "8.5.11",
+    "os": "Linux runnervmmprz5 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64",
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "graph": {
+      "typo3/cms-core": "v14.3.8",
+      "guzzlehttp/guzzle": "8.2.0",
+      "guzzlehttp/promises": "3.0.2",
+      "guzzlehttp/psr7": "3.1.0"
+    },
+    "xdebugMode": "off"
+  },
+  "raw_report_sha256": "826cc5642a36357ce5ea3f9a5c8e13e3f6738f66d5c91ecf8a01226860240386",
+  "scope": "Normalization, classification and policy evaluation; 64 IPv6 addresses, 128 profiles, bound endpoint; no DNS, network or log sink"
+}

@@ -1,0 +1,144 @@
+{
+  "released_at_utc": "2026-10-09T21:55:37.268089+00:00",
+  "source_root": "/tmp/http-guard-adapter-contracts",
+  "owned_files": {
+    "Tests/Fixtures/AdapterRuntimeFixture.php": "d2c5cd04b93a01b17076c7ff558b84f6d5936097821319178240ae1a170ac59b",
+    "Tests/Fixtures/RequestFactoryAbiShapes.php": "c377e0dad06307b9f933d13409317022e89fc62602b597bc1d405a745072957f",
+    "Tests/Unit/DiagnosticsContractTest.php": "d38f53c87fc0f8d44bc71dd503b8ca8545f210ae2ab32f3d2e27c1fe405c4c10",
+    "Tests/Unit/CommandContractTest.php": "252581f3d173050f2fc3d5c06e297256d5ffb78590c42aff8ee6f72edb3c7d8b",
+    "Tests/Unit/MiddlewareRegistryContractTest.php": "bb6e1e3096f8cbf54b9c5b6420ba77ed160306a61a7c6e74399239b410b11c69",
+    "Tests/Unit/CoreStackProviderContractTest.php": "81b3dccffa74abe0ad1d94f3015b00208a8d03aa5d84a30b869eef7065f9dab3",
+    "Tests/Unit/AdapterClientContractTest.php": "3bd6a381a3103e6bfa20d734dc9e5b0d4968af9aec25de330f6ad0b386501241",
+    "Tests/Unit/RequestFactoryAbiContractTest.php": "e4b2937e5736694f11ecdc4bb109d2d224c4f21e4606884d822bda9e0bc035f0",
+    "Tests/Unit/DoctorVersionContractTest.php": "9ff2e5ca87a9e67046143607768beabf9235392a619436d75ae806b118a9b947"
+  },
+  "production_edits": [],
+  "php_writes": "All test creation/edits used guarded php-ast-edit transactions with PHP8.2 parser target and canonical project formatter. Syntax is separate from execution.",
+  "source_binding": {
+    "original_inputs": 140,
+    "new_inputs": 9,
+    "all_149_unchanged_between_start_and_end": true,
+    "scope": "Targeted runtime/configuration/test/tool inputs, not a complete root repository identity."
+  },
+  "unit": {
+    "core13_g7": {
+      "tests": 708,
+      "assertions": 3151,
+      "exit": 0,
+      "runtime": {
+        "php": "8.5.11",
+        "versions": {
+          "typo3/cms-core": "v13.4.36",
+          "guzzlehttp/guzzle": "7.15.5",
+          "guzzlehttp/promises": "2.5.3",
+          "guzzlehttp/psr7": "2.13.1",
+          "phpunit/phpunit": "11.5.57"
+        },
+        "reflection_sources": {
+          "Netresearch\\HttpGuard\\GuardConfig": "/tmp/http-guard-adapter-contracts/Classes/HttpGuard/GuardConfig.php",
+          "Netresearch\\NrHttpGuard\\Service\\LibraryServiceFactory": "/tmp/http-guard-adapter-contracts/Classes/Service/LibraryServiceFactory.php",
+          "TYPO3\\CMS\\Core\\Http\\RequestFactory": "/tmp/http-guard-ci-g7-core13.mEC56C/vendor/typo3/cms-core/Classes/Http/RequestFactory.php",
+          "GuzzleHttp\\HandlerStack": "/tmp/http-guard-ci-g7-core13.mEC56C/vendor/guzzlehttp/guzzle/src/HandlerStack.php"
+        }
+      }
+    },
+    "core14_g8": {
+      "tests": 708,
+      "assertions": 3151,
+      "exit": 0,
+      "runtime": {
+        "php": "8.5.11",
+        "versions": {
+          "typo3/cms-core": "v14.3.8",
+          "guzzlehttp/guzzle": "8.2.0",
+          "guzzlehttp/promises": "3.0.2",
+          "guzzlehttp/psr7": "3.1.0",
+          "phpunit/phpunit": "11.5.57"
+        },
+        "reflection_sources": {
+          "Netresearch\\HttpGuard\\GuardConfig": "/tmp/http-guard-adapter-contracts/Classes/HttpGuard/GuardConfig.php",
+          "Netresearch\\NrHttpGuard\\Service\\LibraryServiceFactory": "/tmp/http-guard-adapter-contracts/Classes/Service/LibraryServiceFactory.php",
+          "TYPO3\\CMS\\Core\\Http\\RequestFactory": "/tmp/http-guard-assessment-tools/vendor/typo3/cms-core/Classes/Http/RequestFactory.php",
+          "GuzzleHttp\\HandlerStack": "/tmp/http-guard-assessment-tools/vendor/guzzlehttp/guzzle/src/HandlerStack.php"
+        }
+      }
+    }
+  },
+  "mutation": {
+    "scope": "15 selected Adapter/Diagnostics/Command/Library PHP sources; Unit suite only; Classes remains configured full source and @default,90/90 remain unchanged; this run uses an explicit path filter.",
+    "stats": {
+      "totalMutantsCount": 463,
+      "killedCount": 451,
+      "notCoveredCount": 4,
+      "escapedCount": 7,
+      "errorCount": 1,
+      "syntaxErrorCount": 0,
+      "skippedCount": 0,
+      "ignoredCount": 0,
+      "timeOutCount": 0,
+      "msi": 97.62,
+      "mutationCodeCoverage": 99.14,
+      "coveredCodeMsi": 98.47
+    },
+    "exit": 0,
+    "threads": 1,
+    "with_uncovered": true,
+    "with_timeouts": true,
+    "error_credit": 1,
+    "actual_test_kill_ratio_percent": 97.41,
+    "timeouts": 0,
+    "new_test_specific_actual_kill_witnesses": 204,
+    "replaces_full_source_score": false
+  },
+  "review": {
+    "passes": 2,
+    "axes": [
+      "correctness",
+      "tests",
+      "architecture",
+      "security",
+      "performance"
+    ],
+    "required_findings": [],
+    "fixed_harness_findings": [
+      "Guzzle8 removed HandlerStack string conversion; assertions inspect the supported stack inventory instead.",
+      "Readonly Core14/nonreadonly Core13 factories are mocked using their actual installed types rather than one incompatible readonly child.",
+      "No-DNS mutation cannot make real queries: an explicit fixed DnsQueryInterface boundary counts unexpected queries and raises without I/O.",
+      "Endpoint scope-loss checks use a private literal rather than a publicly routable HTTP target.",
+      "Native numeric getenv keys are safely narrowed before strtolower; direct native control confirms integer keys.",
+      "Doctor distinguishes Core registry-version drift from SDK-major failure after successful registry validation."
+    ]
+  },
+  "qualifications": [
+    "The fixed named ABI/SDK doubles test structure and diagnostic control flow, not a third installed SDK graph or native wire.",
+    "Current graph execution covers PHP8.5.11 with actual Core13.4.36/G7.15.5 and Core14.3.8/G8.2.0; PHP8.2 source syntax was parsed, no PHP8.2 execution is claimed.",
+    "One Ternary mutant aborts on incompatible readonly inheritance. Infection credits it in MSI, but it is not one of 451 test-kills.",
+    "Seven escaped and four uncovered mutants remain in this focused denominator; no suppression/equivalent-mutant exclusion/threshold reduction was added.",
+    "Earlier bootstrap failures, test expectation failures and rejected AST transactions remain separate evidence; they are not claimed production regressions.",
+    "An exploratory Rector run on ABI fixture files proposes deleting observable constructor/method shapes. Those changes are rejected, and no skip was added. Actual configured Rector scope Classes/Configuration reports zero proposals.",
+    "No Docker/native/fuzz workload or Root source/Git/GitHub mutation was performed for this isolated Adapter task."
+  ],
+  "evidence_sha256": {
+    "cgl-final-source.log": "dfd41f9590abfdb2953081c6012178add5d46631733699927828b758b31bdbd3",
+    "final-class-ranking.json": "3f6263a18baa17430971df13f96ea547ee8cdb124b4e0cbfc88c3d6df0a85cd8",
+    "final-infection-summary.json": "162869969159351a6bf4087c414b05a1af84e8c5c44825ba3ea295ef73d93c35",
+    "final-infection.json": "a6a6235b2ffa317931c5f22b441427fb5ca0ea1843c8966dadd2178d25313e5c",
+    "final-infection.log": "136d2ee6b49afe1b6b98fa189c58fcff6244282f0b6cbf5165704b92977f2fad",
+    "final-specific-kill-witnesses.json": "e2fc151d79a8851c9d42aebc778f8b2f5621d561747c130ff0f75d8516223c76",
+    "numeric-environment-native-control.json": "f315abd480afb848e72ee973dc7bb55f515abd8f1a56bee544b7936440091032",
+    "rector-production-scope.log": "98029139679fe607129980a302da92fb5e3461fa97a43f54ca9d7cd9a15dd998",
+    "release-source-end.json": "b7705ee1aa32e8f4855376e5c38e5e3d414e41955659e8d42516d71d410bef15",
+    "release-source-start.json": "2f8996a9607547e745efa4abf4bd545954e264bd107c082686c94cacb2e7c507",
+    "runtime-core13.json": "9bb75f72617872029b63e6de601d88a87977646b88468eaf3bea9bc5293a505b",
+    "runtime-core14.json": "ce0a0b6722175a06733d96334d52fe9728d9db39c3a1e514b544987f8f9b56f7",
+    "unit-core13-final.log": "7f4e4fcadd9960e874c78172a67f66df4e85e97ede071871ae5daec3a6b5e2fa",
+    "unit-core14-final.log": "964151d585c04fe21d7bbdd4608d276d39c89caf21f69f436128cdbc7a8018df",
+    "unit-owned-files.log": "cda1075c854c89f0d4cd8acc005a18b03523a6801721142797952f6fbcffa689"
+  },
+  "owned_unit_cases": {
+    "tests": 129,
+    "assertions": 638,
+    "exit": 0,
+    "scope": "Seven new Unit classes, with two new fixture files."
+  }
+}

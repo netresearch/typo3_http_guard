@@ -1,0 +1,24 @@
+{
+  "kind": "guarded_workflow_delta",
+  "source_base_head": "3f929ae8794ca04ab3dd25627e94d601a2db23e0",
+  "source_snapshot_qualification": "Current Root working file, rather than a claim that the proposed workflow is committed in source_base_head.",
+  "changed_files": {
+    ".github/workflows/verification.yml": {
+      "expected_before_sha256": "287a0852a350664bc62a2b76417f053e93b52370ab286e57db69e3e7327e830b",
+      "after_sha256": "2ae7dae8b67f8069ea3542550f960ada6979453decd373f3271c042c06fb069e",
+      "payload": "source/.github/workflows/verification.yml"
+    }
+  },
+  "actual_checks": {
+    "routing_controls": 11,
+    "routing_exit": 0,
+    "actionlint_exit": 0,
+    "zizmor_exit": 0,
+    "bash_syntax_exit": 0,
+    "yaml_reextraction_byte_equal": true
+  },
+  "actual_tool_proof": "actual-infection-proof.json",
+  "root_writes": false,
+  "docker_or_network_workloads": false,
+  "review_requirement": "Parent and separate reviewer review this author proposal before integration; author validation is not an independent peer review."
+}

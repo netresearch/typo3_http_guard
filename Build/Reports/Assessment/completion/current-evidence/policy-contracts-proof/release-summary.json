@@ -1,0 +1,113 @@
+{
+  "scope": "Eight explicitly filtered kernel classes; not repository-wide/native MSI",
+  "stats": {
+    "totalMutantsCount": 1901,
+    "killedCount": 1663,
+    "killedByStaticAnalysisCount": 0,
+    "notCoveredCount": 22,
+    "escapedCount": 206,
+    "errorCount": 1,
+    "syntaxErrorCount": 4,
+    "skippedCount": 0,
+    "ignoredCount": 0,
+    "timeOutCount": 5,
+    "msi": 87.74,
+    "mutationCodeCoverage": 98.84,
+    "coveredCodeMsi": 88.77
+  },
+  "classCounts": {
+    "Classes/HttpGuard/AddressClassifier.php": {
+      "killed": 139,
+      "escaped": 14
+    },
+    "Classes/HttpGuard/Cidr.php": {
+      "killed": 233,
+      "escaped": 26,
+      "uncovered": 6,
+      "timeouted": 1
+    },
+    "Classes/HttpGuard/DnsPacketCodec.php": {
+      "killed": 274,
+      "escaped": 34,
+      "uncovered": 3
+    },
+    "Classes/HttpGuard/GuardConfig.php": {
+      "killed": 401,
+      "escaped": 39,
+      "uncovered": 4,
+      "syntaxErrors": 2
+    },
+    "Classes/HttpGuard/PolicyEngine.php": {
+      "killed": 102,
+      "escaped": 15,
+      "uncovered": 3
+    },
+    "Classes/HttpGuard/StaticThenDnsResolver.php": {
+      "killed": 116,
+      "escaped": 24,
+      "uncovered": 1,
+      "timeouted": 3,
+      "syntaxErrors": 2
+    },
+    "Classes/HttpGuard/TargetNormalizer.php": {
+      "killed": 229,
+      "escaped": 31,
+      "uncovered": 1,
+      "errored": 1
+    },
+    "Classes/HttpGuard/WireDnsQuery.php": {
+      "killed": 169,
+      "escaped": 23,
+      "uncovered": 4,
+      "timeouted": 1
+    }
+  },
+  "sourceClasses": [
+    "Classes/HttpGuard/AddressClassifier.php",
+    "Classes/HttpGuard/Cidr.php",
+    "Classes/HttpGuard/DnsPacketCodec.php",
+    "Classes/HttpGuard/GuardConfig.php",
+    "Classes/HttpGuard/PolicyEngine.php",
+    "Classes/HttpGuard/StaticThenDnsResolver.php",
+    "Classes/HttpGuard/TargetNormalizer.php",
+    "Classes/HttpGuard/WireDnsQuery.php"
+  ],
+  "exit": 1,
+  "thresholds": {
+    "minMsi": 90,
+    "minCoveredMsi": 90
+  },
+  "flags": {
+    "withUncovered": true,
+    "withTimeouts": true,
+    "onlyCoveringTestCases": true,
+    "threads": 4,
+    "timeoutsAsEscaped": true
+  },
+  "coverage": "Actual local Xdebug3.5.3; offline Unit suite on PHP8.5.11, Core14.3.8/Guzzle8.2.0 installed graph. No Docker/native integration in this run.",
+  "deliveryFiles": 11,
+  "newPhpFiles": 10,
+  "unit": {
+    "tests": 830,
+    "assertions": 4241,
+    "passed": true
+  },
+  "quality": {
+    "phpstanMaxErrors": 0,
+    "cglChanges": 0,
+    "rectorChanges": 0
+  },
+  "sourceStartEndSame": 434,
+  "productionFinding": "Bracketed IPv4/DNS literal accepted; minimal colon+existing IPv6 parser gate fixes strict RFC3986 authority contract. No SSRF bypass claimed.",
+  "fullNativeScore": null,
+  "measurementRootSnapshotCurrent": false,
+  "artifacts": {
+    "delivery-manifest.json": "60a99087903b04f27829352f6418ef2863f7a68650e01697a91b666abd90500c",
+    "policy-contracts-payload.zip": "43d548edf6a1eb2030f10b3e1a3ba4a6ebe649b40c5a41ab8a6212d8054ff436",
+    "source-final-focus-start.json": "06253c8ee36342780c1c281cb91fad0034be2427d0240fc7f256d939f7e0e1b4",
+    "source-final-focus-end.json": "13b5e089d0c8f207858eb5dedac47f6efe2db03ca5250b518e7fa4237c36b0f7",
+    "final-focus-summary.json": "73d95dccf2aeeaada3c43d4860fc0d73cf4b7ebfc370923af4a0737ee6eb4616",
+    "final-focus-infection.json.gz": "6a5593cc372891f1ce42afb29af505b15a1ebe905bb48371b2ebf2e3ed076d82",
+    "README.md": "a47207c12ed6d34ecf297bfaf3ad27b14ec38a0c2fcdbb0d20494dd592229622"
+  }
+}

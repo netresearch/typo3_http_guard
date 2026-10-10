@@ -1,0 +1,6 @@
+{
+  "verification": "Read-only Docker label query for this exact run ID and certificate directory absence; no deletion by verifier",
+  "remaining_owned_containers": [],
+  "remaining_owned_networks": [],
+  "generated_certificates_removed": true
+}
