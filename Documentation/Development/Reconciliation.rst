@@ -100,6 +100,14 @@ Calibration preserves an actual requirement while checking the real surface:
   report are three different observations. A broad presence regex does not
   prove that Codecov processed measured lines.
 
+TD-49 was judged incorrectly: :file:`Documentation/Decisions/` is not an accepted checker path.
+That earlier rationale in the frozen inventory and reconciliation is withdrawn. The canonical
+:ref:`ADR index <adr-index>` now retains fourteen historical proposals and four accepted current
+records. A separately bound actual TD-49 check passes; fresh AH-40/ER-45 reviews cover the current
+factory, DNS and native-attempt decisions. :file:`reconciliation.json` records this correction under
+:literal:`post_snapshot_adr_correction`; the raw 755 results and earlier 850/916 quality and 263-input
+Native captures remain unchanged. Final rendering and package qualification have separate receipts.
+
 .. _reconciliation-documentation:
 
 Documentation and external evidence
@@ -151,16 +159,13 @@ branch coverage or an absence of branches in the software. This report is
 separate from the frozen local 80.80% baseline. Consult the
 `actual public project <https://app.codecov.io/gh/netresearch/typo3_http_guard>`_.
 
-The
-`Scorecard API
-<https://api.securityscorecards.dev/projects/github.com/netresearch/typo3_http_guard>`_
-is bound to its stated source and date. Workflow success does not establish
-a particular score or a Best Practices/Baseline level. The supported exact
-repository-URL and project-name searches return an empty list. Registration
-metadata and evidence-backed answers are prepared, but authenticated
-registration access is unavailable. No project ID or saved live state has
-been verified. This external access gap is independent of the user's
-available alpha authorization.
+The `Scorecard API
+<https://api.securityscorecards.dev/projects/github.com/netresearch/typo3_http_guard>`_ is bound to its
+stated source and date. Workflow success does not establish a particular score or a Best
+Practices/Baseline level. The supported exact repository-URL and project-name searches return an empty
+list. Registration metadata and evidence-backed answers are prepared, but authenticated registration
+access is unavailable. No project ID or saved live state has been verified. This external access gap is
+independent of the user's available alpha authorization.
 
 .. _reconciliation-current-validation:
 
@@ -182,17 +187,14 @@ and lifecycle positives remain. The earlier CIDR NUL-lexeme correction is
 a separate historical fix. Offline malformed-record tests do not establish
 a native DNS exploit, and ABI doubles do not prove native wire behavior.
 
-The integrated offline suite passes **1,535 Unit tests and 7,199
-assertions** on each genuine Core 13.4.36/Guzzle 7.15.5 and Core
-14.3.8/Guzzle 8.2.0 graph on PHP 8.5.11. These are local Unit executions,
-separate from native wire and full-source mutation qualification.
-Completed kernel/Core 13/14 level 10, architecture and Rector checks are
-clean. Recorded style has zero changes across 143 extension/test/tool and
-53 MIT-kernel files. All 173 current Unit inputs remain byte-identical;
-earlier scanner-comment deltas retain their historical AST/byte bindings.
-Full quality/118-control execution binds 850 working and 21,601 vendor files;
-the earlier 280 scope omitted bootstrap, harness and research inputs.
-Public derivatives retain raw hashes and complete JSON values, not raw bytes.
+The integrated offline suite passes **1,535 Unit tests and 7,199 assertions** on each genuine Core
+13.4.36/Guzzle 7.15.5 and Core 14.3.8/Guzzle 8.2.0 graph on PHP 8.5.11. These are local Unit executions,
+separate from native wire and full-source mutation qualification. Completed kernel/Core 13/14 level 10,
+architecture and Rector checks are clean. Recorded style has zero changes across 143 extension/test/tool
+and 53 MIT-kernel files. All 173 current Unit inputs remain byte-identical; earlier scanner-comment
+deltas retain their historical AST/byte bindings. Full quality/118-control execution binds 850 working
+and 21,601 vendor files; the earlier 280 scope omitted bootstrap, harness and research inputs. Public
+derivatives retain raw hashes and complete JSON values, not raw bytes.
 
 Earlier all-source scores retain their scopes: 66.07%/73.47% on 420 inputs,
 86.29%/88.65% on 556 and 89.38%/91.48% on 295. The 261-input 90.46%/91.57%
@@ -242,9 +244,7 @@ Version **0.1.1 is published on TER and Packagist**. After the original
 post-publication attestation failure, the corrected verification-only run
 passed against the immutable release; see :ref:`release-provenance`.
 
-TYPO3 Intercept's recorded :literal:`main` and :literal:`0.1` deployments
-remain **Awaiting Approval**. The public main manual URL returned 404 on
-9 October 2026. Local warning-free EN/DE rendering and included source
-manuals do not constitute hosted approval. This external publication state
-does not block the authorized alpha work. No new release is implied by
-these documentation changes.
+TYPO3 Intercept's recorded :literal:`main` and :literal:`0.1` deployments remain **Awaiting Approval**.
+The public main manual URL returned 404 on 9 October 2026. Local warning-free EN/DE rendering and
+included source manuals do not constitute hosted approval. This external publication state does not
+block the authorized alpha work. No new release is implied by these documentation changes.

@@ -42,7 +42,7 @@ Do not claim tests passed from command existence; retain actual results and sour
 
 The adapter supplies TYPO3 configuration, middleware registration and diagnostics.
 The embedded kernel has no TYPO3 globals or Vault secrets. It owns policy, DNS and native transport controls.
-See [the single-package decision](Documentation/Decisions/SingleExtension.rst) and [security boundaries](Documentation/Security/Index.rst).
+See [ADR-0015: one installable extension](Documentation/Adr/ADR-0015-SingleExtension.rst), the [ADR index](Documentation/Adr/Index.rst) and [security boundaries](Documentation/Security/Index.rst).
 
 ## File Map
 

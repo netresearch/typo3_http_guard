@@ -1,12 +1,13 @@
 .. _decision-single-extension:
+.. _adr-0015:
 
-==============================
-Eine installierbare Extension
-==============================
+=======================================
+ADR-0015: Eine installierbare Extension
+=======================================
 
 :Status: Angenommen
 :Datum: 2026-10-09
-:Bezug: Aktualisiert die Zwei-Paket-Verpackung aus dem ursprünglichen ADR-002
+:Ablösung: ADR-0002, Paket- und Veröffentlichungsvorschlag
 
 .. _decision-single-extension-context:
 
@@ -38,17 +39,37 @@ Projekt-Locks. Die Produktionsconstraints verwenden semantische Bereiche
 mit ausdrücklichen Untergrenzen und Hauptversionen. Laufzeitprüfungen
 kontrollieren die echte Elternklasse, SDK-Fähigkeiten und Middleware-Struktur.
 Eine Factory über das öffentliche cURL-Interface begrenzt jede Lease auf
-einen nativen Versuch, unabhängig von privaten SDK-Wiederholungszählern.
+höchstens einen Aufruf der delegierten Factory, unabhängig von privaten
+SDK-Wiederholungszählern.
 Feste Core-/SDK-Fixtures bleiben reproduzierbare Teststände. Die aktuell
 geprüften offiziellen Core-Archive liefern den Guzzle-8-Graph.
 
 Das vollständige Handbuch, die Anforderungsübersicht und angenommenen
 Entscheidungen liegen unter :file:`Documentation/`; gepflegte Tests und
-Build-Werkzeuge unter :file:`Tests/` und :file:`Build/`. Originalentwürfe,
-Rohprotokolle und das optionale fremde Vault-Overlay bleiben in unveränderter
-Git-Historie und einem geprüften externen Archiv erhalten. Sie bilden kein
-weiteres installierbares Paket. Original-IDs und heutige Zuordnung stehen
+Build-Werkzeuge unter :file:`Tests/` und :file:`Build/`. Die nummerierten
+historischen ADRs stehen weiterhin unter :ref:`adr-index`. Originale
+Markdown-Spezifikationen, Rohprotokolle und das optionale fremde Vault-Overlay
+bleiben in unveränderter Git-Historie und einem geprüften externen Archiv
+erhalten. Sie bilden kein weiteres installierbares Paket.
+Original-IDs und heutige Zuordnung stehen
 unter :ref:`development-requirements`.
+
+Die umgesetzte öffentliche Core-RequestFactory-Grenze, das kontrollierte
+DNS-Wire-Backend und die einmalige SDK-Factory werden in :ref:`adr-0016`,
+:ref:`adr-0017` und :ref:`adr-0018` begründet.
+
+.. _adr-0015-alternatives:
+
+Betrachtete Alternativen
+========================
+
+Die in :ref:`adr-0002` vorgeschlagenen separaten Bibliotheks- und
+Adapterpakete benötigen ein zusätzliches Dependency-Management für
+klassische TYPO3-Projekte. Die einzelne Extension erfüllt den gewünschten
+TER-Installationsweg und erhält die interne Trennung zwischen Sicherheitskern
+und Adapter. Eine weitere Vendor-Kopie würde Core-Dependencies duplizieren
+und ihre Pflege uneindeutig machen; die Extension nutzt den installierten
+Core-Graph.
 
 .. _decision-single-extension-consequences:
 

@@ -74,7 +74,7 @@ Handbuch
     Operations/Index
     Security/Index
     Development/Index
-    Decisions/Index
+    Adr/Index
 
 .. _http-guard-scope:
 

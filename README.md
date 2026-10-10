@@ -192,7 +192,7 @@ is also included.
 - [Diagnostics, operations and rollback](Documentation/Operations/Index.rst)
 - [Security boundaries and limitations](Documentation/Security/Index.rst)
 - [Development and verification](Documentation/Development/Index.rst)
-- [Architecture decisions](Documentation/Decisions/Index.rst)
+- [Architecture decision records](Documentation/Adr/Index.rst)
 
 ## Security and release status
 

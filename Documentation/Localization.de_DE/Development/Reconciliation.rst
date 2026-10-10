@@ -92,6 +92,15 @@ sind eigene Nachweise gegenüber generischer Service-Autoerkennung.
 Datenbank-, TCA- und Frontendprüfungen ohne passende Projektoberfläche
 behalten ihre Anwendbarkeitsentscheidung.
 
+TD-49 wurde falsch bewertet: :file:`Documentation/Decisions/` ist kein vom Prüfer akzeptierter Pfad.
+Die frühere Begründung im eingefrorenen Inventar und Abgleich wird zurückgenommen. Der kanonische
+:ref:`ADR-Index <adr-index>` enthält vierzehn historische Vorschläge und vier angenommene aktuelle
+Entscheidungen. Die separat quellgebundene TD-49-Prüfung besteht; neue AH-40-/ER-45-Quellreviews
+erfassen die aktuellen Factory-, DNS- und Transportentscheidungen. :file:`reconciliation.json` führt
+die Korrektur unter :literal:`post_snapshot_adr_correction`. Die 755 Rohbefunde und früheren
+850-/916-Dateien-Qualitätsläufe sowie die 263-Eingaben-Native-Messung bleiben unverändert.
+Abschließendes Rendering und Paketqualifikation haben eigene Nachweise.
+
 .. _reconciliation-documentation:
 
 Dokumentationspunkte und externe Dienste
@@ -160,29 +169,23 @@ Acht Offline-Workflowkontrollen erfassen hinzugefügte, geänderte und
 umbenannte direkte sowie verschachtelte Produktionsdateien. Ein
 übersprungener PR-Diff ist kein Mutationsergebnis.
 
-Gezielte Regressionen fanden drei weitere Randfehler: geklammerte
-IPv4-/DNS-Autoritäten, NUL-Bytes in A-/AAAA-Resolverdatensätzen und einen
-Lease ohne Request. Die freigegebenen minimalen Korrekturen weisen jeden
-Fall an seiner Grenze mit dem dokumentierten Grund zurück. Normale
-Adress- und Lifecycle-Positivfälle bleiben erhalten. Die frühere
-CIDR-NUL-Lexemkorrektur ist ein eigener historischer Fix. Fehlerhafte
-Offline-Datensätze belegen keinen nativen DNS-Exploit; ABI-Doubles keinen
+Gezielte Regressionen fanden drei weitere Randfehler: geklammerte IPv4-/DNS-Autoritäten, NUL-Bytes in
+A-/AAAA-Resolverdatensätzen und einen Lease ohne Request. Die freigegebenen minimalen Korrekturen weisen
+jeden Fall an seiner Grenze mit dem dokumentierten Grund zurück. Normale Adress- und
+Lifecycle-Positivfälle bleiben erhalten. Die frühere CIDR-NUL-Lexemkorrektur ist ein eigener
+historischer Fix. Fehlerhafte Offline-Datensätze belegen keinen nativen DNS-Exploit; ABI-Doubles keinen
 nativen Wire-Transfer.
 
-Die integrierte Offline-Suite besteht je **1.535 Unit-Tests mit 7.199
-Assertions** auf echten Core-13.4.36-/Guzzle-7.15.5- und
-Core-14.3.8-/Guzzle-8.2.0-Graphen unter PHP 8.5.11. Diese lokalen Unit-Läufe
-sind getrennt von nativer Wire- und Gesamtmutationsqualifikation.
-Abgeschlossene Level-10-Prüfungen für Kern/Core 13/14, Architektur und Rector
-sind sauber. Die Stilprüfung findet keine Änderungen in 143 Extension-/Test-/
-Tool- und 53 MIT-Kern-Dateien. Alle 173 aktuellen Unit-Eingaben bleiben
-bytegleich; frühere Scannerkommentare behalten ihre AST-/Bytebindungen.
-Der vollständige Qualitätslauf und 118 Tool-Kontrollen bestehen bei 850
-unveränderten Arbeitsdateien und 21.601 unveränderten Vendor-Dateien vor
-Erzeugung der Abschlussberichte. Im früheren 280-Dateien-Beleg fehlen
-Mutation-Bootstrap, Agentenanweisungen und Forschungsquellen. Öffentliche
-Ableitungen bewahren den Rohhash und den vollständigen ursprünglichen
-JSON-Wert; ihre Bytes sind keine Originalaufzeichnungen.
+Die integrierte Offline-Suite besteht je **1.535 Unit-Tests mit 7.199 Assertions** auf echten
+Core-13.4.36-/Guzzle-7.15.5- und Core-14.3.8-/Guzzle-8.2.0-Graphen unter PHP 8.5.11. Diese lokalen
+Unit-Läufe sind getrennt von nativer Wire- und Gesamtmutationsqualifikation. Abgeschlossene
+Level-10-Prüfungen für Kern/Core 13/14, Architektur und Rector sind sauber. Die Stilprüfung findet keine
+Änderungen in 143 Extension-/Test-/ Tool- und 53 MIT-Kern-Dateien. Alle 173 aktuellen Unit-Eingaben
+bleiben bytegleich; frühere Scannerkommentare behalten ihre AST-/Bytebindungen. Der vollständige
+Qualitätslauf und 118 Tool-Kontrollen bestehen bei 850 unveränderten Arbeitsdateien und 21.601
+unveränderten Vendor-Dateien vor Erzeugung der Abschlussberichte. Im früheren 280-Dateien-Beleg fehlen
+Mutation-Bootstrap, Agentenanweisungen und Forschungsquellen. Öffentliche Ableitungen bewahren den
+Rohhash und den vollständigen ursprünglichen JSON-Wert; ihre Bytes sind keine Originalaufzeichnungen.
 
 Frühere Gesamtmessungen behalten ihren Umfang: 66,07 %/73,47 % bei 420
 Eingaben, 86,29 %/88,65 % bei 556 und 89,38 %/91,48 % bei 295. Der Lauf
@@ -190,17 +193,14 @@ mit 261 Eingaben erreicht 90,46 %/91,57 %, enthält aber keine vor dem
 Start erfassten Hashes beider PHP-Einstiegspunkte. Er erfüllt deshalb
 nicht die abschließende Prüfung vollständiger Eingaben.
 
-Die abschließende Messung mit **263 unveränderten Eingaben** liefert
-**3.794 Mutanten, 90,43 % MSI und 91,54 % Covered MSI**, Exit 0 und keine
-übersprungenen oder ignorierten Mutanten. Alle Quell- und 21.601
-Vendor-Dateien stimmen mit ihren Hashes vor dem Start überein. 262 Eingaben
-entsprechen Root; die erzeugte :file:`composer.lock` gehört nur zum
-Prüfstand. Beide PHP-Einstiegspunkte der Extension sind enthalten.
-3.424 Mutanten werden durch Tests erkannt (90,2478 %); 293 bleiben
-unerkannt, 46 ohne Abdeckung. Drei Fehler, vier Syntaxfehler und 24
-Timeouts werden separat ausgewiesen. Das Tool zählt Fehler-/Syntaxfälle
-zum MSI; bei :literal:`--with-timeouts` zählen Timeouts nicht dazu.
-Beide 90-%-Ziele sind erreicht; Rohbelege bewahren Laufzeit und Quellumfang.
+Die abschließende Messung mit **263 unveränderten Eingaben** liefert **3.794 Mutanten, 90,43 % MSI und
+91,54 % Covered MSI**, Exit 0 und keine übersprungenen oder ignorierten Mutanten. Alle Quell- und 21.601
+Vendor-Dateien stimmen mit ihren Hashes vor dem Start überein. 262 Eingaben entsprechen Root; die
+erzeugte :file:`composer.lock` gehört nur zum Prüfstand. Beide PHP-Einstiegspunkte der Extension sind
+enthalten. 3.424 Mutanten werden durch Tests erkannt (90,2478 %); 293 bleiben unerkannt, 46 ohne
+Abdeckung. Drei Fehler, vier Syntaxfehler und 24 Timeouts werden separat ausgewiesen. Das Tool zählt
+Fehler-/Syntaxfälle zum MSI; bei :literal:`--with-timeouts` zählen Timeouts nicht dazu. Beide 90-%-Ziele
+sind erreicht; Rohbelege bewahren Laufzeit und Quellumfang.
 
 Die erste native Initialsuite besteht **389 Tests mit 3.255 Assertions**
 unter PHP 8.5.10/Xdebug 3.5.3/Core 14.3.8/Guzzle 8.2.0. Drei nacheinander

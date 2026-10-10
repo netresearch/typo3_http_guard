@@ -90,7 +90,7 @@ def check():
     require(any(re.search(r'(^|\n)composer check:harness(?:\s|$)', command) for command in run_commands(workflow)),
             'CI must execute the same harness check in a real run step')
     require((ROOT / 'Documentation/Development/Index.rst').is_file()
-            and (ROOT / 'Documentation/Decisions/SingleExtension.rst').is_file(), 'Manual architecture pointers missing')
+            and (ROOT / 'Documentation/Adr/ADR-0015-SingleExtension.rst').is_file(), 'Manual architecture pointers missing')
     require(not (ROOT / 'docs').exists(), 'Use the canonical Documentation/ tree')
     for name, scope in (('php', 'Classes/**/*.php'), ('tests', 'Tests/**/*.php')):
         instruction = ROOT / f'.github/instructions/{name}.instructions.md'

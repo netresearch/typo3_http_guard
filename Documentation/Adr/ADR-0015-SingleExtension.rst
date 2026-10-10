@@ -1,12 +1,13 @@
 .. _decision-single-extension:
+.. _adr-0015:
 
-=========================
-One installable extension
-=========================
+===================================
+ADR-0015: One installable extension
+===================================
 
 :Status: Accepted
 :Date: 2026-10-09
-:Reference: Revises the two-package layout from the original ADR-002
+:Supersedes: ADR-0002, package and publication proposal
 
 .. _decision-single-extension-context:
 
@@ -37,16 +38,34 @@ the dependencies of the official Core archive; Composer projects use their
 project locks. Production constraints use semantic ranges with explicit
 minima and supported majors. Runtime guards check the actual parent API,
 SDK capabilities and middleware inventory. A single-use public cURL factory
-enforces one native attempt per lease independently of private SDK retry
-counters. Fixed Core/SDK fixtures remain reproducible test snapshots; the
-currently tested official Core archives supply the Guzzle 8 graph.
+limits each lease to at most one delegated factory creation, independently
+of private SDK retry counters. Fixed Core/SDK fixtures remain reproducible
+test snapshots; the currently tested official Core archives supply the
+Guzzle 8 graph.
 
 The complete manual, requirements overview and accepted decisions are under
 :file:`Documentation/`; maintained tests and build tools are under
-:file:`Tests/` and :file:`Build/`. Original draft specifications, raw runs and
-the optional foreign Vault overlay are preserved in immutable Git history
-and a verified external archive, rather than another installable package.
+:file:`Tests/` and :file:`Build/`. The numbered historical ADRs remain in
+:ref:`adr-index`. Original Markdown specifications, raw runs and the optional
+foreign Vault overlay remain in immutable Git history and a verified
+external archive, rather than another installable package.
 See :ref:`development-requirements` for the original IDs and current mapping.
+
+The implemented public Core RequestFactory boundary, controlled DNS wire
+backend and single-use SDK factory are detailed in :ref:`adr-0016`,
+:ref:`adr-0017` and :ref:`adr-0018`.
+
+.. _adr-0015-alternatives:
+
+Alternatives considered
+=======================
+
+The separate library and adapter packages proposed in :ref:`adr-0002`
+require separate dependency installation in classic TYPO3 projects.
+The single extension satisfies the requested TER installation path while
+retaining the internal separation between the security kernel and adapter.
+Bundling another vendor tree would duplicate Core dependencies and make
+their maintenance ambiguous; the extension uses the installed Core's graph.
 
 .. _decision-single-extension-consequences:
 

@@ -1,0 +1,159 @@
+{
+  "kind": "actual_post_snapshot_adr_source_review",
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-10T08:25:08.179997+00:00",
+  "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132",
+  "root_writes": false,
+  "review_type": "Two fresh author source-review passes after the ADR-0015 creation-boundary correction, against the separately frozen final 18-record EN/DE tree and unchanged primary implementation; no human security review or new runtime execution claimed",
+  "evaluated_criteria": {
+    "agent-harness/AH-40": {
+      "verdict": "satisfied",
+      "finding_count": 0,
+      "rationale": "The current AGENTS file map and architecture pointers match one extension, its embedded policy kernel and TYPO3 adapter. The canonical Documentation/Adr tree distinguishes the fourteen original proposals from accepted ADR-0015..0018. Their current packaging, public raw-URI factory, numeric DNS wire and single-use transport choices match the inspected primary implementation, including the deliberate private middleware inventory coupling. ADR-0015 now limits delegated factory creation per lease, consistently with ADR-0018, without promising one packet or one pinned-address connection attempt. No remaining concrete contradiction was found."
+    },
+    "enterprise-readiness/ER-45": {
+      "verdict": "satisfied",
+      "finding_count": 0,
+      "rationale": "The actual significant current architecture choices are documented in the canonical Documentation/Adr tree with consistent title, status, context, decision, alternatives and consequences. Accepted ADR-0015..0018 record adopted packaging, public Core RequestFactory validation, bounded DNS wire resolution and single-use native factory/SDK inventory boundaries. The restored ADR-0001..0014 retain historical proposal status and the current Security/Requirements manual qualifies their implementation scope. Fresh follow-up review confirms the original three current-decision gaps remain resolved and the later ADR-0015 creation-boundary overpromise is corrected; restoration alone was not counted as acceptance or implementation."
+    }
+  },
+  "findings": [],
+  "resolved_initial_findings": [
+    "ADR-CURRENT-01",
+    "ADR-CURRENT-02",
+    "ADR-CURRENT-03"
+  ],
+  "resolved_follow_up_findings": [
+    "ADR-CURRENT-04"
+  ],
+  "follow_up_finding_history": {
+    "id": "ADR-CURRENT-04",
+    "topic": "ADR-0015 promised one native attempt rather than one delegated factory creation",
+    "previous_source_binding_sha256": "4fa66b058632d40ae7f14712de48f6b687723d4502d6f31ab03646c67d1b5fc8",
+    "previous_source_review_sha256": "1e2010679bcd91132d5b72156224d2df381106b357dda7d2ae24a0dbacab8ce6",
+    "previous_clean_review_is_not_a_current_verdict_for_the_earlier_overpromise": true,
+    "correction": "Both ADR-0015 locales describe the factory creation boundary. ADR-0018 explicitly retains multiple checked pinned-address attempts and packets within one handle; release cleanup does not reopen the consumed create boundary.",
+    "previous_receipts_and_qualifications_preserved": true,
+    "native_runtime_change_claimed": false
+  },
+  "initial_finding_history": {
+    "path": "adr-assessment-delta/source-review-initial.json",
+    "sha256": "5075dce7570b2805b5b8fa584a2ab3a28e5e411ec2efe515a70e9d823eb97780",
+    "source_binding_sha256": "8c52deabdf46ac9ce4e18ca6a4893ca2f423fa886a1610fdc1a38968a476cc57",
+    "old_15_record_scope_is_preserved": true
+  },
+  "reviewed_significant_topics": [
+    {
+      "topic": "Policy enforcement, address normalization and client-bound grants",
+      "records": [
+        "ADR-0001",
+        "ADR-0004",
+        "ADR-0006",
+        "ADR-0009"
+      ],
+      "current_sources": [
+        "Classes/HttpGuard/PolicyEngine.php",
+        "Classes/HttpGuard/ConnectionPlan.php",
+        "Classes/HttpGuard/TargetNormalizer.php",
+        "Classes/HttpGuard/EndpointGrant.php"
+      ],
+      "qualification": "Historical proposal context is retained; operative enforcement, modes and scope are documented by the current Security manual and inspected implementation."
+    },
+    {
+      "topic": "One installable extension and framework adapter boundary",
+      "records": [
+        "ADR-0002",
+        "ADR-0015",
+        "ADR-0016"
+      ],
+      "current_sources": [
+        "composer.json",
+        "Configuration/Services.yaml",
+        "ext_localconf.php",
+        "Classes/Http/RawRequestFactoryRegistration.php",
+        "Classes/Http/RawRequestGuardTrait.php"
+      ],
+      "qualification": "ADR-0015 records accepted packaging, superseding only ADR-0002; ADR-0016 records the actual public Core raw-URI and identity/ABI boundary."
+    },
+    {
+      "topic": "Controlled DNS protocol, whole answer checking and connection pinning",
+      "records": [
+        "ADR-0005",
+        "ADR-0017"
+      ],
+      "current_sources": [
+        "Classes/Service/LibraryServiceFactory.php",
+        "Classes/HttpGuard/WireDnsQuery.php",
+        "Classes/HttpGuard/DnsPacketCodec.php",
+        "Classes/HttpGuard/StaticThenDnsResolver.php"
+      ],
+      "qualification": "ADR-0017 supersedes only the historical default dns_get_record choice and accurately limits trusted numeric resolver traffic, per-question deadlines, TC-only TCP fallback and total cancellation claims."
+    },
+    {
+      "topic": "Terminal transport, native attempts, SDK inventory, pooling and cache isolation",
+      "records": [
+        "ADR-0003",
+        "ADR-0007",
+        "ADR-0010",
+        "ADR-0018"
+      ],
+      "current_sources": [
+        "Classes/HttpGuard/Transport/SingleUseCurlFactory.php",
+        "Classes/HttpGuard/Transport/TransferLease.php",
+        "Classes/HttpGuard/Transport/RuntimeSupport.php",
+        "Classes/HttpGuard/Client/GuardedClientFactory.php"
+      ],
+      "qualification": "ADR-0018 records the actual public single-use factory fence and its separate deliberate private HandlerStack.stack inspection, including incompatible-shape rejection and lease-local resources."
+    },
+    {
+      "topic": "TLS/credentials, redirects, diagnostics and release/migration scope",
+      "records": [
+        "ADR-0008",
+        "ADR-0011",
+        "ADR-0012",
+        "ADR-0013",
+        "ADR-0014"
+      ],
+      "current_sources": [
+        "Classes/HttpGuard/Transport/TransferLease.php",
+        "Classes/HttpGuard/DecisionReporter.php",
+        "Documentation/Security/Index.rst",
+        "Documentation/Development/Requirements.rst"
+      ],
+      "qualification": "TLS delegates to the qualified platform without a new cryptographic key-management design. Current scope and evidence distinguish actual guarded behavior from the historical optional Vault integration, proposed tests and human approval language. No database migration or new acceptance gate is claimed."
+    }
+  ],
+  "historical_qualification": {
+    "original_records": 14,
+    "original_date": "2026-10-08",
+    "original_status": "Proposed",
+    "partial_supersession": [
+      "ADR-0002 package/publication by ADR-0015",
+      "ADR-0005 default-resolution choice by ADR-0017"
+    ],
+    "accepted_current_records": [
+      {
+        "id": "ADR-0015",
+        "date": "2026-10-09"
+      },
+      {
+        "id": "ADR-0016",
+        "date": "2026-10-10"
+      },
+      {
+        "id": "ADR-0017",
+        "date": "2026-10-10"
+      },
+      {
+        "id": "ADR-0018",
+        "date": "2026-10-10"
+      }
+    ],
+    "historical_proposals_are_not_new_implementation_or_approval_evidence": true,
+    "actual_vault_integration_or_all_original_tests_pass_claimed": false
+  },
+  "source_file_count": 355,
+  "unchanged_production_php_files": 75,
+  "earlier_850_916_quality_and_263_native_receipts_rebound": false,
+  "new_runtime_whole_mechanical_render_or_package_qualification_claimed": false
+}

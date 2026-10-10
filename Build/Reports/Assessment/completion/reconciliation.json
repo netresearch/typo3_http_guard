@@ -28,14 +28,14 @@
       "skip": 10
     },
     "current_verdict_counts": {
-      "satisfied": 437,
-      "satisfied_alternate_evidence": 42,
+      "satisfied": 439,
+      "satisfied_alternate_evidence": 41,
       "not_applicable": 357,
       "external_access_or_publication_gap": 3,
-      "historical_record_retained": 97,
+      "historical_record_retained": 96,
       "criterion_defect": 4
     },
-    "targeted_current_model_reviews": 29,
+    "targeted_current_model_reviews": 30,
     "former_not_applicable_rechecks": 358,
     "missing_or_duplicate_ids": [],
     "all_criteria_passed": false
@@ -234,25 +234,31 @@
       },
       "current_state": {
         "verdict": "satisfied_alternate_evidence",
-        "review_kind": "current_mechanical_and_source_reconciliation",
-        "reviewed_at_utc": "2026-10-10T01:32:45.980136+00:00",
-        "rationale": "The real TYPO3 manual and ADRs are under Documentation; a duplicate docs tree is unnecessary.",
+        "review_kind": "post_snapshot_adr_mechanical_and_source_reconciliation",
+        "reviewed_at_utc": "2026-10-10T08:25:08.179997+00:00",
+        "rationale": "The real TYPO3 manual is under Documentation and its numbered ADRs are under Documentation/Adr. A duplicate docs tree is unnecessary for this literal manual-location check.",
         "evidence": [
           {
             "path": "Documentation/Index.rst",
-            "sha256": "3f8ebbc8a5abd5692177618159af812740d4f65578be8e59ae3e212853b8c094",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "sha256": "fc8c03a50ccb11aaedce542d3d121fb79dab00516fb3bcd4645bb161ef50bb34",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           },
           {
-            "path": "Documentation/Decisions/Index.rst",
-            "sha256": "8b7beb4f44459c2365ee6ecb9414b9667c132a6b17d7def65ef834eb2048910d",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "path": "Documentation/Adr/Index.rst",
+            "sha256": "40f178215dcd71f1b7274cd304901c169f1bee89d3082703797ace95791d9a98",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           }
         ],
         "scope_qualifications": [
-          "The original literal raw failure/skip remains unchanged; equivalent requirement evidence is a separate judgment, not a synthetic raw pass."
+          "This current-state correction has its own post-snapshot ADR source binding; it does not relabel the original 850-file mechanical or later quality captures.",
+          "The original baseline, frozen judgment and raw result remain preserved. TD-49's incorrect earlier directory judgment is explicitly withdrawn in post_snapshot_adr_correction.",
+          "No new whole-repository, Unit, Native, render or package execution is inferred from this targeted source review."
         ]
       }
     },
@@ -345,25 +351,31 @@
       },
       "current_state": {
         "verdict": "satisfied_alternate_evidence",
-        "review_kind": "current_mechanical_and_source_reconciliation",
-        "reviewed_at_utc": "2026-10-10T01:32:45.980136+00:00",
-        "rationale": "The real TYPO3 manual and ADRs are under Documentation; a duplicate docs tree is unnecessary.",
+        "review_kind": "post_snapshot_adr_mechanical_and_source_reconciliation",
+        "reviewed_at_utc": "2026-10-10T08:25:08.179997+00:00",
+        "rationale": "The canonical TYPO3 manual contains the security architecture and numbered ADRs. These real sources satisfy architecture documentation without a duplicate docs/ARCHITECTURE.md.",
         "evidence": [
           {
-            "path": "Documentation/Index.rst",
-            "sha256": "3f8ebbc8a5abd5692177618159af812740d4f65578be8e59ae3e212853b8c094",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "path": "Documentation/Security/Index.rst",
+            "sha256": "b8e245a304f835739b8587fe07e482cc30a6e1c4eb3f6969fedf1d26cb618382",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           },
           {
-            "path": "Documentation/Decisions/Index.rst",
-            "sha256": "8b7beb4f44459c2365ee6ecb9414b9667c132a6b17d7def65ef834eb2048910d",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "path": "Documentation/Adr/Index.rst",
+            "sha256": "40f178215dcd71f1b7274cd304901c169f1bee89d3082703797ace95791d9a98",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           }
         ],
         "scope_qualifications": [
-          "The original literal raw failure/skip remains unchanged; equivalent requirement evidence is a separate judgment, not a synthetic raw pass."
+          "This current-state correction has its own post-snapshot ADR source binding; it does not relabel the original 850-file mechanical or later quality captures.",
+          "The original baseline, frozen judgment and raw result remain preserved. TD-49's incorrect earlier directory judgment is explicitly withdrawn in post_snapshot_adr_correction.",
+          "No new whole-repository, Unit, Native, render or package execution is inferred from this targeted source review."
         ]
       }
     },
@@ -60750,44 +60762,23 @@
       },
       "current_state": {
         "verdict": "satisfied_alternate_evidence",
-        "review_kind": "current_mechanical_and_source_reconciliation",
-        "reviewed_at_utc": "2026-10-10T01:32:45.980136+00:00",
-        "rationale": "Introduction, usage, developer guidance and ADRs are real navigable chapters under equivalent valid names, including Documentation/Decisions; fixed folder-name tests miss those actual sources. Final rendering is not inferred from earlier rendered bytes.",
+        "review_kind": "post_snapshot_adr_mechanical_and_source_reconciliation",
+        "reviewed_at_utc": "2026-10-10T08:25:08.179997+00:00",
+        "rationale": "The top-level manual introduces the product, safe default, scope and installation route. That actual introductory content is the alternative to a literal Introduction folder; this judgment makes no ADR-directory claim.",
         "evidence": [
           {
             "path": "Documentation/Index.rst",
-            "sha256": "3f8ebbc8a5abd5692177618159af812740d4f65578be8e59ae3e212853b8c094",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
-          },
-          {
-            "path": "Documentation/Api/Index.rst",
-            "sha256": "99a69945ca99cbe2e9654e3a942c9e91d68e9e50ffd634b82ca86271da124a98",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
-          },
-          {
-            "path": "Documentation/Development/Index.rst",
-            "sha256": "83443ed6102cb34edd4910411e48c5a0461a84500fa2164312044b145f449dff",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
-          },
-          {
-            "path": "Documentation/Decisions/Index.rst",
-            "sha256": "8b7beb4f44459c2365ee6ecb9414b9667c132a6b17d7def65ef834eb2048910d",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
-          },
-          {
-            "path": "current-evidence/docs-render-verification.json",
-            "original_work_path": "docs-render-verification.json",
-            "sha256": "db4bc036f0555a6e92193807ea2ce713c3a668ff66a6c233d6edadac64aaa72a",
-            "file_mtime_utc": "2026-10-09T20:46:11.871760+00:00",
-            "kind": "recorded_execution"
+            "sha256": "fc8c03a50ccb11aaedce542d3d121fb79dab00516fb3bcd4645bb161ef50bb34",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           }
         ],
         "scope_qualifications": [
-          "The original literal raw failure/skip remains unchanged; equivalent requirement evidence is a separate judgment, not a synthetic raw pass."
+          "This current-state correction has its own post-snapshot ADR source binding; it does not relabel the original 850-file mechanical or later quality captures.",
+          "The original baseline, frozen judgment and raw result remain preserved. TD-49's incorrect earlier directory judgment is explicitly withdrawn in post_snapshot_adr_correction.",
+          "No new whole-repository, Unit, Native, render or package execution is inferred from this targeted source review."
         ]
       }
     },
@@ -60932,44 +60923,63 @@
       },
       "current_state": {
         "verdict": "satisfied_alternate_evidence",
-        "review_kind": "current_mechanical_and_source_reconciliation",
-        "reviewed_at_utc": "2026-10-10T01:32:45.980136+00:00",
-        "rationale": "Introduction, usage, developer guidance and ADRs are real navigable chapters under equivalent valid names, including Documentation/Decisions; fixed folder-name tests miss those actual sources. Final rendering is not inferred from earlier rendered bytes.",
+        "review_kind": "post_snapshot_adr_mechanical_and_source_reconciliation",
+        "reviewed_at_utc": "2026-10-10T08:25:08.179997+00:00",
+        "rationale": "Introduction, installation, configuration, API usage, development and operations/troubleshooting are present in the real navigable manual. This required-section review is independent of the separately corrected ADR-directory checkpoint.",
         "evidence": [
           {
             "path": "Documentation/Index.rst",
-            "sha256": "3f8ebbc8a5abd5692177618159af812740d4f65578be8e59ae3e212853b8c094",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "sha256": "fc8c03a50ccb11aaedce542d3d121fb79dab00516fb3bcd4645bb161ef50bb34",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
+          },
+          {
+            "path": "Documentation/Installation/Index.rst",
+            "sha256": "804efafdf38dde8ef96279b68d432a43c1fe5a161fa8d7947d46a15362e60773",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
+          },
+          {
+            "path": "Documentation/Configuration/Index.rst",
+            "sha256": "b83bb9ce7906132f01fc2802fa912136c1e0a4c59760b32076c0f9d0e91aae5e",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           },
           {
             "path": "Documentation/Api/Index.rst",
             "sha256": "99a69945ca99cbe2e9654e3a942c9e91d68e9e50ffd634b82ca86271da124a98",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           },
           {
             "path": "Documentation/Development/Index.rst",
-            "sha256": "83443ed6102cb34edd4910411e48c5a0461a84500fa2164312044b145f449dff",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "sha256": "f95bd78a4fb1788b0121362c3a789dad17ed895dc2aab1eaab0de43da6545456",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           },
           {
-            "path": "Documentation/Decisions/Index.rst",
-            "sha256": "8b7beb4f44459c2365ee6ecb9414b9667c132a6b17d7def65ef834eb2048910d",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
-          },
-          {
-            "path": "current-evidence/docs-render-verification.json",
-            "original_work_path": "docs-render-verification.json",
-            "sha256": "db4bc036f0555a6e92193807ea2ce713c3a668ff66a6c233d6edadac64aaa72a",
-            "file_mtime_utc": "2026-10-09T20:46:11.871760+00:00",
-            "kind": "recorded_execution"
+            "path": "Documentation/Operations/Index.rst",
+            "sha256": "fab3de0e96c7caf18805231c6efb6a3320824f748e72b5c1a14bea1250c76306",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           }
         ],
         "scope_qualifications": [
-          "The original literal raw failure/skip remains unchanged; equivalent requirement evidence is a separate judgment, not a synthetic raw pass."
+          "This current-state correction has its own post-snapshot ADR source binding; it does not relabel the original 850-file mechanical or later quality captures.",
+          "The original baseline, frozen judgment and raw result remain preserved. TD-49's incorrect earlier directory judgment is explicitly withdrawn in post_snapshot_adr_correction.",
+          "No new whole-repository, Unit, Native, render or package execution is inferred from this targeted source review."
         ]
       }
     },
@@ -61563,45 +61573,34 @@
         "source_head": "c823234e75ae65dabfe1a70861c2ff60e506f9a3"
       },
       "current_state": {
-        "verdict": "satisfied_alternate_evidence",
-        "review_kind": "current_mechanical_and_source_reconciliation",
-        "reviewed_at_utc": "2026-10-10T01:32:45.980136+00:00",
-        "rationale": "Introduction, usage, developer guidance and ADRs are real navigable chapters under equivalent valid names, including Documentation/Decisions; fixed folder-name tests miss those actual sources. Final rendering is not inferred from earlier rendered bytes.",
+        "verdict": "satisfied",
+        "review_kind": "post_snapshot_adr_mechanical_and_source_reconciliation",
+        "reviewed_at_utc": "2026-10-10T08:25:08.179997+00:00",
+        "rationale": "The earlier Decisions-directory alternative was incorrect and is withdrawn. The canonical Documentation/Adr tree now contains ADR-0001 through ADR-0018; the actual separately source-bound official directory checkpoint exits0.",
         "evidence": [
           {
-            "path": "Documentation/Index.rst",
-            "sha256": "3f8ebbc8a5abd5692177618159af812740d4f65578be8e59ae3e212853b8c094",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "path": "Documentation/Adr/Index.rst",
+            "sha256": "40f178215dcd71f1b7274cd304901c169f1bee89d3082703797ace95791d9a98",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           },
           {
-            "path": "Documentation/Api/Index.rst",
-            "sha256": "99a69945ca99cbe2e9654e3a942c9e91d68e9e50ffd634b82ca86271da124a98",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "path": "current-evidence/adr-restoration/actual-checks.json",
+            "sha256": "dfd2b57f29e642c1840b25de2cd92aa0a9096510e5ceddb69fb0b54e6bd9a260",
+            "kind": "post_snapshot_adr_checkpoint_execution"
           },
           {
-            "path": "Documentation/Development/Index.rst",
-            "sha256": "83443ed6102cb34edd4910411e48c5a0461a84500fa2164312044b145f449dff",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
-          },
-          {
-            "path": "Documentation/Decisions/Index.rst",
-            "sha256": "8b7beb4f44459c2365ee6ecb9414b9667c132a6b17d7def65ef834eb2048910d",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
-          },
-          {
-            "path": "current-evidence/docs-render-verification.json",
-            "original_work_path": "docs-render-verification.json",
-            "sha256": "db4bc036f0555a6e92193807ea2ce713c3a668ff66a6c233d6edadac64aaa72a",
-            "file_mtime_utc": "2026-10-09T20:46:11.871760+00:00",
+            "path": "current-evidence/adr-restoration/td-49.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
             "kind": "recorded_execution"
           }
         ],
         "scope_qualifications": [
-          "The original literal raw failure/skip remains unchanged; equivalent requirement evidence is a separate judgment, not a synthetic raw pass."
+          "This current-state correction has its own post-snapshot ADR source binding; it does not relabel the original 850-file mechanical or later quality captures.",
+          "The original baseline, frozen judgment and raw result remain preserved. TD-49's incorrect earlier directory judgment is explicitly withdrawn in post_snapshot_adr_correction.",
+          "No new whole-repository, Unit, Native, render or package execution is inferred from this targeted source review."
         ]
       }
     },
@@ -65743,29 +65742,44 @@
       "current_state": {
         "verdict": "satisfied",
         "review_kind": "current_targeted_agent_source_review",
-        "reviewed_at_utc": "2026-10-10T01:32:45.980136+00:00",
-        "rationale": "The guide matches one extension with an embedded TYPO3-independent kernel, actual configuration/API/transport boundaries, source paths and fixed security invariants.",
+        "reviewed_at_utc": "2026-10-10T08:25:08.179997+00:00",
+        "rationale": "The current AGENTS file map and architecture pointers match one extension, its embedded policy kernel and TYPO3 adapter. The canonical Documentation/Adr tree distinguishes the fourteen original proposals from accepted ADR-0015..0018. Their current packaging, public raw-URI factory, numeric DNS wire and single-use transport choices match the inspected primary implementation, including the deliberate private middleware inventory coupling. ADR-0015 now limits delegated factory creation per lease, consistently with ADR-0018, without promising one packet or one pinned-address connection attempt. No remaining concrete contradiction was found.",
         "evidence": [
           {
             "path": "AGENTS.md",
-            "sha256": "36b3fc598addb25a0b1d3f67e7678d1d17ac336fa757e68dca3ab4d532e1449e",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "sha256": "c805c4a95aa508dfe3ed2ff7e39e9430e2515cca6740c627513a24b2035e4e83",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           },
           {
-            "path": "Documentation/Decisions/SingleExtension.rst",
-            "sha256": "3d7d5629b8ee9c930444410ac39b10c12955d605b16d9ed1f6e87cd6a0fbbb88",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "path": "Documentation/Adr/ADR-0015-SingleExtension.rst",
+            "sha256": "45ca618bac0cc2e5140c63eb3434ddcc94572b0b303f7890b46a7e954534421b",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
           },
           {
             "path": "Configuration/Services.yaml",
             "sha256": "84a996ce172b6373b8f9016f4a073dc7cb6e24d6d08b24abe89d99b473890130",
-            "captured_at_utc": "2026-10-10T00:46:54.085563+00:00",
-            "kind": "snapshot_source"
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
+          },
+          {
+            "path": "current-evidence/adr-restoration/source-review.json",
+            "sha256": "f6040fc8e3b6aef6ad068be84e83876d93a95c98fe77142edffd414b626c177d",
+            "kind": "post_snapshot_adr_targeted_source_review"
           }
         ],
-        "scope_qualifications": []
+        "scope_qualifications": [
+          "This current-state correction has its own post-snapshot ADR source binding; it does not relabel the original 850-file mechanical or later quality captures.",
+          "The original baseline, frozen judgment and raw result remain preserved. TD-49's incorrect earlier directory judgment is explicitly withdrawn in post_snapshot_adr_correction.",
+          "No new whole-repository, Unit, Native, render or package execution is inferred from this targeted source review."
+        ]
       }
     },
     {
@@ -77887,21 +77901,61 @@
         "reason": "Model history or misplaced executable catalog definition is separate from mechanical results"
       },
       "current_state": {
-        "verdict": "historical_record_retained",
-        "review_kind": "historical_model_evidence_not_reexecuted",
-        "reviewed_at_utc": "2026-10-10T01:32:45.980136+00:00",
-        "rationale": "Fourteen historical normative ADRs remain preserved and the active single-extension decision explains current packaging context, decision and consequences without rewriting older evidence.",
+        "verdict": "satisfied",
+        "review_kind": "current_targeted_agent_source_review",
+        "reviewed_at_utc": "2026-10-10T08:25:08.179997+00:00",
+        "rationale": "The actual significant current architecture choices are documented in the canonical Documentation/Adr tree with consistent title, status, context, decision, alternatives and consequences. Accepted ADR-0015..0018 record adopted packaging, public Core RequestFactory validation, bounded DNS wire resolution and single-use native factory/SDK inventory boundaries. The restored ADR-0001..0014 retain historical proposal status and the current Security/Requirements manual qualifies their implementation scope. Fresh follow-up review confirms the original three current-decision gaps remain resolved and the later ADR-0015 creation-boundary overpromise is corrected; restoration alone was not counted as acceptance or implementation.",
         "evidence": [
           {
-            "path": "current-evidence/inventory.json",
-            "original_work_path": "inventory.json",
-            "sha256": "fd2b0df7c7b532269929804a39441b55dfeb5272a40231e8b06ef7d613e9f767",
-            "file_mtime_utc": "2026-10-09T19:19:39.162355+00:00",
-            "kind": "immutable_historical_inventory"
+            "path": "Documentation/Adr/Index.rst",
+            "sha256": "40f178215dcd71f1b7274cd304901c169f1bee89d3082703797ace95791d9a98",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
+          },
+          {
+            "path": "Documentation/Adr/ADR-0015-SingleExtension.rst",
+            "sha256": "45ca618bac0cc2e5140c63eb3434ddcc94572b0b303f7890b46a7e954534421b",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
+          },
+          {
+            "path": "Documentation/Adr/ADR-0016-PublicRequestFactoryBoundary.rst",
+            "sha256": "526c63a7ce0124464232eb8b9c68c6a2a1d942ed46ce431d547741aed1e7a245",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
+          },
+          {
+            "path": "Documentation/Adr/ADR-0017-ControlledDnsWireResolution.rst",
+            "sha256": "3dc60712a6d2f34fc05789023c4e4249b9343be7530d67023f78f1f811bd8949",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
+          },
+          {
+            "path": "Documentation/Adr/ADR-0018-SingleUseCurlFactory.rst",
+            "sha256": "cbe4c22d6eb43534cfe77c92d28e21b340efa609284d6a58d4a0d6df1dc39777",
+            "kind": "post_snapshot_adr_source",
+            "captured_at_utc": "2026-10-10T08:23:49.108928+00:00",
+            "source_binding_path": "current-evidence/adr-restoration/source-binding.json",
+            "source_binding_sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132"
+          },
+          {
+            "path": "current-evidence/adr-restoration/source-review.json",
+            "sha256": "f6040fc8e3b6aef6ad068be84e83876d93a95c98fe77142edffd414b626c177d",
+            "kind": "post_snapshot_adr_targeted_source_review"
           }
         ],
         "scope_qualifications": [
-          "The original model record is preserved with its original source and outcome. This row does not claim a fresh model execution. Changed applicable/open and changed-N/A models are separately revalidated."
+          "This current-state correction has its own post-snapshot ADR source binding; it does not relabel the original 850-file mechanical or later quality captures.",
+          "The original baseline, frozen judgment and raw result remain preserved. TD-49's incorrect earlier directory judgment is explicitly withdrawn in post_snapshot_adr_correction.",
+          "No new whole-repository, Unit, Native, render or package execution is inferred from this targeted source review."
         ]
       }
     },
@@ -85001,5 +85055,79 @@
     },
     "controls": 19,
     "qualification": "Offline pure-data controls use the actual263 start and850 mechanical inventories, the actual completed263 end/result and explicitly copied abstract endpoint fixtures. They reject missing/changed vendor and source maps, count/confirmation mismatches, shared-source differences, missing/changed installed metadata or fabricated mechanical vendor records, unclassified snapshot inputs, absent entry-point hashes and the real historical261 incomplete binding. They execute no Native workload and assign no score."
+  },
+  "post_snapshot_adr_correction": {
+    "schema_version": 1,
+    "corrected_at_utc": "2026-10-10T08:27:22.820201+00:00",
+    "affected_ids": [
+      "agent-harness/AH-04",
+      "agent-harness/AH-11",
+      "agent-harness/AH-40",
+      "enterprise-readiness/ER-45",
+      "typo3-docs/TD-17",
+      "typo3-docs/TD-44",
+      "typo3-docs/TD-49"
+    ],
+    "previous_reconciliation_sha256": "3c1957234c068e2c3cbeca11b26b1c3763d03a4540505227624d53a14eae3ad6",
+    "withdrawn_judgment": {
+      "skill": "typo3-docs",
+      "id": "TD-49",
+      "previous_verdict": "satisfied_alternate_evidence",
+      "previous_rationale": "Introduction, usage, developer guidance and ADRs are real navigable chapters under equivalent valid names, including Documentation/Decisions; fixed folder-name tests miss those actual sources. Final rendering is not inferred from earlier rendered bytes.",
+      "reason": "Documentation/Decisions is not an accepted directory in the actual official checkpoint. The earlier alternate-evidence judgment was wrong, not a false positive or criterion defect.",
+      "also_withdraws_same_historical_inventory_rationale_without_rewriting_capture": true,
+      "immutable_inventory_sha256": "fd2b0df7c7b532269929804a39441b55dfeb5272a40231e8b06ef7d613e9f767",
+      "unchanged_raw_file_sha256": "f3759899ebe4216d6e401001b52dd9f0bafa2db30a176e18372a9a03ec132cbe"
+    },
+    "source_binding": {
+      "path": "current-evidence/adr-restoration/source-binding.json",
+      "sha256": "38af2c4ba3c05f37fa590548bf2070b82d0c670509010bba6f6a7d769cd8e132",
+      "kind": "post_snapshot_adr_source_binding"
+    },
+    "actual_checkpoint_and_harness_checks": {
+      "path": "current-evidence/adr-restoration/actual-checks.json",
+      "sha256": "dfd2b57f29e642c1840b25de2cd92aa0a9096510e5ceddb69fb0b54e6bd9a260",
+      "kind": "post_snapshot_adr_checkpoint_execution"
+    },
+    "actual_current_architecture_reviews": {
+      "path": "current-evidence/adr-restoration/source-review.json",
+      "sha256": "f6040fc8e3b6aef6ad068be84e83876d93a95c98fe77142edffd414b626c177d",
+      "kind": "post_snapshot_adr_targeted_source_review"
+    },
+    "resolved_current_decision_gaps": [
+      "ADR-CURRENT-01",
+      "ADR-CURRENT-02",
+      "ADR-CURRENT-03"
+    ],
+    "historical_proposals": "ADR-0001..ADR-0014 remain historical Proposed records; ADR-0002 packaging is superseded by ADR-0015 and ADR-0005 default-resolution choice by ADR-0017. Original text, dates and statuses remain explicit.",
+    "accepted_current_records": "ADR-0015 (2026-10-09) and ADR-0016..ADR-0018 (2026-10-10) record actual adopted architecture within user-authorized alpha scope; no human security approval is fabricated.",
+    "earlier_850_and_916_quality_and_263_native_captures_rebound": false,
+    "historical_755_raw_counts_preserved": {
+      "pass": 690,
+      "fail": 55,
+      "skip": 10
+    },
+    "targeted_model_count_explanation": "AH-40 refresh replaces one of the existing29 current reviews. ER-45 is newly reviewed against current source, increasing29 to30 and leaving96 preserved historical verdicts.",
+    "render_and_package_qualification": "This fresh ADR-0015 precision binding follows the completed local 177-file/75-page receipt only as an earlier source qualification. Final corrected rendering/package qualification is separate; no new render, package or installation execution is inferred here.",
+    "follow_up_adr15_precision_correction": {
+      "finding_id": "ADR-CURRENT-04",
+      "previous_integrated_adr_release_sha256": "b4a14ca2d6ba9d84623e8d26251952c46fa9beca0cd6cf325a065e924037c28a",
+      "previous_reconciliation_sha256": "df4d656938d7d0ef86c871aff413267eb339bd453cf40bd3398bfefea28a917e",
+      "previous_355_source_binding_sha256": "4fa66b058632d40ae7f14712de48f6b687723d4502d6f31ab03646c67d1b5fc8",
+      "previous_355_review_sha256": "1e2010679bcd91132d5b72156224d2df381106b357dda7d2ae24a0dbacab8ce6",
+      "changed_source_paths": [
+        "Documentation/Adr/ADR-0015-SingleExtension.rst",
+        "Documentation/Localization.de_DE/Adr/ADR-0015-SingleExtension.rst"
+      ],
+      "withdrawn_claim": "ADR-0015 previously promised one native attempt per lease. That overpromise and the earlier clean review as support for it are withdrawn.",
+      "corrected_scope": "At most one delegated factory creation per lease; multiple checked pinned-address attempts or packets inside one handle remain possible, as ADR-0018 explains.",
+      "resolved_follow_up_findings": [
+        "ADR-CURRENT-04"
+      ],
+      "prior_177_75_qualification_receipt_sha256": "05ea249f0c3fa2a620de779f88489575b41aeaafcf7812f0caaad111d2316732",
+      "previous_proposals_captures_and_qualifications_preserved": true,
+      "earlier_runtime_native_unit_or_quality_receipts_rebound": false,
+      "current_targeted_model_review_count_unchanged": 30
+    }
   }
 }
