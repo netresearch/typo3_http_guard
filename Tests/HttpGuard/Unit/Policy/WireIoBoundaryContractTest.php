@@ -24,7 +24,7 @@ final class WireIoBoundaryContractTest extends TestCase
     #[DataProvider('nativeFailures')]
     public function testNativeFailureRejectsResolutionAndClosesOnlyCreatedSocket(string $fault, int $closed): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         State::$fault = $fault;
         try {
             (new WireDnsQuery(['127.0.0.1'], 5353, 0.02))->query('wire.example.', 1);
@@ -65,7 +65,7 @@ final class WireIoBoundaryContractTest extends TestCase
     #[DataProvider('responseFailures')]
     public function testIncompleteResponseNeverBecomesVerified(string $fault, int $closed): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         State::$fault = $fault;
         try {
             (new WireDnsQuery(['127.0.0.1'], 5353, 0.02))->query('wire.example.', 1);
@@ -89,7 +89,7 @@ final class WireIoBoundaryContractTest extends TestCase
 
     public function testCompleteUdpAnswerUsesNumericAuthorityAndIsClosed(): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         $answer = (new WireDnsQuery(['::1'], 5353, 0.02))->query('wire.example.', 1);
         self::assertTrue($answer->complete);
         self::assertSame('dns', $answer->source);
@@ -103,7 +103,7 @@ final class WireIoBoundaryContractTest extends TestCase
 
     public function testTcpLengthPrefixAndFragmentedIoProduceCompleteAnswer(): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         State::$fault = 'tcp-fragments';
         $answer       = (new WireDnsQuery(['127.0.0.1'], 5353, 0.02))->query('wire.example.', 1);
         self::assertTrue($answer->complete);
@@ -116,7 +116,7 @@ final class WireIoBoundaryContractTest extends TestCase
 
     public function testFailureAtOneNameserverContinuesToNextWithoutNativeFallback(): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         State::$fault = 'first-socket';
         $answer       = (new WireDnsQuery(['127.0.0.1', '::1'], 5353, 0.02))->query('wire.example.', 1);
         self::assertSame('203.0.115.7', $answer->records[0]['ip']);
@@ -149,7 +149,7 @@ final class WireIoBoundaryContractTest extends TestCase
 
     public function testDefaultPortAndNonblockingReadinessRespectRealBoundedTimeBudget(): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         (new WireDnsQuery(['::1'], queryTimeoutSeconds: 2.5))->query('wire.example.', 1);
         self::assertSame(['udp://[::1]:53'], State::$authorities);
         self::assertSame([false], State::$blocking);
@@ -168,7 +168,7 @@ final class WireIoBoundaryContractTest extends TestCase
 
     public function testThreeNameserversAndBoundaryPortsRemainValid(): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         State::$fault = 'socket';
         foreach ([1, 65535] as $port) {
             try {
@@ -183,7 +183,7 @@ final class WireIoBoundaryContractTest extends TestCase
 
     public function testResolutionLimitCannotBeRetriedAsAnOrdinaryNameserverFailure(): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         State::$fault = 'record-limit';
         try {
             (new WireDnsQuery(['127.0.0.1', '::1'], 5353))->query('wire.example.', 1);
@@ -197,7 +197,7 @@ final class WireIoBoundaryContractTest extends TestCase
 
     public function testSystemResolverParsesOnlyNumericServersAndCachesValidatedConfiguration(): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         State::$fault = 'socket';
         $path         = tempnam(sys_get_temp_dir(), 'wire-contract-');
         self::assertIsString($path);
@@ -230,7 +230,7 @@ final class WireIoBoundaryContractTest extends TestCase
     #[DataProvider('invalidResolverFiles')]
     public function testSystemResolverRejectsMalformedOrUnboundedFilesBeforeSocket(string $text): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         $path = tempnam(sys_get_temp_dir(), 'wire-contract-');
         self::assertIsString($path);
         try {
@@ -268,7 +268,7 @@ final class WireIoBoundaryContractTest extends TestCase
 
     public function testExactly65536ByteResolverFileRemainsBoundedAndUsable(): void
     {
-        require __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
         $path = tempnam(sys_get_temp_dir(), 'wire-contract-');
         self::assertIsString($path);
         try {

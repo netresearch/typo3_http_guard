@@ -29,7 +29,7 @@ final class AddressRulesBoundaryContractTest extends TestCase
             512,
             JSON_THROW_ON_ERROR,
         );
-        require __DIR__ . '/Fixtures/AddressRulesBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/AddressRulesBoundaryShim.php';
         if ($case === 'missing') {
             State::$exists = false;
         } elseif ($case === 'unreadable') {
@@ -137,7 +137,7 @@ final class AddressRulesBoundaryContractTest extends TestCase
     public function testCompleteTrustedBundleKeepsPublicPrivateAndHardDeniedClassification(): void
     {
         $payload = file_get_contents(dirname(__DIR__, 4) . '/Resources/Private/HttpGuard/data/security-corpus/address-rules.json');
-        require __DIR__ . '/Fixtures/AddressRulesBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/AddressRulesBoundaryShim.php';
         State::$payload = $payload;
         $classifier     = new AddressClassifier();
         self::assertTrue($classifier->classify('203.0.115.7')->public);
@@ -148,7 +148,7 @@ final class AddressRulesBoundaryContractTest extends TestCase
 
     public function testTrustedRuleFingerprintChangesPolicyRevisionWithoutChangingOperatorData(): void
     {
-        require __DIR__ . '/Fixtures/AddressRulesBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/AddressRulesBoundaryShim.php';
         $first            = \Netresearch\HttpGuard\GuardConfig::fromArray([]);
         State::$rulesHash = str_repeat('b', 64);
         $second           = \Netresearch\HttpGuard\GuardConfig::fromArray([]);
@@ -162,7 +162,7 @@ final class AddressRulesBoundaryContractTest extends TestCase
 
     public function testUnreadableRuleFingerprintFailsClosedBeforeConfigurationIsIssued(): void
     {
-        require __DIR__ . '/Fixtures/AddressRulesBoundaryShim.php';
+        require_once __DIR__ . '/Fixtures/AddressRulesBoundaryShim.php';
         State::$rulesHash = false;
         $this->expectException(PolicyException::class);
         $this->expectExceptionMessage('configuration_invalid');
