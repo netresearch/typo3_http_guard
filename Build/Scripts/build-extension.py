@@ -19,17 +19,20 @@ DOC_EDITOR_CONFIGS = {'Documentation/.editorconfig',
                       'Documentation/Localization.de_DE/.editorconfig'}
 
 def declared_editor_config_exclusions(attributes):
+    """Select the two known editor configs with exact export-ignore declarations."""
     statements = {tuple(line.split()) for line in attributes.splitlines()}
     return {name for name in DOC_EDITOR_CONFIGS
             if (('/' + name).encode('utf-8'), b'export-ignore') in statements}
 
 def is_runtime_asset(path):
+    """Include corpus assets only when they belong to the fixed runtime allowlist."""
     name = str(path.relative_to(ROOT))
     if name.startswith(CORPUS):
         return name[len(CORPUS):] in CORPUS_FILES
     return True
 
 def read_git(*arguments):
+    """Read source Git objects without allowing replacement references."""
     return subprocess.run(['git', '--no-replace-objects', '-C', str(ROOT), *arguments],
                           check=True, stdout=subprocess.PIPE).stdout
 

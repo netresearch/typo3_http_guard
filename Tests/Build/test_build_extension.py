@@ -14,7 +14,10 @@ BUILDER = Path(__file__).resolve().parents[2] / 'Build/Scripts/build-extension.p
 
 
 class ReleasedPackageDataTest(unittest.TestCase):
+    """Exercise immutable package reads using an isolated hostile source fixture."""
+
     def setUp(self):
+        """Commit hostile historical data, then install the trusted verifier locally."""
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.directory = Path(self.temporary.name)
@@ -65,18 +68,21 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.output = self.directory / 'package.zip'
 
     def git(self, *arguments, data=None):
+        """Run a checked Git operation within the disposable fixture repository."""
         return subprocess.run(
             ['git', '-C', str(self.source), *arguments], input=data,
             stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True,
         ).stdout.strip()
 
     def commit(self, already_staged=False):
+        """Commit the fixture's staged data and return its immutable source SHA."""
         if not already_staged:
             self.git('add', '--all')
         self.git('commit', '--quiet', '-m', 'Isolated package fixture')
         return self.git('rev-parse', 'HEAD').decode()
 
     def build(self, revision=None):
+        """Run the trusted verifier against selected source data and capture its exit."""
         self.output.unlink(missing_ok=True)
         return subprocess.run(
             ['python3', str(self.builder), '--source-revision',
@@ -85,10 +91,12 @@ class ReleasedPackageDataTest(unittest.TestCase):
         )
 
     def read_package(self):
+        """Read all package members as bytes without extracting or executing them."""
         with zipfile.ZipFile(self.output) as archive:
             return {name: archive.read(name) for name in archive.namelist()}
 
     def test_historical_code_and_worktree_changes_cannot_affect_package(self):
+        """Keep historical bytes independent of live files and historical builder code."""
         (self.source / 'README.md').write_text('Current checkout differs\n')
         result = self.build()
         self.assertEqual(0, result.returncode, result.stderr.decode())
@@ -98,6 +106,7 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.assertNotIn('.gitattributes', self.read_package())
 
     def test_editor_boundary_uses_selected_source_metadata_in_both_directions(self):
+        """Apply only selected-source editor exclusions despite opposite live metadata."""
         attributes = self.source / '.gitattributes'
         declarations = (
             '/Documentation/.editorconfig export-ignore\n'
@@ -128,6 +137,7 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.assertFalse((self.source / 'executed-release-code').exists())
 
     def test_source_metadata_symlink_is_rejected_before_reading_target(self):
+        """Reject symlinked source attributes before reading their external target."""
         target = self.directory / 'external-attributes'
         target.write_text('/Documentation/.editorconfig export-ignore\n')
         attributes = self.source / '.gitattributes'
@@ -140,6 +150,7 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.assertFalse(self.output.exists())
 
     def test_selected_symlink_is_rejected_before_reading_target(self):
+        """Reject a packaged symlink before reading its nonexistent external target."""
         target = self.source / 'composer.json'
         target.unlink()
         target.symlink_to(self.directory / 'nonexistent-external-json')
@@ -150,6 +161,7 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.assertFalse(self.output.exists())
 
     def test_required_directory_symlink_is_rejected(self):
+        """Reject a required package directory represented by a source symlink."""
         shutil.rmtree(self.source / 'Classes')
         (self.source / 'Classes').symlink_to(self.directory)
         revision = self.commit()
@@ -158,6 +170,7 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.assertIn(b'Non-regular Git source: Classes', result.stderr)
 
     def test_gitlink_in_packaged_directory_is_rejected(self):
+        """Reject submodule entries within an otherwise allowed package directory."""
         self.git('update-index', '--add', '--cacheinfo',
                  '160000,' + self.revision + ',Classes/foreign-submodule')
         revision = self.commit(already_staged=True)
@@ -166,6 +179,7 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.assertIn(b'Non-regular Git source: Classes/foreign-submodule', result.stderr)
 
     def test_revision_must_be_a_full_commit_object(self):
+        """Reject symbolic, malformed and non-commit source revision arguments."""
         invalid = ['HEAD', '--all', self.revision[:12], 'f' * 39,
                    self.git('rev-parse', 'HEAD^{tree}').decode(),
                    self.git('rev-parse', 'HEAD:README.md').decode()]
@@ -176,6 +190,7 @@ class ReleasedPackageDataTest(unittest.TestCase):
                 self.assertFalse(self.output.exists())
 
     def test_blob_replace_reference_cannot_substitute_release_data(self):
+        """Read the original blob even when a Git replacement reference exists."""
         blob = self.git('rev-parse', 'HEAD:README.md').decode()
         replacement = self.git('hash-object', '-w', '--stdin', data=b'Substituted blob\n').decode()
         self.git('replace', blob, replacement)
@@ -184,6 +199,7 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.assertEqual(self.files, self.read_package())
 
     def test_commit_replace_reference_cannot_substitute_release_tree(self):
+        """Read the original tree even when its commit has a replacement reference."""
         (self.source / 'README.md').write_text('Substituted tree\n')
         self.git('add', 'README.md')
         replacement = self.commit(already_staged=True)
