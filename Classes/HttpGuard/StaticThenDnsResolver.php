@@ -1,11 +1,15 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
+
+use Throwable;
 
 final class StaticThenDnsResolver implements ResolverInterface
 {
@@ -13,13 +17,13 @@ final class StaticThenDnsResolver implements ResolverInterface
      * @var array<string,array{expires:float,resolution:Resolution}>
      */
     private array $cache = [];
+
     public function __construct(
         private readonly GuardConfig $config,
         private readonly DnsQueryInterface $query,
-        private readonly ClockInterface $clock
-    )
-    {
-    }
+        private readonly ClockInterface $clock,
+    ) {}
+
     public function resolve(string $canonicalHost): Resolution
     {
         try {
@@ -36,7 +40,7 @@ final class StaticThenDnsResolver implements ResolverInterface
                 $settings['staticHosts'][$host],
                 'static',
                 null,
-                hash('sha256', $this->config->revision . ':' . $host)
+                hash('sha256', $this->config->revision . ':' . $host),
             );
         }
         if (isset($this->cache[$host])) {
@@ -45,12 +49,12 @@ final class StaticThenDnsResolver implements ResolverInterface
             }
             unset($this->cache[$host]);
         }
-        $current = $host;
-        $seen = [];
-        $chain = [];
-        $aliases = [];
-        $addressRecords = [];
-        $ttl = null;
+        $current                       = $host;
+        $seen                          = [];
+        $chain                         = [];
+        $aliases                       = [];
+        $addressRecords                = [];
+        $ttl                           = null;
         [$sources, $expiries, $expiry] = [[], [], null];
         while (true) {
             if (isset($seen[$current])) {
@@ -59,11 +63,8 @@ final class StaticThenDnsResolver implements ResolverInterface
             $seen[$current] = true;
             foreach ([1, 28, 5] as $qtype) {
                 try {
-                    [$started, $answer] = [
-                        $this->clock->monotonic(),
-                        $this->query->query($current . '.', $qtype),
-                    ];
-                } catch (\Throwable) {
+                    [$started, $answer] = [$this->clock->monotonic(), $this->query->query($current . '.', $qtype)];
+                } catch (Throwable) {
                     throw new PolicyException('resolution_unverified');
                 }
                 if (!$answer->complete || !array_is_list($answer->records)) {
@@ -97,24 +98,16 @@ final class StaticThenDnsResolver implements ResolverInterface
                         [$aliases[$owner], $expiries[$owner]['CNAME']] = [
                             [
                                 'target' => $target,
-                                'ttl' => min(
-                                    $record['ttl'],
-                                    $aliases[$owner]['ttl'] ?? $record['ttl']
-                                ),
+                                'ttl'    => min($record['ttl'], $aliases[$owner]['ttl'] ?? $record['ttl']),
                             ],
-                            min(
-                                $expiries[$owner]['CNAME'] ?? INF,
-                                $started + $record['ttl']
-                            ),
+                            min($expiries[$owner]['CNAME'] ?? INF, $started + $record['ttl']),
                         ];
                     } else {
                         $field = $record['type'] === 'A' ? 'ip' : 'ipv6';
-                        if (!isset($record[$field]) || !is_string($record[$field])) {
+                        if (!isset($record[$field]) || !is_string($record[$field]) || str_contains($record[$field], "\x00")) {
                             throw new PolicyException('resolution_unverified');
                         }
-                        $packed = NativeOperation::attempt(
-                            static fn() => inet_pton($record[$field])
-                        );
+                        $packed = NativeOperation::attempt(static fn () => inet_pton($record[$field]));
                         if ($packed === false || strlen($packed) !== ($record['type'] === 'A' ? 4 : 16)) {
                             throw new PolicyException('resolution_unverified');
                         }
@@ -124,14 +117,8 @@ final class StaticThenDnsResolver implements ResolverInterface
                             throw new PolicyException('resolution_unverified');
                         }
                         [$addressRecords[$owner][$ip], $expiries[$owner][$ip]] = [
-                            min(
-                                $record['ttl'],
-                                $addressRecords[$owner][$ip] ?? $record['ttl']
-                            ),
-                            min(
-                                $expiries[$owner][$ip] ?? INF,
-                                $started + $record['ttl']
-                            ),
+                            min($record['ttl'], $addressRecords[$owner][$ip] ?? $record['ttl']),
+                            min($expiries[$owner][$ip] ?? INF, $started + $record['ttl']),
                         ];
                     }
                 }
@@ -140,12 +127,9 @@ final class StaticThenDnsResolver implements ResolverInterface
                 if (isset($addressRecords[$current])) {
                     throw new PolicyException('resolution_unverified');
                 }
-                [$alias, $expiry] = [
-                    $aliases[$current],
-                    min($expiry ?? INF, $expiries[$current]['CNAME']),
-                ];
-                $ttl = $ttl === null ? $alias['ttl'] : min($ttl, $alias['ttl']);
-                $chain[] = $alias['target'];
+                [$alias, $expiry] = [$aliases[$current], min($expiry ?? INF, $expiries[$current]['CNAME'])];
+                $ttl              = $ttl === null ? $alias['ttl'] : min($ttl, $alias['ttl']);
+                $chain[]          = $alias['target'];
                 if (count($chain) > $settings['maxCnameHops']) {
                     throw new PolicyException('resolution_limit');
                 }
@@ -160,39 +144,27 @@ final class StaticThenDnsResolver implements ResolverInterface
                 throw new PolicyException('resolution_limit');
             }
             foreach ($used as $ip => $recordTtl) {
-                [$ttl, $expiry] = [
-                    $ttl === null ? $recordTtl : min($ttl, $recordTtl),
-                    min($expiry ?? INF, $expiries[$current][$ip]),
-                ];
+                [$ttl, $expiry] = [$ttl === null ? $recordTtl : min($ttl, $recordTtl), min($expiry ?? INF, $expiries[$current][$ip])];
             }
             $resolution = new Resolution(
                 array_keys($used),
                 implode('+', array_keys($sources)),
-                min(
-                    $ttl,
-                    (int) floor(
-                        max(
-                            0,
-                            ($expiry) - $this->clock->monotonic()
-                        )
-                    )
-                ),
+                min($ttl, (int) floor(max(0, $expiry - $this->clock->monotonic()))),
                 bin2hex(random_bytes(12)),
-                $chain
+                $chain,
             );
             $cacheTtl = min($settings['cacheTtlSeconds'], $resolution->ttlSeconds ?? 0);
             if ($cacheTtl > 0) {
                 while (count($this->cache) >= $settings['cacheMaxHosts']) {
                     $this->evictOldest();
                 }
-                $this->cache[$host] = [
-                    'expires' => $this->clock->monotonic() + $cacheTtl,
-                    'resolution' => $resolution,
-                ];
+                $this->cache[$host] = ['expires' => $this->clock->monotonic() + $cacheTtl, 'resolution' => $resolution];
             }
+
             return $resolution;
         }
     }
+
     private function evictOldest(): void
     {
         $oldest = array_key_first($this->cache);

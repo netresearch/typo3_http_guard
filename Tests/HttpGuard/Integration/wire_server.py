@@ -10,16 +10,50 @@ import ssl
 import threading
 import time
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--label', required=True)
-parser.add_argument('--cert-dir', required=True)
-parser.add_argument('--bind', default='0.0.0.0')
-parser.add_argument('--bind6', default='::')
-parser.add_argument('--port-offset', type=int, default=0)
-args = parser.parse_args()
 lock = threading.Lock()
 state = dict(tcp=0, closed=0, requests=0, active=0, max_active=0, aborted=0,
              paths=collections.Counter(), sni=[], clients=[])
+
+class ConnectionLifecycle:
+    """Keep all live TCP identities and a bounded completed-connection history."""
+    def __init__(self, history_limit=256):
+        if history_limit < 1:
+            raise ValueError('Completed history must be nonempty')
+        self.history_limit = history_limit
+        self.sequence = 0
+        self.socket_ids = {}
+        self.active = {}
+        self.completed = collections.OrderedDict()
+
+    def accept(self, connection):
+        key = id(connection)
+        if key in self.socket_ids:
+            raise ValueError('TCP connection already registered')
+        self.sequence += 1
+        self.socket_ids[key] = self.sequence
+        self.active[str(self.sequence)] = dict(path=None, requests=0)
+        return self.sequence
+
+    def request(self, connection, path):
+        record = self.active[str(self.socket_ids[id(connection)])]
+        record['path'] = path
+        record['requests'] += 1
+
+    def rebind(self, original, wrapped):
+        if id(wrapped) in self.socket_ids:
+            raise ValueError('Wrapped TCP connection already registered')
+        self.socket_ids[id(wrapped)] = self.socket_ids.pop(id(original))
+
+    def close(self, connection):
+        identity = str(self.socket_ids.pop(id(connection)))
+        self.completed[identity] = self.active.pop(identity)
+        while len(self.completed) > self.history_limit:
+            self.completed.popitem(last=False)
+
+    def snapshot(self):
+        return dict(connections=dict(self.active), closed_connections=dict(self.completed))
+
+lifecycle = ConnectionLifecycle()
 
 class Target(http.server.ThreadingHTTPServer):
     daemon_threads = True
@@ -29,12 +63,17 @@ class Target(http.server.ThreadingHTTPServer):
             state['tcp'] += 1
             state['active'] += 1
             state['max_active'] = max(state['max_active'], state['active'])
+            lifecycle.accept(connection)
         if hasattr(self, 'tls_context'):
+            original = connection
             try:
                 connection = self.tls_context.wrap_socket(connection, server_side=True)
+                with lock:
+                    lifecycle.rebind(original, connection)
             except (ssl.SSLError, OSError):
                 connection.close()
                 with lock:
+                    lifecycle.close(original)
                     state['closed'] += 1
                     state['active'] -= 1
                 raise
@@ -44,6 +83,7 @@ class Target(http.server.ThreadingHTTPServer):
             super().close_request(request)
         finally:
             with lock:
+                lifecycle.close(request)
                 state['closed'] += 1
                 state['active'] -= 1
 
@@ -63,6 +103,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def respond(self):
         body = self.rfile.read(int(self.headers.get('Content-Length', '0')))
         with lock:
+            lifecycle.request(self.connection, self.path)
             state['requests'] += 1
             state['paths'][self.path] += 1
             peer = self.connection.getpeercert() if isinstance(self.connection, ssl.SSLSocket) else None
@@ -138,7 +179,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
         pass
     def do_GET(self):
         with lock:
-            payload = json.dumps(state).encode()
+            payload = json.dumps(dict(state, **lifecycle.snapshot())).encode()
         self.send_response(200)
         self.send_header('Content-Length', str(len(payload)))
         self.end_headers()
@@ -158,9 +199,21 @@ def tls_server(port, require_client):
     server.tls_context = context
     return server
 
-servers = [Target((args.bind, 8090 + args.port_offset), Handler), tls_server(8443, False), tls_server(8444, True),
-           http.server.ThreadingHTTPServer((args.bind, 8091 + args.port_offset), Admin)]
-servers.append(Target6((args.bind6, 8090 + args.port_offset), Handler))
-for server in servers:
-    threading.Thread(target=server.serve_forever, daemon=True).start()
-threading.Event().wait()
+def main():
+    global args
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--label', required=True)
+    parser.add_argument('--cert-dir', required=True)
+    parser.add_argument('--bind', default='0.0.0.0')
+    parser.add_argument('--bind6', default='::')
+    parser.add_argument('--port-offset', type=int, default=0)
+    args = parser.parse_args()
+    servers = [Target((args.bind, 8090 + args.port_offset), Handler), tls_server(8443, False), tls_server(8444, True),
+               http.server.ThreadingHTTPServer((args.bind, 8091 + args.port_offset), Admin)]
+    servers.append(Target6((args.bind6, 8090 + args.port_offset), Handler))
+    for server in servers:
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+    threading.Event().wait()
+
+if __name__ == '__main__':
+    main()

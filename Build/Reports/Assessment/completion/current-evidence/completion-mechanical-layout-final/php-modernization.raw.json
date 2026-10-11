@@ -1,0 +1,21 @@
+{
+  "checkpoint_file": "/home/cybot/.agents/skills/php-modernization/checkpoints.yaml",
+  "project_root": "/home/cybot/projects/http-guard-mechanical-layout-final",
+  "skill_id": "php-modernization",
+  "fix_command": "/php-modernization",
+  "schema_version": 1,
+  "summary": {
+    "total": 29,
+    "pass": 23,
+    "fail": 6,
+    "skip": 0,
+    "blocked": 0,
+    "preconditions_declared": 1,
+    "preconditions_ignored": false,
+    "gated_out": 0
+  },
+  "gated_out_ids": [],
+  "checkpoints": [
+    {"id":"PM-01","status":"pass","severity":"error","evidence":"Found: Build/phpstan.neon","fix_skill":"php-modernization"},{"id":"PM-02","status":"fail","severity":"error","evidence":"Script failed","fix_skill":"php-modernization"},{"id":"PM-03","status":"fail","severity":"warning","evidence":"Pattern not found in Build/phpstan.neon","fix_skill":"php-modernization"},{"id":"PM-04","status":"pass","severity":"error","evidence":"Found: .php-cs-fixer.dist.php","fix_skill":"php-modernization"},{"id":"PM-05","status":"pass","severity":"error","evidence":"Pattern found in .php-cs-fixer.dist.php","fix_skill":"php-modernization"},{"id":"PM-06","status":"pass","severity":"warning","evidence":"Pattern found in .php-cs-fixer.dist.php","fix_skill":"php-modernization"},{"id":"PM-07","status":"pass","severity":"error","evidence":"Pattern found in Classes/Client/EndpointClientFactory.php","fix_skill":"php-modernization"},{"id":"PM-08","status":"pass","severity":"error","evidence":"Pattern found in Tests/Architecture/DependencyRules.php","fix_skill":"php-modernization"},{"id":"PM-09","status":"pass","severity":"warning","evidence":"Found: rector.php","fix_skill":"php-modernization"},{"id":"PM-10","status":"pass","severity":"warning","evidence":"Pattern found in rector.php","fix_skill":"php-modernization"},{"id":"PM-11","status":"pass","severity":"info","evidence":"Pattern found in rector.php","fix_skill":"php-modernization"},{"id":"PM-12","status":"pass","severity":"info","evidence":"Pattern found in rector.php","fix_skill":"php-modernization"},{"id":"PM-13","status":"pass","severity":"warning","evidence":"JSON path exists in composer.json","fix_skill":"php-modernization"},{"id":"PM-14","status":"pass","severity":"warning","evidence":"JSON path exists in composer.json","fix_skill":"php-modernization"},{"id":"PM-15","status":"pass","severity":"info","evidence":"JSON path exists in composer.json","fix_skill":"php-modernization"},{"id":"PM-16","status":"pass","severity":"warning","evidence":"Command succeeded","fix_skill":"php-modernization"},{"id":"PM-17","status":"fail","severity":"warning","evidence":"Command failed","fix_skill":"php-modernization"},{"id":"PM-18","status":"pass","severity":"warning","evidence":"JSON path exists in composer.json","fix_skill":"php-modernization"},{"id":"PM-19","status":"pass","severity":"error","evidence":"JSON path exists in composer.json","fix_skill":"php-modernization"},{"id":"PM-30","status":"pass","severity":"info","evidence":"Pattern found in .php-cs-fixer.dist.php","fix_skill":"php-modernization"},{"id":"PM-24","status":"pass","severity":"info","evidence":"Pattern found in .php-cs-fixer.dist.php","fix_skill":"php-modernization"},{"id":"PM-25","status":"fail","severity":"info","evidence":"Command failed","fix_skill":"php-modernization"},{"id":"PM-37","status":"fail","severity":"info","evidence":"Command failed","fix_skill":"php-modernization"},{"id":"PM-50","status":"pass","severity":"warning","evidence":"Pattern correctly absent from 55 matched file(s) for target: {src,Classes}/**/*.php","fix_skill":"php-modernization"},{"id":"PM-51","status":"pass","severity":"warning","evidence":"Pattern correctly absent from 84 matched file(s) for target: {src,Classes,tests,Tests}/**/*.php","fix_skill":"php-modernization"},{"id":"PM-52","status":"pass","severity":"warning","evidence":"Pattern correctly absent from 55 matched file(s) for target: {src,Classes}/**/*.php","fix_skill":"php-modernization"},{"id":"PM-53","status":"fail","severity":"warning","evidence":"Command failed","fix_skill":"php-modernization"},{"id":"PM-39","status":"pass","severity":"error","evidence":"Command succeeded","fix_skill":"php-modernization"},{"id":"PM-44","status":"pass","severity":"error","evidence":"Script succeeded","fix_skill":"php-modernization"}
+  ]
+}

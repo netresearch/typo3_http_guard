@@ -67,7 +67,7 @@ def check(root, core=None, sdk=None):
     cores = set().union(*(exact_versions(row[CORE]) for row in required))
     # This immutable SDK fixture remains the separately qualified 7.15.3 tuple;
     # it is not an installed dependency graph or a classic Core support claim.
-    legacy = json.loads((root / 'verification/dependencies/combined-kernel/guzzle7ter.composer.json').read_text())['require']
+    legacy = json.loads((root / 'Build/Fixtures/HistoricalSdk/guzzle7ter.json').read_text())['require']
     recorded = {CORE: cores}
     for package in SDK:
         recorded[package] = set().union(*(exact_versions(row[package]) for row in [*required, legacy]))

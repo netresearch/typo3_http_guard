@@ -1,0 +1,333 @@
+{
+  "source_binding": "source-binding.json",
+  "source_binding_sha256": "e1f807bf08abf8174c8d42fd58fe7cc74bd03f14474fed79b980257641440348",
+  "executions": [
+    {
+      "skill": "agent-harness",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/agent-harness/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:46:54.349294+00:00",
+      "completed_at_utc": "2026-10-10T00:46:56.228488+00:00",
+      "exit_code": 1,
+      "raw_file": "agent-harness.raw.json",
+      "raw_sha256": "26af789ed9204379d93e32f050c0ab52232f3ddea1f9705ceaf1342d6ebef931",
+      "stderr_file": "agent-harness.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 18,
+      "summary": {
+        "total": 18,
+        "pass": 10,
+        "fail": 8,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 1
+      },
+      "gated_out_ids": [
+        "AH-37"
+      ],
+      "catalog_sha256": "6adf55dd6a85a2ec56e7f98710898eb606ca219e35c3d1c5de1f3ff5b65bbda4"
+    },
+    {
+      "skill": "agent-rules",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/agent-rules/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:46:54.349708+00:00",
+      "completed_at_utc": "2026-10-10T00:46:56.393480+00:00",
+      "exit_code": 1,
+      "raw_file": "agent-rules.raw.json",
+      "raw_sha256": "72a1482e398ead88ba10bfe6431e662888e3ce86ce80a594f5b744a2562dde0c",
+      "stderr_file": "agent-rules.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 25,
+      "summary": {
+        "total": 25,
+        "pass": 23,
+        "fail": 2,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "50e25aed477e99cb53f19acf162a67f30fb7b2c875b05bd2081151032883c333"
+    },
+    {
+      "skill": "enterprise-readiness",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/enterprise-readiness/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:46:54.350024+00:00",
+      "completed_at_utc": "2026-10-10T00:47:11.780535+00:00",
+      "exit_code": 1,
+      "raw_file": "enterprise-readiness.raw.json",
+      "raw_sha256": "4f4d05bd9d5a7bfe3d72929a46c95accf1eb8a1fe47063bd5e1b38fe51795969",
+      "stderr_file": "enterprise-readiness.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 37,
+      "summary": {
+        "total": 37,
+        "pass": 34,
+        "fail": 3,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "74c97e4becaf524ba45f83e38bb11c3ed8d448ac3084fcd1fed86d197673c33b"
+    },
+    {
+      "skill": "git-workflow",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/git-workflow/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:46:56.231731+00:00",
+      "completed_at_utc": "2026-10-10T00:47:12.886937+00:00",
+      "exit_code": 1,
+      "raw_file": "git-workflow.raw.json",
+      "raw_sha256": "6f290938ea26adb8220ed08dd9aeef28940bc4b858f85952db21d2f7ef6f3828",
+      "stderr_file": "git-workflow.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 16,
+      "summary": {
+        "total": 16,
+        "pass": 15,
+        "fail": 1,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "fca87b42223a5002feb35639d696207341580c134aa1311f74c9c479e805c741"
+    },
+    {
+      "skill": "github-project",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/github-project/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:46:56.398054+00:00",
+      "completed_at_utc": "2026-10-10T00:47:16.794312+00:00",
+      "exit_code": 1,
+      "raw_file": "github-project.raw.json",
+      "raw_sha256": "d582f4b1ec725e4b8b674ce4c11b401f4570d7a038279f24d4ebf53caa4591f9",
+      "stderr_file": "github-project.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 29,
+      "summary": {
+        "total": 29,
+        "pass": 24,
+        "fail": 1,
+        "skip": 4,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "f690e16a9ad0788c82ee68c4172bdc76ad3263128aa81f285f9d93989e2ef3e1"
+    },
+    {
+      "skill": "netresearch-branding",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/netresearch-branding/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:47:11.786757+00:00",
+      "completed_at_utc": "2026-10-10T00:47:13.735578+00:00",
+      "exit_code": 0,
+      "raw_file": "netresearch-branding.raw.json",
+      "raw_sha256": "75ddf31a6c1de19ceca6c2d523880cc4fa1a26867dd54583611b3f0acb8b27d6",
+      "stderr_file": "netresearch-branding.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 22,
+      "summary": {
+        "total": 22,
+        "pass": 20,
+        "fail": 0,
+        "skip": 2,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "736e381937d6c03acc458827c5c9c23305ba3b59c0b45af07324596dc90e8020"
+    },
+    {
+      "skill": "php-modernization",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/php-modernization/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:47:12.891181+00:00",
+      "completed_at_utc": "2026-10-10T00:47:16.040926+00:00",
+      "exit_code": 1,
+      "raw_file": "php-modernization.raw.json",
+      "raw_sha256": "731ded718858bbeac915743b65e0461378f2d80be5bc9675785d1907c270b2cf",
+      "stderr_file": "php-modernization.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 29,
+      "summary": {
+        "total": 29,
+        "pass": 23,
+        "fail": 6,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "30f3b237329066b7d01cd91e6a4c4c778f753c910971686b1dcbb8dfc3bbd913"
+    },
+    {
+      "skill": "security-audit",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/security-audit/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:47:13.739452+00:00",
+      "completed_at_utc": "2026-10-10T00:48:35.810357+00:00",
+      "exit_code": 1,
+      "raw_file": "security-audit.raw.json",
+      "raw_sha256": "c1862809c9ac6cf6a0d509e29c1337f9be09df18fd545ca1239c3a868bd2b453",
+      "stderr_file": "security-audit.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 376,
+      "summary": {
+        "total": 376,
+        "pass": 371,
+        "fail": 4,
+        "skip": 1,
+        "blocked": 0,
+        "preconditions_declared": 0,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "68681a8ec650d4cdbb5b339449a7b2619684583b3f8b8ec9ba86e907eba3c56a"
+    },
+    {
+      "skill": "typo3-conformance",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/typo3-conformance/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:47:16.045239+00:00",
+      "completed_at_utc": "2026-10-10T00:47:31.044771+00:00",
+      "exit_code": 1,
+      "raw_file": "typo3-conformance.raw.json",
+      "raw_sha256": "e958b4b846caddacbc4455324c64e547b7bfdef6e27d3af830cc9277ddeae61c",
+      "stderr_file": "typo3-conformance.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 98,
+      "summary": {
+        "total": 98,
+        "pass": 89,
+        "fail": 9,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "63967aaf9ad2b68ee4636b1b713899abe8e6dc7b4d77db019d0572cc073a7176"
+    },
+    {
+      "skill": "typo3-docs",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/typo3-docs/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:47:16.798664+00:00",
+      "completed_at_utc": "2026-10-10T00:47:20.829551+00:00",
+      "exit_code": 1,
+      "raw_file": "typo3-docs.raw.json",
+      "raw_sha256": "f3759899ebe4216d6e401001b52dd9f0bafa2db30a176e18372a9a03ec132cbe",
+      "stderr_file": "typo3-docs.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 35,
+      "summary": {
+        "total": 35,
+        "pass": 29,
+        "fail": 6,
+        "skip": 0,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "4be940717f0f2022263863fa44b8ab9b28855c16c585e663d54c34f740835f4c"
+    },
+    {
+      "skill": "typo3-testing",
+      "command": [
+        "/home/cybot/.agents/skills/automated-assessment/scripts/run-checkpoints.sh",
+        "--json",
+        "/home/cybot/.agents/skills/typo3-testing/checkpoints.yaml",
+        "/home/cybot/projects/http-guard-mechanical-layout-final"
+      ],
+      "started_at_utc": "2026-10-10T00:47:20.833465+00:00",
+      "completed_at_utc": "2026-10-10T00:47:29.956463+00:00",
+      "exit_code": 1,
+      "raw_file": "typo3-testing.raw.json",
+      "raw_sha256": "631c9503b20c00ee5c04c45faeaea3dd2f4eedc1d47b7b141f6c421eb8941215",
+      "stderr_file": "typo3-testing.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checkpoint_count": 70,
+      "summary": {
+        "total": 70,
+        "pass": 52,
+        "fail": 15,
+        "skip": 3,
+        "blocked": 0,
+        "preconditions_declared": 1,
+        "preconditions_ignored": false,
+        "gated_out": 0
+      },
+      "gated_out_ids": [],
+      "catalog_sha256": "7e587fbfc018abb547b4c35d90f25229533c613d7dcafa51bb6a8eea90f9ff28"
+    }
+  ],
+  "executed_checkpoint_rows": 755,
+  "gated_out_count": 1,
+  "catalogs_unchanged": true,
+  "snapshot_inputs_unchanged_after_execution": true,
+  "no_docker_native_fuzz_or_mutation_workloads_started": true,
+  "raw_outcomes_preserved": true
+}

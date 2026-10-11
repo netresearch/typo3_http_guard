@@ -1,0 +1,32 @@
+{
+    "schemaVersion": 1,
+    "reference": "github-actions ubuntu-24.04 / PHP 8.5",
+    "scope": "Normalization, classification and policy evaluation; 64 IPv6 addresses, 128 profiles, bound endpoint; no DNS, network or log sink",
+    "timestamp": "2026-10-09T22:47:02+00:00",
+    "source": {
+        "githubSha": "de0807b2979360bfc5f0993a66904674214cc44d",
+        "productionTreeSha256": "36eafea456ddf1115b56b1e059b3e8d8992b1fabc5d9fc8a49f6244b48c6d866",
+        "policyRevision": "d7dbb51443ef1d8a62d336738019580d6813b580d9c1018705a318e5ac36f759"
+    },
+    "runtime": {
+        "php": "8.5.11",
+        "os": "Linux runnervmmprz5 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64",
+        "cpu": "AMD EPYC 7763 64-Core Processor",
+        "graph": {
+            "typo3/cms-core": "v14.3.8",
+            "guzzlehttp/guzzle": "8.2.0",
+            "guzzlehttp/promises": "3.0.2",
+            "guzzlehttp/psr7": "3.1.0"
+        },
+        "xdebugMode": "off"
+    },
+    "samples": 500,
+    "warmup": 30,
+    "addresses": 64,
+    "profiles": 128,
+    "p50_ms": 0.576309,
+    "p95_ms": 0.604912,
+    "max_ms": 0.839732,
+    "target_ms": 2,
+    "target_met": true
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "skill": "agent-harness",
+    "definition_path": "/home/cybot/.agents/skills/agent-harness/checkpoints.yaml",
+    "baseline_sha256": "6adf55dd6a85a2ec56e7f98710898eb606ca219e35c3d1c5de1f3ff5b65bbda4",
+    "current_sha256": "6adf55dd6a85a2ec56e7f98710898eb606ca219e35c3d1c5de1f3ff5b65bbda4",
+    "mechanical_count": 19,
+    "model_count": 1
+  },
+  {
+    "skill": "agent-rules",
+    "definition_path": "/home/cybot/.agents/skills/agent-rules/checkpoints.yaml",
+    "baseline_sha256": "50e25aed477e99cb53f19acf162a67f30fb7b2c875b05bd2081151032883c333",
+    "current_sha256": "50e25aed477e99cb53f19acf162a67f30fb7b2c875b05bd2081151032883c333",
+    "mechanical_count": 25,
+    "model_count": 6
+  },
+  {
+    "skill": "enterprise-readiness",
+    "definition_path": "/home/cybot/.agents/skills/enterprise-readiness/checkpoints.yaml",
+    "baseline_sha256": "74c97e4becaf524ba45f83e38bb11c3ed8d448ac3084fcd1fed86d197673c33b",
+    "current_sha256": "74c97e4becaf524ba45f83e38bb11c3ed8d448ac3084fcd1fed86d197673c33b",
+    "mechanical_count": 37,
+    "model_count": 23
+  },
+  {
+    "skill": "git-workflow",
+    "definition_path": "/home/cybot/.agents/skills/git-workflow/checkpoints.yaml",
+    "baseline_sha256": "fca87b42223a5002feb35639d696207341580c134aa1311f74c9c479e805c741",
+    "current_sha256": "fca87b42223a5002feb35639d696207341580c134aa1311f74c9c479e805c741",
+    "mechanical_count": 16,
+    "model_count": 10
+  },
+  {
+    "skill": "github-project",
+    "definition_path": "/home/cybot/.agents/skills/github-project/checkpoints.yaml",
+    "baseline_sha256": "f690e16a9ad0788c82ee68c4172bdc76ad3263128aa81f285f9d93989e2ef3e1",
+    "current_sha256": "f690e16a9ad0788c82ee68c4172bdc76ad3263128aa81f285f9d93989e2ef3e1",
+    "mechanical_count": 29,
+    "model_count": 7
+  },
+  {
+    "skill": "netresearch-branding",
+    "definition_path": "/home/cybot/.agents/skills/netresearch-branding/checkpoints.yaml",
+    "baseline_sha256": "736e381937d6c03acc458827c5c9c23305ba3b59c0b45af07324596dc90e8020",
+    "current_sha256": "736e381937d6c03acc458827c5c9c23305ba3b59c0b45af07324596dc90e8020",
+    "mechanical_count": 22,
+    "model_count": 7
+  },
+  {
+    "skill": "php-modernization",
+    "definition_path": "/home/cybot/.agents/skills/php-modernization/checkpoints.yaml",
+    "baseline_sha256": "30f3b237329066b7d01cd91e6a4c4c778f753c910971686b1dcbb8dfc3bbd913",
+    "current_sha256": "30f3b237329066b7d01cd91e6a4c4c778f753c910971686b1dcbb8dfc3bbd913",
+    "mechanical_count": 29,
+    "model_count": 15
+  },
+  {
+    "skill": "security-audit",
+    "definition_path": "/home/cybot/.agents/skills/security-audit/checkpoints.yaml",
+    "baseline_sha256": "68681a8ec650d4cdbb5b339449a7b2619684583b3f8b8ec9ba86e907eba3c56a",
+    "current_sha256": "68681a8ec650d4cdbb5b339449a7b2619684583b3f8b8ec9ba86e907eba3c56a",
+    "mechanical_count": 376,
+    "model_count": 47
+  },
+  {
+    "skill": "typo3-conformance",
+    "definition_path": "/home/cybot/.agents/skills/typo3-conformance/checkpoints.yaml",
+    "baseline_sha256": "63967aaf9ad2b68ee4636b1b713899abe8e6dc7b4d77db019d0572cc073a7176",
+    "current_sha256": "63967aaf9ad2b68ee4636b1b713899abe8e6dc7b4d77db019d0572cc073a7176",
+    "mechanical_count": 98,
+    "model_count": 32
+  },
+  {
+    "skill": "typo3-docs",
+    "definition_path": "/home/cybot/.agents/skills/typo3-docs/checkpoints.yaml",
+    "baseline_sha256": "4be940717f0f2022263863fa44b8ab9b28855c16c585e663d54c34f740835f4c",
+    "current_sha256": "4be940717f0f2022263863fa44b8ab9b28855c16c585e663d54c34f740835f4c",
+    "mechanical_count": 35,
+    "model_count": 10
+  },
+  {
+    "skill": "typo3-testing",
+    "definition_path": "/home/cybot/.agents/skills/typo3-testing/checkpoints.yaml",
+    "baseline_sha256": "7e587fbfc018abb547b4c35d90f25229533c613d7dcafa51bb6a8eea90f9ff28",
+    "current_sha256": "7e587fbfc018abb547b4c35d90f25229533c613d7dcafa51bb6a8eea90f9ff28",
+    "mechanical_count": 70,
+    "model_count": 26
+  }
+]

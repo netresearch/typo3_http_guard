@@ -42,8 +42,10 @@ the actual Core parent API and the supported SDK minima, majors and
 capabilities before generating a CycloneDX SBOM. Each Core job preserves its own manifest,
 lock, SBOM and audit JSON. The audit fails on any vulnerability advisory or
 an unavailable audit service; abandoned-package metadata is reported
-separately. These workflow guards are implemented and locally checked;
-fresh remote execution is required before the change is merged.
+separately. The recorded main run
+`37964357280 <https://github.com/netresearch/typo3_http_guard/actions/runs/37964357280>`_
+passes both production-graph jobs at :literal:`e2e125f`. This is a source-bound
+remote execution; later edits require new applicable checks before merge.
 
 Core 13 still requires the abandoned upstream package
 :literal:`doctrine/annotations` and no replacement is declared. Its default
@@ -61,11 +63,12 @@ actual patched-Core runtime results are recorded in
 :ref:`verification-current-core`.
 
 Active fixture manifests live under :file:`Build/Fixtures/`. The original
-twelve manifests and twelve lock files remain byte-for-byte in three
-explicit ZIP archives under :file:`evidence/`, with original-path and SHA256
-mappings. They describe historical runs and are never installation inputs.
-Dependency discovery therefore no longer sees them as active lock files;
-historical audit output and Git history remain unchanged.
+twelve manifests and twelve lock files remain byte-for-byte in the
+`historical archive records
+<https://github.com/netresearch/typo3_http_guard/blob/3f929ae8794ca04ab3dd25627e94d601a2db23e0/evidence/packaging/composer-locks/README.md>`_
+and verified external source archive, with original-path and SHA256 mappings.
+They describe historical runs and are never active installation inputs.
+Historical audit output and Git history remain unchanged.
 
 .. _dependency-report-composer:
 
@@ -135,7 +138,8 @@ The recorded local Ubuntu 24.04 execution used libcurl 8.5.0 from package
 :literal:`8.5.0-2ubuntu10.15`. That revision matches the Noble fix listed in
 `USN-8820-1 <https://ubuntu.com/security/notices/USN-8820-1>`_.
 The notice was published on 24 September 2026. Package and changelog
-records are under :file:`evidence/runtime-security` in the source repository.
+records remain in the `historical runtime-security evidence
+<https://github.com/netresearch/typo3_http_guard/blob/3f929ae8794ca04ab3dd25627e94d601a2db23e0/evidence/runtime-security/ubuntu-curl-changelog.txt>`_.
 This demonstrates that package revision; it does not replace a later check
 of all vendor advisories.
 
@@ -170,9 +174,10 @@ New address data is updated from the documented primary sources during
 development and release, checked and supplied as a versioned corpus. The
 request path does not download security lists from the Internet.
 
-The later twelve-cell kernel matrix and the three minimal audited fixture
-locks are under :file:`verification/evidence/extension-matrix/` and
-:file:`verification/dependencies/combined-kernel/` in the recorded source
-repository. These test arrangements do not install a second HTTP Guard
-production library. The operational guidance for these limits is supplied
-directly with the extension under :file:`Documentation/`.
+The historical `twelve-cell kernel matrix
+<https://github.com/netresearch/typo3_http_guard/blob/3f929ae8794ca04ab3dd25627e94d601a2db23e0/verification/evidence/extension-matrix/README.md>`_
+and `three audited fixture locks
+<https://github.com/netresearch/typo3_http_guard/blob/3f929ae8794ca04ab3dd25627e94d601a2db23e0/verification/dependencies/combined-kernel/README.md>`_
+retain their recorded sources. Current preparation is under
+:file:`Build/Fixtures/`. No test arrangement installs a second HTTP Guard
+production library; the operational manual belongs to the extension.

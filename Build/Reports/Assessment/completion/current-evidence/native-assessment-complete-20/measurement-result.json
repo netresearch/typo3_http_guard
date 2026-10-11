@@ -1,0 +1,54 @@
+{
+  "exit_code": 0,
+  "stats": {
+    "totalMutantsCount": 3794,
+    "killedCount": 3425,
+    "notCoveredCount": 46,
+    "escapedCount": 292,
+    "errorCount": 3,
+    "syntaxErrorCount": 4,
+    "skippedCount": 0,
+    "ignoredCount": 0,
+    "timeOutCount": 24,
+    "msi": 90.46,
+    "mutationCodeCoverage": 98.79,
+    "coveredCodeMsi": 91.57
+  },
+  "input_count": 261,
+  "vendor_file_count": 21601,
+  "source_start_end_identical": true,
+  "vendor_start_end_identical": true,
+  "current_root_shared_inputs_identical": true,
+  "actual_runtime": {
+    "php": "8.5.10",
+    "core": "14.3.8",
+    "guzzle": "8.2.0",
+    "promises": "3.0.2",
+    "psr7": "3.1.0"
+  },
+  "pure_test_kill_percent": 90.27411702688455,
+  "elapsed_seconds": 1699,
+  "thresholds": {
+    "minMsi": 90,
+    "minCoveredMsi": 90,
+    "skipped_required": 0,
+    "ignored_required": 0,
+    "tool_score_passed": true
+  },
+  "complete_required_input_binding": false,
+  "missing_original_beforehash_inputs": [
+    "ext_emconf.php",
+    "ext_localconf.php"
+  ],
+  "scope": "All75 Classes/default mutators; actual native controlled network targets; timeout20. This completed261-input score is historical until a new263-input repeat binds both entry metadata files.",
+  "limitations": "Errors3/syntax-errors4/timeouts24 are separate from3425 genuine testkills. Tool MSI may count errors/syntax errors, timeouts remain escaped. Own generated composer.lock is separate fromRootsource. No retrospective before-run hashes inferred.",
+  "artifact_sha256": {
+    "source-start.json": "89e20aa7229909f41349bf3e2f189f6e34976eecf85a7953b9ce952edb2fc0c5",
+    "source-end.json": "82bcd0086da9e6ebb39b44ac37de3b60e2cc6f08c508224f2e0adf32b87e8ce4",
+    "infection-native-summary.json": "d96e38a5ad5e11767ff545ab9bf7c21868c05c47e7b15cfb58e34cfda309328e",
+    "infection-native.json.gz": "e7eb2929dc381eec4479adcf5a713ab54462d53d9d778fa798f8cde7f377b1b6",
+    "infection-native.log.gz": "b5b00486a4483249c6642ebc177976c800bd34f6b1669c590bf0e7c523b5244e",
+    "run.log": "7ae2a5e1412cc68b3c75c07f72d226a06787115dbec73c91d8f2a815c0e6d4a0",
+    "cleanup.json": "8a43751bd532b6e12f2da87a65e2b82ea26115683d65a1e52fcc78b911e88303"
+  }
+}

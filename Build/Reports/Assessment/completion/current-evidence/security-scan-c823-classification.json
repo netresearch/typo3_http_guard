@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "kind": "exact_immutable_secret_scan_false_positive_classification",
+  "captured_at_utc": "2026-10-10T01:22:20.611924+00:00",
+  "source_revision": "c823234e75ae65dabfe1a70861c2ff60e506f9a3",
+  "source_path": "Build/Scripts/check-synthetic-fixtures.py",
+  "detector": "generic-api-key",
+  "remote_observation": {
+    "run_id": 38010048828,
+    "job_id": 114087706282,
+    "analysis_id": 1927100909,
+    "merge_revision": "67e7663a55062d9d4a42114c7e14bc86ad80b764",
+    "commits_scanned": 47,
+    "findings": 3,
+    "exit_code": 2,
+    "alerts": [
+      577,
+      578,
+      579
+    ]
+  },
+  "scanner": {
+    "executable_version": "1.1.2",
+    "reported_sarif_driver_version": "v8.0.0",
+    "binary_checksum": {
+      "algorithm": "SHA-256",
+      "hex": "7730d2ebf7ad1a83c9eb934c5eb50663b61db8b63b95f3a7f8c10a5f707ded54"
+    },
+    "binary_source": "https://github.com/betterleaks/betterleaks/releases/tag/v1.1.2"
+  },
+  "classified_records": [
+    {
+      "public_checksum": {
+        "algorithm": "SHA-256",
+        "hex": "352c03de1c19e4a8eb803db73713d38d9c23cd658862db07529ba6f233eee592"
+      },
+      "fixture_path": "Tests/HttpGuard/Integration/certificates/ca.key",
+      "source_line": 18,
+      "historical_fingerprint": "c823234e75ae65dabfe1a70861c2ff60e506f9a3:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:18",
+      "classification": "public synthetic TLS fixture file checksum, not credential bytes",
+      "checksum_matches_fixture": true,
+      "fixture_equals_c823_blob": true
+    },
+    {
+      "public_checksum": {
+        "algorithm": "SHA-256",
+        "hex": "e1a150875e3ef0e3117a9ef5c7969b64448c279b6d1cfd7a0f044478fa3c9e06"
+      },
+      "fixture_path": "Tests/HttpGuard/Integration/certificates/client.key",
+      "source_line": 19,
+      "historical_fingerprint": "c823234e75ae65dabfe1a70861c2ff60e506f9a3:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:19",
+      "classification": "public synthetic TLS fixture file checksum, not credential bytes",
+      "checksum_matches_fixture": true,
+      "fixture_equals_c823_blob": true
+    },
+    {
+      "public_checksum": {
+        "algorithm": "SHA-256",
+        "hex": "ae691852afc79c13ba926ab28cd31c26b3aaeded2be5fa657ff624629ac74269"
+      },
+      "fixture_path": "Tests/HttpGuard/Integration/certificates/server.key",
+      "source_line": 20,
+      "historical_fingerprint": "c823234e75ae65dabfe1a70861c2ff60e506f9a3:Build/Scripts/check-synthetic-fixtures.py:generic-api-key:20",
+      "classification": "public synthetic TLS fixture file checksum, not credential bytes",
+      "checksum_matches_fixture": true,
+      "fixture_equals_c823_blob": true
+    }
+  ],
+  "executed_checks": {
+    "fixture_guard": "PASS: three exact keys and three exact certificates, public keys match and chain verifies",
+    "full_local_history_before": {
+      "commits_scanned": 48,
+      "findings": 3,
+      "exit_code": 2
+    },
+    "same_full_local_history_with_exact_three_fingerprints": {
+      "commits_scanned": 48,
+      "findings": 0,
+      "exit_code": 0
+    },
+    "digest_first_proposed_guard_source": {
+      "findings": 0,
+      "exit_code": 0
+    },
+    "expected_six_values_and_other_guard_ast_nodes_unchanged": true,
+    "fixture_negative_controls": [
+      "changed bytes denied",
+      "missing expected key denied",
+      "unexpected key denied"
+    ],
+    "future_same_path_and_lines_control": {
+      "control_revision": "77b811a37c36bee321976e285a823cfdc11101b2",
+      "findings": 3,
+      "exit_code": 2,
+      "exact_c823_fingerprints_do_not_suppress_future_commits": true
+    }
+  },
+  "scope_limits": [
+    "No broad path, detector, commit or scan-range exclusion. No history rewrite.",
+    "Native263/20 sealed manifests do not include this guard; measured inputs and fixture bytes are unchanged.",
+    "The complete850 earlier freeze remains separate; this later guard and baseline change require their current checks.",
+    "No claim that a later remote Security run or release has succeeded."
+  ]
+}

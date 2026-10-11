@@ -1,0 +1,36 @@
+{
+  "scope": "all Classes; default mutators; Unit+native integration; no excludes",
+  "exit_code": 1,
+  "thresholds": {
+    "msi": 90,
+    "covered_msi": 90,
+    "passed": false
+  },
+  "raw_stats": {
+    "totalMutantsCount": 3794,
+    "killedCount": 3267,
+    "notCoveredCount": 101,
+    "escapedCount": 395,
+    "errorCount": 3,
+    "syntaxErrorCount": 4,
+    "skippedCount": 0,
+    "ignoredCount": 0,
+    "timeOutCount": 24,
+    "msi": 86.29,
+    "mutationCodeCoverage": 97.34,
+    "coveredCodeMsi": 88.65
+  },
+  "input_count": 556,
+  "source_start_end_identical": true,
+  "changed_inputs": {},
+  "actual_runtime": {
+    "php": "8.5.10",
+    "core": "14.3.8",
+    "guzzle": "8.2.0",
+    "promises": "3.0.2",
+    "psr7": "3.1.0"
+  },
+  "limitations": "This diagnostic snapshot predates Reporter, DNS NUL, Transfer tests/source and final cleanup fix. Not a final current source qualification.",
+  "raw_gzip_sha256": "0483ce6508b00301b0356d17c666bbd4be9b56d287402adc4472e3887bc7c87b",
+  "pure_test_kill_percent": 86.10964681075382
+}

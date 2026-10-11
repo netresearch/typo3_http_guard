@@ -1,0 +1,14 @@
+{
+  "description": "Historical SDK tuple used to validate declared dependency ranges; not an installable project",
+  "source": {
+    "repository": "netresearch/typo3_http_guard",
+    "commit": "3f929ae8794ca04ab3dd25627e94d601a2db23e0",
+    "path": "verification/dependencies/combined-kernel/guzzle7ter.composer.json",
+    "sha256": "026678ffef9a79051139cd57c5727387bf864af17c95894cc9a4b650fd9ad085"
+  },
+  "require": {
+    "guzzlehttp/guzzle": "7.15.3",
+    "guzzlehttp/promises": "2.5.2",
+    "guzzlehttp/psr7": "2.13.0"
+  }
+}

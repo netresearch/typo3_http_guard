@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Private vulnerability report
+    url: https://github.com/netresearch/typo3_http_guard/security/advisories/new
+    about: Send suspected vulnerabilities and sensitive reproduction details privately.
+  - name: Usage documentation
+    url: https://github.com/netresearch/typo3_http_guard/tree/main/Documentation
+    about: Read the English manual and German localization.

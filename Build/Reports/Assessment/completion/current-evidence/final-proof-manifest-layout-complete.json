@@ -1,0 +1,136 @@
+{
+  "kind": "actual_completed_execution_evidence",
+  "prepared_at_utc": "2026-10-10T00:59:48.677045+00:00",
+  "source_binding_sha256": "e1f807bf08abf8174c8d42fd58fe7cc74bd03f14474fed79b980257641440348",
+  "does_not_execute_workloads": true,
+  "completed_receipts": {
+    "root-local-quality-layout-complete-bound.log": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-local-quality-layout-complete-bound.log",
+      "sha256": "3a851b9ff1131d262a97b77b1b0b1414026d834223f4974cacff44dc4406ba52",
+      "file_mtime_utc": "2026-10-10T00:56:04.879164+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-final-static-core13.log": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-final-static-core13.log",
+      "sha256": "440cb7147a8a93fb378106670bc605f073bed6e85d51f60226a20295e1bdd694",
+      "file_mtime_utc": "2026-10-09T22:34:51.071371+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-current-unit-core13.log": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-core13.log",
+      "sha256": "8372977f8d07e5c29746462343769f0b3a9d9aaee359e69d553519c000d4f659",
+      "file_mtime_utc": "2026-10-09T23:13:23.073223+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-current-unit-core14.log": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-core14.log",
+      "sha256": "d06178a4c6cc3715c9e311ec76aa3a00a8b081273177227d8353968d546a30ce",
+      "file_mtime_utc": "2026-10-09T23:13:25.639103+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-current-unit-inputs.json": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-inputs.json",
+      "sha256": "bad57361894ee64838cfa7ad8285563d2173dd93a7146286ada3df2acf212706",
+      "file_mtime_utc": "2026-10-09T23:12:11.973067+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-current-unit-result.json": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-result.json",
+      "sha256": "86f6532084cead440da55694b10d5f8de32519bc14c05d52979175125b500f59",
+      "file_mtime_utc": "2026-10-09T23:17:32.976723+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-final-rector.log": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-final-rector.log",
+      "sha256": "98029139679fe607129980a302da92fb5e3461fa97a43f54ca9d7cd9a15dd998",
+      "file_mtime_utc": "2026-10-09T22:34:35.574547+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-final-architecture.log": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-final-architecture.log",
+      "sha256": "9dd3eeb023e498eff4ab6e14af3d76d6e6c7672da330c9e3edf35753590df0d7",
+      "file_mtime_utc": "2026-10-09T22:35:02.379462+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-build-controls-layout-complete-bound.log": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-build-controls-layout-complete-bound.log",
+      "sha256": "3d6a4a156b4870a5fb6a4d25cd6c84753f6a4677ce5e39f504d7bef521df282b",
+      "file_mtime_utc": "2026-10-10T00:56:11.784831+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    },
+    "root-quality-layout-complete-bound.json": {
+      "path": "completion-mechanical-layout-final/completed-proof-receipts/root-quality-layout-complete-bound.json",
+      "sha256": "5303047e16d346c2a5bbf6df475b4a2054481ed665d68524d6fd5044a527dc6e",
+      "file_mtime_utc": "2026-10-10T00:56:12.852513+00:00",
+      "receipt_captured_at_utc": "2026-10-10T00:59:48.677045+00:00",
+      "kind": "existing_completed_execution_receipt"
+    }
+  },
+  "artifact_aliases": {
+    "root-local-quality-layout-complete-bound.log": "completion-mechanical-layout-final/completed-proof-receipts/root-local-quality-layout-complete-bound.log",
+    "root-final-static-core13.log": "completion-mechanical-layout-final/completed-proof-receipts/root-final-static-core13.log",
+    "root-current-unit-core13.log": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-core13.log",
+    "root-current-unit-core14.log": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-core14.log",
+    "root-current-unit-inputs.json": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-inputs.json",
+    "root-current-unit-result.json": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-result.json",
+    "root-final-rector.log": "completion-mechanical-layout-final/completed-proof-receipts/root-final-rector.log",
+    "root-final-architecture.log": "completion-mechanical-layout-final/completed-proof-receipts/root-final-architecture.log",
+    "root-build-controls-layout-complete-bound.log": "completion-mechanical-layout-final/completed-proof-receipts/root-build-controls-layout-complete-bound.log",
+    "root-quality-layout-complete-bound.json": "completion-mechanical-layout-final/completed-proof-receipts/root-quality-layout-complete-bound.json",
+    "root-final-local-quality.log": "completion-mechanical-layout-final/completed-proof-receipts/root-local-quality-layout-complete-bound.log",
+    "root-local-quality-final-snapshot.log": "completion-mechanical-layout-final/completed-proof-receipts/root-local-quality-layout-complete-bound.log",
+    "root-final-unit-core13.log": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-core13.log",
+    "root-final-unit-core14.log": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-core14.log",
+    "root-final-unit-inputs.json": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-inputs.json",
+    "root-architecture-before-native-snapshot.log": "completion-mechanical-layout-final/completed-proof-receipts/root-final-architecture.log",
+    "root-build-controls-current.log": "completion-mechanical-layout-final/completed-proof-receipts/root-build-controls-layout-complete-bound.log",
+    "root-current-build-controls.log": "completion-mechanical-layout-final/completed-proof-receipts/root-build-controls-layout-complete-bound.log",
+    "root-final-unit-snapshot.log": "completion-mechanical-layout-final/completed-proof-receipts/root-current-unit-core14.log"
+  },
+  "unit": {
+    "core13": {
+      "tests": 1535,
+      "assertions": 7199
+    },
+    "core14": {
+      "tests": 1535,
+      "assertions": 7199
+    }
+  },
+  "unit_input_count": 173,
+  "unit_input_differences": {},
+  "quality_input_count": 850,
+  "quality_binding_original_work_path": "root-quality-layout-complete-bound.json",
+  "quality_log_original_work_path": "root-local-quality-layout-complete-bound.log",
+  "controls_log_original_work_path": "root-build-controls-layout-complete-bound.log",
+  "quality_inputs_exactly_match_current_mechanical_snapshot": true,
+  "style": {
+    "fixes": 0,
+    "scope_file_counts": [
+      143,
+      53
+    ],
+    "total_configured_files": 196
+  },
+  "maximum_analysis": {
+    "kernel_core14_errors": 0,
+    "kernel_core13_errors": 0
+  },
+  "rector_remaining_proposals": 0,
+  "phpat_errors": 0,
+  "build_controls": 118,
+  "qualifications": [
+    "Completed receipts retain their own actual input binding; this producer verifies those records and does not rerun their workloads.",
+    "Final all-source Native score and matching final GitHub benchmark are separate and may remain pending.",
+    "Current Unit source matches its actual173-input record; earlier scanner-comment AST/byte qualifications remain historical."
+  ]
+}

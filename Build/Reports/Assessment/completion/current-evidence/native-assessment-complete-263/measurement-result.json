@@ -1,0 +1,66 @@
+{
+  "completed_capture_at_utc": "2026-10-10T01:05:31.345042+00:00",
+  "exit_code": 0,
+  "exec_exit_code_was_observed_directly": true,
+  "stats": {
+    "totalMutantsCount": 3794,
+    "killedCount": 3424,
+    "notCoveredCount": 46,
+    "escapedCount": 293,
+    "errorCount": 3,
+    "syntaxErrorCount": 4,
+    "skippedCount": 0,
+    "ignoredCount": 0,
+    "timeOutCount": 24,
+    "msi": 90.43,
+    "mutationCodeCoverage": 98.79,
+    "coveredCodeMsi": 91.54
+  },
+  "input_count": 263,
+  "vendor_file_count": 21601,
+  "source_start_end_identical": true,
+  "vendor_start_end_identical": true,
+  "current_root_shared_inputs_identical": true,
+  "shared_root_input_count": 262,
+  "snapshot_only_inputs": [
+    "composer.lock"
+  ],
+  "complete_required_input_binding": true,
+  "missing_original_beforehash_inputs": [],
+  "actual_runtime": {
+    "php": "8.5.10",
+    "core": "14.3.8",
+    "guzzle": "8.2.0",
+    "promises": "3.0.2",
+    "psr7": "3.1.0"
+  },
+  "pure_test_kill_percent": 90.24775962045335,
+  "thresholds": {
+    "minMsi": 90,
+    "minCoveredMsi": 90,
+    "skipped_required": 0,
+    "ignored_required": 0,
+    "tool_score_passed": true
+  },
+  "scope": "All75 Classes/default mutators;263 fully frozen source/Test/config/entry metadata inputs and21601 installed vendor files. Own generated composer.lock is snapshot-only; other source inputs matchRoot. Existing90/90 gates, timeout20, requiredzeroSkipped/Ignored unchanged.",
+  "limitations": "Tool errors, syntax errors and timeouts are reported separately from genuine test kills. Generated composer.lock belongs only to the measured snapshot. Public documentation/report files generated later are outside this immutable measured input map.",
+  "uncompressed_artifacts": {
+    "infection-native.json": {
+      "sha256": "f57410ee819d0c0b80b04a98d587c4fd81129093423f24e6c3896fa607e7be92",
+      "bytes": 71125044
+    },
+    "infection-native.log": {
+      "sha256": "41a8ee4ffdd2da2384b13ae80a6449f2fe0ca9e7a03fdb54d48e8bd250e66fd0",
+      "bytes": 208699
+    }
+  },
+  "artifact_sha256": {
+    "source-start.json": "31ebf393257bd1f7d6d9295c394ecb82538867ef4d105e1cab480a02e56dd242",
+    "source-end.json": "eeaadee8935af39cf14bab6f22cc0f365817c688e382b21150bb9b3dadf186f7",
+    "infection-native-summary.json": "cf18e47c1e63b08f6132e9021a73c3902054e8a8bb9c74902a7ba4dda57fac05",
+    "infection-native.json.gz": "7de069f36bd19a6fce114ad9fdee67b67e28b318f4001c6862c4a2ab86a14b77",
+    "infection-native.log.gz": "77ae192f67ceb2f18fad96f260033b4bcebbccc57051da37861c3c3a899c2192",
+    "run.log": "8f1166bad7af837e6c5b50a3526b9de4a9ab5c57fbdb4e011b3b6e00dc3e04bb",
+    "cleanup.json": "82dd5f9486ec1e33cc1c4cf05cf907141c99d349ee3ed73d3bdba3089b92341f"
+  }
+}

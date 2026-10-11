@@ -1,6 +1,0 @@
-{
-  "runtime": "PHP 8.5.11",
-  "scope": "Every current delivered PHP source/fixture/example except duplicate immutable historical Vault snapshots",
-  "files_checked": 145,
-  "status": "PASS"
-}

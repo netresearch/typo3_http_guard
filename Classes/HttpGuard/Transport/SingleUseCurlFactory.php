@@ -1,10 +1,11 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
 
 namespace Netresearch\HttpGuard\Transport;
 
@@ -18,21 +19,17 @@ final class SingleUseCurlFactory implements CurlFactoryInterface
 {
     private bool $created = false;
 
-    public function __construct(private readonly CurlFactoryInterface $factory)
-    {
-    }
+    public function __construct(private readonly CurlFactoryInterface $factory) {}
 
     /** @param array<array-key,mixed> $options */
-    public function create(
-        RequestInterface $request,
-        array $options,
-    ): EasyHandle
+    public function create(RequestInterface $request, array $options): EasyHandle
     {
         if ($this->created) {
             throw new PolicyException('transport_unsupported');
         }
         // Consume the attempt before body preparation can reenter or fail.
         $this->created = true;
+
         return $this->factory->create($request, $options);
     }
 

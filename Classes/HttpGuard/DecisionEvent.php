@@ -1,10 +1,12 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard;
 
 final readonly class DecisionEvent
@@ -22,8 +24,6 @@ final readonly class DecisionEvent
         public ?int $port,
         public ?string $resolverSource,
         public string $correlationId,
-        public ?string $host = null
-    )
-    {
-    }
+        public ?string $host = null,
+    ) {}
 }

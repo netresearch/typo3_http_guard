@@ -1,0 +1,273 @@
+{
+  "base_source": "475ef55907257a0f5be20033b3b13035598b9b05",
+  "sentinel_container_id": "15dab73cb9c0d63e05e8a5bbe29ac6993e3f79f7f8ab835233a6f3be4eda8dcc",
+  "sentinel_network_id": "344cd7415c652ae549bbc2b2d060391289f0c680d18c981a50726f4a5bdb1fe1",
+  "records": [
+    {
+      "control": "invalid-native-mode",
+      "exit": 2,
+      "seconds": 0.079,
+      "foreign_sentinel_unchanged": true,
+      "owned_resources_remaining": {
+        "containers": [],
+        "networks": []
+      },
+      "repository_certificates_unchanged": true,
+      "generated_keys_remaining": false
+    },
+    {
+      "control": "foreign-lock",
+      "exit": 2,
+      "seconds": 0.093,
+      "foreign_sentinel_unchanged": true,
+      "owned_resources_remaining": {
+        "containers": [],
+        "networks": []
+      },
+      "repository_certificates_unchanged": true,
+      "generated_keys_remaining": false
+    },
+    {
+      "control": "foreign-loopback-listener",
+      "exit": 1,
+      "seconds": 0.177,
+      "foreign_sentinel_unchanged": true,
+      "owned_resources_remaining": {
+        "containers": [],
+        "networks": []
+      },
+      "repository_certificates_unchanged": true,
+      "generated_keys_remaining": false
+    },
+    {
+      "control": "foreign-subnet",
+      "exit": 1,
+      "seconds": 0.429,
+      "foreign_sentinel_unchanged": true,
+      "owned_resources_remaining": {
+        "containers": [],
+        "networks": []
+      },
+      "repository_certificates_unchanged": true,
+      "generated_keys_remaining": false
+    },
+    {
+      "control": "wrong-core-runtime",
+      "exit": 2,
+      "seconds": 4.693,
+      "foreign_sentinel_unchanged": true,
+      "owned_resources_remaining": {
+        "containers": [],
+        "networks": []
+      },
+      "repository_certificates_unchanged": true,
+      "generated_keys_remaining": false
+    },
+    {
+      "control": "native-test-failure",
+      "exit": 2,
+      "seconds": 5.137,
+      "foreign_sentinel_unchanged": true,
+      "owned_resources_remaining": {
+        "containers": [],
+        "networks": []
+      },
+      "repository_certificates_unchanged": true,
+      "generated_keys_remaining": false
+    },
+    {
+      "control": "native-interrupt",
+      "exit": 143,
+      "foreign_sentinel_unchanged": true,
+      "owned_resources_remaining": {
+        "containers": [],
+        "networks": []
+      },
+      "repository_certificates_unchanged": true,
+      "generated_keys_remaining": false
+    },
+    {
+      "control": "native-core14-selected",
+      "exit": 0,
+      "seconds": 12.912,
+      "foreign_sentinel_unchanged": true,
+      "owned_resources_remaining": {
+        "containers": [],
+        "networks": []
+      },
+      "repository_certificates_unchanged": true,
+      "generated_keys_remaining": false
+    }
+  ],
+  "initial_repository_certificates": {
+    "algorithm": "SHA-256",
+    "hex_path_pairs": [
+      [
+        "af8f3c497f04692454e65ca6ec85ed9714acf1bbaa3d77ea046527a0c61d1506",
+        "Tests/HttpGuard/Integration/certificates/ca.crt"
+      ],
+      [
+        "352c03de1c19e4a8eb803db73713d38d9c23cd658862db07529ba6f233eee592",
+        "Tests/HttpGuard/Integration/certificates/ca.key"
+      ],
+      [
+        "1e8a0487c9812f521591ff3146dc2afad4ed21363decbe61f6b83ca26874b1a0",
+        "Tests/HttpGuard/Integration/certificates/ca.srl"
+      ],
+      [
+        "8068b4b85387837623d44a79df8fb89359a82d727828fcea33031dfa8821d80e",
+        "Tests/HttpGuard/Integration/certificates/client.crt"
+      ],
+      [
+        "f9ee8bceaabbf099c75e2e8e7e80e6834effca16dfdf84cd17a55c4fd5a8be93",
+        "Tests/HttpGuard/Integration/certificates/client.csr"
+      ],
+      [
+        "b332f2257d9f16c3c30d86527ca1b26ecb75bab6c60903c606b391b49d054453",
+        "Tests/HttpGuard/Integration/certificates/client.ext"
+      ],
+      [
+        "e1a150875e3ef0e3117a9ef5c7969b64448c279b6d1cfd7a0f044478fa3c9e06",
+        "Tests/HttpGuard/Integration/certificates/client.key"
+      ],
+      [
+        "8192115901730d167db25b0b1f7c4eb54adbe3ba585e1be055ee14de8ebe0b35",
+        "Tests/HttpGuard/Integration/certificates/server.crt"
+      ],
+      [
+        "d866e2031e7a7d7cd7c6321dc778d44d7c2e23b44ebd693db4ef8ccf79c152c1",
+        "Tests/HttpGuard/Integration/certificates/server.csr"
+      ],
+      [
+        "d4efd98edafd065d0330909dccca4bee2556baae2575f8a45817054f2d044d16",
+        "Tests/HttpGuard/Integration/certificates/server.ext"
+      ],
+      [
+        "ae691852afc79c13ba926ab28cd31c26b3aaeded2be5fa657ff624629ac74269",
+        "Tests/HttpGuard/Integration/certificates/server.key"
+      ]
+    ]
+  },
+  "final_repository_certificates": {
+    "algorithm": "SHA-256",
+    "hex_path_pairs": [
+      [
+        "af8f3c497f04692454e65ca6ec85ed9714acf1bbaa3d77ea046527a0c61d1506",
+        "Tests/HttpGuard/Integration/certificates/ca.crt"
+      ],
+      [
+        "352c03de1c19e4a8eb803db73713d38d9c23cd658862db07529ba6f233eee592",
+        "Tests/HttpGuard/Integration/certificates/ca.key"
+      ],
+      [
+        "1e8a0487c9812f521591ff3146dc2afad4ed21363decbe61f6b83ca26874b1a0",
+        "Tests/HttpGuard/Integration/certificates/ca.srl"
+      ],
+      [
+        "8068b4b85387837623d44a79df8fb89359a82d727828fcea33031dfa8821d80e",
+        "Tests/HttpGuard/Integration/certificates/client.crt"
+      ],
+      [
+        "f9ee8bceaabbf099c75e2e8e7e80e6834effca16dfdf84cd17a55c4fd5a8be93",
+        "Tests/HttpGuard/Integration/certificates/client.csr"
+      ],
+      [
+        "b332f2257d9f16c3c30d86527ca1b26ecb75bab6c60903c606b391b49d054453",
+        "Tests/HttpGuard/Integration/certificates/client.ext"
+      ],
+      [
+        "e1a150875e3ef0e3117a9ef5c7969b64448c279b6d1cfd7a0f044478fa3c9e06",
+        "Tests/HttpGuard/Integration/certificates/client.key"
+      ],
+      [
+        "8192115901730d167db25b0b1f7c4eb54adbe3ba585e1be055ee14de8ebe0b35",
+        "Tests/HttpGuard/Integration/certificates/server.crt"
+      ],
+      [
+        "d866e2031e7a7d7cd7c6321dc778d44d7c2e23b44ebd693db4ef8ccf79c152c1",
+        "Tests/HttpGuard/Integration/certificates/server.csr"
+      ],
+      [
+        "d4efd98edafd065d0330909dccca4bee2556baae2575f8a45817054f2d044d16",
+        "Tests/HttpGuard/Integration/certificates/server.ext"
+      ],
+      [
+        "ae691852afc79c13ba926ab28cd31c26b3aaeded2be5fa657ff624629ac74269",
+        "Tests/HttpGuard/Integration/certificates/server.key"
+      ]
+    ]
+  },
+  "_public_receipt": {
+    "kind": "derived_public_receipt",
+    "schema_version": 1,
+    "original_capture": {
+      "work_path": "local-runner-proof/native-controls.json",
+      "bytes_sha256": "1f507434c2359aabaafc7fea8ef5d3382a8488949bebad58fdd3b3a83018117a",
+      "semantic_json_sha256": "7af483461a4d52d27590857cfe1a1e11805206b10b86e024c0c057291df3bb2d",
+      "preserved_unmodified_outside_active_repository": true
+    },
+    "transformation": {
+      "id": "public-captured-sha256-maps-v2",
+      "description": "Exact named captured SHA-256 map containers become algorithm-typed ordered [digest, path] records, with every plaintext digest and path unchanged. Declared public fixture fields are first validated against exact actual synthetic fixture bytes. Native source/vendor, complete850 quality, current173 Unit and174 active-source maps are actually rehashed against their known frozen snapshots. The Functional map retains498 recorded inputs with only its75 production inputs actually rehashed; historical295 Native maps retain only captured-metadata meaning. No unknown field or unpinned original is converted. Removing metadata and reversing only the declared containers reconstructs the complete original JSON value; actual data, counts and statuses are unchanged, while serialized bytes differ.",
+      "json_pointers": [
+        "/initial_repository_certificates/Tests~1HttpGuard~1Integration~1certificates~1ca.key",
+        "/initial_repository_certificates/Tests~1HttpGuard~1Integration~1certificates~1client.key",
+        "/initial_repository_certificates/Tests~1HttpGuard~1Integration~1certificates~1server.key",
+        "/final_repository_certificates/Tests~1HttpGuard~1Integration~1certificates~1ca.key",
+        "/final_repository_certificates/Tests~1HttpGuard~1Integration~1certificates~1client.key",
+        "/final_repository_certificates/Tests~1HttpGuard~1Integration~1certificates~1server.key"
+      ],
+      "typed_sha256_map_containers": [
+        "initial_repository_certificates",
+        "final_repository_certificates"
+      ],
+      "changed_scalar_fields": 0,
+      "validated_public_fixture_fields": 6,
+      "scanner_policy_changed": false
+    },
+    "fixture_proof": {
+      "checker_path": "Build/Scripts/check-synthetic-fixtures.py",
+      "checker_sha256": "d43daf70b4adde1d920c9f76996c69d2b248f061113997bafd2d2763a8206bfe",
+      "validation": {
+        "status": "PASS",
+        "fixtures": [
+          "ca",
+          "client",
+          "server"
+        ],
+        "exact_key_files": 3,
+        "exact_certificate_files": 3,
+        "synthetic_ca": "CN=HTTP Guard SYNTHETIC TEST CA",
+        "public_keys_match": true,
+        "certificate_chain_verified": true
+      },
+      "actual_fixture_sha256": {
+        "algorithm": "SHA-256",
+        "hex_path_pairs": [
+          [
+            "352c03de1c19e4a8eb803db73713d38d9c23cd658862db07529ba6f233eee592",
+            "Tests/HttpGuard/Integration/certificates/ca.key"
+          ],
+          [
+            "e1a150875e3ef0e3117a9ef5c7969b64448c279b6d1cfd7a0f044478fa3c9e06",
+            "Tests/HttpGuard/Integration/certificates/client.key"
+          ],
+          [
+            "ae691852afc79c13ba926ab28cd31c26b3aaeded2be5fa657ff624629ac74269",
+            "Tests/HttpGuard/Integration/certificates/server.key"
+          ]
+        ]
+      }
+    },
+    "native_snapshot_revalidation": {},
+    "complete_quality_snapshot_revalidation": {},
+    "declared_source_map_revalidation": {},
+    "captured_sha_map_qualification": "These exact SHA-256 containers are retained historical captured metadata, pinned to the original raw and semantic JSON hashes. Typing their recorded values is not a fresh execution or retrospective source-hash capture. No unidentified credential field or unknown capture is converted.",
+    "native_binding_scope": {},
+    "quality_binding_scope": {},
+    "method": {
+      "public_path": "current-evidence/derived-public/derived_public_receipts.py",
+      "bytes_sha256": "dd86513ab13194814fb31d00acc54cce5cb0125328d18c6254ecb566c2a5b404"
+    }
+  }
+}

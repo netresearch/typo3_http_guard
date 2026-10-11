@@ -1,1 +1,0 @@
-Cannot create cache directory /.composer/cache/repo/https---repo.packagist.org/, or directory is not writable. Proceeding without cache. See also cache-read-only config if your filesystem is read-only.

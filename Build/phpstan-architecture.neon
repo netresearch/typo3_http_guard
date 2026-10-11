@@ -1,0 +1,22 @@
+includes:
+  - ../.Build/vendor/netresearch/typo3-ci-workflows/config/phpstan/phpstan.neon
+parameters:
+  level: max
+  paths:
+    - ../Classes/HttpGuard
+    - ../Classes/Command
+    - ../Tests/Architecture
+  bootstrapFiles:
+    - ../Tests/bootstrap.php
+  stubFiles:
+    - PhpStan/HandlerStack.stub
+    - PhpStan/Client.stub
+  tmpDir: ../.Build/cache/phpstan-architecture
+  phpat:
+    show_rule_names: true
+    ignore_doc_comments: false
+    ignore_built_in_classes: false
+services:
+  - class: Netresearch\NrHttpGuard\Tests\Architecture\DependencyRules
+    tags:
+      - phpat.test

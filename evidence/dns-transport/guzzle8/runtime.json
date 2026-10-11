@@ -1,8 +1,0 @@
-{
-    "php": "8.5.10",
-    "guzzle": "8.2.0",
-    "promises": "3.0.2",
-    "psr7": "3.1.0",
-    "curl": "8.22.0",
-    "curlMultiAvailable": true
-}

@@ -53,9 +53,10 @@ und die
 
 Zusätzliche Metadaten-Sperren sind in denselben Quellenmetadaten begründet.
 Die jeweilige Quelllizenz und Rechte an aufgezeichnetem Drittmaterial
-bleiben bestehen. Originale Spezifikationen und ADRs werden im optionalen
-Nachweispaket unverändert aufbewahrt; dieses Handbuch übernimmt keine
-nachträgliche Änderung ihrer ursprünglichen Aussagen.
+bleiben bestehen. `Originale Spezifikationen und ADRs
+<https://github.com/netresearch/typo3_http_guard/blob/3f929ae8794ca04ab3dd25627e94d601a2db23e0/specification/README.md>`_
+bleiben in Git-Historie und externem Quellarchiv unverändert erhalten.
+Dieses Handbuch ändert ihre ursprünglichen Aussagen nicht nachträglich.
 
 Adressdaten werden mit der Extension versioniert. Ein Regelupdate benötigt
 eine neue Freigabe mit Corpus-, CIDR- und tatsächlichen Wire-Prüfungen sowie

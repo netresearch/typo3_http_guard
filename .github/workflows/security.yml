@@ -1,7 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
 name: Security
-
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
@@ -10,10 +9,8 @@ on:
   schedule:
     - cron: '23 5 * * 1'
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   pr-quality:
     if: github.event_name == 'pull_request'
@@ -25,11 +22,7 @@ jobs:
       auto-approve-require-write: true
       security-controls-path: Documentation/Development/Assessment.rst
       auto-approve-message: >-
-        Automated approval for a repository maintainer PR. The separate CI,
-        Verification and Security gates must pass before merge. This is not
-        independent human security approval. See the
-        [documented controls](https://github.com/netresearch/typo3_http_guard/blob/${{ github.event.pull_request.head.sha }}/Documentation/Development/Assessment.rst).
-
+        Automated approval for a repository maintainer PR. The separate CI, Verification and Security gates must pass before merge. This is not independent human security approval. See the [documented controls](https://github.com/netresearch/typo3_http_guard/blob/${{ github.event.pull_request.head.sha }}/Documentation/Development/Assessment.rst).
   dependency-audit-and-sast:
     uses: netresearch/typo3-ci-workflows/.github/workflows/security.yml@main
     permissions:
@@ -39,26 +32,18 @@ jobs:
       php-version: '8.5'
       # The strict job below also fails when the advisory service is unavailable.
       skip-composer-audit: true
-      # Scan current code, tests and tooling; retrieved research originals and
-      # archived execution evidence are not application source. Keep them intact.
+      # Scan current code, tests and tooling. Retrieved public-document
+      # originals remain separate from application source.
       opengrep-config: >-
-        --config auto --error --severity WARNING --severity ERROR
-        --exclude evidence --exclude verification/evidence
-        --exclude specification/originals
-        --exclude Resources/Private/HttpGuard/data/security-corpus/sources
-        --exclude Tests/HttpGuard/Integration/certificates/ca.key
-        --exclude Tests/HttpGuard/Integration/certificates/client.key
-        --exclude Tests/HttpGuard/Integration/certificates/server.key
+        --config auto --error --severity WARNING --severity ERROR --exclude Resources/Private/HttpGuard/data/security-corpus/sources --exclude Tests/HttpGuard/Integration/certificates/ca.key --exclude Tests/HttpGuard/Integration/certificates/client.key --exclude Tests/HttpGuard/Integration/certificates/server.key
     # Exclude only fixed synthetic keys after verifying bytes, certificates and trust.
     needs:
       - fixture-integrity
-
   secret-scanning:
     uses: netresearch/.github/.github/workflows/betterleaks.yml@main
     permissions:
       contents: read
       security-events: write
-
   dependency-audit-and-sbom:
     name: Strict dependency audit and SBOM (TYPO3 ${{ matrix.core }})
     runs-on: ubuntu-latest
@@ -87,11 +72,14 @@ jobs:
           set -euo pipefail
           python3 Build/Scripts/check-composer-qualification.py --core "$AUDIT_CORE"
           mkdir -p "$RUNNER_TEMP/runtime-sbom"
-          cp composer.json "$RUNNER_TEMP/runtime-sbom/composer.json"
+          # Resolve installed production packages only; retain consumer constraints
+          # while keeping development tools out of the runtime inventory.
+          jq 'del(."require-dev", ."autoload-dev", .scripts)' composer.json > "$RUNNER_TEMP/runtime-sbom/composer.json"
           cd "$RUNNER_TEMP/runtime-sbom"
           composer require --no-update --no-plugins --no-scripts "typo3/cms-core:$AUDIT_CORE"
           composer update --no-dev --no-plugins --no-scripts --prefer-dist --no-progress --no-interaction
-          php "$GITHUB_WORKSPACE/Build/Scripts/check-installed-runtime.php" "$RUNNER_TEMP/runtime-sbom/vendor/autoload.php"
+          runtime_vendor_dir=$(composer config vendor-dir --absolute --no-plugins)
+          php "$GITHUB_WORKSPACE/Build/Scripts/check-installed-runtime.php" "$runtime_vendor_dir/autoload.php"
         env:
           AUDIT_CORE: ${{ matrix.core }}
       - name: Generate dependency SBOM
@@ -130,7 +118,6 @@ jobs:
         core:
           - 13.4.36
           - 14.3.8
-
   fixture-integrity:
     name: Fixture and research integrity
     runs-on: ubuntu-latest

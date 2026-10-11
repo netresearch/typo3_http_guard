@@ -1,10 +1,11 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
  * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
 
 // Verify the actual resolved graph, before any qualification matrix overrides.
 $autoload = $argc === 2 ? realpath($argv[1]) : false;
@@ -23,6 +24,6 @@ foreach ([
     require_once $sourceRoot . $source;
 }
 
-\Netresearch\HttpGuard\Transport\RuntimeSupport::assertSupported();
-\Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility::assertSupported();
+Netresearch\HttpGuard\Transport\RuntimeSupport::assertSupported();
+Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility::assertSupported();
 echo "Resolved Composer graph matches the qualified runtime contracts.\n";

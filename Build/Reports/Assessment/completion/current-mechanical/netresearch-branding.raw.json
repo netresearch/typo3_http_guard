@@ -1,0 +1,21 @@
+{
+  "checkpoint_file": "/home/cybot/.agents/skills/netresearch-branding/checkpoints.yaml",
+  "project_root": "/mnt/c/Users/live/Documents/Codex/2026-10-08/kan/work/assessment-completion/main-snapshot",
+  "skill_id": "netresearch-branding",
+  "fix_command": "/netresearch-branding",
+  "schema_version": 1,
+  "summary": {
+    "total": 22,
+    "pass": 20,
+    "fail": 0,
+    "skip": 2,
+    "blocked": 0,
+    "preconditions_declared": 0,
+    "preconditions_ignored": false,
+    "gated_out": 0
+  },
+  "gated_out_ids": [],
+  "checkpoints": [
+    {"id":"NB-01","status":"pass","severity":"error","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-02","status":"pass","severity":"error","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-34","status":"pass","severity":"error","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-03","status":"pass","severity":"info","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-04","status":"pass","severity":"error","evidence":"Pattern found in README.md","fix_skill":"netresearch-branding"},{"id":"NB-05","status":"pass","severity":"warning","evidence":"Pattern found in README.md","fix_skill":"netresearch-branding"},{"id":"NB-06","status":"pass","severity":"info","evidence":"No target files matched (OK for not_contains): Resources/Public/Css/*.css","fix_skill":"netresearch-branding"},{"id":"NB-07","status":"pass","severity":"info","evidence":"No target files matched (OK for not_contains): Resources/Public/Css/*.css","fix_skill":"netresearch-branding"},{"id":"NB-08","status":"pass","severity":"info","evidence":"No target files matched (OK for not_contains): Resources/Public/Css/*.css","fix_skill":"netresearch-branding"},{"id":"NB-09","status":"pass","severity":"error","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-10","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"netresearch-branding"},{"id":"NB-13","status":"pass","severity":"error","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-14","status":"pass","severity":"warning","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-15","status":"skip","severity":"info","evidence":"No files match glob: Resources/Public/Css/*.css (checkpoint not applicable)","fix_skill":"netresearch-branding"},{"id":"NB-16","status":"skip","severity":"info","evidence":"No files match glob: Resources/Public/Css/*.css (checkpoint not applicable)","fix_skill":"netresearch-branding"},{"id":"NB-17","status":"pass","severity":"info","evidence":"Script succeeded","fix_skill":"netresearch-branding"},{"id":"NB-18","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"netresearch-branding"},{"id":"NB-19","status":"pass","severity":"warning","evidence":"Script succeeded","fix_skill":"netresearch-branding"},{"id":"NB-30","status":"pass","severity":"warning","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-31","status":"pass","severity":"warning","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-32","status":"pass","severity":"info","evidence":"Command succeeded","fix_skill":"netresearch-branding"},{"id":"NB-33","status":"pass","severity":"info","evidence":"Command succeeded","fix_skill":"netresearch-branding"}
+  ]
+}

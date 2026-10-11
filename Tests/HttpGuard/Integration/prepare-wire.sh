@@ -28,14 +28,14 @@ for spec in 'public-a 203.0.115.100 public' 'public-b 203.0.115.101 public' 'pri
         docker run -d --name "$name" --network "http-guard-production-$network_kind" --ip "$address" \
             --mount "type=bind,src=$fixture_dir/wire_server.py,dst=/wire_server.py,readonly" \
             --mount "type=bind,src=$cert_dir,dst=/certificates,readonly" \
-            python@sha256:f85c5697265c178cc6887276c55fe16cf3d14ca35c3df6a5eab3b360534a55d2 python /wire_server.py --label "$label" --cert-dir /certificates >/dev/null
+            mirror.gcr.io/library/python@sha256:f85c5697265c178cc6887276c55fe16cf3d14ca35c3df6a5eab3b360534a55d2 python /wire_server.py --label "$label" --cert-dir /certificates >/dev/null
     fi
 done
 if ! docker container inspect http-guard-production-loopback >/dev/null 2>&1; then
     docker run -d --name http-guard-production-loopback --network host \
         --mount "type=bind,src=$fixture_dir/wire_server.py,dst=/wire_server.py,readonly" \
         --mount "type=bind,src=$cert_dir,dst=/certificates,readonly" \
-        python@sha256:f85c5697265c178cc6887276c55fe16cf3d14ca35c3df6a5eab3b360534a55d2 python /wire_server.py --label loopback --cert-dir /certificates \
+        mirror.gcr.io/library/python@sha256:f85c5697265c178cc6887276c55fe16cf3d14ca35c3df6a5eab3b360534a55d2 python /wire_server.py --label loopback --cert-dir /certificates \
         --bind 127.0.0.1 --bind6 ::1 --port-offset 10000 >/dev/null
 fi
 for spec in 'public-a 2600:7e00:6775:6172::100' 'public-b 2600:7e00:6775:6172::101'; do

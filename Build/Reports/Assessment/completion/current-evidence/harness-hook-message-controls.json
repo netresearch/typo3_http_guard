@@ -1,0 +1,38 @@
+[
+  {
+    "name": "valid",
+    "exit": 0,
+    "expected_pass": true,
+    "pass": true
+  },
+  {
+    "name": "breaking",
+    "exit": 0,
+    "expected_pass": true,
+    "pass": true
+  },
+  {
+    "name": "bad-subject",
+    "exit": 1,
+    "expected_pass": false,
+    "pass": true
+  },
+  {
+    "name": "missing-signoff",
+    "exit": 1,
+    "expected_pass": false,
+    "pass": true
+  },
+  {
+    "name": "empty-subject",
+    "exit": 1,
+    "expected_pass": false,
+    "pass": true
+  },
+  {
+    "name": "bad-signoff",
+    "exit": 1,
+    "expected_pass": false,
+    "pass": true
+  }
+]

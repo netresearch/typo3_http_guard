@@ -1,0 +1,1 @@
+{"archived":false,"default_branch":"main","description":"Plug-and-play SSRF protection for TYPO3's HTTP client, with default private-network blocking and classic TER installation - by Netresearch","license":"GPL-2.0","name":"netresearch/typo3_http_guard","permissions":{"admin":true,"maintain":true,"pull":true,"push":true,"triage":true}}

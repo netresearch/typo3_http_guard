@@ -1,0 +1,4 @@
+# Default editor profile covers the embedded kernel. The Composer static-analysis
+# command also checks the adapter against the actual installed Core 13 or 14.
+includes:
+    - phpstan-http-guard.neon

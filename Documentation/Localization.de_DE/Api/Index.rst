@@ -149,8 +149,8 @@ Guzzle-intern erzeugte und quellgeprüfte Digest-/NTLM-Steuerung unter
 Guzzle 7 ist von beliebigen rohen cURL-Optionen unterschieden.
 
 Abbruch und inkrementelles Streaming benötigen einen Adapter, der den
-zugehörigen internen Fortschrittstreiber verwendet. Der nr-vault-Adapter
-tut dies für seine bestehenden APIs; ein beliebiger zurückgegebener
+zugehörigen internen Fortschrittstreiber verwendet. Der aufgezeichnete
+nr-vault-Referenzadapter tut dies für seine bestehenden APIs; ein beliebiger zurückgegebener
 Guzzle-Client allein garantiert diese Lebensdauerbindung nicht.
 
 .. _api-vault:
@@ -159,14 +159,17 @@ Optionale nr-vault-Migration
 ===========================
 
 Die Extension liest keine Vault-Secrets und übernimmt Vault nicht
-automatisch. Der getrennte Adapterpatch ist für den aufgezeichneten
-nr-vault-Quellstand vorgesehen und muss bewusst integriert werden.
+automatisch. Der historische Referenzpatch ist für seinen aufgezeichneten
+nr-vault-Quellstand vorgesehen und benötigt eine bewusste Projektintegration.
 Resource- und OAuth-Token-Origin benötigen eigene gebundene Clients und
 gegebenenfalls eigene Profile. Eine private Token-Origin erbt weder eine
 öffentliche Resource-Freigabe noch umgekehrt.
 
 Secret-Abruf, Audit, Maskierung, Größenlimits und Vaults bestehende
 Cancel-/Streaming-Semantik bleiben Aufgaben des Vault-Adapters. Dessen
-konkrete Migration und Patchanwendung stehen im optionalen Quellpaket unter
-:file:`integrations/nr-vault/`. Dies ist keine Voraussetzung für den Betrieb
-des regulären TYPO3-RequestFactory-Schutzes.
+konkrete `Referenzmigration samt Nachweisen
+<https://github.com/netresearch/typo3_http_guard/blob/3f929ae8794ca04ab3dd25627e94d601a2db23e0/integrations/nr-vault/EVIDENCE.md>`_
+bleibt an diesen historischen Stand gebunden. Die Extension liefert kein
+Vault-Overlay und übernimmt weder Deployment noch eine neue vollständige
+Vault-Prüfung. Der reguläre TYPO3-RequestFactory-Schutz benötigt keine
+Vault-Migration.

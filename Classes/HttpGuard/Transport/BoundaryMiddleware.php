@@ -1,18 +1,22 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: MIT
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
+
 namespace Netresearch\HttpGuard\Transport;
 
+use Closure;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Uri;
 use GuzzleHttp\Psr7\UriResolver;
+use LogicException;
 use Netresearch\HttpGuard\GuardConfig;
 use Netresearch\HttpGuard\PolicyEngine;
 use Netresearch\HttpGuard\PolicyException;
@@ -21,48 +25,42 @@ use Netresearch\HttpGuard\RequestPolicyContext;
 use Netresearch\HttpGuard\TargetNormalizer;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Throwable;
 
 final class BoundaryMiddleware
 {
-    /** @var \Closure(): void|null */
-    private ?\Closure $registryAssertion = null;
+    /** @var Closure(): void|null */
+    private ?Closure $registryAssertion = null;
+
     public function __construct(
         private readonly PolicyEngine $engine,
         private readonly GuardConfig $config,
         private readonly PolicyRegistry $policyRegistry,
         private readonly RequestPolicyContext $context,
         private readonly InvocationRegistry $invocations,
-        private readonly bool $publicFetch = false
-    )
-    {
-    }
-    /** @param \Closure(): void|null $assertion */
-    public function setRegistryAssertion(?\Closure $assertion): void
+        private readonly bool $publicFetch = false,
+    ) {}
+
+    /** @param Closure(): void|null $assertion */
+    public function setRegistryAssertion(?Closure $assertion): void
     {
         $this->registryAssertion = $assertion;
     }
+
     /**
-     * @param callable(RequestInterface, array<array-key, mixed>): PromiseInterface $next
-     * @return callable(RequestInterface, array<array-key, mixed>): PromiseInterface
+     * @param callable(RequestInterface,array<array-key,mixed>):PromiseInterface $next
+     *
+     * @return callable(RequestInterface,array<array-key,mixed>):PromiseInterface
      */
     public function __invoke(callable $next): callable
     {
-        return function (
-            RequestInterface $request,
-            array $options
-        ) use ($next): PromiseInterface {
+        return function (RequestInterface $request, array $options) use ($next): PromiseInterface {
             try {
-                ($this->registryAssertion ?? static function (): void {
-                })();
+                ($this->registryAssertion ?? static function (): void {})();
                 if ($this->config->mode !== 'enforce') {
                     return $next($request, $options);
                 }
-                foreach ([
-                    'nr_http_guard_context',
-                    'nr_http_guard_envelope',
-                    'nr_http_guard_invocation',
-                    'nr_http_guard_grant',
-                ] as $key) {
+                foreach (['nr_http_guard_context', 'nr_http_guard_envelope', 'nr_http_guard_invocation', 'nr_http_guard_grant'] as $key) {
                     if (array_key_exists($key, $options)) {
                         throw new PolicyException('grant_invalid');
                     }
@@ -71,54 +69,37 @@ final class BoundaryMiddleware
                 $this->policyRegistry->validateContext($this->context);
                 $sanitizer = new OptionSanitizer(
                     $this->config->data['redirects']['max'],
-                    $this->config->data['tls']['requireVerification']
+                    $this->config->data['tls']['requireVerification'],
                 );
-                $sanitizer->assertRedirects(
-                    $options['allow_redirects'] ?? false
-                );
+                $sanitizer->assertRedirects($options['allow_redirects'] ?? false);
                 $handler = $options['handler'] ?? null;
                 if ($handler !== null && !$handler instanceof HandlerStack) {
                     throw new PolicyException('option_forbidden');
                 }
-                [$envelope, $token] = $this->invocations->open(
-                    $this->context,
-                    $target->origin,
-                    $target->scheme,
-                    $handler,
-                    $this->publicFetch
-                );
-                $options['nr_http_guard_context'] = $this->context;
-                $options['nr_http_guard_envelope'] = $envelope;
+                [$envelope, $token]                  = $this->invocations->open($this->context, $target->origin, $target->scheme, $handler, $this->publicFetch);
+                $options['nr_http_guard_context']    = $this->context;
+                $options['nr_http_guard_envelope']   = $envelope;
                 $options['nr_http_guard_invocation'] = $token;
                 try {
                     $inner = $next($target->canonicalRequest, $options);
-                } catch (\Throwable $error) {
+                } catch (Throwable $error) {
                     $this->invocations->close($envelope);
                     throw $error;
                 }
-                $finish = function (
-                    ResponseInterface $response
-                ) use ($target, $options, $envelope): ResponseInterface {
-                    return $this->validateResponse(
-                        $response,
-                        $target->canonicalRequest,
-                        $options,
-                        $envelope
-                    );
-                };
+                $finish = fn (
+                    mixed $response,
+                ): ResponseInterface => $this->validateResponse($response, $target->canonicalRequest, $options, $envelope);
                 $outer = null;
                 $outer = new Promise(
                     function () use ($inner, $finish, $envelope, &$outer): void {
                         try {
                             $response = $inner->wait();
-                            if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                                self::published($outer)->resolve(
-                                    $finish($response)
-                                );
+                            if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                                $this->published($outer)->resolve($finish($response));
                             }
-                        } catch (\Throwable $error) {
-                            if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                                self::published($outer)->reject($error);
+                        } catch (Throwable $error) {
+                            if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                                $this->published($outer)->reject($error);
                             }
                         } finally {
                             $this->invocations->close($envelope);
@@ -127,21 +108,17 @@ final class BoundaryMiddleware
                     function () use ($inner, $envelope): void {
                         $this->invocations->close($envelope);
                         $inner->cancel();
-                    }
+                    },
                 );
                 $inner->then(
-                    function (
-                        ResponseInterface $response
-                    ) use ($finish, $envelope, &$outer): void {
+                    function (mixed $response) use ($finish, $envelope, &$outer): void {
                         try {
-                            if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                                self::published($outer)->resolve(
-                                    $finish($response)
-                                );
+                            if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                                $this->published($outer)->resolve($finish($response));
                             }
-                        } catch (\Throwable $error) {
-                            if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                                self::published($outer)->reject($error);
+                        } catch (Throwable $error) {
+                            if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                                $this->published($outer)->reject($error);
                             }
                         } finally {
                             $this->invocations->close($envelope);
@@ -149,40 +126,37 @@ final class BoundaryMiddleware
                     },
                     function ($reason) use ($envelope, &$outer): void {
                         $this->invocations->close($envelope);
-                        if (self::published($outer)->getState() === PromiseInterface::PENDING) {
-                            self::published($outer)->reject($reason);
+                        if ($this->published($outer)->getState() === PromiseInterface::PENDING) {
+                            $this->published($outer)->reject($reason);
                         }
-                    }
+                    },
                 );
+
                 return $outer;
             } catch (PolicyException $error) {
-                $this->engine->reportDiagnostic(
-                    $this->context,
-                    'deny',
-                    $error->reasonCode()
-                );
+                $this->engine->reportDiagnostic($this->context, 'deny', $error->reasonCode());
+
                 return Create::rejectionFor($error);
             }
         };
     }
-    /** @param array<string,mixed> $options */
+
+    /** @param array<array-key,mixed> $options */
     private function validateResponse(
-        ResponseInterface $response,
+        mixed $response,
         RequestInterface $request,
         array $options,
-        RequestEnvelope $envelope
-    ): ResponseInterface
-    {
+        RequestEnvelope $envelope,
+    ): ResponseInterface {
         try {
-            if (in_array($options['allow_redirects'] ?? false, [false, []], true) || !$response->hasHeader('Location') || !in_array(
-                $response->getStatusCode(),
-                [301, 302, 303, 307, 308],
-                true
-            )) {
+            if (!$response instanceof ResponseInterface) {
+                throw new PolicyException('transport_unsupported');
+            }
+            if (in_array($options['allow_redirects'] ?? false, [false, []], true) || !$response->hasHeader('Location') || !in_array($response->getStatusCode(), [301, 302, 303, 307, 308], true)) {
                 return $response;
             }
             $profile = $this->policyRegistry->validateContext($this->context);
-            if ($profile !== null && $profile->redirects === 'none') {
+            if ($profile instanceof \Netresearch\HttpGuard\EndpointProfile && $profile->redirects === 'none') {
                 throw new PolicyException('redirect_forbidden');
             }
             $locations = $response->getHeader('Location');
@@ -190,29 +164,28 @@ final class BoundaryMiddleware
                 throw new PolicyException('redirect_forbidden');
             }
             try {
-                $uri = UriResolver::resolve($request->getUri(), new Uri($locations[0]));
+                $uri    = UriResolver::resolve($request->getUri(), new Uri($locations[0]));
                 $target = (new TargetNormalizer())->normalize($request->withUri($uri));
-            } catch (\Throwable) {
+            } catch (Throwable) {
                 throw new PolicyException('redirect_forbidden');
             }
             if ($envelope->scheme === 'https' && $target->scheme !== 'https' || !$envelope->publicFetch && $target->origin !== $envelope->origin) {
                 throw new PolicyException('redirect_forbidden');
             }
+
             return $response;
         } catch (PolicyException $error) {
-            $this->engine->reportDiagnostic(
-                $this->context,
-                'deny',
-                $error->reasonCode()
-            );
+            $this->engine->reportDiagnostic($this->context, 'deny', $error->reasonCode());
             throw $error;
         }
     }
-    private static function published(?Promise $promise): Promise
+
+    private function published(?Promise $promise): Promise
     {
-        if ($promise === null) {
-            throw new \LogicException("Promise not published");
+        if (!$promise instanceof Promise) {
+            throw new LogicException('Promise not published');
         }
+
         return $promise;
     }
 }

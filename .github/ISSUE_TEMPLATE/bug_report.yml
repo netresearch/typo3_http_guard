@@ -1,0 +1,34 @@
+name: Bug report
+description: Report reproducible HTTP Guard behavior.
+title: "[Bug]: "
+labels: [bug, typo3]
+body:
+  - type: markdown
+    attributes:
+      value: Use synthetic example URLs and redact credentials, tokens and query secrets. Report suspected vulnerabilities through the private security link below.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+      description: Include the guard mode, reason code and the affected TYPO3 HTTP entry point.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal configuration and a safe example request.
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Installed versions
+      description: HTTP Guard, TYPO3, PHP, libcurl and the Guzzle packages; say whether installation used Composer or TER.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Redacted diagnostics and checks
+      description: Include the relevant doctor or config-check result and tests already performed.

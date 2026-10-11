@@ -1,12 +1,15 @@
 <?php
 
-/**
+/*
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
  */
-declare (strict_types=1);
+
+declare(strict_types=1);
 
 namespace Netresearch\NrHttpGuard\Http;
+
+use RuntimeException;
 
 require __DIR__ . '/../Tests/bootstrap.php';
 RequestFactoryCompatibility::assertSupported();
@@ -21,7 +24,5 @@ if ((new \TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() === 13) 
         use RawRequestGuardTrait;
     }
 } else {
-    throw new \RuntimeException(
-        'This analysis harness requires a supported Core 13 version.'
-    );
+    throw new RuntimeException('This analysis harness requires a supported Core 13 version.');
 }

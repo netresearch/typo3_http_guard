@@ -1,0 +1,43 @@
+test_blob_replace_reference_cannot_substitute_release_data (test_build_extension.ReleasedPackageDataTest.test_blob_replace_reference_cannot_substitute_release_data) ... ok
+test_commit_replace_reference_cannot_substitute_release_tree (test_build_extension.ReleasedPackageDataTest.test_commit_replace_reference_cannot_substitute_release_tree) ... ok
+test_gitlink_in_packaged_directory_is_rejected (test_build_extension.ReleasedPackageDataTest.test_gitlink_in_packaged_directory_is_rejected) ... ok
+test_historical_code_and_worktree_changes_cannot_affect_package (test_build_extension.ReleasedPackageDataTest.test_historical_code_and_worktree_changes_cannot_affect_package) ... ok
+test_required_directory_symlink_is_rejected (test_build_extension.ReleasedPackageDataTest.test_required_directory_symlink_is_rejected) ... ok
+test_revision_must_be_a_full_commit_object (test_build_extension.ReleasedPackageDataTest.test_revision_must_be_a_full_commit_object) ... ok
+test_selected_symlink_is_rejected_before_reading_target (test_build_extension.ReleasedPackageDataTest.test_selected_symlink_is_rejected_before_reading_target) ... ok
+test_absolute_path_becomes_portable_without_altering_measured_lines (test_coverage_paths.CoveragePathsTest.test_absolute_path_becomes_portable_without_altering_measured_lines) ... ok
+test_empty_report_is_a_failure (test_coverage_paths.CoveragePathsTest.test_empty_report_is_a_failure) ... ok
+test_unrelated_source_cannot_be_published_as_production_coverage (test_coverage_paths.CoveragePathsTest.test_unrelated_source_cannot_be_published_as_production_coverage) ... ok
+test_broken_pointer_rejected (test_local_guards.HarnessBindingTest.test_broken_pointer_rejected) ... ok
+test_comment_does_not_count_as_ci_execution (test_local_guards.HarnessBindingTest.test_comment_does_not_count_as_ci_execution) ... ok
+test_composer_command_drift_rejected (test_local_guards.HarnessBindingTest.test_composer_command_drift_rejected) ... ok
+test_disabled_installer_rejected (test_local_guards.HarnessBindingTest.test_disabled_installer_rejected) ... ok
+test_missing_routing_owner_rejected (test_local_guards.HarnessBindingTest.test_missing_routing_owner_rejected) ... ok
+test_overlong_agent_index_rejected (test_local_guards.HarnessBindingTest.test_overlong_agent_index_rejected) ... ok
+test_real_run_and_valid_pointers (test_local_guards.HarnessBindingTest.test_real_run_and_valid_pointers) ... ok
+test_wrong_captainhook_bootstrap_rejected (test_local_guards.HarnessBindingTest.test_wrong_captainhook_bootstrap_rejected) ... ok
+test_blob_replace_ref_cannot_mask_staged_secret (test_local_guards.StagedSecretsTest.test_blob_replace_ref_cannot_mask_staged_secret) ... ok
+test_changed_synthetic_key_blocked (test_local_guards.StagedSecretsTest.test_changed_synthetic_key_blocked) ... ok
+test_dash_filename (test_local_guards.StagedSecretsTest.test_dash_filename) ... ok
+test_deleted_blob_not_reintroduced (test_local_guards.StagedSecretsTest.test_deleted_blob_not_reintroduced) ... ok
+test_empty_index_checks_available_detector (test_local_guards.StagedSecretsTest.test_empty_index_checks_available_detector) ... ok
+test_exact_public_synthetic_key_allowed (test_local_guards.StagedSecretsTest.test_exact_public_synthetic_key_allowed) ... ok
+test_literal_glob_filename (test_local_guards.StagedSecretsTest.test_literal_glob_filename) ... ok
+test_missing_detector_never_silently_skipped (test_local_guards.StagedSecretsTest.test_missing_detector_never_silently_skipped) ... ok
+test_newline_filename (test_local_guards.StagedSecretsTest.test_newline_filename) ... ok
+test_non_utf8_filename (test_local_guards.StagedSecretsTest.test_non_utf8_filename) ... ok
+test_ordinary_staged_blob (test_local_guards.StagedSecretsTest.test_ordinary_staged_blob) ... ok
+test_private_key_header_blocked (test_local_guards.StagedSecretsTest.test_private_key_header_blocked) ... ok
+test_public_key_copy_at_other_path_blocked (test_local_guards.StagedSecretsTest.test_public_key_copy_at_other_path_blocked) ... ok
+test_renamed_blob_scanned (test_local_guards.StagedSecretsTest.test_renamed_blob_scanned) ... ok
+test_shell_metacharacters_do_not_execute (test_local_guards.StagedSecretsTest.test_shell_metacharacters_do_not_execute) ... ok
+test_staged_token_blocked_after_worktree_cleaned (test_local_guards.StagedSecretsTest.test_staged_token_blocked_after_worktree_cleaned) ... ok
+test_symlink_target_blob_scanned_without_dereference (test_local_guards.StagedSecretsTest.test_symlink_target_blob_scanned_without_dereference) ... ok
+test_tab_filename (test_local_guards.StagedSecretsTest.test_tab_filename) ... ok
+test_unmerged_index_rejected (test_local_guards.StagedSecretsTest.test_unmerged_index_rejected) ... ok
+test_unstaged_token_not_read (test_local_guards.StagedSecretsTest.test_unstaged_token_not_read) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 3.842s
+
+OK

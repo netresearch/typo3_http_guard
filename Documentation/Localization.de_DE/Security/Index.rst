@@ -150,3 +150,16 @@ Kompositionspflicht steht unter :ref:`api-raw-uri`. Policy-Snapshots werden
 nicht automatisch in alten Workern aktualisiert; siehe
 :ref:`operations-changes`. Beobachtungsmodus, Offline-Prüfung und
 Agentenreview sind keine alternative Durchsetzung am echten Transport.
+
+.. _security-alpha:
+
+Alpha-Freigabe
+==============
+
+Version 0.1.1 ist als Alpha zur Erprobung veröffentlicht. Für die vom Nutzer
+freigegebene Alpha-Entwicklung gelten unabhängige Agentenreviews, behobene
+Befunde und erfolgreiche einschlägige Prüfungen. Eine zusätzliche menschliche
+Freigabe oder ein Betreiberpilot ist dafür nicht erforderlich. Keines von
+beiden wird als abgeschlossen dargestellt. Für die Bewertung eines
+Produktivbetriebs bleiben beide Empfehlungen. Der genaue Prüfstand steht
+unter :ref:`assessment-reconciliation`.

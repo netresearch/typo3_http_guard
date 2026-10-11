@@ -1,0 +1,154 @@
+{
+  "source_root": "/mnt/c/users/live/documents/codex/2026-10-08/kan/outputs/http-guard-implementation",
+  "git_head": "d9fc1c13b3313026eb425b6adac8a5cdd01556d1",
+  "renderer": {
+    "image": "ghcr.io/typo3-documentation/render-guides@sha256:fcf1ea87377ac401ce595b8c320c03b2b1bf2505ec0109561ca2fe56d7d71fc1",
+    "version": "0.46.0",
+    "revision": "dc6fd0dd92409251c65f2c3979b6acb6cedc6f42",
+    "current_tag_pull_log": "docs-renderer-current-pull.log"
+  },
+  "source_binding": {
+    "file": "docs-render-input-binding.json",
+    "sha256": "d5ccc65b6513c517acf96ad4b406bf13e3559b116e884729372f90daea59237f",
+    "input_files": 51,
+    "unchanged_after_render": true
+  },
+  "validation": {
+    "command": [
+      "/home/cybot/.agents/skills/typo3-docs/scripts/validate_docs.sh",
+      "/mnt/c/users/live/documents/codex/2026-10-08/kan/outputs/http-guard-implementation"
+    ],
+    "exit_code": 0,
+    "log": "docs-validation-current.log",
+    "log_sha256": "ba374456292a98177f3d7e1d7daf8c4a911750969675881cc96bb9f990bd6865"
+  },
+  "render": {
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "-v",
+      "/mnt/c/users/live/documents/codex/2026-10-08/kan/outputs/http-guard-implementation:/project",
+      "-w",
+      "/project",
+      "ghcr.io/typo3-documentation/render-guides@sha256:fcf1ea87377ac401ce595b8c320c03b2b1bf2505ec0109561ca2fe56d7d71fc1",
+      "--config=Documentation",
+      "--output=/project/.Build/docs-current/en",
+      "--no-progress",
+      "--fail-on-log"
+    ],
+    "exit_code": 0,
+    "log": "docs-render-en-current.log",
+    "log_sha256": "d9c451452f8fbbe62edbdb8f0d78e74263c5db0bd3deffacf4f716afeb78294a"
+  },
+  "browser": {
+    "command": [
+      "/home/cybot/.nvm/versions/node/v26.10.0/bin/node",
+      "/mnt/c/users/live/documents/codex/2026-10-08/kan/work/assessment-completion/check-rendered-docs.cjs"
+    ],
+    "exit_code": 0,
+    "log": "docs-browser-check.log",
+    "log_sha256": "b4898b3a229e7259647e9685c21f816d06cc2b49e5ba8c694ef04510d4401058"
+  },
+  "rendered_sources": {
+    "en": 20,
+    "de": 19
+  },
+  "outputs": {
+    "en": "/mnt/c/users/live/documents/codex/2026-10-08/kan/outputs/http-guard-implementation/.Build/docs-current/en",
+    "de": "/mnt/c/users/live/documents/codex/2026-10-08/kan/outputs/http-guard-implementation/.Build/docs-current/en/Localization.de_DE"
+  },
+  "localization_note": "The primary English render automatically invokes the German localization sub-process; the primary de-named output from the earlier diagnostic invocation is not German.",
+  "browser_observations": [
+    {
+      "language": "en",
+      "file": "/mnt/c/users/live/documents/codex/2026-10-08/kan/outputs/http-guard-implementation/.Build/docs-current/en/Development/Reconciliation.html",
+      "heading": "Assessment reconciliation",
+      "title": "Assessment reconciliation \u2014 HTTP Guard 0.1 documentation",
+      "tableCount": 3,
+      "invalidLinks": 0,
+      "expectedMetricsFound": true
+    },
+    {
+      "language": "de",
+      "file": "/mnt/c/users/live/documents/codex/2026-10-08/kan/outputs/http-guard-implementation/.Build/docs-current/en/Localization.de_DE/Development/Reconciliation.html",
+      "heading": "Abgleich der Pr\u00fcfungen",
+      "title": "Abgleich der Pr\u00fcfungen \u2014 HTTP Guard 0.1 documentation",
+      "tableCount": 2,
+      "invalidLinks": 0,
+      "expectedMetricsFound": true
+    }
+  ],
+  "owned_files": {
+    "README.md": "c44fdacf5566e1f50e375fa1da7683fd468d88ddac4e3ac46ff6a0c5a41c4eef",
+    "Documentation/Development/Assessment.rst": "484e84f5d2badd21a61b967cb686f27fa44bd13977ba0d2d9e345186ae33b2f5",
+    "Documentation/Development/Reconciliation.rst": "c3475a1b163168a0f64e6d843b986c1924a39e1efea7b2864f9fbfc9eacfcbea",
+    "Documentation/Development/Verification.rst": "8b58bb1e90e6c71b96c4af3e45501f8884f39d533653ec78f261579b41485246",
+    "Documentation/Development/Index.rst": "b225ed06b066b693e754fe57db7b54484b17f3b74d6631ae1fa4ccb9d9f4fa10",
+    "Documentation/Localization.de_DE/Development/Assessment.rst": "f3cda527d8b2b8dce0a2c14a5bfb1046829b572c663702820234146f3f2c6d28",
+    "Documentation/Localization.de_DE/Development/Reconciliation.rst": "87d18731de4e6c3d7a7af6c0ed0528e8a01c2e24ee25170f695987ab0e8e2ff8",
+    "Documentation/Localization.de_DE/Development/Verification.rst": "aaed519bf269b43bb3352a416467ce4f926d06ec441c96d957ae697222d9757f",
+    "Documentation/Localization.de_DE/Development/Index.rst": "abf0a089b8ceae28391378fc11073a5d614a9816bf984f4819d0f9c0f1ddadff"
+  },
+  "frozen_inventory": {
+    "sha256": "fd2b0df7c7b532269929804a39441b55dfeb5272a40231e8b06ef7d613e9f767",
+    "preserved": true
+  },
+  "facts": {
+    "unit": {
+      "tests": 340,
+      "assertions": 2125,
+      "evidence": "root-final-unit-snapshot.log"
+    },
+    "phpstan_level": 10,
+    "kernel_errors": 0,
+    "core14_errors": 0,
+    "style": {
+      "files": 158,
+      "changes": 0,
+      "evidence": "root-local-quality-final-snapshot.log"
+    },
+    "architecture_errors": 0,
+    "architecture_evidence": "root-architecture-before-native-snapshot.log",
+    "rector_changes": 0,
+    "rector_evidence": "root-rector-before-native-snapshot.log",
+    "public_coverage": {
+      "commit": "27a958a8e7549a9154deb11a1c85bef29c568fa2",
+      "state": "complete",
+      "totals": {
+        "files": 63,
+        "lines": 2609,
+        "hits": 2141,
+        "misses": 468,
+        "partials": 0,
+        "coverage": 82.06,
+        "branches": 0,
+        "methods": 210,
+        "sessions": 1,
+        "complexity": 1074.0,
+        "complexity_total": 0.0,
+        "complexity_ratio": 0,
+        "diff": 0
+      },
+      "evidence": "codecov-main-after-pr11.json"
+    },
+    "last_completed_isolated_all_source_mutation": {
+      "totalMutantsCount": 3559,
+      "killedCount": 2006,
+      "notCoveredCount": 773,
+      "escapedCount": 768,
+      "errorCount": 3,
+      "syntaxErrorCount": 2,
+      "skippedCount": 0,
+      "ignoredCount": 0,
+      "timeOutCount": 7,
+      "msi": 56.5,
+      "mutationCodeCoverage": 78.28,
+      "coveredCodeMsi": 72.18
+    },
+    "fresh_native_and_combined_runs": "under_review_no_new_msi_recorded",
+    "named_ci_performance_reference": "pending_source_bound_ci_execution",
+    "current_per_id_reconciliation": "publication_outstanding",
+    "openssf_registration": "prepared_external_authenticated_access_gap"
+  }
+}

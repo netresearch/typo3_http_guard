@@ -1,0 +1,22 @@
+{
+  "canonical": true,
+  "printWidth": 120,
+  "exclude": [
+    "vendor",
+    ".Build",
+    ".git",
+    "evidence",
+    "verification",
+    "specification",
+    "integrations",
+    "Build/Reports",
+    "Resources/Private/HttpGuard/data/security-corpus",
+    "ext_emconf.php"
+  ],
+  "formatter": [
+    "bash",
+    "Build/Scripts/php-style.sh",
+    "files",
+    "{files}"
+  ]
+}

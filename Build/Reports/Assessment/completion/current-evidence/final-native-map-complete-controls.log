@@ -1,0 +1,24 @@
+test_absent_actual_end_is_rejected (__main__.FinalNativeMapTests.test_absent_actual_end_is_rejected) ... ok
+test_absent_vendor_map_is_rejected (__main__.FinalNativeMapTests.test_absent_vendor_map_is_rejected) ... ok
+test_actual_complete263_and_mechanical850_have_one_bound_vendor_metadata_input (__main__.FinalNativeMapTests.test_actual_complete263_and_mechanical850_have_one_bound_vendor_metadata_input) ... ok
+test_changed_source_digest_is_rejected (__main__.FinalNativeMapTests.test_changed_source_digest_is_rejected) ... ok
+test_changed_vendor_digest_is_rejected (__main__.FinalNativeMapTests.test_changed_vendor_digest_is_rejected) ... ok
+test_copied_endpoint_control_qualifies_maps_without_any_score (__main__.FinalNativeMapTests.test_copied_endpoint_control_qualifies_maps_without_any_score) ... ok
+test_current_root_installed_metadata_difference_is_rejected (__main__.FinalNativeMapTests.test_current_root_installed_metadata_difference_is_rejected) ... ok
+test_disagreeing_declared_endpoint_counts_are_rejected (__main__.FinalNativeMapTests.test_disagreeing_declared_endpoint_counts_are_rejected) ... ok
+test_disagreeing_result_counts_are_rejected (__main__.FinalNativeMapTests.test_disagreeing_result_counts_are_rejected) ... ok
+test_empty_vendor_maps_are_rejected (__main__.FinalNativeMapTests.test_empty_vendor_maps_are_rejected) ... ok
+test_genuine_historical261_manifest_cannot_be_final_complete_binding (__main__.FinalNativeMapTests.test_genuine_historical261_manifest_cannot_be_final_complete_binding) ... ok
+test_invented_mechanical_vendor_metadata_is_rejected (__main__.FinalNativeMapTests.test_invented_mechanical_vendor_metadata_is_rejected) ... ok
+test_missing_entry_point_before_hash_is_rejected (__main__.FinalNativeMapTests.test_missing_entry_point_before_hash_is_rejected) ... ok
+test_native_source_vendor_installed_metadata_disagreement_is_rejected (__main__.FinalNativeMapTests.test_native_source_vendor_installed_metadata_disagreement_is_rejected) ... ok
+test_nonidentical_result_confirmation_is_rejected (__main__.FinalNativeMapTests.test_nonidentical_result_confirmation_is_rejected) ... ok
+test_shared_root_byte_difference_is_rejected (__main__.FinalNativeMapTests.test_shared_root_byte_difference_is_rejected) ... ok
+test_treating_snapshot_lock_as_shared_root_input_is_rejected (__main__.FinalNativeMapTests.test_treating_snapshot_lock_as_shared_root_input_is_rejected) ... ok
+test_unbound_captured_vendor_metadata_is_rejected (__main__.FinalNativeMapTests.test_unbound_captured_vendor_metadata_is_rejected) ... ok
+test_unclassified_snapshot_only_input_is_rejected (__main__.FinalNativeMapTests.test_unclassified_snapshot_only_input_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.252s
+
+OK

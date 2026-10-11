@@ -1,15 +1,20 @@
 <?php
 
-declare (strict_types=1);
+/*
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2026 Netresearch DTT GmbH
+ */
+
+declare(strict_types=1);
 
 /**
  * SPDX-License-Identifier: GPL-2.0-or-later
- * SPDX-FileCopyrightText: Netresearch DTT GmbH
+ * SPDX-FileCopyrightText: Netresearch DTT GmbH.
  *
  * Tailor 1.x applies directory rules to relative paths and file rules to
  * basenames. Keep these package boundaries aligned with build-extension.py.
  */
-$root = dirname(__DIR__);
+$root      = dirname(__DIR__);
 $rootFiles = [
     'composer.json',
     'ext_emconf.php',
@@ -19,7 +24,7 @@ $rootFiles = [
     'LICENSE-HttpGuard.txt',
     'LICENSES.md',
 ];
-$corpus = 'Resources/Private/HttpGuard/data/security-corpus';
+$corpus      = 'Resources/Private/HttpGuard/data/security-corpus';
 $corpusFiles = [
     'README.md',
     'address-rules.json',

@@ -1,0 +1,14 @@
+{
+    "measured": {
+        "path": "\/tmp\/http-guard-native-assessment-round2-clean\/Tests\/HttpGuard\/Unit\/Policy\/WireIoBoundaryContractTest.php",
+        "bytes_sha256": "345463797d96249d3b16bccd0a1705e283276dad6caa51eb42f78fbb58380af5",
+        "comments_removed_ast_sha256": "c320a589711a1ce1179fc5c8003fe0f29d2e5d44d6839c360d786078a1ea1222"
+    },
+    "current": {
+        "path": "\/mnt\/c\/users\/live\/documents\/codex\/2026-10-08\/kan\/outputs\/http-guard-implementation\/Tests\/HttpGuard\/Unit\/Policy\/WireIoBoundaryContractTest.php",
+        "bytes_sha256": "74fa17083ac7451f5baf0c123b4e0506cb100b3430a77fff4ede44f1fdf5b698",
+        "comments_removed_ast_sha256": "c320a589711a1ce1179fc5c8003fe0f29d2e5d44d6839c360d786078a1ea1222"
+    },
+    "same_executable_ast": true,
+    "qualification": "Only3 exact-rule scanner comments added after snapshot freeze; original295-input Native snapshot remains immutable, all75 production PHP files and executable test AST remain unchanged. Current full CI uses updated comments."
+}

@@ -1,0 +1,38 @@
+Harness pointers, Composer commands, hooks and CI entry point are consistent.
+./composer.json is valid
+You are running PHP CS Fixer on PHP 8.5.11, but the minimum PHP version supported by your project in composer.json is PHP 8.2. Executing PHP CS Fixer on newer PHP versions may introduce syntax or features not yet available in PHP 8.2, which could cause issues under that version. It is recommended to run PHP CS Fixer on PHP 8.2, to fit your project specifics.
+If you need help while solving warnings, ask at https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/discussions/, we will help you!
+
+PHP CS Fixer 3.95.27 Adalbertus by Fabien Potencier, Dariusz Ruminski and contributors.
+PHP runtime: 8.5.11
+Loaded config default from ".php-cs-fixer.dist.php".
+Running analysis on 31 cores with 10 files per process.
+Using cache file "/home/cybot/projects/typo3-http-guard-assessment-work/.php-cs-fixer.extension.cache".
+   0/143 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0%
+ 143/143 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+
+Found 0 of 143 files that can be fixed in 0.184 seconds, 22.00 MB memory used
+You are running PHP CS Fixer on PHP 8.5.11, but the minimum PHP version supported by your project in composer.json is PHP 8.2. Executing PHP CS Fixer on newer PHP versions may introduce syntax or features not yet available in PHP 8.2, which could cause issues under that version. It is recommended to run PHP CS Fixer on PHP 8.2, to fit your project specifics.
+If you need help while solving warnings, ask at https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/discussions/, we will help you!
+
+PHP CS Fixer 3.95.27 Adalbertus by Fabien Potencier, Dariusz Ruminski and contributors.
+PHP runtime: 8.5.11
+Loaded config default from ".php-cs-fixer.dist.php".
+Running analysis on 31 cores with 10 files per process.
+Using cache file "/home/cybot/projects/typo3-http-guard-assessment-work/.php-cs-fixer.kernel.cache".
+  0/53 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0%
+ 53/53 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+
+Found 0 of 53 files that can be fixed in 0.174 seconds, 22.00 MB memory used
+Analyse the embedded kernel and the actual TYPO3 14 adapter at level 10.
+
+ [OK] No errors                                                                 
+
+
+ [OK] No errors                                                                 
+
+{"classic_provenance_matches": true, "package_ranges_include_recorded_fixtures": true, "recorded_core_versions": ["13.4.36", "14.3.8"], "recorded_sdk_tuples": 3, "selected_runtime_within_supported_ranges": null, "status": "PASS"}
+{"certificate_chain_verified": true, "exact_certificate_files": 3, "exact_key_files": 3, "fixtures": ["ca", "client", "server"], "public_keys_match": true, "status": "PASS", "synthetic_ca": "CN=HTTP Guard SYNTHETIC TEST CA"}
+Public-document response headers contain no captured cookie values.

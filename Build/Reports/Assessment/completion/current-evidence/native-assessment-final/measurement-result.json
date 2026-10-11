@@ -1,0 +1,36 @@
+{
+  "scope": "ALL Classes, all default mutators, unchanged thresholds 90/90, no exclusions",
+  "exit_code": 1,
+  "stats": {
+    "totalMutantsCount": 3794,
+    "killedCount": 3384,
+    "notCoveredCount": 87,
+    "escapedCount": 289,
+    "errorCount": 3,
+    "syntaxErrorCount": 4,
+    "skippedCount": 0,
+    "ignoredCount": 0,
+    "timeOutCount": 27,
+    "msi": 89.38,
+    "mutationCodeCoverage": 97.71,
+    "coveredCodeMsi": 91.48
+  },
+  "pure_test_kill_percent": 89.19346336320505,
+  "measured_effective_input_count": 295,
+  "duration": "26m 51s",
+  "source_scope_qualification": "Predates two Cidr native-format test files and the three reviewed scanner-comment-only changes. All 75 production files equal current root. Later source not claimed measured.",
+  "sha256": {
+    "cleanup.json": "764a0fa377013af86732d06f35b77c1989bc9d21db7abc4ed4543d8163d3e9c1",
+    "infection-native-summary.json": "93f42c3f3e81e6df708e9c8d7e7324002b2675e1a6eb37a9cfb428bd16428e9f",
+    "infection-native.json.gz": "43b22ed57edae2847ba6e7a4bc4e93b0bc1e362ea533ad47646dfc5b57840cee",
+    "infection-native.log.gz": "42714813e5521daa01394ee7d86578b71f23185a49c44e84dbf5e4639cd22e65",
+    "run.log": "fcae17fd3d343dd69bdb75d45eb0675c054a43ae395b444fde80d78e62f5c7d7",
+    "snapshot-nonphp-update-plan.json": "ee137f3b699891f3804e100270e72955896d1b7a3ab9d1f419c7282e0ba5f465",
+    "snapshot-nonphp-update-result.json": "96d71916e33f3839309bf5aba1cd84a5fdbbf302f219938490bb3c3098dfc5b8",
+    "snapshot-php-update-ast.json": "5a661ea2ae0279ab20081d84fa95e6d7c76509c34d4ae83e8c2ed2278d97347a",
+    "snapshot-php-update-result.json": "0ef12b5680eb0b636cdc4696ecabb23f7a3796fef538ea66a3619f1b198bff98",
+    "source-end.json": "e11559e43b121b19bb02242973230f8758c1c4a24456582c07f05ae1807b6ae3",
+    "source-start.json": "c243fce8fa8b4a1837606d664223ebbf5f8bf20276c3a5b90d32b39cf17c85a1"
+  },
+  "all_75_current_root_production_hashes_equal": true
+}
