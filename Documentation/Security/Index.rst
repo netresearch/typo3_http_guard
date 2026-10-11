@@ -157,7 +157,7 @@ agent review do not substitute for enforcement at the actual transport.
 Alpha acceptance
 ================
 
-Version 0.1.1 is a published alpha for evaluation. The user-authorized alpha
+Version 0.1.2 is an alpha for evaluation. The user-authorized alpha
 scope requires independent agent review, resolved findings and green
 applicable checks; it adds no separate human approval or operator-pilot gate.
 Neither activity is claimed completed. Both remain recommendations when
