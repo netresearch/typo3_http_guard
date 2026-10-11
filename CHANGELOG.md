@@ -2,6 +2,29 @@
 
 All notable changes to HTTP Guard for TYPO3 are recorded here.
 
+## [0.1.2] - 2026-10-11
+
+Alpha maintenance release with stricter input contracts and executable development checks.
+
+### Fixed
+
+- Reject bracketed IPv4/DNS authorities and malformed DNS address records before creating a connection plan.
+- Validate configuration, policy data, request options and registration shapes with controlled fail-closed errors.
+- Settle and clean up leases when runtime capabilities change or a transfer no longer has its request.
+- Keep decision reporting bounded and redacted and preserve request/client/policy isolation.
+- Map native coverage reports to measured repository sources and verify release provenance with the supported GitHub CLI options.
+
+### Changed
+
+- Permit Symfony Console 8 alongside 7.4 in compatible dependency graphs.
+- Apply the shared TYPO3 extension coding style and separate MIT/GPL source scopes.
+- Add executable style, level 10 analysis, architecture, fuzz, policy-performance and whole-file mutation checks, with maintained controls for build and security tooling.
+- Keep the active manual, requirements and accepted decisions under Documentation, tests under Tests and support tools under Build. Preserve original specifications, obsolete runs and the nr-vault reference overlay in immutable Git history.
+- Restore all fourteen original numbered ADRs in English and German, retaining their rationale, alternatives, consequences and evidence IDs. Record the accepted single-extension, public RequestFactory, controlled DNS wire and single-use cURL decisions as ADR-0015 through ADR-0018, with explicit relationships to the historical proposals.
+- Include an English manual and its German localization in the single extension package. Default protection still applies to the registered TYPO3 RequestFactory path; Vault and unrelated clients require explicit integration.
+
+This entry describes source changes. It does not assert a completed human security review, operator pilot, enterprise certification, OpenSSF badge level or hosted-manual publication. Recorded verification results retain their own sources and scopes.
+
 ## [0.1.1] - 2026-10-09
 
 Alpha release with the same HTTP protection as 0.1.0.
@@ -34,3 +57,7 @@ Initial alpha for evaluation, distributed as one complete TYPO3 extension.
 ### Production qualification
 
 Independent human security review and a representative operator pilot remain outstanding for production acceptance. This alpha publication does not establish enterprise certification or SLSA level 3. The release workflow verifies artifacts and publication separately; registering the documentation webhook does not by itself confirm that an online manual has been approved and rendered.
+
+[0.1.2]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/netresearch/typo3_http_guard/tree/v0.1.0
