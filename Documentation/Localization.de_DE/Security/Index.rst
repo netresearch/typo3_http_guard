@@ -156,7 +156,7 @@ Agentenreview sind keine alternative Durchsetzung am echten Transport.
 Alpha-Freigabe
 ==============
 
-Version 0.1.2 ist eine Alpha-Version zur Erprobung. Für die vom Nutzer
+Version 0.1.3 ist eine Alpha-Version zur Erprobung. Für die vom Nutzer
 freigegebene Alpha-Entwicklung gelten unabhängige Agentenreviews, behobene
 Befunde und erfolgreiche einschlägige Prüfungen. Eine zusätzliche menschliche
 Freigabe oder ein Betreiberpilot ist dafür nicht erforderlich. Keines von

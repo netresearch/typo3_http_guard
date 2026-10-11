@@ -2,7 +2,7 @@
 
 ## Supported scope
 
-HTTP Guard 0.1.2 is an alpha for evaluation. The published 0.1 series is available from
+HTTP Guard 0.1.3 is an alpha for evaluation. The published 0.1 series is available from
 [TER](https://extensions.typo3.org/extension/nr_http_guard) and
 [Packagist](https://packagist.org/packages/netresearch/nr-http-guard). No stable
 release is advertised. Supported PHP, Core and SDK semantic ranges are listed in

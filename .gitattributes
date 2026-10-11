@@ -26,6 +26,9 @@ Documentation/** conflict-marker-size=128
 /Configuration/** -export-ignore
 /Documentation -export-ignore
 /Documentation/** -export-ignore
+# Documentation editor settings stay in source and outside installable archives.
+/Documentation/.editorconfig export-ignore
+/Documentation/Localization.de_DE/.editorconfig export-ignore
 /Resources -export-ignore
 /Resources/** -export-ignore
 /Resources/Private/HttpGuard/data/security-corpus/** export-ignore

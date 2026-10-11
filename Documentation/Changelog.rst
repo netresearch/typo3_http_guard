@@ -4,6 +4,18 @@
 Changelog
 =========
 
+.. _changelog-013:
+
+Version 0.1.3 (2026-10-11)
+==========================
+
+This alpha patch aligns the canonical build and Git source archives with TER's
+package boundary. The two documentation editor configuration files remain in
+the repository and are excluded from installable archives.
+
+Immutable source verification reads only their two explicit development-file
+declarations as data. Historical releases retain their recorded package contents.
+
 .. _changelog-012:
 
 Version 0.1.2 (2026-10-11)
