@@ -28,7 +28,7 @@
 
 <!-- Row 3: Supported ranges, license and release state -->
 <p align="center">
-  <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/status-0.1.2%20alpha-orange.svg" alt="Status: 0.1.2 alpha"></a>
+  <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/status-0.1.3%20alpha-orange.svg" alt="Status: 0.1.3 alpha"></a>
   <a href="Documentation/Development/Index.rst"><img src="https://img.shields.io/badge/PHP-%5E8.2-blue.svg?logo=php" alt="PHP constraint: ^8.2"></a>
   <a href="Documentation/Installation/Index.rst"><img src="https://img.shields.io/badge/TYPO3-13%20%7C%2014-orange.svg?logo=typo3" alt="Supported TYPO3 majors: 13 and 14"></a>
   <a href="LICENSE.txt"><img src="https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg" alt="License: GPL-2.0-or-later"></a>
@@ -79,7 +79,7 @@ Install the published 0.1 series from
 composer require netresearch/nr-http-guard:^0.1
 ```
 
-Composer registers the extension automatically. Version 0.1.2 is an alpha for
+Composer registers the extension automatically. Version 0.1.3 is an alpha for
 evaluation; see [the installation guide](Documentation/Installation/Index.rst)
 for the supported Core and transport requirements.
 
@@ -196,7 +196,7 @@ is also included.
 
 ## Security and release status
 
-Version 0.1.2 is an alpha for evaluation. Alpha development and merging
+Version 0.1.3 is an alpha for evaluation. Alpha development and merging
 proceed after independent agent review, resolved findings and green applicable
 checks; no additional human approval or operator-pilot gate applies at this
 stage. Neither a human security review nor a representative operator pilot is

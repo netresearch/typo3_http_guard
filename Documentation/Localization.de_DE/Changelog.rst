@@ -4,6 +4,19 @@
 Changelog
 =========
 
+.. _changelog-013:
+
+Version 0.1.3 (2026-10-11)
+==========================
+
+Dieser Alpha-Patch gleicht den kanonischen Build und die Git-Quellarchive an den
+Paketumfang des TER an. Die beiden Editor-Konfigurationsdateien der Dokumentation
+bleiben im Repository und werden aus den installierbaren Archiven ausgeschlossen.
+
+Die Prüfung unveränderlicher Quellstände liest ausschließlich ihre beiden
+expliziten Entwicklungsdatei-Deklarationen als Daten. Historische Releases
+behalten ihren dokumentierten Paketinhalt.
+
 .. _changelog-012:
 
 Version 0.1.2 (2026-10-11)

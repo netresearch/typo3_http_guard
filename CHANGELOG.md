@@ -2,6 +2,15 @@
 
 All notable changes to HTTP Guard for TYPO3 are recorded here.
 
+## [0.1.3] - 2026-10-11
+
+Alpha patch release aligning the installable package contents across delivery routes.
+
+### Fixed
+
+- Exclude the two documentation editor settings from canonical and Git source archives while retaining them in the documentation source, matching TER's package boundary.
+- Read only their explicit development-file declarations from an immutable source when verifying that release; retain historical package contents.
+
 ## [0.1.2] - 2026-10-11
 
 Alpha maintenance release with stricter input contracts and executable development checks.
@@ -58,6 +67,7 @@ Initial alpha for evaluation, distributed as one complete TYPO3 extension.
 
 Independent human security review and a representative operator pilot remain outstanding for production acceptance. This alpha publication does not establish enterprise certification or SLSA level 3. The release workflow verifies artifacts and publication separately; registering the documentation webhook does not by itself confirm that an online manual has been approved and rendered.
 
+[0.1.3]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/netresearch/typo3_http_guard/tree/v0.1.0

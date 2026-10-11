@@ -15,6 +15,13 @@ DIRECTORIES = ('Classes', 'Configuration', 'Documentation', 'Resources')
 CORPUS = 'Resources/Private/HttpGuard/data/security-corpus/'
 CORPUS_FILES = {'address-rules.json', 'address-cases.json', 'endpoint-cases.json',
                 'uri-cases.json', 'scenario-cases.json', 'sources.json', 'README.md'}
+DOC_EDITOR_CONFIGS = {'Documentation/.editorconfig',
+                      'Documentation/Localization.de_DE/.editorconfig'}
+
+def declared_editor_config_exclusions(attributes):
+    statements = {tuple(line.split()) for line in attributes.splitlines()}
+    return {name for name in DOC_EDITOR_CONFIGS
+            if (('/' + name).encode('utf-8'), b'export-ignore') in statements}
 
 def is_runtime_asset(path):
     name = str(path.relative_to(ROOT))
@@ -34,6 +41,7 @@ arguments = parser.parse_args()
 output = arguments.output.resolve()
 output.parent.mkdir(parents=True, exist_ok=True)
 contents = {}
+source_attributes = b''
 if arguments.source_revision is not None:
     revision = arguments.source_revision
     if re.fullmatch(r'[0-9a-f]{40}', revision) is None:
@@ -41,7 +49,8 @@ if arguments.source_revision is not None:
     if read_git('cat-file', '-t', revision).strip() != b'commit':
         raise SystemExit('Source revision must identify a commit')
     # Read immutable Git objects only. In particular, do not check out the old
-    # tree, execute its builder or apply its export-ignore packaging rules.
+    # tree or execute its builder. Only the two fixed development declarations
+    # below are consumed as data; general historical attribute rules never run.
     entries = read_git('ls-tree', '--full-tree', '-r', '-z', revision)
     for entry in entries.split(b'\0'):
         if not entry:
@@ -49,6 +58,11 @@ if arguments.source_revision is not None:
         metadata, raw_name = entry.split(b'\t', 1)
         mode, kind, object_id = metadata.split(b' ')
         name = raw_name.decode('utf-8')
+        if name == '.gitattributes':
+            if kind != b'blob' or mode not in (b'100644', b'100755'):
+                raise SystemExit('Non-regular Git packaging metadata: ' + name)
+            source_attributes = read_git('cat-file', 'blob', object_id.decode('ascii'))
+            continue
         if name not in FILES and name.split('/')[0] not in DIRECTORIES:
             continue
         if name.startswith(CORPUS) and name[len(CORPUS):] not in CORPUS_FILES:
@@ -66,6 +80,10 @@ if arguments.source_revision is not None:
         if not any(name.startswith(directory + '/') for name in contents):
             raise SystemExit('Missing required directory: ' + directory)
 else:
+    attributes = ROOT / '.gitattributes'
+    if attributes.is_symlink() or not attributes.is_file():
+        raise SystemExit('Missing or symlinked packaging metadata: .gitattributes')
+    source_attributes = attributes.read_bytes()
     paths = [ROOT / name for name in FILES]
     for name in DIRECTORIES:
         directory = ROOT / name
@@ -79,6 +97,8 @@ else:
         if path == output:
             raise SystemExit('Output must be outside packaged source directories')
         contents[str(path.relative_to(ROOT))] = path.read_bytes()
+for name in declared_editor_config_exclusions(source_attributes):
+    contents.pop(name, None)
 manifest = json.loads(contents['composer.json'])
 if manifest.get('name') != 'netresearch/nr-http-guard':
     raise SystemExit('Unexpected extension package identity')
