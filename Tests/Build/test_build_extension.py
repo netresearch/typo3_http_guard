@@ -36,6 +36,8 @@ class ReleasedPackageDataTest(unittest.TestCase):
             'Configuration/Services.yaml': b'services: {}\n',
             'Documentation/guides.xml': b'<guides/>\n',
             'Documentation/Index.rst': b'Fixture manual\n',
+            'Documentation/.editorconfig': b'[*.rst]\nindent_size = 4\n',
+            'Documentation/Localization.de_DE/.editorconfig': b'[*.rst]\nindent_size = 4\n',
             'Resources/Private/HttpGuard/data/security-corpus/address-rules.json': b'{}\n',
             'Resources/binary-fixture.bin': b'first\n\x00second\n\xffthird',
         }
@@ -94,6 +96,48 @@ class ReleasedPackageDataTest(unittest.TestCase):
         self.assertFalse((self.source / 'executed-release-code').exists())
         self.assertNotIn('Build/Scripts/build-extension.py', self.read_package())
         self.assertNotIn('.gitattributes', self.read_package())
+
+    def test_editor_boundary_uses_selected_source_metadata_in_both_directions(self):
+        attributes = self.source / '.gitattributes'
+        declarations = (
+            '/Documentation/.editorconfig export-ignore\n'
+            '/Documentation/Localization.de_DE/.editorconfig export-ignore\n'
+        )
+        # A historical source has no explicit declarations. Opposite live
+        # metadata must not retrospectively change that released package.
+        attributes.write_text(declarations)
+        result = self.build(self.revision)
+        self.assertEqual(0, result.returncode, result.stderr.decode())
+        self.assertEqual(self.files, self.read_package())
+
+        # Commit only the new metadata, retaining the historical malicious
+        # builder as data. The selected source must control the exclusion.
+        self.git('add', '.gitattributes')
+        revision = self.commit(already_staged=True)
+        attributes.write_text('* export-ignore\n')
+        result = self.build(revision)
+        self.assertEqual(0, result.returncode, result.stderr.decode())
+        expected = {
+            name: data for name, data in self.files.items()
+            if name not in (
+                'Documentation/.editorconfig',
+                'Documentation/Localization.de_DE/.editorconfig',
+            )
+        }
+        self.assertEqual(expected, self.read_package())
+        self.assertFalse((self.source / 'executed-release-code').exists())
+
+    def test_source_metadata_symlink_is_rejected_before_reading_target(self):
+        target = self.directory / 'external-attributes'
+        target.write_text('/Documentation/.editorconfig export-ignore\n')
+        attributes = self.source / '.gitattributes'
+        attributes.unlink()
+        attributes.symlink_to(target)
+        revision = self.commit()
+        result = self.build(revision)
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn(b'Non-regular Git packaging metadata: .gitattributes', result.stderr)
+        self.assertFalse(self.output.exists())
 
     def test_selected_symlink_is_rejected_before_reading_target(self):
         target = self.source / 'composer.json'
