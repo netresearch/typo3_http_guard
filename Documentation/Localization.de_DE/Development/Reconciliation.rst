@@ -242,9 +242,16 @@ aber an seiner Attestation-Prüfung. Der korrigierte Verifikationslauf besteht
 gegen das unveränderte Release und ersetzt kein Asset. Siehe
 :ref:`release-provenance`.
 
-Die dokumentierten TYPO3-Intercept-Deployments :literal:`main` und
-:literal:`0.1` stehen weiter auf **Awaiting Approval**. Die öffentliche
-Main-Handbuchadresse liefert am 9. Oktober 404. Ein lokaler warnungsfreier
-Build und enthaltene EN-/DE-Quellen belegen keine externe Freigabe.
-Diese externe Veröffentlichung ist keine zusätzliche Alpha-Bedingung;
-die Dokumentationsänderungen erzeugen kein neues Release.
+Am 9. Oktober 2026 standen die dokumentierten TYPO3-Intercept-Deployments
+:literal:`main` und :literal:`0.1` auf **Awaiting Approval**. Die öffentliche
+Main-Handbuchadresse lieferte 404. Ein lokaler Build allein belegte keine
+Veröffentlichung.
+
+Am 18. Oktober 2026 sind das
+`englische Main-Handbuch <https://docs.typo3.org/p/netresearch/nr-http-guard/main/en-us/>`_
+und das
+`deutsche Main-Handbuch <https://docs.typo3.org/p/netresearch/nr-http-guard/main/de-de/>`_
+öffentlich erreichbar. Beide nennen Version 0.1.3 und den 16. Oktober 2026
+als Renderingdatum. Damit ist die Veröffentlichung der Main-Handbücher
+belegt, jedoch nicht der Zustand des gesonderten :literal:`0.1`-Deployments.
+Diese Dokumentationsänderungen erzeugen kein neues Extension-Release.

@@ -178,13 +178,12 @@ for the complete runtime contract.
 
 ## Documentation
 
-The manual is included in [Documentation](Documentation/Index.rst) and the
-extension ZIP. The
-[hosted English manual](https://docs.typo3.org/p/netresearch/nr-http-guard/main/en-us/)
-is awaiting initial publication by TYPO3.
+Read the [English manual](https://docs.typo3.org/p/netresearch/nr-http-guard/main/en-us/)
+or the [German translation](https://docs.typo3.org/p/netresearch/nr-http-guard/main/de-de/)
+on docs.typo3.org. English is the primary language.
 
-English is the primary language. A [German translation](Documentation/Localization.de_DE/Index.rst)
-is also included.
+Both manuals are also included in [Documentation](Documentation/Index.rst)
+and the extension ZIP.
 
 - [Installation and supported versions](Documentation/Installation/Index.rst)
 - [Policy configuration and endpoint profiles](Documentation/Configuration/Index.rst)

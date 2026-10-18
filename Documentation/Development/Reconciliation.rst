@@ -244,7 +244,15 @@ Version **0.1.1 is published on TER and Packagist**. After the original
 post-publication attestation failure, the corrected verification-only run
 passed against the immutable release; see :ref:`release-provenance`.
 
-TYPO3 Intercept's recorded :literal:`main` and :literal:`0.1` deployments remain **Awaiting Approval**.
-The public main manual URL returned 404 on 9 October 2026. Local warning-free EN/DE rendering and
-included source manuals do not constitute hosted approval. This external publication state does not
-block the authorized alpha work. No new release is implied by these documentation changes.
+On 9 October 2026, TYPO3 Intercept's recorded :literal:`main` and
+:literal:`0.1` deployments were **Awaiting Approval**, and the public main
+manual URL returned 404. Local rendering alone did not establish publication.
+
+On 18 October 2026, the
+`English main manual <https://docs.typo3.org/p/netresearch/nr-http-guard/main/en-us/>`_
+and the
+`German main manual <https://docs.typo3.org/p/netresearch/nr-http-guard/main/de-de/>`_
+are publicly available. Both report version 0.1.3 and a rendering date of
+16 October 2026. This verifies publication of the main manuals; it does not
+establish the status of the separate :literal:`0.1` deployment.
+These documentation changes do not create a new extension release.
