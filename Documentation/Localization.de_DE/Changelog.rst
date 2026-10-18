@@ -9,11 +9,16 @@ Changelog
 Version 0.1.4 (2026-10-18)
 ==========================
 
-Diese Alpha-Wartungsversion aktualisiert die Dokumentation und ergänzt 101
+Diese Alpha-Wartungsversion aktualisiert die Dokumentation und ergänzt 102
 Unit-Testfälle für Konfigurations- und Policy-Grenzen, DNS-Validierung und
 Resolver-Fallback, TYPO3-Registrierung, Laufzeitprüfungen und den
 Transfer-Lifecycle. HTTP-Schutzverhalten und Abhängigkeitsgrenzen bleiben
 unverändert.
+
+Ein deterministischer Test prüft vollständige DNS-over-TCP-Antworten, wenn die
+Längenangabe und die Nutzdaten innerhalb der bestehenden Frist stückweise lesbar
+werden.
+Der projektspezifische Test-Runner ist direkt ausführbar.
 
 Beide Handbuchsprachen verwenden Netresearch-Karten, türkisfarbene Akzente und
 den Netresearch-Footer. Die Links führen zu den veröffentlichten Handbüchern;

@@ -46,6 +46,7 @@ final class WireIoBoundaryState
     public static ?string $idBoundary = null;
     public static int $tcpWrites      = 0;
     public static int $tcpBodyReads   = 0;
+    public static bool $tcpReadReady  = false;
 }
 
 namespace Netresearch\HttpGuard;
@@ -59,7 +60,8 @@ function stream_socket_client(
     ?float $timeout = null,
     int $flags = STREAM_CLIENT_CONNECT,
 ) {
-    State::$timeouts[] = $timeout;
+    State::$tcpReadReady = false;
+    State::$timeouts[]   = $timeout;
     ++State::$opened;
     State::$authorities[] = $address;
     if (State::$fault === 'socket-warning') {
@@ -88,6 +90,9 @@ function stream_select(
     ?int $seconds,
     ?int $microseconds = null,
 ): int|false {
+    if (State::$tcp && State::$fault === 'tcp-delayed-fragments' && $read !== []) {
+        State::$tcpReadReady = true;
+    }
     State::$readiness[] = [$seconds, $microseconds];
     State::$events[]    = $read !== [] ? 'ready-read' : 'ready-write';
 
@@ -126,6 +131,9 @@ function fwrite($stream, string $data, ?int $length = null): int|false
 }
 function fread($stream, int $length): string|false
 {
+    if (State::$tcp && State::$fault === 'tcp-delayed-fragments' && !State::$tcpReadReady) {
+        return '';
+    }
     if (State::$tcp && State::$offset >= 2 && in_array(State::$fault, ['tcp-read-false', 'tcp-read-empty'], true)) {
         if (++State::$tcpBodyReads > 1) {
             throw new \RuntimeException('TCP read repeated after native failure');
@@ -157,9 +165,12 @@ function fread($stream, int $length): string|false
             default            => pack('n', strlen($packet)) . $packet,
         };
     }
-    $count  = State::$fault === 'tcp-fragments' ? min(1, $length) : $length;
+    $count  = in_array(State::$fault, ['tcp-fragments', 'tcp-delayed-fragments'], true) ? min(1, $length) : $length;
     $result = substr(State::$received, State::$offset, $count);
     State::$offset += strlen($result);
+    if (State::$fault === 'tcp-delayed-fragments' && $result !== '') {
+        State::$tcpReadReady = false;
+    }
 
     return $result;
 }
@@ -171,6 +182,10 @@ function fclose($stream): bool
 }
 function hrtime(bool $asNumber = false): array|int|float|false
 {
+    if (State::$fault === 'tcp-delayed-fragments') {
+        return $asNumber ? 1000000000 : [1, 0];
+    }
+
     return State::$times === [] ? \hrtime($asNumber) : array_shift(State::$times);
 }
 function random_int(int $min, int $max): int
