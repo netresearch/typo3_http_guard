@@ -13,7 +13,9 @@ use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Netresearch\HttpGuard\PolicyException;
+use Netresearch\NrHttpGuard\Configuration\GlobalHttpDefaults;
 use Netresearch\NrHttpGuard\Http\MiddlewareRegistry;
+use Netresearch\NrHttpGuard\Http\RawRequestFactoryRegistration;
 use Netresearch\NrHttpGuard\Tests\Fixtures\AdapterRuntimeFixture;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -223,5 +225,20 @@ final class MiddlewareRegistryContractTest extends TestCase
     {
         yield 'boundary name' => [MiddlewareRegistry::BOUNDARY];
         yield 'terminal name' => [MiddlewareRegistry::TERMINAL];
+    }
+
+    public function testRegistrationRevalidatesCoreBindingAfterFactoryResolution(): void
+    {
+        $fixture = $this->fixture = new AdapterRuntimeFixture(register: false);
+        $lookup  = static function () use ($fixture): RequestFactory {
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][RequestFactory::class]['className'] = RequestFactory::class;
+
+            return $fixture->guarded;
+        };
+        $registration = new RawRequestFactoryRegistration($lookup, static fn (): RequestFactory => $fixture->guarded);
+        $middleware   = new MiddlewareRegistry($fixture->factory, $fixture->config, new GlobalHttpDefaults(), $registration);
+        $this->expectException(PolicyException::class);
+        $this->expectExceptionMessage('configuration_invalid');
+        $middleware->register();
     }
 }

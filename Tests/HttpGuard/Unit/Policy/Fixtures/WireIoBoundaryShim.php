@@ -38,10 +38,14 @@ final class WireIoBoundaryState
     {
         return \file_get_contents('/definitely-nonexistent-http-guard-wire-boundary-control');
     }
-    public static array $blocking  = [];
-    public static array $readiness = [];
-    public static array $events    = [];
-    public static array $timeouts  = [];
+    public static array $blocking     = [];
+    public static array $readiness    = [];
+    public static array $events       = [];
+    public static array $timeouts     = [];
+    public static array $times        = [];
+    public static ?string $idBoundary = null;
+    public static int $tcpWrites      = 0;
+    public static int $tcpBodyReads   = 0;
 }
 
 namespace Netresearch\HttpGuard;
@@ -97,6 +101,13 @@ function stream_select(
 }
 function fwrite($stream, string $data, ?int $length = null): int|false
 {
+    if (State::$tcp && in_array(State::$fault, ['tcp-write-false', 'tcp-write-zero'], true)) {
+        if (++State::$tcpWrites > 1) {
+            throw new \RuntimeException('TCP write repeated after native failure');
+        }
+
+        return State::$fault === 'tcp-write-false' ? false : 0;
+    }
     State::$events[] = 'write';
     ++State::$writes;
     if (State::$fault === 'write-warning') {
@@ -115,6 +126,13 @@ function fwrite($stream, string $data, ?int $length = null): int|false
 }
 function fread($stream, int $length): string|false
 {
+    if (State::$tcp && State::$offset >= 2 && in_array(State::$fault, ['tcp-read-false', 'tcp-read-empty'], true)) {
+        if (++State::$tcpBodyReads > 1) {
+            throw new \RuntimeException('TCP read repeated after native failure');
+        }
+
+        return State::$fault === 'tcp-read-false' ? false : '';
+    }
     State::$events[] = 'read';
     ++State::$reads;
     if (State::$fault === 'read-warning') {
@@ -150,4 +168,16 @@ function fclose($stream): bool
     ++State::$closed;
 
     return \fclose($stream);
+}
+function hrtime(bool $asNumber = false): array|int|float|false
+{
+    return State::$times === [] ? \hrtime($asNumber) : array_shift(State::$times);
+}
+function random_int(int $min, int $max): int
+{
+    return match (State::$idBoundary) {
+        'min'   => $min,
+        'max'   => $max,
+        default => \random_int($min, $max),
+    };
 }

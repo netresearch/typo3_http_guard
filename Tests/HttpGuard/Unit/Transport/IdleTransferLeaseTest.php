@@ -111,4 +111,26 @@ final class IdleTransferLeaseTest extends TestCase
             $registry,
         ];
     }
+
+    public function testWaitingForAnAlreadySettledLeaseDrainsItsQueuedCallbacks(): void
+    {
+        [$engine, $registry] = $this->policy();
+        $driver              = new TransferDriver();
+        $lease               = new TransferLease($driver, $engine, $registry->newContext(), new Request('GET', 'https://public.example'), []);
+        $lease->promise()->cancel();
+        self::assertTrue($lease->settled());
+        $observed = false;
+        $lease
+            ->promise()
+            ->then(
+                null,
+                static function () use (&$observed): void {
+                    $observed = true;
+                },
+            );
+        self::assertFalse($observed);
+        $driver->waitFor($lease);
+        self::assertTrue($observed);
+        self::assertSame(0, $driver->counters()['nativeConstructed']);
+    }
 }

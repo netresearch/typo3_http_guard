@@ -493,4 +493,90 @@ final class TransferLeaseLifecycleContractTest extends TestCase
 
         return $lease->promise()->wait();
     }
+
+    public function testCompletedLeaseTicksAreQuiescentForPolicyAndNativeCallbacks(): void
+    {
+        $policy           = new LifecyclePolicy();
+        [$lease, $driver] = $this->lease($policy);
+        $response         = $this->complete($lease, $driver);
+        $events           = $policy->reporter->events;
+        $calls            = $policy->resolver->calls;
+        $handler          = OfflineCurlMultiHandler::$instances[0];
+        $ticks            = $handler->ticks;
+        $lease->tick();
+        $driver->tick();
+        $driver->waitFor($lease);
+        self::assertSame($events, $policy->reporter->events);
+        self::assertSame($calls, $policy->resolver->calls);
+        self::assertSame($ticks, $handler->ticks);
+        self::assertSame($response, $lease->promise()->wait());
+        $this->assertReleased($lease, $driver);
+    }
+
+    public function testAllowReporterExpiryPreventsEvenNativeHandlerConstruction(): void
+    {
+        $policy                         = new LifecyclePolicy(null, true);
+        [$lease, $driver]               = $this->lease($policy);
+        $policy->reporter->duringReport = static function (DecisionEvent $event) use ($policy): void {
+            if ($event->decision === 'allow') {
+                $policy->clock->seconds = 1;
+            }
+        };
+        $driver->tick();
+        $error = $this->rejectReason($lease);
+        self::assertInstanceOf(PolicyException::class, $error);
+        self::assertSame('grant_invalid', $error->reasonCode());
+        self::assertSame([], OfflineCurlMultiHandler::$instances);
+        self::assertSame(['allow', 'deny'], array_column($policy->reporter->events, 'decision'));
+        $this->assertReleased($lease, $driver, 0);
+    }
+
+    public function testExpiryWhileCompletionIsQueuedStillPreventsTheFirstNativeTick(): void
+    {
+        $policy                                = new LifecyclePolicy(null, true);
+        [$lease, $driver]                      = $this->lease($policy);
+        OfflineCurlMultiHandler::$duringInvoke = static function (OfflineCurlMultiHandler $handler): void {
+            $handler->inner->resolve($handler->response);
+        };
+        $originalQueue = Utils::queue();
+        $scheduler     = new class ($originalQueue, $policy->clock) implements \GuzzleHttp\Promise\TaskQueueInterface {
+            public int $queued = 0;
+
+            public function __construct(
+                private \GuzzleHttp\Promise\TaskQueueInterface $delegate,
+                private Fixtures\LifecycleClock $clock,
+            ) {}
+
+            public function isEmpty(): bool
+            {
+                return $this->delegate->isEmpty();
+            }
+
+            public function add(callable $task): void
+            {
+                ++$this->queued;
+                $this->clock->seconds = 1;
+                $this->delegate->add($task);
+            }
+
+            public function run(): void
+            {
+                $this->delegate->run();
+            }
+        };
+        Utils::queue($scheduler);
+        try {
+            $driver->tick();
+            $error = $this->rejectReason($lease);
+            self::assertGreaterThan(0, $scheduler->queued);
+            self::assertInstanceOf(PolicyException::class, $error);
+            self::assertSame('grant_invalid', $error->reasonCode());
+            self::assertSame(0, OfflineCurlMultiHandler::$instances[0]->ticks);
+            self::assertSame(['allow', 'deny'], array_column($policy->reporter->events, 'decision'));
+            $this->assertReleased($lease, $driver);
+        } finally {
+            $scheduler->run();
+            Utils::queue($originalQueue);
+        }
+    }
 }
