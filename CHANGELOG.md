@@ -8,11 +8,13 @@ Alpha maintenance release with documentation updates and expanded regression cov
 
 ### Added
 
-- Add 101 unit test cases covering configuration and policy boundaries, DNS validation and resolver fallback, TYPO3 registration, runtime checks and the transport lifecycle.
+- Add 102 unit test cases covering configuration and policy boundaries, DNS validation and resolver fallback, TYPO3 registration, runtime checks and the transport lifecycle.
+- Verify complete DNS-over-TCP responses when length-prefix and payload fragments become readable separately, with a deterministic readiness control.
 - Add `.bestpractices.json` with source-backed OpenSSF proposals and explanations for individual criteria.
 
 ### Changed
 
+- Make the project test runner executable for direct invocation.
 - Align both manual languages with Netresearch cards, teal accents and footer branding; update links to the published manuals while preserving dated publication observations.
 - Document four static-analysis false positives at the reviewed TYPO3 initialization calls in development and test fixtures.
 

@@ -9,10 +9,14 @@ Changelog
 Version 0.1.4 (2026-10-18)
 ==========================
 
-This alpha maintenance release updates documentation and adds 101 unit test
+This alpha maintenance release updates documentation and adds 102 unit test
 cases for configuration and policy boundaries, DNS validation and resolver
 fallback, TYPO3 registration, runtime checks and the transport lifecycle.
 HTTP protection behavior and dependency constraints are unchanged.
+
+A deterministic test verifies complete DNS-over-TCP responses when length-prefix
+and payload fragments become readable separately within the existing deadline.
+The project test runner is executable for direct invocation.
 
 Both manual languages use Netresearch cards, teal accents and footer branding.
 Links point to the published manuals; dated publication observations remain

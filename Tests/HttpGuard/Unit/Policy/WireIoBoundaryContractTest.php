@@ -114,6 +114,20 @@ final class WireIoBoundaryContractTest extends TestCase
         self::assertGreaterThan(3, State::$reads);
     }
 
+    public function testTcpResponseWaitsForDelayedPrefixAndBodyFragments(): void
+    {
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        State::$fault = 'tcp-delayed-fragments';
+        $answer       = (new WireDnsQuery(['127.0.0.1'], 5353, 1.0))->query('wire.example.', 1);
+        self::assertTrue($answer->complete);
+        self::assertSame(
+            [['host' => 'wire.example', 'type' => 'A', 'ttl' => 5, 'ip' => '203.0.115.7']],
+            $answer->records,
+        );
+        self::assertSame(['udp://127.0.0.1:5353', 'tcp://127.0.0.1:5353'], State::$authorities);
+        self::assertSame(2, State::$closed);
+    }
+
     public function testFailureAtOneNameserverContinuesToNextWithoutNativeFallback(): void
     {
         require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
