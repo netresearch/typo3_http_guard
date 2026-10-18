@@ -6,6 +6,11 @@
 HTTP Guard
 ==========
 
+.. image:: /Images/netresearch-underline.svg
+    :alt:
+    :width: 200px
+    :class: no-border
+
 Nach Installation und Aktivierung schützt HTTP Guard den standardmäßigen
 HTTP-Client von TYPO3, :php:`RequestFactory`, vor Server-Side Request Forgery
 (SSRF). Bestehende Aufrufe über die registrierte Factory werden automatisch
@@ -54,11 +59,53 @@ gewöhnlichen RequestFactory-Aufrufen keinen Zugriff auf interne Ziele.
 Weitere Schritte
 ================
 
-* :ref:`installation`: Voraussetzungen und Installation mit Composer oder ZIP.
-* :ref:`configuration`: Alle Policyfelder und ein internes Endpoint-Beispiel.
-* :ref:`api`: Gebundene PSR-18-Clients und Public Fetch im eigenen Projekt.
-* :ref:`operations`: Diagnose, Einführung, Änderungen und Rollback.
-* :ref:`security`: DNS, Transport, Redirects und Grenzen der Abdeckung.
+.. card-grid::
+    :columns: 1
+    :columns-md: 2
+    :gap: 4
+    :card-height: 100
+
+    .. card:: 📦 Installation
+
+        Voraussetzungen prüfen und mit Composer oder aus dem TER installieren.
+
+        .. card-footer:: :ref:`HTTP Guard installieren <installation>`
+            :button-style: btn btn-primary stretched-link
+
+    .. card:: ⚙️ Konfiguration
+
+        Policyfelder kennenlernen und Profile für interne Endpoints einrichten.
+
+        .. card-footer:: :ref:`Policies konfigurieren <configuration>`
+            :button-style: btn btn-secondary stretched-link
+
+    .. card:: 🚀 Client-APIs
+
+        Gebundene PSR-18-Clients und Public Fetch im eigenen Projekt verwenden.
+
+        .. card-footer:: :ref:`APIs kennenlernen <api>`
+            :button-style: btn btn-secondary stretched-link
+
+    .. card:: 🛠️ Betrieb
+
+        Anfragen diagnostizieren und Einführung, Änderungen und Rollback planen.
+
+        .. card-footer:: :ref:`HTTP Guard betreiben <operations>`
+            :button-style: btn btn-secondary stretched-link
+
+    .. card:: 🔒 Sicherheit
+
+        DNS-, Transport- und Redirectprüfungen sowie die Grenzen der Abdeckung verstehen.
+
+        .. card-footer:: :ref:`Sicherheitsgrenzen nachlesen <security>`
+            :button-style: btn btn-secondary stretched-link
+
+    .. card:: 💻 Entwicklung
+
+        Entwicklungsumgebung einrichten und die Prüfwerkzeuge ausführen.
+
+        .. card-footer:: :ref:`An HTTP Guard mitarbeiten <development>`
+            :button-style: btn btn-secondary stretched-link
 
 .. _http-guard-manual:
 
@@ -93,3 +140,19 @@ Die optionale nr-vault-Anpassung gehört zu einer gesonderten Migration;
 die globale Extension schützt Vault nicht automatisch. Das API-Kapitel
 verlinkt den aufgezeichneten Referenzpatch und seine historischen Nachweise
 unter :ref:`api-vault`. Für Installation und Betrieb genügt dieses Handbuch.
+
+.. card-grid::
+    :columns: 1
+
+    .. card:: [n] Eine Extension von Netresearch
+
+        .. image:: /Images/netresearch-underline.svg
+            :alt:
+            :width: 120px
+            :class: no-border
+
+        Professionelle TYPO3-Entwicklung, Integration und Beratung
+        von der Netresearch DTT GmbH.
+
+        .. card-footer:: `netresearch.de <https://www.netresearch.de>`__
+            :button-style: btn btn-secondary stretched-link

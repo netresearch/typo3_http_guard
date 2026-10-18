@@ -75,6 +75,9 @@ function rejected(callable $operation, string $reason, string $check): void
     );
 }
 try {
+    // Netresearch review (2026-10-18): TYPO3 initialization, no command execution.
+    // The rule mistakes the class name for the unanchored "system" function pattern.
+    // nosemgrep: php.lang.security.exec-use.exec-use
     SystemEnvironmentBuilder::run(0, SystemEnvironmentBuilder::REQUESTTYPE_CLI);
     $container      = Bootstrap::init($loader);
     $requestFactory = $container->get(RequestFactory::class);

@@ -23,6 +23,9 @@ if ($fixture === false || !is_dir($fixture . '/typo3conf/ext/nr_http_guard')) {
 putenv('TYPO3_PATH_ROOT=' . $fixture);
 putenv('TYPO3_PATH_APP=' . $fixture);
 $loader = require $fixture . '/vendor/autoload.php';
+// Netresearch review (2026-10-18): TYPO3 initialization, no command execution.
+// The rule mistakes the class name for the unanchored "system" function pattern.
+// nosemgrep: php.lang.security.exec-use.exec-use
 SystemEnvironmentBuilder::run(0, SystemEnvironmentBuilder::REQUESTTYPE_CLI);
 if (Environment::isComposerMode()) {
     throw new RuntimeException('Classic qualification must use the native package manager.');
