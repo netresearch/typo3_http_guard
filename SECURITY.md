@@ -82,5 +82,6 @@ This verification-only run did not republish or replace the release assets.
 The release SBOMs are supplemental repository inventories; separate production
 security jobs generate resolved dependency SBOMs. The archive provenance does not
 attest the release SBOMs. No SLSA level 3 certification or OpenSSF badge level is
-claimed. The hosted manual remains awaiting external TYPO3 approval; the English
-and German sources are already included in the extension.
+claimed. The [English manual](https://docs.typo3.org/p/netresearch/nr-http-guard/main/en-us/)
+and [German manual](https://docs.typo3.org/p/netresearch/nr-http-guard/main/de-de/)
+are published on docs.typo3.org; both sources are also included in the extension.
