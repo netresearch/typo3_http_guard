@@ -28,6 +28,7 @@ use Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
+use stdClass;
 use TYPO3\CMS\Core\Http\RequestFactory;
 
 final class CoreConfigurationShapeTest extends TestCase
@@ -60,6 +61,9 @@ final class CoreConfigurationShapeTest extends TestCase
         yield 'HTTP scalar' => ['HTTP', false];
         yield 'HTTP numeric option key' => ['HTTP', [0 => 'malformed']];
         yield 'handler scalar' => ['handler', false];
+        yield 'root object' => ['root', new stdClass()];
+        yield 'SYS object' => ['SYS', new stdClass()];
+        yield 'Objects object' => ['Objects', new stdClass()];
     }
 
     #[DataProvider('malformedShapes')]
@@ -144,5 +148,39 @@ final class CoreConfigurationShapeTest extends TestCase
             new GlobalHttpDefaults(),
             $raw,
         );
+    }
+
+    #[DataProvider('invalidFactoryResults')]
+    public function testRawRegistrationRejectsNonGuardedFactoryResults(mixed $factory): void
+    {
+        $replacement                = RequestFactoryCompatibility::replacementClass();
+        $GLOBALS['TYPO3_CONF_VARS'] = ['SYS' => ['Objects' => [RequestFactory::class => ['className' => $replacement]]]];
+        $lookup                     = static fn (): mixed => $factory;
+        $registration               = new RawRequestFactoryRegistration($lookup, $lookup);
+        $this->expectException(PolicyException::class);
+        $this->expectExceptionMessage('configuration_invalid');
+        $registration->assertValid();
+    }
+
+    /** @return iterable<string, array{mixed}> */
+    public static function invalidFactoryResults(): iterable
+    {
+        yield 'null' => [null];
+        yield 'scalar' => [false];
+        yield 'array' => [[]];
+        yield 'same wrong object at both interfaces' => [new stdClass()];
+    }
+
+    public function testRawRegistrationRejectsDistinctGuardedFactoryInstances(): void
+    {
+        $replacement                = RequestFactoryCompatibility::replacementClass();
+        $reflection                 = new ReflectionClass($replacement);
+        $factory                    = $reflection->newInstanceWithoutConstructor();
+        $psrFactory                 = $reflection->newInstanceWithoutConstructor();
+        $GLOBALS['TYPO3_CONF_VARS'] = ['SYS' => ['Objects' => [RequestFactory::class => ['className' => $replacement]]]];
+        $registration               = new RawRequestFactoryRegistration(static fn (): object => $factory, static fn (): object => $psrFactory);
+        $this->expectException(PolicyException::class);
+        $this->expectExceptionMessage('configuration_invalid');
+        $registration->assertValid();
     }
 }

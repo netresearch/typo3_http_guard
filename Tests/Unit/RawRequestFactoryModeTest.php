@@ -17,6 +17,7 @@ use LogicException;
 use Netresearch\HttpGuard\{AddressClassifier, DecisionEvent, DecisionReporterInterface, PolicyEngine, PolicyException, PolicyRegistry, Resolution, ResolverInterface, SystemClock, TargetNormalizer};
 use Netresearch\NrHttpGuard\Configuration\ConfigurationLoader;
 use Netresearch\NrHttpGuard\Http\{RawRequestFactoryRegistration, RequestFactoryCompatibility};
+use Netresearch\NrHttpGuard\Tests\Fixtures\AdapterRuntimeFixture;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Http\Client\GuzzleClientFactory;
 use TYPO3\CMS\Core\Http\RequestFactory;
@@ -110,6 +111,28 @@ final class RawRequestFactoryModeTest extends TestCase
                 unset($GLOBALS['TYPO3_CONF_VARS']);
             } else {
                 $GLOBALS['TYPO3_CONF_VARS'] = $original;
+            }
+        }
+    }
+
+    public function testEveryModeRejectsChangedRawRegistrationBeforeDelegating(): void
+    {
+        foreach (['enforce', 'observe', 'disabled'] as $mode) {
+            $history = [];
+            $stack   = HandlerStack::create(new MockHandler([new Response(200)]));
+            $stack->push(Middleware::history($history));
+            $fixture = new AdapterRuntimeFixture(['mode' => $mode], ['handler' => $stack], register: false);
+            try {
+                $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][RequestFactory::class]['className'] = RequestFactory::class;
+                try {
+                    $fixture->guarded->request('http://guard.test:8080/offline-registration-control');
+                    self::fail('Changed raw binding reached the original Core factory');
+                } catch (PolicyException $failure) {
+                    self::assertSame('configuration_invalid', $failure->reasonCode());
+                }
+                self::assertCount(0, $history);
+            } finally {
+                $fixture->restore();
             }
         }
     }

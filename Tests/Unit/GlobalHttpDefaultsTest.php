@@ -11,6 +11,7 @@ namespace Netresearch\NrHttpGuard\Tests\Unit;
 
 use Netresearch\HttpGuard\GuardConfig;
 use Netresearch\NrHttpGuard\Configuration\GlobalHttpDefaults;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class GlobalHttpDefaultsTest extends TestCase
@@ -60,5 +61,27 @@ final class GlobalHttpDefaultsTest extends TestCase
             $http,
             (new GlobalHttpDefaults())->apply($http, GuardConfig::fromArray(['redirects' => ['max' => 10]])),
         );
+    }
+
+    #[DataProvider('explicitDefaultValues')]
+    public function testExplicitCoreDefaultValuesAreBoundToPolicy(
+        ?bool $value,
+        int $maximum,
+        array|false $expected,
+    ): void {
+        $http   = ['allow_redirects' => $value, 'timeout' => 3];
+        $result = (new GlobalHttpDefaults())->apply($http, GuardConfig::fromArray(['redirects' => ['max' => $maximum]]));
+        self::assertSame($expected, $result['allow_redirects']);
+        self::assertSame(3, $result['timeout']);
+    }
+
+    /** @return iterable<string, array{?bool, int, array|false}> */
+    public static function explicitDefaultValues(): iterable
+    {
+        yield 'true follows the policy limit' => [true, 2, ['max' => 2, 'strict' => false]];
+        yield 'null follows the policy limit' => [null, 2, ['max' => 2, 'strict' => false]];
+        yield 'true with following disabled' => [true, 0, false];
+        yield 'null with following disabled' => [null, 0, false];
+        yield 'explicit false stays disabled' => [false, 2, false];
     }
 }
