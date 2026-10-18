@@ -4,6 +4,23 @@
 Changelog
 =========
 
+.. _changelog-014:
+
+Version 0.1.4 (2026-10-18)
+==========================
+
+This alpha maintenance release updates documentation and adds 101 unit test
+cases for configuration and policy boundaries, DNS validation and resolver
+fallback, TYPO3 registration, runtime checks and the transport lifecycle.
+HTTP protection behavior and dependency constraints are unchanged.
+
+Both manual languages use Netresearch cards, teal accents and footer branding.
+Links point to the published manuals; dated publication observations remain
+available. The repository now includes :file:`.bestpractices.json` with
+source-backed OpenSSF proposals and explanations for individual criteria.
+Four static-analysis false positives are documented at the reviewed TYPO3
+initialization calls in development and test fixtures.
+
 .. _changelog-013:
 
 Version 0.1.3 (2026-10-11)

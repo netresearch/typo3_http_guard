@@ -30,7 +30,7 @@ installieren:
 
 Composer registriert die Extension automatisch. Nach dem Neuaufbau der
 Caches gilt für gewöhnliche RequestFactory-Aufrufe der geschützte
-Standardmodus. Version 0.1.3 ist eine Alpha-Version zur Evaluierung. Die
+Standardmodus. Version 0.1.4 ist eine Alpha-Version zur Evaluierung. Die
 aufgelösten Dependencies sind vor dem Deployment mit
 :ref:`installation-requirements` abzugleichen. Die Extension benötigt kein
 zusätzliches :literal:`netresearch/http-guard`.

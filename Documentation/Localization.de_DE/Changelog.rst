@@ -4,6 +4,25 @@
 Changelog
 =========
 
+.. _changelog-014:
+
+Version 0.1.4 (2026-10-18)
+==========================
+
+Diese Alpha-Wartungsversion aktualisiert die Dokumentation und ergänzt 101
+Unit-Testfälle für Konfigurations- und Policy-Grenzen, DNS-Validierung und
+Resolver-Fallback, TYPO3-Registrierung, Laufzeitprüfungen und den
+Transfer-Lifecycle. HTTP-Schutzverhalten und Abhängigkeitsgrenzen bleiben
+unverändert.
+
+Beide Handbuchsprachen verwenden Netresearch-Karten, türkisfarbene Akzente und
+den Netresearch-Footer. Die Links führen zu den veröffentlichten Handbüchern;
+datierte Beobachtungen zum Veröffentlichungsstand bleiben erhalten.
+:file:`.bestpractices.json` enthält OpenSSF-Vorschläge mit Quellen und
+Begründungen zu den einzelnen Kriterien. Vier Fehlalarme der statischen
+Analyse sind an den geprüften TYPO3-Initialisierungsaufrufen in Entwicklungs-
+und Test-Fixtures erläutert.
+
 .. _changelog-013:
 
 Version 0.1.3 (2026-10-11)
