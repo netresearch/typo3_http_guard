@@ -2,6 +2,22 @@
 
 All notable changes to HTTP Guard for TYPO3 are recorded here.
 
+## [0.1.4] - 2026-10-18
+
+Alpha maintenance release with documentation updates and expanded regression coverage.
+
+### Added
+
+- Add 101 unit test cases covering configuration and policy boundaries, DNS validation and resolver fallback, TYPO3 registration, runtime checks and the transport lifecycle.
+- Add `.bestpractices.json` with source-backed OpenSSF proposals and explanations for individual criteria.
+
+### Changed
+
+- Align both manual languages with Netresearch cards, teal accents and footer branding; update links to the published manuals while preserving dated publication observations.
+- Document four static-analysis false positives at the reviewed TYPO3 initialization calls in development and test fixtures.
+
+HTTP protection behavior and dependency constraints are unchanged. The extension remains an alpha for evaluation.
+
 ## [0.1.3] - 2026-10-11
 
 Alpha patch release aligning the installable package contents across delivery routes.
@@ -67,6 +83,7 @@ Initial alpha for evaluation, distributed as one complete TYPO3 extension.
 
 Independent human security review and a representative operator pilot remain outstanding for production acceptance. This alpha publication does not establish enterprise certification or SLSA level 3. The release workflow verifies artifacts and publication separately; registering the documentation webhook does not by itself confirm that an online manual has been approved and rendered.
 
+[0.1.4]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/netresearch/typo3_http_guard/compare/v0.1.0...v0.1.1
