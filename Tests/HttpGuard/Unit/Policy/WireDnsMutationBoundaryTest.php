@@ -131,6 +131,21 @@ final class WireDnsMutationBoundaryTest extends TestCase
         yield 'interleaved duplicate leaves a second unique server' => ["nameserver 127.0.0.1\nnameserver 127.0.0.1\nnameserver ::1\n"];
     }
 
+    public function testSystemFileRetriesEveryUniqueNameserverAfterInterleavedDuplicates(): void
+    {
+        require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
+        State::$fault = 'socket';
+        $path         = $this->resolverFile("nameserver 127.0.0.1\nnameserver 127.0.0.1\nnameserver ::1\n");
+        try {
+            $this->assertResolutionFailure(new WireDnsQuery(resolvConfPath: $path));
+            self::assertSame(['udp://127.0.0.1:53', 'udp://[::1]:53'], State::$authorities);
+        } finally {
+            // Removes only this test's freshly created synthetic fixture; no caller path.
+            // nosemgrep: php.lang.security.unlink-use.unlink-use
+            unlink($path);
+        }
+    }
+
     public function testExplicitDuplicateServersDoNotRepeatAnAttempt(): void
     {
         require_once __DIR__ . '/Fixtures/WireIoBoundaryShim.php';
