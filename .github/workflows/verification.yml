@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 41 11 * * 1
+  merge_group:
 permissions:
   contents: read
 concurrency:

@@ -6,6 +6,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  merge_group:
 permissions:
   contents: read
 concurrency:
