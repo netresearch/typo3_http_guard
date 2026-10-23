@@ -9,10 +9,9 @@ declare(strict_types=1);
 use Netresearch\NrHttpGuard\Http\RequestFactoryCompatibility;
 use Psr\Http\Message\RequestFactoryInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use TYPO3\CMS\Core\Http\RequestFactory;
 
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
-
-use TYPO3\CMS\Core\Http\RequestFactory;
 
 return static function (ContainerConfigurator $container): void {
     $services    = $container->services();
