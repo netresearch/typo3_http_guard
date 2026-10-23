@@ -154,7 +154,7 @@ jobs:
       - name: Measure policy overhead on the CI reference
         run: composer ci:test:php:performance
         env:
-          HTTP_GUARD_PERFORMANCE_REFERENCE: github-actions ubuntu-24.04 / PHP 8.5
+          HTTP_GUARD_PERFORMANCE_REFERENCE: github-actions ubuntu-26.04 / PHP 8.5
       - name: Preserve reference measurements
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
