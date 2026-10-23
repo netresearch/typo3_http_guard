@@ -6,6 +6,7 @@ rules:
       policies:
         # Netresearch's maintained reusable workflow contracts follow main.
         # Third-party actions, including actions/*, remain fully SHA-pinned.
+        'netresearch/.github/.github/workflows/auto-merge-deps.yml': ref-pin
         'netresearch/.github/.github/workflows/php-ci.yml': ref-pin
         'netresearch/.github/.github/workflows/lint-workflows.yml': ref-pin
         'netresearch/.github/.github/workflows/dco.yml': ref-pin
