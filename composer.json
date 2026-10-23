@@ -16,7 +16,7 @@
     "symfony/console": "^7.4 || ^8.0"
   },
   "require-dev": {
-    "netresearch/typo3-ci-workflows": "^1.12",
+    "netresearch/typo3-ci-workflows": "^1.12 || ^2.0",
     "phpstan/phpstan": "^2.3",
     "phpunit/phpunit": "^11.5"
   },
