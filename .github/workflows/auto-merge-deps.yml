@@ -10,6 +10,10 @@ on:
 
 permissions: {}
 
+# The job only approves and merges; it never needs the Actions cache, so it
+# gets no cache token at all (actionlint cache-call-unrestricted).
+cache-mode: none
+
 jobs:
   auto-merge:
     uses: netresearch/.github/.github/workflows/auto-merge-deps.yml@main
