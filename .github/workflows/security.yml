@@ -161,8 +161,11 @@ jobs:
         run: |
           set -euo pipefail
           # PR metadata applies only to PRs; every security job must always run.
+          # Exception: the shared betterleaks workflow skips itself on
+          # merge_group; the same commits were scanned on the pull request.
           jq -e --arg event "$EVENT_NAME" '
             length > 0 and all(to_entries[];
               .value.result == "success" or
-              (.key == "pr-quality" and $event != "pull_request" and .value.result == "skipped")
+              (.key == "pr-quality" and $event != "pull_request" and .value.result == "skipped") or
+              (.key == "secret-scanning" and $event == "merge_group" and .value.result == "skipped")
             )' <<< "$RESULTS"
