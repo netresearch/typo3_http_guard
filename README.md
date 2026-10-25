@@ -46,6 +46,13 @@
 
 Developed by [Netresearch DTT GmbH](https://www.netresearch.de/).
 
+**Interactive policy explorer:**
+[Deutsch](https://netresearch.github.io/typo3_http_guard/?lang=de) ·
+[English](https://netresearch.github.io/typo3_http_guard/?lang=en).
+Explore URL/IP classifications, scoped endpoint grants and deny rules in your
+browser. The simulator uses the extension's versioned address corpus and never
+contacts entered targets. See [explorer development](Website/README.md).
+
 ## Overview
 
 Install and activate **HTTP Guard** to add server-side request forgery (SSRF)
