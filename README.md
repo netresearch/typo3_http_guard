@@ -165,7 +165,7 @@ resolve a compatible complete graph within the supported majors.
 
 The [verification report](Documentation/Development/Verification.rst) separates
 fixed source-bound test runs from the current compatibility checks. Historical
-kernel coverage spans PHP 8.2–8.5; that does not claim that every future PHP
+kernel coverage spans PHP 8.2–8.6; that does not claim that every future PHP
 version or framework/PHP combination has already been tested. Classic extension
 metadata allows TYPO3 13.4.36–14.3.99 and PHP 8.2.0–8.99.99. Its TYPO3 upper bound
 is narrower than Composer's caret ranges. The contiguous TER notation cannot

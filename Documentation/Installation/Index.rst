@@ -116,7 +116,7 @@ bypass the per-attempt policy boundary.
 The fixed Core/SDK fixtures record reproducible tests at specific versions,
 not the full set of installable dependencies. Current compatibility checks
 are described in :ref:`verification-semantic-support`. Historical kernel
-coverage spans PHP 8.2–8.5; future compatible PHP versions are permitted
+coverage spans PHP 8.2–8.6; future compatible PHP versions are permitted
 but are not claimed as already tested. Classic extension metadata permits
 TYPO3 13.4.36–14.3.99 and PHP 8.2.0–8.99.99. The classic TYPO3 upper bound
 is narrower than the Composer ranges and currently targets the 13.4/14.3
