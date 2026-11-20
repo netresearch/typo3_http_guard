@@ -117,8 +117,8 @@ jobs:
       fail-fast: false
       matrix:
         core:
-          - 13.4.36
-          - 14.3.8
+          - 13.4.40
+          - 14.3.12
   fixture-integrity:
     name: Fixture and research integrity
     runs-on: ubuntu-latest

@@ -79,36 +79,36 @@ jobs:
   native-transport:
     name: Native transport (${{ matrix.label }})
     runs-on: ubuntu-latest
-    timeout-minutes: ${{ matrix.coverage-id == '8.2.0' && 60 || 15 }}
+    timeout-minutes: ${{ matrix.coverage-id == '8.3.0' && 60 || 15 }}
     permissions:
       contents: read
     strategy:
       fail-fast: false
       matrix:
         include:
-          - label: Guzzle 7.15.3
-            core: '14.3.8'
-            guzzle: '7.15.3'
-            promises: '2.5.2'
-            psr7: '2.13.0'
-            coverage-id: '7.15.3'
-          - label: Guzzle 7.15.5
-            core: '14.3.8'
-            guzzle: '7.15.5'
-            promises: '2.5.3'
-            psr7: '2.13.1'
-            coverage-id: '7.15.5'
-          - label: Guzzle 8.2.0
-            core: '14.3.8'
-            guzzle: '8.2.0'
-            promises: '3.0.2'
-            psr7: '3.1.0'
-            coverage-id: '8.2.0'
-          - label: Minimum Guzzle 7.15.2
-            core: 14.3.8
-            guzzle: 7.15.2
-            promises: 2.5.1
-            psr7: 2.13.0
+          - label: Guzzle 7.16.1
+            core: '14.3.12'
+            guzzle: '7.16.1'
+            promises: '2.6.1'
+            psr7: '2.13.5'
+            coverage-id: '7.16.1'
+          - label: Guzzle 7.16.3
+            core: '14.3.12'
+            guzzle: '7.16.3'
+            promises: '2.6.1'
+            psr7: '2.13.5'
+            coverage-id: '7.16.3'
+          - label: Guzzle 8.3.0
+            core: '14.3.12'
+            guzzle: '8.3.0'
+            promises: '3.1.0'
+            psr7: '3.2.0'
+            coverage-id: '8.3.0'
+          - label: Minimum Guzzle 7.16.0
+            core: 14.3.12
+            guzzle: 7.16.0
+            promises: 2.6.0
+            psr7: 2.13.2
             coverage-id: minimum-g7
           - label: Latest compatible TYPO3 13 / Guzzle 7
             core: '^13.4.36'
@@ -156,7 +156,7 @@ jobs:
         with:
           php-version: '8.5'
           extensions: curl, dom, intl, mbstring, pdo_sqlite, sodium, xml
-          coverage: ${{ matrix.coverage-id == '8.2.0' && 'xdebug' || 'pcov' }}
+          coverage: ${{ matrix.coverage-id == '8.3.0' && 'xdebug' || 'pcov' }}
           tools: composer:v2
       - name: Install dependency combination
         env:
@@ -212,7 +212,7 @@ jobs:
             --log-junit "$RUNNER_TEMP/coverage/junit.xml"
           python3 Build/Scripts/normalize-clover.py "$RUNNER_TEMP/coverage/full-clover.xml"
       - name: Enforce native mutation thresholds for the changed source or full qualification
-        if: matrix.coverage-id == '8.2.0'
+        if: matrix.coverage-id == '8.3.0'
         env:
           HTTP_GUARD_TEST_AUTOLOAD: ${{ github.workspace }}/.Build/vendor/autoload.php
           XDEBUG_MODE: coverage
@@ -241,7 +241,7 @@ jobs:
             --with-uncovered --with-timeouts --only-covering-test-cases \
             --no-progress --show-mutations=0 -- "${mutation_scope[@]}"
       - name: Preserve mutation results including failed thresholds
-        if: always() && matrix.coverage-id == '8.2.0'
+        if: always() && matrix.coverage-id == '8.3.0'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: native-mutation-results
@@ -288,7 +288,7 @@ jobs:
       - name: Download current main coverage
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: native-coverage-8.2.0
+          name: native-coverage-8.3.0
           path: coverage
       - name: Upload measured Unit and transport coverage
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
