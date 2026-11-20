@@ -18,7 +18,7 @@ jobs:
     permissions:
       contents: read
     with:
-      php-versions: '["8.2", "8.3", "8.4", "8.5"]'
+      php-versions: '["8.2", "8.3", "8.4", "8.5", "8.6"]'
       extra-matrix: |-
         [{"core":"13.4.40","guzzle":"7.16.3","promises":"2.6.1","psr7":"2.13.5"},
          {"core":"13.4.40","guzzle":"8.3.0","promises":"3.1.0","psr7":"3.2.0"},
