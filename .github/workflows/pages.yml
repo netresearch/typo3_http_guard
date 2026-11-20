@@ -42,7 +42,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: '22'
+          node-version: '26'
       - name: Build from the versioned address corpus
         run: python3 Website/build.py
       - name: Test policy, corpus boundaries and translations
