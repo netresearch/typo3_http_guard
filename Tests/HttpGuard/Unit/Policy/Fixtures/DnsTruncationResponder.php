@@ -6,13 +6,20 @@
  */
 
 declare(strict_types=1);
-$udp = stream_socket_server('udp://127.0.0.1:0', $errno, $error, STREAM_SERVER_BIND);
-if (!is_resource($udp)) {
-    exit(10);
+// The kernel picks a free UDP port; the same TCP port can still be taken, so retry with a new UDP port.
+for ($attempt = 0; $attempt < 20; ++$attempt) {
+    $udp = stream_socket_server('udp://127.0.0.1:0', $errno, $error, STREAM_SERVER_BIND);
+    if (!is_resource($udp)) {
+        exit(10);
+    }
+    $name = stream_socket_get_name($udp, false);
+    $port = (int) substr($name, strrpos($name, ':') + 1);
+    $tcp  = @stream_socket_server('tcp://127.0.0.1:' . $port, $errno, $error, STREAM_SERVER_BIND | STREAM_SERVER_LISTEN);
+    if (is_resource($tcp)) {
+        break;
+    }
+    fclose($udp);
 }
-$name = stream_socket_get_name($udp, false);
-$port = (int) substr($name, strrpos($name, ':') + 1);
-$tcp  = stream_socket_server('tcp://127.0.0.1:' . $port, $errno, $error, STREAM_SERVER_BIND | STREAM_SERVER_LISTEN);
 if (!is_resource($tcp)) {
     exit(11);
 }
