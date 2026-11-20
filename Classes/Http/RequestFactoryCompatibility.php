@@ -12,6 +12,7 @@ namespace Netresearch\NrHttpGuard\Http;
 use Netresearch\HttpGuard\PolicyException;
 use Psr\Http\Message\ResponseInterface;
 use ReflectionClass;
+use ReflectionMethod;
 use TYPO3\CMS\Core\Http\Client\GuzzleClientFactory;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Information\Typo3Version;
@@ -52,7 +53,7 @@ final class RequestFactoryCompatibility
         }
         $constructor = $parent->getConstructor();
         $arguments   = $constructor?->getParameters() ?? [];
-        if ($constructor === null || !$constructor->isPublic() || $constructor->isFinal() || $arguments === [] || (string) $arguments[0]->getType() !== GuzzleClientFactory::class || $arguments[0]->isPassedByReference() || $arguments[0]->isVariadic()) {
+        if (!$constructor instanceof ReflectionMethod || !$constructor->isPublic() || $constructor->isFinal() || $arguments === [] || (string) $arguments[0]->getType() !== GuzzleClientFactory::class || $arguments[0]->isPassedByReference() || $arguments[0]->isVariadic()) {
             throw new PolicyException('transport_unsupported');
         }
         foreach (array_slice($arguments, 1) as $argument) {
