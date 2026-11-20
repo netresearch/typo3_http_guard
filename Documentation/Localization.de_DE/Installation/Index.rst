@@ -123,7 +123,7 @@ Policyprüfung pro Versuch dadurch nicht umgehen.
 Die festen Core-/SDK-Fixtures dokumentieren reproduzierbare Prüfungen mit
 konkreten Versionen. Sie begrenzen nicht die installierbaren Dependencies.
 Die aktuellen Kompatibilitätsprüfungen stehen unter :ref:`development-unit`.
-Die historische Kernmatrix deckt PHP 8.2–8.6 ab; künftig kompatible
+Die historische Kernmatrix deckt PHP 8.2–8.5 ab; künftig kompatible
 PHP-Versionen sind erlaubt, aber damit noch nicht als geprüft ausgewiesen.
 Die klassischen Extension-Metadaten erlauben TYPO3 13.4.36–14.3.99 und PHP
 8.2.0–8.99.99. Die klassische TYPO3-Obergrenze ist enger als die
