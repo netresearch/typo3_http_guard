@@ -23,8 +23,10 @@ On 9 October 2026, TYPO3 released
 `14.3.8 <https://get.typo3.org/release-notes/14.3.8>`_. Both releases require
 :literal:`enshrined/svg-sanitize` **1.0.0**, which fixes the three recorded
 SVG advisories. These patches were the minimum Core versions until
-November 2026. The Composer range is now :literal:`^13.4 || ^14.3`, as in
-other Netresearch extensions: keeping Core on a patched release is the
+November 2026. The Composer range is now :literal:`^13.4.12 || ^14.3`:
+Core 13.4.12 is the first 13.4 release with the four-argument
+:literal:`RequestFactory::request()` that the guarded factory requires. As in
+other Netresearch extensions, keeping Core on a patched release is the
 responsibility of the installation. The extension does not use, alias,
 replace or modify the framework's sanitizer dependency.
 

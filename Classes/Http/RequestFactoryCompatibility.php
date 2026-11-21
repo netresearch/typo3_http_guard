@@ -70,6 +70,6 @@ final class RequestFactoryCompatibility
         }
         $version = ltrim($version, 'v');
 
-        return version_compare($version, '13.4.0', '>=') && version_compare($version, '14.0.0', '<') || version_compare($version, '14.3.0', '>=') && version_compare($version, '15.0.0', '<');
+        return version_compare($version, '13.4.12', '>=') && version_compare($version, '14.0.0', '<') || version_compare($version, '14.3.0', '>=') && version_compare($version, '15.0.0', '<');
     }
 }

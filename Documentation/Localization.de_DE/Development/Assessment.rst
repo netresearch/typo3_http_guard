@@ -82,7 +82,7 @@ Sicherheitsrichtlinie und Beitragsanleitung sind englisch. Der frühere
 Spezifikationen und ADRs bleiben unverändert erhalten.
 
 Die Produktionsbereiche erlauben PHP :literal:`^8.2` und Core
-:literal:`^13.4 || ^14.3`. Kompatible Patches und Minor-Versionen
+:literal:`^13.4.12 || ^14.3`. Kompatible Patches und Minor-Versionen
 benötigen keine neue Extension-Version. Die tatsächlichen Core-/SDK-APIs
 und Transportfähigkeiten werden geprüft. Eine erlaubte künftige Version
 ist damit noch nicht als tatsächlich ausgeführt dokumentiert.

@@ -54,9 +54,10 @@ elif [[ -n "$fixture_path" ]]; then
     printf '%s\n' '-f is only supported for integration, classic and mode.' >&2
     exit 2
 fi
-# Map the shared runner's shorthand to the supported Core LTS ranges.
+# Map the shared runner's shorthand to the supported Core ranges. Core 13.4.12
+# is the first 13.4 release with the four-argument RequestFactory::request().
 case "$core_version" in
-    13|13.4) core_version='^13.4' ;;
+    13|13.4) core_version='^13.4.12' ;;
     14|14.3) core_version='^14.3' ;;
 esac
 if [[ -n "$php_version" || -n "$core_version" || -n "$container_bin" ]]; then

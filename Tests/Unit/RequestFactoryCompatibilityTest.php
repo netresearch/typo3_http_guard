@@ -23,7 +23,8 @@ final class RequestFactoryCompatibilityTest extends TestCase
 
     public static function coreVersions(): iterable
     {
-        yield 'first13patch' => ['13.4.0', true];
+        yield 'first13context' => ['13.4.12', true];
+        yield 'before13context' => ['13.4.11', false];
         yield 'later13patch' => ['13.4.37', true];
         yield 'later13minor' => ['13.5.0', true];
         yield 'first14patch' => ['14.3.0', true];
