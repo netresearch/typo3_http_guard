@@ -237,7 +237,7 @@ exec "$PORTABLE_REALPATH" "$@"
         self.assertEqual(2, len(self.calls()))
         probe, route = self.calls()
         self.assertEqual(['php', 'Build/Scripts/assert-test-runtime.php',
-                          str(self.fixture / 'vendor/autoload.php'), '8.5', '^14.3.8'], probe[-5:])
+                          str(self.fixture / 'vendor/autoload.php'), '8.5', '^14.3'], probe[-5:])
         self.assertEqual(['bash', 'Build/Scripts/runTests.sh', '-s', 'integration',
                           '-f', str(self.fixture), '--', 'classic'], route[-8:])
         self.assertNotIn('require', probe)

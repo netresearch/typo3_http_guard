@@ -104,7 +104,7 @@ Semantische Kompatibilität und aufgezeichnete Läufe
 =================================================
 
 Die Produktionsconstraints erlauben PHP :literal:`^8.2`, Core
-:literal:`^13.4.36 || ^14.3.8` sowie die SDK-Bereiche aus
+:literal:`^13.4.12 || ^14.3` sowie die SDK-Bereiche aus
 :ref:`installation-requirements`. Kompatible Patch- und Minor-Updates
 benötigen keine neue Extension-Version. Die Laufzeitprüfungen kontrollieren
 die echte Core-Elternklasse vor dem Laden der Ersatzklasse sowie die

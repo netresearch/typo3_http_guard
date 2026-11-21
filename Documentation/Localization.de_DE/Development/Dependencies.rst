@@ -10,9 +10,13 @@ Gepatchte Core-Graphen
 =====================
 
 Core 13.4.36 und 14.3.8 verlangen SVG-Sanitizer 1.0.0. Diese Version behebt
-die drei aufgezeichneten SVG-Befunde. Die sicheren Core-Untergrenzen stehen
-in :literal:`^13.4.36 || ^14.3.8`; kompatible Updates bleiben zulässig.
-Die Extension ersetzt oder verändert die Sanitizer-Abhängigkeit nicht.
+die drei aufgezeichneten SVG-Befunde. Bis November 2026 waren diese Patches
+die Core-Untergrenzen. Der Composer-Bereich lautet jetzt
+:literal:`^13.4.12 || ^14.3`. Core 13.4.12 ist das erste 13.4-Release mit dem
+vierstelligen :literal:`RequestFactory::request()`, das die geschützte Factory
+benötigt. Wie in anderen Netresearch-Extensions liegt es in der
+Verantwortung der Installation, einen gepatchten Core einzusetzen.
+Die Extension nutzt, ersetzt oder verändert die Sanitizer-Abhängigkeit nicht.
 
 Die vier dokumentierten vollständigen Core-/SDK-Graphen wählen Sanitizer
 1.0.0 und melden keine bekannten Sicherheitsbefunde. Der Advisory-Block

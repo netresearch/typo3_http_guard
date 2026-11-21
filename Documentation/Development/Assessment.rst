@@ -122,7 +122,7 @@ Netresearch TYPO3 extension conventions. Source headers retain the existing
 GPL-2.0-or-later extension and MIT embedded-kernel licensing.
 
 Production metadata uses PHP :literal:`^8.2` and Core
-:literal:`^13.4.36 || ^14.3.8`. Compatible future patches and minors remain
+:literal:`^13.4.12 || ^14.3`. Compatible future patches and minors remain
 usable without a new extension release, subject to the actual Core/SDK API
 and capability checks. Historical PHP 8.2–8.5 coverage does not claim future
 PHP executions. See :ref:`verification-semantic-support` for the separate

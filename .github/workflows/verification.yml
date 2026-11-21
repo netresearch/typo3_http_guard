@@ -111,25 +111,25 @@ jobs:
             psr7: 2.13.2
             coverage-id: minimum-g7
           - label: Latest compatible TYPO3 13 / Guzzle 7
-            core: '^13.4.36'
+            core: '^13.4.12'
             guzzle: '^7.15.2'
             promises: '^2.5.1'
             psr7: '^2.13'
             coverage-id: latest-core13-g7
           - label: Latest compatible TYPO3 13 / Guzzle 8
-            core: '^13.4.36'
+            core: '^13.4.12'
             guzzle: '^8.2'
             promises: '^3.0.2'
             psr7: '^3.1'
             coverage-id: latest-core13-g8
           - label: Latest compatible TYPO3 14 / Guzzle 7
-            core: '^14.3.8'
+            core: '^14.3'
             guzzle: '^7.15.2'
             promises: '^2.5.1'
             psr7: '^2.13'
             coverage-id: latest-core14-g7
           - label: Latest compatible TYPO3 14 / Guzzle 8
-            core: '^14.3.8'
+            core: '^14.3'
             guzzle: '^8.2'
             promises: '^3.0.2'
             psr7: '^3.1'

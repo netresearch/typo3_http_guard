@@ -29,8 +29,9 @@ bash Build/Scripts/runTests.sh -s unit -p 8.5 -t 14.3.8
 Core selection delegates require/update to the shared runner's Composer suite;
 it creates the initial lock when absent and changes that checkout's development
 manifest/lock/vendor. A shared vendor symlink is refused. Do not run it against a shared or
-protected checkout. Shorthand `13`/`13.4` selects `^13.4.36`, and `14`/`14.3`
-selects `^14.3.8`, preserving safe floors. A successful solver is not runtime proof.
+protected checkout. Shorthand `13`/`13.4` selects `^13.4.12`, the first 13.4
+release with the four-argument `RequestFactory::request()`, and `14`/`14.3`
+selects `^14.3`. A successful solver is not runtime proof.
 The generic shared runner remains installed under `.Build/vendor/`; it is not
 copied into this extension. `runTests.conf` sets the explicit Unit suite and
 pinned PHP images. A future PHP test image may be supplied through

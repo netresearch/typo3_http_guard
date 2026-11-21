@@ -35,7 +35,7 @@ final class DoctorVersionContractTest extends TestCase
         self::assertTrue(class_alias(AbiShapeVersion::class, Typo3Version::class));
         $fixture = new AdapterRuntimeFixture();
         try {
-            AbiShapeVersion::$version = $nextMajor ? '15.0.0' : ($readonly ? '14.3.7' : '13.4.35');
+            AbiShapeVersion::$version = $nextMajor ? '15.0.0' : ($readonly ? '14.2.99' : '13.3.99');
             $doctor                   = $fixture->diagnostics->doctor();
             self::assertSame(3, $doctor->exitCode);
             self::assertSame('transport_unsupported', $doctor->payload['reasonCode']);

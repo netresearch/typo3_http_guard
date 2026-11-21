@@ -5,7 +5,7 @@ Installation
 ============
 
 Install and activate the extension to protect existing calls through
-TYPO3's registered :php:`RequestFactory` automatically. The default
+TYPO3's registered :literal:`RequestFactory` automatically. The default
 :literal:`enforce` mode blocks private, loopback, cloud metadata and
 special-purpose destinations, including URLs supplied by users, imports
 or external payloads. No application rewrite or endpoint configuration
@@ -89,8 +89,11 @@ and an extension's
 Requirements
 ============
 
-Composer supports TYPO3 :literal:`^13.4.36 || ^14.3.8` and PHP
-:literal:`^8.2`. PHP must also meet the selected Core's requirements.
+Composer supports TYPO3 :literal:`^13.4.12 || ^14.3` and PHP
+:literal:`^8.2`. Core 13.4.12 is the first 13.4 release whose
+:literal:`RequestFactory::request()` accepts the :literal:`$context` argument that
+the guarded factory requires. PHP must also meet the selected Core's
+requirements.
 Compatible updates within these ranges do not require a new HTTP Guard
 release. The runtime checks the actual Core parent API and SDK capabilities
 and rejects incompatible APIs before a native send.
@@ -118,11 +121,10 @@ not the full set of installable dependencies. Current compatibility checks
 are described in :ref:`verification-semantic-support`. Historical kernel
 coverage spans PHP 8.2–8.5; future compatible PHP versions are permitted
 but are not claimed as already tested. Classic extension metadata permits
-TYPO3 13.4.36–14.3.99 and PHP 8.2.0–8.99.99. The classic TYPO3 upper bound
+TYPO3 13.4.12–14.3.99 and PHP 8.2.0–8.99.99. The classic TYPO3 upper bound
 is narrower than the Composer ranges and currently targets the 13.4/14.3
 LTS branches. The contiguous TER notation cannot express the separate
-Core 14 minimum: the runtime rejects Core 14.0–14.2 and 14.3 patches before
-14.3.8. Core's own PHP requirements and the same runtime checks apply.
+Core 14 minimum: the runtime rejects Core 14.0–14.2. Core's own PHP requirements and the same runtime checks apply.
 
 The controlled transport requires :literal:`ext-curl`, the
 :literal:`curl_multi_exec` function and, for its functionality, at least

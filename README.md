@@ -146,7 +146,9 @@ PSR-7 URI object. The [API guide](Documentation/Api/Index.rst) provides examples
 
 ## Requirements
 
-The Composer ranges are **TYPO3 `^13.4.36 || ^14.3.8`** and **PHP `^8.2`**.
+The Composer ranges are **TYPO3 `^13.4.12 || ^14.3`** and **PHP `^8.2`**.
+Core 13.4.12 is the first 13.4 release whose `RequestFactory::request()` accepts
+the `$context` argument that the guarded factory requires.
 PHP must also meet the chosen Core's requirements. Compatible updates within
 these ranges can install and run without a new HTTP Guard release. The runtime
 checks the actual Core parent API, middleware storage and cURL capabilities;
@@ -167,10 +169,9 @@ The [verification report](Documentation/Development/Verification.rst) separates
 fixed source-bound test runs from the current compatibility checks. Historical
 kernel coverage spans PHP 8.2–8.5; that does not claim that every future PHP
 version or framework/PHP combination has already been tested. Classic extension
-metadata allows TYPO3 13.4.36–14.3.99 and PHP 8.2.0–8.99.99. Its TYPO3 upper bound
+metadata allows TYPO3 13.4.12–14.3.99 and PHP 8.2.0–8.99.99. Its TYPO3 upper bound
 is narrower than Composer's caret ranges. The contiguous TER notation cannot
-express the separate Core 14 minimum; the runtime rejects Core 14.0–14.2 and
-14.3 versions earlier than 14.3.8. Core's own PHP requirements and runtime
+express the separate Core 14 minimum; the runtime rejects Core 14.0–14.2. Core's own PHP requirements and runtime
 capability checks still apply.
 
 The recorded semantic-contract snapshot passes five complete Unit/native

@@ -5,7 +5,7 @@ Installation
 ============
 
 Nach Installation und Aktivierung schützt die Extension bestehende Aufrufe
-über die registrierte :php:`RequestFactory` von TYPO3 automatisch. Der
+über die registrierte :literal:`RequestFactory` von TYPO3 automatisch. Der
 Standardmodus :literal:`enforce` sperrt private Adressen, Loopback,
 Cloud-Metadatenziele und besondere Netze, auch bei URLs aus Benutzereingaben,
 Importen oder externen Daten. Dafür sind weder Änderungen an der Anwendung
@@ -94,8 +94,10 @@ und das auch klassisch benötigte
 Voraussetzungen
 ===============
 
-Composer unterstützt TYPO3 :literal:`^13.4.36 || ^14.3.8` und PHP
-:literal:`^8.2`. PHP muss zusätzlich die Anforderungen des eingesetzten
+Composer unterstützt TYPO3 :literal:`^13.4.12 || ^14.3` und PHP
+:literal:`^8.2`. Core 13.4.12 ist das erste 13.4-Release, dessen
+:literal:`RequestFactory::request()` das von der geschützten Factory benötigte
+Argument :literal:`$context` annimmt. PHP muss zusätzlich die Anforderungen des eingesetzten
 Core erfüllen. Kompatible Updates innerhalb dieser Bereiche benötigen
 keine neue HTTP-Guard-Version. Die Laufzeitprüfung kontrolliert die echte
 Core-Elternklasse und die SDK-Fähigkeiten; inkompatible APIs werden vor
@@ -125,12 +127,11 @@ konkreten Versionen. Sie begrenzen nicht die installierbaren Dependencies.
 Die aktuellen Kompatibilitätsprüfungen stehen unter :ref:`development-unit`.
 Die historische Kernmatrix deckt PHP 8.2–8.5 ab; künftig kompatible
 PHP-Versionen sind erlaubt, aber damit noch nicht als geprüft ausgewiesen.
-Die klassischen Extension-Metadaten erlauben TYPO3 13.4.36–14.3.99 und PHP
+Die klassischen Extension-Metadaten erlauben TYPO3 13.4.12–14.3.99 und PHP
 8.2.0–8.99.99. Die klassische TYPO3-Obergrenze ist enger als die
 Composer-Bereiche und bezieht sich derzeit auf die LTS-Zweige 13.4/14.3.
 Die zusammenhängende TER-Spanne kann die getrennte Core-14-Untergrenze
-nicht ausdrücken: Die Laufzeitprüfung lehnt Core 14.0–14.2 sowie
-14.3-Patches vor 14.3.8 ab. Die Core-Anforderungen an PHP und dieselben
+nicht ausdrücken: Die Laufzeitprüfung lehnt Core 14.0–14.2 ab. Die Core-Anforderungen an PHP und dieselben
 Laufzeitprüfungen gelten auch dort.
 
 Der kontrollierte Transport benötigt :literal:`ext-curl`, die Funktion
