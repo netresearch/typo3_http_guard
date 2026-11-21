@@ -72,7 +72,7 @@ def check(root, core=None, sdk=None):
     for package in SDK:
         recorded[package] = set().union(*(exact_versions(row[package]) for row in [*required, legacy]))
     floors = {
-        CORE: {13: (13, 4, 36), 14: (14, 3, 8)},
+        CORE: {13: (13, 4, 0), 14: (14, 3, 0)},
         SDK[0]: {7: (7, 15, 2), 8: (8, 2, 0)},
         SDK[1]: {2: (2, 5, 1), 3: (3, 0, 2)},
         SDK[2]: {2: (2, 13, 0), 3: (3, 1, 0)},

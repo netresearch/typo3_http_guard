@@ -22,10 +22,11 @@ On 9 October 2026, TYPO3 released
 `13.4.36 <https://get.typo3.org/release-notes/13.4.36>`_ and
 `14.3.8 <https://get.typo3.org/release-notes/14.3.8>`_. Both releases require
 :literal:`enshrined/svg-sanitize` **1.0.0**, which fixes the three recorded
-SVG advisories. These patches are now the minimum Core versions in
-:literal:`^13.4.36 || ^14.3.8`; compatible updates remain installable.
-The extension does not alias, replace or modify the framework's sanitizer
-dependency.
+SVG advisories. These patches were the minimum Core versions until
+November 2026. The Composer range is now :literal:`^13.4 || ^14.3`, as in
+other Netresearch extensions: keeping Core on a patched release is the
+responsibility of the installation. The extension does not use, alias,
+replace or modify the framework's sanitizer dependency.
 
 The pre-semantic-range review snapshot resolved full
 Core/Backend/Frontend/Fluid graphs for both patches with Guzzle 7.15.5 /

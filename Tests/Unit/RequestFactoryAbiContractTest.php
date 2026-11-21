@@ -88,7 +88,7 @@ final class RequestFactoryAbiContractTest extends TestCase
         yield 'VariadicFactory' => ['VariadicFactory', '14.3.8', false];
         yield 'RequiredExtraConstructor' => ['RequiredExtraConstructor', '14.3.8', false];
         yield 'OptionalExtraConstructor' => ['OptionalExtraConstructor', '14.3.8', true];
-        yield 'version below semantic floor' => ['Accepted14', '14.3.7', false];
+        yield 'version below semantic floor' => ['Accepted14', '14.2.99', false];
         yield 'unknown next major' => ['Accepted14', '15.0.0', false];
         yield 'readonly mismatch Core13' => ['Accepted14', '13.4.36', false];
         yield 'tag-prefixed13' => ['Accepted13', 'v13.4.36', true];
